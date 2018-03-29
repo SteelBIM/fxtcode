@@ -1,0 +1,302 @@
+﻿@model FXT.DataCenter.Domain.Models.Dat_Tenant_Biz
+
+@section StyleSheet{
+
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+}
+@section Javascript{
+
+    <script type="text/javascript">
+        //面包屑导航
+        $("#navigation .breadcrumb li:eq(1)").remove();
+        $("#navigation .breadcrumb li:eq(2)").remove();
+        var html = "<li><span><a href=\"/Business/BusinessStore/Index\">商铺</a></span> <i class=\"icon-angle-right\"></i></li>";
+        if ('@Model' == "") {
+            html += "<li><span>新增</span></li>";
+        } else {
+            html += "<li><span>编辑</span></li>";
+        }
+
+        $("ul.breadcrumb").append(html);
+
+        $(document).ready(function () {
+            //日期
+            $("#JoinDate, #SurveyDate").datepicker({
+                format: "yyyy-mm-dd",
+            });
+
+            //行政区联动商圈，商业街
+            $("#AreaId").change(function () {
+                //商圈
+                $.get('@Url.Action("GetSubAreaBiz")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaBizId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaBizId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+
+                //商业街
+                $.get('@Url.Action("GetBusinessStreet")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#ProjectId").html("");
+                    $.each(data, function (i, item) {
+                        $("#ProjectId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //商业街联动商业楼栋
+            $("#ProjectId").change(function () {
+                $.get('@Url.Action("GetBusinessBuilding")', { projectId: $("#ProjectId").val() }, function (data) {
+                    $("#BuildingId").html("");
+                    $.each(data, function (i, item) {
+                        $("#BuildingId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+
+            //经营业态小类联动
+            $("#BizCode").change(function () {
+                $.get('@Url.Action("GetBizSubCode")', { bizCode: $("#BizCode").val() }, function (data) {
+                    $("#BizSubCode").html("");
+                    $.each(data, function (i, item) {
+                        $("#BizSubCode").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //确定
+            $("#btnSave").bind("click", function () {
+                var projectId = $("#ProjectId").val();
+                var buildingId = $("#BuildingId").val();
+                var bizHouseName = $.trim($("#BizHouseName").val());
+                var brandName = $.trim($("#BrandName").val());
+                var bizCode = $("#BizCode").val();
+
+                if (projectId == -1 || projectId == null) {
+                    $("#msgForBizProjectName").text("*必选");
+                    return;
+                }
+                if (buildingId == -1 || buildingId == null) {
+                    $("#msgForBizBuildingName").text("*必选");
+                    return;
+                }
+
+                if (bizHouseName == "") {
+                    $("#msgForBizHouseName").text("*必填");
+                    return;
+                }
+                if (brandName == "") {
+                    $("#msgForBrandName").text("*必填");
+                    return;
+                }
+                if (bizCode == -1) {
+                    $("#msgForBizCode").text("*必选");
+                    return;
+                }
+
+                $("Form").submit();
+
+            });
+
+
+        });
+
+        $("#TenantID").select2();
+        $(".select2-container").width(221); //重置select2宽度
+
+    </script>
+}
+@using (Html.BeginForm())
+{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>
+                <span class="required">*</span>行政区：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.AreaId, ViewBag.AreaName as List<SelectListItem>)
+                <span style="color: red;" id="msgForAreaName"></span>
+            </td>
+
+            <td>商圈：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.SubAreaBizId, ViewBag.SubAreaBizName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="required">*</span>商业街：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.ProjectId, ViewBag.ProjectName as List<SelectListItem>)
+                <span style="color: red;" id="msgForBizProjectName"></span>
+            </td>
+            <td>
+                <span class="required">*</span>商业楼栋：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BuildingId, ViewBag.BuildingName as List<SelectListItem>)
+                <span style="color: red;" id="msgForBizBuildingName"></span>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>商业楼层：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorNum)
+            </td>
+            <td>商业房号：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.HouseName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="required">*</span>商铺名称：
+            </td>
+            <td>
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(m => m.HouseTenantId)
+                    @Html.HiddenFor(m => m.CityId)
+                    @Html.HiddenFor(m => m.FxtCompanyId)
+                }
+
+                @Html.TextBoxFor(m => m.BizHouseName)
+                <span style="color: red;" id="msgForBizHouseName"></span>
+            </td>
+            <td>
+                <span class="required">*</span>品牌名称：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BrandName)
+                <span style="color: red;" id="msgForBrandName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="required">*</span>经营业态大类：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BizCode, ViewBag.BizName as List<SelectListItem>)
+                <span style="color: red;" id="msgForBizCode"></span>
+            </td>
+            <td>经营业态小类：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BizSubCode, ViewBag.BizSubName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>销售单价(元/㎡)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SaleUnitPrice)
+            </td>
+
+            <td>租金单价(元*月/㎡)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Rent)
+            </td>
+
+        </tr>
+        <tr>
+            <td>租赁面积：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingArea)
+                <span style="color: red;" id="msgForProjectName"></span>
+            </td>
+            <td>租金方式：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.RentTypeCode, ViewBag.RentTypeName as List<SelectListItem>)
+            </td>
+        </tr>
+
+        <tr>
+            <td>消费定位：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BizType, ViewBag.BizTypeName as List<SelectListItem>)
+            </td>
+            <td>租客：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.TenantID, ViewBag.TenantName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>进驻时间：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.JoinDate)
+            </td>
+            <td>调查时间：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SurveyDate)
+            </td>
+        </tr>
+        <tr>
+            <td>是否是知名品牌：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.IsTypical, new List<SelectListItem> { new SelectListItem { Value = "0", Text = "否" }, new SelectListItem { Value = "1", Text = "是" } })
+            </td>
+            <td>
+                <span class="required">*</span>是否空置：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.IsVacant, new List<SelectListItem> { new SelectListItem { Value = "0", Text = "否" }, new SelectListItem { Value = "1", Text = "是" } })
+            </td>
+
+        </tr>
+        <tr>
+            <td>调查人：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SurveyUser)
+            </td>
+            <td>备注：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Remarks)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding-top: 10px;">
+                <a id="btnSave" class="btn blue" title='确定'><i class="icon-ok"></i>确定</a>
+                @if (Model != null)
+                {
+                    <a class="btn dark" href="@Url.Action("BusinessStorePicture", new { Model.ProjectId, Model.BuildingId, Model.HouseId, Model.HouseTenantId })" title='商铺照片'><i class="icon-picture"></i>商铺照片</a>
+                }
+
+            </td>
+        </tr>
+    </table>
+}
+
+
+
+

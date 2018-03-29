@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAS.Entity</RootNamespace>
+    <AssemblyName>CAS.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'godlike|AnyCPU'">
+    <OutputPath>bin\godlike\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.Entity.Attribute">
+      <HintPath>..\..\..\commondll\CAS.Entity.Attribute.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\..\commondll\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BonaServiceEntity\Request\BaseRequestEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\MediaEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\RecordLisSearchEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\WXDialogEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\BankEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\BonaReturnDataEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\EntrustEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\RecordEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\CERTInfoEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\BonaFileUploadEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\TicationTypeEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\CommissionEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\DictionaryEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\EntrustFormEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\FormSaveReturnEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\IsBusinessInfoFull.cs" />
+    <Compile Include="BonaServiceEntity\Response\RecordBaseEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\RowsForEntrustEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\WarrantInfoEntity.cs" />
+    <Compile Include="BonaServiceEntity\Request\ReplenishEntrustEntity.cs" />
+    <Compile Include="BonaServiceEntity\Response\RecordDetailEntity.cs" />
+    <Compile Include="CASEntity\Building.cs" />
+    <Compile Include="CASEntity\CASLoginEntity.cs" />
+    <Compile Include="CASEntity\ProjectDetails.cs" />
+    <Compile Include="CASEntity\ProjectList.cs" />
+    <Compile Include="CASEntity\SystemInfo.cs" />
+    <Compile Include="CASEntity\UserAndAppInfo.cs" />
+    <Compile Include="CASEntity\WCFSinfo.cs" />
+    <Compile Include="ChargeDBEntity\Approve.cs" />
+    <Compile Include="ChargeDBEntity\ChargeCommonEnum.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeBad.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeBrokerage.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeEntrust.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeMonthly.cs" />
+    <Compile Include="ChargeDBEntity\DatEntrustAccount.cs" />
+    <Compile Include="ChargeDBEntity\Dat_ChargeList.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeBillRecord.cs" />
+    <Compile Include="ChargeDBEntity\DatChargeInOutRecord.cs" />
+    <Compile Include="ChargeDBEntity\DatEntrustOver.cs" />
+    <Compile Include="ChargeDBEntity\DatEntrustRefund.cs" />
+    <Compile Include="ChargeDBEntity\Dat_BillRecord.cs" />
+    <Compile Include="ChargeDBEntity\Dat_ChargeInOutRecord.cs" />
+    <Compile Include="ChargeDBEntity\Dat_ChargeMonthly.cs" />
+    <Compile Include="ChargeDBEntity\Dat_EntrustOver.cs" />
+    <Compile Include="ChargeDBEntity\Dat_EntrustRefund.cs" />
+    <Compile Include="ChargeDBEntity\Dat_MonthlyCharge.cs" />
+    <Compile Include="ChargeDBEntity\Dat_ReportRefund.cs" />
+    <Compile Include="ChargeDBEntity\SYSChargeSetting.cs" />
+    <Compile Include="ChargeDBEntity\SYSChargeTimeoutSetting.cs" />
+    <Compile Include="ChargeDBEntity\SYSCountryChargeStandard.cs" />
+    <Compile Include="ChargeDBEntity\SYSCustomApproveConditionStandard.cs" />
+    <Compile Include="ChargeDBEntity\SYSChargeCustom.cs" />
+    <Compile Include="ChargeDBEntity\SYSChargeCustomDetail.cs" />
+    <Compile Include="ChargeDBEntity\SYSEntrustTypeRelation.cs" />
+    <Compile Include="ChargeDBEntity\SYSPrivilegeApprove.cs" />
+    <Compile Include="ChargeDBEntity\SYS_ChargeTimeoutSetting.cs" />
+    <Compile Include="ChargeDBEntity\SYS_CountryChargeStandard.cs" />
+    <Compile Include="ChargeDBEntity\SYS_CustomApproveConditionStandard.cs" />
+    <Compile Include="ChargeDBEntity\SYS_CustomCharge.cs" />
+    <Compile Include="ChargeDBEntity\SYSChargeBankAccount.cs" />
+    <Compile Include="ChargeDBEntity\SYSMicroChargeCustom.cs" />
+    <Compile Include="ChargeDBEntity\SYSMicroChargeCustomDetail.cs" />
+    <Compile Include="ChargeDBEntity\SYS_MicroChargeCustom.cs" />
+    <Compile Include="CommonEnum.cs" />
+    <Compile Include="DatEntrustInfo.cs" />
+    <Compile Include="DBEntity\DatAppraisalGlobal.cs" />
+    <Compile Include="DBEntity\DatAppraisalStage.cs" />
+    <Compile Include="DBEntity\DatAppraisalStageMapping.cs" />
+    <Compile Include="DBEntity\DatAppraisalStageQuery.cs" />
+    <Compile Include="DBEntity\DatAppraisers.cs" />
+    <Compile Include="DBEntity\DatAutoAssignRecord.cs" />
+    <Compile Include="DBEntity\DATAvgPriceMonth.cs" />
+    <Compile Include="DBEntity\DATBuildingOrderBy.cs" />
+    <Compile Include="DBEntity\DatContractManage.cs" />
+    <Compile Include="DBEntity\DatQRcodeSetting.cs" />
+    <Compile Include="DBEntity\DatCaseBusiness.cs" />
+    <Compile Include="DBEntity\DatCaseFactory.cs" />
+    <Compile Include="DBEntity\DatCaseHouse.cs" />
+    <Compile Include="DBEntity\DatCaseLand.cs" />
+    <Compile Include="DBEntity\DatCaseOffice.cs" />
+    <Compile Include="DBEntity\DatCaseOther.cs" />
+    <Compile Include="DBEntity\DatCaseProperty.cs" />
+    <Compile Include="DBEntity\DatCodeMapping.cs" />
+    <Compile Include="DBEntity\DatColumnRounding.cs" />
+    <Compile Include="DBEntity\DATCompany.cs" />
+    <Compile Include="DBEntity\DatCustomerBelongsGroup.cs" />
+    <Compile Include="DBEntity\DatCustomerGroup.cs" />
+    <Compile Include="DBEntity\DatCustomerRight.cs" />
+    <Compile Include="DBEntity\DatDataBaseExportTemplate.cs" />
+    <Compile Include="DBEntity\DatDisplayColumn.cs" />
+    <Compile Include="DBEntity\DatDisplayColumnUserMapping.cs" />
+    <Compile Include="DBEntity\DatEntrustBONAFinancial.cs" />
+    <Compile Include="DBEntity\DatEntrustExtDSF.cs" />
+    <Compile Include="DBEntity\DatEstimates.cs" />
+    <Compile Include="DBEntity\DatExportColumnMapping.cs" />
+    <Compile Include="DBEntity\DatExportFieldExt.cs" />
+    <Compile Include="DBEntity\DatExportSource.cs" />
+    <Compile Include="DBEntity\DatExportTemplate.cs" />
+    <Compile Include="DBEntity\DatFeedBack.cs" />
+    <Compile Include="DBEntity\DATHouseOrderBy.cs" />
+    <Compile Include="DBEntity\DatKnowledgeBase.cs" />
+    <Compile Include="DBEntity\DatKnowledgeSubjectType.cs" />
+    <Compile Include="DBEntity\DatMessageGroup.cs" />
+    <Compile Include="DBEntity\DatMobilePush.cs" />
+    <Compile Include="DBEntity\DatMoreQuery.cs" />
+    <Compile Include="DBEntity\DatNWorkWTLog.cs" />
+    <Compile Include="DBEntity\DatCustomerManager.cs" />
+    <Compile Include="DBEntity\DatObjectBONAFinancial.cs" />
+    <Compile Include="DBEntity\DatObjectBusiness .cs" />
+    <Compile Include="DBEntity\DatBuilding.cs" />
+    <Compile Include="DBEntity\DatHouse.cs" />
+    <Compile Include="DBEntity\DatObjectFactory.cs" />
+    <Compile Include="DBEntity\DatObjectLand .cs" />
+    <Compile Include="DBEntity\DatObjectOffice .cs" />
+    <Compile Include="DBEntity\DatObjectOther.cs" />
+    <Compile Include="DBEntity\DatObjectOwnerInfo.cs" />
+    <Compile Include="DBEntity\DatObjectOwnerInfoBONAFinancial.cs" />
+    <Compile Include="DBEntity\DatObjectPrice.cs" />
+    <Compile Include="DBEntity\DatObjectProperty.cs" />
+    <Compile Include="DBEntity\DatObjectSubHouse.cs" />
+    <Compile Include="DBEntity\DatPeitao.cs" />
+    <Compile Include="DBEntity\DatPhoneMessage.cs" />
+    <Compile Include="DBEntity\DatProject.cs" />
+    <Compile Include="DBEntity\DATProjectAvgPrice.cs" />
+    <Compile Include="DBEntity\DATCASQueryHistory.cs" />
+    <Compile Include="DBEntity\DatReportBackUp.cs" />
+    <Compile Include="DBEntity\CityTable.cs" />
+    <Compile Include="DBEntity\DatBusinessErrorsTypesMapping.cs" />
+    <Compile Include="DBEntity\DatCharge.cs" />
+    <Compile Include="DBEntity\DatCustomerBranchCompany.cs" />
+    <Compile Include="DBEntity\DatCustomerCompany.cs" />
+    <Compile Include="DBEntity\DatEntrust.cs" />
+    <Compile Include="DBEntity\DatFiles.cs" />
+    <Compile Include="DBEntity\DatFollowUp.cs" />
+    <Compile Include="DBEntity\DatGongGao.cs" />
+    <Compile Include="DBEntity\DatMessage.cs" />
+    <Compile Include="DBEntity\DatMobile.cs" />
+    <Compile Include="DBEntity\DatNWorkDetails.cs" />
+    <Compile Include="DBEntity\DatNWorkFlowWT.cs" />
+    <Compile Include="DBEntity\DatObject.cs" />
+    <Compile Include="DBEntity\DatObjectHouse.cs" />
+    <Compile Include="DBEntity\DatQuery.cs" />
+    <Compile Include="DBEntity\DatRedHead.cs" />
+    <Compile Include="DBEntity\DatReport.cs" />
+    <Compile Include="DBEntity\DatReportBackUpHistory.cs" />
+    <Compile Include="DBEntity\DatReportDeliver.cs" />
+    <Compile Include="DBEntity\DatReportGenerationData.cs" />
+    <Compile Include="DBEntity\DatReportNo.cs" />
+    <Compile Include="DBEntity\DatReportTemplate.cs" />
+    <Compile Include="DBEntity\DatSaveFileName.cs" />
+    <Compile Include="DBEntity\DatSchool.cs" />
+    <Compile Include="DBEntity\DatSendNeedMessageRecord.cs" />
+    <Compile Include="DBEntity\DatShenPi.cs" />
+    <Compile Include="DBEntity\DatSurvey.cs" />
+    <Compile Include="DBEntity\DatSurveyBusiness.cs" />
+    <Compile Include="DBEntity\DatSurveyFactory.cs" />
+    <Compile Include="DBEntity\DatSurveyHouse.cs" />
+    <Compile Include="DBEntity\DatSurveyLand.cs" />
+    <Compile Include="DBEntity\DatSurveyOffice.cs" />
+    <Compile Include="DBEntity\DatNForm.cs" />
+    <Compile Include="DBEntity\DatNFormType.cs" />
+    <Compile Include="DBEntity\DatNWorkBusinessErrors.cs" />
+    <Compile Include="DBEntity\DatNWorkBusinessErrorTypes.cs" />
+    <Compile Include="DBEntity\DatNWorkFlow.cs" />
+    <Compile Include="DBEntity\DatNWorkFlowNode.cs" />
+    <Compile Include="DBEntity\DatNWorkStepCheckLog.cs" />
+    <Compile Include="DBEntity\DatNWorkStepLog.cs" />
+    <Compile Include="DBEntity\DatNWorkToDo.cs" />
+    <Compile Include="DBEntity\DatStepLogBusinessErrorsMapping.cs" />
+    <Compile Include="DBEntity\DatTaxKind.cs" />
+    <Compile Include="DBEntity\DatTaxKindDetails.cs" />
+    <Compile Include="DBEntity\DatTaxKindDetailsMapping.cs" />
+    <Compile Include="DBEntity\DatTaxKindSub.cs" />
+    <Compile Include="DBEntity\DatTaxTemplate.cs" />
+    <Compile Include="DBEntity\DatTelFile.cs" />
+    <Compile Include="DBEntity\DatTelFileUser .cs" />
+    <Compile Include="DBEntity\DatTongXunLu.cs" />
+    <Compile Include="DBEntity\DatUserDesk.cs" />
+    <Compile Include="DBEntity\DatWXAloneSet.cs" />
+    <Compile Include="DBEntity\DatYinZhang.cs" />
+    <Compile Include="DBEntity\DatYinZhangLog.cs" />
+    <Compile Include="DBEntity\HTMLHistory.cs" />
+    <Compile Include="DBEntity\HTMLSignature.cs" />
+    <Compile Include="DBEntity\LNKPAppendage.cs" />
+    <Compile Include="DBEntity\LNKPCompany.cs" />
+    <Compile Include="DBEntity\SYSAccountDisableRule.cs" />
+    <Compile Include="DBEntity\SYSApprovalFormSetting.cs" />
+    <Compile Include="DBEntity\SYSAutoAssignSetting.cs" />
+    <Compile Include="DBEntity\SYSAutoQueryTemplate.cs" />
+    <Compile Include="DBEntity\SYSBackupDataUserSetting.cs" />
+    <Compile Include="DBEntity\SYSDataListCookie.cs" />
+    <Compile Include="DBEntity\SYSDataSet.cs" />
+    <Compile Include="DBEntity\SYSFileUploadSetting.cs" />
+    <Compile Include="DBEntity\SYSFpRemindSetting.cs" />
+    <Compile Include="DBEntity\SYSPrintSealSetting.cs" />
+    <Compile Include="DBEntity\SYSPrintSealUserSetting.cs" />
+    <Compile Include="DBEntity\SYSPublishSetting.cs" />
+    <Compile Include="DBEntity\SYSReportCompleteCountdownSetting.cs" />
+    <Compile Include="DBEntity\SYSSubAreaBiz.cs" />
+    <Compile Include="DBEntity\SYSSubAreaOffice.cs" />
+    <Compile Include="DBEntity\SYSYPRequestReportRemindSet.cs" />
+    <Compile Include="DBEntity\SYSQueryApprovalUser.cs" />
+    <Compile Include="DBEntity\DatCase.cs" />
+    <Compile Include="DBEntity\DatDataNumber.cs" />
+    <Compile Include="ExternalApi\ExternalReport.cs" />
+    <Compile Include="FxtDataCenter\BizOffice\DatCaseBiz.cs" />
+    <Compile Include="FxtDataCenter\BizOffice\DatCaseIndustry.cs" />
+    <Compile Include="FxtDataCenter\BizOffice\DatCaseLand.cs" />
+    <Compile Include="FxtDataCenter\BizOffice\DatCaseOff.cs" />
+    <Compile Include="FxtDataCenter\Case\CaseSelEntity.cs" />
+    <Compile Include="FxtDataCenter\DatEvalueSet.cs" />
+    <Compile Include="FxtDataCenter\Price\PriceThendEntity.cs" />
+    <Compile Include="FxtDataCenter\PriviCompanyShowData.cs" />
+    <Compile Include="FxtDataCenter\Project\ProjectInfoEntity.cs" />
+    <Compile Include="FxtDataCenter\SYL\SYLDat.cs" />
+    <Compile Include="FxtLogDBEntity\SYSLog.cs" />
+    <Compile Include="FxtLogDBEntity\SYSLogin.cs" />
+    <Compile Include="FxtLog\AutoPriceLog.cs" />
+    <Compile Include="FxtLog\JsonDataContainExcuteTimeLog.cs" />
+    <Compile Include="FxtLog\ExcuteTimeLog.cs" />
+    <Compile Include="FxtLog\ExecuteTimeCountLog.cs" />
+    <Compile Include="FxtProject\CustomerMessageEntity.cs" />
+    <Compile Include="FxtProject\DatAvgPricePush.cs" />
+    <Compile Include="FxtProject\DatProjectTotal.cs" />
+    <Compile Include="FxtProject\DATQueryHistory.cs" />
+    <Compile Include="FxtProject\Privi_Company.cs" />
+    <Compile Include="FxtProject\ProjectMatch.cs" />
+    <Compile Include="FxtProject\RelAutoPrice.cs" />
+    <Compile Include="FxtSupplier\AcceptBusiness.cs" />
+    <Compile Include="FxtSupplier\Aptitude.cs" />
+    <Compile Include="FxtSupplier\AssetBackPrice.cs" />
+    <Compile Include="FxtSupplier\AssetObject.cs" />
+    <Compile Include="FxtSupplier\Audit.cs" />
+    <Compile Include="FxtSupplier\Business.cs" />
+    <Compile Include="FxtSupplier\BusinessFile.cs" />
+    <Compile Include="FxtSupplier\BusinessRelease.cs" />
+    <Compile Include="FxtSupplier\CompanyInfo.cs" />
+    <Compile Include="FxtSupplier\DatAmountDetails.cs" />
+    <Compile Include="FxtSupplier\DatFollowUp.cs" />
+    <Compile Include="FxtSupplier\DatMessage.cs" />
+    <Compile Include="FxtSupplier\DatSettle.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendAcceptBusiness.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendAssetBackPrice.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendAssetObject.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendBusiness.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendBusinessRelease.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendCompanyInfo.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendDatAmountDetails.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendDatSettle.cs" />
+    <Compile Include="FxtSupplier\FxtSupplierExtendEntity\ExtendUserInfo.cs" />
+    <Compile Include="FxtSupplier\LinkMen.cs" />
+    <Compile Include="FxtSupplier\LoginRecord.cs" />
+    <Compile Include="FxtSupplier\SupplierService.cs" />
+    <Compile Include="FxtSupplier\UserInfo.cs" />
+    <Compile Include="FxtUserCenter\CompanyInfo.cs" />
+    <Compile Include="FxtUserCenter\CompanyProduct.cs" />
+    <Compile Include="FxtUserCenter\SysRoleUser.cs" />
+    <Compile Include="FxtWeb\Aptitude.cs" />
+    <Compile Include="FxtWeb\CompanyInfo.cs" />
+    <Compile Include="GJBEntity\BusinessStatistics.cs" />
+    <Compile Include="GJBEntity\DataExportModel.cs" />
+    <Compile Include="GJBEntity\DatKnowledgeBase.cs" />
+    <Compile Include="GJBEntity\DatMoreQuery.cs" />
+    <Compile Include="GJBEntity\DatTaxKindSub.cs" />
+    <Compile Include="GJBEntity\Dat_AppraisalStage.cs" />
+    <Compile Include="GJBEntity\Dat_AppraisalStageMapping.cs" />
+    <Compile Include="GJBEntity\Dat_AppraisalStageQuery.cs" />
+    <Compile Include="GJBEntity\DATCAS_QueryHistory.cs" />
+    <Compile Include="GJBEntity\Dat_ContractManage.cs" />
+    <Compile Include="GJBEntity\Dat_EntrustBONAFinancial.cs" />
+    <Compile Include="GJBEntity\Dat_EntrustExtDSF.cs" />
+    <Compile Include="DBEntity\LNKPPhoto.cs" />
+    <Compile Include="DBEntity\SYSAssignUser.cs" />
+    <Compile Include="DBEntity\SYSAutoMathTemplate .cs" />
+    <Compile Include="DBEntity\SYSAutoTaxTemplate.cs" />
+    <Compile Include="DBEntity\SYSAutoReportTemplate.cs" />
+    <Compile Include="DBEntity\SYSAutoTemplate.cs" />
+    <Compile Include="DBEntity\SYSBunMenChargeUer.cs" />
+    <Compile Include="DBEntity\SYSBusinessType.cs" />
+    <Compile Include="DBEntity\SysCodePrice.cs" />
+    <Compile Include="DBEntity\SYSConfig.cs" />
+    <Compile Include="DBEntity\SYSPreevaluateTemplate.cs" />
+    <Compile Include="DBEntity\SYSQueryAssignUser .cs" />
+    <Compile Include="DBEntity\SYSReportNoBaseData.cs" />
+    <Compile Include="DBEntity\SYSRiZhi.cs" />
+    <Compile Include="DBEntity\SYSSerils.cs" />
+    <Compile Include="DBEntity\SYSSubCompanyCert.cs" />
+    <Compile Include="DBEntity\SYSTreeList.cs" />
+    <Compile Include="DBEntity\SYSUpgrade.cs" />
+    <Compile Include="DBEntity\DatYP.cs" />
+    <Compile Include="DBEntity\SYSBuMen.cs" />
+    <Compile Include="DBEntity\SYSDanWeiInfo.cs" />
+    <Compile Include="DBEntity\SYSJiaoSe.cs" />
+    <Compile Include="DBEntity\DatLanEmail.cs" />
+    <Compile Include="DBEntity\SYSUser.cs" />
+    <Compile Include="DBEntity\SYSUserCert.cs" />
+    <Compile Include="DBEntity\SYSAppraiser.cs" />
+    <Compile Include="DBEntity\SYSArea.cs" />
+    <Compile Include="DBEntity\SYSBusinessTableFieldsSetup.cs" />
+    <Compile Include="DBEntity\SYSBusinessTableSetup.cs" />
+    <Compile Include="DBEntity\SYSChargeStandard.cs" />
+    <Compile Include="DBEntity\SYSCity.cs" />
+    <Compile Include="DBEntity\SYSCode.cs" />
+    <Compile Include="DBEntity\SYSProvince.cs" />
+    <Compile Include="DBEntity\SYSSubArea.cs" />
+    <Compile Include="DBEntity\SYSSurveyImageTemplate.cs" />
+    <Compile Include="DBEntity\SYSSurveyUploadLog.cs" />
+    <Compile Include="DBEntity\SYSTaxTemplate.cs" />
+    <Compile Include="DBEntity\TreeSelect.cs" />
+    <Compile Include="FormData.cs" />
+    <Compile Include="GJBEntity\BusinessType.cs" />
+    <Compile Include="GJBEntity\ChargeStandrad.cs" />
+    <Compile Include="GJBEntity\DatAppraisers.cs" />
+    <Compile Include="GJBEntity\DatBusinessErrorsTypesMapping.cs" />
+    <Compile Include="GJBEntity\DatCharge.cs" />
+    <Compile Include="GJBEntity\DatCustomerBranchCompany.cs" />
+    <Compile Include="GJBEntity\DatCustomerCompany.cs" />
+    <Compile Include="GJBEntity\DatDisplayColumn.cs" />
+    <Compile Include="GJBEntity\DatDisplayColumnUserMapping.cs" />
+    <Compile Include="GJBEntity\DatExportSource.cs" />
+    <Compile Include="GJBEntity\DatNWorkWTLog.cs" />
+    <Compile Include="GJBEntity\DatObjectSubHouse.cs" />
+    <Compile Include="GJBEntity\DatRedHead.cs" />
+    <Compile Include="GJBEntity\DatSurvey.cs" />
+    <Compile Include="GJBEntity\DatTelFile.cs" />
+    <Compile Include="GJBEntity\DatFiles.cs" />
+    <Compile Include="GJBEntity\DatFollowup.cs" />
+    <Compile Include="GJBEntity\DatGongGao.cs" />
+    <Compile Include="GJBEntity\DatLanEmailcs.cs" />
+    <Compile Include="GJBEntity\DatQuery.cs" />
+    <Compile Include="DBEntity\DatBusinessExtData.cs" />
+    <Compile Include="GJBEntity\DatReport.cs" />
+    <Compile Include="GJBEntity\DatReportBackUp.cs" />
+    <Compile Include="GJBEntity\Dat_Case.cs" />
+    <Compile Include="GJBEntity\Dat_CodeMapping.cs" />
+    <Compile Include="GJBEntity\Dat_CustomerManager.cs" />
+    <Compile Include="GJBEntity\Dat_Entrust.cs" />
+    <Compile Include="GJBEntity\Dat_Estimates.cs" />
+    <Compile Include="GJBEntity\Dat_ExportColumnMapping.cs" />
+    <Compile Include="GJBEntity\Dat_FeedBack.cs" />
+    <Compile Include="GJBEntity\Dat_ObjectBONAFinancial.cs" />
+    <Compile Include="GJBEntity\Dat_ObjectOwnerInfo.cs" />
+    <Compile Include="GJBEntity\Dat_ObjectPrice.cs" />
+    <Compile Include="GJBEntity\Dat_ReportDeliver.cs" />
+    <Compile Include="GJBEntity\Dat_ReportNo.cs" />
+    <Compile Include="GJBEntity\Dat_TaxKind.cs" />
+    <Compile Include="GJBEntity\Dat_YP.cs" />
+    <Compile Include="GJBEntity\EntrustSurvey.cs" />
+    <Compile Include="GJBEntity\ErrorObject.cs" />
+    <Compile Include="GJBEntity\Message.cs" />
+    <Compile Include="GJBEntity\MessageCore.cs" />
+    <Compile Include="GJBEntity\MessageTemp.cs" />
+    <Compile Include="GJBEntity\RegexInfo.cs" />
+    <Compile Include="GJBEntity\ReportNoBuildParam.cs" />
+    <Compile Include="GJBEntity\SYSBuMen.cs" />
+    <Compile Include="GJBEntity\SYSCode.cs" />
+    <Compile Include="GJBEntity\SYSDanWeiInfo.cs" />
+    <Compile Include="GJBEntity\SYSJiaoSe.cs" />
+    <Compile Include="GJBEntity\DatNForm.cs" />
+    <Compile Include="GJBEntity\DatNFormType.cs" />
+    <Compile Include="GJBEntity\DatNWorkBusinessErrors.cs" />
+    <Compile Include="GJBEntity\DatNWorkBusinessErrorTypes.cs" />
+    <Compile Include="GJBEntity\DatNWorkFlow.cs" />
+    <Compile Include="GJBEntity\DatNWorkFlowNode.cs" />
+    <Compile Include="GJBEntity\DatNWorkStepCheckLog.cs" />
+    <Compile Include="GJBEntity\DatNWorkStepLog.cs" />
+    <Compile Include="GJBEntity\DatNWorkToDo.cs" />
+    <Compile Include="GJBEntity\SYSQueryAssignUser.cs" />
+    <Compile Include="GJBEntity\SYSUser.cs" />
+    <Compile Include="GJBEntity\SYSRiZhi.cs" />
+    <Compile Include="GJBEntity\DatStepLogBusinessErrorsMapping.cs" />
+    <Compile Include="GJBEntity\SYSCity.cs" />
+    <Compile Include="GJBEntity\SYSProvince.cs" />
+    <Compile Include="GJBEntity\SYSTaxTemplate_Ext.cs" />
+    <Compile Include="GJBEntity\SYS_Appraiser.cs" />
+    <Compile Include="GJBEntity\SYS_ApprovalFormSetting.cs" />
+    <Compile Include="GJBEntity\SYS_Area.cs" />
+    <Compile Include="GJBEntity\SYS_AssignUser.cs" />
+    <Compile Include="GJBEntity\DatObject.cs" />
+    <Compile Include="GJBEntity\SYS_AssignUserExpand.cs" />
+    <Compile Include="GJBEntity\SYS_AutoMathTemplate.cs" />
+    <Compile Include="GJBEntity\SYS_AutoReportTemplate.cs" />
+    <Compile Include="GJBEntity\SYS_AutoTaxTemplate.cs" />
+    <Compile Include="GJBEntity\SYS_AutoTemplate.cs" />
+    <Compile Include="GJBEntity\SYS_BackupDataUserSetting.cs" />
+    <Compile Include="GJBEntity\SYS_BusinessType.cs" />
+    <Compile Include="GJBEntity\SYS_DataSet.cs" />
+    <Compile Include="GJBEntity\SYS_PrintSealSetting.cs" />
+    <Compile Include="GJBEntity\SYS_PrintSealUserSetting.cs" />
+    <Compile Include="GJBEntity\SYS_SubCompanyCert.cs" />
+    <Compile Include="GJBEntity\SYS_TreeList.cs" />
+    <Compile Include="GJBEntity\UnexpiredAppraiserInfo.cs" />
+    <Compile Include="GJBEntity\SYS_QueryApprovalUser.cs" />
+    <Compile Include="GJBEntity\WXUserWorking.cs" />
+    <Compile Include="GJBEntity\WXUserApproval.cs" />
+    <Compile Include="GYSWinform\Countdown.cs" />
+    <Compile Include="LoginInfoEntity.cs" />
+    <Compile Include="MySqlEntity\GJBLogEnum.cs" />
+    <Compile Include="MySqlEntity\GJBLogMonitoring.cs" />
+    <Compile Include="OutJsonEntity.cs" />
+    <Compile Include="SurveyApi\SurveyApi.cs" />
+    <Compile Include="SurveyDBEntity\DatFiledsFollowUp.cs" />
+    <Compile Include="SurveyDBEntity\DatFiles.cs" />
+    <Compile Include="SurveyDBEntity\DatFollowUp.cs" />
+    <Compile Include="SurveyDBEntity\DatLanEmail.cs" />
+    <Compile Include="SurveyDBEntity\DatSurvey.cs" />
+    <Compile Include="SurveyDBEntity\DatSurveyBusiness.cs" />
+    <Compile Include="SurveyDBEntity\DatSurveyFactory.cs" />
+    <Compile Include="SurveyDBEntity\DatSurveyHouse.cs" />
+    <Compile Include="SurveyDBEntity\DatSurveyLand.cs" />
+    <Compile Include="SurveyDBEntity\DatSurveyOffice.cs" />
+    <Compile Include="SurveyDBEntity\MobileEntity.cs" />
+    <Compile Include="SurveyDBEntity\SYSBusinessTableFieldsSetup.cs" />
+    <Compile Include="SurveyDBEntity\SYSBusinessTableSetup.cs" />
+    <Compile Include="SurveyDBEntity\SYSCode.cs" />
+    <Compile Include="SurveyDBEntity\SYSConfig.cs" />
+    <Compile Include="SurveyDBEntity\SYSSurveyImageTemplate.cs" />
+    <Compile Include="SurveyDBEntity\SYSSurveyUploadLog.cs" />
+    <Compile Include="SurveyDBEntity\SYSUpgrade.cs" />
+    <Compile Include="SurveyDBEntity\SYSUser.cs" />
+    <Compile Include="SurveyEntityNew\CacheSurvey.cs" />
+    <Compile Include="SurveyEntityNew\DatActionStatistics.cs" />
+    <Compile Include="SurveyEntityNew\DatFeedBackApi.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyApi.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyBusinessExt.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyFactoryExt.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyHouseExt.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyingBackup.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyLandExt.cs" />
+    <Compile Include="SurveyEntityNew\DatSurveyOfficeExt.cs" />
+    <Compile Include="SurveyEntityNew\DatWXCustomerManager.cs" />
+    <Compile Include="SurveyEntityNew\DatWXEntrust.cs" />
+    <Compile Include="SurveyEntityNew\DatWXQuery.cs" />
+    <Compile Include="SurveyEntityNew\SurveyAddEntity.cs" />
+    <Compile Include="SurveyEntityNew\SurveyCustomFields.cs" />
+    <Compile Include="SurveyEntityNew\SurveyExt.cs" />
+    <Compile Include="SurveyEntityNew\SurveyImageTemplateExt.cs" />
+    <Compile Include="SurveyEntityNew\SYSCodeApi.cs" />
+    <Compile Include="SurveyEntityNew\SYSCodeExt.cs" />
+    <Compile Include="SurveyEntityNew\SYSSurveyTemplateExt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SYSReportNoBuildRule.cs" />
+    <Compile Include="UserCheck.cs" />
+    <Compile Include="WCFJsonData.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

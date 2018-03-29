@@ -1,0 +1,344 @@
+﻿<div>
+    具体楼盘：@Html.TextBox("ProjectName", null, new { @class = "m-wrap small" })
+</div>
+<div class="div">
+    <div class="content_div">
+        行政区：&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("areaid", null, new { @class = "m-wrap small" })
+    </div>
+    <div class="content_div">
+        片区：@Html.DropDownList("subareaid", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        产权形式：@Html.DropDownList("rightcode", null, new { @class = "m-wrap small" })
+    </div>
+    <div class="content_div">
+        建筑类型：@Html.DropDownList("buildingtypecode", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        绿化率：&nbsp;&nbsp;
+        <select class="td_input" id="GreenRateCompany_project" name="GreenRateCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>
+        <input type="text" value="" name="GreenRate" id="GreenRate" class="td_input" />%
+    </div>
+    <div class="content_div">
+        容积率：<select class="td_input" id="CubageRateCompany_project" name="CubageRateCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>
+        <input type="text" value="" name="CubageRate" id="CubageRate" class="td_input" />
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        占地面积：<select class="td_input" id="LandAreaCompany_project" name="LandAreaCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>
+        <input type="text" value="" name="LandArea" id="LandArea" class="td_input" />㎡
+    </div>
+    <div class="content_div">
+        车位数：<select class="td_input" id="ParkingNumberCompany_project" name="ParkingNumberCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>
+        <input type="text" value="" name="ParkingNumber" id="ParkingNumber" class="td_input" />个
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        总户数：&nbsp;&nbsp;
+        <select class="td_input" id="TotalNumCompany_project" name="TotalNumCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>&nbsp;<input type="text" value="" name="TotalNum" id="TotalNum" class="td_input" />个
+    </div>
+    <div class="content_div">
+        总栋数：
+        <select class="td_input" id="BuildingNumCompany_project" name="BuildingNumCompany_project">
+            <option value="1">大于等于</option>
+            <option value="0">小于等于</option>
+        </select>
+        <input type="text" value="" name="BuildingNum" id="BuildingNum" class="td_input" />个
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        竣工日期：<input type="text" value="" name="EndDate" id="EndDate" class="m-wrap small" />&nbsp;&nbsp;～&nbsp;&nbsp;<input type="text" value="" name="EndDateTo" id="EndDateTo" class="m-wrap small" />
+    </div>
+    <div class="content_div">
+        创建日期：@Html.TextBox("PstarTime", null, new { @class = "m-wrap small" })&nbsp;&nbsp;～&nbsp;&nbsp;@Html.TextBox("PendTime", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<tr>
+    <td colspan="2">
+        <input type="checkbox" name="all_project" id="all_project" value="all_project" onclick="selectAll('project')" /><b>全选</b>
+        <a style="cursor: pointer;" id="a_project" href="javascript:showOrhide('project');">收起∧</a>
+    </td>
+</tr>
+<tr>
+    <table style="width: 1000px; margin-left: 10px;" id="attr_project">
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="CityName&城市名称" />城市名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="AreaName&*行政区" />行政区
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SubAreaName&片区" />片区
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ProjectName&*楼盘名称" />楼盘名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="OtherName&楼盘别名" />楼盘别名
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Address&楼盘地址" />楼盘地址
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="PinYinAll&楼盘名称全拼" />楼盘名称全拼
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="PinYin&拼音简写" />拼音简写
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="PurposeCodeName&*主用途" />主用途
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="RightCodeName&产权形式" />产权形式
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingTypeCodeName&主建筑物类型" />主建筑物类型
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="FieldNo&宗地号" />宗地号
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="opValue&土地规划用途" />土地规划用途
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="StartDate&土地起始日期" />土地起始日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="StartEndDate&土地终止日期" />土地终止日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="UsableYear&土地使用年限" />土地使用年限
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="LandArea&占地面积" />占地面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingArea&建筑面积" />建筑面积
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SalableArea&可销售面积" />可销售面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="OfficeArea&办公面积" />办公面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BusinessArea&商业面积" />商业面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="IndustryArea&工业面积" />工业面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="OtherArea&其他用途面积" />其他用途面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="CubageRate&容积率" />容积率
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="GreenRate&绿化率" />绿化率
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingDate&开工日期" />开工日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="CoverDate&封顶日期" />封顶日期
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SaleDate&开盘日期" />开盘日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="JoinDate&入伙日期" />入伙日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="EndDate&竣工日期" />竣工日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="InnerSaleDate&内部认购日期" />内部认购日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="AveragePrice&项目均价" />项目均价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SalePrice&开盘均价" />开盘均价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="PriceDate&价格调查时间" />价格调查时间
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Weight&价格修正系数" />价格修正系数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingNum&总栋数" />总栋数
+            </td>
+        </tr>
+        <tr>           
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="TotalNum&总套数" />总套数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="buildingNumber&实际楼栋数" />实际楼栋数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="houseNumber&实际总套数" />实际总套数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ManagerPrice&物管费" />物管费
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ManagerTel&物管电话" />物管电话
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingQualityName&建筑质量" />建筑质量
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="AppendageClassName&配套等级" />配套等级
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="HousingScaleName&小区规模" />小区规模
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Facilities&设备设施" />设备设施
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ManagerQualityName&物业管理质量" />物业管理质量
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BuildingDetail&楼栋备注" />楼栋备注
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="HouseDetail&房号备注" />房号备注
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="BasementPurpose&地下室用途" />地下室用途
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ParkingNumber&车位数" />车位数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="parkingdesc&车位描述" />车位描述
+            </td>
+            @*<td style="width: 120px;">
+                <input type="checkbox" name="project" value="AreaLineId&环线ID" />环线
+            </td>*@
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="East&东" />东
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="South&南" />南
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="West&西" />西
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="North&北" />北
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="X&经度" />经度
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Y&纬度" />纬度
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="XYScale&比例尺" />比例尺
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Detail&项目概况" />项目概况
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="RegionalAnalysis&区域分析" />区域分析
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Wrinkle&有利因素" />有利因素
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Aversion&不利因素" />不利因素
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="IsComplete&是否完成基础数据" />完成基础数据
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="IsEmpty&是否空楼盘" />是否空楼盘
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="IsEValue&是否可估" />是否可估
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="FxtCompanyId&评估机构ID" />评估机构ID
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="Creator&创建用户" />创建用户
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="CreateTime&创建日期" />创建日期
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SaveUser&保存用户" />保存用户
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SaveDateTime&保存时间" />保存时间
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="UpdateDateTime&最后更新时间" />最后更新时间
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="DeveCompanyName&开发商" />开发商
+            </td>
+        </tr>
+        <tr>            
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="ManagerCompanyName&物管公司" />物管公司
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="SourceName&数据来源" />数据来源
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="project" value="belongcompanyname&数据建设机构" />数据建设机构
+            </td>
+        </tr>
+    </table>
+</tr>
+<div style="float: right;">
+    <input class="btn" id="btnproject" type="submit" value="导出" onclick="RunMsg('project');" />
+
+</div>
+@*</table>*@

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03E38760-E1F9-4134-94B3-5FC8B659B095}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtSpider.Bll</RootNamespace>
+    <AssemblyName>FxtSpider.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FxtSpider.Common\Dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaManager.cs" />
+    <Compile Include="CaseFilterLogManager.cs" />
+    <Compile Include="CaseLogManager.cs" />
+    <Compile Include="CaseManager.cs" />
+    <Compile Include="CityManager.cs" />
+    <Compile Include="CompanyAreaManager.cs" />
+    <Compile Include="CompanyManager.cs" />
+    <Compile Include="DatSpiderErrorLogManager.cs" />
+    <Compile Include="FxtApiManager\AreaApiManager.cs" />
+    <Compile Include="FxtApiManager\CaseApiManager.cs" />
+    <Compile Include="FxtApiManager\ProjectApiManager.cs" />
+    <Compile Include="FxtApiManager\ProjectMatchApiManager.cs" />
+    <Compile Include="KeyValueConfigManager.cs" />
+    <Compile Include="ProjectCaseCountManager.cs" />
+    <Compile Include="ProjectManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceManager.cs" />
+    <Compile Include="ProxyIpCommom\ProxyIpHelp.cs" />
+    <Compile Include="ProxyIpManager.cs" />
+    <Compile Include="SpiderCommon\Interface\INewDataRum.cs" />
+    <Compile Include="SpiderCommon\Models\NewDataRum.cs" />
+    <Compile Include="SpiderCommon\Models\NewHouse.cs" />
+    <Compile Include="SpiderCommon\Models\RegexInfo.cs" />
+    <Compile Include="SpiderCommon\SaveData.cs" />
+    <Compile Include="SpiderCommon\SpiderHelp.cs" />
+    <Compile Include="SpiderCommon\SpiderRegexInfoHelp.cs" />
+    <Compile Include="SpiderRepetitionLogManager.cs" />
+    <Compile Include="SpiderWebConfigManager.cs" />
+    <Compile Include="SubAreaManager.cs" />
+    <Compile Include="SysCodeManager.cs" />
+    <Compile Include="WebJoinProxyIpManager.cs" />
+    <Compile Include="WebsiteManager.cs" />
+    <Compile Include="WorkItemManager.cs" />
+    <Compile Include="币种Manager.cs" />
+    <Compile Include="建筑类型Manager.cs" />
+    <Compile Include="户型Manager.cs" />
+    <Compile Include="新浪二手房LogManager.cs" />
+    <Compile Include="朝向Manager.cs" />
+    <Compile Include="案例类型Manager.cs" />
+    <Compile Include="用途Manager.cs" />
+    <Compile Include="结构Manager.cs" />
+    <Compile Include="装修Manager.cs" />
+    <Compile Include="错误类型Manager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FxtSpider.Common\FxtSpider.Common.csproj">
+      <Project>{DA94C630-BA79-47F6-9027-23C859B60385}</Project>
+      <Name>FxtSpider.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.DAL\FxtSpider.DAL.csproj">
+      <Project>{552621A9-42B7-45E9-986E-CBC2D6E07990}</Project>
+      <Name>FxtSpider.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.FxtApi\FxtSpider.FxtApi.csproj">
+      <Project>{BB182E4A-757C-4017-A571-1C3B18A1F522}</Project>
+      <Name>FxtSpider.FxtApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

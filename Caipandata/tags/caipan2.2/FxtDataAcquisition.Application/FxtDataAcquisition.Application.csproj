@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EAD17B2-2C56-477A-B0B0-0C3F41BBE841}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtDataAcquisition.Application</RootNamespace>
+    <AssemblyName>FxtDataAcquisition.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\FxtDataAcquisition.Common\DLL\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FxtDataAcquisition.Common\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IAdminService.cs" />
+    <Compile Include="Interfaces\IAllotFlowService.cs" />
+    <Compile Include="Interfaces\IBuildingService.cs" />
+    <Compile Include="Interfaces\ICityService.cs" />
+    <Compile Include="Interfaces\ICodeService.cs" />
+    <Compile Include="Interfaces\IDatabaseCallService.cs" />
+    <Compile Include="Interfaces\IHouseService.cs" />
+    <Compile Include="Interfaces\IMenuServece.cs" />
+    <Compile Include="Interfaces\IPhotoService.cs" />
+    <Compile Include="Interfaces\IProjectAllotFlowSurveyService.cs" />
+    <Compile Include="Interfaces\IProjectService.cs" />
+    <Compile Include="Interfaces\ISurveyCountService.cs" />
+    <Compile Include="Interfaces\ISysRoleMenuFunctionService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AllotFlowService.cs" />
+    <Compile Include="Services\BuildingService.cs" />
+    <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\CodeService.cs" />
+    <Compile Include="Services\DatabaseCallService.cs" />
+    <Compile Include="Services\HouseService.cs" />
+    <Compile Include="Services\MenuService.cs" />
+    <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="Services\ProjectAllotFlowSurveyService.cs" />
+    <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\SYSCodeManager.cs" />
+    <Compile Include="Services\SysRoleMenuFunctionService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FxtDataAcquisition.Common\FxtDataAcquisition.Common.csproj">
+      <Project>{a9966a0a-146d-4143-b2ae-454dfbd5c346}</Project>
+      <Name>FxtDataAcquisition.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Domain\FxtDataAcquisition.Domain.csproj">
+      <Project>{78da0a32-26b2-4416-bc5f-3d2472d46724}</Project>
+      <Name>FxtDataAcquisition.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.Common\FxtDataAcquisition.FxtAPI.Common.csproj">
+      <Project>{c65c9ec3-6d6d-4ec6-83de-95b4495fac39}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtDataCenter\FxtDataAcquisition.FxtAPI.FxtDataCenter.csproj">
+      <Project>{578e2342-6293-4be0-ae47-b5a0eb54e066}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtDataCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtDataWcf\FxtDataAcquisition.FxtAPI.FxtDataWcf.csproj">
+      <Project>{230afa0f-7757-453a-95ca-edbc8499bac9}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtDataWcf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtUserCenter\FxtDataAcquisition.FxtAPI.FxtUserCenter.csproj">
+      <Project>{bda2c863-bd71-4bb9-a1ce-b5fbad0f1731}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtUserCenter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

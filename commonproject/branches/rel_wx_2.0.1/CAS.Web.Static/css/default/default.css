@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0;}
+body{ font-size:12px; font-family:'宋体';}
+ul{ list-style:none;}
+em{ font-style:normal;}
+a{ text-decoration:none;}
+a:hover{ color:#000;}
+/*basic*/
+.w508{ width:508px;}.w249{ width:249px;}.w240{ width:240px;}.w125{ width:125px;}
+.l{ float:left;}.r{ float:right;}.cl{ clear:both;}
+.mt10{ margin-top:10px;}.mr10{ margin-right:10px; display:inline;}
+.lh15{ line-height:15px;}
+.dn{ display:none;}.db{ display:block;}
+.bgred{ background-color:#F00;}
+/*header*/
+.user_header{ background:url(../../images/default/header_repeat.jpg) repeat-x 0 -23px; width:800px; margin:0 auto; height:60px;}
+
+.title { width:275px; height:37px; padding:7px 0 0 13px;}
+.title em{ color:#444; float:right; font-style:normal; padding-top:15px;}
+.icon_message,.icon_set{  background:url(../../images/default/icon.png) no-repeat; display:inline-block;}
+.icon_message{ background-position:-68px -27px; color:#666;  padding-left:17px; margin-right:10px;}
+.icon_set{ background-position:-70px -53px; color:#666;  padding-left:15px;}
+
+/*cont*/
+.user_cont{ width:800px; margin:0 auto;}
+.nav{ background:url(../../images/default/nav_repeat.jpg) repeat-x 0 0; height:33px;}
+.nav ul{ height:32px; padding-left:10px; width:590px; padding-top:1px; float:left;}
+.nav ul li{ float:left; height:32px; line-height:32px; margin-right:10px;}
+.nav ul li a{  padding-left:10px; padding-right:10px; text-decoration:none; color:#343434;}
+.nav ul li.on{ background:url(../../images/default/icon.png) no-repeat right bottom; padding-right:4px; cursor:pointer;}
+.nav ul li.on a{ background:url(../../images/default/icon.png) no-repeat 0 bottom; padding-left:10px; padding-right:6px; float:left; font-weight:bold;}
+.nav p{ width:170px; float:right;  margin:5px 10px 0 0; display:inline;}
+.nav p .searchBox{ background:url(../../images/default/searchBox.jpg) no-repeat 0 0; width:146px; padding-left:24px; height:24px; line-height:24px; border:none;}
+
+.content{ border:1px solid #B6B6B6;  border-top:none; background-color:#EDEDED; padding:20px;}

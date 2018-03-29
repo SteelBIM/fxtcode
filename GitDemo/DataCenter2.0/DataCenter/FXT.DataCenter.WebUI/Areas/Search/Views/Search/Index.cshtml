@@ -1,0 +1,89 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<SearchViewMode>
+@section StyleSheet{
+    <style type="text/css">
+        .search-form-default
+        {
+            margin-bottom: 25px;
+            background: #f0f6fa;
+            padding: 12px 14px;
+        }
+        .form-inline
+        {
+            margin: 0;
+        }
+        .input-group
+        {
+            position: relative;
+            display: table;
+            border-collapse: separate;
+            width: 660px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+        .input-group .form-control
+        {
+            display: table-cell;
+            width: 96%;
+            height: 25px;
+        }
+        .input-group-btn
+        {
+            position: relative;
+            white-space: nowrap;
+            width: 1%;
+            vertical-align: middle;
+            display: table-cell;
+        }
+        table.table tr th, table.table tr td
+        {
+            text-align: center;
+        }
+        .search-classic
+        {
+            margin-bottom: 30px;
+            width: 660px;
+            margin: 0px auto 30px;
+        }
+        .h4
+        {
+            font-family: 'Open Sans' , sans-serif;
+            font-weight: 300 !important;
+        }
+    </style>
+}
+<div class="row search-form-default">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "form-inline" }))
+        { 
+            <div class="input-group">
+                <div class="input-cont">
+                    <input type="text" name="inputStr" placeholder="请输入关键字..." class="form-control" value="@ViewBag.inputStr">
+                </div>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn green">
+                        查 找 &nbsp; <i class="m-icon-swapright m-icon-white"></i>
+                    </button>
+                </span>
+            </div>
+        }
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    var url = item.Url + "?searchId=" + item.Id;
+    <div class="search-classic">
+        <h4>
+            <a href="@url" target="_blank">@item.Title</a></h4>
+        <span style="color: #006621;">@item.Url</span>
+        <p>
+            @Html.Raw(item.Content) ...</p>
+    </div>
+}
+@if (Model != null && Model.Any())
+{
+    <div class="pager" style="width: 660px;margin: 0px auto 30px;">
+        <div>共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录,当前为第 @Model.CurrentPageIndex 页</div>
+        @Html.Pager(Model, new PagerOptions { AutoHide = false })
+    </div>
+}

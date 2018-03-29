@@ -1,0 +1,170 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model Dat_ProjectAvg
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        .tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(function () {
+            $("#ProjectAvgPrice").change(function () {
+                var price = $(this).val();
+                var priceBe = $("#ProjectAvgPriceBe").val();
+                if (price != "") {
+                    if (isNaN(parseInt(price)) || (!isNaN(parseInt(price)) && parseInt(price) == 0)) {
+                        alert("请填写有效的楼盘均价");
+                        return false;
+                    }
+                    else if (!isNaN(parseInt(priceBe)) && parseInt(priceBe) != 0) {
+                        var p = parseInt(price);
+                        var pb = parseInt(priceBe);
+                        var gain = (p - pb) / pb;
+                        gain = Math.round(gain * 10000) / 100;
+
+                        $("#ProjectGained").val(gain);
+                    }
+                    else {
+                        $("#ProjectGained").val("");
+                    }
+                }
+                else {
+                    $("#ProjectGained").val("");
+                }
+
+                return false;
+            });
+
+            $("#ProjectGained").change(function () {
+                var gain = $(this).val();
+                var priceBe = $("#ProjectAvgPriceBe").val();
+                if (gain != "") {
+                    if (isNaN(parseFloat(gain))) {
+                        alert("请填写有效的涨跌幅");
+                        return false;
+                    }
+                    else if (!isNaN(parseInt(priceBe)) && parseInt(priceBe) != 0) {
+                        var g = parseFloat(gain);
+                        var pb = parseInt(priceBe);
+                        var p = pb * (1 + g / 100);
+                        p = Math.round(p);
+                        if (p <= 0) {
+                            $("#ProjectGained").val("");
+                            alert("楼盘均价需大于0");
+                            return false;
+                        }
+                        $("#ProjectAvgPrice").val(p);
+                    }
+                    else {
+                        $("#ProjectGained").val("");
+                        alert("上月案例均价为空。请核实。");
+                    }
+                }
+                else {
+                    $("#ProjectGained").val("");
+                }
+            });
+        });
+        $(document).ready(function () {
+            //日期控件渲染
+            $("#UseMonthStr").datepicker({
+                format: "yyyy-mm-01",
+                startView: 1,
+                maxViewMode: 1,
+                minViewMode: 1,
+            });
+
+            $("#btnSubmit").bind("click", function () {
+                $("#UseMonth").attr("value", $("#UseMonthStr").val());
+
+                var price = $("#ProjectAvgPrice").val();
+                if (price == "" || isNaN(parseInt(price))) {
+                    alert("请填写有效的楼盘均价");
+                    return false;
+                }
+
+            });
+        });
+    </script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>行政区:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AreaName, new { @readonly = "true" })
+            </td>
+            <td>楼盘名称:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ProjectName, new { @readonly = "true" })
+                @if (Model != null)
+                {                  
+                    @Html.HiddenFor(m => m.projectavgid)
+                    @Html.HiddenFor(m => m.CityID)
+                    @Html.HiddenFor(m => m.AreaId)
+                    @Html.HiddenFor(m => m.FxtCompanyId)
+                    @Html.HiddenFor(m => m.ProjectId)
+                    @Html.HiddenFor(m => m.ProjectAvgPriceBe)
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>案例月份:
+            </td>
+            <td colspan="3">
+                @if (Model.UseMonth == DateTime.MinValue)
+                {
+                    @Html.TextBox("UseMonthStr", "");
+                    @Html.Hidden("UseMonth");
+                }
+                else
+                {
+                    @Html.TextBox("UseMonth", (Model.UseMonth).ToString("yyyy-MM-dd"), new { @readonly = true })
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>楼盘均价(㎡/元):
+            </td>
+            <td>
+                @Html.TextBox("ProjectAvgPrice", Model.ProjectAvgPrice)
+            </td>
+            <td>涨跌幅(%):
+            </td>
+            <td>
+                @Html.TextBox("ProjectGained", Model.ProjectGained == null ? "" : (Math.Round(((decimal)Model.ProjectGained * 100), 2)).ToString())
+            </td>
+        </tr>
+        <tr>
+            <td>案例均价值参考：
+            </td>
+            <td colspan="3">
+                @if (Model.ProjectAvgPrice == null && Model.projectavgid <= 0)
+                {
+                    @Html.TextBox("CaseRemark", "", new { @readonly = true, style = "width:400px;" })
+                }
+                else
+                {
+                    @Html.TextBox("CaseRemark", "案例条数：" + Model.casecount.ToString() + (Model.casecount < 5 ? "条；案例均价：" + Model.caseminprice.ToString() + "元/㎡。" : "条。"), new { @readonly = true, style = "width:400px;" })
+                }
+            </td>
+        </tr>
+    </table>
+}

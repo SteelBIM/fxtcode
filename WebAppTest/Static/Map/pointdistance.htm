@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/mapapi.js" type="text/javascript"></script>
+</head>
+<body>
+<div style="z-index:9;width:800px;height:600px;border:1px solid gray" id="container"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+    // 百度地图API功能
+    var map = new BMap.Map("container");
+    map.centerAndZoom(new BMap.Point(116.403765, 39.914850), 15);
+    map.enableScrollWheelZoom();
+
+    function getBoundary() {
+        var bdary = new BMap.Boundary();
+        bdary.get("上海", function (rs) {       //获取行政区域
+            console.log(rs);
+            map.clearOverlays();        //清除地图覆盖物     
+
+
+            var count = rs.boundaries.length; //行政区域的点有多少个
+            for (var i = 0; i < count; i++) {
+                console.log("-----start------");
+                console.log(rs.boundaries[i]); console.log("-----end------");
+                var ply = new BMap.Polygon("113.716622,34.760999;113.745942,34.751509;113.723233,34.759813;113.6942,34.747475;113.704836,34.705703;113.714897,34.749611;113.722946,34.75317", { strokeWeight: 2, strokeColor: "#ff0000" }); //建立多边形覆盖物
+                map.addOverlay(ply);  //添加覆盖物
+                map.setViewport(ply.getPath());    //调整视野         
+            }
+        });
+    }
+
+    setTimeout(function () {
+        getBoundary();
+    }, 1500);
+</script>

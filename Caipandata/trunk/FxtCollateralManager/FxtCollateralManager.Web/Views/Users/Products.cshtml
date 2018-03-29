@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+<div class="portlet box light-grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>产品列表</div>
+        <div class="actions">
+            <a class="btn green" href="#"
+                data-title="新增" 
+                data-type="c"
+                data-url="/Users/AddProducts">
+                <i class="icon-pencil"></i>新增
+            </a>
+        </div>
+        <div class="tools" style="padding-right: 8px;">
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+            <div><span>产品列表</span></div>
+            <ul id="tree" class="treeview-gray"></ul>
+            <div class="menu" id="menu">
+              <ul>
+                <li class="edit" id="edit"><span>修改</span></li>
+                <li class="delete" id="delete"><span>删除</span></li>
+                <li class="tool" id="purview"><span>分配权限</span></li>
+              </ul>
+
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $.ActionSelectList = [
+    {
+        name: 'purview',
+        url: '/Users/GetPurviewAll',
+        type:'checkbox',
+        target: 'customdiv'
+    }];
+    $.ActionOperta({
+        toid: ".actions",
+        ActionFormId: "#form",
+        ActionFormRules: $.productrules,
+        ReloadUrl: '/Users/Products'
+    });
+    $.CustomTree({
+        url: '/Users/GetProductTree',
+        click: function () {
+            //alert();
+        },
+        menus: true,
+        menuoptions: {
+            bindings: {
+                'edit': function (t, target) {
+                    $.ActionSelectList.splice(1, 1);
+                    //console.log(JSON.stringify($.ActionSelectList[0]));
+                    $.Opertaings({
+                        ActionType: 'U',
+                        title: '修改',
+                        AOoptions: {
+                            ActionFormId: '#form',
+                            TmplId: '#template-form',
+                            ActionUrl: '/Users/GetProducts/?id=' + t.id,
+                            Url: '/Users/UpdateProducts/',
+                            ActionFormRules: $.productrules,
+                            ReloadUrl: '/Users/Products'
+                        }
+                    });
+                },
+                'delete': function (t, target) {
+                    $.Opertaings({
+                        ActionType: 'D',
+                        AOoptions: {
+                            ActionUrl: '/Users/DelProduct/?id=' + t.id,
+                            ReloadUrl: '/Users/Products'
+                        }
+                    });
+                },
+                'purview': function (t) {
+                    $("#formpurview input[name=menuid]").val(t.id);
+                    if ($.ActionSelectList.length != 2) {
+                        $.ActionSelectList.push({
+                            name: 'menuid',
+                            val: t.id,
+                            operats: 'set',
+                            formid: '#formpurview'
+                        });
+                    }
+                    
+                    $.Opertaings({
+                        ActionType: 'U',
+                        title: '分配权限',
+                        AOoptions: {
+                            ActionFormId: '#formpurview',
+                            TmplId: '#template-formpurview',
+                            ActionUrl: '/Users/GetMenuPurview/?menuid=' + t.id,
+                            Url: '/Users/MenuPurview',
+                            ReloadUrl: '/Users/Products'
+                        },
+                        complete: function () {
+                            App.init();
+                        }
+                    });
+                }
+            },
+            onContextMenu: function (e) {
+                if ($(e.target).parent().attr('imenu') != 'true') {
+                    return false;
+                }
+                return true;
+            },
+            onShowMenu: function (e, menu) {
+                if (parseInt($(e.target).parent().attr('pid')) == 0) {
+                    $('#purview', menu).remove();
+                } else {
+                    $('#edit,#delete', menu).remove();
+                }
+                return menu;
+            }
+        }
+    });
+</script>
+<script id="template-form" type="text/x-jquery-tmpl">
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet-body form">
+            <div class="form-body">
+                <!-- BEGIN FORM-->
+                <form id="form" action="" class="form-horizontal">
+                <input type="hidden" name="id"/>
+                <div class="alert alert-error display-hide">
+                    <button class="close" data-dismiss="alert">
+                    </button>
+                    <span>输入有错误,请检查.</span>
+                </div>
+                <div class="alert alert-success display-hide">
+                    <button class="close" data-dismiss="alert">
+                    </button>
+                    <span>验证成功!</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">
+                        产品名称<span class="required">*</span></label>
+                    <div class="col-md-4">
+                        <input type="text" name="productname" data-required="1" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            提交</button>
+                        <button type="button" class="btn default">
+                            取消</button>
+                    </div>
+                </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+</script>
+<script id="template-formpurview" type="text/x-jquery-tmpl">
+<div class="row">
+    <div class="col-md-12">
+        <form id="formpurview" action="" class="form-horizontal">
+            <div class="portlet-body form">
+
+                <div class="form-body">
+                    <!-- BEGIN FORM-->
+                    <input type="hidden" value="0" name="menuid" />
+                    <div class="alert alert-error display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>输入有错误,请检查.</span>
+                    </div>
+                    <div class="alert alert-success display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>验证成功!</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9">
+                            <div class="customdiv"></div>
+                        </div>
+                    </div>
+                    <!-- END FORM-->
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            提交
+                        </button>
+                        <button type="button" class="btn default">
+                            取消
+                        </button>
+                    </div>
+                </div>
+            </div>            
+        </form>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+</script>

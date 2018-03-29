@@ -1,0 +1,444 @@
+﻿@using FxtDataAcquisition.Domain.DTO;
+@using FxtDataAcquisition.Domain.DTO.FxtDataWcfDTO;
+@using FxtDataAcquisition.Domain.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>踩盘助手</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+
+    <!-- text fonts -->
+    @*<link rel="stylesheet" href="../../assets/css/ace-fonts.css" />*@
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400'>
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../../assets/css/ace.min.css" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="../../assets/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="../../assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="../../assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    @*
+        <link href="~/assets/css/chosen.css" rel="stylesheet" />*@
+    @*下拉框效果插件*@
+    <link rel="stylesheet" href="/bootstrap/ace1.2/assets/css/chosen.css" />
+
+    @*fancybox弹出框效果start*@
+    <link href="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" rel="Stylesheet" />
+    @*fancybox弹出框效果end*@
+
+</head>
+
+<body class="no-skin">
+    <!-- #section:basics/navbar.layout -->
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <!-- #section:basics/sidebar.mobile.toggle -->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- /section:basics/sidebar.mobile.toggle -->
+            <div class="navbar-header pull-left">
+                <!-- #section:basics/navbar.layout.brand -->
+                <a href="#" class="navbar-brand">
+                    <img src="~/Images/about.png" width="25" height="25" />
+                    <small>
+                        @*<i class="fa fa-leaf"></i>*@
+                        踩盘助手
+                    </small>
+                </a>
+
+                <!-- /section:basics/navbar.layout.brand -->
+                <!-- #section:basics/navbar.toggle -->
+                <!-- /section:basics/navbar.toggle -->
+            </div>
+
+            <!-- #section:basics/navbar.dropdown -->
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    <!-- #section:basics/navbar.user_menu -->
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            @*<img class="nav-user-photo" src="../../assets/avatars/user.jpg" alt="Jason's Photo" />*@
+                            <span class="user-info">
+                                <small>欢迎光临</small>
+                                @ViewBag.UserName
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="javascript:;" id="signOutLogin">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- /section:basics/navbar.user_menu -->
+                </ul>
+            </div>
+
+            <!-- /section:basics/navbar.dropdown -->
+            <div class="navbar-header pull-right" style="padding-top:8px; padding-right:10px;" role="navigation">
+                <a href="/AndroidApk/caipan.apk" style="color:white" target="_blank">Android版下载</a>
+                <!---选择城市--->
+                <span class="input-icon" id="selectCityPanel">
+                    <select id="selectProvince" style="width:150px" data-nowid="@ViewBag.NowProvinceId">
+                        <option value="0">--请选择--</option>
+                        @{
+                            var provinceList = ViewBag.ProvinceList as List<FxtApi_SYSProvince>;
+                            if (provinceList != null)
+                            {
+                                foreach (var item in provinceList)
+                                {
+                                    <option value="@item.ProvinceId"> @item.ProvinceName</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <select id="selectCity" style="width:150px" data-nowid="@ViewBag.NowCityId">
+                        <option value="0">--请选择--</option>
+                    </select>
+                    <input type="button" value="确定" id="btnSelectCity" style="padding-left:6px;" />
+                </span>
+                </a>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <!-- #section:basics/sidebar -->
+        <div id="sidebar" class="sidebar                  responsive">
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+            </script>
+
+            <ul class="nav nav-list">
+                @{
+                    var menuList = ViewBag.MenuList as List<MenuDto>;
+                    if (menuList != null && menuList.Count > 0)
+                    {
+                        var menuPrant = menuList.Where(m => m.ParentID == 0);
+                        foreach (var prantItem in menuPrant)
+                        {
+                            if (prantItem.MenuName == "角色" && FxtDataAcquisition.Web.Common.WebUserHelp.GetNowLoginUserName() != "tanql@fxt") {continue;}
+                            var menuChild = menuList.Where(m => m.ParentID == prantItem.Id);
+                            var isMenuChild = (menuChild != null && menuChild.Count() > 0);
+                            <li class="">
+                                <a data-url="@prantItem.URL" href="#@prantItem.URL" @if (isMenuChild) { @("class=dropdown-toggle")     }>
+                                    <i class="menu-icon fa @prantItem.IconClass"></i>
+                                    <span class="menu-text">
+                                        @prantItem.MenuName <spen class="totalcount" id="@prantItem.ClassId">
+                                            @if (prantItem.TotalCount != -1)
+                                            {@("(" + prantItem.TotalCount + ")")}
+                                        </spen>
+                                    </span>
+                                    <b class="@if (isMenuChild)
+                                { @(" arrow fa fa-angle-down")}"></b>
+
+                                </a>
+
+                                <b class="arrow"></b>
+                                @if (isMenuChild)
+                                {
+                                    <ul class="submenu">
+                                        @foreach (var item in menuChild)
+                                        {
+                                            <li class="">
+                                                <a data-url="@item.URL" href="#@item.URL">
+                                                    <i class="menu-icon fa  "></i>
+                                                    @item.MenuName <spen class="totalcount" id="@item.ClassId">
+                                                        @if (item.TotalCount != -1)
+                                                        {@("(" + item.TotalCount + ")")}
+                                                    </spen>
+                                                </a>
+
+                                                <b class="arrow"></b>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+
+                        }
+                    }
+                }
+            </ul><!-- /.nav-list -->
+            <!-- #section:basics/sidebar.layout.minimize -->
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+
+            <!-- /section:basics/sidebar.layout.minimize -->
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+            </script>
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <!-- #section:settings.box -->
+                <!-- /section:settings.box -->
+                <div class="page-content-area">
+                    <!-- ajax content goes here -->
+                </div><!-- /.page-content-area -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <!-- #section:basics/footer -->
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">房讯通信息技术有限公司</span>
+                        &copy; 2015
+                    </span>
+                    &nbsp; &nbsp;
+                </div>
+                <!-- /section:basics/footer -->
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+    <!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    @*
+        <script type="text/javascript">
+                //window.jQuery || document.write("<script src='../../assets/js/jquery.min.js'>" + "<" + "/script>");
+                window.jQuery || document.write("<script src='/bootstrap/ace1.2/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");
+
+        </script>*@
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='../../assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="../../assets/js/ace-elements.min.js"></script>
+    <script src="../../assets/js/ace.js"></script>
+
+
+    @*饼图*@
+    @*
+        <script src="/bootstrap/ace1.2/assets/js/jquery.easy-pie-chart.min.js"></script>*@
+    @*走势图*@
+    @*
+        <script src="/bootstrap/ace1.2/assets/js/jquery.sparkline.min.js"></script>*@
+    <!-- ace scripts -->
+    @*
+        <script src="/bootstrap/ace1.2/assets/js/ace-elements.min.js"></script>
+        <script src="/bootstrap/ace1.2/assets/js/ace.min.js"></script>*@
+    @*分页插件*@
+    <script src="/bootstrap/bootstrap-paginator/bootstrap-paginator-1.0.2.js" type="text/javascript"></script>
+    @*下拉框效果插件*@
+    <script src="/bootstrap/ace1.2/assets/js/chosen.jquery.min.js?s=s"></script>
+
+    @*fancybox弹出框效果start*@
+    <script src="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js" type="text/javascript"></script>
+    @*fancybox动画效果(可选)*@
+
+    <script src="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js" type="text/javascript"></script>
+    @*fancybox鼠标滚轮滚动效果(可选)*@
+    <script src="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" type="text/javascript"></script>
+    @*fancybox弹出框效果end*@
+    @*loadShow效果start*@
+    <script src="/Scripts/jquery.blockUI.1.33/jquery.blockUI-1.33.js" type="text/javascript"></script>
+    @*loadShow效果end*@
+    <script src="/Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/Common/UrlCommon.js"></script>
+    <script src="~/Scripts/Common/CodeJson.js"></script>
+    <script src="~/Scripts/jquery.extend.js"></script>
+    <script src="~/Scripts/Common/Common.js"></script>
+    <script src="~/Scripts/Shared/_Layout.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+
+            if (window.parent != window) { window.parent.location.reload(true); }
+
+            $("#selectCity").chosen();
+            $("#selectProvince").bind("change", function () {
+                BindCity($("#selectProvince").val());
+            });
+            var provinceId = $("#selectProvince").attr("data-nowId");
+            $("#selectProvince").val(provinceId);
+            $("#selectProvince").chosen();
+            if (provinceId) {
+                var nowcityid = $("#selectCity").attr("data-nowId");
+                BindCity(provinceId, nowcityid);
+            }
+
+            if ('enable_ajax_content' in ace) {
+                var options = {
+                    content_url: function (url) {
+                        return url;
+                    },
+                    default_url: '/allotflowinfo/allotflowmanager',
+                    close_active: true,
+                    content_result: function (result) {
+                        if (result.result) {
+                            //未登陆
+                            if (result.code == 301) {
+                                parent.OpenLogin(function (d) {
+                                    load_ajax();
+                                });
+                            }
+                        } else if (result.code == 301) {
+                            load_ajax();
+                            $(".page-content-area").html('<div class="error-container"><div class="well"><h1 class="grey lighter smaller"><span class="bigger-125"><i class="icon-lock"></i>系统异常:' + result.message + '</span></div></div>');
+                        }
+                        else if (result.errorType) {
+                            //无权限
+                            var scripts = [null, null]
+                            load_ajax();
+                            $(".page-content-area").html('<div class="error-container"><div class="well"><h1 class="grey lighter smaller"><span class="bigger-125"><i class="icon-lock"></i>无权限</span></div></div>');
+                        }
+                    }
+                }
+                ace.enable_ajax_content($, options)
+            }
+
+            $("#btnSelectCity").bind("click", function () {
+                var provinceId = $("#selectProvince").val();
+                var cityId = $("#selectCity").val();
+                if (provinceId == null || provinceId == "" || provinceId == "0" || cityId == null || cityId == "" || cityId == "0") {
+                    DA_Alert("请选择城市", function () { });
+                    return;
+                }
+                var paraJson = { provinceId: provinceId, cityId: cityId };
+                $.extendAjax(
+                            {
+                                url: "/Login/SubmitChangeCity_Api",
+                                data: paraJson,
+                                type: "post",
+                                dataType: "json"
+                            },
+                            function (data) {
+                                if (data != null) {
+                                    if (data.result != 1 && data.errorType == 0) {
+                                        alert(decodeURIComponent(data.message));
+                                        return;
+                                    }
+                                    else {
+                                        $("#selectCity").val(cityId);
+                                        $("#selectCity").chosen("destroy");
+                                        $("#selectCity").chosen();;
+                                        parent.window.location.href = "/Home/Index";
+                                    }
+                                }
+                            },
+                           { dom: "#navbar" });
+            });
+        })
+        function BindCity(provinceId, nowCityid) {
+            $.post('/Home/SelectCity', { provinceId: provinceId }, function (data) {
+                if (data.Result) {
+                    $("#selectCity").find(".cityInfo").remove();
+                    for (var i = 0; i < data.Data.length; i++) {
+                        var obj = data.Data[i];
+                        var cityhtml = "<option value=\"" + obj.CityId + "\" class=\"cityInfo\">" + obj.CityName + "</option>";
+                        $("#selectCity").append(cityhtml);
+                    }
+                    if (nowCityid) {
+                        $("#selectCity").val(nowCityid);
+                    }
+                    $("#selectCity").chosen("destroy");
+                    $("#selectCity").chosen();;
+                } else {
+                    alert(data.Message);
+                }
+            });
+        }
+
+        function BindMenuTotalCount() {
+            $.post('/Home/SelectMenuTotalCount', {}, function (data) {
+                if (data.result) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        $("#" + data.data[i].classid).text("(" + data.data[i].totalcount + ")");
+                    }
+                } else {
+                    alert(data.Message);
+                }
+            });
+        }
+
+        function load_ajax() {
+            var scripts = [null, null]
+            ace.load_ajax_scripts(scripts, function () {
+                //inline scripts related to this page
+                jQuery(function ($) {
+                    $('#loading-btn').on(ace.click_event, function () {
+                        var btn = $(this);
+                        btn.button('loading')
+                        setTimeout(function () {
+                            btn.button('reset')
+                        }, 2000)
+                    });
+
+                    $('#id-button-borders').attr('checked', 'checked').on('click', function () {
+                        $('#default-buttons .btn').toggleClass('no-border');
+                    });
+                })
+
+            })
+        }
+    </script>
+</body>
+</html>

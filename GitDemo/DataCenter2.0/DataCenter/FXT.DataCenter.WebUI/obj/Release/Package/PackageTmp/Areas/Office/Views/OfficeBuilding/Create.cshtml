@@ -1,0 +1,588 @@
+﻿@model FXT.DataCenter.Domain.Models.DatBuildingOffice
+@{
+    ViewBag.Title = "办公楼栋";
+}
+@section StyleSheet{
+
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .required {
+            color: red;
+        }
+
+        .xubox_layer {
+            top: 50px !important;
+        }
+
+        .btn {
+            margin-bottom: 10px;
+        }
+    </style>
+}
+@section Javascript{
+    <script src="@Url.Content("~/Content/Scripts/cityBind/city.js")" type="text/javascript"></script>
+    <!--//百度地图的文件-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = "<li><span><a href=\"/Office/OfficeProject/Index\">办公基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+            html += "<li><span><a href=\"javascript:history.go(-1);\">办公楼栋</a></span> <i class=\"icon-angle-right\"></i></li>";
+            if ('@Model' == "") {
+                html += "<li><span>新增</span></li>";
+            } else {
+                html += "<li><span>编辑</span></li>";
+            }
+            $("ul.breadcrumb").append(html);
+
+            $(document).ready(function () {
+                $("#SaleDate, #EndDate").datepicker({ format: "yyyy-mm-dd" });
+
+                //确定
+                $("#btnSave").on("click", function () {
+                    var projectId = $("#ProjectId").val();
+                    var buildingId = $("#BuildingId").val() ? $("#BuildingId").val() : -1;
+                    var buildingName = $.trim($("#BuildingName").val());
+
+                    if (buildingName == "") {
+                        $("#msgForBuildingName").text("*必填");
+                        return;
+                    } else {
+                        $("#msgForBuildingName").text("*");
+                    }
+                    $.post('@Url.Action("IsExistBuildingOffice")', { projectId: projectId, buildingId: buildingId, buildingName: buildingName }, function (data) {
+                        if (data) {
+                            alert("该办公楼栋已存在");
+                        } else {
+                            $("#mainForm").submit();
+                        }
+                    });
+                });
+
+                //楼栋复制
+                $("#btnBuildingCopy").click(function () {
+                    $(this).tb_windowAddFooter({
+                        sender1: "sender1", //第一个按钮的ID
+                        name1: "确 定", //第一个按钮的名称
+                        sender2: "sender2", //第二个按钮的ID
+                        name2: "取 消", //第二个按钮的名称
+                        sen1func: function () { //第一个按钮的功能函数
+                            var buildingName = $.trim($("#BuildingName").val());
+                            var destBuildingName = $.trim($("#DestBuildingName").val());
+                            var buildingId = $("#BuildingId").val();
+                            var projectId = $("#ProjectId").val();
+
+                            if (destBuildingName == null || destBuildingName == "") {
+                                alert("目标楼栋不能为空");
+                                return false;
+                            }
+                            if (buildingName == destBuildingName) {
+                                alert("原始楼栋不能和目标楼栋一致");
+                                return false;
+                            }
+                            $.post('@Url.Action("CopyBuilding")', { buildingName: buildingName, destBuildingName: destBuildingName, buildingId: buildingId, projectId: projectId }, function (data) {
+                                if (data.result) {
+                                    alert("楼栋复制成功！");
+                                } else if (data.ret == -1) {
+                                    alert("目标楼栋已存在！");
+                                }
+                                else {
+                                    alert("楼栋复制失败！");
+                                }
+
+                            });
+                        }
+                    });
+                });
+
+                //加载百度地图
+                initBaiduMap();
+            });
+
+            function initBaiduMap() {
+                var cityX = "@ViewBag.CityX";
+                var cityY = "@ViewBag.CityY";
+
+                var lay, //弹出层
+                    map, //地图对象
+                    initLngAndLat = [{ Lng: cityX, Lat: cityY }], //初始化经纬度、默认深圳
+                    clickLngAndLat = []; //保存坐标的数组
+                var currentCity = "深圳"; //初始三维城市、默认深圳
+
+                //坐标拾取
+                $("#GetCoordinate").click(
+                    function () {
+
+                        lay = $.layer({
+                            type: 1,
+                            title: false,
+                            closeBtn: false, //控制层右上角关闭按钮。closeBtn的值分别为: [关闭按钮的风格（支持0和1）, true]若不想显示关闭按钮，配置 closeBtn: false即可
+                            border: [5, 0.5, '#666', true],
+                            offset: ['0px', ''],
+                            move: ['.xubox_title', false],
+                            area: ['860px', '500px'],
+                            page: {
+                                dom: "#baidumap"
+                            },
+                            success: function () {
+                                layer.shift('top', 500);
+                            }
+                        });
+                        var x = $.trim($("#X").val());
+                        var y = $.trim($("#Y").val());
+                        if (x != null && x != "" && y != null && y != "") {
+                            clickLngAndLat.push({ Lng: x, Lat: y });
+                        }
+
+                        map = new BMap.Map("container"); //加载地图
+                        map.clearOverlays(); //清除标注
+                        var navigationControl = new BMap.NavigationControl({
+                            // 靠左上角位置
+                            anchor: BMAP_ANCHOR_TOP_LEFT,
+                            // LARGE类型
+                            type: BMAP_NAVIGATION_CONTROL_LARGE
+                        });
+                        map.addControl(navigationControl);
+                        map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+
+                        var point;
+                        if (clickLngAndLat.length > 0) { //如果是编辑状态，则加载已有坐标。否，加载默认坐标
+                            point = new BMap.Point(clickLngAndLat[0].Lng, clickLngAndLat[0].Lat);
+                        } else {
+                            point = new BMap.Point(initLngAndLat[0].Lng, initLngAndLat[0].Lat);
+                        }
+
+                        var marker = new BMap.Marker(point); // 创建标注
+                        map.addOverlay(marker); // 将标注添加到地图中
+                        map.centerAndZoom(point, 15);
+                        map.setCurrentCity(currentCity);
+                        map.enableScrollWheelZoom();
+
+                        map.addEventListener("click", function (e) {
+                            map.setDefaultCursor("pointer"); //设置鼠标手势
+                            clickLngAndLat = [];
+                            map.clearOverlays(); //清除除标注
+                            var jsonStr = { Lng: e.point.lng, Lat: e.point.lat };
+                            clickLngAndLat.push(jsonStr);
+                            point = new BMap.Point(clickLngAndLat[0].Lng, clickLngAndLat[0].Lat);
+                            //map.centerAndZoom(point, 18);
+                            //map.enableScrollWheelZoom();
+                            $("#txtlatitude").val("").val(e.point.lat);
+                            $("#txtlongitude").val("").val(e.point.lng);
+                            var marker = new BMap.Marker(point); // 创建标注
+                            map.addOverlay(marker); // 将标注添加到地图中
+                            //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+                        });
+
+                        if (clickLngAndLat.length > 0) {
+                            $("#txtlatitude").val("").val(clickLngAndLat[0].Lat);
+                            $("#txtlongitude").val("").val(clickLngAndLat[0].Lng);
+                        }
+                    });
+
+                //坐标拾取--确定
+                $("#btn_xy").click(function () {
+                    if (clickLngAndLat != null && clickLngAndLat.length > 0) {
+                        $("#X").val("").val(clickLngAndLat[0].Lng);
+                        $("#Y").val("").val(clickLngAndLat[0].Lat);
+                        map.clearOverlays();
+                    }
+                    layer.close(lay);
+                });
+
+                //坐标拾取--取消
+                $("#btnClrearCallout").click(function () {
+                    clickLngAndLat = [];
+                    map.clearOverlays();
+                    layer.close(lay);
+                });
+
+                //搜索
+                $("#areaSearch").click(function () {
+                    // 创建地址解析器实例
+                    var myGeo = new BMap.Geocoder();
+                    var searchTxt = $("#txtarea").val();
+                    if ($.trim(searchTxt) == null || $.trim(searchTxt) == "") {
+                        layer.alert("请输入搜索条件");
+                        return false;
+                    }
+                    // 将地址解析结果显示在地图上，并调整地图视野
+                    myGeo.getPoint(searchTxt, function (point) {
+                        if (point) {
+                            map.centerAndZoom(point, 15);
+                            $("#txtlatitude").val('').val(point.lat);
+                            $("#txtlongitude").val('').val(point.lng);
+                            //var pointMarker = new BMap.Point(point.lng, point.lat);
+                            //map.addOverlay(new BMap.Marker(point));                            
+                            map.setCurrentCity(searchTxt);
+                        } else
+                            layer.alert("搜索不到结果");
+                    }, "全国");
+                });
+            }
+        })
+
+    </script>
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>办公楼栋:
+            </td>
+            <td>
+                @Html.Hidden("ProjectId", (int)ViewBag.ProjectId)
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(m => m.BuildingId)
+                    @Html.HiddenFor(m => m.CityId)
+                    @Html.HiddenFor(m => m.FxtCompanyId)
+                }
+                @Html.TextBoxFor(m => m.BuildingName)
+                <span class="required" id="msgForBuildingName">*</span>
+            </td>
+
+            <td>楼栋别名：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.OtherName)
+            </td>
+        </tr>
+        <tr>
+            <td>等级:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.OfficeType, ViewBag.OfficeTypeName as List<SelectListItem>)
+            </td>
+            <td>用途：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.PurposeCode, ViewBag.PurposeName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>建筑结构:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.StructureCode, ViewBag.StructureName as List<SelectListItem>)
+            </td>
+            <td>建筑类型:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BuildingTypeCode, ViewBag.BuildingTypeName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>总楼层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalFloor)
+            </td>
+            <td>总高度:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalHigh)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.TotalFloor)
+            </td>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.TotalHigh)
+            </td>
+        </tr>
+        <tr>
+            <td>总建筑面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingArea)
+            </td>
+            <td>竣工日期:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.EndDate, new { Value = string.Format("{0:yyyy-MM-dd}", Model == null ? null : Model.EndDate) })
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.BuildingArea)
+            </td>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.EndDate)
+            </td>
+        </tr>
+        <tr>
+            <td>销售日期:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SaleDate, new { Value = string.Format("{0:yyyy-MM-dd}", Model == null ? null : Model.SaleDate) })
+            </td>
+            <td>租售方式:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.RentSaleType, ViewBag.RentSaleTypeName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.SaleDate)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>办公面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.OfficeArea)
+            </td>
+            <td>办公总层数:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.OfficeFloor)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.OfficeArea)
+            </td>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.OfficeFloor)
+            </td>
+        </tr>
+        <tr>
+            <td>裙楼层数:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PodiumBuildingNum)
+            </td>
+            <td>地下室层数:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BasementNum)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.PodiumBuildingNum)
+            </td>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.BasementNum)
+            </td>
+        </tr>
+        <tr>
+            <td>功能分布:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Functional)
+            </td>
+            <td>大堂面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LobbyArea)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.LobbyArea)
+            </td>
+        </tr>
+        <tr>
+            <td>大堂层高:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LobbyHigh)
+            </td>
+            <td>大堂装修:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.LobbyFitment, ViewBag.LobbyFitmentName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.LobbyHigh)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>客梯数量:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LiftNum)
+            </td>
+            <td>客梯装修:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.LiftFitment, ViewBag.LiftFitmentName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.LiftNum)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>电梯品牌:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LiftBrand)
+            </td>
+            <td>卫浴品牌:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ToiletBrand)
+            </td>
+        </tr>
+        <tr>
+            <td>公共区域装修:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.PublicFitment, ViewBag.PublicFitmentName as List<SelectListItem>)
+            </td>
+            <td>外墙装修:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.WallFitment, ViewBag.WallFitmentName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>标准层层高:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorHigh)
+            </td>
+            <td>备注:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Remarks)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.FloorHigh)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>X坐标:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.X, new { @readonly = "readonly" })
+            </td>
+            <td>Y坐标:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Y, new { @readonly = "readonly" })
+                <a href="javascript:void(0)" id="GetCoordinate" @*onclick="GetLngLat()"*@>拾取坐标</a>
+            </td>
+        </tr>
+        <tr>
+            <td>楼栋均价(元/㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AveragePrice)
+                @Html.ValidationMessageFor(m => m.AveragePrice)
+            </td>
+            <td>价格系数说明:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PriceDetail)
+            </td>
+        </tr>
+        <tr>
+            <td>价格系数</td>
+            <td>
+                @Html.TextBoxFor(m => m.Weight)
+                @Html.ValidationMessageFor(m => m.Weight)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding-top: 10px;">
+                <a id="btnSave" class="btn blue" title='确定'><i class="icon-ok"></i>确定</a>
+                @if (Model != null)
+                {
+                    <a class="btn dark" href="@Url.Action("OfficeBuildingPicture", new { buildingId = Model.BuildingId, projectId = ViewBag.projectId })" title='办公楼栋照片'><i class="icon-picture"></i>办公楼栋照片</a>
+
+                    <a class="btn " target="_blank" href="@Url.Action("Index", "OfficeHouse", new { buildingId = Model.BuildingId, projectId = ViewBag.projectId })"><i class=" icon-share-alt"></i>办公房号</a>
+                    
+                    <input type="button" title="楼栋复制" id="btnBuildingCopy" class="btn thickbox" alt="#TB_inline?height=250&width=350&inlineId=BuildingCopy" value="楼栋复制" />
+                }
+            </td>
+        </tr>
+    </table>
+}
+
+<div id="baidumap" style="display: none;">
+    <div style="width: 100%">
+        <div style="margin-top: 10px; margin-left: 20px; float: left; width: 100%">
+            城市或地名:
+            <input id="txtarea" type="text" style="width: 100px;" />&nbsp;&nbsp;<a class="btn" id="areaSearch">搜索<i class="icon-search"></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @*<span class="GetCoordinate">经度:</span><input name="txtlongitude" type="text" style="width: 100px;" id="txtlongitude" class="GetCoordinate" readonly="readonly" />
+                <span class="GetCoordinate">纬度:</span><input name="txtlatitude" type="text" style="width: 100px;" id="txtlatitude" class="GetCoordinate" readonly="readonly" />*@
+            <a href="javascript:void(0)" id="btn_xy" class="btn">确定</a>
+            <a href="javascript:void(0)" id="btnClrearCallout" class="btn">取消</a>
+        </div>
+        @* <p id="mask_latlng" style="display: none;" >
+                <!--标注点所在区域：-->
+
+            </p>*@
+    </div>
+    <div style="width: 860px; height: 450px; border: 1px solid gray; text-align: center;" id="container">
+    </div>
+</div>
+
+
+<div id="BuildingCopy" style="display: none;">
+    <table style="width: 100%; margin-bottom: 10px; line-height: 35px; margin-top: 10px;">
+        <tr>
+            <td>从:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingName, new { @class = "", @readonly = "readonly", style = "width:205px" })
+            </td>
+        </tr>
+        <tr>
+            <td>复制到:
+            </td>
+            <td>
+                @Html.TextBox("DestBuildingName")
+            </td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.DATProjectDomain" 
+				   namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.SYSProjectMatch, FxtNHibernate.DATProjectDomain" 
+		   table="SYS_ProjectMatch">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="ProjectNameId" column="ProjectNameId" type="int"  />
+		<property name="NetName" column="NetName" type="string"  />
+		<property name="ProjectName" column="ProjectName" type="string"  />
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="FXTCompanyId" column="FXTCompanyId" type="int"  />
+				
+	</class>
+</hibernate-mapping>

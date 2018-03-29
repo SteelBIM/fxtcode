@@ -1,0 +1,108 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DAT_Analysis_City
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#AreaId").change(function () {
+                $.get("@Url.Action("GetSubArea")", { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            $("#btnSubmit").remove();
+            $("div.form-actions").prepend("<button type=\"button\" id=\"btnSubmit\" name=\"btnSubmit\" class=\"btn blue\"><i class=\"icon-ok\"></i>提交</button>");
+            $("#btnSubmit").bind("click", function () {
+
+                var areaId = $("#AreaId").find("option:selected").val(),
+                    subAreaId = $("#SubAreaId").find("option:selected").val(),
+                    analysis = $.trim($("#Analysis").val());
+
+                if (areaId < 0 || analysis == null || analysis == "") {
+                    $("#mainForm").submit();
+                } else {
+                    if ("@Model.AreaId" == areaId) {
+                        $("#mainForm").submit();
+                    } else {
+                        var url = "@Url.Action("IsExist")";
+                        $.post(url, { areaId: areaId, subAreaId: subAreaId }, function (json) {
+                            if (json) {
+                                layer.alert("已经存在该分析记录");
+                                return false;
+                            } else {
+                                $("#mainForm").submit();
+                            }
+                        }, "json");
+                    }
+                }
+            });
+        });
+
+    </script>
+}
+@section MainContent{
+
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td><span class="required">*</span>行政区:</td>
+            <td>@Html.DropDownListFor(m => m.AreaId, ViewBag.AreaList as List<SelectListItem>, new { style = "width:150px;" })</td>
+            <td>
+                商务中心：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.SubAreaId, ViewBag.SubAreaName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="required">*</span>分析:
+            </td>
+            <td colspan="3">
+                @Html.TextAreaFor(m => m.Analysis, new { cols = "20", rows = "6", style = "margin-bottom: 5px; width: 452px; height: 160px;" })
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                (请控制在1024字以内)
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    </div>
+}

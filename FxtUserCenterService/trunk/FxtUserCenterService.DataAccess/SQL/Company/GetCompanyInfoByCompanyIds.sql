@@ -1,0 +1,1 @@
+﻿select t1.CompanyID,t1.CompanyName from FxtUserCenter.dbo.CompanyInfo t1 with(nolock) where t1.CompanyID in(@companyids)

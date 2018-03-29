@@ -1,0 +1,2 @@
+﻿var ocx = '<object id="SignatureAPI" codebase="' + CAS.StaticUrl + 'ocx/iSignatureAPI.ocx#version=7,0,0,0" classid="clsid:79F9A6F8-7DBE-4098-A040-E6E0C3CF2001"  height="0" width="0"></object>';
+document.write(ocx);

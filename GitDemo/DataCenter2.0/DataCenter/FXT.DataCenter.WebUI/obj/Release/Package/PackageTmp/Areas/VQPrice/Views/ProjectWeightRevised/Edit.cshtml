@@ -1,0 +1,243 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DatWeightProject
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        .tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+}
+@section PageSpecificJavascriptIncludes{
+
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#btnSubmit").unbind();
+            $("#btnSubmit").on("click", function () {
+                var projectPrice = $.trim($("#ProjectAvgPrice").val());
+                var lowLayerPrice = $.trim($("#LowLayerPrice").val());
+                var multiLayerPrice = $.trim($("#MultiLayerPrice").val());
+                var smallHighLayerPrice = $.trim($("#SmallHighLayerPrice").val());
+                var highLayerPrice = $.trim($("#HighLayerPrice").val());
+
+                if (projectPrice != "") {
+                    if (projectPrice <= 100) {
+                        showErrors("楼盘均价必须大于100");
+                        return false;
+                    }
+                }
+                if (lowLayerPrice != "") {
+                    if (lowLayerPrice <= 100) {
+                        showErrors("低层均价必须大于100");
+                        return false;
+                    }
+                }
+                if (multiLayerPrice != "") {
+                    if (multiLayerPrice <= 100) {
+                        showErrors("多层均价必须大于100");
+                        return false;
+                    }
+                }
+                if (smallHighLayerPrice != "") {
+                    if (smallHighLayerPrice <= 100) {
+                        showErrors("小高层均价必须大于100");
+                        return false;
+                    }
+                }
+                if (highLayerPrice != "") {
+                    if (highLayerPrice <= 100) {
+                        showErrors("高层均价必须大于100");
+                        return false;
+                    }
+                }
+            });
+
+            function showErrors(msg) {
+                $(".validation-summary-valid").removeClass("validation-summary-valid").addClass("validation-summary-errors");
+                $(".validation-summary-errors").children("ul").html("");
+                $(".validation-summary-errors").children("ul").append("<li>" + msg + "</li>");
+            }
+        });
+    </script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>行政区:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AreaName, new { @readonly = "true" })
+            </td>
+            <td>楼盘:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ProjectName, new { @readonly = "true" })
+                @if (Model != null)
+                {                  
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.HiddenFor(m => m.CityId)
+                    @Html.HiddenFor(m => m.FxtCompanyId)
+                    @Html.HiddenFor(m => m.ProjectId)
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>楼栋建筑类型:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingTypeCodeName, new { @readonly = "true" })
+            </td>
+            <td>楼盘均价(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("ProjectAvgPrice", "");
+                }
+                else
+                {
+                    @Html.TextBox("ProjectAvgPrice", Model.ProjectAvgPrice == null ? "" : Model.ProjectAvgPrice.ToString());
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>低层均价(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("LowLayerPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("LowLayerPrice", Model.LowLayerPrice == null ? "" : Model.LowLayerPrice.ToString())
+                }
+            </td>
+            <td>多层均价(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("MultiLayerPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("MultiLayerPrice", Model.MultiLayerPrice == null ? "" : Model.MultiLayerPrice.ToString())
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>小高层均价(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("HighLayerPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("SmallHighLayerPrice", Model.SmallHighLayerPrice == null ? "" : Model.SmallHighLayerPrice.ToString())
+                }
+            </td>
+            <td>高层均价(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("HighLayerPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("HighLayerPrice", Model.HighLayerPrice == null ? "" : Model.HighLayerPrice.ToString())
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>独幢别墅(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("SingleVillaPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("SingleVillaPrice", Model.SingleVillaPrice == null ? "" : Model.SingleVillaPrice.ToString())
+                }
+
+            </td>
+            <td>联排别墅(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("PlatoonVillaPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("PlatoonVillaPrice", Model.PlatoonVillaPrice == null ? "" : Model.PlatoonVillaPrice.ToString())
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>叠加别墅(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("SuperpositionVillaPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("SuperpositionVillaPrice", Model.SuperpositionVillaPrice == null ? "" : Model.SuperpositionVillaPrice.ToString())
+                }
+
+            </td>
+            <td>双拼别墅(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("DuplexesVillaPrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("DuplexesVillaPrice", Model.DuplexesVillaPrice == null ? "" : Model.DuplexesVillaPrice.ToString())
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>回迁房(㎡/元):
+            </td>
+            <td>
+                @if (Model == null)
+                {
+                    @Html.TextBox("MoveBackHousePrice", "")
+                }
+                else
+                {
+                    @Html.TextBox("MoveBackHousePrice", Model.MoveBackHousePrice == null ? "" : Model.MoveBackHousePrice.ToString())
+                }
+
+            </td>
+        </tr>
+    </table>
+}

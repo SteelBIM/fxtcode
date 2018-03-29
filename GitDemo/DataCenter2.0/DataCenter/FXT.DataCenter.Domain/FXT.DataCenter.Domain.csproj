@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C368021B-9C65-4BDC-A6EE-523EFC2969F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.Domain</RootNamespace>
+    <AssemblyName>FXT.DataCenter.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\DTO\LandCaseStatisticDTO.cs" />
+    <Compile Include="Models\DTO\ProjectCaseDTO.cs" />
+    <Compile Include="Models\DTO\ProjectStatisticDTO.cs" />
+    <Compile Include="Models\DTO\SubAreaBizStatisticDTO.cs" />
+    <Compile Include="Models\DTO\SubAreaIndustryStatisticDTO.cs" />
+    <Compile Include="Models\DTO\SubAreaOfficeStatisticDTO.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\ApplicationInfo.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\CompanyProduct_Module.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\DATAnalysisMarket.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\DAT_Analysis_City.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\DAT_CaseTemp.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\DAT_ImportTask.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\Dat_PeiTao.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Func.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_ImportSet.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Menu.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Role.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Role_Menu.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Role_Menu_Function.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_Role_User.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Biz_Coordinate.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Industry.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Industry_Coordinate.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Office.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_SubArea_Office_Coordinate.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_User.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\SYS_User_Time.cs" />
+    <Compile Include="Models\POCO\FxtDataCenter\UserCheck.cs" />
+    <Compile Include="Models\POCO\FxtHuman\DAT_Human.cs" />
+    <Compile Include="Models\POCO\FxtHuman\DAT_HumanHouse.cs" />
+    <Compile Include="Models\POCO\FXTLand\DAT_CaseLand.cs" />
+    <Compile Include="Models\POCO\FXTLand\DAT_Land.cs" />
+    <Compile Include="Models\POCO\FXTLand\DAT_Land_BasePrice.cs" />
+    <Compile Include="Models\POCO\FXTLand\DAT_Land_Coordinate.cs" />
+    <Compile Include="Models\POCO\FXTLand\DAT_Land_sub.cs" />
+    <Compile Include="Models\POCO\FXTLand\LandCommon.cs" />
+    <Compile Include="Models\POCO\FXTLand\SeachLand.cs" />
+    <Compile Include="Models\POCO\FxtLog\SYS_Login.cs" />
+    <Compile Include="Models\POCO\FXTProject\DatWeightBuilding.cs" />
+    <Compile Include="Models\POCO\FXTProject\DatWeightHouse.cs" />
+    <Compile Include="Models\POCO\FXTProject\DatWeightProject.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_ASS_JiangCheng.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_ASS_Recommend.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_AvgPrice_Day.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_AvgPrice_Month.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Building.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Case.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_CaseBusiness.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_CaseSet.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_Check.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_Client.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Company.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Development.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_FeedBack.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_House.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_HouseCoefficient.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_HouseEndity.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_HouseOperate.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_InformationExtra.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Invited.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_News.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_PhoneMessage.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Project.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_ProjectAvg.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_ProjectAvgPrice.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_Project_Coordinate.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_QueryAdjust.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_QueryHistory.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_QueryReport.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_QuerySurvey.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_QueryTax.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SampleAvgPrice_Month.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SampleAvgPrice_Week.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SampleProject.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SampleProject_Weight.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SearchHistory.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_SendRecord.cs" />
+    <Compile Include="Models\POCO\FXTProject\DAT_SubHousePrice.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_SysMessage.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_SysMessage_Read.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_UserShowTip.cs" />
+    <Compile Include="Models\POCO\FXTProject\Dat_WaitProject.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_City_Company.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_P_Appendage.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_P_B_Price.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_P_Company.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_P_PAddress.cs" />
+    <Compile Include="Models\POCO\FXTProject\LNK_P_Photo.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_Check.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_Ext.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_Ext_Ass.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_Ext_Evaluation.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_fxt.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_ShowData.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_ygj.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Company_ygj_check.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Config.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Config_Page.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Customer_Function.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Customer_Fxt.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Department.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_ExpertUser.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Group.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Group_Config.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Group_Product.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Group_Right.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Group_User_City.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Licence.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Login.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_LogOut.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Page.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Post.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Register.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Right.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_Right_Product.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_SysWeb.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_UnLogin.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_User.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_UserCert.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_UserCheck.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_UserInvite.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_UserTransfer.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_User_City_Product.cs" />
+    <Compile Include="Models\POCO\FXTProject\Privi_User_Group.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Area.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_AreaLine.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_BankSet.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_BuildingYearRange.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_City.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_City_Table.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Code.cs" />
+    <Compile Include="Models\POCO\FXTProject\sys_CodePrice.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_CompanyShowFile.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_ConditionGroup.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_CustomField.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_CustomFieldLog.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_CustomForm.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_CustomFormLog.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_DiscountPrice.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_FloorPrice.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Flow.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_FlowLog.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_FlowType.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_ProjectMatch.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_PropertyAreaRange.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Province.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_QueryYPCol.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_QueryYPTemplet.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_ReportEntrustSet.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Step.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_StepCondition.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_StepLog.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Step_User.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_SubArea.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_SurveyImageTemplate.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_TaxSet.cs" />
+    <Compile Include="Models\POCO\FXTProject\Sys_TaxTemplate.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Tips.cs" />
+    <Compile Include="Models\POCO\FXTProject\SYS_Version.cs" />
+    <Compile Include="Models\POCO\FXTProject\TMP_PriceConfiguration.cs" />
+    <Compile Include="Models\POCO\FXTProject\TMP_SampleProjectCase.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatBuildingIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatBuildingIndustrySub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatCaseIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatHouseIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatHouseIndustrySub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatPBPriceIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatPeiTaoIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatPeiTaoIndustrySub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatProjectIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatProjectIndustrySub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatTenantIndustry.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\DatTenantIndustrySub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\IndustryCase.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\LNKBPhoto.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\LNKBPhotoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\LNKPCompany.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\LNKPPhoto.cs" />
+    <Compile Include="Models\POCO\FxtDataIndustry\LNKPPhotoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatBuildingOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatBuildingOfficeSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatCaseOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatHouseOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatHouseOfficeSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatOfficePeiTao.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatOfficePeiTaoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatOfficePeiTaoTenant.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatPbPriceOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatProjectOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatProjectOfficeSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatTenantOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatTenantOfficeSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatTypicalFloorOffice.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\DatTypicalFloorOfficeSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKBPhoto.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKBPhotoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKFPhoto.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKFPhotoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKPCompany.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKPPhoto.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKPPhotoSub.cs" />
+    <Compile Include="Models\POCO\FxtDataOffice\LNKTypicalFloorFloor.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_Building_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_Case_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_Floor_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_House_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_Project_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_P_B_Price_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\Dat_Tenant_Biz.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\LNK_B_Company.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\LNK_B_Photo.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\LNK_F_Photo.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\LNK_H_Photo.cs" />
+    <Compile Include="Models\POCO\FxtDataBiz\LNK_P_Photo.cs" />
+    <Compile Include="Models\POCO\FxtUserCenter\CompanyProduct.cs" />
+    <Compile Include="Models\QueryObjects\BaseParams.cs" />
+    <Compile Include="Models\QueryObjects\House\ExceptionCaseParams.cs" />
+    <Compile Include="Models\QueryObjects\House\ProjectCaseParams.cs" />
+    <Compile Include="Models\QueryObjects\House\ProjectCaseStatistcParams.cs" />
+    <Compile Include="Models\QueryObjects\House\ProjectParams.cs" />
+    <Compile Include="Models\QueryObjects\House\ProjectQueryParams.cs" />
+    <Compile Include="Models\QueryObjects\BuildStatiParam.cs" />
+    <Compile Include="Models\QueryObjects\HouseStatiParam.cs" />
+    <Compile Include="Models\QueryObjects\ProStatiParam.cs" />
+    <Compile Include="Services\Authorize\ISYS_User_TimeDAL.cs" />
+    <Compile Include="Services\Company\IPublicPeiTao.cs" />
+    <Compile Include="Services\House\ICodePrice.cs" />
+    <Compile Include="Services\House\IFloorPrice.cs" />
+    <Compile Include="Services\House\IPropertyAddress.cs" />
+    <Compile Include="Services\Human\IHumanHouse.cs" />
+    <Compile Include="Services\Human\IHumanProject.cs" />
+    <Compile Include="Services\Share\IDAT_Analysis_City.cs" />
+    <Compile Include="Services\Authorize\IMenu.cs" />
+    <Compile Include="Services\Authorize\IRole.cs" />
+    <Compile Include="Services\Authorize\IUser.cs" />
+    <Compile Include="Services\Business\IBusinessCase.cs" />
+    <Compile Include="Services\Business\IBusinessCircle.cs" />
+    <Compile Include="Services\Business\IBusinessStore.cs" />
+    <Compile Include="Services\Business\IBusinessBuilding.cs" />
+    <Compile Include="Services\Business\IBusinessFloor.cs" />
+    <Compile Include="Services\Business\IBusinessHouse.cs" />
+    <Compile Include="Services\Business\IDynamicPriceSurvey.cs" />
+    <Compile Include="Services\Business\IBusinessBuildingPhoto.cs" />
+    <Compile Include="Services\Business\IBusinessFloorPhoto.cs" />
+    <Compile Include="Services\Company\ICompany.cs" />
+    <Compile Include="Services\House\ICityAvgPrice.cs" />
+    <Compile Include="Services\House\IBuilding.cs" />
+    <Compile Include="Services\House\IHouse.cs" />
+    <Compile Include="Services\House\IProject.cs" />
+    <Compile Include="Services\House\IProjectCase.cs" />
+    <Compile Include="Services\House\IProjectCaseTask.cs" />
+    <Compile Include="Services\House\IProjectOtherName.cs" />
+    <Compile Include="Services\House\IProjectSample.cs" />
+    <Compile Include="Services\House\IWaitBuildingProject.cs" />
+    <Compile Include="Services\Business\IBusinessStreet.cs" />
+    <Compile Include="Services\Industry\IIndustryBuilding.cs" />
+    <Compile Include="Services\Industry\IIndustryCase.cs" />
+    <Compile Include="Services\Industry\IIndustryDynamicPrice.cs" />
+    <Compile Include="Services\Industry\IIndustryHouse.cs" />
+    <Compile Include="Services\Industry\IIndustryPeiTao.cs" />
+    <Compile Include="Services\Industry\IIndustrySubArea.cs" />
+    <Compile Include="Services\Industry\IIndustryProject.cs" />
+    <Compile Include="Services\Industry\IIndustryTenant.cs" />
+    <Compile Include="Services\Office\IOfficeCase.cs" />
+    <Compile Include="Services\Office\IOfficeDynamicPrice.cs" />
+    <Compile Include="Services\Office\IOfficeHouse.cs" />
+    <Compile Include="Services\Office\IOfficePeiTao.cs" />
+    <Compile Include="Services\Office\IOfficeProject.cs" />
+    <Compile Include="Services\Office\IOfficeSubArea.cs" />
+    <Compile Include="Services\Office\IOfficeBuilding.cs" />
+    <Compile Include="Services\Office\IOfficeTenant.cs" />
+    <Compile Include="Services\Share\IImportTask.cs" />
+    <Compile Include="Services\Share\ICompanyProduct_Module.cs" />
+    <Compile Include="Services\Land\ILand.cs" />
+    <Compile Include="Services\Land\ILandBasePrice.cs" />
+    <Compile Include="Services\Land\ILandCoordinate.cs" />
+    <Compile Include="Services\Share\IDropDownList.cs" />
+    <Compile Include="Services\Share\IDAT_Company.cs" />
+    <Compile Include="Services\Land\ILandCase.cs" />
+    <Compile Include="Services\Share\ILog.cs" />
+    <Compile Include="Services\Share\IMarketAnalysis.cs" />
+    <Compile Include="Services\Share\IShare.cs" />
+    <Compile Include="Services\Share\ISYS_Login.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\VQPrice\IBuildingWeightRevised.cs" />
+    <Compile Include="Services\VQPrice\IHouseWeightRevised.cs" />
+    <Compile Include="Services\VQPrice\IProjectAvgPrice.cs" />
+    <Compile Include="Services\VQPrice\IProjectWeightRevised.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Common\FXT.DataCenter.Infrastructure.Common.csproj">
+      <Project>{ed63de3f-a21b-4316-987f-634bcc3939bb}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

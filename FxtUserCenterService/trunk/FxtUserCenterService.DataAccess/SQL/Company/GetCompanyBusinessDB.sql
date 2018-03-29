@@ -1,0 +1,1 @@
+﻿select t2.joindate,t2.signname,t2.CompanyID,t2.CompanyName,t2.CompanyCode,t2.CreateDate,t2.Valid,t2.BusinessDB,t2.CityId from CompanyInfo t2 where t2.CompanyID in(select t1.CompanyId from CompanyProduct t1 where t1.ProductTypeCode=@productTypeCode group by t1.CompanyId) and t2.Valid=1 and t2.issigned=1 and len(t2.BusinessDB)>0

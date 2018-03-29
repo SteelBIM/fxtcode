@@ -1,0 +1,44 @@
+﻿2017-02-28 17:48:29
+错误编号:2017022817482976X9ff11d7ecf
+Message:调用的目标发生了异常。
+Message2:gprojectpricerank执行时间：58634ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"16517013807850","code":"082e72e4582db460cb5f18dbf2419458","functionname":"gprojectpricerank","signname":"4106DEF5-A760-4CD7-A6B2-8250420FCB18","time":"20160929163118"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003038,"vcode":"1.0","version":"1.0"},"uinfo":{"username":"null","password":"null","fxtcompanyid":25,"subcompanyid":0},"funinfo":{"cityname":"深圳市","areaname":"南山区","projectname":"fiug","serialno":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 列名 'valid' 无效。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.DATProjectAvgPriceDA.GetProjectPriceRank(String cityname, String areaname, String projectname, Int32 FxtCompanyId, Int32 systypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\DATProjectAvgPriceDA.cs:行号 537
+   在 FxtCenterService.Logic.DATProjectAvgPriceBL.GetProjectPriceRank(String cityname, String areaname, String projectname, Int32 FxtCompanyId, Int32 systypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\DATProjectAvgPriceBL.cs:行号 318
+   在 FxtCenterService.Actualize.DataController.GetProjectPriceRank(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\PriceController.cs:行号 1214
+ClientConnectionId:3024b612-c4b1-4975-bf7d-8f13926efad6
+Error Number:207,State:1,Class:16

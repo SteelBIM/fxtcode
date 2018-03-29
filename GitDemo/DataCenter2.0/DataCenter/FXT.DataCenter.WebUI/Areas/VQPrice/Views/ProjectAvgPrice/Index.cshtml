@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "住宅案例均价";
+}
+@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<Dat_ProjectAvg>
+@section StyleSheet{
+
+}
+@section  Javascript{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".page-sidebar > ul > li > a[href='/VQPrice/ProjectAvgPrice/']").append("<span class='selected'></span>").parent().addClass("active");
+            $("#btnExport").bind("click", function () {
+                window.location.href = '@Url.Action("ExportProjectAvgPrice")' + "?projectName=" + $("#ProjectName").val() + "&useMonthStr=" + $("#UseMonthStr").val() + "&IsPrices=" + $("#IsPrices").val();
+            });
+
+            //日期控件渲染
+            $("#UseMonthStr").datepicker({
+                format: "yyyy-mm-01",
+                startView: 1,
+                maxViewMode: 1,
+                minViewMode: 1,
+            });
+
+            //确认价格
+            $("#IsEValue").unbind();
+            $("#IsEValue").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要确认的数据");
+                    return;
+                }
+                checks.each(function () {
+                    if ($(this).val() != "") {
+                        ids.push($(this).val());
+                    }
+                });
+                if (ids.length == 0) {
+                    alert("请选择有价格的数据");
+                    return;
+                }
+
+                if (confirm("是否确认勾选的价格？")) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("IsEvaluePrices")',
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div class="row-fluid">
+
+    <div class="span4" style="width: 35%;">
+        <a class="btn" title='导入' href="@Url.Action("UploadFile")">
+            <i class="icon-upload-alt"></i>导入</a>
+        <a class="btn" id="btnExport" title='导出'>导出</a>
+        <a class="btn red" id="IsEValue" title="确认有价格的楼盘均价" href="javascript:void(0);">确认价格</a>
+    </div>
+    <div class="span8" style="width: 60%;">
+        @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search" }))
+        { 
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn">
+                        搜索 <i class="icon-search"></i>
+                    </button>
+                </label>
+                <label>
+                    <span>楼盘名称：</span>
+                    @Html.TextBox("ProjectName", null, new { @class = "m-wrap small" })
+                </label>
+                <label>
+                    有价格：@Html.DropDownList("IsPrices", new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "--请选择--" }, new SelectListItem { Value = "1", Text = "是" }, new SelectListItem { Value = "0", Text = "否" } }, new { @class = "m-wrap small" })
+                </label>
+                <label>
+                    <span>案例月份：</span>
+                    @Html.TextBox("UseMonthStr", null, new { @class = "m-wrap small" })
+                </label>
+            </div>
+        }
+    </div>
+</div>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th style="width: 8px;">
+                <input type="checkbox" id="checkall" class="group-checkable" />
+            </th>
+            <th>行政区
+            </th>
+            <th>楼盘名称
+            </th>
+            <th>楼盘别名
+            </th>
+            <th>当前基准房价
+            </th>
+            <th>案例月份
+            </th>
+            <th>楼盘均价(元/㎡)
+            </th>
+            <th>涨跌幅(%)
+            </th>
+            <th>案例均价值参考
+            </th>
+            <th>是否确认价格
+            </th>
+            <th>操作
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var m in Model)
+            {
+                var chValue = m.projectavgid > 0 && m.ProjectAvgPrice > 0 ? m.ProjectId.ToString() + "#" + m.UseMonth.ToString("yyyy-MM-dd") : "";
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />
+                </td>
+                <td>
+                    @m.AreaName
+                </td>
+                <td>
+                    @m.ProjectName
+                </td>
+                <td title="@m.OtherName">
+                    @if (!string.IsNullOrEmpty(m.OtherName))
+                    {
+                        if (m.OtherName.Length > 5)
+                        {
+                            Write(m.OtherName.Substring(0, 4) + "...");
+                        }
+                        else
+                        {
+                            Write(m.OtherName);
+                        }
+                    }
+                </td>
+                <td>
+                    <a class="thickbox" title='编辑基准房价' href="@Url.Action("Edit", "ProjectWeightRevised", new { id = 0, m.ProjectId, temp = 0 })?TB_iframe=true&height=450&width=860">
+                        @(m.WeightProjectPrice == null ? "-" : m.WeightProjectPrice.ToString())</a>
+                </td>
+                <td>
+                    @(m.UseMonth == DateTime.MinValue ? "----" : m.UseMonth.ToString("yyyy-MM-dd"))
+                </td>
+                <td>
+                    @(m.ProjectAvgPrice == null ? "-" : m.ProjectAvgPrice.ToString())
+                </td>
+                <td>
+                    @(m.ProjectGained == null ? "-" : (Math.Round(((decimal)m.ProjectGained * 100), 2)).ToString())
+                </td>
+                <td>
+                    @(m.ProjectAvgPrice == null && m.projectavgid <= 0 ? "-" : m.casecount.ToString() + (m.casecount < 5 ? "(" + m.caseminprice.ToString() + ")" : ""))
+                </td>
+                <td>
+                    @m.IsEValueName
+                </td>
+                <td>
+                    <a class="btn mini purple thickbox" title='编辑' href="@Url.Action("Edit", new { m.ProjectId, UseMonthStr = (m.UseMonth).ToString("yyyy-MM-dd"), temp = 0 })?TB_iframe=true&height=450&width=860">
+                        <i class="icon-edit"></i>编辑 </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("ProjectHistoryAvgIndex", new { m.ProjectId, m.ProjectName })">查看历史</a>
+                </td>
+            </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+
+</div>
+
+
+

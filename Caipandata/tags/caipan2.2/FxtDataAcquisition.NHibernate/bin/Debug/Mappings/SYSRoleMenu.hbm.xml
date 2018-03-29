@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.SYSRoleMenu, FxtDataAcquisition.NHibernate" table="SYS_Role_Menu">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="RoleID" column="RoleID" type="int"  />
+		<property name="MenuID" column="MenuID" type="int"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="FxtCompanyID" column="FxtCompanyID" type="int"  />
+				
+	</class>
+</hibernate-mapping>

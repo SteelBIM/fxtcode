@@ -1,0 +1,152 @@
+﻿@using FXT.DataCenter.Domain.Models.DTO
+@using FXT.DataCenter.Entity.DTO
+
+@{
+    Layout = "~/Views/Shared/_Layout.Content.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        table.table tr th, table.table tr td
+        {
+            text-align: center;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/highcharts.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/highcharts.exporting.js")"></script>
+    <script type="text/javascript">
+
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'column',
+                marginRight: 130,
+                marginBottom: 25,
+                height: 360
+            },
+            credits: {
+                enabled: false
+            },
+            lang:{
+                downloadJPEG: "下载JPEG 图片",  
+                downloadPDF: "下载PDF文档",  
+                downloadPNG: "下载PNG 图片",  
+                downloadSVG: "下载SVG 矢量图",  
+                exportButtonTitle: "导出图片" 
+            }, 
+            title: {
+                text: '土地案例统计',
+                x: -20 //center
+            },
+            subtitle: {
+                text: '按行政区统计',
+                x: -20
+            },
+            xAxis: {
+                //categories: ['罗湖区','龙岗区','盐田区','宝安区','南山区','福田区','光明新区','坪山新区','龙华新区']
+                categories: [@Html.Raw(ViewBag.areaNameList as string)]
+        },
+            yAxis: {
+                title: {
+                    text: '面积'
+                },
+                plotLines: [
+                    {
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }
+                ]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.x + ': ' + this.y;
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [
+            {
+                name: '成交面积(万㎡)',
+                data: [@Html.Raw(ViewBag.areaList as string)]
+            //data:[1,2,3,4,5,6,7,8,9]
+        }]
+        });
+
+
+    $("#startDate, #endDate").datepicker({ format: 'yyyy-mm-dd' });
+    </script>
+}
+<div>
+    @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search", @class = "well form-inline" }))
+    { 
+        <div style="margin-left: 15px;">
+            数据类型：
+            @Html.DropDownList("dataType", new List<SelectListItem>() { new SelectListItem { Text = "成交数据", Value = "0" }, new SelectListItem { Text = "供应数据", Value = "1" } }, new { @class = "m-wrap small" })
+            开始时间：
+            @Html.TextBox("startDate", @ViewBag.startDate as string, new { @class = "m-wrap small" })
+            结束时间：
+            @Html.TextBox("endDate", ViewBag.endDate as string, new { @class = "m-wrap small" })
+            <button type="submit" class="btn">
+                查询 <i class="icon-search"></i>
+            </button>
+        </div>
+    }
+</div>
+<div class="breadcrumb">
+    <div id="container" style="min-width: 400px; height: 360px; margin: 0 auto">
+    </div>
+</div>
+<table class="table table-striped table-hover " style="margin-top: 50px;">
+    <thead>
+        <tr>
+            <th>行政区
+            </th>
+            <th>成交宗数(块)
+            </th>
+            <th>成交面积(㎡)
+            </th>
+            <th>成交均价(元/㎡)
+            </th>
+            <th>楼面价(元/㎡)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var data = ViewBag.CJData as List<LandCaseStatisticDTO>;
+        }
+        @if (data != null && data.Count > 0)
+        {
+            foreach (var item in data)
+            { 
+            <tr>
+                <td>
+                    @item.AreaName
+                </td>
+                <td>
+                    @item.CJZS
+                </td>
+                <td>
+                    @item.CJMJ
+                </td>
+                <td>
+                    @item.CJJJ
+                </td>
+                <td>
+                    @item.LMJ
+                </td>
+            </tr>
+            }
+        }
+
+    </tbody>
+</table>

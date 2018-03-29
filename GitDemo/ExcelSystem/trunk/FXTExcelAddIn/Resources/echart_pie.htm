@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECharts">
+    <title>ECharts</title>
+    <script src="http://www.yungujia.com/echarts-2.2.7/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        var curTheme = "macarons";
+        // ·������
+        require.config({
+            paths: {
+                echarts: 'http://www.yungujia.com/echarts-2.2.7/build/dist'
+            }
+        });
+        // ʹ��
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie', // ʹ����״ͼ�ͼ���barģ�飬�������
+                'echarts/chart/funnel',
+                'echarts/theme/macarons'
+            ],
+            function (ec,theme) {
+                // ����׼���õ�dom����ʼ��echartsͼ��
+                var myChart = ec.init(document.getElementById('main'), curTheme);
+                curTheme = theme;
+                var option = {
+                    title: {
+                        text: ''
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            magicType : {
+                                show: true, 
+                                type: ['pie', 'funnel'],
+                                option: {
+                                    funnel: {
+                                        x: '25%',
+                                        width: '50%',
+                                        funnelAlign: 'left',
+                                        max: @max
+                                    }
+                                }
+                            },
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    calculable: true,
+                    @data
+                    };
+
+                // Ϊecharts�����������
+                myChart.setOption(option);
+            }
+        );
+    </script>
+</head>
+<body>
+    <div id="main" style="height:600px"></div>
+</body>
+</html>

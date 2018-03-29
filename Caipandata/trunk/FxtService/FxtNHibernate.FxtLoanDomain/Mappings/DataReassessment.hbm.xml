@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtLoanDomain" 
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+	<class name="FxtNHibernate.FxtLoanDomain.Entities.DataReassessment, FxtNHibernate.FxtLoanDomain" 
+		   table="Data_Reassessment">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>      		
+		<property name="CollateralId" column="CollateralId" type="int"  />
+		<property name="Price" column="Price" type="decimal"  />
+    <property name="TenPrice" column="TenPrice" type="decimal"  />
+    <property name="TwentyPrice" column="TwentyPrice" type="decimal"  />
+		<property name="IsFirst" column="IsFirst" type="int"  />
+		<property name="Months" column="Months" type="string"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+		<property name="ArrivedLoanRates" column="ArrivedLoanRates" type="decimal"  />
+    <property name="TenArrivedLoanRates" column="TenArrivedLoanRates" type="decimal"  />
+    <property name="TwentyArrivedLoanRates" column="TwentyArrivedLoanRates" type="decimal"  />
+		<property name="RiskStatus" column="RiskStatus" type="decimal"  />
+		<property name="CalculationMode" column="CalculationMode" type="string"  />
+				
+	</class>
+</hibernate-mapping>

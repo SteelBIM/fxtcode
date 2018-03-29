@@ -1,0 +1,2 @@
+﻿insert INTO FxtUserCenter.dbo.CompanyInfo(CompanyId,CompanyName,CompanyCode,SignName,CompanyTypeCode,ShortName,CityId) 
+values(@CompanyId,@CompanyName,@CompanyCode,@SignName,@CompanyTypeCode,@ShortName,@CityId)

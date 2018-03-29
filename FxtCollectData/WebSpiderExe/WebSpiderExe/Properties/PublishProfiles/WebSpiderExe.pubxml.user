@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\FangXunTong\FxtCollectData\WebSpiderRule\WebSpiderExeBuild</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/WebSpiderExe.dll">
+      <publishTime>09/07/2016 15:46:16</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/07/2016 15:46:16</publishTime>
+    </File>
+    <File Include="WebForm1.aspx">
+      <publishTime>08/31/2016 14:00:30</publishTime>
+    </File>
+    <File Include="公评网析价格.aspx">
+      <publishTime>09/07/2016 09:56:10</publishTime>
+    </File>
+    <File Include="房价网析楼盘.aspx">
+      <publishTime>09/07/2016 09:56:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

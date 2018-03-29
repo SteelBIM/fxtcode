@@ -1,0 +1,172 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#CaseDateFrom,#CaseDateTo").datepicker({ format: 'yyyy-mm-dd' });
+
+            $("#ProjectId").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("ProjectSelect")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    return data.text;
+                },
+            });
+            $(".select2-container").width(220); //重置select2宽度
+
+            $("#ProjectId").select2("val", { id: '@ViewBag.select2ProjectId', text: '@ViewBag.select2ProjectName' });
+
+            $('#btnSubmit').unbind();
+            $('#btnSubmit').click(function () {
+                var caseDateFrom = $.trim($("#CaseDateFrom").val());
+                var caseDateTo = $.trim($("#CaseDateTo").val());
+                var uprate = $.trim($("#Uprate").val());
+                var downrate = $.trim($("#Downrate").val());
+
+                var reg = new RegExp("^[0-9]+$");
+
+                if (caseDateFrom == "" || caseDateTo == "") {
+                    alert("案例时间不能为空");
+                    return false;
+                }
+                var arrayDate = caseDateFrom.split('-');
+                var maxCaseDate = Number(arrayDate[0]) + 1 + arrayDate[1] + arrayDate[2];
+                if (caseDateTo > maxCaseDate) {
+                    alert("案例时间跨度不能大于一年！");
+                    return false;
+                }
+
+                if (uprate == "" || downrate == "") {
+                    alert("上浮和下浮不能为空！");
+                    return false;
+                }
+
+                if (!reg.test(uprate) || !reg.test(downrate)) {
+                    alert("上浮和下浮必须为整数！");
+                    return false;
+                }
+
+                if (!confirm("是否确定删除异常案例？")) {
+                    return false;
+                }
+
+            });
+
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>案例时间：</label>
+                <div class="controls">
+                    @Html.TextBox("CaseDateFrom", null, new { @style = "width:86px;" }) ~ @Html.TextBox("CaseDateTo", null, new { @style = "width:86px;" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>单价上浮(%)：</label>
+                <div class="controls">
+                    @Html.TextBox("Uprate")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>单价下浮(%)：</label>
+                <div class="controls">
+                    @Html.TextBox("Downrate")
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">
+                    行政区：</label>
+                <div class="controls">
+                    @Html.DropDownList("AreaId", ViewBag.AreaName as List<SelectListItem>)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">
+                    具体楼盘：</label>
+                <div class="controls">
+                    @Html.Hidden("ProjectId")
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">
+                    居住用途：</label>
+                <div class="controls">
+                    @Html.DropDownList("PurposeCode", ViewBag.PurposeName as List<SelectListItem>)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    建筑面积：</label>
+                <div class="controls">
+                    @Html.TextBox("BuildingAreaFrom", null, new { @style = "width:86px;" }) ~ @Html.TextBox("BuildingAreaTo", null, new { @style = "width:86px;" })
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    建筑类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("BuildingTypeCode", ViewBag.BuildingTypeName as List<SelectListItem>)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    户型结构：</label>
+                <div class="controls">
+                    @Html.DropDownList("HouseTypeCode", ViewBag.HouseTypeName as List<SelectListItem>)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    朝向：</label>
+                <div class="controls">
+                    @Html.DropDownList("FrontCode", ViewBag.FrontName as List<SelectListItem>)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    建筑年代：</label>
+                <div class="controls">
+                    @Html.TextBox("BuildingDate")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    装修：</label>
+                <div class="controls">
+                    @Html.TextBox("Zhuangxiu")
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

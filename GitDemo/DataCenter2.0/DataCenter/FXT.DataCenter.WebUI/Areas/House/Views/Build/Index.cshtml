@@ -1,0 +1,456 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<FXT.DataCenter.Domain.Models.QueryObjects.BuildStatiParam>
+@{
+    ViewBag.Title = "(住宅)楼栋";
+}
+@section StyleSheet{
+    <style type="text/css">
+        select {
+            margin: 1px;
+            width: 150px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        td a {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    </style>
+
+}
+@section Javascript{
+    <script type="text/javascript">
+        $("div.page-sidebar ul li").eq(2).addClass("active").find("a span").eq(1).addClass("selected");
+        var UrlDelete = '@Url.Action("DeleteBuild")';
+        $(document).ready(function () {
+            //日期控件渲染
+            $("#BuildSaleDate, #BuildSaleDateTo").datepicker({ format: 'yyyy-mm-dd' });
+            $("#btnExport").bind("click", function () {
+                $("#search").attr("action", "/House/Build/ExportBuild");
+            });
+            $("#btnRetrive").bind("click", function () {
+                $("#search").attr("action", "/House/Build/Index");
+            });
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: UrlDelete,
+                        data: { ids: ids, projectId: '@ViewBag.ProjectId' },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            //批量设置是否可估
+            $("#btnIsEvalue").click(function () {
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "提 交", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () { //第一个按钮的功能函数
+                        if (confirm("是否确定提交？")) {
+
+                            $("#sender1").attr("disable", true);
+
+                            var projectId = '@ViewBag.ProjectId';
+                            var buildingName = $("#BuildingName").val();
+                            var purposeCode = $("#PurposeCode").val();
+                            var buildingTypeCode = $("#BuildingTypeCode").val();
+                            var isEvalue = $("#isEvalue").val();
+
+                            var obj = { projectId: projectId, buildingName: buildingName, purposeCode: purposeCode, buildingTypeCode: buildingTypeCode, isEvalue: isEvalue };
+                            $.post('@Url.Action("BatchSetEvalue")', obj, function (data) {
+                                if (data) {
+                                    location.reload();
+                                } else {
+                                    alert("设置失败！");
+                                    $("#sender1").attr("disable", false);
+                                }
+                            });
+
+                        }
+
+                    }
+                });
+            });
+
+            $("#btnSetPriceAll").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (confirm("此按钮将会更新楼栋列表下的所有房号系数，请确认！")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+
+                    var projectId = '@ViewBag.ProjectId';
+                    $("#skip").css("display", "block");
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SetHouseRatio")',
+                        data: { projectid: projectId, ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                    $("#skip").css("display", "none");
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                                $("#skip").css("display", "none");
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+
+            $("#btnSetVQWeight").click(function () {
+                if (confirm("是否更新该楼盘的所有房号VQ系数，请确认？")) {
+                    var projectId = '@ViewBag.ProjectId';
+                    var parentProductTypeCode = '@ViewBag.parentProductTypeCode';
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SetVQHouseRatio")',
+                        data: { projectid: projectId, parentProductTypeCode: parentProductTypeCode },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+
+            var locationHref = window.location.href, projectName = "@(ViewBag.projectName)", areaid = "@(ViewBag.areaID)", areaName = "@(ViewBag.areaName)";
+            if (locationHref.indexOf("House/Build/Index")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/Project/Index\">住宅基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                if (projectName) {
+                    html += "<li><span><a href=\"/House/Project/Index?areaid=" + areaid + "\">" + areaName + "</a></span><i class=\"icon-angle-right\"></i></li>";
+                    html += "<li><span><a href=\"/House/Project/Edity?projectid=" + encodeURIComponent("@ViewBag.projectPara") + "\">" + projectName + "</span></a><i class=\"icon-angle-right\"></i></li>";
+                }
+                html += "<li><span>楼栋</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+        });
+
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div style="text-align: right;">
+    <a style="cursor: pointer;" id="control">收起∧</a>
+</div>
+<div class="row-fluid" id="condi">
+    @using (Html.BeginForm("Index", "Build", FormMethod.Get, new { id = "search", @class = "form-inline" }))
+    { 
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;">
+            <tr>
+                <td>楼栋名称：
+                </td>
+                <td>@Html.TextBox("BuildingName", null, new { @style = "width: 120px;" })
+                </td>
+                <td>楼栋用途:
+                </td>
+                <td>@Html.DropDownList("PurposeCode", new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "1001001", Text = "居住" },
+                   new SelectListItem { Value = "1001002", Text = "居住(别墅)" },
+                   new SelectListItem { Value = "1001003", Text = "居住(洋房)" },
+                   new SelectListItem { Value = "1001004", Text = "商业" },
+                   new SelectListItem { Value = "1001005", Text = "办公" },
+                   new SelectListItem { Value = "1001006", Text = "工业" },
+                   new SelectListItem { Value = "1001007", Text = "商业、居住" },
+                   new SelectListItem { Value = "1001008", Text = "商业、办公" },
+                   new SelectListItem { Value = "1001009", Text = "办公、居住" },
+                   new SelectListItem { Value = "1001010", Text = "停车场" },
+                   new SelectListItem { Value = "1001011", Text = "酒店" },
+                   new SelectListItem { Value = "1001012", Text = "加油站" },
+                   new SelectListItem { Value = "1001013", Text = "综合" },
+                   new SelectListItem { Value = "1001014", Text = "其他" }
+               }, new { @class = "m-wrap small" })
+                </td>
+                <td>建筑类型:
+                </td>
+                <td>@Html.DropDownList("BuildingTypeCode", new List<SelectListItem> {
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2003001", Text = "低层" },
+                   new SelectListItem { Value = "2003002", Text = "多层" },
+                   new SelectListItem { Value = "2003003", Text = "小高层" },
+                   new SelectListItem { Value = "2003004", Text = "高层" }                           
+               }, new { @class = "m-wrap small" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <a class="btn blue" title='新增楼栋信息'  href="@Url.Action("Create", new { projectid = (ViewBag.projectPara).Split('#')[0] + "#" + (ViewBag.ProjectId) })">
+                        <i class="icon-plus icon-white"></i>新增 </a>
+                    <a class="btn red" id="delete" href="javascript:void(0);">
+                        <i class="icon-trash icon-white"></i>删除 </a>
+                    &nbsp;&nbsp;
+                    <button id="btnRetrive" class="btn">
+                        查 询 <i class="icon-search"></i>
+                    </button>
+                    <a id="btnImport" title="Excel导入" class = "btn" href="@Url.Action("ImportBuilding", "Project")">导 入</a>
+
+                    @if (ViewBag.IsExport)
+                    { 
+                        <button id="btnExport" class="btn">
+                            导 出
+                        </button>
+                        <a id="btnStatitics" class = "btn" href="@Url.Action("ProjectStatistics", "Project")">自定义导出</a>
+                        
+                    }
+                    <br />
+                    <input id="btnIsEvalue" type="button" title="批量设置是否可估" class="btn thickbox" alt="#TB_inline?height=220&width=350&inlineId=isevalue" value="批量设置是否可估">
+                    <span id="btnSetPriceAll" class="btn " title="针对改楼栋列表的所有房号，统一设置房号系数。"><span>批量设置房号差</span></span>
+                    @if (ViewBag.isvqret)
+                    {
+                        <span id="btnSetVQWeight" class="btn " title="更新楼盘的所有房号VQ系数。（请先确定好CAS系数，再使用该功能。）"><span>同步VQ系数</span></span>
+                    }
+                    <input type="hidden" id="ProjectId" name="ProjectId" value="@ViewBag.ProjectId" />
+                </td>
+            </tr>
+        </table>        
+        <div id="skip" style="display: none;">
+            <span style="color: red; font-weight: bold; font-size: 17px;">正在批量修改房号系数，请稍后。</span>
+        </div>
+    }
+</div>
+@using (Html.BeginForm("DeleteBuild", "Build", FormMethod.Post, new { id = "mainForm" }))
+{
+  
+    <div class="projectInfo">
+        <b>楼盘名称:</b><span style="margin-right: 20px;">@ViewBag.projectName</span>
+    </div> 
+    <div class="scrollBar">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th style="width: 8px;">
+                        <input type="checkbox" id="checkall" class="group-checkable" />
+                    </th>
+                    <th>楼栋名称</th>
+                    <th>用途</th>
+                    <th>建筑类型</th>
+                    <th>竣工时间</th>
+                    <th>总楼层</th>
+                    <th>房号数量</th>
+                    <th>价格系数</th>
+                    <th>数据建设机构</th>
+                    <th>是否可估</th>
+                    <th style="width: 59px;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    var chValue = m.BuildingId + "#" + m.ProjectId + "#" + m.FxtCompanyId;
+           
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="checkboxes" name='ids' id="ids" value='@chValue' />
+                        </td>
+                        <td><a title='编辑' style="padding-left:0px;padding-right:0px;" href="@Url.Action("Edity", new { projectid = m.FxtCompanyId + "#" + m.ProjectId, buildingid = m.BuildingId })">@m.BuildingName</a>
+                        </td>
+                        <td>@switch (m.PurposeCode)
+                            {
+                                #region 楼栋用途
+                                case 1001001:
+                                    WriteLiteral("居住");
+                                    break;
+                                case 1001002:
+                                    WriteLiteral("居住(别墅)");
+                                    break;
+                                case 1001003:
+                                    WriteLiteral("居住(洋房)");
+                                    break;
+                                case 1001004:
+                                    WriteLiteral("商业");
+                                    break;
+                                case 1001005:
+                                    WriteLiteral("办公");
+                                    break;
+                                case 1001006:
+                                    WriteLiteral("工业");
+                                    break;
+                                case 1001007:
+                                    WriteLiteral("商业、居住");
+                                    break;
+                                case 1001008:
+                                    WriteLiteral("商业、办公");
+                                    break;
+                                case 1001009:
+                                    WriteLiteral("办公、居住");
+                                    break;
+                                case 1001010:
+                                    WriteLiteral("停车场");
+                                    break;
+                                case 1001011:
+                                    WriteLiteral("酒店");
+                                    break;
+                                case 1001012:
+                                    WriteLiteral("加油站");
+                                    break;
+                                case 1001013:
+                                    WriteLiteral("综合");
+                                    break;
+                                case 1001014:
+                                    WriteLiteral("其他");
+                                    break;
+                                default:
+                                    WriteLiteral("");
+                                    break;
+                                #endregion
+                            }
+                        </td>
+                        <td>@switch (m.BuildingTypeCode)
+                            {
+                                case 2003001:
+                                    WriteLiteral("低层");
+                                    break;
+                                case 2003002:
+                                    WriteLiteral("多层");
+                                    break;
+                                case 2003003:
+                                    WriteLiteral("小高层");
+                                    break;
+                                case 2003004:
+                                    WriteLiteral("高层");
+                                    break;
+                                default:
+                                    WriteLiteral("");
+                                    break;
+                            }
+                        </td>
+                        <td>@(m.BuildDate == null ? "" : Convert.ToDateTime(m.BuildDate).ToString("yyyy-MM-dd"))</td>
+                        <td>@{
+                            int TotalFloor = 0;
+                            if (m.TotalFloor != null)
+                            {
+                                if (m.TotalFloor > m.TotalFloorCount)
+                                {
+                                    TotalFloor = Convert.ToInt32(m.TotalFloor);
+                                    WriteLiteral(m.TotalFloor);
+                                }
+                                else
+                                {
+                                    TotalFloor = m.TotalFloorCount;
+                                    WriteLiteral(m.TotalFloorCount);
+                                }
+                            }
+                            else
+                            {
+                                TotalFloor = m.TotalFloorCount;
+                                WriteLiteral(m.TotalFloorCount);
+                            }
+                           
+                        }
+                        </td>
+                        @*  <td>@m.TotalBuildArea
+                        </td>*@
+                        <td>
+
+                            @*<a title='房号' class="btn mini btn-xs blue"  
+                                href="@Url.Action("Index", "House", new { BuildId = m.BuildingId, TotalFloor = TotalFloor,fxtCompanyId=m.FxtCompanyId })">
+                             </a>*@
+                            <a class="btn mini btn-xs blue" href ="@Url.Action("Index", "House", new { m.ProjectId, BuildId = m.BuildingId, m.FxtCompanyId, m.TotalFloor })"><i class=" icon-share-alt"></i>@m.HouseNum </a>
+                        </td>
+                        <td>@m.Weight</td>
+                        <td>@m.belongcompanyname</td>
+                        <td>@(m.IsEValue == 0 ? "否" : "是")</td>
+                        <td>
+                            <a class="btn mini purple" title='编辑' href="@Url.Action("Edity", new { projectid = m.FxtCompanyId + "#" + m.ProjectId, buildingid = m.BuildingId })">
+                                <i class="icon-edit"></i>编辑 </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+</div>
+
+<div id="isevalue" style="display: none;">
+
+    <table style="margin: 25px auto 0; font-size: 14px;">
+        <tr>
+            <td>是否可估：</td>
+            <td>@Html.DropDownList("isEvalue", new List<SelectListItem> { new SelectListItem { Value = "1", Text = "是" }, new SelectListItem { Value = "0", Text = "否" } })</td>
+        </tr>
+    </table>
+
+</div>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        setTimeout("jump()", 800);
+        var t = 0, a = 10, v = t * a, s = 30, updown = true; // s路程,a加速度,t时间,updown判断上升还是下降
+        function jump() {
+            var img = $("#img");
+            if (img.is(':visible')) {
+                $("#img").hide();
+            } else {
+            $("#img").show();
+            }
+            setTimeout("jump()",800);
+        }
+    </script>
+</head>
+<body>
+ <div id="i" style="width:200px;height:200px;overflow:hidden;margin-left:100px;position:absolute;">
+     <img src="../1091984.jpg" id="img"/>
+        </div>
+</body>
+</html>

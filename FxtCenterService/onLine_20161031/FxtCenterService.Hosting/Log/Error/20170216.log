@@ -1,0 +1,106 @@
+﻿2017-02-16 09:03:53
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-16 09:03:54
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-16 14:59:25
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-16 15:00:35
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-16 17:04:10
+错误编号:2017021617041031X01a90d8e75
+Message:调用的目标发生了异常。
+Message2:importprojectdata执行时间：57820ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"functionname":"importprojectdata","appid":1003104,"apppwd":"2041153006","signname":"4106DEF5-A760-4CD7-A6B2-8250420FCB18","time":"20170109140115","code":"54d5a51d369a4bcee551dc10def4300a"}
+info:{"uinfo":{"username":"suny@fxt","token":""},"appinfo":{"splatype":"win","platVer":"2007","stype":"","version":"4.26","vcode":"1","systypecode":"1003034","channel":"360"},"funinfo":{"data":"{\"x\":null,\"y\":null,\"projectname\":\"1111\",\"cityid\":6,\"areaid\":70,\"address\":\"\",\"enddate\":null,\"east\":\"\",\"west\":\"\",\"south\":\"\",\"north\":\"\",\"parkingnumber\":null,\"detail\":\"\",\"fxtprojectid\":null,\"fxtcompanyid\":25,\"valid\":1,\"othername\":\"\",\"subareaid\":0,\"purposecode\":1001001,\"rightcode\":0,\"buildingnum\":null,\"totalnum\":null,\"managerquality\":0,\"creator\":\"tanql@fxt\",\"updatedatetime\":null,\"saveuser\":null,\"savedatetime\":null,\"companylist\":[],\"appendage\":[{\"Id\":31606,\"AppendageCode\":2008014,\"ProjectId\":5248,\"Area\":null,\"P_AName\":null,\"IsInner\":true,\"CityId\":6,\"ClassCode\":0,\"Distance\":null,\"Address\":null,\"X\":null,\"Y\":null,\"Uid\":null}],\"buildinglist\":[]}"}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.FormatException: 该字符串未被识别为有效的 DateTime。
+   在 FxtCenterService.Actualize.DataController.ImportProjectAndBuildingAndHouse(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\ProjectController.cs:行号 2234
+2017-02-16 17:10:03
+错误编号:2017021617100394X8eebda932a
+Message:调用的目标发生了异常。
+Message2:importprojectdata执行时间：280693ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"functionname":"importprojectdata","appid":1003104,"apppwd":"2041153006","signname":"4106DEF5-A760-4CD7-A6B2-8250420FCB18","time":"20170109140115","code":"54d5a51d369a4bcee551dc10def4300a"}
+info:{"uinfo":{"username":"suny@fxt","token":""},"appinfo":{"splatype":"win","platVer":"2007","stype":"","version":"4.26","vcode":"1","systypecode":"1003034","channel":"360"},"funinfo":{"data":"{\"x\":null,\"y\":null,\"projectname\":\"1111\",\"cityid\":6,\"areaid\":70,\"address\":\"\",\"enddate\":null,\"east\":\"\",\"west\":\"\",\"south\":\"\",\"north\":\"\",\"parkingnumber\":null,\"detail\":\"\",\"fxtprojectid\":null,\"fxtcompanyid\":25,\"valid\":1,\"othername\":\"\",\"subareaid\":0,\"purposecode\":1001001,\"rightcode\":0,\"buildingnum\":null,\"totalnum\":null,\"managerquality\":0,\"creator\":\"tanql@fxt\",\"updatedatetime\":null,\"saveuser\":null,\"savedatetime\":null,\"companylist\":[],\"appendage\":[{\"Id\":31606,\"AppendageCode\":2008014,\"ProjectId\":5248,\"Area\":null,\"P_AName\":null,\"IsInner\":true,\"CityId\":6,\"ClassCode\":0,\"Distance\":null,\"Address\":null,\"X\":null,\"Y\":null,\"Uid\":null}],\"buildinglist\":[]}"}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.FormatException: 该字符串未被识别为有效的 DateTime。
+   在 FxtCenterService.Actualize.DataController.ImportProjectAndBuildingAndHouse(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\ProjectController.cs:行号 2234
+2017-02-16 17:12:38
+错误编号:2017021617123830X2b04131ab9
+Message:调用的目标发生了异常。
+Message2:importprojectdata执行时间：117763ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"functionname":"importprojectdata","appid":1003104,"apppwd":"2041153006","signname":"4106DEF5-A760-4CD7-A6B2-8250420FCB18","time":"20170109140115","code":"54d5a51d369a4bcee551dc10def4300a"}
+info:{"uinfo":{"username":"suny@fxt","token":""},"appinfo":{"splatype":"win","platVer":"2007","stype":"","version":"4.26","vcode":"1","systypecode":"1003034","channel":"360"},"funinfo":{"data":"{\"x\":null,\"y\":null,\"projectname\":\"1111\",\"cityid\":6,\"areaid\":70,\"address\":\"\",\"enddate\":null,\"east\":\"\",\"west\":\"\",\"south\":\"\",\"north\":\"\",\"parkingnumber\":null,\"detail\":\"\",\"fxtprojectid\":null,\"fxtcompanyid\":25,\"valid\":1,\"othername\":\"\",\"subareaid\":0,\"purposecode\":1001001,\"rightcode\":0,\"buildingnum\":null,\"totalnum\":null,\"managerquality\":0,\"creator\":\"tanql@fxt\",\"updatedatetime\":null,\"saveuser\":null,\"savedatetime\":null,\"companylist\":[],\"appendage\":[{\"Id\":31606,\"AppendageCode\":2008014,\"ProjectId\":5248,\"Area\":null,\"P_AName\":null,\"IsInner\":true,\"CityId\":6,\"ClassCode\":0,\"Distance\":null,\"Address\":null,\"X\":null,\"Y\":null,\"Uid\":null}],\"buildinglist\":[]}"}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.FormatException: 该字符串未被识别为有效的 DateTime。
+   在 FxtCenterService.Actualize.DataController.ImportProjectAndBuildingAndHouse(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\ProjectController.cs:行号 2234

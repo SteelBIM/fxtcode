@@ -1,0 +1,240 @@
+2017-01-09 09:39:22,872 [10] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 09:39:24,903 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 09:40:14,186 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 09:40:14,423 [9] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 09:40:45,514 [7] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 09:41:04,738 [22] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 10:46:08,930 [8] ERROR CASLog [(null)] <(null)> - Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 FxtDataAcquisition.Common.JsonHelp.ParseJSONjss[T](String str) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Common\JsonHelp.cs:行号 205
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.GetDataCenterResult(String jsonStr) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 123
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 178
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProvinceApi.GetProvinceAll(String username, String signname, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProvinceApi.cs:行号 24
+   在 FxtDataAcquisition.Application.Services.CityService.GetProvinceCityListBy(String userName, String signName, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\CityService.cs:行号 32
+   在 FxtDataAcquisition.Web.Controllers.HomeController.Index(LoginUser userInfo) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\HomeController.cs:行号 39
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 10:46:08,935 [9] ERROR CASLog [(null)] <(null)> - Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 FxtDataAcquisition.Common.JsonHelp.ParseJSONjss[T](String str) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Common\JsonHelp.cs:行号 205
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.GetDataCenterResult(String jsonStr) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 123
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 178
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProvinceApi.GetProvinceAll(String username, String signname, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProvinceApi.cs:行号 24
+   在 FxtDataAcquisition.Application.Services.CityService.GetProvinceCityListBy(String userName, String signName, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\CityService.cs:行号 32
+   在 FxtDataAcquisition.Web.Controllers.HomeController.Index(LoginUser userInfo) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\HomeController.cs:行号 39
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 10:46:19,943 [10] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入省份缓存
+2017-01-09 10:46:28,877 [10] ERROR CASLog [(null)] <(null)> - Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 FxtDataAcquisition.Common.JsonHelp.ParseJSONjss[T](String str) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Common\JsonHelp.cs:行号 205
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.GetDataCenterResult(String jsonStr) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 123
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 178
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProvinceApi.GetProvinceAll(String username, String signname, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProvinceApi.cs:行号 24
+   在 FxtDataAcquisition.Application.Services.CityService.GetProvinceCityListBy(String userName, String signName, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\CityService.cs:行号 32
+   在 FxtDataAcquisition.Web.Controllers.HomeController.Index(LoginUser userInfo) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\HomeController.cs:行号 39
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 10:47:00,208 [8] ERROR CASLog [(null)] <(null)> - Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 FxtDataAcquisition.Common.JsonHelp.ParseJSONjss[T](String str) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Common\JsonHelp.cs:行号 205
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.GetDataCenterResult(String jsonStr) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 123
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 178
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProvinceApi.GetProvinceAll(String username, String signname, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProvinceApi.cs:行号 24
+   在 FxtDataAcquisition.Application.Services.CityService.GetProvinceCityListBy(String userName, String signName, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\CityService.cs:行号 32
+   在 FxtDataAcquisition.Web.Controllers.HomeController.Index(LoginUser userInfo) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\HomeController.cs:行号 39
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 10:48:10,800 [6] ERROR CASLog [(null)] <(null)> - Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 FxtDataAcquisition.Common.JsonHelp.ParseJSONjss[T](String str) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Common\JsonHelp.cs:行号 205
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.GetDataCenterResult(String jsonStr) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 123
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 178
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProvinceApi.GetProvinceAll(String username, String signname, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProvinceApi.cs:行号 24
+   在 FxtDataAcquisition.Application.Services.CityService.GetProvinceCityListBy(String userName, String signName, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\CityService.cs:行号 32
+   在 FxtDataAcquisition.Web.Controllers.HomeController.Index(LoginUser userInfo) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\HomeController.cs:行号 39
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-09 11:32:32,119 [8] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 11:32:35,928 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 11:32:51,405 [14] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 11:32:51,754 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 11:32:57,901 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 11:32:58,109 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 11:36:03,265 [7] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 11:36:06,436 [15] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:47:21,128 [7] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 13:47:25,054 [14] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:47:25,679 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:47:25,936 [6] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:47:36,323 [14] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:49:40,974 [8] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 13:50:54,273 [14] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:50:54,865 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:51:52,325 [18] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:58:26,225 [45] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:58:26,387 [47] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:59:13,301 [27] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 13:59:50,880 [27] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 14:00:32,659 [17] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 17:57:30,316 [8] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 17:57:40,322 [5] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 17:57:47,555 [10] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 17:58:26,944 [10] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:01:27,362 [10] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:02:11,821 [6] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:04:05,792 [8] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:04:12,587 [8] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:04:23,244 [7] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:05:20,465 [8] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:09:56,058 [7] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:10:01,304 [8] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:11:49,655 [6] INFO  CASLog [(null)] <(null)> - 用户名或密码错误
+2017-01-09 18:49:24,897 [8] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-09 18:49:28,000 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 18:49:44,527 [18] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 18:49:45,008 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-09 18:55:52,274 [5] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()

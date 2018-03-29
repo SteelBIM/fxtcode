@@ -1,0 +1,18 @@
+2016-12-28 12:00:33.4683 
+Url：IndustryProjectExcelUploadTask
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“土地起始日期”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 cityId, Int32 fxtCompanyId, List`1& listTrue, DataTable& dtError, DataTable dt) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\IndustryProject.cs:行号 210
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.IndustryProjectUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\IndustryProject.cs:行号 45
+Source：System.Data
+StackTrace：System.ArgumentException: 列“土地起始日期”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 cityId, Int32 fxtCompanyId, List`1& listTrue, DataTable& dtError, DataTable dt) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\IndustryProject.cs:行号 210
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.IndustryProjectUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\IndustryProject.cs:行号 45
+

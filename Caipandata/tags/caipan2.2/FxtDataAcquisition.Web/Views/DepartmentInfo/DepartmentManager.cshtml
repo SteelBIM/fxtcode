@@ -1,0 +1,132 @@
+﻿@using FxtDataAcquisition.Application.Services
+@{
+    ViewBag.Title = "DepartmentManager";
+    Layout = null;
+
+    List<int> functionCodes = ViewBag.NowFunctionCodes as List<int>;
+}
+
+<link type="text/css" rel="Stylesheet" href="/Css/DepartmentInfo/DepartmentManager.css" />
+<script type="text/javascript" src="/Scripts/DepartmentInfo/DepartmentManager.js?s=ssvfg"></script>
+<script type="text/javascript">
+    $(function () {
+        //SetLeftMenu("6_1");
+    });
+</script>
+<div class="page-header" style="display:none">
+    <h1>
+        Tables
+        <small>
+            <i class="icon-double-angle-right"></i>
+            Static &amp; Dynamic Tables
+        </small>
+    </h1>
+</div>
+<!--整块-->
+<div class="row">
+    <!--整块-->
+    <div class="col-xs-12">
+        <!--第一个表格-->
+        <div class="row" id="departmentPanel">
+            <div class="col-xs-12">
+                <div class="col-xs-6 col-sm-4 diy_col_left">
+                    @if (functionCodes.Contains(SYSCodeManager.FunOperCode_4))
+                    {
+                        <button class="btn btn-xs btn-primary diy_btn" id="btnAdd">
+                            添加小组
+                            <i class="ace-icon fa fa-plus icon-on-right bigger-110"></i>
+                        </button>
+                    }
+                    @if (functionCodes.Contains(SYSCodeManager.FunOperCode_9))
+                    {
+                        <button class="btn btn-xs btn-danger diy_btn" id="btnDelete">
+                            删除
+                            <i class="ace-icon fa fa-times icon-on-right bigger-110"></i>
+                        </button>
+                    }
+                </div>
+                <div class="col-xs-6 col-sm-8 diy_col_right">
+                    <input type="text" class="search-query" id="txtKeyword" placeholder="关键字">
+                    <button type="button" class="btn btn-inverse btn-xs diy_btn" id="btnSearch">
+                        搜索
+                        <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                    </button>
+                </div>
+            </div>
+            @*<div class="col-xs-12" style="text-align:right;">
+                    <input type="text" class="search-query" id="txtKeyword" placeholder="关键字">
+                    <button type="button" class="btn btn-inverse btn-xs diy_search_btn" id="btnSearch">
+                        搜索
+                        <i class="icon-search icon-on-right bigger-110"></i>
+                    </button>
+                </div>*@
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" id="cbAll">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>公司名称</th>
+                                <th>小组名称</th>
+
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="departmentRowList">
+                            <tr id="departmentRow" style="display:none;">
+                                <td class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace cb_select">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td class="txt_companyname">@ViewBag.CompanyName</td>
+                                <td class="txt_departmentname"></td>
+                                <td>
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                        <button class="btn btn-xs btn-info btn_edit" data-departmentid="">
+                                            <i class="ace-icon fa fa-edit bigger-120"></i>
+                                        </button>
+                                        <button class="btn btn-xs btn-danger btn_delete" data-departmentid="">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /span -->
+            <div class="col-xs-12">
+                <input type="hidden" value="" id="hdDepartmentCount" />
+                <ul id="example" data-count=""></ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*当前用户所在组*@
+<input type="hidden" id="hdNowDepartmentId" value="@ViewBag.NowDepartmentId" />
+@*存储当前用户所拥有的权限*@
+<div style="display:none;" id="divFunctionCodes">
+    @foreach (int code in ViewBag.NowFunctionCodes)
+    {
+        <span class="functioncode functioncode_@code">@code</span>
+    }
+</div>
+<input type="hidden" id="hdCompanyName" value="@ViewBag.CompanyName" />
+<input type="hidden" id="hdFunctionCode_DeleteMy" value="@SYSCodeManager.FunOperCode_8" />
+<input type="hidden" id="hdFunctionCode_DeleteAll" value="@SYSCodeManager.FunOperCode_9" />
+<input type="hidden" id="hdFunctionCode_UpdateMy" value="@SYSCodeManager.FunOperCode_5" />
+<input type="hidden" id="hdFunctionCode_UpdateAll" value="@SYSCodeManager.FunOperCode_7" />
+<script type="text/javascript">
+        var scripts = [null, null]
+        ace.load_ajax_scripts(scripts, function() {
+
+        });
+    </script>

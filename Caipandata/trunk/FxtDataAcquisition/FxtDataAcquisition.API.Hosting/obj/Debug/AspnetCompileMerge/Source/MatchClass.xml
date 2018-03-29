@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Match>
+  <Class Key="runflats" Library="FxtDataAcquisition.API.Service" ClassName="FxtDataAcquisition.API.Service.FxtRunFlatsActualize.FxtRunFlats">
+    <Method Key="test" MethodName="Test" Remark=""  />
+    <Method Key="test2" MethodName="Test2" Remark=""  />
+    <Method Key="setallotsurveyingstatus" MethodName="SetAllotSurveyingStatus" Remark="AllotFlow_Set_设置任务为查勘中*" />
+    <Method Key="setcancelsurvey" MethodName="SetCancelSurvey" Remark="AllotFlow_Set_设置撤销查勘中的任务" />
+    <Method Key="submitallotsurveydata" MethodName="SubmitAllotSurveyData" Remark="Project_Add_提交查勘数据(楼盘,楼栋,房号)" />
+    <Method Key="getallotsurveyproject" MethodName="GetAllotSurveyProject" Remark="Project_Get_获取未查勘任务楼盘*" />
+    <Method Key="getallotsurveyoverproject" MethodName="GetAllotSurveyOverProject" Remark="Project_Get_获取已查勘任务楼盘" />
+    <Method Key="getallotsurveyingproject" MethodName="GetAllotSurveyingProject" Remark="Project_Get_获取查勘中任务楼盘*" />
+    <Method Key="getprojectbyprojectid" MethodName="GetProjectByProjectId" Remark="Project_Get_根据楼盘ID获取楼盘详细信息*" />
+    <Method Key="getlnkpphotobyprojectid" MethodName="GetLNKPPhotoByProjectId" Remark="Project_Get_根据楼盘ID获取楼盘照片信息" />
+    <Method Key="getbuildingdetailedbyprojectid" MethodName="GetBuildingDetailedByProjectId" Remark="Building_Get_根据楼盘ID获取楼栋详细列表*" />
+    <Method Key="getbuildingbybuildingid" MethodName="GetBuildingByBuildingId" Remark="Building_Get_根据楼栋ID获取楼栋信息*" />
+    <Method Key="gethousebybuildingid" MethodName="GetHouseByBuildingId" Remark="House_Get_根据楼栋ID获取房号列表*" />
+    <Method Key="getappendagecodelist" MethodName="GetAppendageCodeList" Remark="Code_Get_获取配套类型CODE选项*" />
+    <Method Key="getstructurecodelist" MethodName="GetStructureCodeList" Remark="Code_Get_获取建筑结构CODE选项*" />
+    <Method Key="getbuildinglocationcodelist" MethodName="GetBuildingLocationCodeList" Remark="Code_Get_获取楼栋位置CODE选项*" />
+    <Method Key="getfrontcodelist" MethodName="GetFrontCodeList" Remark="Code_Get_获取朝向CODE选项*" />
+    <Method Key="gethousetypecodelist" MethodName="GetHouseTypeCodeList" Remark="Code_Get_获取户型CODE选项*" />
+    <Method Key="getclasscodelist" MethodName="GetClassCodeList" Remark="Code_Get_获取等级CODE选项*" />
+    <Method Key="getcitybyname" MethodName="GetCityByName" Remark="Code_Get_获取城市信息*" />
+    <Method Key="getareabycityid" MethodName="GetAreaByCityId" Remark="Code_Get_获取行政区列表*" />
+    <Method Key="getareabyareaid" MethodName="GetAreaByAreaId" Remark="Code_Get_根据ID获取行政区信息*" />
+    <Method Key="getareabyareaids" MethodName="GetAreaByAreaIds" Remark="Code_Get_根据多个ID获取行政区列表*" />
+    <Method Key="getsubareabyareaid" MethodName="GetSubAreaByAreaId" Remark="Code_Get_获取片区列表*" />
+    <Method Key="getbasedata" MethodName="GetBaseData" Remark="Get_获取所有基础数据*" />
+    <Method Key="getlnkpphotoseries" MethodName="GetLNKPPhotoSeries" Remark="Upload_断点续传_获取上次已经上传照片大小" />
+    <Method Key="uploadphotoseries" MethodName="UpLoadPhotoSeries" Remark="Upload_断点续传_上传文件" />
+    <Method Key="setuploadphotoover" MethodName="SetUpLoadPhotoOver" Remark="Upload_断点续传_设置全部图片上传完成" />
+    <Method Key="getpurposecodelist" MethodName="GetPurposeCodeList" Remark="获取用途(楼盘、楼栋)Code选项" />
+    <Method Key="getsightcodelist" MethodName="GetSightCodeList" Remark="获取景观Code选项" />
+    <Method Key="getnoisecodelist" MethodName="GetNoiseCodeList" Remark="获取噪音Code选项" />
+    <Method Key="gethousepurposecodelist" MethodName="GetHousePurposeCodeList" Remark="获取房号用途Code选项" />
+    <Method Key="gethousestructurecodelist" MethodName="GetHouseStructureCodeList" Remark="获取户型结构Code选项" />
+    <Method Key="getvdcodeelist" MethodName="GetVDCodeeList" Remark="获取通风采光Code选项" />
+
+    <Method Key="getprovincecitylist" MethodName="GetProvinceCityList" Remark="获取当前公司开通产品城市（省份）列表" />
+    <Method Key="setcanceltosurvey" MethodName="SetCancelToSurvey" Remark="设置撤销“待查勘”的任务" />
+    <Method Key="addallot" MethodName="AddAllot" Remark="新建任务" />
+    <Method Key="getfunction" MethodName="GetFunction" Remark="获取权限" />
+    <Method Key="uploadusericon" MethodName="UpLoadUserIcon" Remark="上传用户头像" />
+    <Method Key="getusericon" MethodName="GetUserIcon" Remark="获取用户头像" />
+    <Method Key="setfeedback" MethodName="SetFeedback" Remark="提交意见反馈" />
+    <Method Key="getfeedbacklist" MethodName="GetFeedbackList" Remark="获取意见反馈列表" />
+    <Method Key="setupLoadphotodelete" MethodName="SetUpLoadPhotoDelete" Remark="获取意见反馈列表" />
+    <Method Key="getallotsurveyprojectnearby" MethodName="GetAllotSurveyProjectNearby" Remark="获取附近楼盘列表" />
+    <Method Key="setallotsurveyingstatustwo" MethodName="SetAllotSurveyingStatusByToDistribution" Remark="从未分配直接设置任务到查勘中" />
+
+    <Method Key="gettempletdefult" MethodName="GetTempletDefult" Remark="获取默认模板" />
+
+  </Class>
+</Match>

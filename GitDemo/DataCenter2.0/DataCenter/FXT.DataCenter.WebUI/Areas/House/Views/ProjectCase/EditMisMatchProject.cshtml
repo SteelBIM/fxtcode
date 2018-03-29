@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @* $('#destName').autocomplete('@Url.Action("ProjectSelect")', {
+                max: 12, //列表里的条目数
+                minChars: 0, //自动完成激活之前填入的最小字符
+                width: 218, //提示的宽度，溢出隐藏
+                scrollHeight: 300, //提示的高度，溢出显示滚动条
+                matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+                autoFill: false, //自动填充
+                parse: function(data) {
+                    return $.map(eval(data), function(row) {
+                        return {
+                            data: row,
+                            value: row.name, //显示结果
+                            result: row.id //填充结果
+                        }
+                    });
+                },
+                formatItem: function(row, i, max) {
+                    return row.name;
+                },
+                formatMatch: function(row, i, max) {
+                    return row.name;
+                },
+                formatResult: function(row) {
+                    return row.name;
+                }
+            }).result(function(event, row, formatted) {
+                var projectname = row.name.split('|')[0];
+                $('#destName').val(projectname);
+                $("#destId").val(row.id);
+            });*@
+
+            $("#destId").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("ProjectSelect")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    return data.text;
+                },
+            });
+            $(".select2-container").width(280); //重置select2宽度
+
+            $("#destId").bind("change", function () {
+                var temp = $(".select2-choice>span").text();
+                $("#destName").val(temp);
+            });
+
+            $("#btnSubmit").click(function () {
+                var destId = $.trim($("#destId").select2("val"));
+                if (destId == "") {
+                    alert("系统楼盘名不能为空！");
+                    return false;
+                }
+            });
+
+            $("#btnAddToWait").click(function () {
+                $.post('@Url.Action("AddToWaitProject")', { taskId: $("#taskId").val(), projectName: $("#sourceName").val() }, function (data) {
+                    alert(data);
+                });
+            });
+        });
+    </script>
+}
+
+<div class="portlet-body form-horizontal form-bordered form-row-stripped">
+    <div class="row-fluid">
+        <div class="control-group">
+            <label class="control-label">
+                行政区：</label>
+            <div class="controls">
+                <input id="areaName" name="areaName" type="text" value='@ViewBag.areaname' readonly="readonly" style="width: 130px;" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                <a style="color: Red;">*</a>案例楼盘名：</label>
+            <div class="controls">
+                <input id="sourceName" name="sourceName" type="text" value='@ViewBag.projectname' readonly="readonly" style="width: 130px;" />
+                &nbsp; <a id="btnAddToWait" class="btn">添加到待建楼盘</a>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                <a style="color: Red;">*</a>系统楼盘名：</label>
+            <div class="controls">
+                <input id="taskId" name="taskId" type="hidden" value="@ViewBag.taskId" />
+                <input id="destId" name="destId" type="hidden" />
+                <input id="destName" name="destName" type="hidden" />
+            </div>
+        </div>
+    </div>
+</div>
+

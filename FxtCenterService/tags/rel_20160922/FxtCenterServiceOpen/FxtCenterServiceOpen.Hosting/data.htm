@@ -1,0 +1,717 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Language" content="utf-8" />
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+
+        .maintable {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+
+            .maintable th {
+                background: #069;
+                color: #fff;
+                line-height: 30px;
+                font-size: 14px;
+            }
+
+                .maintable th a {
+                    width: 100%;
+                    display: block;
+                    color: #fff;
+                    font-weight: normal;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .maintable td {
+                background: #fff;
+                line-height: 20px;
+            }
+
+                .maintable td.left {
+                    width: 220px;
+                    background: #f9f9f9;
+                }
+
+        .tbparams {
+            background: #ccc;
+            width: 100%;
+        }
+
+            .tbparams th {
+                background: #eee;
+                color: #000;
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .tbparams td {
+                background: #fff;
+                padding: 3px;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+            ul.params, div.content {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+
+                ul.params li {
+                    border-bottom: 1px solid #ccc;
+                    line-height: 25px;
+                    margin: 1px;
+                }
+
+            ul.index li {
+                padding: 10px;
+                line-height: 25px;
+                color: #069;
+            }
+
+        div.content {
+            padding: 5px;
+        }
+
+        #apilist {
+            margin: 5px;
+        }
+
+            #apilist li {
+                cursor: default;
+                padding: 3px;
+            }
+
+                #apilist li.over {
+                    background: #ccc;
+                }
+
+                #apilist li.active {
+                    background: #069;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+        #apicontent {
+            margin: 5px;
+        }
+
+            #apicontent li {
+                cursor: default;
+                word-break: break-all;
+            }
+
+                #apicontent li strong {
+                    display: block;
+                    background: #eee;
+                    line-height: 25px;
+                    text-indent: 10px;
+                    border-left: 8px solid #ccc;
+                }
+
+        ul.ulapi li {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+
+        #apicontent li.desc {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+
+        #apicontent span.mobile {
+            color: #c00;
+        }
+
+        #apicontent li.step {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        font.red {
+            color: #c00;
+        }
+
+        font.memo {
+            color: #063;
+        }
+
+        #apicontent li label {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="js/jquery-1.8.2-min.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script src="js/date.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var RootRul = top.location.href;
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = []
+
+        //api
+        var api = [
+                /************************************************分割线************************************************/{
+                    name: "获取楼盘列表", url: "http://out.fxtchina.com/datacenter.out/dc/active",
+                    hover: true,
+                    format: "json",
+                    method: "POST",
+                    remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                    params: [
+                     { name: "sinfo", value: "json", desc: "属性", must: true },
+                     { name: "appid", value: "int32", desc: "应用编号，code或数字", must: true },
+                     { name: "apppwd", value: "string", desc: "应用密码,md5密文", must: true },
+                     { name: "signname", value: "string", desc: "公司表示名", must: true },
+                     { name: "time", value: "string", desc: "时间，格式yyyyMMddHHmmss", must: true },
+                     { name: "functionname", value: "string", desc: "功能名", must: true },
+                     { name: "code", value: "string", desc: "将上面的参数排序(升序),拼接成字符串(md5str),用appkey使用MD5加密得到", must: true },
+                     { name: "uinfo", value: "json", desc: "属性", must: true },
+                     { name: "username", value: "string", desc: "平台类型，如ios、android、ie等", must: false },
+                     { name: "token", value: "string", desc: "平台类型版本", must: false },
+                     { name: "appinfo", value: "json", desc: "属性", must: true },
+                     { name: "splatype", value: "string", desc: "平台类型，如ios、android、ie,win等", must: true },
+                     { name: "platVer", value: "string", desc: "平台类型版本", must: true },
+                     { name: "stype", value: "string", desc: "产品简称，如云查勘（yck）", must: true },
+                     { name: "version", value: "string", desc: "产品类型版本名", must: false },
+                     { name: "vcode", value: "string", desc: "产品类型版本号", must: false },
+                     { name: "systypecode", value: "int", desc: "产品类型编号", must: true },
+                     { name: "channel", value: "string", desc: "产品发布渠道", must: false },
+                     { name: "funinfo", value: "json", desc: "属性", must: true },
+                     { name: "pageindex", value: "int", desc: "页码", must: true },
+                     { name: "cityid", value: "int", desc: "城市ID", must: true },
+                     { name: "key", value: "int", desc: "楼盘关键字", must: true },
+                     { name: "pagerecords", value: "int", desc: "一页显示条数", must: true }
+                    ],
+                    output: {
+                        "returntype": 1, "returntext": "", data: [{ projectid: "1E6593D9FC7070E1", projectname: "广璐大厦[渝中区]", "isevalue": 1, "recordcount": 3028 }, { "projectid": "7D98F453F48301D5", "projectname": "嘉德大厦[渝中区]", "isevalue": 1, "recordcount": 3028 }], debug: null
+                    },
+                    outexplain: [
+                     { name: "returntype", value: "int32", desc: "状态：1表示成功；-1表示失败：6无城市权限：7流量溢出", must: true },
+                     { name: "returntext", value: "string", desc: "状态说明", must: true },
+                     { name: "debug", value: "string", desc: "调试信息", must: false },
+                     { name: "data", value: "json", desc: "返回数据集", must: false },
+                     { name: "projectid", value: "int32", desc: "楼盘ID（加密）", must: true },
+                     { name: "projectname", value: "string", desc: "楼盘名称", must: true },
+                     { name: "isevalue", value: "string", desc: "楼盘是否可估", must: true },
+                     { name: "recordcount", value: "string", desc: "与关键字匹配的楼盘总数", must: true }
+
+                    ],
+                    demo: {
+                        "sinfo": {
+                            "functionname": "splistforcasout",
+                            "appid": "0",
+                            "apppwd": "555558b460dd56111b8af97dffd4ecf",
+                            "signname": "fxtXXXX",
+                            "time": "20120326191744",
+                            "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"
+
+                        },
+                        "info": {
+                            "uinfo": {
+                                "username": "",
+                                "token": ""
+                            },
+                            "appinfo": {
+                                "splatype": "win",
+                                "stype": "gjb",
+                                "version": "1.0",
+                                "vcode": "1",
+                                "systypecode": "1003301",
+                                "channel": "360"
+                            },
+                            "funinfo": {
+                                "pageindex": "1",
+                                "cityid": "4",
+                                "key": "x",
+                                "pagerecords": "15"
+                            }
+                        }
+                    }
+                },
+                 /************************************************分割线************************************************/
+                  {
+                      name: "获取楼栋下拉列表", url: "http://out.fxtchina.com/datacenter.out/dc/active",
+                      hover: false,
+                      format: "json",
+                      method: "POST",
+                      remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                      params: [
+                          { name: "sinfo", value: "json", desc: "属性", must: true },
+                          { name: "functionname", value: "string", desc: "功能名", must: true },
+                          { name: "funinfo", value: "json", desc: "属性", must: true },
+                          { name: "cityid", value: "int", desc: "城市ID", must: true },
+                          { name: "projectid", value: "int", desc: "楼盘id（加密）", must: true },
+                          { name: "key", value: "string", desc: "楼栋关键字", must: false },
+                          { name: "pageindex", value: "int", desc: "当前页", must: false },
+                          { name: "pagerecords", value: "int", desc: "页大小", must: false }
+                      ],
+                      output: {
+                          "returntype": 1,
+                          "returntext": "",
+                          data: "[{\"buildingid\":\"2DA17528323D5DC2\",\"buildingname\":\"万科彩园\",\"isevalue\":1,\"weight\":1.0000,\"recordcount\":0,\"totalfloor\":31,\"projectid\":\"60EB5189548D3B3F\",\"unitsnumber\":0,\"totalnumber\":0}]",
+                          debug: null
+                      },
+                      outexplain: [
+                         { name: "data", value: "json", desc: "返回数据集", must: false },
+                          { name: "Building", value: "object", desc: "多个楼栋对象", must: true }
+                      ],
+                      demo: {
+                          "sinfo": {
+                              "functionname": "buildinglistforcasout",
+                              "appid": "0",
+                              "apppwd": "555558b460dd56111b8af97dffd4ecf",
+                              "signname": "fxtXXXX",
+                              "time": "20120326191744",
+                              "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"
+
+                          },
+                          "info": {
+                              "uinfo": {
+                                  "username": "",
+                                  "token": ""
+                              },
+                              "appinfo": {
+                                  "splatype": "win",
+                                  "stype": "gjb",
+                                  "version": "1.0",
+                                  "vcode": "1",
+                                  "systypecode": "1003301",
+                                  "channel": "360"
+                              },
+                              "funinfo": {
+                                  "projectid": "1E6593D9FC7070E1",
+                                  "cityid": "6",
+                                  "key": "",
+                                  "pageindex": "",
+                                  "pagerecords": ""
+                              }
+                          }
+                      }
+                  },
+                  /************************************************分割线************************************************/
+                  {
+                      name: "获取楼栋楼层列表", url: "http://out.fxtchina.com/datacenter.out/dc/active",
+                      hover: false,
+                      format: "json",
+                      method: "POST",
+                      remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                      params: [
+                          { name: "sinfo", value: "json", desc: "属性", must: true },
+                          { name: "functionname", value: "string", desc: "功能名", must: true },
+                          { name: "funinfo", value: "json", desc: "属性", must: true },
+                          { name: "buildingid", value: "int", desc: "楼栋ID（加密）", must: true },
+                          { name: "cityid", value: "int", desc: "城市ID", must: true },
+                          { name: "key", value: "int", desc: "楼层关键字", must: false },
+                          { name: "pageindex", value: "int", desc: "当前页", must: false },
+                          { name: "pagerecords", value: "int", desc: "页大小", must: false },
+                          { name: "sortname", value: "int", desc: "排序列名", must: false },
+                          { name: "sortorder", value: "int", desc: "倒序、升序", must: false }
+                      ],
+                      output: {
+                          "returntype": 1,
+                          "returntext": "",
+                          data: "[{\"floorno\":2,\"housecnt\":13}",
+                          debug: null
+                      },
+                      outexplain: [
+                      //                     { name: "data", value: "json", desc: "返回数据集", must: false },
+                      //                      { name: "Building", value: "object", desc: "多个楼栋对象", must: true }
+                      ],
+                      demo: {
+                          "sinfo": {
+                              "functionname": "housefloorlistforcasout",
+                              "appid": "0",
+                              "apppwd": "555558b460dd56111b8af97dffd4ecf",
+                              "signname": "fxtXXXX",
+                              "time": "20120326191744",
+                              "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"
+
+                          },
+                          "info": {
+                              "uinfo": {
+                                  "username": "",
+                                  "token": ""
+                              },
+                              "appinfo": {
+                                  "splatype": "win",
+                                  "stype": "gjb",
+                                  "version": "1.0",
+                                  "vcode": "1",
+                                  "systypecode": "1003301",
+                                  "channel": "360"
+                              },
+                              "funinfo": {
+                                  "buildingid": "2DA17528323D5DC2",
+                                  "cityid": "6",
+                                  "key": "",
+                                  "pageindex": "",
+                                  "pagerecords": "",
+                                  "sortname": "",
+                                  "sortorder": ""
+                              }
+                          }
+                      }
+                  },
+                  /************************************************分割线************************************************/
+                  {
+                      name: "获取房号列表", url: "http://out.fxtchina.com/datacenter.out/dc/active",
+                      hover: false,
+                      format: "json",
+                      method: "POST",
+                      remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                      params: [
+                          { name: "sinfo", value: "json", desc: "属性", must: true },
+                          { name: "functionname", value: "string", desc: "功能名", must: true },
+                          { name: "funinfo", value: "json", desc: "属性", must: true },
+                          { name: "cityid", value: "int", desc: "城市ID", must: true },
+                          { name: "buildingid", value: "int", desc: "楼栋ID（加密）", must: true },
+                          { name: "floorno", value: "int", desc: "楼层号", must: true },
+                          { name: "key", value: "string", desc: "房号关键字", must: false },
+                          { name: "pageindex", value: "int", desc: "当前页", must: false },
+                          { name: "pagerecords", value: "int", desc: "页大小", must: false }
+                      ],
+                      output: {
+                          "returntype": 1,
+                          "returntext": "",
+                          data: "[{\"houseid\":\"A41199C5EB2F79DA89C548482129A685\",\"housename\":\"301\",\"buildarea\":58.00,\"isevalue\":1,\"weight\":8.0000,\"recordcount\":0}]",
+                          debug: null
+                      },
+                      outexplain: [
+                      //                     { name: "data", value: "json", desc: "返回数据集", must: false },
+                      //                      { name: "Building", value: "object", desc: "多个楼栋对象", must: true }
+                      ],
+                      demo: {
+                          "sinfo": {
+                              "functionname": "houselistforcasout",
+                              "appid": "0",
+                              "apppwd": "555558b460dd56111b8af97dffd4ecf",
+                              "signname": "fxtXXXX",
+                              "time": "20120326191744",
+                              "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"
+
+                          },
+                          "info": {
+                              "uinfo": {
+                                  "username": "",
+                                  "token": ""
+                              },
+                              "appinfo": {
+                                  "splatype": "win",
+                                  "stype": "gjb",
+                                  "version": "1.0",
+                                  "vcode": "1",
+                                  "systypecode": "1003301",
+                                  "channel": "360"
+                              },
+                              "funinfo": {
+                                  "buildingid": "2DA17528323D5DC2",
+                                  "floorno": "2",
+                                  "cityid": "6",
+                                  "key": "",
+                                  "pageindex": "",
+                                  "pagerecords": ""
+                              }
+                          }
+                      }
+                  },
+                   /************************************************自动估价，将不往数据中心插入自动估价记录************************************************/
+                  {
+                      name: "自动估价，将不往数据中心插入自动估价记录", url: "http://out.fxtchina.com/datacenter.out/dc/active",
+                      hover: false,
+                      format: "json",
+                      method: "POST",
+                      remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                      params: [
+                          { name: "sinfo", value: "json", desc: "属性", must: true },
+                          { name: "functionname", value: "string", desc: "功能名", must: true },
+                          { name: "funinfo", value: "json", desc: "属性", must: true },
+                          { name: "projectid", value: "int", desc: "楼盘id（加密）", must: true },
+                          { name: "buildingid", value: "int", desc: "楼栋ID（加密）", must: false },
+                          { name: "houseid", value: "int", desc: "房号ID（加密）", must: false },
+                          { name: "companyid", value: "int", desc: "用户公司id,包含评估机构id，客户公司id", must: false },
+                          { name: "systypecode", value: "int", desc: "当前系统类型", must: true },
+                          { name: "buildingarea", value: "decimal", desc: "面积", must: false },
+                          { name: "type", value: "int", desc: "0：返回自动估价案例详细，1：不返回自动估价案例详细", must: false }
+                      ],
+                      output: {
+                          "returntype": 1,
+                          "returntext": "",
+                          data: "[{\"unitprice\":19363.0,\"eprice\":19363.0,\"beprice\":0.0,\"buildingarea\":0.0,\"totalprice\":0.0,\"heprice\":0.0,\"avgprice\":19363.0,\"avgprice_other\":0.0,\"casecount\":3,\"casemax\":20092,\"casemin\":18381,\"startdate\":\"2015-12-29\",\"enddate\":\"2016-03-29\",\"caseavg\":19363,\"nominalfloor\":\"\",\"housetypecode\":0,\"purposecode\":0,\"buildingtypecode\":0,\"totalfloor\":0,\"builddate\":\"\",\"address\":\"南山区创业路南\",\"structurecode\":0,\"historyid\":0,\"pricetype\":0,\"projectname\":\"浪琴屿花园\",\"buildingname\":\"\",\"housename\":\"\",\"estimable\":0,\"avgpricelist\":null,\"plprice\":0.0,\"pmprice\":0.0,\"psprice\":0.0,\"phprice\":0.0,\"psvprice\":0.0,\"ppvprice\":0.0,\"pmbhprice\":0.0,\"recordcount\":0,\"CustomPrimaryKeyIdentify\":0,\"IsSetCustomerFields\":false}",
+                          debug: null
+                      },
+                      outexplain: [
+                          { name: "data", value: "json", desc: "返回数据集", must: false },
+                          { name: "project", value: "object", desc: "多个楼盘对象(默认15条)", must: true }
+                      ],
+                      demo: {
+                          "sinfo": {
+                              "functionname": "casautopriceforcasout",
+                              "appid": "0",
+                              "apppwd": "555558b460dd56111b8af97dffd4ecf",
+                              "signname": "fxtXXXX",
+                              "time": "20120326191744",
+                              "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"
+
+                          },
+                          "info": {
+                              "uinfo": {
+                                  "username": "",
+                                  "token": ""
+                              },
+                              "appinfo": {
+                                  "splatype": "win",
+                                  "stype": "gjb",
+                                  "version": "1.0",
+                                  "vcode": "1",
+                                  "systypecode": "1003301",
+                                  "channel": "360"
+                              },
+                              "funinfo": {
+                                  "projectid": "1E6593D9FC7070E1",
+                                  "buildingid": "2DA17528323D5DC2",
+                                  "houseid": "210D2885C691848B0C93B75597A60E4C",
+                                  "companyid": "",
+                                  "systypecode": "",
+                                  "buildingarea": ""
+                              }
+                          }
+                      }
+                  },
+        ];
+
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+                if (item.hover) { loaddata(li); li.addClass("active"); }
+            });
+            $("#apilist li").click(function () {
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                loaddata(this);
+            }).mouseenter(function () { $(this).addClass("over"); })
+                .mouseout(function () { $(this).removeClass("over"); });
+        });
+
+        function loaddata(args) {
+            var html = [];
+            var item = $(args).data("data");
+            html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+            html.push('<li><strong>sinfo</strong></li><li class="desc">房讯通使用的sinfo通过数据库返回；第三方使用配置文件.xml：数据中心Api.active</li>');
+            html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+            html.push('<li><strong>支持格式</strong></li><li class="desc">' + item.format + '</li>');
+            html.push('<li><strong>HTTP请求方式</strong></li><li class="desc">' + item.method + '</li>');
+            html.push('<li><strong style="color: red;">注意事项</strong></li><li class="desc">' + item.remark + '</li>');
+            html.push('<li><strong>请求参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            var params = [], explain = [];
+            function addparam(p) {
+                if (p.value == "json") {
+                    params.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+
+            }
+            //if (item.name.indexOf("登录") < 0) {
+            $.each(mustparams, function (i, p) {
+                addparam(p);
+            });
+            //}
+            $.each(item.params, function (i, p) {
+                addparam(p);
+            });
+            function addexplain(p) {
+                if (p.value == "json") {
+                    explain.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    explain.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            $.each(item.outexplain, function (i, p) {
+                addexplain(p);
+            });
+            html.push('<li><strong>请求参数说明</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+            html.push('<li><strong>返回结果</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            html.push('<li><strong>返回参数说明</strong></li><li class="desc"><ul class="params">' + explain.join("") + '</ul></li>');
+
+            $("#apicontent").html(html.join(""));
+        }
+        </script>
+        </head>
+        <body>
+            <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+                <!--<tr>
+                    <th colspan="2">
+                        <a href="http://api.fxtcn.com/wuc/usercenter.htm"> 用户中心API文档说明 V1.0</a>
+                    </th>
+                </tr>-->
+                <tr>
+                    <th colspan="2">
+                        <a style=" font-weight:bold;font-size:16px;" href="http://api.fxtcn.com/wdc/data.htm"> 数据中心API文档说明 V1.0</a>
+                    </th>
+                </tr>
+                <!--<tr>
+                    <th colspan="2">
+                        <a href="http://api.fxtcn.com/wsc/help.htm"> 云查勘API文档说明 V1.0</a>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <a href="http://api.fxtcn.com/wgjb/gjb.htm"> 估价宝API文档说明 V1.0</a>
+                    </th>
+                </tr>-->
+                <tr>
+                    <td valign="top" class="left">
+                        <ul id="apilist"></ul>
+                    </td>
+                    <td valign="top">
+                        <ul class="index">
+                            <li>
+                                <strong>json集属性说明：</strong>
+                                <p>
+        sinfo:存放的是安全验证信息<br />
+        uinfo:存放的是用户信息<br />
+        appinfo:设备与产品信息<br />
+        funinfo:功能参数<br />
+    </p>
+</li>
+<li>
+    本说明用于协助和指导相关开发人员熟悉和使用估价宝（OA）Api。点击左侧功能名称查看详细说明。<br />
+    <span style="color: red;">本API文档兼容浏览器：IE9、火狐、谷歌</span>
+</li>
+</ul>
+<ul id="apicontent"></ul>
+</td>
+</tr>
+</table>
+</body>
+</html>
+    </script>
+</head>
+</html></script>
+</head>
+</html></script>
+</head>
+</html></script>
+</head>
+</html>

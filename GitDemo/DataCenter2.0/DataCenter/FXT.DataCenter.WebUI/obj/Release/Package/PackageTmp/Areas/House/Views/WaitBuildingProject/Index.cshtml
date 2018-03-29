@@ -1,0 +1,98 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<Dat_WaitProject>
+@section StyleSheet{
+
+}
+@section  Javascript{
+    <script type="text/javascript">
+        var UrlExport = '@Url.Action("Export")';
+        $(document).ready(function() {
+
+            $(".page-sidebar > ul > li > a[href='/House/WaitBuildingProject/']").append("<span class='selected'></span>").parent().addClass("active");
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete")',
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            //导出
+            $("#btnExport").click(function() {
+                window.location.href = UrlExport + "?name=" + $.trim($("#Name").val());
+            });
+            //转正式楼盘
+            @*  $("#btnChange").click(function () {
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要转正的楼盘");
+                    return;
+                }
+                if (checks.length > 1) {
+                    alert("一次只能选择一条楼盘");
+                    return;
+                }
+                var id = checks.val();
+                location.href = '@Url.Action("Index", "Project")' + "?id=" + id;
+            });*@
+        });
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+
+}
+<div class="row-fluid">
+    <div class="span4" style="width: 36%;">
+        <a class="btn blue thickbox" title='添加待建楼盘' href="@Url.Action("Create")?TB_iframe=true&height=250&width=450">
+            <i class="icon-plus icon-white"></i>新增</a> <a class="btn red" id="delete" href="javascript:;">
+                <i class="icon-trash icon-white"></i>删除</a> <a class="btn thickbox" title="Excel导入" id="btnImport" href="@Url.Action("UploadFile")?TB_iframe=true&height=280&width=480">导 入</a> <a class="btn" id="btnExport" href="javascript:;">导 出</a>  
+    </div>
+    <div class="span8" style="width: 60%;">
+        @using (Html.BeginForm("Index", "WaitBuildingProject",FormMethod.Get))
+        { 
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn">
+                        搜索 <i class="icon-search"></i>
+                    </button>
+                </label>
+                <label>
+                    <span>楼盘名称：</span>
+                    @Html.TextBox("Name", null, new { @class = "m-wrap small" })
+                </label>
+            </div>
+        }
+    </div>
+</div>
+
+<div id="data">
+    @Html.Partial("_Projects", Model)
+</div>
+
+

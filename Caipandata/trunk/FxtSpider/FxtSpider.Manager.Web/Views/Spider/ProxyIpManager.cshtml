@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "抓取后台维护与管理_案例爬取管理_IP代理管理";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section bootstraplink{
+    <!--表格相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <!--表单相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/colorpicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/datepicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/bootstrap-wysihtml5.css" />
+}
+@section bootstrapscript{ 
+    <!--表单相关-->   
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-colorpicker.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-datepicker.js"></script> 
+    @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/masked.js"></script> 
+     @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/wysihtml5-0.3.0.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/jquery.peity.min.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-wysihtml5.js"></script>
+}
+@section link{
+  <link type="text/css" rel="Stylesheet" href="/Css/Spider/ProxyIpManager.css" />
+}
+@section script{ 
+    <script type="text/javascript" src="/Scripts/Spider/ProxyIpManager.js"></script>
+    <script type="text/javascript">
+        $(function () {
+    $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
+            SetLeftMenu("1_4");
+        });
+    </script>
+}
+<div class="container-fluid" style="height:90% !important; width:98%;"> 
+    <div class="row-fluid" style="height:95% !important;" id="dataPanel">
+        <div class="widget-box" id="tableWindow" style="overflow:auto !important; height:75%;">
+                <table class="table table-bordered data-table" id="tableIp">
+                    <thead >
+                        <tr role="row" class="table2">
+                            <th>网站</th>
+                            <th>IP</th>
+                            <th>创建时间</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ipList">
+                        <tr class="gradeX" id="ipInfo" style="display:none;" >
+                            <td class="center web">网站_数据</td>
+                            <td class="center ip">IP_数据</td>
+                            <td class="center datetime">创建时间_数据</td>
+                            <td class="center ipStatu">IP状态_数据</td>
+                        </tr>
+                    </tbody>              
+                </table>
+        </div>
+        <div class="widget-box widget-box2 _widget-box" style=" height:7%;" >
+            <div class="example_page" style="width:700px; float:left;">
+                <div id="example" data-count=""></div>
+            </div>
+            <span id="txtIpCount" style="display:none"></span>
+        </div>
+        <div class="widget-box  widget-box4 _widget-box" style=" height:17%;" >
+            <div style="float:left; width:90%;">
+                <span style="font-weight:bold;margin-top:5px; float:left; margin-left:14px;">新增IP:</span>
+                <span style="margin-top:5px; float:left; margin-left:5px;"><input type="text" class="nowtext" id="txtProxyIp" /></span>
+                <span style="font-weight:bold;margin-top:5px; float:left;">地区:</span>
+                <span style="margin-top:5px; float:left; margin-left:5px;"><input type="text" class="nowtext" id="txtProxyIpArea" /></span>
+                <span style="margin-top:5px; float:left;">
+                    <input type="button" value="确定" id="btnSubmit" class="btn btn-mini btn-primary" />
+                </span>
+            </div>
+            <div style="float:left; width:90%;">
+                <span style="font-weight:bold; float:left;">分配网站:</span>
+                <span style=" float:left; margin-left:5px;" id="selectWeb">
+                @foreach(FxtSpider.DAL.LinqToSql.网站表 web in ViewBag.WebList)
+                {
+                   @web.网站名称<input type="checkbox"  @((ViewBag.Default as int[]).Contains(web.ID)?"checked='checked'":"") value="@web.ID" class="cbWeb" />
+                 }
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

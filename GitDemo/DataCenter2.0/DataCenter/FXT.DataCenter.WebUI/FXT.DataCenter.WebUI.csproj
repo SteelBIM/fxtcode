@@ -1,0 +1,1582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34B9BF01-0491-46AA-A0E9-ACDAFCC4568F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.WebUI</RootNamespace>
+    <AssemblyName>FXT.DataCenter.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabases>true</PublishDatabases>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPPlus.4.0.3\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcPager, Version=2.0.0.1, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvcPager.MVC3.CN.2.0.0.1\lib\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.0.450\lib\net40\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Authorize\AuthorizeAreaRegistration.cs" />
+    <Compile Include="Areas\Authorize\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Authorize\Controllers\UserController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Business\BusinessAreaRegistration.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessAnalysisController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessBuildController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessCaseController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessCircleController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessFloorController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessHouseController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessStoreController.cs" />
+    <Compile Include="Areas\Business\Controllers\BusinessStreetController.cs" />
+    <Compile Include="Areas\Business\Controllers\DynamicPriceSurveyController.cs" />
+    <Compile Include="Areas\Business\Controllers\MarketAnalysisController.cs" />
+    <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
+    <Compile Include="Areas\Company\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\Company\Controllers\PublicPeiTaoController.cs" />
+    <Compile Include="Areas\House\Controllers\BuildController.cs" />
+    <Compile Include="Areas\House\Controllers\AnalysisController.cs" />
+    <Compile Include="Areas\House\Controllers\CityAvgPriceController.cs" />
+    <Compile Include="Areas\House\Controllers\HouseRatioController.cs" />
+    <Compile Include="Areas\House\Controllers\HouseController.cs" />
+    <Compile Include="Areas\House\Controllers\MarketAnalysisController.cs" />
+    <Compile Include="Areas\House\Controllers\ProjectCaseController.cs" />
+    <Compile Include="Areas\House\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\House\Controllers\ProjectOtherNameController.cs" />
+    <Compile Include="Areas\House\Controllers\ProjectSampleController.cs" />
+    <Compile Include="Areas\House\Controllers\PropertyAddressController.cs" />
+    <Compile Include="Areas\House\Controllers\WaitBuildingProjectController.cs" />
+    <Compile Include="Areas\House\HouseAreaRegistration.cs" />
+    <Compile Include="Areas\House\Models\ProjectCaseStastics.cs" />
+    <Compile Include="Areas\House\Models\ProjectStatics.cs" />
+    <Compile Include="Areas\Human\Controllers\HumanHouseController.cs" />
+    <Compile Include="Areas\Human\Controllers\HumanProjectController.cs" />
+    <Compile Include="Areas\Human\HumanAreaRegistration.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryAnalysisController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryBuildingController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryCaseController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryDynamicPriceController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryHouseController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryPeiTaoController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryProjectController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustrySubAreaController.cs" />
+    <Compile Include="Areas\Industry\Controllers\IndustryTenantController.cs" />
+    <Compile Include="Areas\Industry\Controllers\MarketAnalysisController.cs" />
+    <Compile Include="Areas\Industry\IndustryAreaRegistration.cs" />
+    <Compile Include="Areas\Industry\Models\IndustryHouse.cs" />
+    <Compile Include="Areas\Land\Controllers\AnalysisController.cs" />
+    <Compile Include="Areas\Land\Controllers\LandBasePriceController.cs" />
+    <Compile Include="Areas\Land\Controllers\LandCaseController.cs" />
+    <Compile Include="Areas\Land\Controllers\LandController.cs" />
+    <Compile Include="Areas\Land\Controllers\MarketAnalysisController.cs" />
+    <Compile Include="Areas\Land\LandAreaRegistration.cs" />
+    <Compile Include="Areas\Office\Controllers\MarketAnalysisController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeAnalysisController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeBuildingController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeCaseController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeDynamicPriceController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeHouseController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficePeitaoController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeProjectController.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeSubAreaController.cs" />
+    <Compile Include="Areas\Office\Models\OfficeHouse.cs" />
+    <Compile Include="Areas\Office\Controllers\OfficeTenantController.cs" />
+    <Compile Include="Areas\Office\OfficeAreaRegistration.cs" />
+    <Compile Include="Areas\Search\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Search\SearchAreaRegistration.cs" />
+    <Compile Include="Areas\VQPrice\Controllers\BuildingWeightRevisedController.cs" />
+    <Compile Include="Areas\VQPrice\Controllers\HouseWeightRevisedController.cs" />
+    <Compile Include="Areas\VQPrice\Controllers\ProjectAvgPriceController.cs" />
+    <Compile Include="Areas\VQPrice\Controllers\ProjectWeightRevisedController.cs" />
+    <Compile Include="Areas\VQPrice\VQPriceAreaRegistration.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\ModelBinder\JsonModelBinder.cs" />
+    <Compile Include="Infrastructure\IocBinder\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\WebSecurity\ActionSessionCheckAttribute.cs" />
+    <Compile Include="Infrastructure\WebSecurity\BaseController.cs" />
+    <Compile Include="Infrastructure\WebSecurity\DataCenterActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\WebSecurity\DataCenterAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\WebSecurity\Passport.cs" />
+    <Compile Include="Infrastructure\WebSecurity\Permission.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BatchAddPicture\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ExcelUploadServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ResidentialServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Tools\EpPlusHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Business\Scripts\BusinessCircle.js" />
+    <Content Include="Areas\House\Scripts\PageHouse.js" />
+    <Content Include="Areas\House\Scripts\ProjectCase.js" />
+    <Content Include="Areas\House\Scripts\project_copy.js" />
+    <Content Include="Areas\House\Scripts\project_merger.js" />
+    <Content Include="Areas\House\Scripts\project_split.js" />
+    <Content Include="Areas\Industry\Scripts\IndustryBuildingCreate.js" />
+    <Content Include="Areas\Industry\Scripts\IndustryHouse.js" />
+    <Content Include="Areas\Industry\Scripts\IndustrySubArea.js" />
+    <Content Include="Areas\Office\Scripts\OfficeBuildingCreate.js" />
+    <Content Include="Areas\Office\Scripts\OfficeHouse.js" />
+    <Content Include="Areas\Office\Scripts\OfficeSubArea.js" />
+    <Content Include="Content\Assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Content\Assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="Content\Assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="Content\Assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="Content\Assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\Assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Content\Assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="Content\Assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Content\Assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Content\Assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="Content\Assets\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="Content\Assets\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="Content\Assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="Content\Assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Content\Assets\bootstrap-toggle-buttons\examples\index.html" />
+    <Content Include="Content\Assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="Content\Assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="Content\Assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap-tree\css\bootstrap-tree.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap-tree\img\ajax-loader.gif" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap-tree\img\bstree-halflings.png" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap-tree\img\bstree-halflings_.png" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap-tree\js\bootstrap-tree.js" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Assets\bootstrap-tree\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Assets\bootstrap-tree\example.js" />
+    <Content Include="Content\Assets\bootstrap-tree\htmlexample.html" />
+    <Content Include="Content\Assets\bootstrap-tree\index.html" />
+    <Content Include="Content\Assets\bootstrap-tree\xmlexample.xml" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\index.html" />
+    <Content Include="Content\Assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="Content\Assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Content\Assets\bootstrap-wizard\prettify.css" />
+    <Content Include="Content\Assets\bootstrap-wizard\prettify.js" />
+    <Content Include="Content\Assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Content\Assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Content\Assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\Assets\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Assets\breakpoints\breakpoints.js" />
+    <Content Include="Content\Assets\breakpoints\example.html" />
+    <Content Include="Content\Assets\css\metro.css" />
+    <Content Include="Content\Assets\css\style-metronic.css" />
+    <Content Include="Content\Assets\css\style.css" />
+    <Content Include="Content\Assets\css\style_blue.css" />
+    <Content Include="Content\Assets\css\style_brown.css" />
+    <Content Include="Content\Assets\css\style_default.css" />
+    <Content Include="Content\Assets\css\style_light.css" />
+    <Content Include="Content\Assets\css\style_purple.css" />
+    <Content Include="Content\Assets\css\style_responsive.css" />
+    <Content Include="Content\Assets\data-tables\DT_bootstrap.css" />
+    <Content Include="Content\Assets\data-tables\DT_bootstrap.js" />
+    <Content Include="Content\Assets\data-tables\images\sort_asc.png" />
+    <Content Include="Content\Assets\data-tables\images\sort_both.png" />
+    <Content Include="Content\Assets\data-tables\images\sort_desc.png" />
+    <Content Include="Content\Assets\data-tables\jquery.dataTables.js" />
+    <Content Include="Content\Assets\fancybox\demo\1_b.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\1_s.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\2_b.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\2_s.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\3_b.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\3_s.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\4_b.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\4_s.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\5_b.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\5_s.jpg" />
+    <Content Include="Content\Assets\fancybox\demo\ajax.txt" />
+    <Content Include="Content\Assets\fancybox\demo\iframe.html" />
+    <Content Include="Content\Assets\fancybox\demo\index.html" />
+    <Content Include="Content\Assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="Content\Assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Content\Assets\fancybox\source\blank.gif" />
+    <Content Include="Content\Assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="Content\Assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="Content\Assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="Content\Assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="Content\Assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Content\Assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Content\Assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="Content\Assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\Assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\Assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="Content\Assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="Content\Assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="Content\Assets\flot\API.txt" />
+    <Content Include="Content\Assets\flot\examples\ajax.html" />
+    <Content Include="Content\Assets\flot\examples\annotating.html" />
+    <Content Include="Content\Assets\flot\examples\arrow-down.gif" />
+    <Content Include="Content\Assets\flot\examples\arrow-left.gif" />
+    <Content Include="Content\Assets\flot\examples\arrow-right.gif" />
+    <Content Include="Content\Assets\flot\examples\arrow-up.gif" />
+    <Content Include="Content\Assets\flot\examples\basic.html" />
+    <Content Include="Content\Assets\flot\examples\graph-types.html" />
+    <Content Include="Content\Assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="Content\Assets\flot\examples\image.html" />
+    <Content Include="Content\Assets\flot\examples\index.html" />
+    <Content Include="Content\Assets\flot\examples\interacting-axes.html" />
+    <Content Include="Content\Assets\flot\examples\interacting.html" />
+    <Content Include="Content\Assets\flot\examples\layout.css" />
+    <Content Include="Content\Assets\flot\examples\multiple-axes.html" />
+    <Content Include="Content\Assets\flot\examples\navigate.html" />
+    <Content Include="Content\Assets\flot\examples\percentiles.html" />
+    <Content Include="Content\Assets\flot\examples\pie.html" />
+    <Content Include="Content\Assets\flot\examples\realtime.html" />
+    <Content Include="Content\Assets\flot\examples\resize.html" />
+    <Content Include="Content\Assets\flot\examples\selection.html" />
+    <Content Include="Content\Assets\flot\examples\setting-options.html" />
+    <Content Include="Content\Assets\flot\examples\stacking.html" />
+    <Content Include="Content\Assets\flot\examples\symbols.html" />
+    <Content Include="Content\Assets\flot\examples\thresholding.html" />
+    <Content Include="Content\Assets\flot\examples\time.html" />
+    <Content Include="Content\Assets\flot\examples\tracking.html" />
+    <Content Include="Content\Assets\flot\examples\turning-series.html" />
+    <Content Include="Content\Assets\flot\examples\visitors.html" />
+    <Content Include="Content\Assets\flot\examples\zooming.html" />
+    <Content Include="Content\Assets\flot\excanvas.js" />
+    <Content Include="Content\Assets\flot\excanvas.min.js" />
+    <Content Include="Content\Assets\flot\FAQ.txt" />
+    <Content Include="Content\Assets\flot\jquery.colorhelpers.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.image.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.navigate.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.pie.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.resize.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.selection.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.stack.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.symbol.js" />
+    <Content Include="Content\Assets\flot\jquery.flot.threshold.js" />
+    <Content Include="Content\Assets\flot\jquery.js" />
+    <Content Include="Content\Assets\flot\LICENSE.txt" />
+    <Content Include="Content\Assets\flot\NEWS.txt" />
+    <Content Include="Content\Assets\flot\PLUGINS.txt" />
+    <Content Include="Content\Assets\flot\README.txt" />
+    <Content Include="Content\Assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\Assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\css\font-awesome.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\img\fort_awesome.jpg" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\img\glyphicons-halflings.png" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\buttons.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\css-tests.css" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\css-tests.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\forms-responsive.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\forms.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar-fixed-top.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar-static-top.html" />
+    <Content Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar.html" />
+    <Content Include="Content\Assets\font-awesome\docs\design.html" />
+    <Content Include="Content\Assets\font-awesome\docs\index.html" />
+    <Content Include="Content\Assets\font-awesome\docs\test.html" />
+    <Content Include="Content\Assets\fullcalendar\changelog.txt" />
+    <Content Include="Content\Assets\fullcalendar\demos\agenda-views.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\basic-views.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Assets\fullcalendar\demos\cupertino\theme.css" />
+    <Content Include="Content\Assets\fullcalendar\demos\default.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\external-dragging.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\gcal.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\json.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\selectable.html" />
+    <Content Include="Content\Assets\fullcalendar\demos\theme.html" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Content\Assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="Content\Assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="Content\Assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="Content\Assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Content\Assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="Content\Assets\glyphicons\css\glyphicons.css" />
+    <Content Include="Content\Assets\glyphicons\css\style.css" />
+    <Content Include="Content\Assets\glyphicons\fonts\glyphicons-regular.svg" />
+    <Content Include="Content\Assets\glyphicons\images\glyphicons-white.png" />
+    <Content Include="Content\Assets\glyphicons\images\glyphicons-white.svg" />
+    <Content Include="Content\Assets\glyphicons\images\glyphicons.png" />
+    <Content Include="Content\Assets\glyphicons\images\glyphicons.svg" />
+    <Content Include="Content\Assets\glyphicons\index.html" />
+    <Content Include="Content\Assets\glyphicons\scripts\modernizr.js" />
+    <Content Include="Content\Assets\glyphicons\scripts\modernizr_license.txt" />
+    <Content Include="Content\Assets\glyphicons_halflings\css\halflings.css" />
+    <Content Include="Content\Assets\glyphicons_halflings\css\style.css" />
+    <Content Include="Content\Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\Assets\glyphicons_halflings\images\glyphicons_halflings-white.png" />
+    <Content Include="Content\Assets\glyphicons_halflings\images\glyphicons_halflings-white.svg" />
+    <Content Include="Content\Assets\glyphicons_halflings\images\glyphicons_halflings.png" />
+    <Content Include="Content\Assets\glyphicons_halflings\images\glyphicons_halflings.svg" />
+    <Content Include="Content\Assets\glyphicons_halflings\index.html" />
+    <Content Include="Content\Assets\glyphicons_halflings\scripts\modernizr.js" />
+    <Content Include="Content\Assets\glyphicons_halflings\scripts\modernizr_license.txt" />
+    <Content Include="Content\Assets\gritter\css\jquery.gritter.css" />
+    <Content Include="Content\Assets\gritter\images\gritter-blue.png" />
+    <Content Include="Content\Assets\gritter\images\gritter-brown.png" />
+    <Content Include="Content\Assets\gritter\images\gritter-light.png" />
+    <Content Include="Content\Assets\gritter\images\gritter-long.png" />
+    <Content Include="Content\Assets\gritter\images\gritter-purple.png" />
+    <Content Include="Content\Assets\gritter\images\gritter.png" />
+    <Content Include="Content\Assets\gritter\images\ie-spacer.gif" />
+    <Content Include="Content\Assets\gritter\images_original\gritter-light.png" />
+    <Content Include="Content\Assets\gritter\images_original\gritter-long.png" />
+    <Content Include="Content\Assets\gritter\images_original\gritter.png" />
+    <Content Include="Content\Assets\gritter\images_original\ie-spacer.gif" />
+    <Content Include="Content\Assets\gritter\images_original\trees.jpg" />
+    <Content Include="Content\Assets\gritter\index.html" />
+    <Content Include="Content\Assets\gritter\js\jquery.gritter.js" />
+    <Content Include="Content\Assets\gritter\js\jquery.gritter.min.js" />
+    <Content Include="Content\Assets\img\arrow-down.png" />
+    <Content Include="Content\Assets\img\avatar.png" />
+    <Content Include="Content\Assets\img\avatar1.jpg" />
+    <Content Include="Content\Assets\img\avatar1_small.jpg" />
+    <Content Include="Content\Assets\img\avatar2.jpg" />
+    <Content Include="Content\Assets\img\avatar3.jpg" />
+    <Content Include="Content\Assets\img\avatar3_small.jpg" />
+    <Content Include="Content\Assets\img\dashboard\test.jpg" />
+    <Content Include="Content\Assets\img\dashboard\test1.jpg" />
+    <Content Include="Content\Assets\img\dashboard\test2.jpg" />
+    <Content Include="Content\Assets\img\dashboard\test3.jpg" />
+    <Content Include="Content\Assets\img\dashboard\test4.jpg" />
+    <Content Include="Content\Assets\img\dashboard\user-feedback.jpg" />
+    <Content Include="Content\Assets\img\gallery\image1.jpg" />
+    <Content Include="Content\Assets\img\gallery\image2.jpg" />
+    <Content Include="Content\Assets\img\gallery\image3.jpg" />
+    <Content Include="Content\Assets\img\gallery\image4.jpg" />
+    <Content Include="Content\Assets\img\gallery\image5.jpg" />
+    <Content Include="Content\Assets\img\gallery\preview_02.png" />
+    <Content Include="Content\Assets\img\gallery\preview_03.png" />
+    <Content Include="Content\Assets\img\gallery\preview_04.png" />
+    <Content Include="Content\Assets\img\gallery\preview_05.png" />
+    <Content Include="Content\Assets\img\gallery\preview_06.png" />
+    <Content Include="Content\Assets\img\gallery\preview_07.png" />
+    <Content Include="Content\Assets\img\gallery\preview_08.png" />
+    <Content Include="Content\Assets\img\gallery\preview_09.png" />
+    <Content Include="Content\Assets\img\gallery\preview_10.png" />
+    <Content Include="Content\Assets\img\gallery\preview_11.png" />
+    <Content Include="Content\Assets\img\gallery\preview_12.png" />
+    <Content Include="Content\Assets\img\gallery\preview_13.png" />
+    <Content Include="Content\Assets\img\gallery\preview_14.png" />
+    <Content Include="Content\Assets\img\gallery\preview_15.png" />
+    <Content Include="Content\Assets\img\gallery\preview_16.png" />
+    <Content Include="Content\Assets\img\gallery\preview_17.png" />
+    <Content Include="Content\Assets\img\gallery\preview_18.png" />
+    <Content Include="Content\Assets\img\icon-color-close.png" />
+    <Content Include="Content\Assets\img\icon-color.png" />
+    <Content Include="Content\Assets\img\icon-img-down.png" />
+    <Content Include="Content\Assets\img\icon-img-up.png" />
+    <Content Include="Content\Assets\img\invoice\walmart.png" />
+    <Content Include="Content\Assets\img\loading.gif" />
+    <Content Include="Content\Assets\img\logo-big.png" />
+    <Content Include="Content\Assets\img\logo.png" />
+    <Content Include="Content\Assets\img\menu-toggler.png" />
+    <Content Include="Content\Assets\img\overlay-icon.png" />
+    <Content Include="Content\Assets\img\photo1.jpg" />
+    <Content Include="Content\Assets\img\photo2.jpg" />
+    <Content Include="Content\Assets\img\portlet-collapse-icon-white.png" />
+    <Content Include="Content\Assets\img\portlet-collapse-icon.png" />
+    <Content Include="Content\Assets\img\portlet-config-icon-white.png" />
+    <Content Include="Content\Assets\img\portlet-config-icon.png" />
+    <Content Include="Content\Assets\img\portlet-expand-icon-white.png" />
+    <Content Include="Content\Assets\img\portlet-expand-icon.png" />
+    <Content Include="Content\Assets\img\portlet-reload-icon-white.png" />
+    <Content Include="Content\Assets\img\portlet-reload-icon.png" />
+    <Content Include="Content\Assets\img\portlet-remove-icon-white.png" />
+    <Content Include="Content\Assets\img\portlet-remove-icon.png" />
+    <Content Include="Content\Assets\img\profile\portfolio\logo_azteca.jpg" />
+    <Content Include="Content\Assets\img\profile\portfolio\logo_conquer.jpg" />
+    <Content Include="Content\Assets\img\profile\portfolio\logo_metronic.jpg" />
+    <Content Include="Content\Assets\img\profile\profile-img.jpg" />
+    <Content Include="Content\Assets\img\profile\profile-img.png" />
+    <Content Include="Content\Assets\img\remove-icon-small.png" />
+    <Content Include="Content\Assets\img\search-icon-blue.png" />
+    <Content Include="Content\Assets\img\search-icon-brown.png" />
+    <Content Include="Content\Assets\img\search-icon-purple.png" />
+    <Content Include="Content\Assets\img\search-icon-red.png" />
+    <Content Include="Content\Assets\img\search-icon-white.png" />
+    <Content Include="Content\Assets\img\search-icon.png" />
+    <Content Include="Content\Assets\img\search\img1.jpg" />
+    <Content Include="Content\Assets\img\search\img2.jpg" />
+    <Content Include="Content\Assets\img\search\img3.jpg" />
+    <Content Include="Content\Assets\img\select-caret.png" />
+    <Content Include="Content\Assets\img\sidebar-menu-arrow-green.png" />
+    <Content Include="Content\Assets\img\sidebar-menu-arrow.png" />
+    <Content Include="Content\Assets\img\sidebar-search-close-blue.png" />
+    <Content Include="Content\Assets\img\sidebar-search-close-brown.png" />
+    <Content Include="Content\Assets\img\sidebar-search-close-light.png" />
+    <Content Include="Content\Assets\img\sidebar-search-close-purple.png" />
+    <Content Include="Content\Assets\img\sidebar-search-close.png" />
+    <Content Include="Content\Assets\img\sidebar-toggler-blue.jpg" />
+    <Content Include="Content\Assets\img\sidebar-toggler-brown.jpg" />
+    <Content Include="Content\Assets\img\sidebar-toggler-light.jpg" />
+    <Content Include="Content\Assets\img\sidebar-toggler-purple.jpg" />
+    <Content Include="Content\Assets\img\sidebar-toggler.jpg" />
+    <Content Include="Content\Assets\img\sidebar-toggler.png" />
+    <Content Include="Content\Assets\img\syncfusion-icons-white.png" />
+    <Content Include="Content\Assets\img\syncfusion-icons.png" />
+    <Content Include="Content\Assets\jquery-file-upload\cors\postmessage.html" />
+    <Content Include="Content\Assets\jquery-file-upload\cors\result.html" />
+    <Content Include="Content\Assets\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\Assets\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\Assets\jquery-file-upload\css\style.css" />
+    <Content Include="Content\Assets\jquery-file-upload\img\loading.gif" />
+    <Content Include="Content\Assets\jquery-file-upload\img\progressbar.gif" />
+    <Content Include="Content\Assets\jquery-file-upload\index.html" />
+    <Content Include="Content\Assets\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\jquery.fileupload-fp.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\main.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="Content\Assets\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="Content\Assets\jquery-file-upload\server\gae-go\static\favicon.ico" />
+    <Content Include="Content\Assets\jquery-file-upload\server\gae-go\static\robots.txt" />
+    <Content Include="Content\Assets\jquery-file-upload\server\gae-python\static\favicon.ico" />
+    <Content Include="Content\Assets\jquery-file-upload\server\gae-python\static\robots.txt" />
+    <Content Include="Content\Assets\jquery-file-upload\server\node\server.js" />
+    <Content Include="Content\Assets\jquery-file-upload\test\index.html" />
+    <Content Include="Content\Assets\jquery-file-upload\test\test.js" />
+    <Content Include="Content\Assets\jquery-knob\index.html" />
+    <Content Include="Content\Assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Content\Assets\jquery-simpletree\jquery.simpletree.css" />
+    <Content Include="Content\Assets\jquery-simpletree\jquery.simpletree.js" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="Content\Assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="Content\Assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Content\Assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Content\Assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\Assets\jquery-tags-input\example.html" />
+    <Content Include="Content\Assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="Content\Assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="Content\Assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="Content\Assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="Content\Assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="Content\Assets\jquery-ui-touch-punch\jquery.ui.touch-punch.js" />
+    <Content Include="Content\Assets\jquery-ui-touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\Assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui.css" />
+    <Content Include="Content\Assets\jquery-ui\jquery-ui.js" />
+    <Content Include="Content\Assets\jquery-validation\changelog.txt" />
+    <Content Include="Content\Assets\jquery-validation\demo\ajaxSubmit-intergration-demo.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\captcha\captcha.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\captcha\images\button.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\captcha\style.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\chili.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\cmxform.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\cmxformTemplate.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\core.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\reset.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\css\screen.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\custom-messages-data-demo.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\custom-methods-demo.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\dynamic-totals.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\errorcontainer-demo.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\file_input.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\bg.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\checked.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\cmxform-divider.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\cmxform-fieldset.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\loading.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\images\unchecked.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\jquerymobile.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\js\chili-1.7.pack.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\images\bg.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\images\header1.jpg" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\images\page.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\images\required_star.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\login\screen.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\ie6.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\backRequiredGray.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\back_green-fade.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\back_nav_blue.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\blank.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\button-submit.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\favicon.ico" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\help.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\left-nav-callout-long.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\login-sprite.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\logo_marketo.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\sf.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\step1-24.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\step2-24.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\step3-24.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\tab-sprite.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\tab_green.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\time.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\toggle.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\images\warning.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\jquery.maskedinput.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\mktSignup.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\step2.htm" />
+    <Content Include="Content\Assets\jquery-validation\demo\marketo\stylesheet.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\bg.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\left_white.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\milk.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\milk.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\milk\right_white.png" />
+    <Content Include="Content\Assets\jquery-validation\demo\multipart\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\multipart\js\jquery.maskedinput-1.0.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\multipart\js\ui.accordion.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\multipart\js\ui.core.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\multipart\style.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\radio-checkbox-select-demo.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\tabs\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\themerollered.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\index.html" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\themes\simple\editor_template.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\themes\simple\img\icons.gif" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\themes\simple\langs\en.js" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="Content\Assets\jquery-validation\demo\tinymce\tiny_mce.js" />
+    <Content Include="Content\Assets\jquery-validation\dist\additional-methods.js" />
+    <Content Include="Content\Assets\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="Content\Assets\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="Content\Assets\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="Content\Assets\jquery-validation\grunt.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery-1.6.4.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery-1.7.2.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery-1.8.3.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery-1.9.0.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery.form.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery.js" />
+    <Content Include="Content\Assets\jquery-validation\lib\jquery.mockjax.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ar.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_bg.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ca.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_cs.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_da.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_de.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_el.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_es.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_et.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_eu.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_fa.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_fi.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_fr.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_he.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_hr.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_hu.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_it.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ja.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ka.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_kk.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_lt.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_lv.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_my.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_nl.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_no.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_pl.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_pt_BR.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_pt_PT.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ro.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_ru.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_si.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_sk.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_sl.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_sr.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_sv.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_th.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_tr.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_uk.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_vi.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_zh.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\messages_zh_TW.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\methods_de.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\methods_nl.js" />
+    <Content Include="Content\Assets\jquery-validation\localization\methods_pt.js" />
+    <Content Include="Content\Assets\jquery-validation\test\events.html" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\errorIcon.png" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\firebug.css" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\firebug.html" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\firebug.js" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\firebugx.js" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\infoIcon.png" />
+    <Content Include="Content\Assets\jquery-validation\test\firebug\warningIcon.png" />
+    <Content Include="Content\Assets\jquery-validation\test\index.html" />
+    <Content Include="Content\Assets\jquery-validation\test\jquery.js" />
+    <Content Include="Content\Assets\jquery-validation\test\large.html" />
+    <Content Include="Content\Assets\jquery-validation\test\messages.js" />
+    <Content Include="Content\Assets\jquery-validation\test\methods.js" />
+    <Content Include="Content\Assets\jquery-validation\test\qunit\qunit.css" />
+    <Content Include="Content\Assets\jquery-validation\test\qunit\qunit.js" />
+    <Content Include="Content\Assets\jquery-validation\test\rules.js" />
+    <Content Include="Content\Assets\jquery-validation\test\selects\index.html" />
+    <Content Include="Content\Assets\jquery-validation\test\tabs.html" />
+    <Content Include="Content\Assets\jquery-validation\test\test.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Content\Assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Content\Assets\jqvmap\samples\europe.html" />
+    <Content Include="Content\Assets\jqvmap\samples\germany.html" />
+    <Content Include="Content\Assets\jqvmap\samples\multi.html" />
+    <Content Include="Content\Assets\jqvmap\samples\russia.html" />
+    <Content Include="Content\Assets\jqvmap\samples\usa.html" />
+    <Content Include="Content\Assets\jqvmap\samples\world.html" />
+    <Content Include="Content\Assets\js\app.js" />
+    <Content Include="Content\Assets\js\demo.gmaps.js" />
+    <Content Include="Content\Assets\js\excanvas.js" />
+    <Content Include="Content\Assets\js\gmaps.js" />
+    <Content Include="Content\Assets\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Assets\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\Assets\js\jquery.blockui.js" />
+    <Content Include="Content\Assets\js\jquery.cookie.js" />
+    <Content Include="Content\Assets\js\jquery.form.js" />
+    <Content Include="Content\Assets\js\jquery.pulsate.min.js" />
+    <Content Include="Content\Assets\js\respond.js" />
+    <Content Include="Content\Assets\select2\mod.udatas.js" />
+    <Content Include="Content\Assets\select2\select2.css" />
+    <Content Include="Content\Assets\select2\select2.js" />
+    <Content Include="Content\Assets\select2\select2.min.js" />
+    <Content Include="Content\Assets\select2\select2.png" />
+    <Content Include="Content\Assets\select2\select2_locale_zh-CN.js" />
+    <Content Include="Content\Assets\select2\spinner.gif" />
+    <Content Include="Content\Assets\uniform\css\uniform.default.css" />
+    <Content Include="Content\Assets\uniform\demo\demo.html" />
+    <Content Include="Content\Assets\uniform\images\bg-input-focus.png" />
+    <Content Include="Content\Assets\uniform\images\bg-input.png" />
+    <Content Include="Content\Assets\uniform\images\sprite.png" />
+    <Content Include="Content\Assets\uniform\images\sprite_original.png" />
+    <Content Include="Content\Assets\uniform\jquery.uniform.js" />
+    <Content Include="Content\Assets\uniform\jquery.uniform.min.js" />
+    <Content Include="Content\Images\404_bg.jpg" />
+    <Content Include="Content\Images\avatar.gif" />
+    <Content Include="Content\Images\cancel.jpg" />
+    <Content Include="Content\Images\error.gif" />
+    <Content Include="Content\Images\error.png" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\loadingAnimation.gif" />
+    <Content Include="Content\Images\loadingmask.gif" />
+    <Content Include="Content\Images\logo-big.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\no_picture.jpg" />
+    <Content Include="Content\layer-v1.7.1\jquery-1.10.2.min.js" />
+    <Content Include="Content\layer-v1.7.1\layer\extend\layer.ext.js" />
+    <Content Include="Content\layer-v1.7.1\layer\layer.js" />
+    <Content Include="Content\layer-v1.7.1\layer\layer.min.js" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\textbg.png" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_ico0.png" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_loading0.gif" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_loading1.gif" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_loading2.gif" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_loading3.gif" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\default\xubox_title0.png" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\layer.css" />
+    <Content Include="Content\layer-v1.7.1\layer\skin\layer.ext.css" />
+    <Content Include="Content\Plugin\dropzone-master\dist\basic.css" />
+    <Content Include="Content\Plugin\dropzone-master\dist\dropzone-amd-module.js" />
+    <Content Include="Content\Plugin\dropzone-master\dist\dropzone.css" />
+    <Content Include="Content\Plugin\dropzone-master\dist\dropzone.js" />
+    <Content Include="Content\Plugin\dropzone-master\dist\min\basic.min.css" />
+    <Content Include="Content\Plugin\dropzone-master\dist\min\dropzone-amd-module.min.js" />
+    <Content Include="Content\Plugin\dropzone-master\dist\min\dropzone.min.css" />
+    <Content Include="Content\Plugin\dropzone-master\dist\min\dropzone.min.js" />
+    <Content Include="Content\Plugin\MutilSelect\jquery.multiselect.css" />
+    <Content Include="Content\Plugin\MutilSelect\jquery.multiselect.js" />
+    <Content Include="Content\Plugin\MutilSelect\jquery.multiselect.zh-cn.js" />
+    <Content Include="Content\Scripts\admin.edit.js" />
+    <Content Include="Content\Scripts\admin.main.js" />
+    <Content Include="Content\Scripts\autocomplete\indicator.gif" />
+    <Content Include="Content\Scripts\autocomplete\jquery.autocomplete.css" />
+    <Content Include="Content\Scripts\autocomplete\jquery.autocomplete.min.js" />
+    <Content Include="Content\Scripts\autocomplete\localdata.js" />
+    <Content Include="Content\Scripts\cityBind\city.js" />
+    <Content Include="Content\Scripts\flashupload.js" />
+    <Content Include="Content\Scripts\highcharts.exporting.js" />
+    <Content Include="Content\Scripts\highcharts.js" />
+    <Content Include="Content\Scripts\img\uploadify-cancel.png" />
+    <Content Include="Content\Scripts\jquery-ui.combobox.js" />
+    <Content Include="Content\Scripts\jquery.numeric.js" />
+    <Content Include="Content\Scripts\jquery.powerFloat.js" />
+    <Content Include="Content\Scripts\jquery.thickbox.js" />
+    <Content Include="Content\Scripts\jquery.ui.datapicker-zh-CN.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\Scripts\jquery.validate.js" />
+    <Content Include="Content\Scripts\jquery.validate.min.js" />
+    <Content Include="Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\Scripts\landemptyvalid.js" />
+    <Content Include="Content\Scripts\uploadify-v3.2\jquery.uploadify-3.2.js" />
+    <Content Include="Content\Scripts\uploadify-v3.2\jquery.uploadify-3.2.min.js" />
+    <Content Include="Content\Scripts\uploadify-v3.2\uploadify-cancel.png" />
+    <Content Include="Content\Scripts\uploadify-v3.2\uploadify.css" />
+    <Content Include="Content\Scripts\uploadify-v3.2\uploadify.swf" />
+    <Content Include="Content\Styles\admin.main.css" />
+    <Content Include="Content\Styles\jquery.thickbox.css" />
+    <Content Include="Content\Plugin\Tree\css\images\anchor.gif" />
+    <Content Include="Content\Plugin\Tree\css\jquery.tree.css" />
+    <Content Include="Content\Plugin\Tree\css\_jquery.treednd.css" />
+    <Content Include="Content\Plugin\Tree\js\jquery.tree.js" />
+    <Content Include="Content\Plugin\Tree\js\jquery.treeajax.js" />
+    <Content Include="Content\Plugin\Tree\js\jquery.treecheckbox.js" />
+    <Content Include="Content\Plugin\Tree\js\jquery.treecollapse.js" />
+    <Content Include="Content\Plugin\Tree\js\jquery.treednd.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Office\Views\Web.config" />
+    <Content Include="Areas\House\Views\House\EndityHou.cshtml" />
+    <Content Include="Areas\House\Views\House\AddHouse.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\Index.cshtml" />
+    <Content Include="Areas\Office\Views\Shared\_OfficeLayout.cshtml" />
+    <Content Include="Areas\Office\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\Picture.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\PictureEdit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\Create.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\Picture.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\PictureEdit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficePeitao\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficePeitao\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficePeitao\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeSubArea\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeSubArea\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeSubArea\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeHouse\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeHouse\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeHouse\House.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeCase\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeCase\Create.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeTenant\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeTenant\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeTenant\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeCase\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeDynamicPrice\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeDynamicPrice\Create.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeDynamicPrice\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeHouse\UploadFile.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeAnalysis\Index.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeSubArea\Statistic.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\PictureCreate.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\PictureCreate.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeProject\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeBuilding\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Office\Views\OfficeHouse\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\PictureCreate.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\CreatePhoto.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\AddPhoto.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\PictureCreate.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessHouse\SelfDefineExport.cshtml" />
+    <Content Include="Areas\House\Views\Project\BatchAddPicture.cshtml" />
+    <Content Include="Content\Plugin\dropzone-master\dist\readme.md" />
+    <Content Include="Areas\Industry\Views\Web.config" />
+    <Content Include="Areas\Industry\Views\IndustrySubArea\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\Shared\_IndustryLayout.cshtml" />
+    <Content Include="Areas\Industry\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustrySubArea\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\Picture.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\PictureCreate.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\PictureEdit.cshtml" />
+    <Content Include="Areas\House\Views\Build\BatchAddPicture.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryPeiTao\Index.cshtml" />
+    <Content Include="Areas\House\Views\Project\ImportPeiTao.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryAnalysis\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\Picture.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\PictureCreate.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\PictureEdit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryBuilding\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryCase\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryCase\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryCase\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryDynamicPrice\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryDynamicPrice\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryDynamicPrice\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryHouse\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryHouse\House.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryHouse\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryHouse\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryHouse\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryTenant\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryTenant\Index.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryTenant\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustrySubArea\Statistic.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustrySubArea\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryPeiTao\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryPeiTao\UploadFile.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\SelfDefineExport.cshtml" />
+    <Content Include="Areas\Industry\Views\IndustryProject\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\CityAvgPrice\Index.cshtml" />
+    <Content Include="Areas\House\Views\CityAvgPrice\Edit.cshtml" />
+    <Content Include="Areas\Land\Views\MarketAnalysis\Index.cshtml" />
+    <Content Include="Areas\Land\Views\MarketAnalysis\Edit.cshtml" />
+    <Content Include="Areas\House\Views\MarketAnalysis\Index.cshtml" />
+    <Content Include="Areas\House\Views\MarketAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Business\Views\MarketAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Business\Views\MarketAnalysis\Index.cshtml" />
+    <Content Include="Areas\Office\Views\MarketAnalysis\Index.cshtml" />
+    <Content Include="Areas\Office\Views\MarketAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\MarketAnalysis\Edit.cshtml" />
+    <Content Include="Areas\Industry\Views\MarketAnalysis\Index.cshtml" />
+    <Content Include="Areas\House\Views\Project\BuildingPicUpload.cshtml" />
+    <Content Include="Areas\House\Views\Project\ProjectPicUpload.cshtml" />
+    <Content Include="Content\Instruction\图片批量上传手册.docx" />
+    <Content Include="Areas\Human\Views\Web.config" />
+    <Content Include="Areas\Human\Views\HumanHouse\Edit.cshtml" />
+    <Content Include="Areas\Human\Views\HumanHouse\Index.cshtml" />
+    <Content Include="Areas\Human\Views\HumanHouse\UploadFile.cshtml" />
+    <Content Include="Areas\Human\Views\HumanProject\Edit.cshtml" />
+    <Content Include="Areas\Human\Views\HumanProject\Index.cshtml" />
+    <Content Include="Areas\Human\Views\HumanProject\UploadFile.cshtml" />
+    <Content Include="Areas\Human\Views\Shared\_HumanLayout.cshtml" />
+    <Content Include="Areas\Human\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\House\Views\Project\Count.cshtml" />
+    <Content Include="Areas\House\Views\HouseRatio\Index.cshtml" />
+    <Content Include="DownloadTemplate\Business\商业动态价格调查导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商业房号导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商业案例导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商业楼层导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商业楼栋导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商业街导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Business\商铺导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Company\公司导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\住宅基准房价导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\待建楼盘导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\房号导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\房号系数差导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\样本楼盘导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\楼栋导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\楼盘别名导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\楼盘导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\楼盘案例导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\自动生成房号导入格式.xlsx" />
+    <Content Include="DownloadTemplate\House\项目配套导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Human\业主房号导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Human\业主楼盘导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Industry\工业动态价格调查导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业房号导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业案例导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业楼栋导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业楼盘导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业片区导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业租客信息导入模板.xls" />
+    <Content Include="DownloadTemplate\Industry\工业项目配套导入模板.xls" />
+    <Content Include="DownloadTemplate\Land\土地基准地价模板.xlsx" />
+    <Content Include="DownloadTemplate\Land\土地基础信息模板.xlsx" />
+    <Content Include="DownloadTemplate\Land\土地案例导入模板.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公动态价格调查导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公商务中心导入格式.xls" />
+    <Content Include="DownloadTemplate\Office\办公商务配套导入格式.xls" />
+    <Content Include="DownloadTemplate\Office\办公房号导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公案例导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公楼栋导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公楼盘导入格式.xlsx" />
+    <Content Include="DownloadTemplate\Office\办公租客导入格式.xls" />
+    <Content Include="Content\Instruction\房号系数批量设置说明文档.doc" />
+    <Content Include="Areas\VQPrice\Views\Web.config" />
+    <Content Include="Areas\VQPrice\Views\ProjectWeightRevised\Edit.cshtml" />
+    <Content Include="Areas\VQPrice\Views\ProjectWeightRevised\Index.cshtml" />
+    <Content Include="Areas\VQPrice\Views\ProjectWeightRevised\UploadFile.cshtml" />
+    <Content Include="Areas\VQPrice\Views\Shared\_VQPriceLayout.cshtml" />
+    <Content Include="Areas\VQPrice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\VQPrice\Views\BuildingWeightRevised\Index.cshtml" />
+    <Content Include="Areas\VQPrice\Views\BuildingWeightRevised\Edit.cshtml" />
+    <Content Include="Areas\VQPrice\Views\HouseWeightRevised\Index.cshtml" />
+    <Content Include="Areas\VQPrice\Views\HouseWeightRevised\Edit.cshtml" />
+    <Content Include="Areas\VQPrice\Views\ProjectAvgPrice\Index.cshtml" />
+    <Content Include="Areas\VQPrice\Views\ProjectAvgPrice\Edit.cshtml" />
+    <Content Include="Content\Instruction\云估价压缩工具.zip" />
+    <Content Include="Areas\VQPrice\Views\ProjectAvgPrice\ProjectHistoryAvgIndex.cshtml" />
+    <Content Include="Areas\VQPrice\Views\ProjectAvgPrice\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\PropertyAddress\Index.cshtml" />
+    <Content Include="Areas\House\Views\PropertyAddress\Edit.cshtml" />
+    <Content Include="Areas\House\Views\PropertyAddress\UploadFile.cshtml" />
+    <Content Include="DownloadTemplate\House\房产证地址导入格式.xlsx" />
+    <Content Include="Areas\House\Views\Project\ProjectMerger.cshtml" />
+    <None Include="Properties\PublishProfiles\KUJJPublish.pubxml" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <None Include="Properties\PublishProfiles\配置文件.pubxml" />
+    <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
+    <None Include="Service References\BatchAddPicture\BatchAddPicture.wsdl" />
+    <None Include="Service References\BatchAddPicture\BatchAddPicture.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BatchAddPicture\BatchAddPicture1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelUploadServices\configuration91.svcinfo" />
+    <None Include="Service References\ExcelUploadServices\configuration.svcinfo" />
+    <None Include="Service References\BatchAddPicture\configuration91.svcinfo" />
+    <None Include="Service References\BatchAddPicture\configuration.svcinfo" />
+    <None Include="Service References\BatchAddPicture\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ExcelUploadServices\ExcelUpload1.wsdl" />
+    <None Include="Service References\ExcelUploadServices\ExcelUpload2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelUploadServices\ExcelUpload21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelUploadServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ResidentialServices\configuration91.svcinfo" />
+    <None Include="Service References\ResidentialServices\configuration.svcinfo" />
+    <None Include="Service References\ResidentialServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Service References\ResidentialServices\Residential1.wsdl" />
+    <None Include="Service References\ResidentialServices\Residential2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResidentialServices\Residential21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Authorize\Models\" />
+    <Folder Include="Areas\Business\Models\" />
+    <Folder Include="Areas\Company\Models\" />
+    <Folder Include="Areas\Human\Models\" />
+    <Folder Include="Areas\Land\Models\" />
+    <Folder Include="Areas\Search\Models\" />
+    <Folder Include="Areas\VQPrice\Models\" />
+    <Folder Include="Content\Assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Land\Views\Web.config" />
+    <Content Include="Areas\Land\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Authorize\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Authorize\Views\Role\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.Edit.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Theme.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Authorize\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Authorize\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Authorize\Views\User\Index.cshtml" />
+    <Content Include="Areas\Authorize\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Authorize\Views\Shared\_AuthorizeLayout.cshtml" />
+    <Content Include="Areas\Land\Views\Land\Edity.cshtml" />
+    <Content Include="Areas\Land\Views\Land\Index.cshtml" />
+    <Content Include="Areas\Land\Views\Land\Seach.cshtml" />
+    <Content Include="Areas\Land\Views\Land\Statistical.cshtml" />
+    <Content Include="Areas\Land\Views\Shared\_LandLayout.cshtml" />
+    <Content Include="Areas\Land\Views\LandCase\Index.cshtml" />
+    <Content Include="Areas\Land\Views\LandCase\Create.cshtml" />
+    <Content Include="Areas\Land\Views\LandBasePrice\Edity.cshtml" />
+    <Content Include="Areas\Land\Views\LandBasePrice\Index.cshtml" />
+    <Content Include="Areas\Land\Views\LandCase\Statistics.cshtml" />
+    <Content Include="Areas\Search\Views\Web.config" />
+    <Content Include="Areas\Search\Views\Search\Index.cshtml" />
+    <Content Include="Areas\Search\Views\Shared\_SearchLayout.cshtml" />
+    <Content Include="Areas\Search\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\House\Views\Web.config" />
+    <Content Include="Areas\House\Views\Shared\_HouseLayout.cshtml" />
+    <Content Include="Areas\House\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\Index.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\Create.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\Statistics.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\UploadFile.cshtml" />
+    <Content Include="Areas\Land\Views\LandCase\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\MisMatchProject.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\EditMisMatchProject.cshtml" />
+    <Content Include="Areas\House\Views\ProjectOtherName\Index.cshtml" />
+    <Content Include="Areas\House\Views\ProjectOtherName\Edit.cshtml" />
+    <Content Include="Areas\House\Views\ProjectOtherName\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\ProjectSample\Index.cshtml" />
+    <Content Include="Areas\House\Views\ProjectSample\Edit.cshtml" />
+    <Content Include="Areas\House\Views\ProjectSample\Detail.cshtml" />
+    <Content Include="Areas\House\Views\ProjectSample\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\Project\Edity.cshtml" />
+    <Content Include="Areas\House\Views\Project\EdityProjectPeitao.cshtml" />
+    <Content Include="Areas\House\Views\Project\EdityProjectPhoto.cshtml" />
+    <Content Include="Areas\House\Views\Project\EdityProjectPrice.cshtml" />
+    <Content Include="Areas\House\Views\Project\Index.cshtml" />
+    <Content Include="Areas\House\Views\Project\ProjectPeiTao.cshtml" />
+    <Content Include="Areas\House\Views\Project\ProjectPhoto.cshtml" />
+    <Content Include="Areas\House\Views\Project\ProjectPrice.cshtml" />
+    <Content Include="Areas\House\Views\Project\Test.cshtml" />
+    <Content Include="Areas\House\Views\WaitBuildingProject\Index.cshtml" />
+    <Content Include="Areas\House\Views\WaitBuildingProject\_Projects.cshtml" />
+    <Content Include="Areas\House\Views\Build\Edity.cshtml" />
+    <Content Include="Areas\House\Views\Build\ImportBuild.cshtml" />
+    <Content Include="Areas\House\Views\Build\Index.cshtml" />
+    <Content Include="Areas\House\Views\WaitBuildingProject\Edit.cshtml" />
+    <Content Include="Areas\House\Views\WaitBuildingProject\UploadFile.cshtml" />
+    <Content Include="Areas\Company\Views\Web.config" />
+    <Content Include="Areas\Company\Views\Shared\_CompanyLayout.cshtml" />
+    <Content Include="Areas\Company\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Company\Views\Company\Index.cshtml" />
+    <Content Include="Areas\Company\Views\Company\Edit.cshtml" />
+    <Content Include="Areas\Company\Views\Company\UploadFile.cshtml" />
+    <Content Include="Areas\Company\Views\Company\Statistics.cshtml" />
+    <Content Include="Areas\House\Views\Project\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\Project\ProjectStatistics.cshtml" />
+    <Content Include="Areas\House\Views\Build\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\Project\ImportBuilding.cshtml" />
+    <Content Include="Areas\House\Views\Project\ImportHouseNo.cshtml" />
+    <Content Include="Areas\Land\Views\Land\ImportLand.cshtml" />
+    <Content Include="Areas\Land\Views\LandBasePrice\ImportLand.cshtml" />
+    <Content Include="Areas\House\Views\House\House.cshtml" />
+    <Content Include="Areas\House\Views\House\Index.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\_workLoad.cshtml" />
+    <Content Include="Areas\Land\Views\Land\UploadFile.cshtml" />
+    <Content Include="Areas\House\Views\Build\BuildPhoto.cshtml" />
+    <Content Include="Areas\House\Views\Build\EdityBuildPhoto.cshtml" />
+    <Content Include="Areas\House\Views\Shared\DAT_Building.cshtml" />
+    <Content Include="Areas\House\Views\Shared\DAT_House.cshtml" />
+    <Content Include="Areas\House\Views\Shared\DAT_Project.cshtml" />
+    <Content Include="Areas\House\Views\ProjectCase\ExceptionCase.cshtml" />
+    <Content Include="Areas\Search\Views\Search\Welcome.cshtml" />
+    <Content Include="Areas\Business\Views\Web.config" />
+    <Content Include="Areas\Business\Views\BusinessCircle\Index.cshtml" />
+    <Content Include="Areas\Business\Views\Shared\_BusinessLayout.cshtml" />
+    <Content Include="Areas\Business\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessCircle\Edit.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessCircle\Statistic.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\Edit.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\BuildPhoto.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\EditBuild.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\EdityPhoto.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessBuild\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\EdityFloor.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\Picture.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\PictureEdit.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStreet\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\Edit.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\Picture.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\PictureEdit.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessStore\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessCase\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessCase\Create.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessCase\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\FloorPhoto.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessFloor\EdityPhoto.cshtml" />
+    <Content Include="Areas\Business\Views\DynamicPriceSurvey\Index.cshtml" />
+    <Content Include="Areas\Business\Views\DynamicPriceSurvey\Create.cshtml" />
+    <Content Include="Areas\Business\Views\DynamicPriceSurvey\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessHouse\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessHouse\EdityHouse.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessHouse\UploadFile.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessAnalysis\Index.cshtml" />
+    <Content Include="Areas\Business\Views\BusinessAnalysis\EdityAnaly.cshtml" />
+    <Content Include="Areas\House\Views\Analysis\EdityAnaly.cshtml" />
+    <Content Include="Areas\House\Views\Analysis\Index.cshtml" />
+    <Content Include="Areas\Land\Views\Analysis\EdityAnaly.cshtml" />
+    <Content Include="Areas\Land\Views\Analysis\Index.cshtml" />
+    <None Include="Content\Assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <None Include="Content\Assets\bootstrap-datepicker\less\datepicker.less" />
+    <None Include="Content\Assets\bootstrap-daterangepicker\README.md" />
+    <None Include="Content\Assets\bootstrap-timepicker\.gitignore" />
+    <None Include="Content\Assets\bootstrap-timepicker\less\timepicker.less" />
+    <None Include="Content\Assets\bootstrap-timepicker\README.md" />
+    <None Include="Content\Assets\bootstrap-toggle-buttons\.gitignore" />
+    <None Include="Content\Assets\bootstrap-toggle-buttons\LICENSE" />
+    <None Include="Content\Assets\bootstrap-toggle-buttons\README.md" />
+    <None Include="Content\Assets\bootstrap-toggle-buttons\static\config.rb" />
+    <None Include="Content\Assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <None Include="Content\Assets\bootstrap-tree\.gitignore" />
+    <None Include="Content\Assets\bootstrap-tree\jsonexample.json" />
+    <None Include="Content\Assets\bootstrap-tree\README.md" />
+    <None Include="Content\Assets\bootstrap-wizard\README.md" />
+    <None Include="Content\Assets\breakpoints\README.md" />
+    <None Include="Content\Assets\fancybox\.gitattributes" />
+    <None Include="Content\Assets\fancybox\CHANGELOG.md" />
+    <None Include="Content\Assets\fancybox\README.md" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth-1.json" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth-2.json" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth-3.json" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth-4.json" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth-5.json" />
+    <None Include="Content\Assets\flot\examples\data-eu-gdp-growth.json" />
+    <None Include="Content\Assets\flot\examples\data-japan-gdp-growth.json" />
+    <None Include="Content\Assets\flot\examples\data-usa-gdp-growth.json" />
+    <None Include="Content\Assets\flot\Makefile" />
+    <None Include="Content\Assets\font-awesome\.gitignore" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\FontAwesome.otf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\font-awesome-ie7.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\font-awesome.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\font-site.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\mixins.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\site.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\accordion.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\alerts.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\bootstrap.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\breadcrumbs.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\button-groups.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\buttons.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\carousel.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\close.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\code.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\component-animations.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\dropdowns.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\forms.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\grid.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\hero-unit.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\labels-badges.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\layouts.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\media.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\mixins.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\modals.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\navbar.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\navs.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\pager.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\pagination.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\popovers.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\progress-bars.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\reset.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive-1200px-min.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive-767px-max.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive-768px-979px.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive-navbar.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive-utilities.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\responsive.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\scaffolding.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\sprites.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tables.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\thumbnails.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\tooltip.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\type.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\utilities.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\variables.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\twbs-222\wells.less" />
+    <None Include="Content\Assets\font-awesome\docs\assets\less\variables.less" />
+    <None Include="Content\Assets\font-awesome\font\fontawesome-webfont.eot" />
+    <None Include="Content\Assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <None Include="Content\Assets\font-awesome\font\fontawesome-webfont.woff" />
+    <None Include="Content\Assets\font-awesome\font\FontAwesome.otf" />
+    <None Include="Content\Assets\font-awesome\less\font-awesome-ie7.less" />
+    <None Include="Content\Assets\font-awesome\less\font-awesome.less" />
+    <None Include="Content\Assets\font-awesome\README.md" />
+    <None Include="Content\Assets\font-awesome\sass\font-awesome.sass" />
+    <None Include="Content\Assets\font-awesome\sass\font-awesome.scss" />
+    <None Include="Content\Assets\fullcalendar\demos\.DS_Store" />
+    <None Include="Content\Assets\fullcalendar\demos\json-events.php" />
+    <None Include="Content\Assets\glyphicons\fonts\glyphicons-regular.eot" />
+    <None Include="Content\Assets\glyphicons\fonts\glyphicons-regular.otf" />
+    <None Include="Content\Assets\glyphicons\fonts\glyphicons-regular.ttf" />
+    <None Include="Content\Assets\glyphicons\fonts\glyphicons-regular.woff" />
+    <None Include="Content\Assets\glyphicons\less\glyphicons.less" />
+    <None Include="Content\Assets\glyphicons\less\reset.less" />
+    <None Include="Content\Assets\glyphicons\less\site.less" />
+    <None Include="Content\Assets\glyphicons\less\style.less" />
+    <None Include="Content\Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.eot" />
+    <None Include="Content\Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.otf" />
+    <None Include="Content\Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.ttf" />
+    <None Include="Content\Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.woff" />
+    <None Include="Content\Assets\glyphicons_halflings\less\halflings.less" />
+    <None Include="Content\Assets\glyphicons_halflings\less\reset.less" />
+    <None Include="Content\Assets\glyphicons_halflings\less\site.less" />
+    <None Include="Content\Assets\glyphicons_halflings\less\style.less" />
+    <None Include="Content\Assets\gritter\README.markdown" />
+    <None Include="Content\Assets\jquery-file-upload\.gitignore" />
+    <None Include="Content\Assets\jquery-file-upload\blueimp-file-upload.jquery.json" />
+    <None Include="Content\Assets\jquery-file-upload\CONTRIBUTING.md" />
+    <None Include="Content\Assets\jquery-file-upload\package.json" />
+    <None Include="Content\Assets\jquery-file-upload\README.md" />
+    <None Include="Content\Assets\jquery-file-upload\server\gae-go\app.yaml" />
+    <None Include="Content\Assets\jquery-file-upload\server\gae-go\app\main.go" />
+    <None Include="Content\Assets\jquery-file-upload\server\gae-python\app.yaml" />
+    <None Include="Content\Assets\jquery-file-upload\server\gae-python\main.py" />
+    <None Include="Content\Assets\jquery-file-upload\server\node\.gitignore" />
+    <None Include="Content\Assets\jquery-file-upload\server\node\package.json" />
+    <None Include="Content\Assets\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
+    <None Include="Content\Assets\jquery-file-upload\server\node\tmp\.gitignore" />
+    <None Include="Content\Assets\jquery-file-upload\server\php\files\.htaccess" />
+    <None Include="Content\Assets\jquery-file-upload\server\php\index.php" />
+    <None Include="Content\Assets\jquery-file-upload\server\php\UploadHandler.php" />
+    <None Include="Content\Assets\jquery-knob\README.md" />
+    <None Include="Content\Assets\jquery-slimscroll\README.md" />
+    <None Include="Content\Assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <None Include="Content\Assets\jquery-tags-input\README.md" />
+    <None Include="Content\Assets\jquery-ui-touch-punch\README.md" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\fonts\Anorexia.ttf" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\images\image.php" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\image_req.php" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\index.php" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\newsession.php" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\process.php" />
+    <None Include="Content\Assets\jquery-validation\demo\captcha\rand.php" />
+    <None Include="Content\Assets\jquery-validation\demo\form.php" />
+    <None Include="Content\Assets\jquery-validation\demo\form.phps" />
+    <None Include="Content\Assets\jquery-validation\demo\marketo\emails.php" />
+    <None Include="Content\Assets\jquery-validation\demo\marketo\emails.phps" />
+    <None Include="Content\Assets\jquery-validation\demo\milk\emails.php" />
+    <None Include="Content\Assets\jquery-validation\demo\milk\emails.phps" />
+    <None Include="Content\Assets\jquery-validation\demo\milk\users.php" />
+    <None Include="Content\Assets\jquery-validation\demo\milk\users.phps" />
+    <None Include="Content\Assets\jquery-validation\package.json" />
+    <None Include="Content\Assets\jquery-validation\README.md" />
+    <None Include="Content\Assets\jqvmap\.gitignore" />
+    <None Include="Content\Assets\jqvmap\README.md" />
+    <Content Include="Content\Assets\select2\LICENSE" />
+    <Content Include="Content\Assets\select2\README.md" />
+    <Content Include="Content\Assets\select2\release.sh" />
+    <None Include="Content\Assets\uniform\README.textile" />
+    <None Include="Content\layer-v1.7.1\layer\skin\default\Thumbs.db" />
+    <None Include="Content\Plugin\Tree\css\images\anchor.xcf" />
+    <Content Include="Views\Shared\_Layout.Edit.Map.cshtml" />
+    <Content Include="Views\Shared\_Layout.Content.cshtml" />
+    <Content Include="Views\Login\Unanthroize.cshtml" />
+    <Content Include="Views\Login\CityReplace.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BatchAddPicture\" />
+    <WCFMetadataStorage Include="Service References\ExcelUploadServices\" />
+    <WCFMetadataStorage Include="Service References\ResidentialServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Application\FXT.DataCenter.Application.csproj">
+      <Project>{cc439221-2a68-44c2-a461-0d5224ae965e}</Project>
+      <Name>FXT.DataCenter.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Domain\FXT.DataCenter.Domain.csproj">
+      <Project>{c368021b-9c65-4bdc-a6ee-523efc2969f3}</Project>
+      <Name>FXT.DataCenter.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Common\FXT.DataCenter.Infrastructure.Common.csproj">
+      <Project>{ed63de3f-a21b-4316-987f-634bcc3939bb}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Data\FXT.DataCenter.Infrastructure.Data.csproj">
+      <Project>{20ce707a-120f-4761-8f38-7be5ee164f97}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.IoC\FXT.DataCenter.Infrastructure.IoC.csproj">
+      <Project>{df06ab7c-f8aa-4ad9-9835-c18c4558499b}</Project>
+      <Name>FXT.DataCenter.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Redis\FXT.DataCenter.Infrastructure.Redis.csproj">
+      <Project>{36adf15f-e5c6-440a-a149-27a294703acc}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Redis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11460</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

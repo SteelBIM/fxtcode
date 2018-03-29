@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "抓取后台维护与管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+<style>
+    .main
+    {
+        margin: 0 auto;
+        width: 1024px;
+        border: 1px solid red;
+        overflow: hidden;
+    }
+    .main div
+    {
+        float: left;
+    }
+    .left
+    {
+        width: 200px;
+        text-align: center;
+    }
+    .right
+    {
+    }
+    .clear
+    {
+        clear: both;
+    }
+</style>
+<script>
+ 
+    $.extendAjax({ url: "/Spider/Index/", type: "post", dataType: "text" },
+    function (data) { alert(data); });
+</script>
+<div class="main clear">
+    <div class="left">
+        <h4>
+            案例少或封IP信息</h4>
+        <h4>
+            案例量少信息</h4>
+    </div>
+    <div class="right">
+        <div>
+            asdfaasfsdsdffsad</div>
+    </div>
+    <div class="clear   ">
+    </div>
+</div>

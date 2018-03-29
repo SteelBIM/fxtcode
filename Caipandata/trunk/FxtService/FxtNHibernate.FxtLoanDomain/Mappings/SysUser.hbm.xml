@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="FxtNHibernate.FxtLoanDomain"
+                   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+    <class name="FxtNHibernate.FxtLoanDomain.Entities.SysUser, FxtNHibernate.FxtLoanDomain"
+           table="Sys_User">
+        <id name="Id" column="Id" type="int" unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <property name="UserName" column="UserName" type="string"  />
+        <property name="TrueName" column="TrueName" type="string"  />
+        <property name="UserPwd" column="UserPwd" type="string"  />
+        <property name="EmailStr" column="EmailStr" type="string"  />
+        <property name="Mobile" column="Mobile" type="string"  />
+        <property name="WxOpenId" column="WxOpenId" type="string"  />        
+        <property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+        <property name="CustomerId" column="CustomerId" type="int"  />
+        <property name="CreateDate" column="CreateDate" type="DateTime"  />
+        <property name="CreateUserId" column="CreateUserId" type="int"  />
+        <property name="Valid" column="Valid" type="int"  />
+    </class>
+</hibernate-mapping>

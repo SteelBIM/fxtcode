@@ -1,0 +1,237 @@
+﻿@charset "utf-8";
+/* CSS Document */
+ 
+/*select*/
+ .tag_select {
+	    color:#000;
+	    line-height:20px;
+	    height:20px;	     
+	    padding-right:17px; 
+	    background: url(../../images/select.png) no-repeat right 0;
+	    background-color:#fff;
+	    overflow:hidden;
+	    cursor:default;
+	    border:1px solid #A7A6AB;
+	    display:inline-block;	    
+	    *margin-top:1px;
+	    vertical-align:middle;
+    }
+    .tag_select_hover 
+    {
+        background: url(../../images/select.png) no-repeat right -20px;
+        background-color:#fff;
+	    color:#000000;	    
+    }
+    .tag_select input.input{border:0;line-height:18px;height:18px;}
+    .disabled input.input{background-color:#ddd;}
+    .tag_select_open {
+	    color:#000000;
+    }
+    ul.tag_options {
+	    background:#ffffff;
+	    max-height:200px;
+	    border:1px solid #999999;
+	    position:absolute;
+	    margin:0;
+	    list-style:none;
+	    padding:0;
+	    margin:0;
+	    overflow:hidden;
+	    overflow-y:auto;
+	    font-size:12px;
+	    cursor:default;
+	    z-index:8
+    }
+    ul.tag_options li {
+	    background:#fff;
+	    display:block;
+	    width:100%;
+	    padding:0 2px;
+	    height:22px;
+	    white-space:nowrap;
+	    text-decoration:none;
+	    line-height:22px;
+	    color:#000;
+	    font-weight:normal;
+	    font-size:12px;
+	    text-align:left;
+    }
+    ul.tag_options li.open_hover {
+	    background:#eeeeee;
+	    color:#000;
+	    font-weight:normal;
+    }
+    ul.tag_options li.open_selected {
+	    background:#dddddd;
+    }
+/*input*/
+input.input{height:20px;padding:0 2px;vertical-align:middle}
+textarea{padding:0 2px;}
+.input{ line-height:20px;border-width:1px; border-style:solid; border-color:#A7A6AB;  color:#000; background-color:#FFF;}
+.iptval{ color:#999;}
+.iptfocus{ background-color:#FFFFF; border-color:#5794BF; box-shadow:0px 0px 3px #5794BF; }
+.ipterr{ background-color:#FFFFEF; border-color:#CC0000; box-shadow:0px 0px 3px #CC0000;}
+.iptrequired{ background:url(../../images/icon.png) no-repeat right -181px #FFFFFF;}
+.date{ background:url(../../images/date.jpg) no-repeat right 3px #FFFFFF;}
+.wordwarm{ background:url(../../images/icon.png) no-repeat 0 3px; padding-left:20px; color:#CC0000;}
+.bubwarm{ position:absolute; left:180px; top:-15px;}
+.bubwarm .bubbox{ background-color:#CC0000; border-radius:5px; padding:0 10px; text-align:center; line-height:20px; display:inline-block; color:#FFF;white-space:nowrap;}
+.bubwarm .bubicon{ background:url(../../images/icon.png) no-repeat 0 -30px; width:18px; height:9px; font-size:0; display:block; margin-left:20px; margin-top:-1px;}
+.bubwarm .bubicon2{ background:url(../../images/icon.png) no-repeat 0 -65px; width:18px; height:5px; font-size:0; position:absolute; top:-5px; left:20px; }
+.bubwarm .bubicon3{ background:url(../../images/icon.png) no-repeat 0 -79px; width:9px; height:7px; font-size:0; position:absolute; top:
+10px; left:-9px;}
+.bubwarm .bubicon4{ background:url(../../images/icon.png) no-repeat 0 -92px; width:9px; height:7px; font-size:0; position:absolute; top:
+10px; right:-9px;}
+.over{background:#ddd;}
+.readonly{background-color:#ddd;}
+.disabled{color:#333;background-color:#ddd;}
+/*password*/
+.passwordstrong{width:240px;height:20px;position:absolute;margin-left:10px;}
+.passwordstrong div{width:50px;float:left;text-align:center;line-height:20px;height:20px;
+                    background:#dddddd;
+                    border-right:1px solid #ccc;
+                    border-bottom:1px solid #ccc;
+                    border-left:1px solid #eee;
+                    border-top:1px solid #eee;
+                    }
+.passwordstrong .password_title{width:70px;background:#fff;border:0;text-align:right;}
+.passwordstrong .password_low{background:#ff0000;}
+.passwordstrong .password_middle{background:#ffff99;}
+.passwordstrong .password_strong{background:#00cc00;}
+/*button*/
+.btn,.btn em,.btnhover,.btnhover em,.btnactive,.btnactive em,.noclick,.noclick em,.btnenter,.btnenter em{ background:url(../../images/btn.png) no-repeat;}
+.btn em,.btnhover em,.btnactive em,.noclick em,.btnenter em{ display:inline-block; padding-left:5px;padding-right:1px;margin-left:-1px; _margin-left:0px; height:22px; cursor:default;}
+
+.btn{ background-position:right 0; height:22px; line-height:22px; color:#000000; border-width:0; padding-right:5px;  display:inline-block;vertical-align:top;*margin-top:1px; }
+.btn em{ background-position:0 0;}
+
+.btnhover{ background-position:right -22px; display:inline-block;}
+.btnhover em{background-position:0 -22px;}
+.btnactive{ background-position:right -44px; display:inline-block;}
+.btnactive em{ background-position:0 -44px;  padding-left:6px;padding-right:0;}
+.noclick{ background-position:right -66px; color:#C9C9C9;}
+.noclick em{ background-position:0 -66px;}
+
+.btnenter{ background-position:right -88px; height:22px; border:0; color:#FFFFFF; display:inline-block;}
+.btnenter em{ background-position:0 -88px; height:22px;}
+.iconbtn span{ background:url(../../images/icon.png) no-repeat 0 -104px; width:11px; height:11px; display:inline-block; margin-right:3px; margin-top:0; }
+.loadbtn span{  background:url(../../images/loading.gif) no-repeat 0 2px; width:15px; height:15px; margin:0 auto; display:inline-block; }
+.close{ background:url(../../images/icon.png) no-repeat 0 -134px; width:14px; height:14px; position:absolute; right:0; top:0;}
+.closeon{ background:url(../../images/icon.png) no-repeat 0 -120px;}
+/*checkbox radio*/
+.checkitem{float:left;color:#666;}
+.checkitemchecked{color:#060;}
+.checkbox{width:13px; height:13px; display:inline-block;margin-right:3px;}
+.checkboxdefault{background:url(../../images/checkradio.png) no-repeat 0 0;}
+.checkboxchecked{background:url(../../images/checkradio.png) no-repeat -14px 0;}
+.checkboxover{background:url(../../images/checkradio.png) no-repeat 0 -14px;}
+.checkboxcheckedover{background:url(../../images/checkradio.png) no-repeat -14px -14px;}
+.checkboxdisabled{background:url(../../images/checkradio.png) no-repeat 0 -28px;}
+.checkboxcheckeddisabled{background:url(../../images/checkradio.png) no-repeat -14px -28px;}
+
+.radio{width:13px; height:13px; display:inline-block;margin-right:3px;}
+.radiodefault{background:url(../../images/checkradio.png) no-repeat -28px 0;}
+.radiochecked{background:url(../../images/checkradio.png) no-repeat -42px 0;}
+.radioover{background:url(../../images/checkradio.png) no-repeat -28px -14px;}
+.radiocheckedover{background:url(../../images/checkradio.png) no-repeat -42px -14px;}
+.radiodisabled{background:url(../../images/checkradio.png) no-repeat -28px -28px;}
+.radiocheckeddisabled{background:url(../../images/checkradio.png) no-repeat -42px -28px;}
+
+.checkctl{cursor:default;display:inline-block;line-height:20px;margin-right:5px;}
+.checkdisabled .checkctl{color:#666;}
+
+/*grid*/
+.gridlist{background:#f2f2f2;padding:2px;border:1px solid #ccc;}
+.gridsearch,.gridtool{padding:3px 0;}
+.gridtool{background:#f2f2f2;border-bottom:1px solid #ddd;}
+.gridsearch{border-top:1px solid #fff;}
+
+.tablecontainer{margin:10px 0 0 10px;}
+.tablecontainer .tableheader{background:#777;height:30px;}
+.tablecontainer .tableheader .tabletitle{font-weight:bold;color:#fff;line-height:30px;*float:left;padding:0;margin:0;padding-left:10px;}
+.tablecontainer .tableheader a{float:right;color:#fff;margin-top:8px;margin-right:10px;}
+.tablecontainer .tableheader a:hover{color:#9cf;}
+.tablecontainer .tablecontent{clear:both;}
+table.table{background:#ddd;}
+table.table th{text-align:center;font-weight:bold;background-color:#ddd;padding:5px 0;}
+table.table td{background-color:#f9f9f9;padding:3px;line-height:25px;}
+table.table td.tr{background-color:#eee;}
+table.table tr.subrow td{background:#fff;}
+table.table td.spec{background:#999;height:5px;font-size:1px;line-height:1px;}
+
+table.crosstable
+{
+    background:#fff;
+    empty-cells:show;
+    -moz-user-select:none;
+    position:relative;
+}
+table.crosstable td
+{
+    width:50px;
+    padding:0 3px;
+    height:20px;
+    overflow:hidden;
+    line-height:20px;
+    border-left:1px solid #fff; 
+    border-top:1px solid #fff; 
+    border-right:1px solid #ccc; 
+    border-bottom:1px solid #ccc; 
+}
+table.crosstable div.crosscontent{overflow:hidden;width:50px;height:20px;white-space:nowrap;}
+table.crosstable td.colheader{width:20px;}
+table.crosstable td.rowheader,
+table.crosstable td.colheader
+{
+    background:#ddd;
+    border-left:1px solid #eee; 
+    border-top:1px solid #eee; 
+    border-right:1px solid #aaa; 
+    border-bottom:1px solid #aaa; 
+}
+table.crosstable tr.over,
+table.crosstable col.over
+{
+    background:#def;
+}
+table.crosstable td.over{font-weight:bold;background:#ccc;}
+table.crosstable td.current
+{
+    background:#9cf;
+    border-left:1px solid #69c; 
+    border-top:1px solid #69c; 
+    border-right:1px solid #9cf; 
+    border-bottom:1px solid #9cf; 
+}
+fieldset{padding:0 5px 5px 5px;}
+fieldset legend{padding:3px;}
+.dn{display:none;}
+div.waring{color:#ff0000;padding:10px;}
+.fl{float:left;}
+
+.msg_title{height:15px;padding:5px 10px;background:#d3d3d3;font-weight:bold;color:#333;}
+.msg_content{padding:10px;background:#fff;line-height:20px;color:#000;}
+.msg_content label{font-weight:bold;color:#333;}
+.msg_close{position:absolute;right:6px;top:4px;width:14px;height:14px;background:url(../../../images/cancelbutton.gif)}
+.msg_bottom{padding:5px 10px;background:#fff;text-align:right;}
+
+.msg_box {
+	position:fixed;
+	_position:absolute;
+	right:5px;
+	width:250px;
+	height:150px;
+	background:#fff;
+	border:solid #666 1px;
+	z-index:100;
+	_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||3)-(parseInt(this.currentStyle.marginBottom,10)||2)));
+}
+
+/*picture file*/
+.picFile{ }
+.picFile li{ height:20px; }
+.picFile li p{ height:12px; line-height:12px; float:left; margin-right:3px;}
+.picFile li a.close_pic{ float:left; background:url(../../images/close_pic.png) no-repeat 0 bottom; width:12px; height:12px; cursor:default;}
+.picFile li a.close_pic:hover{ background:url(../../images/close_pic.png) no-repeat 0 0;}
+
+.hand {cursor: pointer}

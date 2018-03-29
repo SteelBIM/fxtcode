@@ -1,0 +1,128 @@
+ exec 往网站爬取配置表添加配置信息 '城市房产','安庆','http://aq.cityhouse.cn','http://aq.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','蚌埠','http://bengbu.cityhouse.cn','http://bengbu.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','合肥','http://hf.cityhouse.cn','http://hf.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','鞍山','http://mas.cityhouse.cn','http://mas.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','铜陵','http://tongling.cityhouse.cn','http://tongling.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','芜湖','http://wuhu.cityhouse.cn','http://wuhu.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','北京','http://bj.cityhouse.cn','http://bj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','重庆','http://cq.cityhouse.cn','http://cq.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','福州','http://fz.cityhouse.cn','http://fz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','泉州','http://qz.cityhouse.cn','http://qz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','厦门','http://xm.cityhouse.cn','http://xm.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','兰州','http://lz.cityhouse.cn','http://lz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','东莞','http://dg.cityhouse.cn','http://dg.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','佛山','http://fs.cityhouse.cn','http://fs.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','广州','http://gz.cityhouse.cn','http://gz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','惠州','http://huizhou.cityhouse.cn','http://huizhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','江门','http://jm.cityhouse.cn','http://jm.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','清远','http://qy.cityhouse.cn','http://qy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','韶关','http://sg.cityhouse.cn','http://sg.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','深圳','http://sz.cityhouse.cn','http://sz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','珠海','http://zh.cityhouse.cn','http://zh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','中山','http://zhongshan.cityhouse.cn','http://zhongshan.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','湛江','http://zj.cityhouse.cn','http://zj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','北海','http://bh.cityhouse.cn','http://bh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','柳州','http://liuzhou.cityhouse.cn','http://liuzhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','南宁','http://nn.cityhouse.cn','http://nn.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','贵阳','http://gy.cityhouse.cn','http://gy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','遵义','http://zy.cityhouse.cn','http://zy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','海口','http://hk.cityhouse.cn','http://hk.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','保定','http://bd.cityhouse.cn','http://bd.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','沧州','http://cangzhou.cityhouse.cn','http://cangzhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','廊坊','http://lf.cityhouse.cn','http://lf.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','秦皇岛','http://qhd.cityhouse.cn','http://qhd.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','石家庄','http://sj.cityhouse.cn','http://sj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','哈尔滨','http://hb.cityhouse.cn','http://hb.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','牡丹江','http://mdj.cityhouse.cn','http://mdj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','洛阳','http://ly.cityhouse.cn','http://ly.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','平顶山','http://pds.cityhouse.cn','http://pds.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','郑州','http://zz.cityhouse.cn','http://zz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','武汉','http://wh.cityhouse.cn','http://wh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','襄阳','http://xy.cityhouse.cn','http://xy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','宜昌','http://yichang.cityhouse.cn','http://yichang.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','常德','http://changde.cityhouse.cn','http://changde.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','长沙','http://cs.cityhouse.cn','http://cs.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','岳阳','http://yy.cityhouse.cn','http://yy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','常州','http://cz.cityhouse.cn','http://cz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','连云港','http://lyg.cityhouse.cn','http://lyg.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','南京','http://nj.cityhouse.cn','http://nj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','南通','http://nt.cityhouse.cn','http://nt.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','苏州','http://su.cityhouse.cn','http://su.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','泰州','http://taizhoujs.cityhouse.cn','http://taizhoujs.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','无锡','http://wx.cityhouse.cn','http://wx.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','徐州','http://xz.cityhouse.cn','http://xz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','盐城','http://yancheng.cityhouse.cn','http://yancheng.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','扬州','http://yz.cityhouse.cn','http://yz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','镇江','http://zhenjiang.cityhouse.cn','http://zhenjiang.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','赣州','http://ganzhou.cityhouse.cn','http://ganzhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','九江','http://jj.cityhouse.cn','http://jj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','南昌','http://nc.cityhouse.cn','http://nc.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','长春','http://cc.cityhouse.cn','http://cc.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','吉林','http://jl.cityhouse.cn','http://jl.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','通化','http://th.cityhouse.cn','http://th.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','大连','http://dl.cityhouse.cn','http://dl.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','锦州','http://jz.cityhouse.cn','http://jz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','沈阳','http://sy.cityhouse.cn','http://sy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','营口','http://yk.cityhouse.cn','http://yk.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','包头','http://bt.cityhouse.cn','http://bt.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','鄂尔多斯','http://eds.cityhouse.cn','http://eds.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','呼和浩特','http://hh.cityhouse.cn','http://hh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','银川','http://yc.cityhouse.cn','http://yc.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','西宁','http://xn.cityhouse.cn','http://xn.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','上海','http://sh.cityhouse.cn','http://sh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','滨州','http://bz.cityhouse.cn','http://bz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','东营','http://dy.cityhouse.cn','http://dy.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','德州','http://dz.cityhouse.cn','http://dz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','济宁','http://jining.cityhouse.cn','http://jining.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','济南','http://jn.cityhouse.cn','http://jn.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','聊城','http://lc.cityhouse.cn','http://lc.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','临沂','http://linyi.cityhouse.cn','http://linyi.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','青岛','http://qd.cityhouse.cn','http://qd.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','日照','http://rz.cityhouse.cn','http://rz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','泰安','http://taian.cityhouse.cn','http://taian.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','威海','http://weihai.cityhouse.cn','http://weihai.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','潍坊','http://wf.cityhouse.cn','http://wf.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','烟台','http://yt.cityhouse.cn','http://yt.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','枣庄','http://zaozhuang.cityhouse.cn','http://zaozhuang.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','淄博','http://zb.cityhouse.cn','http://zb.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','太原','http://ty.cityhouse.cn','http://ty.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','西安','http://xa.cityhouse.cn','http://xa.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','成都','http://cd.cityhouse.cn','http://cd.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','泸州','http://luzhou.cityhouse.cn','http://luzhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','绵阳','http://my.cityhouse.cn','http://my.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','南充','http://nanchong.cityhouse.cn','http://nanchong.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','天津','http://tj.cityhouse.cn','http://tj.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','乌鲁木齐','http://wl.cityhouse.cn','http://wl.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','昆明','http://km.cityhouse.cn','http://km.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','湖州','http://huzhou.cityhouse.cn','http://huzhou.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','杭州','http://hz.cityhouse.cn','http://hz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','金华','http://jh.cityhouse.cn','http://jh.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','嘉兴','http://jx.cityhouse.cn','http://jx.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','宁波','http://nb.cityhouse.cn','http://nb.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','绍兴','http://sx.cityhouse.cn','http://sx.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','台州','http://tz.cityhouse.cn','http://tz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+ exec 往网站爬取配置表添加配置信息 '城市房产','温州','http://wz.cityhouse.cn','http://wz.cityhouse.cn/forsale/flist.html?ob=10','',1,1
+
+go
+
+exec 往网站表插入信息 '楼盘网',1,2
+exec 往网站爬取配置表添加配置信息 '楼盘网','北京','http://bj.esf.loupan.com','http://bj.esf.loupan.com/p1/','',1,1
+exec 往网站爬取配置表添加配置信息 '楼盘网','许昌','http://xc.esf.loupan.com','http://xc.esf.loupan.com/p1/','',1,1
+
+go
+exec 往网站表插入信息 '搜狐二手房',0,null
+exec 往网站爬取配置表添加配置信息 '搜狐二手房','上海','http://sh.esf.focus.cn','http://sh.esf.focus.cn/sale/s7','',1,1
+exec 往网站爬取配置表添加配置信息 '搜狐二手房','重庆','http://cq.esf.focus.cn','http://cq.esf.focus.cn/sale/s7','',1,1
+exec 往网站爬取配置表添加配置信息 '搜狐二手房','深圳','http://sz.esf.focus.cn','http://sz.esf.focus.cn/sale/s7','',1,1
+exec 往网站爬取配置表添加配置信息 '搜狐二手房','天津','http://tj.esf.focus.cn','http://tj.esf.focus.cn/sale/s7','',1,1
+exec 往网站爬取配置表添加配置信息 '搜狐二手房','北京','http://bj.esf.focus.cn','http://bj.esf.focus.cn/sale/s7','',1,1
+
+go
+exec 往网站表插入信息 '满堂红地产网',0,null
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','佛山','http://fs.mytophome.com','http://fs.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','广州','http://gz.mytophome.com','http://gz.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','中山','http://zs.mytophome.com','http://zs.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','成都','http://cd.mytophome.com','http://cd.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','东莞','http://dg.mytophome.com','http://dg.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','南京','http://nj.mytophome.com','http://nj.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1
+exec 往网站爬取配置表添加配置信息 '满堂红地产网','珠海','http://zh.mytophome.com','http://zh.mytophome.com/prop/salelist/0_Z_0_0_0_0_0_0.html?ob=createDate&ov=13','',1,1

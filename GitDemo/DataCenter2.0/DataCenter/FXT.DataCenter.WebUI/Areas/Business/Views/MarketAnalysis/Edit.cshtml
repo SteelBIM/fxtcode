@@ -1,0 +1,147 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DatAnalysisMarket
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml"; 
+}
+@section PageSpecificStyleSheetIncludes{
+
+    <style type="text/css">
+        #tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+        }
+
+        .required
+        {
+            color: red;
+        }
+    </style>
+
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var aId = "@Model.AreaId", subaId = "@Model.SubAreaId";
+            if (aId != 0) {
+                var areaListUrl = "@Url.Action("GetSubAreaList", "BusinessBuild")";
+                $.post(areaListUrl, { areaId: aId }, function (json) {
+                    var html = "<option value='-1'>--请选择--</option>";
+                    if (json.flag) {
+                        for (var i = 0; i < json.data.length; i++) {
+                            if (json.data[i].SubAreaId == subaId) {
+                                html += "<option value='" + json.data[i].SubAreaId + "' selected='selected'>"
+                                html += json.data[i].SubAreaName;
+                                html += "</option>";
+                            } else {
+                                html += "<option value='" + json.data[i].SubAreaId + "'>"
+                                html += json.data[i].SubAreaName;
+                                html += "</option>";
+                            }
+                        }
+                    }
+                    $("#SubAreaId").empty().append(html);
+                }, "json");
+            }
+            $("#btnSubmit").remove();
+            $("div.form-actions").prepend("<button type=\"button\" id=\"btnSubmit\" name=\"btnSubmit\" class=\"btn blue\"><i class=\"icon-ok\"></i>提交</button>");
+            $("#btnSubmit").bind("click", function () {
+                var areaId = $("#AreaId").find("option:selected").val(),
+                    subAreaId = $("#SubAreaId").find("option:selected").val(),
+                    analysis = $.trim($("#Analysis").val());
+                if (areaId < 0 || analysis == null || analysis == "") {
+                    $("#mainForm").submit();
+                } else {
+                    if (aId == areaId) {
+                        $("#mainForm").submit();
+                    } else {
+                        var url = "@Url.Action("IsExist")";
+                        $.post(url, { areaId: areaId, subAreaId: subAreaId }, function (json) {
+                            if (json) {
+                                layer.alert("已经存在该分析记录");
+                                return false;
+                            } else {
+                                $("#mainForm").submit();
+                            }
+                        }, "json");
+                    }
+                }
+            });
+            //$("div.page-sidebar ul li").eq(7).addClass("active").find("a span").eq(1).addClass("selected");
+            //var locationHref = window.location.href;
+            //if (locationHref.indexOf("Land/Analysis/Index")) {
+            //    $("#navigation .breadcrumb li:eq(1)").remove();
+            //    $("#navigation .breadcrumb li:eq(2)").remove();
+            //    var html = " <li><span><a href=\"/Land/Analysis/Index\">住宅区域分析</a></span> <i class=\"icon-angle-right\"></i></li>";
+            //    html += "<li><span>编辑</span></li>";
+            //    $("ul.breadcrumb").append(html);
+            //}
+            $("#AreaId").change(function () {
+                var areaId = $(this).find("option:selected").val();
+                var areaListUrl = "@Url.Action("GetSubAreaList", "BusinessBuild")";
+                $.post(areaListUrl, { areaId: areaId }, function (json) {
+                    var html = "<option value='-1'>--请选择--</option>";
+                    if (json.flag) {
+                        for (var i = 0; i < json.data.length; i++) {
+                            html += "<option value='" + json.data[i].SubAreaId + "'>"
+                            html += json.data[i].SubAreaName;
+                            html += "</option>";
+                        }
+                    }
+                    $("#SubAreaId").empty().append(html);
+                }, "json");
+            });
+
+        });
+
+    </script>
+}
+@section MainContent{
+
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td><span class="required">*</span>行政区:</td>
+            <td>@Html.DropDownListFor(m => m.AreaId, (ViewBag.AreaList) as List<SelectListItem>, new { style = "width:150px;" })</td>
+            <td>商圈：
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.SubAreaId, new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "请选择" } }, new { style = "width:150px;" })
+            </td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span>分析:
+            </td>
+            <td colspan="3">
+                @Html.TextAreaFor(m => m.Analysis, new { cols = "20", rows = "6", style = "margin-bottom: 5px; width: 452px; height: 160px;" })
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                (请控制在1024字以内)
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <input type="hidden" id="Id" name="Id" value="@Model.ID" />
+    </div>
+}
+

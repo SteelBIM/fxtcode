@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="../Scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript">
+        var rgx = /<select id=\"field_34_3951915\"[^<]*<\/select>/ig;
+        var str = '<select id="34_3951915" class="" select tagname="HODY"></select></TD></TR>';
+        alert(rgx.test(str ));
+        $(function () {
+            $("#btn").click(function () {
+                var check = [];
+                check = $("input[type=checkbox]:checked");
+                for (var i = 0; i < check.length; i++) {
+                    console.log($(check[i]).attr("tel"));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+   <input type="checkbox" tel="1"/>
+   <input type="checkbox" tel="2" />
+   <input type="checkbox" tel="3" />
+   <input type="checkbox" tel="4" />
+   <button id="btn">按钮</button>
+   <input id="30_12345" />
+</body>
+</html>

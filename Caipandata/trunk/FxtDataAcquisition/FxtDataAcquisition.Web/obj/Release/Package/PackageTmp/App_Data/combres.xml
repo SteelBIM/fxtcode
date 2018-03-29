@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<combres xmlns='urn:combres'>
+  <cssMinifiers>
+  <minifier name="yui" type="Combres.Minifiers.YuiCssMinifier, Combres">
+    <param name="CssCompressionType" type="string" value="StockYuiCompressor" />
+    <param name="ColumnWidth" type="int" value="-1" />
+  </minifier>
+  </cssMinifiers>
+  <jsMinifiers>
+    <minifier name="msajax" type="Combres.Minifiers.MSAjaxJSMinifier, Combres"  binderType="Combres.Binders.SimpleObjectBinder, Combres">
+      <param name="CollapseToLiteral" type="bool" value="true" />
+      <param name="EvalsAreSafe" type="bool" value="true" />
+      <param name="MacSafariQuirks" type="bool" value="true" />
+      <param name="CatchAsLocal" type="bool" value="true" />
+      <param name="LocalRenaming" type="string" value="CrunchAll" />
+      <param name="OutputMode" type="string" value="SingleLine" />
+      <param name="RemoveUnneededCode" type="bool" value="true" />
+      <param name="StripDebugStatements" type="bool" value="true" />
+    </minifier>
+  </jsMinifiers>
+  <resourceSets url="~/combres.axd" defaultDuration="30" defaultVersion="auto" defaultDebugEnabled="true" >
+    <resourceSet name="Bootstrap_html5.js" type="js">
+      <resource path="/bootstrap/ace1.2/assets/js/html5shiv.js" />
+      <resource path="/bootstrap/ace1.2/assets/js/respond.min.js" />
+    </resourceSet>
+    <resourceSet name="Js_jquery-migrate-1.1.1.js" type="js">
+      <resource path="/Scripts/jquery-migrate-1.1.1.js" />
+    </resourceSet>
+    <resourceSet name="Bootstrap_bootstrap-paginator-1.0.2.js" type="js">
+      <resource path="/bootstrap/bootstrap-paginator/bootstrap-paginator-1.0.2.js" />
+    </resourceSet>
+    <resourceSet name="Js_Fancybox_jquery.fancybox-1.3.4.js" type="js">
+      <resource path="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js" />
+    </resourceSet>
+    <resourceSet name="Js_blockUI_jquery.blockUI-1.33.js" type="js">
+      <resource path="/Scripts/jquery.blockUI.1.33/jquery.blockUI-1.33.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_Common_UrlCommon.js" type="js">
+      <resource path="/Scripts/Common/UrlCommon.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_Common_CodeJson.js" type="js">
+      <resource path="/Scripts/Common/CodeJson.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_jquery.extend.js" type="js">
+      <resource path="/Scripts/jquery.extend.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_Common_Common.js" type="js">
+      <resource path="/Scripts/Common/Common.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_Shared__Layout.js" type="js">
+      <resource path="/Scripts/Shared/_Layout.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_Login_Login.js" type="js">
+      <resource path="/Scripts/Login/Login.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_AllotFlowInfo_AllotDetailed.js" type="js">
+      <resource path="/Scripts/AllotFlowInfo/AllotDetailed.js" />
+    </resourceSet>
+    <resourceSet name="Scripts_AllotFlowInfo_EditHouse.js" type="js">
+      <resource path="/Scripts/AllotFlowInfo/EditHouse.js"></resource>
+    </resourceSet>
+    <!--跨域时使用
+    <resourceSet name="testdsd" type="js">
+      <resource path="http://caipan.fxtchina.com/Scripts/Login/Logidn.js" mode="dynamic"/>
+    </resourceSet>-->
+    <!--*****************css************************************-->
+    <resourceSet name="Bootstrap_Base.css" type="css">
+      <resource path="/bootstrap/ace1.2/assets/css/bootstrap.min.css" />
+      <resource path="/bootstrap/ace1.2/assets/css/font-awesome.min.css" />
+    </resourceSet>
+    <resourceSet name="Bootstrap_font-awesome-ie7.min.ss" type="css">
+      <resource path="/bootstrap/ace1.2/assets/css/font-awesome-ie7.min.css" />
+    </resourceSet>
+    <resourceSet name="Bootstrap_AceBase.css" type="css">
+      <resource path="/bootstrap/ace1.2/assets/css/ace.min.css" />
+      <resource path="/bootstrap/ace1.2/assets/css/ace-rtl.min.css" />
+      <resource path="/bootstrap/ace1.2/assets/css/ace-skins.min.css" />
+    </resourceSet>
+    <resourceSet name="Bootstrap_ace-ie.min.css" type="css">
+      <resource path="/bootstrap/ace1.2/assets/css/ace-ie.min.css" />
+    </resourceSet>
+    <resourceSet name="Css_Fancybox_Css.css" type="css">
+      <resource path="/Scripts/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
+    </resourceSet>
+    <resourceSet name="Css_Shared__Layout.css" type="css">
+      <resource path="/Css/Shared/_Layout.css" />
+    </resourceSet>
+    <resourceSet name="Css_AllotFlowInfo_AllotDetailed.css" type="css">
+      <resource path="/Css/AllotFlowInfo/AllotDetailed.css" />
+    </resourceSet>
+    <resourceSet name="Css_Login_LoginBox.css" type="css">
+      <resource path="/Css/Login/LoginBox.css" />
+    </resourceSet>
+    <resourceSet name="Css_Login_Login.css" type="css">
+      <resource path="/Css/Login/Login.css" />
+    </resourceSet>
+  </resourceSets>
+</combres>

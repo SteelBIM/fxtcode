@@ -1,0 +1,1182 @@
+﻿@{
+    
+    ViewBag.Title = "(住宅)房号";
+}
+@section StyleSheet{
+    <style type="text/css">
+        select {
+            margin: 1px;
+            width: 150px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .scrollwidth {
+            width: 1300px;
+        }
+    </style>
+}
+@section Javascript{
+    <script src="~/Areas/House/Scripts/PageHouse.js?1=1"></script>
+    <script type="text/javascript">
+        var projectId = '@ViewBag.projectId';
+        var selID = '#HouseName', danyuan_str = "";
+        $(document).ready(function () {
+            var priceDetail = '@ViewBag.PriceDetail.Replace("\r", "").Replace("\n", "")';
+            HouseObj.InitLoad("@(ViewBag.BuildingId)", "@(ViewBag.CityId)", "@(ViewBag.FxtCompanyId)", "@ViewBag.TotalFloor", "@(ViewBag.pAveragePrice)", "@(ViewBag.AveragePrice)", priceDetail, "@(ViewBag.proWeight)");
+
+            $("div.page-sidebar ul li").eq(2).addClass("active").find("a span").eq(1).addClass("selected");
+            var locationHref = window.location.href, projectName = "@(ViewBag.projectName)", buildName = "@(ViewBag.buildName)", areaid = "@(ViewBag.areaid)", areaname = "@(ViewBag.areaname)";
+            if (locationHref.indexOf("House/House/Index")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/Project/Index\">住宅基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                if (projectName) {
+                    html += "<li><span><a href=\"/House/Project/Index?areaid=" + areaid + "\">" + areaname + "</a></span><i class=\"icon-angle-right\"></i></li>";
+                    html += "<li><span><a href=\"/House/Project/Edity?projectid=" + encodeURIComponent("@ViewBag.projectPara") + "\">" + projectName + "</span></a><i class=\"icon-angle-right\"></i></li>";
+                }
+                html += "<li><span><a href=\"/House/Build/Index?projectid=" + projectId + "\">楼栋列表</a></span><i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span><a href=\"/House/Build/Edity?projectid=" + encodeURIComponent("@ViewBag.projectPara") + "&buildingid=@(ViewBag.BuildingId)\">" + buildName + "</span></a><i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>房号</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+            var louceng = $("#tab_HouseName").siblings("table").find("tbody tr").length;//初始化获取楼层数
+            loadFloor(louceng);//加载楼层下拉
+            loadUnitNo();//加载单元下拉
+            if (danyuan_str != "") {
+                var val = $.trim($("#tab_HouseName").next("table").find("tbody>tr").eq(0).find("td").eq(2).text());
+                $("#btn_delHouseName").val(val);
+            }
+            $('#myTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+                selID = $(this).attr("href");
+
+            });
+
+            $("#myTab a:first").tab('show');
+
+            $("#myTab li").each(function () {
+                var hre = $(this).children("a").attr("href");
+                if (active == hre) {
+                    $(this).addClass("active");
+                    $(active).addClass("active");
+                }
+            });
+            $("#btnPriceDetail").click(function () {
+                var detailVal = $("#PriceDetail").val(), txtPriceDetail = $("#txtPriceDetail").val();
+                $("#txtPriceDetail").val('').val(detailVal);
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () { //第一个按钮的功能函数
+                        txtPriceDetail = $("#txtPriceDetail").val();
+                        txtPriceDetail = txtPriceDetail.replace(/<[^>].*?>/g, '');//移除html标记
+                        $("#PriceDetail").val('').val(txtPriceDetail);
+                        HouseObj.PriceDetail = txtPriceDetail;
+                        $.post("/House/House/EndtityPriceDetail", { buildId: "@(ViewBag.BuildingId)", priceDetail: txtPriceDetail, fxtcompanyId: "@(ViewBag.FxtCompanyId)" }, function (jsonmsg) {
+                            //if (jsonmsg.flag)
+                            //    alert("修改");
+                        }, "json");
+                        top.tb_remove();
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        function deleteallhouse() {
+            if (confirm("是否确定删除所有房号？")) {
+                $.ajax({
+                    type: "POST",
+                    url: "/House/House/DeleteAllHouse",
+                    data: { buildingid: "@(ViewBag.BuildingId)" },
+                    traditional: true,
+                    success: function (data) {
+                        if (data.result) {
+                            if (data.msg != "") {
+                                alert(data.msg);
+                            }
+                            location.reload();
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+@using (Html.BeginForm())
+{ 
+    <div class="projectInfo">
+        <b>楼盘名称:</b><span style="margin-right: 20px;">@(ViewBag.projectName)</span>
+        <b>楼栋名称:</b><span>@(ViewBag.buildName)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="btn red" id="deleteAll" onclick="javascript: deleteallhouse();" value="清空房号" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+        @if (ViewBag.IsExport)
+        { 
+            <a id="btnExport" class="btn" href="@Url.Action("Export", "House", new { projectid = ViewBag.projectId, buildingid = ViewBag.BuildingId })">导出</a>
+            <a id="btnStatitics" class = "btn" href="@Url.Action("ProjectStatistics", "Project")">自定义导出</a>                        
+        }
+    </div>
+    <div class="tabbable tabbable-custom">
+        <ul class="nav nav-tabs scrollwidth" id="myTab">
+            <li><a href="#HouseName">房号</a></li>
+            <li><a href="#BuildArea">建筑面积</a></li>
+            <li><a href="#PurposeName">用途</a></li>
+            <li><a href="#SubHouse">附属房屋类型</a></li>
+            <li><a href="#SubHouseArea">附属房屋面积</a></li>
+            <li><a href="#HouseTypeName">户型</a></li>
+            <li><a href="#StructureName">户型结构</a></li>
+            <li><a href="#UnitPrice">初始单价</a></li>
+            <li><a href="#Weight">价格系数</a></li>
+            <li><a href="#FrontName">朝向</a></li>
+            <li><a href="#SightName">景观</a></li>
+            <li><a href="#IsEValue">可估价</a></li>
+            <li><a href="#IsShowBuildingArea">面积确认</a></li>
+            <li><a href="#VDName">通风采光</a></li>
+            <li><a href="#FitmentName">装修</a></li>
+            <li><a href="#Cookroom">有无厨房</a></li>
+            <li><a href="#Balcony">阳台数</a></li>
+            <li><a href="#Toilet">洗手间数</a></li>
+            <li><a href="#NoiseCodeName">噪音情况</a></li>
+        </ul>
+        <div class="tab-content scrollwidth">
+            <div class="tab-pane scrollBar" id="HouseName">
+                <div class="portlet-body">
+                    <table id="tab_HouseName" class="tbsta" style="line-height: 40px;">
+                        @{
+                            var data = new ViewDataDictionary();
+                            data.Add("HouseName", "HouseName");
+                            data.Add("TotalFloor", ViewBag.TotalFloor);
+                            data.Add("FxtCompanyId", ViewBag.FxtCompanyId);
+                            Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 25%; float: left;">
+                            楼层号:
+                            <input type="text" class='form-control input-small' style="width: 112px;" id="txtfloor" /><br />
+                            <input type="button" class="btn" id="btn_addhouse" value="新加楼层" onclick="HouseObj.AddFloorNo($.trim($('#txtfloor').val()));" />
+                            <input type="button" class="btn" id="btn_delhouse" value="删除楼层" onclick="HouseObj.DelFloorNo($.trim($('#txtfloor').val()));" />
+                        </div>
+                        <div style="width: 25%; float: left;">
+                            单元:<input type="text" class='form-control input-small' style="width: 41px;" id="txtunitNo" />
+                            室号:<input type="text" class='form-control input-small' style="width: 41px;" id="txthouseName" /><br />
+                            <input type="button" class="btn" value="新加单元" onclick="HouseObj.AddHouse($.trim($('#txtunitNo').val()), $.trim($('#txthouseName').val()));" />
+                            <input type="button" class="btn" value="删除单元" onclick="HouseObj.DelHouse($.trim($('#txtunitNo').val()), $.trim($('#txthouseName').val()));" />
+                        </div>
+                        <div style="width: 25%; float: left;">
+                            <div>
+                                楼层:<select style="width: 100px;" name="FloorNoSet" id="selDelF" onchange="HouseObj.ChangeValue($('#selDelF').find('option:selected').val(), $('#selDelU').find('option:selected').val(),'#btn_delHouseName')">
+                                </select>
+                                单元:<select style="width: 100px;" name="UnitNoSet" id="selDelU" onchange="HouseObj.ChangeValue($('#selDelF').find('option:selected').val(), $('#selDelU').find('option:selected').val(),'#btn_delHouseName')">
+                                </select>
+                            </div>
+                            <div>
+                                房号名称:<input type="text" id="btn_delHouseName" style="margin-top: 8px; width: 61px;" />
+                                <input type="button" class="btn" value="删除房号" onclick="HouseObj.DelHouseName($('#selDelF').find('option:selected').val(), $('#selDelU').find('option:selected').val(), $.trim($('#btn_delHouseName').val()));" />
+                                <a style="cursor:pointer;" class="btn thickbox" href="/House/House/AddHouse?buildId=@(ViewBag.BuildingId)&floor=@(ViewBag.TotalFloor)TB_iframe=true&amp;height=500&amp;width=860" title="新增房号">新增房号</a>
+                                @*<a href="/House/House/AddHouse?buildId=@(ViewBag.BuildingId)&floor=@(ViewBag.TotalFloor)TB_iframe=true&height=500&width=860" class="thickbox btn" title="新增房号">新 增</a>*@
+                            </div>
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="BuildArea">
+                <div class="portlet-body">
+                    <table id="tab_BuildArea" class="tbsta" style="line-height: 40px;">
+                        @{
+                            data.Remove("HouseName");
+                            data.Add("HouseName", "BuildArea");
+                            Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_BuildArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_BuildArea">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_BuildArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_BuildArea">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                面积(㎡):<input type="text" style="width: 53px; margin-top: 10px;" id="txtBuildArea" />
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_BuildArea').find('option:selected').val(),
+                                    $('#selFloorTo_BuildArea').find('option:selected').val(), $('#selUnitNo_BuildArea').find('option:selected').val(),
+                                    $('#selUnitNoTo_BuildArea').find('option:selected').val(), $.trim($('#txtBuildArea').val()), '#tab_BuildArea');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="PurposeName">
+                <div class="portlet-body">
+                    <table id="tab_PurposeName" class="tbsta" style="line-height: 40px;">
+                        @{
+                            data.Remove("HouseName");
+                            data.Add("HouseName", "PurposeName");
+                            Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_PurposeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_PurposeName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_PurposeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_PurposeName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                用途:<select class="m-wrap small" style="width: 122px!important;" id="sel_PurposeName">
+                                    <option value="1002001">普通住宅</option>
+                                    <option value="1002002">非普通住宅</option>
+                                    <option value="1002003">公寓</option>
+                                    <option value="1002004">酒店式公寓</option>
+                                    <option value="1002005">独立别墅</option>
+                                    <option value="1002006">联排别墅</option>
+                                    <option value="1002007">叠加别墅</option>
+                                    <option value="1002008">双拼别墅</option>
+                                    <option value="1002009">旅馆</option>
+                                    <option value="1002010">花园洋房</option>
+                                    <option value="1002011">老洋房</option>
+                                    <option value="1002012">新式里弄</option>
+                                    <option value="1002013">旧式里弄</option>
+                                    <option value="1002014">商业</option>
+                                    <option value="1002015">办公</option>
+                                    <option value="1002016">厂房</option>
+                                    <option value="1002017">酒店</option>
+                                    <option value="1002018">仓库</option>
+                                    <option value="1002019">车位</option>
+                                    <option value="1002020">综合</option>
+                                    <option value="1002021">商住</option>
+                                    <option value="1002022">其他</option>
+                                    <option value="1002023">经济适用房</option>
+                                    <option value="1002024">补差商品住房</option>
+                                    <option value="1002025">地下室,储藏室</option>
+                                    <option value="1002026">车库</option>
+                                    <option value="1002027">别墅</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_PurposeName').find('option:selected').val(),
+    $('#selFloorTo_PurposeName').find('option:selected').val(), $('#selUnitNo_PurposeName').find('option:selected').val(),
+    $('#selUnitNoTo_PurposeName').find('option:selected').val(), $('#sel_PurposeName').find('option:selected').text(), '#tab_PurposeName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="SubHouse">
+                <div class="portlet-body">
+                    <table id="tab_SubHouse" class="tbsta" style="line-height: 40px;">
+                        @{
+                            data.Remove("HouseName");
+                            data.Add("HouseName", "SubHouse");
+                            Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_SubHouse">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_SubHouse">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_SubHouse">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_SubHouse">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                附属房屋类型:<select class="m-wrap small" style="width: 100px!important;" id="sel_SubHouse">
+                                    <option value="1015001">地下室</option>
+                                    <option value="1015002">杂物间</option>
+                                    <option value="1015003">车库</option>
+                                    <option value="1015004">摩托车库</option>
+                                    <option value="1015005">下房</option>
+                                    <option value="1015006">储藏室</option>
+                                    <option value="1015007">阁楼</option>
+                                    <option value="1015008">厦子</option>
+                                    <option value="1015009">附房</option>
+                                    <option value="1015010">夹层</option>
+                                    <option value="1015011">地下车库</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_SubHouse').find('option:selected').val(),
+    $('#selFloorTo_SubHouse').find('option:selected').val(), $('#selUnitNo_SubHouse').find('option:selected').val(),
+    $('#selUnitNoTo_SubHouse').find('option:selected').val(), $('#sel_SubHouse').find('option:selected').text(), '#tab_SubHouse');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="SubHouseArea">
+                <div class="portlet-body">
+                    <table id="tab_SubHouseArea" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "SubHouseArea");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_SubHouseArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_SubHouseArea">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_SubHouseArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_SubHouseArea">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                附属房屋面积(㎡):<input type="text" style="width: 53px; margin-top: 10px;" id="txtSubHouseArea" />
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_SubHouseArea').find('option:selected').val(),
+    $('#selFloorTo_SubHouseArea').find('option:selected').val(), $('#selUnitNo_SubHouseArea').find('option:selected').val(),
+    $('#selUnitNoTo_SubHouseArea').find('option:selected').val(), $.trim($('#txtSubHouseArea').val()), '#tab_SubHouseArea');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="HouseTypeName">
+                <div class="portlet-body">
+                    <table id="tab_HouseTypeName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "HouseTypeName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_HouseTypeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_HouseTypeName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_HouseTypeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_HouseTypeName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                户型:<select class="m-wrap small" style="width: 122px!important;" id="sel_HouseTypeName">
+                                    <option value="4001001">单房</option>
+                                    <option value="4001002">单身公寓</option>
+                                    <option value="4001003">一室一厅</option>
+                                    <option value="4001004">两室一厅</option>
+                                    <option value="4001005">两室两厅</option>
+                                    <option value="4001006">三室一厅</option>
+                                    <option value="4001007">三室两厅</option>
+                                    <option value="4001008">四室一厅</option>
+                                    <option value="4001009">四室两厅</option>
+                                    <option value="4001010">四室三厅</option>
+                                    <option value="4001017">四室四厅</option>
+                                    <option value="4001011">五室</option>
+                                    <option value="4001012">六室</option>
+                                    <option value="4001013">七室及以上</option>
+                                    <option value="4001014">一室两厅</option>
+                                    <option value="4001015">两室零厅</option>
+                                    <option value="4001016">三室零厅</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_HouseTypeName').find('option:selected').val(),
+    $('#selFloorTo_HouseTypeName').find('option:selected').val(), $('#selUnitNo_HouseTypeName').find('option:selected').val(),
+    $('#selUnitNoTo_HouseTypeName').find('option:selected').val(), $('#sel_HouseTypeName').find('option:selected').text(), '#tab_HouseTypeName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="StructureName">
+                <div class="portlet-body">
+                    <table id="tab_StructureName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "StructureName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_StructureName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_StructureName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_StructureName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_StructureName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                户型结构:<select class="m-wrap small" style="width: 122px!important;" id="sel_StructureName">
+                                    <option value="2005001">平面</option>
+                                    <option value="2005002">跃式</option>
+                                    <option value="2005003">复式</option>
+                                    <option value="2005004">错层</option>
+                                    <option value="2005005">LOFT</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_StructureName').find('option:selected').val(),
+    $('#selFloorTo_StructureName').find('option:selected').val(), $('#selUnitNo_StructureName').find('option:selected').val(),
+    $('#selUnitNoTo_StructureName').find('option:selected').val(), $('#sel_StructureName').find('option:selected').text(), '#tab_StructureName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="UnitPrice">
+                <div class="portlet-body">
+                    <table id="tab_UnitPrice" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "UnitPrice");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 40%; float: left;">
+                            @* <div>
+                                调整价格
+                            </div>*@
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_UnitPrice">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_UnitPrice">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_UnitPrice">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_UnitPrice">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                单价:<input type="text" style="width: 80px; margin-top: 10px;" id="txtUnitPrice" />
+                                ×
+                                <input type="text" style="width: 25px; margin-top: 10px;" id="txtPoint" value="100" />%
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_UnitPrice').find('option:selected').val(),
+    $('#selFloorTo_UnitPrice').find('option:selected').val(), $('#selUnitNo_UnitPrice').find('option:selected').val(),
+    $('#selUnitNoTo_UnitPrice').find('option:selected').val(), $('#txtUnitPrice').val(), '#tab_UnitPrice', $('#txtPoint').val());" />
+                            </div>
+                        </div>
+                        <div style="width: 60%; float: left;">
+                            <div>
+                                调整价格
+                            </div>
+                            <div>
+                                <select class="m-wrap small" style="width: 110px!important;" id="PriceFloorNo">
+                                </select>
+                                <select class="m-wrap small" style="width: 100px!important;" name="FloorNoSet" id="S_FloorNo">
+                                </select>
+                                到
+                                <select class="m-wrap small" style="width: 100px!important;" name="FloorNoSet" id="S_FloorNoTo">
+                                </select>
+                                层
+                                <select class="m-wrap small" style="width: 80px!important;" id="sel_FloorJiaJian">
+                                    <option value="1">递增</option>
+                                    <option value="0">递减</option>
+                                </select>
+                                <input type="text" style="width: 30px; margin: 5px;" id="S_FloorNoNum" />%
+                                <input type="button" value="设置楼层差" class="btn" onclick="HouseObj.SetFloorCha($('#S_FloorNo').find('option:selected').val(),
+    $('#S_FloorNoTo').find('option:selected').val(), $('#sel_FloorJiaJian').find('option:selected').val(), $('#S_FloorNoNum').val());" />
+                            </div>
+                            <div>
+                                <input type="button" value="设置楼层均价" id="SetFlNoPrice" onclick="HouseObj.SetFloorAvgPrice($('#PriceFloorNo').find('option:selected').val());" class="btn" />
+                                <select class="m-wrap small" style="width: 100px!important;" name="UnitNoSet" id="startUnitno">
+                                </select>
+                                到
+                                <select class="m-wrap small" style="width: 100px!important;" name="UnitNoSet" id="endUnitno">
+                                </select>
+                                室
+                                <select class="m-wrap small" style="width: 80px!important;" id="sel_unitNoJiaJian">
+                                    <option value="1">加</option>
+                                    <option value="0">减</option>
+                                </select>
+                                <input type="text" style="width: 30px; margin: 5px;" id="S_uniotnoNum" />%
+                                <input type="button" value="设置房号差" class="btn" onclick="HouseObj.SetUnitnoCha($('#startUnitno').find('option:selected').val(),
+    $('#endUnitno').find('option:selected').val(), $('#sel_unitNoJiaJian').find('option:selected').val(), $('#S_uniotnoNum').val());" />
+                            </div>
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="Weight">
+                <div class="portlet-body">
+                    <table id="tab_Weight" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "Weight");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 40%; float: left;">
+                            @* <div>
+                                调整价格
+                            </div>*@
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_Weight">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_Weight">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_Weight">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_Weight">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                单价:<input type="text" style="width: 53px; margin-top: 10px;" id="txtWeight" />
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_Weight').find('option:selected').val(),
+    $('#selFloorTo_Weight').find('option:selected').val(), $('#selUnitNo_Weight').find('option:selected').val(),
+    $('#selUnitNoTo_Weight').find('option:selected').val(), $('#txtWeight').val(), '#tab_Weight');" />
+                            </div>
+                        </div>
+                        <div style="width: 60%; float: left;">
+                            <div>
+                                调整价格系数
+                            </div>
+                            <div>
+                                项目均价:<input type="text" value="@ViewBag.pAveragePrice" id="pAveragePrice" style="width: 70px;" readonly/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                楼栋均价:<input type="text" value="@ViewBag.AveragePrice" id="AveragePrice" style="width: 70px;" readonly/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                百分比:<input type="text" value="@ViewBag.proWeight" id="proWeight" style="width: 70px;" readonly/>%
+                            </div>
+                            <div>
+                                <input type="button" title="系数说明" id="btnPriceDetail" value="系数说明" class="btn thickbox"
+                                    alt="#TB_inline?height=300&width=490&inlineId=BuildPriceDetail" />
+                                <input type="button" value="计算价格系数" class="btn" onclick="SetPriceWeight();" />
+                            </div>
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="FrontName">
+                <div class="portlet-body">
+                    <table id="tab_FrontName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "FrontName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_FrontName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_FrontName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_FrontName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_FrontName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                朝向:<select class="m-wrap small" style="width: 60px!important;" id="sel_FrontName">
+                                    <option value="2004001">东</option>
+                                    <option value="2004002">南</option>
+                                    <option value="2004003">西</option>
+                                    <option value="2004004">北</option>
+                                    <option value="2004005">东南</option>
+                                    <option value="2004006">东北</option>
+                                    <option value="2004007">西南</option>
+                                    <option value="2004008">西北</option>
+                                    <option value="2004009">南北</option>
+                                    <option value="2004010">东西</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_FrontName').find('option:selected').val(),
+    $('#selFloorTo_FrontName').find('option:selected').val(), $('#selUnitNo_FrontName').find('option:selected').val(),
+    $('#selUnitNoTo_FrontName').find('option:selected').val(), $('#sel_FrontName').find('option:selected').text(), '#tab_FrontName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="SightName">
+                <div class="portlet-body">
+                    <table id="tab_SightName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "SightName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_SightName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_SightName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_SightName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_SightName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                景观:<select class="m-wrap small" id="sel_SightName">
+                                    <option value="2006001">公园景观</option>
+                                    <option value="2006002">绿地景观</option>
+                                    <option value="2006003">小区景观</option>
+                                    <option value="2006004">街景</option>
+                                    <option value="2006005">市景</option>
+                                    <option value="2006006">海景</option>
+                                    <option value="2006007">山景</option>
+                                    <option value="2006008">江景</option>
+                                    <option value="2006009">湖景</option>
+                                    <option value="2006010">无特别景观</option>
+                                    <option value="2006011">小区绿地</option>
+                                    <option value="2006012">河景</option>
+                                    <option value="2006013">有建筑物遮挡</option>
+                                    <option value="2006014">临高架桥</option>
+                                    <option value="2006015">临铁路</option>
+                                    <option value="2006016">临其他厌恶设施</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_SightName').find('option:selected').val(),
+    $('#selFloorTo_SightName').find('option:selected').val(), $('#selUnitNo_SightName').find('option:selected').val(),
+    $('#selUnitNoTo_SightName').find('option:selected').val(), $('#sel_SightName').find('option:selected').text(), '#tab_SightName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="IsEValue">
+                <div class="portlet-body">
+                    <table id="tab_IsEValue" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "IsEValue");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_IsEValue">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_IsEValue">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_IsEValue">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_IsEValue">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                可评估:<select class="m-wrap small" style="width: 60px!important;" id="sel_IsEValue">
+                                    <option value="1">是</option>
+                                    <option value="0" selected="selected">否</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_IsEValue').find('option:selected').val(),
+    $('#selFloorTo_IsEValue').find('option:selected').val(), $('#selUnitNo_IsEValue').find('option:selected').val(),
+    $('#selUnitNoTo_IsEValue').find('option:selected').val(), $('#sel_IsEValue').find('option:selected').text(), '#tab_IsEValue');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="IsShowBuildingArea">
+                <div class="portlet-body">
+                    <table id="tab_IsShowBuildingArea" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "IsShowBuildingArea");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_IsShowBuildingArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_IsShowBuildingArea">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_IsShowBuildingArea">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_IsShowBuildingArea">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                确认面积:<select class="m-wrap small" style="width: 60px!important;" id="sel_IsShowBuildingArea">
+                                    <option value="1">是</option>
+                                    <option value="0" selected="selected">否</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_IsShowBuildingArea').find('option:selected').val(),
+    $('#selFloorTo_IsShowBuildingArea').find('option:selected').val(), $('#selUnitNo_IsShowBuildingArea').find('option:selected').val(),
+    $('#selUnitNoTo_IsShowBuildingArea').find('option:selected').val(), $('#sel_IsShowBuildingArea').find('option:selected').text(), '#tab_IsShowBuildingArea');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="VDName">
+                <div class="portlet-body">
+                    <table id="tab_VDName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "VDName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_VDName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_VDName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_VDName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_VDName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                通风采光:<select class="m-wrap small" id="sel_VDName">
+                                    <option value="1216001">全明通透</option>
+                                    <option value="1216002">采光欠佳</option>
+                                    <option value="1216003">通风欠佳</option>
+                                    <option value="1216004">通风采光欠佳</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_VDName').find('option:selected').val(),
+    $('#selFloorTo_VDName').find('option:selected').val(), $('#selUnitNo_VDName').find('option:selected').val(),
+    $('#selUnitNoTo_VDName').find('option:selected').val(), $('#sel_VDName').find('option:selected').text(), '#tab_VDName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="FitmentName">
+                <div class="portlet-body">
+                    <table id="tab_FitmentName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "FitmentName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_FitmentName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_FitmentName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_FitmentName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_FitmentName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                装修:<select class="m-wrap small" id="sel_FitmentName">
+                                    <option value="6026001">豪华</option>
+                                    <option value="6026002">高档</option>
+                                    <option value="6026003">中档</option>
+                                    <option value="6026004">普通</option>
+                                    <option value="6026005">简易</option>
+                                    <option value="6026006">毛坯</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_FitmentName').find('option:selected').val(),
+    $('#selFloorTo_FitmentName').find('option:selected').val(), $('#selUnitNo_FitmentName').find('option:selected').val(),
+    $('#selUnitNoTo_FitmentName').find('option:selected').val(), $('#sel_FitmentName').find('option:selected').text(), '#tab_FitmentName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="Cookroom">
+                <div class="portlet-body">
+                    <table id="tab_Cookroom" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "Cookroom");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_Cookroom">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_Cookroom">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_Cookroom">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_Cookroom">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                厨房:<select class="m-wrap small" style="width: 60px!important;" id="sel_Cookroom">
+                                    <option value="1">有</option>
+                                    <option value="0" selected="selected">无</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_Cookroom').find('option:selected').val(),
+    $('#selFloorTo_Cookroom').find('option:selected').val(), $('#selUnitNo_Cookroom').find('option:selected').val(),
+    $('#selUnitNoTo_Cookroom').find('option:selected').val(), $('#sel_Cookroom').find('option:selected').text(), '#tab_Cookroom');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="Balcony">
+                <div class="portlet-body">
+                    <table id="tab_Balcony" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "Balcony");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_Balcony">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_Balcony">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_Balcony">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_Balcony">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                阳台数:<input type="text" style="width: 53px; margin-top: 10px;" id="txtBalcony" />
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_Balcony').find('option:selected').val(),
+    $('#selFloorTo_Balcony').find('option:selected').val(), $('#selUnitNo_Balcony').find('option:selected').val(),
+    $('#selUnitNoTo_Balcony').find('option:selected').val(), $('#txtBalcony').val(), '#tab_Balcony');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="Toilet">
+                <div class="portlet-body">
+                    <table id="tab_Toilet" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "Toilet");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_Toilet">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_Toilet">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_Toilet">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_Toilet">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                洗手间数:<input type="text" style="width: 53px; margin-top: 10px;" id="txtToilet" />
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_Toilet').find('option:selected').val(),
+    $('#selFloorTo_Toilet').find('option:selected').val(), $('#selUnitNo_Toilet').find('option:selected').val(),
+    $('#selUnitNoTo_Toilet').find('option:selected').val(), $('#txtToilet').val(), '#tab_Toilet');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane scrollBar" id="NoiseCodeName">
+                <div class="portlet-body">
+                    <table id="tab_NoiseCodeName" class="tbsta" style="line-height: 40px;">
+                        @{
+        data.Remove("HouseName");
+        data.Add("HouseName", "NoiseCodeName");
+        Html.RenderPartial("House", (ViewBag.houseList) as object, data);
+                        }
+                    </table>
+                    <div style="width: 100%; height: 100%;">
+                        <div style="width: 30%; float: left;">
+                            <div>
+                                从
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloor_NoiseCodeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="FloorNoSet" id="selFloorTo_NoiseCodeName">
+                                </select>
+                                层
+                            </div>
+                            <div>
+                                从
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNo_NoiseCodeName">
+                                </select>
+                                到
+                                <select style="width: 100px;" name="UnitNoSet" id="selUnitNoTo_NoiseCodeName">
+                                </select>
+                                单元
+                            </div>
+                            <div>
+                                噪音情况:<select class="m-wrap small" id="sel_NoiseCodeName">
+                                    <option value="2025001">安静</option>
+                                    <option value="2025002">较安静</option>
+                                    <option value="2025003">微吵</option>
+                                    <option value="2025004">较吵</option>
+                                    <option value="2025005">很吵</option>
+                                </select>
+                                <input type="button" class="btn" value="设置" onclick="HouseObj.CommonSetValue($('#selFloor_NoiseCodeName').find('option:selected').val(),
+    $('#selFloorTo_NoiseCodeName').find('option:selected').val(), $('#selUnitNo_NoiseCodeName').find('option:selected').val(),
+    $('#selUnitNoTo_NoiseCodeName').find('option:selected').val(), $('#sel_NoiseCodeName').find('option:selected').text(), '#tab_NoiseCodeName');" />
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left;">
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="hidden" name="PriceDetail" id="PriceDetail" value="@ViewBag.PriceDetail" />
+        <button id="btnSubmit" type="button" onclick="javascript:HouseObj.Submit(this);" class="btn">
+            提交</button>
+    </div>
+}
+<div id="BuildPriceDetail" style="display: none;">
+    @*<textarea style="margin: 0px; width: 470px; height: 280px;" rows="" cols="">
+123234234
+</textarea>*@
+    <textarea id="txtPriceDetail" name="txt" clos="100" rows="5" style="margin: 0px; width: 470px; height: 280px;"></textarea>
+</div>

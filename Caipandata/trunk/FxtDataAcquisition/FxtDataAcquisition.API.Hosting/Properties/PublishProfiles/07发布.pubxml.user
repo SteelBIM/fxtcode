@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Publish\FxtDataAcquisitionAPI</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="API/FxtMobileAPI.svc">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>01/06/2017 12:47:20</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>01/06/2017 12:47:20</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/CAS.Common.MVC4.dll">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/CAS.Common.MVC4.pdb">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.Attribute.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.BaseDAModels.dll">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.dll">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.pdb">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/crossdomain.xml">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>01/05/2017 15:37:43</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>01/05/2017 15:37:43</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Common.dll">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Common.pdb">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Contract.dll">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Contract.pdb">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Hosting.dll">
+      <publishTime>01/06/2017 12:47:03</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Hosting.pdb">
+      <publishTime>01/06/2017 12:47:03</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Service.dll">
+      <publishTime>01/06/2017 11:38:31</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.API.Service.pdb">
+      <publishTime>01/06/2017 11:38:31</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Application.dll">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Application.pdb">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Common.dll">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Common.pdb">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Domain.dll">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Domain.pdb">
+      <publishTime>01/06/2017 11:38:26</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Framework.Data.dll">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Framework.Data.pdb">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Framework.Ioc.dll">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.Framework.Ioc.pdb">
+      <publishTime>01/06/2017 11:38:29</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.Common.dll">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.Common.pdb">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtDataCenter.dll">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtDataCenter.pdb">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtDataWcf.dll">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtDataWcf.pdb">
+      <publishTime>01/06/2017 11:38:27</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtUserCenter.dll">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/FxtDataAcquisition.FxtAPI.FxtUserCenter.pdb">
+      <publishTime>01/06/2017 11:38:28</publishTime>
+    </File>
+    <File Include="bin/Gma.QrCodeNet.Encoding.dll">
+      <publishTime>11/22/2016 14:54:07</publishTime>
+    </File>
+    <File Include="bin/help.htm">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>11/22/2016 14:54:08</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/05/2017 15:38:05</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>01/05/2017 15:38:05</publishTime>
+    </File>
+    <File Include="bin/Ninject.Web.Common.dll">
+      <publishTime>01/05/2017 15:38:12</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>01/05/2017 14:52:19</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/05/2017 15:45:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>01/05/2017 15:37:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>01/05/2017 15:37:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/05/2017 15:45:44</publishTime>
+    </File>
+    <File Include="clientaccesspolicy.xml">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="crossdomain.xml">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="help.htm">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="Js/jquery-1.8.2-min.js">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="Js/jquery.json.js">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="Js/json2.js">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="log.config">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="MatchClass.xml">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/05/2017 14:52:18</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>01/06/2017 12:47:10</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/06/2017 12:46:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

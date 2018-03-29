@@ -1,0 +1,50 @@
+2017-01-06 11:49:50,899 [7] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 11:49:54,827 [10] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:49:57,125 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:49:57,362 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:40:22,284 [8] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 12:40:24,871 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:40:29,429 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:40:29,632 [9] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 13:30:26,110 [7] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 13:30:31,678 [6] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 13:30:35,544 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 13:30:36,449 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 14:31:04,196 [253] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 14:31:04,558 [254] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 14:31:19,960 [260] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 14:31:20,188 [254] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 14:31:39,544 [254] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 14:31:55,203 [248] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()

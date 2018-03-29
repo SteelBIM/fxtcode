@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.DATProjectDomain" 
+				   namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.DATCasexb, FxtNHibernate.DATProjectDomain" 
+		   table="DAT_Case_xb">
+		<id name="CaseID" column="CaseID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="ProjectId" column="ProjectId" type="int"  />
+		<property name="BuildingId" column="BuildingId" type="int"  />
+		<property name="HouseId" column="HouseId" type="int"  />
+		<property name="CompanyId" column="CompanyId" type="int"  />
+		<property name="CaseDate" column="CaseDate" type="DateTime"  />
+		<property name="PurposeCode" column="PurposeCode" type="int"  />
+		<property name="FloorNumber" column="FloorNumber" type="int"  />
+		<property name="HouseNo" column="HouseNo" type="string"  />
+		<property name="BuildingArea" column="BuildingArea" type="decimal"  />
+		<property name="UsableArea" column="UsableArea" type="decimal"  />
+		<property name="FrontCode" column="FrontCode" type="int"  />
+		<property name="UnitPrice" column="UnitPrice" type="decimal"  />
+		<property name="MoneyUnitCode" column="MoneyUnitCode" type="int"  />
+		<property name="SightCode" column="SightCode" type="int"  />
+		<property name="CaseTypeCode" column="CaseTypeCode" type="int"  />
+		<property name="StructureCode" column="StructureCode" type="int"  />
+		<property name="BuildingTypeCode" column="BuildingTypeCode" type="int"  />
+		<property name="HouseTypeCode" column="HouseTypeCode" type="int"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+		<property name="Creator" column="Creator" type="string"  />
+		<property name="Remark" column="Remark" type="string"  />
+		<property name="TotalPrice" column="TotalPrice" type="decimal"  />
+		<property name="OldID" column="OldID" type="int"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="FXTCompanyId" column="FXTCompanyId" type="int"  />
+		<property name="BuildingName" column="BuildingName" type="string"  />
+		<property name="TotalFloor" column="TotalFloor" type="int"  />
+		<property name="RemainYear" column="RemainYear" type="int"  />
+		<property name="Depreciation" column="Depreciation" type="decimal"  />
+		<property name="FitmentCode" column="FitmentCode" type="int"  />
+		<property name="SurveyId" column="SurveyId" type="int"  />
+		<property name="SaveDateTime" column="SaveDateTime" type="DateTime"  />
+		<property name="SaveUser" column="SaveUser" type="string"  />
+		<property name="SourceName" column="SourceName" type="string"  />
+		<property name="SourceLink" column="SourceLink" type="string"  />
+		<property name="SourcePhone" column="SourcePhone" type="string"  />
+    <property name="AreaId" column="AreaId" type="int"  />
+    <property name="AreaName" column="AreaName" type="string"  />
+    <property name="BuildingDate" column="BuildingDate" type="string"  />
+    <property name="ZhuangXiu" column="ZhuangXiu" type="string"  />
+    <property name="SubHouse" column="SubHouse" type="string"  />
+    <property name="PeiTao" column="PeiTao" type="string"  />
+	</class>
+</hibernate-mapping>

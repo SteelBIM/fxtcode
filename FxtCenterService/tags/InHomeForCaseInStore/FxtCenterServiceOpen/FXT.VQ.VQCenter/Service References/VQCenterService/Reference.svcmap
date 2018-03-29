@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0d5d3a51-a763-4933-8740-eed940b25c61" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://vqcenterwcf.fxtchina.com/PropertyHand.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PropertyHand.wsdl" MetadataType="Wsdl" ID="7a664b37-8709-49bd-94e6-1d0410019307" SourceId="1" SourceUrl="http://vqcenterwcf.fxtchina.com/PropertyHand.svc?wsdl" />
+    <MetadataFile FileName="PropertyHand.xsd" MetadataType="Schema" ID="22b44752-1edc-47b4-b3e0-ec0a41928438" SourceId="1" SourceUrl="http://vqcenterwcf.fxtchina.com/PropertyHand.svc?xsd=xsd0" />
+    <MetadataFile FileName="PropertyHand1.xsd" MetadataType="Schema" ID="037d5a79-29a4-4f42-a5e1-c0ed5f0cea9f" SourceId="1" SourceUrl="http://vqcenterwcf.fxtchina.com/PropertyHand.svc?xsd=xsd2" />
+    <MetadataFile FileName="PropertyHand2.xsd" MetadataType="Schema" ID="dbe2ebac-3171-423e-a40a-6a34340244ea" SourceId="1" SourceUrl="http://vqcenterwcf.fxtchina.com/PropertyHand.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

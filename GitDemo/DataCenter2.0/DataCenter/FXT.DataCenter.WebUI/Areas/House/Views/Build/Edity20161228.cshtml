@@ -1,0 +1,1577 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DAT_Building
+@{
+    ViewBag.Title = "新增、编辑楼栋";
+}
+@section StyleSheet{
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .tr {
+            height: 50px;
+        }
+
+        .textarea {
+            resize: none;
+        }
+
+        .projectName {
+            width: 600px;
+            height: 100%;
+            float: left;
+        }
+
+        .projectName_div {
+            width: 300px;
+            float: left;
+            height: 100%;
+        }
+
+        .projectName_buid {
+            width: 250px;
+            float: left;
+            height: 100%;
+        }
+
+        .clare {
+            clear: both;
+        }
+
+        .xubox_layer {
+            top: 50px!important;
+        }
+    </style>
+    <link href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+}
+@section Javascript{
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("div.page-sidebar ul li").eq(2).addClass("active").find("a span").eq(1).addClass("selected");
+            //日期控件渲染
+            $("#saledate,#builddate,#joindate,#licencedate").datepicker({ format: 'yyyy-mm-dd' });
+
+            var locationHref = window.location.href, projectName = "@(ViewBag.projectName)", buildName = "@(ViewBag.buildName)", areaid = "@(ViewBag.areaid)", areaName = "@(ViewBag.areaname)";
+            if (locationHref.indexOf("House/Build/Edity")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/Project/Index\">住宅基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                if (projectName) {
+                    html += "<li><span><a href=\"/House/Project/Index?areaid=" + areaid + "\">" + areaName + "</a></span><i class=\"icon-angle-right\"></i></li>";
+                    html += "<li><span><a href=\"/House/Project/Edity?projectid=" + encodeURIComponent("@ViewBag.projectPara") + "\">" + projectName + "</span></a><i class=\"icon-angle-right\"></i></li>";
+                }
+                html += "<li><span><a href=\"/House/Build/Index?projectid=" + encodeURIComponent("@ViewBag.ProjectId") + "\">楼栋列表</a></span><i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>" + buildName + "</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+
+            $('#BuildNameTo').autocomplete('@Url.Action("GetBuildingNameList", new { projectId = ViewBag.ProjectId })', {
+                max: 12, //列表里的条目数
+                minChars: 0, //自动完成激活之前填入的最小字符
+                width: 218, //提示的宽度，溢出隐藏
+                scrollHeight: 200, //提示的高度，溢出显示滚动条
+                matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+                autoFill: false, //自动填充
+                parse: function (data) {
+                    return $.map(eval(data), function (row) {
+                        return {
+                            data: row,
+                            value: row.name, //显示结果
+                            result: row.id //填充结果
+                        }
+                    });
+                },
+                formatItem: function (row, i, max) {
+                    return row.name;
+                },
+                formatMatch: function (row, i, max) {
+                    return row.name;
+                },
+                formatResult: function (row) {
+                    return row.name;
+                }
+            });
+
+            $("tr[name='show']").hide();
+            $("#click_ok").bind("click", function () {
+                if ($(this).text() == "展开∨") {
+                    $("tr[name='show']").show();
+                    $(this).text("收起∧");
+                } else {
+                    $("tr[name='show']").hide();
+                    $(this).text("展开∨");
+                }
+            });
+            $("button[type='reset']").click(function () {
+                $("input[type='text']").each(function () {
+                    $(this).val("");
+                });
+                $("select").each(function () {
+                    $("select option[value='-1']").attr("selected", true);
+                });
+                $("textarea").each(function () {
+                    $(this).text("");
+                });
+                return false;
+
+            });
+            $("#buildingtypecode").change(function () {
+                $("#buildingtypecodeName").val("").val($(this).find("option:selected").text());
+            });
+            //楼栋复制
+            $("#btnBuildCopy").click(function () {
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () { //第一个按钮的功能函数
+                        var bName = $.trim($("#buildingname").val()), buildId = $("#buildingid").val(),
+                            bNameTo = $.trim($("#BuildNameTo").val()), projectId = $("#projectid").val();
+                        if (bNameTo == null || bNameTo == "") {
+                            alert("目标楼栋不能为空");
+                            return false;
+                        }
+                        if (bNameTo == bName) {
+                            alert("原始楼栋不能和目标楼栋一致");
+                            return false;
+                        }
+                        $.ajax({
+                            type: "POST", dataType: "Json", cache: false, url: "/House/Build/BuildCopy", data: { projectId: projectId, buildId: buildId, buildName: bName, buildNameTo: bNameTo }, success: function (json) {
+                                alert(json);
+                                top.tb_remove();
+                            }, error: function (json) {
+                                alert(11);
+                            }
+                        });
+                    }
+                });
+            });
+            //更新价格系数
+            $("#btnUpdateWeight").click(function () {
+                Number_Val();
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () { //第一个按钮的功能函数
+                        //Number_Val();
+                        top.tb_remove();
+                    },
+                    sen2func: function () {
+                        //Number_Val();
+                        top.tb_remove();
+                    }
+                });
+            });
+            $("#btn_submit").click(function () {
+                var locationweightJiaJian = $("#locationweightJiaJian").find("option:selected").val(),
+                           frontweightJiaJian = $("#frontweightJiaJian").find("option:selected").val(),
+                           sightweightJiaJian = $("#sightweightJiaJian").find("option:selected").val(),
+                           yearweightJiaJian = $("#yearweightJiaJian").find("option:selected").val(),
+                           buildingtypeweightJiaJian = $("#buildingtypeweightJiaJian").find("option:selected").val(),
+                           bhousetypeweightJiaJian = $("#bhousetypeweightJiaJian").find("option:selected").val(),
+                           distanceweightJiaJian = $("#distanceweightJiaJian").find("option:selected").val(),
+                           yardweightJiaJian = $("#yardweightJiaJian").find("option:selected").val(),
+                           elevatorrateweightJiaJian = $("#elevatorrateweightJiaJian").find("option:selected").val();
+                if (locationweightJiaJian == 1) {
+                    $("#locationweight").val(($("#locationweight").val()) * (-1));
+                }
+                if (frontweightJiaJian == 1) {
+                    $("#frontweight").val(($("#frontweight").val()) * (-1));
+                }
+                if (sightweightJiaJian == 1) {
+                    $("#sightweight").val(($("#sightweight").val()) * (-1));
+                }
+                if (yearweightJiaJian == 1) {
+                    $("#yearweight").val(($("#yearweight").val()) * (-1));
+                }
+
+                if (buildingtypeweightJiaJian == 1) {
+                    $("#buildingtypeweight").val(($("#buildingtypeweight").val()) * (-1));
+                }
+                if (bhousetypeweightJiaJian == 1) {
+                    $("#bhousetypeweight").val(($("#bhousetypeweight").val()) * (-1));
+                }
+                if (distanceweightJiaJian == 1) {
+                    $("#distanceweight").val(($("#distanceweight").val()) * (-1));
+                }
+                if (yardweightJiaJian == 1) {
+                    $("#yardweight").val(($("#yardweight").val()) * (-1));
+                }
+                if (elevatorrateweightJiaJian == 1) {
+                    $("#elevatorrateweight").val(($("#elevatorrateweight").val()) * (-1));
+                }
+
+
+            });
+            //楼栋价格系数Being
+
+            //Input文本框事件
+            $("#locationweight,#frontweight,#sightweight,#yearweight,#buildingtypeweight,#bhousetypeweight,#distanceweight,#yardweight,#elevatorrateweight").keyup(function () {
+                $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+            }).bind("paste", function () {  //CTR+V事件处理     
+                $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+            }).css("ime-mode", "disabled").keyup(function () {
+                SetWeithPric();
+            }); //CSS设置输入法不可用    ;
+            //加减下拉事件事件
+            $("#locationweightJiaJian,#frontweightJiaJian,#sightweightJiaJian,#yearweightJiaJian,#buildingtypeweightJiaJian,#bhousetypeweightJiaJian,#distanceweightJiaJian,#yardweightJiaJian,#elevatorrateweightJiaJian").change(function () {
+                //var id = $(this).attr("id").substr(0, $(this).attr("id").indexOf("JiaJian"));
+                SetWeithPric();
+            });
+            //Input文本框事件
+            var averageprice_temp = null, ProAveragePrice_temp = $.trim($("#ProAveragePrice").val()), weight_temp = $("input[name='weight']").eq(0).val();
+            $("#averageprice").change(function () {
+                var val = $.trim($(this).val());
+                var reg = /^[0-9]+([.]{1}[0-9]{1,4})?$/;
+                if (!reg.test(val) || val == 0) {
+                    $("#averageprice").val("").val(parseFloat(ProAveragePrice_temp * weight_temp).toFixed(4));
+                    return false;
+                }
+                if (ProAveragePrice_temp != null && ProAveragePrice_temp != "") {
+                    var val = $.trim($(this).val());
+                    var we = parseFloat(parseFloat(val) / parseFloat(ProAveragePrice_temp)).toFixed(4);
+                    $("input[name='weight']").eq(0).val("").val(we);
+                    $("input[name='weight']").eq(1).val("").val(we);
+                }
+
+            }); //CSS设置输入法不可用    ;
+            $("input[name='weight']").change(function () {
+
+                var val = $.trim($(this).val());
+                var reg = /^[0-9]+([.]{1}[0-9]{1,4})?$/;
+                if (!reg.test(val)) {
+                    $(this).val("").val(weight_temp);
+                    return false;
+                }
+                if (ProAveragePrice_temp != null && ProAveragePrice_temp != "") {
+                    var val = $.trim($(this).val());
+                    var we = parseFloat(parseFloat(val) * parseFloat(ProAveragePrice_temp)).toFixed(4);
+                    $("#averageprice").val("").val(we);
+                }
+                $("input[name='weight']").eq(0).val("").val(val);
+                $("input[name='weight']").eq(1).val("").val(val);
+
+            }); //CSS设置输入法不可用    ;
+
+            //楼栋价格系数End
+        });
+        //设置价格系数
+        function SetWeithPric() {
+            var priceWeight = $($("input[name='weight']")[1]).val(), TempPriceW = 1, ProAveragePrice = $("#ProAveragePrice").val();
+            var locationweight = $($("input[name='locationweight']")[1]).val(),
+                frontweight = $($("input[name='frontweight']")[1]).val(),
+                sightweight = $($("input[name='sightweight']")[1]).val(),
+                yearweight = $($("input[name='yearweight']")[1]).val(),
+                buildingtypeweight = $($("input[name='buildingtypeweight']")[1]).val(),
+                bhousetypeweight = $($("input[name='bhousetypeweight']")[1]).val(),
+                distanceweight = $($("input[name='distanceweight']")[1]).val(),
+                yardweight = $($("input[name='yardweight']")[1]).val(),
+                elevatorrateweight = $($("input[name='elevatorrateweight']")[1]).val()
+
+            if (locationweight == null || locationweight == "") {
+                locationweight = (0.0).toFixed(4);
+            }
+            else {
+                var isJia = $("#locationweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(locationweight / 100);
+                } else if (isJia == 1) {                    
+                    locationweight = -Math.abs(parseFloat(locationweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(locationweight / 100);
+                }
+            }
+            if (frontweight == null || frontweight == "") {
+                frontweight = (0.0).toFixed(4);
+            }
+            else {
+                var isJia = $("#frontweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(frontweight / 100);
+                } else if (isJia == 1) {
+                    frontweight = -Math.abs(parseFloat(frontweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(frontweight / 100);
+                }
+            }
+            if (sightweight == null || sightweight == "") {
+                sightweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#sightweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(sightweight / 100);
+                } else if (isJia == 1) {
+                    sightweight = -Math.abs(parseFloat(sightweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(sightweight / 100).toFixed(4);
+                }
+            }
+            if (yearweight == null || yearweight == "") {
+                yearweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#yearweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(yearweight / 100);
+                } else if (isJia == 1) {
+                    yearweight = -Math.abs(parseFloat(yearweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(yearweight / 100);
+                }
+            }
+            if (buildingtypeweight == null || buildingtypeweight == "") {
+                buildingtypeweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#buildingtypeweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(buildingtypeweight / 100);
+                } else if (isJia == 1) {
+                    buildingtypeweight = -Math.abs(parseFloat(buildingtypeweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(buildingtypeweight / 100);
+                }
+            }
+            if (bhousetypeweight == null || bhousetypeweight == "") {
+                bhousetypeweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#bhousetypeweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(bhousetypeweight / 100);
+                } else if (isJia == 1) {
+                    bhousetypeweight = -Math.abs(parseFloat(bhousetypeweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(bhousetypeweight / 100);
+                }
+            }
+            if (distanceweight == null || distanceweight == "") {
+                distanceweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#distanceweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(distanceweight / 100);
+                } else if (isJia == 1) {
+                    distanceweight = -Math.abs(parseFloat(distanceweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(distanceweight / 100);
+                }
+            }
+            if (yardweight == null || yardweight == "") {
+                yardweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#yardweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(yardweight / 100);
+                } else if (isJia == 1) {
+                    yardweight = -Math.abs(parseFloat(yardweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(yardweight / 100);
+                }
+            }
+            if (elevatorrateweight == null || elevatorrateweight == "") {
+                elevatorrateweight = (0.0).toFixed(4);
+            } else {
+                var isJia = $("#elevatorrateweightJiaJian").find("option:selected").val();
+                if (isJia == 0) {
+                    TempPriceW = parseFloat(TempPriceW) + parseFloat(elevatorrateweight / 100);
+                } else if (isJia == 1) {
+                    elevatorrateweight = -Math.abs(parseFloat(elevatorrateweight));
+                    TempPriceW = parseFloat(TempPriceW) - parseFloat(elevatorrateweight / 100);
+                }
+            }
+
+            $("#averageprice").val(parseFloat(ProAveragePrice * TempPriceW).toFixed(4));
+            $($("input[name='weight']")[0]).val(parseFloat(TempPriceW).toFixed(4));
+            $($("input[name='weight']")[1]).val(parseFloat(TempPriceW).toFixed(4));
+
+            $($("input[name='locationweight']")[0]).val(parseFloat(locationweight).toFixed(2));
+            $($("input[name='frontweight']")[0]).val(parseFloat(frontweight).toFixed(2));
+            $($("input[name='sightweight']")[0]).val(parseFloat(sightweight).toFixed(2));
+            $($("input[name='yearweight']")[0]).val(parseFloat(yearweight).toFixed(2));
+            $($("input[name='buildingtypeweight']")[0]).val(parseFloat(buildingtypeweight).toFixed(2));
+            $($("input[name='bhousetypeweight']")[0]).val(parseFloat(bhousetypeweight).toFixed(2));
+            $($("input[name='distanceweight']")[0]).val(parseFloat(distanceweight).toFixed(2));
+            $($("input[name='yardweight']")[0]).val(parseFloat(yardweight).toFixed(2));
+            $($("input[name='elevatorrateweight']")[0]).val(parseFloat(elevatorrateweight).toFixed(2));
+        }
+        //
+        function Number_Val() {
+            var locationweightJiaJian = $("#locationweightJiaJian").find("option:selected").val(),
+                            frontweightJiaJian = $("#frontweightJiaJian").find("option:selected").val(),
+                            sightweightJiaJian = $("#sightweightJiaJian").find("option:selected").val(),
+                            yearweightJiaJian = $("#yearweightJiaJian").find("option:selected").val(),
+                            buildingtypeweightJiaJian = $("#buildingtypeweightJiaJian").find("option:selected").val(),
+                            bhousetypeweightJiaJian = $("#bhousetypeweightJiaJian").find("option:selected").val(),
+                            distanceweightJiaJian = $("#distanceweightJiaJian").find("option:selected").val(),
+                            yardweightJiaJian = $("#yardweightJiaJian").find("option:selected").val(),
+                            elevatorrateweightJiaJian = $("#elevatorrateweightJiaJian").find("option:selected").val();
+            if (locationweightJiaJian == 1) {
+                var locationweight_val = $("#locationweight").val();
+                if (parseFloat(locationweight_val) < 0) {
+                    $("#locationweight").val(($("#locationweight").val()) * (-1));
+                }
+            }
+            if (frontweightJiaJian == 1) {
+                var frontweight_val = $("#frontweight").val();
+                if (parseFloat(frontweight_val) < 0) {
+                    $("#frontweight").val(($("#frontweight").val()) * (-1));
+                }
+            }
+            if (sightweightJiaJian == 1) {
+                var sightweight_val = $("#sightweight").val();
+                if (parseFloat(sightweight_val) < 0) {
+                    $("#sightweight").val(($("#sightweight").val()) * (-1));
+                }
+            }
+            if (yearweightJiaJian == 1) {
+                var yearweight_val = $("#yearweight").val();
+                if (parseFloat(yearweight_val) < 0) {
+                    $("#yearweight").val(($("#yearweight").val()) * (-1));
+                }
+            }
+            if (buildingtypeweightJiaJian == 1) {
+                var buildingtypeweight_val = $("#buildingtypeweight").val();
+                if (parseFloat(buildingtypeweight_val) < 0) {
+                    $("#buildingtypeweight").val(($("#buildingtypeweight").val()) * (-1));
+                }
+            }
+            if (bhousetypeweightJiaJian == 1) {
+                var bhousetypeweight_val = $("#bhousetypeweight").val();
+                if (parseFloat(bhousetypeweight_val) < 0) {
+                    $("#bhousetypeweight").val(($("#bhousetypeweight").val()) * (-1));
+                }
+            }
+            if (distanceweightJiaJian == 1) {
+                var distanceweight_val = $("#distanceweight").val();
+                if (parseFloat(distanceweight_val) < 0) {
+                    $("#distanceweight").val(($("#distanceweight").val()) * (-1));
+                }
+            }
+            if (yardweightJiaJian == 1) {
+                var yardweight_val = $("#yardweight").val();
+                if (parseFloat(yardweight_val) < 0) {
+                    $("#yardweight").val(($("#yardweight").val()) * (-1));
+                }
+            }
+            if (elevatorrateweightJiaJian == 1) {
+                var elevatorrateweight_val = $("#elevatorrateweight").val();
+                if (parseFloat(elevatorrateweight_val) < 0) {
+                    $("#elevatorrateweight").val(($("#elevatorrateweight").val()) * (-1));
+                }
+            }
+        }
+        function CheckNumber(number) {
+            var reg = /^[0-9]+([.]{1}[0-9]{1,4})?$/;
+            if (!reg.test(number)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+    <script type="text/ecmascript">
+        $(function () {
+
+            initBaiduMap();
+            $("#totalfloor").change(function () {
+                var floor = $(this).val();
+                if (isNaN(floor)) {
+                    layer.alert("总层数必须是正整数");
+                    return false;
+                }
+                initBaidBuildType(floor);
+            });
+        });
+        //输入总楼层绑定建筑类型
+        function initBaidBuildType(floor) {
+            var buildingtype = [{ typecode: "2003001", typename: "低层" }, { typecode: "2003002", typename: "多层" },
+                                   { typecode: "2003003", typename: "小高层" }, { typecode: "2003004", typename: "高层" }]
+            var strhtml = "<option value=\"-1\">--请选择--</option>";
+            if (floor > 13) {
+                for (var i = 0; i < buildingtype.length; i++) {
+                    if (i == buildingtype.length - 1) {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\" selected=\"selected\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    } else {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    }
+
+                }
+            } else if (floor > 8) {
+                for (var i = 0; i < buildingtype.length; i++) {
+                    if (i == buildingtype.length - 2) {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\" selected=\"selected\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    } else {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    }
+
+                }
+            } else if (floor > 4) {
+                for (var i = 0; i < buildingtype.length; i++) {
+                    if (i == buildingtype.length - 3) {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\" selected=\"selected\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    } else {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    }
+
+                }
+            } else {
+                for (var i = 0; i < buildingtype.length; i++) {
+                    if (i == buildingtype.length - 4) {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\" selected=\"selected\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    } else {
+                        strhtml += "<option value=\"" + buildingtype[i].typecode + "\">";
+                        strhtml += buildingtype[i].typename;
+                        strhtml += "</option>";
+                    }
+
+                }
+            }
+            $("#buildingtypecode").empty().append(strhtml);
+        }
+        function initBaiduMap() {
+
+            var cityX = "@ViewBag.CityX";
+            var cityY = "@ViewBag.CityY";
+
+            var lay, //弹出层
+                map, //地图对象
+                initLngAndLat = [{ Lng: cityX, Lat: cityY }], //初始化经纬度、默认深圳
+                clickLngAndLat = []; //保存坐标的数组
+
+            //坐标拾取
+            $("#GetCoordinate").click(function () {
+
+                lay = $.layer({
+                    type: 1,
+                    title: false,
+                    closeBtn: false,
+                    //closeBtn: [1, true],//控制层右上角关闭按钮。closeBtn的值分别为: [关闭按钮的风格（支持0和1）, true]若不想显示关闭按钮，配置 closeBtn: false即可
+                    border: [5, 0.5, '#666', true],
+                    offset: ['0px', ''],
+                    move: ['.xubox_title', false],
+                    area: ['860px', '500px'],
+                    page: {
+                        dom: "#baidumap"
+                    },
+                    success: function () {
+                        layer.shift('top', 500);
+                    }
+                    //, close: function (index) {//层右上角关闭按钮的点击事件触发回调函数。
+                    //    ClikcLng_Lat = [];
+                    //    map.clearOverlays();
+                    //    layer.close(index);
+
+                    //}
+                });
+
+
+                var x = $.trim($("#x").val());
+                var y = $.trim($("#y").val());
+                if (x != null && x != "" && y != null && y != "") {
+                    clickLngAndLat.push({ Lng: x, Lat: y });
+                }
+
+                map = new BMap.Map("container");//加载地图
+                map.clearOverlays(); //清除标注
+                var navigationControl = new BMap.NavigationControl({
+                    // 靠左上角位置
+                    anchor: BMAP_ANCHOR_TOP_LEFT,
+                    // LARGE类型
+                    type: BMAP_NAVIGATION_CONTROL_LARGE
+                });
+                map.addControl(navigationControl);
+                map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+                var point;
+                if (clickLngAndLat.length > 0) {  //如果是编辑状态，则加载已有坐标。否，加载默认坐标
+                    point = new BMap.Point(clickLngAndLat[0].Lng, clickLngAndLat[0].Lat);
+                } else {
+                    point = new BMap.Point(initLngAndLat[0].Lng, initLngAndLat[0].Lat);
+                }
+
+                var marker = new BMap.Marker(point); // 创建标注
+                map.addOverlay(marker); // 将标注添加到地图中
+                map.centerAndZoom(point, 15);
+                map.enableScrollWheelZoom();
+                map.addEventListener("click", function (e) {
+                    map.setDefaultCursor("pointer"); //设置鼠标手势
+                    clickLngAndLat = [];
+                    map.clearOverlays(); //清除除标注
+                    var jsonStr = { Lng: e.point.lng, Lat: e.point.lat };
+                    clickLngAndLat.push(jsonStr);
+                    point = new BMap.Point(clickLngAndLat[0].Lng, clickLngAndLat[0].Lat);
+                    //map.centerAndZoom(point, 18);
+                    //map.enableScrollWheelZoom();
+                    //$("#txtlatitude").val("").val(e.point.lat);
+                    //$("#txtlongitude").val("").val(e.point.lng);
+                    var marker = new BMap.Marker(point); // 创建标注
+                    map.addOverlay(marker); // 将标注添加到地图中
+                    //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+                });
+
+                if (clickLngAndLat.length > 0) {
+                    //$("#txtlatitude").val("").val(clickLngAndLat[0].Lat);
+                    //$("#txtlongitude").val("").val(clickLngAndLat[0].Lng);
+                }
+
+            });
+
+            //坐标拾取--确定
+            $("#btn_xy").click(function () {
+                if (clickLngAndLat != null && clickLngAndLat.length > 0) {
+                    $("#x").val("").val(clickLngAndLat[0].Lng);
+                    $("#y").val("").val(clickLngAndLat[0].Lat);
+                    map.clearOverlays();
+                }
+                layer.close(lay);
+            });
+
+            //坐标拾取--取消
+            $("#btnClrearCallout").click(function () {
+                clickLngAndLat = [];
+                map.clearOverlays();
+                layer.close(lay);
+            });
+
+            //搜索
+            $("#areaSearch").click(function () {
+                // 创建地址解析器实例 
+                var myGeo = new BMap.Geocoder();
+                var searchTxt = $("#txtarea").val();
+                if ($.trim(searchTxt) == null || $.trim(searchTxt) == "") {
+                    layer.alert("请输入搜索条件");
+                    return false;
+                }
+                // 将地址解析结果显示在地图上，并调整地图视野 
+                myGeo.getPoint(searchTxt, function (point) {
+                    if (point) {
+                        map.clearOverlays(); //清除除标注
+                        map.centerAndZoom(point, 15);
+                        //$("#txtlatitude").val('').val(point.lat);
+                        //$("#txtlongitude").val('').val(point.lng);
+                        //var pointMarker = new BMap.Point(point.lng, point.lat);
+                        //map.addOverlay(new BMap.Marker(point));
+                        clickLngAndLat = [];
+                        var jsonStr = { Lng: point.lng, Lat: point.lat };
+                        clickLngAndLat.push(jsonStr);
+                        var point = new BMap.Point(point.lng, point.lat); // 创建标注的坐标
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        map.addOverlay(marker);
+                    } else
+                        layer.alert("搜索不到结果");
+                }, "全国");
+            });
+        }
+    </script>
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "search", @class = "form-inline" }))
+{
+    <div class="row-fluid">
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;" id="tbInputCon">
+            <tr>
+                <td>楼盘名称:
+                </td>
+                <td>@Html.TextBoxFor(m => m.ProjectName, new { @readonly = "readonly" })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>楼栋名称:
+                </td>
+                <td>@Html.TextBoxFor(m => m.buildingname)@Html.ValidationMessageFor(m => m.buildingname)
+                </td>
+                <td>楼栋别名:
+                </td>
+                <td>@Html.TextBoxFor(m => m.othername)
+                </td>
+
+            </tr>
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>楼栋用途:
+                </td>
+                <td>@Html.DropDownListFor(m => m.purposecode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "1001001", Text = "居住" },
+                        new SelectListItem { Value = "1001002", Text = "居住(别墅)" },
+                        new SelectListItem { Value = "1001003", Text = "居住(洋房)" },
+                        new SelectListItem { Value = "1001004", Text = "商业" },
+                        new SelectListItem { Value = "1001005", Text = "办公" },
+                        new SelectListItem { Value = "1001006", Text = "工业" },
+                        new SelectListItem { Value = "1001007", Text = "商业、居住" },
+                        new SelectListItem { Value = "1001008", Text = "商业、办公" },
+                        new SelectListItem { Value = "1001009", Text = "办公、居住" },
+                        new SelectListItem { Value = "1001010", Text = "停车场" },
+                        new SelectListItem { Value = "1001011", Text = "酒店" },
+                        new SelectListItem { Value = "1001012", Text = "加油站" },
+                        new SelectListItem { Value = "1001013", Text = "综合" },
+                        new SelectListItem { Value = "1001014", Text = "其他" }
+                    })@Html.ValidationMessageFor(m => m.purposecode)
+                </td>
+
+            </tr>
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>总层数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.totalfloor)@Html.ValidationMessageFor(m => m.totalfloor)
+                </td>
+                <td><b style="color: Red;">*</b>是否确认总层数:
+                </td>
+                <td>@Html.DropDownListFor(m => m.isTotalfloor, new List<SelectListItem> {
+                        new SelectListItem { Value = "1", Text = "是" },
+                        new SelectListItem { Value = "0", Text = "否" }
+                    })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>建筑面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.totalbuildarea)
+                </td>
+                <td>建筑类型:
+                </td>
+                <td>@Html.DropDownListFor(m => m.buildingtypecode, new List<SelectListItem> {
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "2003001", Text = "低层" },
+                        new SelectListItem { Value = "2003002", Text = "多层" },
+                        new SelectListItem { Value = "2003003", Text = "小高层" },
+                        new SelectListItem { Value = "2003004", Text = "高层" }                           
+                    })
+                </td>
+            </tr>
+            <tr class="tr">
+
+                <td>是否可估:
+                </td>
+                <td>@Html.DropDownListFor(m => m.isevalue, new List<SelectListItem> {
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "0", Text = "否" },
+                        new SelectListItem { Value = "1", Text = "是" }                  
+                    })
+                </td>
+                <td>价格系数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.weight, new { Value = Model.weight == null ? "1.0000" : Convert.ToDecimal(Model.weight).ToString("F4") })
+                    <input type="button" value="修正系数" title="修正系数" id="btnUpdateWeight" class="btn thickbox"
+                        alt="#TB_inline?height=605&width=600&inlineId=UpdateWeight" />
+
+                    @Html.HiddenFor(m => m.locationweight)
+                    @Html.HiddenFor(m => m.frontweight)
+                    @Html.HiddenFor(m => m.sightweight)
+                    @Html.HiddenFor(m => m.yearweight)
+                    @Html.HiddenFor(m => m.buildingtypeweight)
+                    @Html.HiddenFor(m => m.bhousetypeweight)
+                    @Html.HiddenFor(m => m.distanceweight)
+                    @Html.HiddenFor(m => m.yardweight)
+                    @Html.HiddenFor(m => m.elevatorrateweight)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>建筑时间:
+                </td>
+                <td>@Html.TextBoxFor(m => m.builddate, new { Value = Model.builddate == null ? "" : Model.builddate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>销售时间:
+                </td>
+                <td>@Html.TextBoxFor(m => m.saledate, new { Value = Model.saledate == null ? "" : Model.saledate.Value.ToString("yyyy-MM-dd") })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>销售均价:
+                </td>
+                <td>@Html.TextBoxFor(m => m.saleprice)
+                </td>
+
+                <td>均价层:
+                </td>
+                <td>@Html.TextBoxFor(m => m.averagefloor)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>总户数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.totalnumber)
+                </td>
+                <td>单元数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.unitsnumber)
+                </td>
+
+            </tr>
+            <tr class="tr">
+                <td>梯户数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.elevatorrate)
+                </td>
+                <td>是否带电梯:
+                </td>
+                <td>@Html.DropDownListFor(m => m.iselevator, new List<SelectListItem> {
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "0", Text = "否" },
+                        new SelectListItem { Value = "1", Text = "是" }                  
+                    })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>外墙装修:
+                </td>
+                <td>@Html.DropDownListFor(m => m.wall, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "6058001", Text = "涂料" },
+                        new SelectListItem { Value = "6058002", Text = "马赛克" },
+                        new SelectListItem { Value = "6058003", Text = "条形砖" },
+                        new SelectListItem { Value = "6058004", Text = "玻璃幕墙" },
+                        new SelectListItem { Value = "6058005", Text = "铝复板" },
+                        new SelectListItem { Value = "6058006", Text = "大理石" },
+                        new SelectListItem { Value = "6058007", Text = "花岗石" },
+                        new SelectListItem { Value = "6058008", Text = "瓷片" },
+                        new SelectListItem { Value = "6058009", Text = "墙砖" },
+                        new SelectListItem { Value = "6058010", Text = "水刷石" },
+                        new SelectListItem { Value = "6058011", Text = "清水墙" },
+                        new SelectListItem { Value = "6058012", Text = "其他" },
+                        new SelectListItem { Value = "6058013", Text = "水泥砂浆" }
+                    })
+                </td>
+                <td>地下层数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.basement)
+                </td>
+
+            </tr>
+            <tr class="tr">
+                <td>建筑结构:
+                </td>
+                <td>@Html.DropDownListFor(m => m.structurecode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "2010001", Text = "砖木结构" },
+                        new SelectListItem { Value = "2010002", Text = "砖混结构" },
+                        new SelectListItem { Value = "2010003", Text = "框架结构" },
+                        new SelectListItem { Value = "2010004", Text = "框剪结构" },
+                        new SelectListItem { Value = "2010005", Text = "框筒结构" },
+                        new SelectListItem { Value = "2010006", Text = "钢结构" },
+                        new SelectListItem { Value = "2010007", Text = "钢混结构" },
+                        new SelectListItem { Value = "2010008", Text = "混合结构" },
+                        new SelectListItem { Value = "2010009", Text = "内浇外砌" },
+                        new SelectListItem { Value = "2010010", Text = "内浇外挂" }
+                    })
+                </td>
+                <td>层高
+                </td>
+                <td>@Html.TextBoxFor(m => m.floorhigh)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>产权形式:
+                </td>
+                <td>@Html.DropDownListFor(m => m.RightCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "2007001", Text = "商品房" },
+                        new SelectListItem { Value = "2007002", Text = "微利房" },
+                        new SelectListItem { Value = "2007003", Text = "福利房" },
+                        new SelectListItem { Value = "2007004", Text = "军产房" },
+                        new SelectListItem { Value = "2007005", Text = "集资房" },
+                        new SelectListItem { Value = "2007006", Text = "自建房" },
+                        new SelectListItem { Value = "2007007", Text = "经济适用房" },
+                        new SelectListItem { Value = "2007008", Text = "小产权房" },
+                        new SelectListItem { Value = "2007009", Text = "限价房" },
+                        new SelectListItem { Value = "2007010", Text = "解困房" },
+                        new SelectListItem { Value = "2007011", Text = "宅基地" },
+                        new SelectListItem { Value = "2007012", Text = "房改房" },
+                        new SelectListItem { Value = "2007013", Text = "平改房" },
+                        new SelectListItem { Value = "2007014", Text = "回迁房" },
+                         new SelectListItem { Value = "2007015", Text = "安置房" }
+                    })
+                </td>
+                <td>维护情况:
+                </td>
+                <td>@Html.DropDownListFor(m => m.MaintenanceCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "1012001", Text = "优" },
+                        new SelectListItem { Value = "1012002", Text = "良" },
+                        new SelectListItem { Value = "1012003", Text = "一般" },
+                        new SelectListItem { Value = "1012004", Text = "差" },
+                        new SelectListItem { Value = "1012005", Text = "很差" }
+                    })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>X坐标(经度):
+                </td>
+                <td>@Html.TextBoxFor(m => m.x, new { @readonly = "readonly" })
+                </td>
+                <td>Y坐标(纬度):
+                </td>
+                <td>@Html.TextBoxFor(m => m.y, new { @readonly = "readonly" })
+                    <a href="javascript:void(0)" id="GetCoordinate">拾取坐标</a>
+                </td>
+                <td>
+                    @* <select id="getxy_select" style="width: 100px;">
+                        <option value="-1">请选择</option>
+                        <option value="getxy">拾取坐标</option>
+                        <option value="mapmaks">地图标注</option>
+                    </select>*@
+                </td>
+                <td>
+                    @* <input type="hidden" id="LngOrLat" name="LngOrLat" value="@Model.LngOrLat" />*@
+                </td>
+            </tr>
+            <tr name="hidder" style="height: 0px;">
+                <td>@Html.HiddenFor(m => m.cityid)
+                </td>
+                <td>@Html.HiddenFor(m => m.fxtcompanyid)
+                </td>
+                <td>@*@Html.HiddenFor(m => m.projectid)*@
+                    <input type="hidden" id="projectid" name="projectid" value="@ViewBag.ProjectId" />
+                </td>
+                <td>@Html.HiddenFor(m => m.buildingid)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>入伙日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.joindate, new { Value = Model.joindate == null ? "" : Model.joindate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>预售时间:
+                </td>
+                <td>@Html.TextBoxFor(m => m.licencedate, new { Value = Model.licencedate == null ? "" : Model.licencedate.Value.ToString("yyyy-MM-dd") })
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+                <td>销售许可证:
+                </td>
+                <td>@Html.TextBoxFor(m => m.salelicence)
+                </td>
+                <td>附属房屋均价:
+                </td>
+                <td>@Html.TextBoxFor(m => m.subaverageprice)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>是否虚拟楼栋:
+                </td>
+                <td>@Html.DropDownListFor(m => m.IsVirtual, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+                        new SelectListItem { Value = "0", Text = "否" },
+                        new SelectListItem { Value = "1", Text = "是" }
+                    })
+                </td>
+                <td>楼层分布:
+                </td>
+                <td>@Html.TextBoxFor(m => m.FloorSpread)
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+                <td>裙楼层数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.PodiumBuildingFloor)
+                </td>
+                <td>裙楼面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.PodiumBuildingArea)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>塔楼面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.TowerBuildingArea)
+                </td>
+                <td>地下室总面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.BasementArea)
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>地下室用途:
+                </td>
+                <td>@Html.TextBoxFor(m => m.BasementPurpose)
+                </td>
+                <td>住宅套数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.HouseNumber)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>住宅总面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.HouseArea)
+                </td>
+                <td>非住宅套数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.OtherNumber)
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+                <td>非住宅总面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.OtherArea)
+                </td>
+                <td>内部装修:
+                </td>
+                <td>@Html.DropDownListFor(m => m.innerFitmentCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--"},
+                        new SelectListItem { Value = "6026001", Text = "豪华" } ,
+                        new SelectListItem { Value = "6026002", Text = "高档" } ,
+                        new SelectListItem { Value = "6026003", Text = "中档" } ,
+                        new SelectListItem { Value = "6026004", Text = "普通" } ,
+                        new SelectListItem { Value = "6026005", Text = "简易" },
+                        new SelectListItem { Value = "6026006", Text = "毛坯" }
+                    })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>单层户数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.FloorHouseNumber)
+                </td>
+                <td>电梯数量:
+                </td>
+                <td>@Html.TextBoxFor(m => m.LiftNumber)
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+                <td>电梯品牌:
+                </td>
+                <td>@Html.TextBoxFor(m => m.LiftBrand)
+                </td>
+                <td>管道燃气:
+                </td>
+                <td>@Html.DropDownListFor(m => m.PipelineGasCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--"},
+                        new SelectListItem { Value = "1213001", Text = "管道天然气"},
+                        new SelectListItem { Value = "1213002", Text = "管道煤气"},
+                        new SelectListItem { Value = "1213003", Text = "无"}
+                    })
+                </td>
+
+            </tr>
+            <tr name="show" class="tr">
+                <td>采暖方式:
+                </td>
+                <td>@Html.DropDownListFor(m => m.HeatingModeCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--"},
+                        new SelectListItem { Value = "1214001", Text = "集中供暖"},
+                        new SelectListItem { Value = "1214002", Text = "独户采暖"},
+                        new SelectListItem { Value = "1214003", Text = "无"}
+                    })
+                </td>
+                <td>墙体类型:
+                </td>
+                <td>@Html.DropDownListFor(m => m.WallTypeCode, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--"},
+                        new SelectListItem { Value = "1215001", Text = "加厚墙体"},
+                        new SelectListItem { Value = "1215002", Text = "普通墙体"},
+                        new SelectListItem { Value = "1215003", Text = "不详"}
+                    })
+                </td>
+            </tr>
+            <tr name="show" class="textarea">
+                <td>价格系数说明:
+                </td>
+                <td>@Html.TextAreaFor(m => m.pricedetail, new { cols = "20", rows = "2", style = "margin: 0px; width: 206px; height: 60px;" })
+                </td>
+                <td>门牌号(地址):
+                </td>
+                <td>@Html.TextAreaFor(m => m.doorplate, new { cols = "20", rows = "2", style = "margin: 0px; width: 206px; height: 60px;" })
+                </td>
+            </tr>
+            <tr name="show" class="textarea" style="height: 100px">
+                <td>备注:
+                </td>
+                <td>@Html.TextAreaFor(m => m.remark, new { cols = "20", rows = "2", style = "margin: 0px; width: 206px; height: 60px;" })
+                </td>
+                <td>设备设施:
+                </td>
+                <td>@Html.TextAreaFor(m => m.Facilities, new { cols = "20", rows = "2", style = "margin: 0px; width: 206px; height: 60px;" })
+                </td>
+            </tr>
+            <tr name="show" class="textarea" style="height: 100px">
+                <td>数据建设机构:
+                </td>
+                <td>@Html.TextBoxFor(m => m.belongcompanyid, new { @readonly = true})
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <a href="javascript:void(0)" id="click_ok">展开∨</a>
+                </td>
+            </tr>
+        </table>
+        @* <table>
+            <tr style="height: 10px;">
+                <td>
+                    <a href="javascript:void(0)" id="click_ok">点击更多</a>
+                </td>
+            </tr>
+        </table>*@
+        <table style="margin-left: 30px; width: 100%;">
+            <tr>
+                <td colspan='6'>
+                    <button class="btn blue" type="submit" id="btn_submit">
+                        <i class="icon-ok"></i>确定
+                    </button>
+
+                    @*    <button class="btn red" id="Clear" type="reset">
+                        <i class="icon-trash icon-white"></i>清空
+                    </button>*@
+                    @if (Model != null && Model.buildingid > 0)
+                    {
+                        <a class="btn" title='添加楼栋图片'  href="@Url.Action("BuildPhoto", new { projectid = Model.projectid, buildId = Model.buildingid })">
+                            <i class="icon-picture"></i>楼栋图片 </a> 
+                      
+                        <input type="button" title="楼栋复制" id="btnBuildCopy" class="btn thickbox" alt="#TB_inline?height=250&width=350&inlineId=BuildCopy" value="楼栋复制" />
+                        
+                        <a class="btn " title='房号'  href="@Url.Action("Index", "House", new { BuildId = Model.buildingid, TotalFloor = Model.totalfloor, fxtCompanyId = Model.fxtcompanyid, projectid = Model.projectid })">
+                            <i class="icon-share-alt"></i>转到房号 </a> 
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <!--修正系数-->
+    <div id="UpdateWeight" style="display: none;">
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;">
+            <tr>
+                <td>楼盘均价:
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.ProAveragePrice, new { @class = "m-wrap small", style = "margin-bottom:0px; margin-top:10px;", @readonly = "readonly" })元/㎡
+                </td>
+            </tr>
+            <tr>
+                <td>楼栋位置:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.locationcode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2011001", Text = "无特别因素" },
+                   new SelectListItem { Value = "2011002", Text = "临公园、绿地" },
+                   new SelectListItem { Value = "2011003", Text = "临江、河、湖" },
+                   new SelectListItem { Value = "2011004", Text = "临噪音源(路、桥、工厂)" },
+                   new SelectListItem { Value = "2011005", Text = "临垃圾站、医院" },
+                   new SelectListItem { Value = "2011006", Text = "临变电站、高压线" },
+                   new SelectListItem { Value = "2011007", Text = "临其他不利因素" },
+                   new SelectListItem { Value = "2011008", Text = "临小区中庭" }
+               })
+                </td>
+                <td>
+                    @{
+                    decimal locationweight = 0.00M;
+                    if (Model.locationweight > 0)
+                    {
+                        //locationweight = Convert.ToDecimal(Model.locationweight) / Model.ProAveragePrice;
+                        locationweight = Convert.ToDecimal(Model.locationweight);
+                    }
+                    else
+                    {
+                        locationweight = Convert.ToDecimal(Model.locationweight);
+
+                    }
+                    }
+                    <select id="locationweightJiaJian" name="locationweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(locationweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(locationweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.locationweight, new { Value = locationweight > 0 ? locationweight.ToString("F2") : (locationweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>楼栋朝向:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.frontcode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2004001", Text = "东" },
+                   new SelectListItem { Value = "2004002", Text = "南" },
+                   new SelectListItem { Value = "2004003", Text = "西" },
+                   new SelectListItem { Value = "2004004", Text = "北" },
+                   new SelectListItem { Value = "2004005", Text = "东南" },
+                   new SelectListItem { Value = "2004006", Text = "东北" },
+                   new SelectListItem { Value = "2004007", Text = "西南" },
+                   new SelectListItem { Value = "2004008", Text = "西北" },
+                   new SelectListItem { Value = "2004009", Text = "南北" },
+                   new SelectListItem { Value = "2004010", Text = "东西" }
+               })
+                </td>
+                <td>
+                    @{
+                    decimal frontweight = 0.00M;
+                    if (Model.frontweight > 0)
+                    {
+                        //frontweight = Convert.ToDecimal(Model.frontweight) / Model.ProAveragePrice;
+                        frontweight = Convert.ToDecimal(Model.frontweight);
+
+                    }
+                    else
+                    {
+                        frontweight = Convert.ToDecimal(Model.frontweight);
+                    }
+                    }
+                    <select id="frontweightJiaJian" name="frontweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(frontweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(frontweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.frontweight, new { Value = frontweight > 0 ? frontweight.ToString("F2") : (frontweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>楼栋景观:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.sightcode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2006001", Text = "公园景观" },
+                   new SelectListItem { Value = "2006002", Text = "绿地景观" },
+                   new SelectListItem { Value = "2006003", Text = "小区景观" },
+                   new SelectListItem { Value = "2006004", Text = "街景" },
+                   new SelectListItem { Value = "2006005", Text = "市景" },
+                   new SelectListItem { Value = "2006006", Text = "海景" },
+                   new SelectListItem { Value = "2006007", Text = "山景" },
+                   new SelectListItem { Value = "2006008", Text = "江景" },
+                   new SelectListItem { Value = "2006009", Text = "湖景" },
+                   new SelectListItem { Value = "2006010", Text = "无特别景观" },
+                   new SelectListItem { Value = "2006011", Text = "小区绿地" },
+                   new SelectListItem { Value = "2006012", Text = "河景" },
+                   new SelectListItem { Value = "2006013", Text = "有建筑物遮挡" },
+                   new SelectListItem { Value = "2006014", Text = "临高架桥" },
+                    new SelectListItem { Value = "2006015", Text = "临铁路" },
+                   new SelectListItem { Value = "2006016", Text = "临其他厌恶设施" }
+               })
+                </td>
+                <td>
+                    @{
+                    decimal sightweight = 0.00M;
+                    if (Model.sightweight > 0)
+                    {
+                        //sightweight = Convert.ToDecimal(Model.sightweight) / Model.ProAveragePrice;
+                        sightweight = Convert.ToDecimal(Model.sightweight);
+
+                    }
+                    else
+                    {
+                        sightweight = Convert.ToDecimal(Model.sightweight);
+                    }
+                    }
+                    <select id="sightweightJiaJian" name="sightweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(sightweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(sightweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.sightweight, new { Value = sightweight > 0 ? sightweight.ToString("F2") : (sightweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>年期修正:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.builddate, new { Value = Model.builddate == null ? "" : Convert.ToDateTime(Model.builddate).ToString("yyyy-MM-dd"), @class = "m-wrap small", @readonly = "readonly", style = "margin-bottom:0px;" })
+                </td>
+                <td>
+                    @{
+                    decimal yearweight = 0.00M;
+                    if (Model.yearweight > 0)
+                    {
+                        //yearweight = Convert.ToDecimal(Model.yearweight) / Model.ProAveragePrice;
+                        yearweight = Convert.ToDecimal(Model.yearweight);
+
+                    }
+                    else
+                    {
+                        yearweight = Convert.ToDecimal(Model.yearweight);
+                    }
+                    }
+                    <select id="yearweightJiaJian" name="yearweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(yearweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(yearweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.yearweight, new { Value = yearweight > 0 ? yearweight.ToString("F2") : (yearweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>建筑类型:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.buildingtypecode, new { id = "buildingtypecodeName", Value = Model.buildingtypecode == null ? "" : FXT.DataCenter.Infrastructure.Common.Dictionary.Sys_TypeCodeOrName.GetBuildingTypeName(Convert.ToInt32(Model.buildingtypecode)), @class = "m-wrap small", style = "margin-bottom:0px;", @readonly = "readonly" })
+                </td>
+                <td>
+                    @{
+                    decimal buildingtypeweight = 0.00M;
+                    if (Model.buildingtypeweight > 0)
+                    {
+                        //buildingtypeweight = Convert.ToDecimal(Model.buildingtypeweight) / Model.ProAveragePrice;
+                        buildingtypeweight = Convert.ToDecimal(Model.buildingtypeweight);
+
+                    }
+                    else
+                    {
+                        buildingtypeweight = Convert.ToDecimal(Model.buildingtypeweight);
+                    }
+                    }
+                    <select id="buildingtypeweightJiaJian" name="buildingtypeweightJiaJian" class="m-wrap"
+                        style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(buildingtypeweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(buildingtypeweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.buildingtypeweight, new { Value = buildingtypeweight > 0 ? buildingtypeweight.ToString("F2") : (buildingtypeweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>户型面积:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.bhousetypecode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2016001", Text = "小户型" },
+                   new SelectListItem { Value = "2016002", Text = "大户型" },
+                   new SelectListItem { Value = "2016003", Text = "复式户型" },
+                   new SelectListItem { Value = "2016004", Text = "特殊户型" }
+               })
+                </td>
+                <td>
+                    @{
+                    decimal bhousetypeweight = 0.00M;
+                    if (Model.bhousetypeweight != null && Model.bhousetypeweight > 0)
+                    {
+                        //bhousetypeweight = ((Convert.ToDecimal(Model.bhousetypeweight)) / (Model.ProAveragePrice)).ToString("F2");
+                        bhousetypeweight = Convert.ToDecimal(Model.bhousetypeweight);
+
+                    }
+                    else
+                    {
+                        bhousetypeweight = Convert.ToDecimal(Model.bhousetypeweight);
+                    }
+                    }
+                    <select id="bhousetypeweightJiaJian" name="bhousetypeweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(bhousetypeweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(bhousetypeweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.bhousetypeweight, new { Value = bhousetypeweight > 0 ? bhousetypeweight.ToString("F2") : (bhousetypeweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>楼间距(米):
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.distance, new { @class = "m-wrap small", style = "margin-bottom:0px;" })
+                </td>
+                <td>
+                    @{
+                    decimal distanceweight = 0.00M;
+                    if (Model.distanceweight != null && Model.distanceweight > 0)
+                    {
+                        //distanceweight = ((Convert.ToDecimal(Model.distanceweight)) / (Model.ProAveragePrice)).ToString("F2");
+                        distanceweight = Convert.ToDecimal(Model.distanceweight);
+
+                    }
+                    else
+                    {
+                        distanceweight = Convert.ToDecimal(Model.distanceweight);
+                    }
+                    }
+                    <select id="distanceweightJiaJian" name="distanceweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(distanceweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(distanceweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.distanceweight, new { Value = distanceweight > 0 ? distanceweight.ToString("F2") : (distanceweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>是否带院子:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.isyard, new List<SelectListItem>{
+                        new SelectListItem { Value = "-1", Text = "--请选择--" },
+            new SelectListItem{ Text="否",Value="0"},
+            new SelectListItem{Text="是",Value="1"}
+        })
+                </td>
+                <td>
+                    @{
+                    decimal yardweight = 0.00M;
+                    if (Model.yardweight != null && Model.yardweight > 0)
+                    {
+                        //yardweight = ((Convert.ToDecimal(Model.yardweight)) / (Model.ProAveragePrice)).ToString("F2");
+                        yardweight = Convert.ToDecimal(Model.yardweight);
+
+                    }
+                    else
+                    {
+                        yardweight = Convert.ToDecimal(Model.yardweight);
+                    }
+                    }
+                    <select id="yardweightJiaJian" name="yardweightJiaJian" class="m-wrap" style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(yardweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(yardweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.yardweight, new { Value = yardweight > 0 ? yardweight.ToString("F2") : (yardweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>梯户数:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.elevatorrate, new { @class = "m-wrap small", style = "margin-bottom:0px;", @readonly = "readonly" })
+                </td>
+                <td>
+                    @{
+                    decimal elevatorrateweight = 0.00M;
+                    if (Model.elevatorrateweight != null && Model.elevatorrateweight > 0)
+                    {
+                        elevatorrateweight = Convert.ToDecimal(Model.elevatorrateweight);
+
+                    }
+                    else
+                    {
+                        elevatorrateweight = Convert.ToDecimal(Model.elevatorrateweight);
+
+                    }
+                    }
+                    <select id="elevatorrateweightJiaJian" name="elevatorrateweightJiaJian" class="m-wrap"
+                        style="width: 80px;">
+                        <option value="0" @(Convert.ToDouble(elevatorrateweight) > 0 ? "selected='selected'" : "") >加</option>
+                        <option value="1" @(Convert.ToDouble(elevatorrateweight) < 0 ? "selected='selected'" : "") >减</option>
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.elevatorrateweight, new { Value = elevatorrateweight > 0 ? elevatorrateweight.ToString("F2") : (elevatorrateweight * -1).ToString("F2"), @class = "m-wrap small", style = "margin-bottom:0px;" })%
+                </td>
+            </tr>
+            <tr>
+                <td>楼栋均价:
+                </td>
+                <td>
+                    @{ 
+                    double b_price = 0.0;
+                    if (Model.ProAveragePrice > 0)
+                    {
+                        b_price = Convert.ToDouble((Convert.ToDecimal(Model.ProAveragePrice) * (Model.weight == null ? 1 : Convert.ToDecimal(Model.weight))).ToString("F4"));
+                    }
+                    }
+                    <input class="m-wrap small" style="margin-bottom:0px;" id="averageprice" name="averageprice" value="@(b_price == 0.0 ? Convert.ToDouble(Model.averageprice) : b_price)" />元/㎡
+                   @* @Html.TextBoxFor(m => m.averageprice, new { @class = "m-wrap small", style = "margin-bottom:0px;" })元/㎡*@
+                </td>
+                <td>价格系数:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.weight, new { Value = Model.weight == null ? "1.0000" : Convert.ToDecimal(Model.weight).ToString("F4"), @class = "m-wrap small", style = "margin-bottom:0px;" })
+                </td>
+                <td>
+                    <input type="hidden" id="TempPriceW" name="TempPriceW" value="@(Model.weight == null ? "1.0000" : Convert.ToDecimal(Model.weight).ToString("F4"))" />
+                    <input type="hidden" id="buildingid" name="buildingid" value="@Model.buildingid" />
+                    @*<input type="hidden" id="projectid" name="projectid" value="@ViewBag.ProjectId" />*@
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="baidumap" style="display: none;">
+        <div style="width: 100%">
+            <div style="margin-top: 10px; margin-left: 20px; float: left; width: 100%">
+                城市或地名:
+            <input id="txtarea" type="text" style="width: 100px; margin-right: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" id="areaSearch" class="btn">点击搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" id="btn_xy" class="GetCoordinate btn">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" id="btnClrearCallout" class="GetCoordinate btn">关闭</a>
+            </div>
+        </div>
+        <div style="width: 860px; height: 450px; border: 1px solid gray; text-align: center;" id="container">
+        </div>
+    </div>
+}
+<div id="BuildCopy" style="display: none;">
+    <table style="width: 100%; margin-bottom: 10px; line-height: 35px; margin-top: 10px;">
+        <tr>
+            <td>从:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.buildingname, new { @class = "", @readonly = "readonly", style = "width:205px" })
+            </td>
+        </tr>
+        <tr>
+            <td>复制到:
+            </td>
+            <td>
+                @Html.TextBox("BuildNameTo")
+            </td>
+        </tr>
+    </table>
+</div>

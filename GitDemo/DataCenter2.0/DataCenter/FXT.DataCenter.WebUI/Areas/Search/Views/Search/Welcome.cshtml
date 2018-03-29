@@ -1,0 +1,92 @@
+﻿@using FXT.DataCenter.Infrastructure.Data.ServicesImpl
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+
+@{
+    ViewBag.Title = "云估价数据中心！";
+}
+@section Javascript{
+    <script type="text/javascript">
+        if (self.frameElement != null) {
+            if (self.frameElement.tagName == "IFRAME") {
+                self.parent.location = "/Login/Index";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $("#navigation").hide();
+        $(".sub").show();
+        $(".has-sub>a").each(function () {
+            $(this).css("background-color", "#313131");
+
+        });
+    </script>
+}
+<div class="p10 m10">
+    <!-- BEGIN BLOCKQUOTES PORTLET-->
+    <div class="portlet">
+        <div class="portlet-title">
+
+            <h4><i class="icon-reorder"></i>云估价数据中心</h4>
+            <div class="tools">
+                <a href="javascript:;" class="collapse"></a>
+                <a href="javascript:;" class="reload"></a>
+                <a href="javascript:;" class="remove"></a>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <h3></h3>
+            <blockquote>
+                <p>欢迎使用云估价数据中心 !</p>
+            </blockquote>
+        </div>
+    </div>
+    <!-- END BLOCKQUOTES PORTLET-->
+</div>
+
+<div class="portlet box red m10">
+    <div class="portlet-title">
+        <h4><i class="icon-reorder"></i>您具有的功能快捷方式</h4>
+
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <ul>
+            @{
+                var productModuleCodes = Passport.Current.AccessedModules.Where(m => m.cityid == Passport.Current.CityId);
+                var firstMenus = productModuleCodes.Where(m => m.parentmodulecode == 0).OrderBy(m => m.modulecode);
+                
+            }
+            @foreach (var item in firstMenus)
+            {
+                var secondMenus = productModuleCodes.Where(m => m.parentmodulecode == item.modulecode).OrderBy(m => m.modulecode);
+                <li>
+                    <h4>@item.CodeName</h4>
+                </li>
+                if (!secondMenus.Any())
+                {
+                    continue;
+                }
+                <ul class="dl-horizontal unstyled">
+
+                    @foreach (var item1 in secondMenus)
+                    {
+                        var firstOrDefault = new Menu().GetMenuByTypeCode(item1.modulecode).FirstOrDefault();
+                        var url = firstOrDefault == null ? "" : firstOrDefault.URL;
+                        <li class="m10 floatleft"><a href="@url" class="btn red-stripe">@item1.CodeName</a></li>
+                    }
+
+                </ul>
+            }
+
+            <li>
+                <h4>商家/企业</h4>
+            </li>
+            <ul class="dl-horizontal unstyled">
+                <li class="m10 floatleft"><a href="/Company/Company/Index" class="btn red-stripe">公司管理</a></li>
+            </ul>
+        </ul>
+    </div>
+</div>

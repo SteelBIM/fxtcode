@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FxtAPI" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:6300/API/FxtAPI.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:6300/API/FxtAPI.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFxtAPI_ResetCrossBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetCrossBy" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_ResetCrossBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetCrossByResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_Cross_InputMessage">
+    <wsdl:part name="parameters" element="tns:Cross" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_Cross_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrossResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvince_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvince" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvince_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceByName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceById" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCity" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByCityName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByCityName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByCityName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityListByCityName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityListByCityName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityListByCityName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityListByCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAllCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCity" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAllCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceByCityId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceByCityId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvinceByCityId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceByCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByCityId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByCityId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByCityId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetArea_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArea" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetArea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaByCityName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaByCityName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaByCityName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaByCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaListByAraeName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaListByAraeName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaListByAraeName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaListByAraeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByAreaId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByAreaId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCityByAreaId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityByAreaIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaByAreaId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaByAreaId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAreaByAreaId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaByAreaIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityNameAndLikePrjName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityNameAndLikePrjName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityNameAndLikePrjName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityNameAndLikePrjNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityIDAndLikePrjName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityIDAndLikePrjName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityIDAndLikePrjName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityIDAndLikePrjNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectJoinPMatchByPNameOrPAddressCityId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectJoinPMatchByPNameOrPAddressCityId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectJoinPMatchByPNameOrPAddressCityId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectJoinPMatchByPNameOrPAddressCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectViewByCityNameAndLikePrjName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectViewByCityNameAndLikePrjName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectViewByCityNameAndLikePrjName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectViewByCityNameAndLikePrjNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetBuildingByProjectIdCityIDAndLikeBuildingName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingByProjectIdCityIDAndLikeBuildingName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetBuildingByProjectIdCityIDAndLikeBuildingName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingByProjectIdCityIDAndLikeBuildingNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetHouseByBuildingIdCityIDAndLikeHouseName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseByBuildingIdCityIDAndLikeHouseName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetHouseByBuildingIdCityIDAndLikeHouseName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseByBuildingIdCityIDAndLikeHouseNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityIdAndProjectIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityIdAndProjectIds" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityIdAndProjectIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityIdAndProjectIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectJoinProjectMatchByProjectNameCityId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectJoinProjectMatchByProjectNameCityId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectJoinProjectMatchByProjectNameCityId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectJoinProjectMatchByProjectNameCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByProjectNameAndCityName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByProjectNameAndCityName" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByProjectNameAndCityName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByProjectNameAndCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityNameAndPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityNameAndPage" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectByCityNameAndPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByCityNameAndPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProject" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertSYSProjectMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSYSProjectMatch" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertSYSProjectMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSYSProjectMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertSYSProjectMatchList_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSYSProjectMatchList" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertSYSProjectMatchList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSYSProjectMatchListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetHouseByHouse_City_Building_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseByHouse_City_Building" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetHouseByHouse_City_Building_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHouseByHouse_City_BuildingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetBuildingByProject_City_Build_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingByProject_City_Build" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetBuildingByProject_City_Build_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingByProject_City_BuildResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndCaseIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndCaseIds" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndCaseIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndCaseIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndCaseId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndCaseId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndCaseId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndCaseIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseIdJoinProjectNameByCityIdAndCaseIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseIdJoinProjectNameByCityIdAndCaseIds" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseIdJoinProjectNameByCityIdAndCaseIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseIdJoinProjectNameByCityIdAndCaseIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_DeleteCaseByCityNameAndCaseIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCaseByCityNameAndCaseIds" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_DeleteCaseByCityNameAndCaseIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCaseByCityNameAndCaseIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_DeleteCaseByCityIdAndCaseIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCaseByCityIdAndCaseIds" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_DeleteCaseByCityIdAndCaseIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCaseByCityIdAndCaseIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertCase_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCase" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_InsertCase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_UpdateCase_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCase" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_UpdateCase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAllProjectPurposeCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjectPurposeCode" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetAllProjectPurposeCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProjectPurposeCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetSYSCodeByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSYSCodeByID" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetSYSCodeByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSYSCodeByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetPurposeTypeCodeVillaType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposeTypeCodeVillaType" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetPurposeTypeCodeVillaType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposeTypeCodeVillaTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetSYSCodeByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSYSCodeByCode" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetSYSCodeByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSYSCodeByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectAvgPriceByProjectIdAndCityIdAndBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvgPriceByProjectIdAndCityIdAndBy" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProjectAvgPriceByProjectIdAndCityIdAndBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvgPriceByProjectIdAndCityIdAndByResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_Entrance_InputMessage">
+    <wsdl:part name="parameters" element="tns:Entrance" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_Entrance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EntranceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFxtAPI">
+    <wsdl:operation name="ResetCrossBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/ResetCrossBy" message="tns:IFxtAPI_ResetCrossBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/ResetCrossByResponse" message="tns:IFxtAPI_ResetCrossBy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Cross">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/Cross" message="tns:IFxtAPI_Cross_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/CrossResponse" message="tns:IFxtAPI_Cross_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvince">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProvince" message="tns:IFxtAPI_GetProvince_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceResponse" message="tns:IFxtAPI_GetProvince_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceByName" message="tns:IFxtAPI_GetProvinceByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceByNameResponse" message="tns:IFxtAPI_GetProvinceByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceById" message="tns:IFxtAPI_GetProvinceById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceByIdResponse" message="tns:IFxtAPI_GetProvinceById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCity" message="tns:IFxtAPI_GetCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityResponse" message="tns:IFxtAPI_GetCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCityName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByCityName" message="tns:IFxtAPI_GetCityByCityName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByCityNameResponse" message="tns:IFxtAPI_GetCityByCityName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityListByCityName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCityListByCityName" message="tns:IFxtAPI_GetCityListByCityName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityListByCityNameResponse" message="tns:IFxtAPI_GetCityListByCityName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetAllCity" message="tns:IFxtAPI_GetAllCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAllCityResponse" message="tns:IFxtAPI_GetAllCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceByCityId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceByCityId" message="tns:IFxtAPI_GetProvinceByCityId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceByCityIdResponse" message="tns:IFxtAPI_GetProvinceByCityId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCityId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByCityId" message="tns:IFxtAPI_GetCityByCityId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByCityIdResponse" message="tns:IFxtAPI_GetCityByCityId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetArea" message="tns:IFxtAPI_GetArea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaResponse" message="tns:IFxtAPI_GetArea_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaByCityName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaByCityName" message="tns:IFxtAPI_GetAreaByCityName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaByCityNameResponse" message="tns:IFxtAPI_GetAreaByCityName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaListByAraeName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaListByAraeName" message="tns:IFxtAPI_GetAreaListByAraeName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaListByAraeNameResponse" message="tns:IFxtAPI_GetAreaListByAraeName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByAreaId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByAreaId" message="tns:IFxtAPI_GetCityByAreaId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityByAreaIdResponse" message="tns:IFxtAPI_GetCityByAreaId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaByAreaId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaByAreaId" message="tns:IFxtAPI_GetAreaByAreaId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaByAreaIdResponse" message="tns:IFxtAPI_GetAreaByAreaId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityNameAndLikePrjName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndLikePrjName" message="tns:IFxtAPI_GetProjectByCityNameAndLikePrjName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndLikePrjNameResponse" message="tns:IFxtAPI_GetProjectByCityNameAndLikePrjName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityIDAndLikePrjName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityIDAndLikePrjName" message="tns:IFxtAPI_GetProjectByCityIDAndLikePrjName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityIDAndLikePrjNameResponse" message="tns:IFxtAPI_GetProjectByCityIDAndLikePrjName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectJoinPMatchByPNameOrPAddressCityId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectJoinPMatchByPNameOrPAddressCityId" message="tns:IFxtAPI_GetProjectJoinPMatchByPNameOrPAddressCityId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectJoinPMatchByPNameOrPAddressCityIdResponse" message="tns:IFxtAPI_GetProjectJoinPMatchByPNameOrPAddressCityId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectViewByCityNameAndLikePrjName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectViewByCityNameAndLikePrjName" message="tns:IFxtAPI_GetProjectViewByCityNameAndLikePrjName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectViewByCityNameAndLikePrjNameResponse" message="tns:IFxtAPI_GetProjectViewByCityNameAndLikePrjName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingByProjectIdCityIDAndLikeBuildingName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetBuildingByProjectIdCityIDAndLikeBuildingName" message="tns:IFxtAPI_GetBuildingByProjectIdCityIDAndLikeBuildingName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetBuildingByProjectIdCityIDAndLikeBuildingNameResponse" message="tns:IFxtAPI_GetBuildingByProjectIdCityIDAndLikeBuildingName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseByBuildingIdCityIDAndLikeHouseName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetHouseByBuildingIdCityIDAndLikeHouseName" message="tns:IFxtAPI_GetHouseByBuildingIdCityIDAndLikeHouseName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetHouseByBuildingIdCityIDAndLikeHouseNameResponse" message="tns:IFxtAPI_GetHouseByBuildingIdCityIDAndLikeHouseName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityIdAndProjectIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityIdAndProjectIds" message="tns:IFxtAPI_GetProjectByCityIdAndProjectIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityIdAndProjectIdsResponse" message="tns:IFxtAPI_GetProjectByCityIdAndProjectIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectJoinProjectMatchByProjectNameCityId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectJoinProjectMatchByProjectNameCityId" message="tns:IFxtAPI_GetProjectJoinProjectMatchByProjectNameCityId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectJoinProjectMatchByProjectNameCityIdResponse" message="tns:IFxtAPI_GetProjectJoinProjectMatchByProjectNameCityId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByProjectNameAndCityName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByProjectNameAndCityName" message="tns:IFxtAPI_GetProjectByProjectNameAndCityName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByProjectNameAndCityNameResponse" message="tns:IFxtAPI_GetProjectByProjectNameAndCityName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityNameAndPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndPage" message="tns:IFxtAPI_GetProjectByCityNameAndPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndPageResponse" message="tns:IFxtAPI_GetProjectByCityNameAndPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/InsertProject" message="tns:IFxtAPI_InsertProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/InsertProjectResponse" message="tns:IFxtAPI_InsertProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSYSProjectMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/InsertSYSProjectMatch" message="tns:IFxtAPI_InsertSYSProjectMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/InsertSYSProjectMatchResponse" message="tns:IFxtAPI_InsertSYSProjectMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSYSProjectMatchList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/InsertSYSProjectMatchList" message="tns:IFxtAPI_InsertSYSProjectMatchList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/InsertSYSProjectMatchListResponse" message="tns:IFxtAPI_InsertSYSProjectMatchList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseByHouse_City_Building">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetHouseByHouse_City_Building" message="tns:IFxtAPI_GetHouseByHouse_City_Building_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetHouseByHouse_City_BuildingResponse" message="tns:IFxtAPI_GetHouseByHouse_City_Building_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingByProject_City_Build">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetBuildingByProject_City_Build" message="tns:IFxtAPI_GetBuildingByProject_City_Build_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetBuildingByProject_City_BuildResponse" message="tns:IFxtAPI_GetBuildingByProject_City_Build_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndCaseIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseIds" message="tns:IFxtAPI_GetCaseByCityIdAndCaseIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseIdsResponse" message="tns:IFxtAPI_GetCaseByCityIdAndCaseIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndCaseId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseId" message="tns:IFxtAPI_GetCaseByCityIdAndCaseId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseIdResponse" message="tns:IFxtAPI_GetCaseByCityIdAndCaseId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseIdJoinProjectNameByCityIdAndCaseIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseIdJoinProjectNameByCityIdAndCaseIds" message="tns:IFxtAPI_GetCaseIdJoinProjectNameByCityIdAndCaseIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseIdJoinProjectNameByCityIdAndCaseIdsResponse" message="tns:IFxtAPI_GetCaseIdJoinProjectNameByCityIdAndCaseIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage" message="tns:IFxtAPI_GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPageResponse" message="tns:IFxtAPI_GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDatesResponse" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDateResponse" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDateResponse" message="tns:IFxtAPI_GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCaseByCityNameAndCaseIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/DeleteCaseByCityNameAndCaseIds" message="tns:IFxtAPI_DeleteCaseByCityNameAndCaseIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/DeleteCaseByCityNameAndCaseIdsResponse" message="tns:IFxtAPI_DeleteCaseByCityNameAndCaseIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCaseByCityIdAndCaseIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/DeleteCaseByCityIdAndCaseIds" message="tns:IFxtAPI_DeleteCaseByCityIdAndCaseIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/DeleteCaseByCityIdAndCaseIdsResponse" message="tns:IFxtAPI_DeleteCaseByCityIdAndCaseIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/InsertCase" message="tns:IFxtAPI_InsertCase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/InsertCaseResponse" message="tns:IFxtAPI_InsertCase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/UpdateCase" message="tns:IFxtAPI_UpdateCase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/UpdateCaseResponse" message="tns:IFxtAPI_UpdateCase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjectPurposeCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetAllProjectPurposeCode" message="tns:IFxtAPI_GetAllProjectPurposeCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAllProjectPurposeCodeResponse" message="tns:IFxtAPI_GetAllProjectPurposeCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSYSCodeByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetSYSCodeByID" message="tns:IFxtAPI_GetSYSCodeByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetSYSCodeByIDResponse" message="tns:IFxtAPI_GetSYSCodeByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposeTypeCodeVillaType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetPurposeTypeCodeVillaType" message="tns:IFxtAPI_GetPurposeTypeCodeVillaType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetPurposeTypeCodeVillaTypeResponse" message="tns:IFxtAPI_GetPurposeTypeCodeVillaType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSYSCodeByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetSYSCodeByCode" message="tns:IFxtAPI_GetSYSCodeByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetSYSCodeByCodeResponse" message="tns:IFxtAPI_GetSYSCodeByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates" message="tns:IFxtAPI_GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDatesResponse" message="tns:IFxtAPI_GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvgPriceByProjectIdAndCityIdAndBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdAndCityIdAndBy" message="tns:IFxtAPI_GetProjectAvgPriceByProjectIdAndCityIdAndBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdAndCityIdAndByResponse" message="tns:IFxtAPI_GetProjectAvgPriceByProjectIdAndCityIdAndBy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Entrance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/Entrance" message="tns:IFxtAPI_Entrance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/EntranceResponse" message="tns:IFxtAPI_Entrance_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFxtAPI" type="tns:IFxtAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ResetCrossBy">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/ResetCrossBy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cross">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/Cross" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvince">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProvince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceByName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProvinceByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceById">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProvinceById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCityName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCityByCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityListByCityName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCityListByCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCity">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetAllCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceByCityId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProvinceByCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByCityId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCityByCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArea">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetArea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaByCityName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetAreaByCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaListByAraeName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetAreaListByAraeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityByAreaId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCityByAreaId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaByAreaId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetAreaByAreaId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityNameAndLikePrjName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndLikePrjName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityIDAndLikePrjName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectByCityIDAndLikePrjName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectJoinPMatchByPNameOrPAddressCityId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectJoinPMatchByPNameOrPAddressCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectViewByCityNameAndLikePrjName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectViewByCityNameAndLikePrjName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingByProjectIdCityIDAndLikeBuildingName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetBuildingByProjectIdCityIDAndLikeBuildingName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseByBuildingIdCityIDAndLikeHouseName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetHouseByBuildingIdCityIDAndLikeHouseName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityIdAndProjectIds">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectByCityIdAndProjectIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectJoinProjectMatchByProjectNameCityId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectJoinProjectMatchByProjectNameCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByProjectNameAndCityName">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectByProjectNameAndCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByCityNameAndPage">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectByCityNameAndPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProject">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/InsertProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSYSProjectMatch">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/InsertSYSProjectMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSYSProjectMatchList">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/InsertSYSProjectMatchList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseByHouse_City_Building">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetHouseByHouse_City_Building" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingByProject_City_Build">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetBuildingByProject_City_Build" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndCaseIds">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndCaseId">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndCaseId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseIdJoinProjectNameByCityIdAndCaseIds">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseIdJoinProjectNameByCityIdAndCaseIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCaseByCityNameAndCaseIds">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/DeleteCaseByCityNameAndCaseIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCaseByCityIdAndCaseIds">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/DeleteCaseByCityIdAndCaseIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCase">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/InsertCase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCase">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/UpdateCase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjectPurposeCode">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetAllProjectPurposeCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSYSCodeByID">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetSYSCodeByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposeTypeCodeVillaType">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetPurposeTypeCodeVillaType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSYSCodeByCode">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetSYSCodeByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvgPriceByProjectIdAndCityIdAndBy">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProjectAvgPriceByProjectIdAndCityIdAndBy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Entrance">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/Entrance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FxtAPI">
+    <wsdl:port name="BasicHttpBinding_IFxtAPI" binding="tns:BasicHttpBinding_IFxtAPI">
+      <soap:address location="http://localhost:6300/API/FxtAPI.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

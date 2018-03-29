@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.DATProjectDomain" 
+				   namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.SysModulusPrice, FxtNHibernate.DATProjectDomain" 
+		   table="Sys_ModulusPrice">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="StartTotalFloor" column="StartTotalFloor" type="int"  />
+		<property name="EndTotalFloor" column="EndTotalFloor" type="int"  />
+		<property name="WhereFloor" column="WhereFloor" type="int"  />
+		<property name="ModulusTypeCode" column="ModulusTypeCode" type="int"  />
+		<property name="ModulusCode" column="ModulusCode" type="int"  />
+		<property name="Modulus" column="Modulus" type="decimal"  />
+		<property name="Percentage" column="Percentage" type="int"  />
+				
+	</class>
+</hibernate-mapping>

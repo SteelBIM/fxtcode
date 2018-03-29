@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "压力测试";
+    Layout = "";
+}
+<div class="portlet-body">
+    <div class="tabbable-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab">押品价格走势分析</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab">压力测试</a></li>
+            <li class=""><a href="#tab_3" data-toggle="tab">风险预警</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="cityorproject">
+                <div class="form-group dn" id="mulllecity">
+                    <label class="col-md-2" style="width: 89px;">城市</label>
+                    <div class="procheckbox-listcity" type="mull">
+
+                    </div>
+                </div>
+
+                <div class="form-group" id="singlecity">
+                    <label class="col-md-2" style="width: 89px;">城市</label>
+                    <div class="singlecity" type="single">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">项目</label>
+                    <div class="procheckbox-list">
+                    </div>
+                </div>
+            </div>
+
+            <div id ="tab_1" class="tab-pane fade active in">
+
+                <ul class="nav nav-pills">
+                    <li class=""><a href="#class_tab_1_1" data-toggle="tab">总量对比分析</a></li>
+                    <li class="" style="display:none"><a href="#class_tab_1_2" data-toggle="tab">分行政区对比分析</a></li>
+                    <li class="" style="display:none"><a href="#class_tab_1_3" data-toggle="tab">分面积段对比分析</a></li>
+                </ul>
+                <ul id="tab_1_mj" style="display:none" class="nav nav-pills"></ul>
+                <button type="button" class="btn green" >均价</button>
+                <button type="button" class="btn green" >涨跌幅</button>
+                <div id="tab_1_1" class="chart"></div>
+            </div>
+            <div id="tab_2" class="tab-pane fade">
+                <div class="form-inline" style="padding-bottom:15px">
+                    <div class="form-group"><label class="col-md-2" style="width:90px;">贷款时间</label></div>
+                    <div class="form-group">
+                        <input class="form-control date-picker" data-date-format="yyyy-mm-dd" type="text">
+                    </div>
+                    <div class="form-group">~</div>
+                    <div class="form-group">
+                        <input class="form-control date-picker" data-date-format="yyyy-mm-dd" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">物业类型</label>
+                    <div class="checkbox-list wuyetype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">建筑类型</label>
+                    <div class="checkbox-list jianzhutype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">建筑年代</label>
+                    <div class="checkbox-list niandaitype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">贷款额度</label>
+                    <div class="checkbox-list daikuantype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">押品面积</label>
+                    <div class="checkbox-list mianjitype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1" style="width: 89px;">年龄</label>
+                    <div class="checkbox-list nianlingtype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="margin-top:6px">压力测试条件</label>
+                    <div class="checkbox-list">
+                        <input type="checkbox" name="ylwhere" value="10" />市场价格下跌10%
+                        <input type="checkbox" name="ylwhere" value="20" />市场价格下跌20%
+                        <button class="btn green" type="button">查询</button>
+                    </div>
+                </div>
+                <table class="table table-bordered tablemiddlecenter" id="tab2_table">
+                    <thead>
+                        <tr>
+                            <th>压力环境</th>
+                            <th>风险类别</th>
+                            <th>总数（套）</th>
+                            <th>贷款余额</th>
+                            <th>现估价值</th>
+                            <th>抵押率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="tab_3" class="tab-pane fade">
+                <ul class="nav nav-pills">
+                    <li class=""><a href="#class_tab_1_1" data-toggle="tab">当前条件风险分布</a></li>
+                    <li class=""><a href="#class_tab_1_2" data-toggle="tab">市场价格下跌10%风险分布</a></li>
+                    <li class=""><a href="#class_tab_1_3" data-toggle="tab">市场价格下跌20%风险分布</a></li>
+                </ul>
+                <button class="btn red">危险</button><button class="btn yellow">风险</button>
+                <div id="tab_3_map" style="height:500px;margin:0;overflow:hidden;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-jquery-tmpl" id="tab2_tmpl">
+    <tr>
+        <td rowspan="2">${title}</td>
+        <td>${v1.title}</td>
+        <td>${v1.count}</td>
+        <td>${v1.LoanAmount}</td>
+        <td>${v1.Price}</td>
+        <td>${v1.ArrivedLoanRates}</td>
+    </tr>
+    <tr>
+        <td>${v2.title}</td>
+        <td>${v2.count}</td>
+        <td>${v2.LoanAmount}</td>
+        <td>${v2.Price}</td>
+        <td>${v2.ArrivedLoanRates}</td>
+    </tr>
+</script>
+<script src="/Scripts/FxtCollateralStressTest.js" type="text/javascript" />

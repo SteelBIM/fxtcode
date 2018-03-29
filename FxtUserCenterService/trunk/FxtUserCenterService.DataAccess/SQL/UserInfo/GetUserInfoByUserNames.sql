@@ -1,0 +1,1 @@
+﻿select t1.UserName,t1.TrueName from FxtUserCenter.dbo.UserInfo t1 with(nolock) where t1.UserName in(@username)

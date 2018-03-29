@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88344495-897C-4F73-933C-48DE748FE52A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtCenterService.Actualize</RootNamespace>
+    <AssemblyName>FxtCenterService.Actualize</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\Dlls\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\Dlls\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FxtCommon">
+      <HintPath>..\..\..\CommonDll\FxtCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="FxtOpenClient">
+      <HintPath>..\..\..\CommonDll\FxtOpenClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>..\Dlls\Google.Protobuf.3.0.0-alpha4\lib\portable-net45+netcore45+wpa81+wp8\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenPlatform.Framework.FlowMonitor">
+      <HintPath>..\Dlls\OpenPlatform.Framework.FlowMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\Dlls\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\ProjectCaseController.cs" />
+    <Compile Include="Controller\BizOfficeController.cs" />
+    <Compile Include="Controller\CityAreaController.cs" />
+    <Compile Include="Controller\LogController.cs" />
+    <Compile Include="Controller\PriviCompanyController.cs" />
+    <Compile Include="Controller\CompanyProductModuleController.cs" />
+    <Compile Include="Controller\PriceController.cs" />
+    <Compile Include="Controller\ProjectForCASController.cs" />
+    <Compile Include="Controller\ProjectForOUTController.cs" />
+    <Compile Include="Controller\ProjectForVQController.cs" />
+    <Compile Include="Controller\ShareController.cs" />
+    <Compile Include="Controller\SPDBController.cs" />
+    <Compile Include="Controller\SYLController.cs" />
+    <Compile Include="Controller\SysCodeController.cs" />
+    <Compile Include="Controller\SysRoleController.cs" />
+    <Compile Include="DataCenterCommon.cs" />
+    <Compile Include="DataCenterService.cs" />
+    <Compile Include="Controller\ProjectController.cs" />
+    <Compile Include="MethodDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\wcf_projectavgprice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonDll\CAS.DataAccess.BaseDAModels\CAS.DataAccess.BaseDAModels.csproj">
+      <Project>{41617bb0-90fa-46c3-ada2-6b42d68cde3f}</Project>
+      <Name>CAS.DataAccess.BaseDAModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonDll\CAS.Entity.BaseDAModels\CAS.Entity.BaseDAModels.csproj">
+      <Project>{2f0d611e-e9fc-429e-945b-1656f7435761}</Project>
+      <Name>CAS.Entity.BaseDAModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Common\CAS.Common.csproj">
+      <Project>{fa2001f0-7369-4521-924e-05eff30462f0}</Project>
+      <Name>CAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2c1cbb22-7cbf-485f-8ded-b2162f65f48f}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtCenterService.Common\FxtCenterService.Common.csproj">
+      <Project>{3bdaa33e-f885-47eb-8fef-abdff6de39c2}</Project>
+      <Name>FxtCenterService.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtCenterService.Contract\FxtCenterService.Contract.csproj">
+      <Project>{8C2FD291-D4D2-4EB0-94E2-A77F6CB5CEE9}</Project>
+      <Name>FxtCenterService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtCenterService.DataAccess\FxtCenterService.DataAccess.csproj">
+      <Project>{51b84ae2-ad35-45bf-aab4-b7cbeb6a1eaa}</Project>
+      <Name>FxtCenterService.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtCenterService.Logic\FxtCenterService.Logic.csproj">
+      <Project>{31FBF05E-27A5-48F0-9640-EB8A4D98D9D7}</Project>
+      <Name>FxtCenterService.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\wcf_projectavgprice\FxtAPI.wsdl" />
+    <None Include="Service References\wcf_projectavgprice\FxtAPI.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_projectavgprice\FxtAPI1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_projectavgprice\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_projectavgprice\FxtAPI.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_projectavgprice\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_projectavgprice\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_projectavgprice\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

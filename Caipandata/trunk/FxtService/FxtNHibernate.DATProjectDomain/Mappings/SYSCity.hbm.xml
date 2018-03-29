@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+assembly      类库名
+namespace     命名空间名称
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="FxtNHibernate.DATProjectDomain" 
+                   namespace="FxtNHibernate.DATProjectDomain.Entities">
+
+  <class name="FxtNHibernate.DATProjectDomain.Entities.SYSCity, FxtNHibernate.DATProjectDomain"
+         table="SYS_City">
+    
+    <id name="CityId" column="CityId" type="int" unsaved-value="0">
+      <generator class="increment"/>
+    </id>
+    <property name="CityName" column="CityName" type="string"  />
+    <property name="ProvinceId" column="ProvinceId" type="int"  />
+    <property name="CityCode" column="CityCode" type="string"  />
+    <property name="GIS_ID" column="GIS_ID" type="int"  />
+    <property name="ProjectCount" column="ProjectCount" type="int"  />
+    <property name="PriceBP" column="PriceBP" type="decimal"  />
+    <property name="PriceCJ" column="PriceCJ" type="decimal"  />
+    <property name="IsCase" column="IsCase" type="int"  />
+    <property name="IsEValue" column="IsEValue" type="int"  />
+    <property name="OldId" column="OldId" type="int"  />
+    <property name="CaseMonth" column="CaseMonth" type="int"  />
+    <property name="X" column="X" type="decimal"  />
+    <property name="Y" column="Y" type="decimal"  />
+    <property name="XYScale" column="XYScale" type="int"  />
+    <property name="Alias" column="Alias" type="string"  />
+
+  </class>
+</hibernate-mapping>

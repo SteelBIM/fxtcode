@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17" name="DataClasses">
+  <DataContextMoniker Name="/DataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="141a62aa-e7fd-4fb0-9805-08bc051262b5" isExpanded="false" absoluteBounds="0.5, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_案例类型" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3adfea68-9d08-4046-bc93-e1e96298311a" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77eb9c0b-e20d-45f1-90fe-44e08f1338c7" isExpanded="false" absoluteBounds="3.125, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_币种" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a145a30f-f593-4773-8c18-5606ea206f9b" absoluteBounds="3.14, 0.96, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b2aecb0b-838a-49cb-91ee-568225e14246" isExpanded="false" absoluteBounds="0.5, 1, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_朝向" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dbb3f6e1-dba1-434d-9149-0412e37cf8db" absoluteBounds="0.515, 1.46, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4885e6fc-2098-4b3e-b795-e46bc088d9f6" isExpanded="false" absoluteBounds="3.25, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_户型" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa5fca61-f63b-4c88-94c5-cee6a148307a" absoluteBounds="3.265, 2.21, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d1f0c262-b4e2-4b50-ba15-195fbe38baa6" isExpanded="false" absoluteBounds="5.625, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_建筑类型" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e918ffef-e566-452b-a872-4332052e534b" absoluteBounds="5.64, 0.96, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e6a57da7-6c4b-401a-9824-9ba57bf5183f" isExpanded="false" absoluteBounds="8.125, 3.875, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_结构" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1094c54e-214a-47ee-ad0c-6cff07cb30df" absoluteBounds="8.14, 4.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="59fa32b7-0f32-4ac7-8f01-f039dc6fda6f" isExpanded="false" absoluteBounds="5.5, 3.875, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_用途" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d73d0ecb-4bd4-478e-a1e5-1bf2f9653c46" absoluteBounds="5.5150000000000006, 4.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f6beb60-6b6b-4584-83c6-6cb05f84f906" isExpanded="false" absoluteBounds="5.5, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_装修" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65220999-c815-467e-a1d6-9d663cdfee3e" absoluteBounds="5.515, 2.21, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e47bf6c-6457-4aa1-a2ef-c86f268c9341" isExpanded="false" absoluteBounds="3.25, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/案例库上传记录表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e56982bf-ffb7-4d46-a306-da93e750007f" absoluteBounds="3.2649999999999997, 2.8350000000000009, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d5e3589-4d3e-445a-92b8-6781971f7321" isExpanded="false" absoluteBounds="0.5, 1.625, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/城市表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd113fbf-1778-42e7-9e15-22e2fc8049a0" absoluteBounds="0.51500000000000057, 2.0850000000000009, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4bd6e139-a773-4acf-b1ec-1eb2d1e102cc" isExpanded="false" absoluteBounds="5.5, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/省份表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cba7bfee-3954-48f8-b6f6-a1ec8e0f12cb" absoluteBounds="5.5150000000000006, 2.8350000000000009, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f074cb19-6763-4ba2-ba72-2971cf8d17c2" isExpanded="false" absoluteBounds="0.5, 5.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/新浪二手房_Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09e2c5fa-50f7-414b-8a4f-a4cd9a0385b2" absoluteBounds="0.51500000000000057, 5.8350000000000009, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.075); (2.95387694242623 : 2.25655077697049 : JumpStart); (3.10862305757377 : 2.31844922302951 : JumpEnd); (3.25 : 2.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_案例库上传记录表" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="9e47bf6c-6457-4aa1-a2ef-c86f268c9341" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.6); (5.3125 : 2.6); (5.3125 : 2.3125); (3.17708333333333 : 2.3125 : JumpStart); (2.94791666666667 : 2.3125 : JumpEnd); (1.468748 : 2.3125); (1.468748 : 2.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/省份表/省份表_城市表" />
+      <nodes>
+        <classShapeMoniker Id="4bd6e139-a773-4acf-b1ec-1eb2d1e102cc" />
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="37b60265-867d-4a4c-845f-5fd81fdd6788" isExpanded="false" absoluteBounds="0.5, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_错误类型" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0512de43-98be-45e6-acfc-bc967ba301bf" absoluteBounds="0.51500000000000012, 2.8350000000000009, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd8a6eb7-91c4-4c78-966b-5cc3c130f079" isExpanded="false" absoluteBounds="0.5, 3.875, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/案例库上传信息过滤表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19b71672-a664-40f0-987c-4a0db43db1fb" absoluteBounds="0.51500000000000057, 4.3350000000000009, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.5 : 2.825); (0.340175565098878 : 2.98482443490112 : JumpStart); (0.159824434901121 : 3.16517556509888 : JumpEnd); (0.125 : 3.2); (0.125 : 3.50726923076923); (0.159824434901121 : 3.54209366567035 : JumpStart); (0.277675565098879 : 3.65994479586811 : JumpEnd); (0.5 : 3.88226923076923)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/SysData_错误类型/SysData_错误类型_案例库上传信息过滤表" />
+      <nodes>
+        <classShapeMoniker Id="37b60265-867d-4a4c-845f-5fd81fdd6788" />
+        <classShapeMoniker Id="cd8a6eb7-91c4-4c78-966b-5cc3c130f079" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.5 : 2.06773076923077); (0.28125 : 2.28648076923077); (0.28125 : 3.64863561538461); (0.507614384615385 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_案例库上传信息过滤表" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="cd8a6eb7-91c4-4c78-966b-5cc3c130f079" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7f0df88c-d50b-4101-8637-a828221ca600" isExpanded="false" absoluteBounds="3.125, 3.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4750f1aa-bd51-4cf5-941c-8e7e1d84ecb4" absoluteBounds="3.1399999999999997, 3.585, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cecc948e-0fb0-4774-95e8-fca0388b5ddb" isExpanded="false" absoluteBounds="8, 3.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_CompanyArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="029e31ec-a122-45f6-802a-77d09225eeb6" absoluteBounds="8.015, 3.585, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bd5683a9-8d80-4f4c-96ec-310973d21847" isExpanded="false" absoluteBounds="5.625, 5.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_Project" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c141aa2e-e4e3-4394-8071-3406fe854ee6" absoluteBounds="5.6400000000000006, 5.8350000000000009, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="123920e2-25dd-4e8f-b30c-73778eb627a5" isExpanded="false" absoluteBounds="5.5, 4.625, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_ProjectCaseCount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f38336d-8375-413c-8f29-c8d8a49809a3" absoluteBounds="5.515, 5.0850000000000009, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d4320ada-a614-453d-a303-2730b3d8e236" isExpanded="false" absoluteBounds="3.125, 5.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_SubArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1e28cc5-82d7-48ad-b595-bba868c00d90" absoluteBounds="3.1400000000000006, 5.8350000000000009, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76fc856e-43dd-4ce8-95f0-5ae3e79d3cba" isExpanded="false" absoluteBounds="8.125, 4.75, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_Area" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2c5a6800-c3e3-4049-b7bd-c070b64f74b0" absoluteBounds="8.14, 5.2100000000000009, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.65625); (7.59375 : 1.65625); (7.59375 : 5.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_SysData_Project" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="bd5683a9-8d80-4f4c-96ec-310973d21847" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.984374 : 2.075); (1.984374 : 2.25); (2.5625 : 2.25); (2.5625 : 5.6); (3.125 : 5.6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_SysData_SubArea" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="d4320ada-a614-453d-a303-2730b3d8e236" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 1.865625); (2.94791666666667 : 1.865625 : JumpStart); (3.11458333333333 : 1.865625 : JumpEnd); (3.1875 : 1.865625); (3.1875 : 2.28125); (7.44791666666667 : 2.28125 : JumpStart); (7.89583333333333 : 2.28125 : JumpEnd); (10.0625 : 2.28125); (10.0625 : 3.8125); (8.0625 : 3.8125); (8.0625 : 4.65625); (9.125 : 4.65625); (9.125 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_SysData_Area" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="76fc856e-43dd-4ce8-95f0-5ae3e79d3cba" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8fe64560-aa8c-477a-bb6c-ffa7e1108896" isExpanded="false" absoluteBounds="3, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_WebJoinProxyIp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40a1a903-0ea6-4f43-97de-82a531db959b" absoluteBounds="3.015, 1.585, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.625); (3 : 1.575)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_SysData_WebJoinProxyIp" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="8fe64560-aa8c-477a-bb6c-ffa7e1108896" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="45e96814-4f8d-4504-8d10-758b4dddcf06" absoluteBounds="0.75, 14.75, 2, 1.9535852050781219">
+      <DataClassMoniker Name="/DataClassesDataContext/SYS_Code" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4066ccf4-9e7e-4904-a0bc-a249e611c037" absoluteBounds="0.765, 15.21, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95ac0dee-4509-466b-94c6-7b3f15b40a4d" isExpanded="false" absoluteBounds="8.25, 5.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/Dat_SpiderErrorLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a7d08ae-949f-4234-8a7a-45ef346bd09a" absoluteBounds="8.265, 5.8350000000000009, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.671875); (7.63541666666667 : 1.671875 : JumpStart); (7.80208333333333 : 1.671875 : JumpEnd); (10.21875 : 1.671875); (10.21875 : 5.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_Dat_SpiderErrorLog" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="95ac0dee-4509-466b-94c6-7b3f15b40a4d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="59472e1c-351f-4236-b67a-266d1d4d09bf" isExpanded="false" absoluteBounds="5.75, 6.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_ProxyIp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce311d8a-b17a-4d5a-bd9f-dcf6cd836d4f" absoluteBounds="5.765, 6.5850000000000009, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.71875 : 6.125); (7.71875 : 1.54375); (5 : 1.54375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/SysData_ProxyIp/SysData_ProxyIp_SysData_WebJoinProxyIp" />
+      <nodes>
+        <classShapeMoniker Id="59472e1c-351f-4236-b67a-266d1d4d09bf" />
+        <classShapeMoniker Id="8fe64560-aa8c-477a-bb6c-ffa7e1108896" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="996b45f5-a644-4445-b81f-155574de893a" isExpanded="false" absoluteBounds="8.125, 6.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/View_WebJoinProxyIp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff7f4b24-ba58-42a3-8bda-76093ced5583" absoluteBounds="8.14, 6.5850000000000009, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" isExpanded="false" absoluteBounds="8, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/网站表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8028ab66-984f-4b45-b6de-76bdeec20159" absoluteBounds="8.015, 2.21, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8 : 1.903124); (7.875 : 1.903124); (7.875 : 2.23125); (7.80208333333333 : 2.23125 : JumpStart); (7.44791666666667 : 2.23125 : JumpEnd); (4.281252 : 2.23125); (4.281252 : 2.375)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/网站表/网站表_案例库上传记录表" />
+      <nodes>
+        <classShapeMoniker Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" />
+        <classShapeMoniker Id="9e47bf6c-6457-4aa1-a2ef-c86f268c9341" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8 : 2.082814); (7.8125 : 2.082814); (7.8125 : 3.78125); (7.80208333333333 : 3.78125 : JumpStart); (7.44791666666667 : 3.78125 : JumpEnd); (3.11458333333333 : 3.78125 : JumpStart); (2.94791666666667 : 3.78125 : JumpEnd); (2.64583333333333 : 3.78125 : JumpStart); (2.47916666666667 : 3.78125 : JumpEnd); (1.53505919230769 : 3.78125); (1.53505919230769 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/网站表/网站表_案例库上传信息过滤表" />
+      <nodes>
+        <classShapeMoniker Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" />
+        <classShapeMoniker Id="cd8a6eb7-91c4-4c78-966b-5cc3c130f079" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9 : 2.2); (9 : 2.359375); (7.9375 : 2.359375); (7.9375 : 5.6); (8.25 : 5.6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/网站表/网站表_Dat_SpiderErrorLog" />
+      <nodes>
+        <classShapeMoniker Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" />
+        <classShapeMoniker Id="95ac0dee-4509-466b-94c6-7b3f15b40a4d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="135eb4e1-0030-4813-aa64-2be4daa901c6" isExpanded="false" absoluteBounds="5.5, 1, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/Dat_SpiderRepetitionLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f73c40e9-1476-4900-afe8-9cf6d5cf8506" absoluteBounds="5.515, 1.46, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="96114635-1d2f-48b3-8e01-f3df942f5b30" isExpanded="false" absoluteBounds="7.875, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/Dat_KeyValueConfig" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84b801d9-04ca-4d05-9bfe-5f7c829867e1" absoluteBounds="7.8900000000000006, 0.96, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b128c8e-13e3-4687-b139-6c98d1f9feac" isExpanded="false" absoluteBounds="0.5, 3.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/SysData_WorkItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe71055b-d6df-47c2-b0f7-52a1e055be04" absoluteBounds="0.51499999999999968, 3.585, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ad132a7d-0c1e-41de-8407-d29cb143e810" isExpanded="false" absoluteBounds="3, 4, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/案例信息" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8b11b6d-5e19-4217-9ba1-51a40eccec00" absoluteBounds="3.0149999999999997, 4.46, 1.9700000000000002, 8.6523335774739571" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.640625); (3.03125 : 1.640625); (3.03125 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_案例信息" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="ad132a7d-0c1e-41de-8407-d29cb143e810" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.468748 : 2.2); (8.468748 : 2.3125); (7.89583333333333 : 2.3125 : JumpStart); (7.63541666666667 : 2.3125 : JumpEnd); (7.5625 : 2.3125); (7.5625 : 4.3875); (5.09375 : 4.3875); (5.09375 : 4.225); (5 : 4.225)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/网站表/网站表_案例信息" />
+      <nodes>
+        <classShapeMoniker Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" />
+        <classShapeMoniker Id="ad132a7d-0c1e-41de-8407-d29cb143e810" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bcbc1e2b-2c9f-41c4-a4de-aa61cc8d2453" isExpanded="false" absoluteBounds="5.375, 3.125, 2.125, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/VIEW_案例信息_城市表_网站表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58a2c6ff-8455-4597-8cf2-23944ca364e3" absoluteBounds="5.39, 3.585, 1.9700000000000002, 11.326609293619791" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8fbeff22-6650-4157-b211-4de8cb361095" isExpanded="false" absoluteBounds="8, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/VIEW_案例信息_城市表_网站表2" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64562f43-a2f4-457b-89a7-a538ea95c288" absoluteBounds="8.015, 2.835, 1.9700000000000002, 11.517628987630207" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="273acbe0-1332-4a2d-bfdb-75bd44eb89c7" isExpanded="false" absoluteBounds="0.5, 4.625, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/网站爬取配置" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b13e7600-0300-41f5-8fd9-c027cfc2fd77" absoluteBounds="0.51500000000000012, 5.085, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.522152846153846 : 2.075); (0.21875 : 2.37840284615385); (0.21875 : 4.34375); (0.5 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesDataContext/城市表/城市表_网站爬取配置" />
+      <nodes>
+        <classShapeMoniker Id="7d5e3589-4d3e-445a-92b8-6781971f7321" />
+        <classShapeMoniker Id="273acbe0-1332-4a2d-bfdb-75bd44eb89c7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8 : 1.79531); (7.80208333333333 : 1.79531 : JumpStart); (7.63541666666667 : 1.79531 : JumpEnd); (7.53125 : 1.79531); (7.53125 : 4.53125); (2.64583333333333 : 4.53125 : JumpStart); (2.47916666666667 : 4.53125 : JumpEnd); (1.531252 : 4.53125); (1.531252 : 4.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/网站表/网站表_网站爬取配置" />
+      <nodes>
+        <classShapeMoniker Id="a226ec3d-558a-4e53-9cbb-7c7b0adf150d" />
+        <classShapeMoniker Id="273acbe0-1332-4a2d-bfdb-75bd44eb89c7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="852c15a2-68fc-4b93-add6-a30c5e6b9986" isExpanded="false" absoluteBounds="2.875, 4.625, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesDataContext/VIEW_网站爬取配置_城市表_网站表" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f5b3691-3185-4293-92d0-047369e09cc3" absoluteBounds="2.89, 5.085, 1.9700000000000002, 2.7307230631510415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

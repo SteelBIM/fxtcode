@@ -1,0 +1,99 @@
+﻿@using FXT.DataCenter.Domain.Models
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+@model LNK_P_PAddress
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        .tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var projectname = "";
+        $(document).ready(function () {
+            $("#projectid").select2({
+                minimumInputLength: 0,
+                ajax: {
+                    url: "@Url.Action("ProjectSelect")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    $("input[name='ProjectNameTemp']").val(data.text);
+                    return data.text;
+                },
+                matcher: function (term, text) {
+                    var mod = ZhToPinyin(text);
+                    var tf1 = mod.a.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    var tf2 = mod.b.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    return (tf1 || tf2);
+                }
+            });
+            $(".select2-container").width(221); //重置select2宽度
+            $("#projectid").select2("val", { id: '@ViewBag.select2ProjectId', text: '@ViewBag.select2ProjectName' });
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>楼盘名称：</label>
+                <div class="controls">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="ProjectNameIdTemp" value="@Model.projectid"/>
+                    }
+                    @Html.HiddenFor(m => m.projectid)
+                    <input type="hidden" name="ProjectNameTemp" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>房产证地址：</label>
+                <div class="controls">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="id" value="@Model.id" />
+                        <input type="hidden" name="fxtcompanyid" value="@Model.fxtcompanyid" />
+                    }
+                    @Html.TextBoxFor(m => m.propertyaddress, new { value = Model == null ? null : Model.propertyaddress })
+                </div>
+            </div>
+        </div>
+    </div>
+}

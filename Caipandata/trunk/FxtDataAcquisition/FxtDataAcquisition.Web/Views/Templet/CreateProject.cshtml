@@ -1,0 +1,989 @@
+﻿@using FxtDataAcquisition.Domain.Models
+@model Templet
+@{
+    Layout = null;
+
+    var groupList = ViewBag.GroupList as List<FieldGroupTemplet>;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>无纸化住宅物业信息采集系统</title>
+    @*<meta name="keyword" content="拖拽式表单设计器,Web Formbuilder,Formbuild,专业表单设计器,高级表单设计器,智能表单设计器,WEB表单设计器,web formdesign,formdesigner">
+        <meta name="description" content="拖拽式表单设计器Formbuild是强大的在线WEB表单设计器，它通常在、OA系统、问卷调查系统、考试系统、等领域发挥着重要作用，你可以在此基础上任意修改使功能无限强大！">*@
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="leipi.org">
+    <link href="/Public/css/bootstrap/css/bootstrap.css?2024" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/Public/css/bootstrap/css/bootstrap-ie6.css?2024">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="/Public/css/bootstrap/css/ie.css?2024">
+    <![endif]-->
+    <link href="/Public/css/site.css?2024" rel="stylesheet" type="text/css" />
+    @*<script type="text/javascript">
+            var _root = 'http://formbuild/index.php?s=/', _controller = 'index';
+        </script>*@
+
+    <style>
+        #components {
+            min-height: 600px;
+        }
+
+        #target {
+            min-height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+            #target .component {
+                border: 1px solid #fff;
+            }
+
+        #temp {
+            width: 500px;
+            background: white;
+            border: 1px dotted #ccc;
+            border-radius: 10px;
+        }
+
+        .popover-content form {
+            margin: 0 auto;
+            width: 213px;
+        }
+
+            .popover-content form .btn {
+                margin-right: 10px;
+            }
+
+        #source {
+            min-height: 500px;
+        }
+
+        input, :after, :before {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .controls > input {
+            padding: 4px 6px 6px 4px;
+        }
+    </style>
+    <!--link href="Public/css/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"-->
+
+
+</head>
+<body>
+
+    <div class="container" style="padding-left:0px;padding-right:0px">
+        <div class="row clearfix">
+            <div class="span6">
+                <div class="clearfix">
+                    <h2>
+                        <button type="button" id="callback" class="btn btn-danger navbar-btn">返回</button>&nbsp;
+                        <button type="button" id="save" class="btn btn-success navbar-btn">保存</button>
+                    </h2>
+                    <hr>
+                    <div id="build">
+                        <div class="accordion" id="accordion2" >
+                            <form id="target" class="form-horizontal" style="overflow:auto;height:560px">
+                                @* <fieldset> *@
+                                <div id="legend" class="component" rel="popover" title="编辑属性" trigger="manual"
+                                     data-content="
+                <form class='form'>
+                  <div class='controls'>
+                    <label class='control-label'>模板名称</label> <input type='text' id='orgvalue' placeholder='请输入模板名称'>
+                    <hr/>
+                    <button class='btn btn-info' type='button'>确定</button><button class='btn btn-danger' type='button'>取消</button>
+                  </div>
+                </form>"
+                >
+                                    <input type="hidden" name="form_name" value='@Model.TempletName' class="leipiplugins" leipiplugins="form_name" />
+                <legend class="leipiplugins-orgvalue">@if(string.IsNullOrEmpty(Model.TempletName)){@("点击填写模板名")}else{@Model.TempletName} </legend>
+              </div>
+                                @{
+                                    if (Model.TempletId > 0)
+                                    {
+
+                                        if (Model.FieldGroups != null && Model.FieldGroups.Count > 0)
+                                        {
+                                            foreach (var fieldGroups in Model.FieldGroups)
+                                            {
+                                                <div class="accordion-group component" title="单击分组展开、收缩" name="@fieldGroups.FieldGroupName">
+                                                    <div class="accordion-heading">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#group_@fieldGroups.FieldGroupId">
+                                                            @fieldGroups.FieldGroupName
+                                                        </a>
+                                                    </div>
+                                                    <div id="group_@fieldGroups.FieldGroupId" class="accordion-body collapse in">
+                                                        <div class="accordion-inner">
+                                                            <fieldset groupname="@fieldGroups.FieldGroupName">
+                                                                @{
+                                                if (fieldGroups.Fields != null && fieldGroups.Fields.Count > 0)
+                                                {
+                                                    foreach (var field in fieldGroups.Fields)
+                                                    {
+                                                    <div class="control-group component" rel="popover" name="@field.FieldName" trigger="manual" data-content="">
+                                                        <label class="control-label leipiplugins-orgname">@field.Title@if(field.IsRequired==1){@Html.Raw("<span style='color:red'>*</span>")}</label>
+                                                        <div class="controls">
+                                                            @switch (field.FieldType)
+                                                                {
+                                                                    case 1:
+                                                                        <input name="leipiNewField" type="text" fieldname="@field.FieldName" placeholder="" title="@field.Title" value="" class="leipiplugins" leipiplugins="text"
+                                                                               fieldtype="@field.FieldType" fieldmaxlength="@field.MaxLength" fieldminlength="@field.MinLength" fieldisrequire="@field.IsRequired" fieldeditexttype="@field.EdiTextType" fielddefultvalue="@field.DefaultValue" fieldisselect="@field.IsSelect" fieldisnull="@field.IsNull"/>
+                                                                        break;
+                                                                    case 2:
+                                                                    <div class="textarea">
+                                                                        <textarea title="@field.Title" name="leipiNewField" fieldname="@field.FieldName" class="leipiplugins" leipiplugins="textarea"
+                                                                                  fieldtype="@field.FieldType" fieldmaxlength="@field.MaxLength" fieldminlength="@field.MinLength" fieldisrequire="@field.IsRequired" fieldeditexttype="@field.EdiTextType" fielddefultvalue="@field.DefaultValue" fieldisselect="@field.IsSelect" fieldisnull="@field.IsNull"></textarea>
+                                                                    </div>
+                                                                        break;
+                                                                    case 3:
+                                                                    <select name="leipiNewField" title="@field.Title" fieldname="@field.FieldName" class="leipiplugins" leipiplugins="select"
+                                                                            fieldtype="@field.FieldType" fieldmaxlength="@field.MaxLength" fieldminlength="@field.MinLength" fieldisrequire="@field.IsRequired" fieldeditexttype="@field.EdiTextType" fielddefultvalue="@field.DefaultValue" fieldisselect="@field.IsSelect" fieldisnull="@field.IsNull">
+                                                                        <option>选项</option>
+                                                                    </select>
+                                                                        break;
+                                                                    case 5:
+                                                                    <select name="leipiNewField" title="@field.Title" fieldname="@field.FieldName" class="leipiplugins" leipiplugins="select"
+                                                                            fieldtype="@field.FieldType" fieldmaxlength="@field.MaxLength" fieldminlength="@field.MinLength" fieldisrequire="@field.IsRequired" fieldeditexttype="@field.EdiTextType" fielddefultvalue="@field.DefaultValue" fieldisselect="@field.IsSelect" fieldisnull="@field.IsNull">
+                                                                        <option>选项</option>
+                                                                    </select>
+                                                                        break;
+                                                                    case 6:
+                                                                    <input name="leipiNewField" type="text" fieldname="@field.FieldName" placeholder="" title="@field.Title" value="" class="leipiplugins" leipiplugins="text"
+                                                                           fieldtype="@field.FieldType" fieldmaxlength="@field.MaxLength" fieldminlength="@field.MinLength" fieldisrequire="@field.IsRequired" fieldeditexttype="@field.EdiTextType" fielddefultvalue="@field.DefaultValue" fieldisselect="@field.IsSelect" fieldisnull="@field.IsNull"/>
+                                                                        break;
+                                                                    default:
+                                                                        break;
+                                                                }
+                                                        </div>
+                                                    </div>
+                                                    }
+
+                                                }
+                                                                }
+
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                    @*<div class="accordion-group" title="单击分组展开、收缩" name="楼盘位置基础信息">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                                楼盘位置基础信息
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+                                                <fieldset groupname="楼盘位置基础信息">
+                                                    <div class="control-group component" rel="popover" name="ProjectName" trigger="manual" data-content="">
+                                                        <label class="control-label leipiplugins-orgname">楼盘名称<span style="color:red">*</span></label>
+                                                        <div class="controls">
+                                                            <input name="leipiNewField" type="text" fieldname="ProjectName" placeholder="" title="楼盘名称" value="" class="leipiplugins" leipiplugins="text" />
+                                                        </div>
+                                                    </div>
+                                                    <!-- Select start -->
+                                                    <div class="control-group component" rel="popover" name="AreaID" title="行政区" trigger="manual" data-content="">
+                                                        <!-- Select -->
+                                                        <label class="control-label leipiplugins-orgname">行政区<span style="color:red">*</span></label>
+                                                        <div class="controls">
+                                                            <select name="leipiNewField" title="行政区" fieldname="AreaID" class="leipiplugins" leipiplugins="select">
+                                                                <option>选项</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Select end -->
+                                                    <!-- Textarea start -->
+                                                    <div class="control-group component" rel="popover" name="Address" title="楼盘地址" trigger="manual" data-content="">
+                                                        <!-- Textarea -->
+                                                        <label class="control-label leipiplugins-orgname">楼盘地址<span style="color:red">*</span></label>
+                                                        <div class="controls">
+                                                            <div class="textarea">
+                                                                <textarea title="楼盘地址" name="leipiNewField" fieldname="Address" class="leipiplugins" leipiplugins="textarea"> </textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Textarea end -->
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group" title="单击分组展开、收缩" name="楼盘基础信息">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                                楼盘基础信息
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+                                                <fieldset groupname="楼盘基础信息">
+                                                    <!-- Select start -->
+                                                    <div class="control-group component" rel="popover" name="PurposeCode" title="主用途" trigger="manual" data-content="">
+                                                        <!-- Select -->
+                                                        <label class="control-label leipiplugins-orgname">主用途<span style="color:red">*</span></label>
+                                                        <div class="controls">
+                                                            <select name="leipiNewField" title="主用途" fieldname="PurposeCode" class="leipiplugins" leipiplugins="select">
+                                                                <option>选项</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Select end -->
+                                                    <!-- Select start -->
+                                                    <div class="control-group component" rel="popover" name="RightCode" title="产权形式" trigger="manual" data-content="">
+                                                        <!-- Select -->
+                                                        <label class="control-label leipiplugins-orgname">产权形式<span style="color:red">*</span></label>
+                                                        <div class="controls">
+                                                            <select name="leipiNewField" title="产权形式" fieldname="RightCode" class="leipiplugins" leipiplugins="select">
+                                                                <option>选项</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Select end -->
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="span6">
+                <h2>拖拽下面的控件到左侧</h2>
+                <hr>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="navtab">
+                        <li class="active"><a href="#1" data-toggle="tab">字段</a></li>
+                        <li class><a href="#2" data-toggle="tab">分组</a></li>
+                        @*<li class><a id="sourcetab" href="#5" data-toggle="tab">源代码</a></li>*@
+                    </ul>
+                    <form class="form-horizontal" id="components">
+                        <fieldset>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="1" style="overflow:auto;height:500px">
+                                    @*@{
+                                        var fieldTemplets = ViewBag.FieldTemplets as List<FieldTemplet>;
+                                        if (fieldTemplets != null && fieldTemplets.Count > 0)
+                                        {
+                                            foreach (var fieldTemplet in fieldTemplets)
+                                            {
+                                                <div class="control-group component" rel="popover" name="@fieldTemplet.FieldName" trigger="manual" data-content="">
+                                                    <label class="control-label leipiplugins-orgname">@fieldTemplet.Title @if(fieldTemplet.IsRequired == 1){@Html.Raw("<span style=\"color:red\">*</span>")}</label>
+                                                    <div class="controls">
+                                                        @if (fieldTemplet.Type == "E" || fieldTemplet.Type == "DT")
+                                                        {
+                                                            <input name="leipiNewField" type="text" fieldname="@fieldTemplet.FieldName" placeholder="" title="@fieldTemplet.Title" value="" class="leipiplugins" leipiplugins="text"
+                                                                   fieldtype ="@fieldTemplet.Type"  fieldtitle ="@fieldTemplet.Title" fieldmaxlength ="@fieldTemplet.MaxLength" fieldisrequire ="@fieldTemplet.IsRequired" 
+                                                                   fieldeditexttype ="@fieldTemplet.EdiTextType" fielddefultvalue ="@fieldTemplet.DefaultValue" fieldchoise ="@fieldTemplet.Choise" fieldisselect="@fieldTemplet.IsSelect"/>
+
+                                                        }
+                                                        else if (fieldTemplet.Type == "T")
+                                                        {
+                                                            <div class="textarea">
+                                                                <textarea title="@fieldTemplet.Title" name="leipiNewField" fieldname="@fieldTemplet.FieldName" class="leipiplugins" leipiplugins="textarea"
+                                                                          fieldtype="@fieldTemplet.Type" fieldtitle="@fieldTemplet.Title" fieldmaxlength="@fieldTemplet.MaxLength" fieldisrequire="@fieldTemplet.IsRequired"
+                                                                          fieldeditexttype="@fieldTemplet.EdiTextType" fielddefultvalue="@fieldTemplet.DefaultValue" fieldchoise="@fieldTemplet.Choise" fieldisselect="@fieldTemplet.IsSelect"></textarea>
+                                                            </div>
+                                                        }
+                                                        else if (fieldTemplet.Type == "R" || fieldTemplet.Type == "C")
+                                                        {
+                                                            <select name="leipiNewField" title="@fieldTemplet.Title" fieldname="@fieldTemplet.FieldName" class="leipiplugins" leipiplugins="select"
+                                                                     fieldtype ="@fieldTemplet.Type"  fieldtitle ="@fieldTemplet.Title" fieldmaxlength ="@fieldTemplet.MaxLength" fieldisrequire ="@fieldTemplet.IsRequired" 
+                                                                    fieldeditexttype ="@fieldTemplet.EdiTextType"  fielddefultvalue ="@fieldTemplet.DefaultValue"  fieldchoise ="@fieldTemplet.Choise"  fieldisselect="@fieldTemplet.IsSelect">
+                                                                <option>选项</option>
+                                                            </select>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }*@
+
+                                    <div class="control-group component" rel="popover" name="ProjectName" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">楼盘名称<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" fieldname="ProjectName" placeholder="" title="楼盘名称" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="1" fieldeditexttype="0" fielddefultvalue="" fieldisselect="1" />
+                                        </div>
+                                    </div>
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="AreaID" title="行政区" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">行政区<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="行政区" fieldname="AreaID" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="1" fieldeditexttype="1" fielddefultvalue="" fieldisselect="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="PurposeCode" title="主用途" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">主用途<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="主用途" fieldname="PurposeCode" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="1" fieldeditexttype="1" fielddefultvalue="" fieldisselect="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="RightCode" title="产权形式" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">产权形式<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="产权形式" fieldname="RightCode" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="1" fieldeditexttype="1" fielddefultvalue="" fieldisselect="1" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <div class="control-group component" rel="popover" name="BuildingNum" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">总栋数<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="BuildingNum" title="总栋数" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="Address" title="楼盘地址" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">楼盘地址<span style="color:red">*</span></label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="楼盘地址" name="leipiNewField" fieldname="Address" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="1" fieldeditexttype="0" fielddefultvalue="" fieldisselect="1"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <div class="control-group component" rel="popover" name="OtherName" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">楼盘别名</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="OtherName" title="楼盘别名" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="SubAreaId" title="片区" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">片区</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="片区" fieldname="SubAreaId" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="BuildingTypeCode" title="主建筑物类型" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">主建筑物类型</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="主建筑物类型" fieldname="BuildingTypeCode" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="BuildingQuality" title="建筑质量" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">建筑质量</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="建筑质量" fieldname="BuildingQuality" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="HousingScale" title="小区规模" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">小区规模</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="小区规模" fieldname="HousingScale" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="ManagerQuality" title="物业管理质量" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">物业管理质量</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="物业管理质量" fieldname="ManagerQuality" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="AppendageClass" title="配套等级" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">配套等级</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="配套等级" fieldname="AppendageClass" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="ParkingStatus" title="停车状况" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">停车状况</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="停车状况" fieldname="ParkingStatus" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <div class="control-group component" rel="popover" name="DevelopersCompany" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">开发商</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="DevelopersCompany" title="开发商" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="ManagerCompany" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">物管公司</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="ManagerCompany" title="物管公司" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="LandArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">占地面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="LandArea" title="占地面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="BuildingArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">建筑面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="BuildingArea" title="建筑面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="SalableArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">可销售面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="SalableArea" title="可销售面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="BusinessArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">商业面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="BusinessArea" title="商业面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="IndustryArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">工业面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="IndustryArea" title="工业面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="OfficeArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">办公面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="OfficeArea" title="办公面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="OtherArea" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">其他用途面积</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="OtherArea" title="其他用途面积" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="BuildingDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">开工日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="BuildingDate" title="开工日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="EndDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">竣工日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="EndDate" title="竣工日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="CoverDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">封顶日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="CoverDate" title="封顶日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="SaleDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">开盘日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="SaleDate" title="开盘日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="JoinDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">入伙日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="JoinDate" title="入伙日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="StartDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">土地起始日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="StartDate" title="土地起始日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="UsableYear" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">土地使用年限</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="UsableYear" title="土地使用年限" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="InnerSaleDate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">内部认购日期</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="InnerSaleDate" title="内部认购日期" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="6" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="3" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="FieldNo" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">宗地号</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="FieldNo" title="宗地号" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="CubageRate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">容积率</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="CubageRate" title="容积率" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="GreenRate" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">绿化率</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="GreenRate" title="绿化率" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="ParkingNumber" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">车位数</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="ParkingNumber" title="车位数" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="AveragePrice" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">项目均价</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="AveragePrice" title="项目均价" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="SalePrice" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">开盘均价</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="SalePrice" title="开盘均价" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="2" fieldisrequire="" fieldeditexttype="2" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="ManagerTel" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">管理处电话</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="ManagerTel" title="管理处电话" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="ManagerPrice" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">物业费</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="ManagerPrice" title="物业费" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="TotalNum" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">总套数</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="TotalNum" title="总套数" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="PlanPurpose" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">土地规划用途</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="PlanPurpose" title="土地规划用途" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="control-group component" rel="popover" name="PinYin" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">拼音简写</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="PinYin" title="拼音简写" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="PinYinAll" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">楼盘名称全拼</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="PinYinAll" title="楼盘名称全拼" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="control-group component" rel="popover" name="East" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">四至-东</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="East" title="东" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="West" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">四至-西</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="West" title="西" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="South" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">四至-南</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="South" title="南" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="North" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">四至-北</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="North" title="北" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="BasementPurpose" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">地下室用途</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="BasementPurpose" title="地下室用途" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group component" rel="popover" name="Facilities" trigger="manual" data-content="">
+                                        <label class="control-label leipiplugins-orgname">设备设施</label>
+                                        <div class="controls">
+                                            <input name="leipiNewField" type="text" placeholder="" fieldname="Facilities" title="设备设施" value="" class="leipiplugins" leipiplugins="text"
+                                                   fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect="" />
+                                        </div>
+                                    </div>
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="IsComplete" title="是否完成基础数据" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">是否完成基础数据</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="是否完成基础数据" fieldname="IsComplete" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Select start -->
+                                    <div class="control-group component" rel="popover" name="IsEValue" title="是否可估" trigger="manual" data-content="">
+                                        <!-- Select -->
+                                        <label class="control-label leipiplugins-orgname">是否可估</label>
+                                        <div class="controls">
+                                            <select name="leipiNewField" title="是否可估" fieldname="IsEValue" class="leipiplugins" leipiplugins="select"
+                                                    fieldtype="3" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="1" fielddefultvalue="" fieldisselect="" fieldisnull="1">
+                                                <option>选项</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Select end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="Detail" title="项目概况" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">项目概况</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="项目概况" name="leipiNewField" fieldname="Detail" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="BuildingDetail" title="楼栋备注" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">楼栋备注</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="楼栋备注" name="leipiNewField" fieldname="BuildingDetail" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="HouseDetail" title="房号备注" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">房号备注</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="房号备注" name="leipiNewField" fieldname="HouseDetail" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="RegionalAnalysis" title="区域分析" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">区域分析</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="区域分析" name="leipiNewField" fieldname="RegionalAnalysis" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="Wrinkle" title="有利因素" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">有利因素</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="有利因素" name="leipiNewField" fieldname="Wrinkle" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="Aversion" title="不利因素" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">不利因素</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="不利因素" name="leipiNewField" fieldname="Aversion" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                    <!-- Textarea start -->
+                                    <div class="control-group component" rel="popover" name="ParkingDesc" title="车位描述" trigger="manual" data-content="">
+                                        <!-- Textarea -->
+                                        <label class="control-label leipiplugins-orgname">车位描述</label>
+                                        <div class="controls">
+                                            <div class="textarea">
+                                                <textarea title="车位描述" name="leipiNewField" fieldname="ParkingDesc" class="leipiplugins" leipiplugins="textarea"
+                                                          fieldtype="1" fieldmaxlength="" fieldminlength="" fieldisrequire="" fieldeditexttype="0" fielddefultvalue="" fieldisselect=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Textarea end -->
+                                </div>
+
+                                <div class="tab-pane" id="2">
+                                    @{
+                                        if (groupList != null && groupList.Count > 0)
+                                        {
+                                            foreach (var item in groupList)
+                                            {
+                                        @*if (Model.FieldGroups.Where(m => m.FieldGroupName == item.FieldGroupTempletName).FirstOrDefault() == null)
+                                            {
+                                        *@
+                                        <div class="accordion-group component" rel="popover" name="@item.FieldGroupTempletName" title="" trigger="manual">
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#groupTemplet_@item.FieldGroupTempletId">
+                                                        @item.FieldGroupTempletName
+                                                    </a>
+                                                </div>
+                                                <div id="groupTemplet_@item.FieldGroupTempletId" class="accordion-body collapse in">
+                                                    <div class="accordion-inner">
+                                                        <fieldset groupname="@item.FieldGroupTempletName"></fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*}*@
+                                            }
+                                        }
+                                    }
+                                    @*<div class="control-group component" rel="popover" name="g1" title="" trigger="manual">
+                                            <fieldset>
+                                                <legend class="leipiplugins-orgvalue">基本信息1</legend>
+                                            </fieldset>
+                                        </div>*@
+                                </div>
+                                @*<div class="tab-pane" id="5">
+                                        <textarea id="source" class="span6"></textarea>
+                                    </div>*@
+                            </div>
+                        </fieldset>
+                    </form>
+                </div><!--tab-content-->
+            </div><!---tabbable-->
+        </div> <!-- row -->
+
+    </div> <!-- /container -->
+    @*<script type="text/javascript" charset="utf-8" src="/Public/js/jquery-1.7.2.min.js?2024"></script>*@
+    <script type="text/javascript" src="/Public/js/formbuild/bootstrap/js/bootstrap.min.js?2024"></script>
+    <script type="text/javascript" charset="utf-8" src="/Public/js/formbuild/leipi.form.build.core.js?2024"></script>
+    <script type="text/javascript" charset="utf-8" src="/Public/js/formbuild/leipi.form.build.plugins.js?2024"></script>
+    <script type="text/javascript">
+
+    </script>
+
+    <!--script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1e6fd3a46a5046661159c6bf55aad1cf' type='text/javascript'%3E%3C/script%3E"));
+    </script-->
+
+</body>
+</html>
+<script type="text/javascript">
+    var scripts = [null, null]
+
+    ace.load_ajax_scripts(scripts, function () {
+
+        $(function () {
+
+            $("#save").unbind("click").click(function (d) {
+
+                var formname = $("input[name='form_name']").val();
+
+                var formeditor = $("#build").html();
+
+                if (!formname) {
+
+                    alert("请填写模板名称！");
+
+                    return false;
+                }
+
+                var selectArray = [];
+
+                var selects = $("#components").find("[fieldisselect='1']");
+
+                for (var i = 0; i < selects.length; i++) {
+
+                    selectArray.push({FieldName: $(selects[i]).attr("fieldname"),Title: $(selects[i]).attr("title")});
+                }
+
+                formeditor = formeditor.replace(/[\n]/ig, '');//去掉所有换行
+
+                //异步提交数据
+                var paraJson = {id:@Model.TempletId, TempletName: formname, formeditor: formeditor ,selects : selectArray}
+
+                $.extendAjax(
+
+                        {
+                            url: "/Templet/Create?DatType=1034001",
+
+                            data: paraJson,
+
+                            type: "post",
+
+                            dataType: "json"
+
+                        },
+
+                        function (data) {
+
+                            if (data.result) {
+
+                                alert(data.message);
+
+                                window.location.href = "#/Templet/Index";
+
+                            } else {
+
+                                alert(data.message);
+                            }
+                        },
+
+                       { dom: ".container" });
+            })
+        
+            $("#callback").click(function(o){
+
+                window.location.href = "#/Templet/Index";
+            })
+
+            bindField();
+        })
+
+    });
+
+    
+
+    function bindField(){
+        var field = $("#components").find(".component");
+        var chkField = $("#build").find(".component,.accordion-group");
+        for (var i = 0; i < field.length; i++) {
+            var isShow = true;
+
+            var fname = $(field[i]);
+
+            for (var t = 0; t < chkField.length; t++) {
+
+                if(fname.attr("name") == $(chkField[t]).attr("name")){
+                    isShow = false;
+                    break;
+                }
+            }
+
+            if(isShow){
+                fname.show();
+
+            }else{
+                fname.hide();
+            }
+
+        }
+    }
+</script>

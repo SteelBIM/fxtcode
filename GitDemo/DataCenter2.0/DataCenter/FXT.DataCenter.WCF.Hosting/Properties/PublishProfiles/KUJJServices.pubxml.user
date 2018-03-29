@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Publish\DataCenterWCF</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BatchAddPicture.svc">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="bin/ChnCharInfo.dll">
+      <publishTime>12/06/2016 16:43:44</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Domain.dll">
+      <publishTime>12/26/2016 13:50:32</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Common.dll">
+      <publishTime>12/26/2016 13:50:31</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Data.dll">
+      <publishTime>12/28/2016 19:52:32</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Redis.dll">
+      <publishTime>12/26/2016 13:50:30</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Contract.dll">
+      <publishTime>12/27/2016 17:03:51</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Hosting.dll">
+      <publishTime>12/28/2016 20:35:08</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Services.dll">
+      <publishTime>12/28/2016 20:35:00</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>12/06/2016 16:43:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.Desktop.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>12/06/2016 16:43:42</publishTime>
+    </File>
+    <File Include="bin/Ninject.Extensions.Wcf.dll">
+      <publishTime>12/06/2016 16:43:42</publishTime>
+    </File>
+    <File Include="bin/Ninject.Web.Common.dll">
+      <publishTime>12/06/2016 16:43:42</publishTime>
+    </File>
+    <File Include="bin/NLog.config">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>12/06/2016 16:43:41</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>12/06/2016 16:43:45</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>12/06/2016 16:43:45</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>12/06/2016 16:43:45</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>12/06/2016 16:43:45</publishTime>
+    </File>
+    <File Include="bin/SharpCompress.dll">
+      <publishTime>12/06/2016 16:43:44</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>12/06/2016 16:43:42</publishTime>
+    </File>
+    <File Include="bin/System.IO.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>07/09/2013 11:04:48</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.dll">
+      <publishTime>12/06/2016 16:43:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.resources.dll">
+      <publishTime>07/09/2013 11:34:42</publishTime>
+    </File>
+    <File Include="ExcelUpload.svc">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="NLog.config">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="Residential.svc">
+      <publishTime>12/06/2016 16:43:36</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/15/2016 15:30:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>F:\ServicesPublish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BatchAddPicture.svc">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="bin/ChnCharInfo.dll">
+      <publishTime>02/27/2015 14:18:07</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>07/31/2014 16:32:01</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCeneter.Hosting.dll">
+      <publishTime>05/08/2015 18:26:38</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCeneter.WCF.Hosting.dll">
+      <publishTime>06/16/2015 18:19:07</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.BusinessLogic.dll">
+      <publishTime>05/08/2015 18:26:13</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Common.dll">
+      <publishTime>05/08/2015 18:26:09</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Contract.dll">
+      <publishTime>04/29/2015 18:56:56</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.DataAccess.dll">
+      <publishTime>05/08/2015 18:26:15</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Domain.dll">
+      <publishTime>09/14/2015 11:29:47</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Entity.dll">
+      <publishTime>05/08/2015 18:26:10</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Common.dll">
+      <publishTime>09/14/2015 11:29:46</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Data.dll">
+      <publishTime>09/14/2015 11:29:48</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Infrastructure.Redis.dll">
+      <publishTime>09/08/2015 12:49:56</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Services.dll">
+      <publishTime>05/08/2015 18:26:33</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Contract.dll">
+      <publishTime>09/14/2015 13:32:16</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Hosting.dll">
+      <publishTime>09/14/2015 13:32:34</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.WCF.Services.dll">
+      <publishTime>09/14/2015 13:32:17</publishTime>
+    </File>
+    <File Include="bin/FXT.DataCenter.Web.dll">
+      <publishTime>05/08/2015 18:26:18</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>01/02/2013 20:15:51</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/31/2014 16:32:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.Desktop.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/31/2014 16:32:02</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>07/31/2014 16:32:03</publishTime>
+    </File>
+    <File Include="bin/Ninject.Extensions.Wcf.dll">
+      <publishTime>05/28/2015 17:26:18</publishTime>
+    </File>
+    <File Include="bin/Ninject.Web.Common.dll">
+      <publishTime>05/28/2015 17:26:19</publishTime>
+    </File>
+    <File Include="bin/NLog.config">
+      <publishTime>09/13/2015 21:32:57</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>09/13/2015 16:01:00</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>01/05/2014 10:51:16</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>01/05/2014 10:51:21</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>01/05/2014 10:51:16</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>01/05/2014 10:51:20</publishTime>
+    </File>
+    <File Include="bin/SharpCompress.dll">
+      <publishTime>04/23/2015 10:21:54</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>08/28/2015 20:41:17</publishTime>
+    </File>
+    <File Include="bin/System.IO.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.dll">
+      <publishTime>08/28/2015 20:41:16</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业动态价格调查导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业房号导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业案例导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业楼层导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业楼栋导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商业街导入格式.xlsx">
+      <publishTime>07/06/2015 19:19:17</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Business/商铺导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Company/公司导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/待建楼盘导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/房号导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/样本楼盘导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/楼栋导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/楼盘别名导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/楼盘导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/楼盘案例导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/House/项目配套导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业动态价格调查导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业房号导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业案例导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业楼栋导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业楼盘导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业片区导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业租客信息导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Industry/工业项目配套导入模板.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Land/土地基准地价模板.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Land/土地基础信息模板.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Land/土地案例导入模板.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公动态价格调查导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公商务中心导入格式.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公商务配套导入格式.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公房号导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公案例导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公楼栋导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公楼盘导入格式.xlsx">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="DownloadTemplate/Office/办公租客导入格式.xls">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="ExcelUpload.svc">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/28/2015 20:41:14</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="NLog.config">
+      <publishTime>09/13/2015 21:32:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/28/2015 20:41:14</publishTime>
+    </File>
+    <File Include="Residential.svc">
+      <publishTime>06/16/2015 13:55:47</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/14/2015 13:32:18</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

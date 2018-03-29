@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "住宅楼栋修正系数";
+}
+@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<DatWeightBuilding>
+@section StyleSheet{
+
+}
+@section  Javascript{
+    <script type="text/javascript">
+        $(document).ready(function () {           
+            $(".page-sidebar > ul > li > a[href='/VQPrice/ProjectWeightRevised/Index']").append("<span class='selected'></span>").parent().addClass("active");
+
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("VQPrice/BuildingWeightRevised/Index")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/VQPrice/ProjectWeightRevised/Index\">住宅基准房价</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>住宅楼栋修正系数</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+        });
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+
+}
+<div class="row-fluid">
+    <div class="span8" style="width: 100%;">
+        @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search" }))
+        { 
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn">
+                        搜索 <i class="icon-search"></i>
+                    </button>
+                </label>
+                <label>
+                    <span>楼栋名称：</span>
+                    @Html.TextBox("BuildingName", null, new { @class = "m-wrap small" })
+                    <input type="hidden" name ="projectId" value="@ViewBag.projectId" />
+                </label>
+            </div>
+        }
+    </div>
+</div>
+<div><label>楼盘名称：@ViewBag.projectName</label></div>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>楼栋名称
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var m in Model)
+            {
+              
+            <tr>
+                <td>
+                    @m.BuildingName
+                </td>
+                <td>
+                    <a href="@Url.Action("Index","HouseWeightRevised",new{buildingName=m.BuildingName,projectId=m.ProjectId,buildingId=m.BuildingId})">查看房号</a>
+                </td>
+            </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+
+</div>
+
+
+

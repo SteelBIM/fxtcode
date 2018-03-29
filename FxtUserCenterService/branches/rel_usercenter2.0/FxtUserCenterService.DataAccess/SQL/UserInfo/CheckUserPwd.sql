@@ -1,0 +1,1 @@
+﻿select userpwd from dbo.UserInfo with(nolock) where username=@username 

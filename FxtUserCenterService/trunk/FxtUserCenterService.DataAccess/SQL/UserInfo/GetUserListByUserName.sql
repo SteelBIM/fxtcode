@@ -1,0 +1,1 @@
+﻿select * from dbo.UserInfo with(nolock) where companyid = @companyid and username like @username and IsInner = 0 and valid = 1

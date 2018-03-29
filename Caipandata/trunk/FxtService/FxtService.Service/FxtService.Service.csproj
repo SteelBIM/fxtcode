@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B9C4CFE-30F5-476A-BACD-259D90433BE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtService.Service</RootNamespace>
+    <AssemblyName>FxtService.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\CommonDll\MVC4\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Package\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Package\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIActualize\FxtAPI.cs" />
+    <Compile Include="APIActualize\FxtMobileAPI.cs" />
+    <Compile Include="APIActualize\FxtTask.cs" />
+    <Compile Include="FxtLoanActualize\FxtCollaterals.cs" />
+    <Compile Include="FxtRunFlatsActualize\FxtRunFlats.cs" />
+    <Compile Include="FxtSpiderActualize\Fxtspider.cs" />
+    <Compile Include="FxtUsersActualize\FxtUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBehavior.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\CommonDll\CAS.DataAccess.BaseDAModels\CAS.DataAccess.BaseDAModels.csproj">
+      <Project>{41617bb0-90fa-46c3-ada2-6b42d68cde3f}</Project>
+      <Name>CAS.DataAccess.BaseDAModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\CommonDll\CAS.Entity.BaseDAModels\CAS.Entity.BaseDAModels.csproj">
+      <Project>{2f0d611e-e9fc-429e-945b-1656f7435761}</Project>
+      <Name>CAS.Entity.BaseDAModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\CommonProject\trunk\CAS.Common.MVC4\CAS.Common.MVC4.csproj">
+      <Project>{fa2001f0-7369-4521-924e-05eff30462f0}</Project>
+      <Name>CAS.Common.MVC4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\CommonProject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2c1cbb22-7cbf-485f-8ded-b2162f65f48f}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FxtCollateralManager\FxtCommonLibrary\FxtCommonLibrary.csproj">
+      <Project>{5b8c38d2-582f-4c82-8ef5-2b052272dad9}</Project>
+      <Name>FxtCommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.DATProjectDomain\FxtNHibernate.DATProjectDomain.csproj">
+      <Project>{50c6c35d-8d7d-4b1f-b510-b07374413a27}</Project>
+      <Name>FxtNHibernate.DATProjectDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.DTODomain\FxtNHibernate.DTODomain.csproj">
+      <Project>{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}</Project>
+      <Name>FxtNHibernate.DTODomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.FxtDataUserDomain\FxtNHibernate.FxtDataUserDomain.csproj">
+      <Project>{33967EF1-D246-4EC2-BDF5-981B78B82387}</Project>
+      <Name>FxtNHibernate.FxtDataUserDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.FxtLoanDomain\FxtNHibernate.FxtLoanDomain.csproj">
+      <Project>{ebf122fc-1ce4-4e96-9854-f9c1867f583f}</Project>
+      <Name>FxtNHibernate.FxtLoanDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.FxtTempDomain\FxtNHibernate.FxtTempDomain.csproj">
+      <Project>{353b326d-79e2-458d-87d8-7abdef9baf2d}</Project>
+      <Name>FxtNHibernate.FxtTempDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernater.Data\FxtNHibernater.Data.csproj">
+      <Project>{BF7A0279-12E0-4679-887C-8E87F70D80DC}</Project>
+      <Name>FxtNHibernater.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtService.Common\FxtService.Common.csproj">
+      <Project>{8EEA3BC1-89BC-4650-AC22-A1D7B0291F6F}</Project>
+      <Name>FxtService.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtService.Contract\FxtService.Contract.csproj">
+      <Project>{F69DB682-26E7-42D8-BFDD-FC7789BF4C44}</Project>
+      <Name>FxtService.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

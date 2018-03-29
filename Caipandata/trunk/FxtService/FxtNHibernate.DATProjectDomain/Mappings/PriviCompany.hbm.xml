@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+  <class name="FxtNHibernate.DATProjectDomain.Entities.PriviCompany, FxtNHibernate.DATProjectDomain" table="Privi_Company">
+    <id name="CompanyId" column="CompanyId" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="CompanyName" column="CompanyName" type="string"  />
+    <property name="FK_CityId" column="FK_CityId" type="int"  />
+    <property name="OwnerId" column="OwnerId" type="int"  />
+    <property name="CValid" column="CValid" type="int"  />
+    <property name="EnglishName" column="EnglishName" type="string"  />
+		<property name="OtherName" column="OtherName" type="string"  />
+		<property name="Address" column="Address" type="string"  />
+		<property name="Telephone" column="Telephone" type="string"  />
+		<property name="Fax" column="Fax" type="string"  />
+		<property name="WebUrl" column="WebUrl" type="string"  />
+		<property name="FK_CompanyTypeCode" column="FK_CompanyTypeCode" type="int"  />
+		<property name="EMail" column="EMail" type="string"  />
+		<property name="LinkMan" column="LinkMan" type="string"  />
+		<property name="LegalMan" column="LegalMan" type="string"  />
+		<property name="FK_UserTypeCode" column="FK_UserTypeCode" type="int"  />
+		<property name="PinYin" column="PinYin" type="string"  />
+		<property name="HouseAptitudeCode" column="HouseAptitudeCode" type="int"  />
+		<property name="LandAptitudeCode" column="LandAptitudeCode" type="int"  />
+		<property name="ParentId" column="ParentId" type="int"  />
+		<property name="CompanyCode" column="CompanyCode" type="string"  />
+		<property name="Logo" column="Logo" type="string"  />
+		<property name="RegNumber" column="RegNumber" type="string"  />
+		<property name="RegBeginDate" column="RegBeginDate" type="DateTime"  />
+		<property name="RegEndDate" column="RegEndDate" type="DateTime"  />
+		<property name="LegalCode" column="LegalCode" type="string"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+		<property name="Suspended" column="Suspended" type="int"  />
+		<property name="BusinessNumber" column="BusinessNumber" type="string"  />
+		<property name="BusinessFile" column="BusinessFile" type="string"  />
+				
+	</class>
+</hibernate-mapping>

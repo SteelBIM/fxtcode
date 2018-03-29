@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9deaf1ca-6bda-4d01-a814-50ea033316ab" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="log4net" />
+      <ReferencedAssembly AssemblyName="Microsoft.CSharp" />
+      <ReferencedAssembly AssemblyName="mscorlib" />
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9800/ProviderService/metadata" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="metadata4.xsd" MetadataType="Schema" ID="9ece0bf7-633d-417b-8891-67e7ddc810ec" SourceId="1" SourceUrl="http://localhost:9800/ProviderService/metadata?xsd=xsd0" />
+    <MetadataFile FileName="metadata41.xsd" MetadataType="Schema" ID="e902e0d3-f051-4e9a-b6ab-e9ca204ae213" SourceId="1" SourceUrl="http://localhost:9800/ProviderService/metadata?xsd=xsd1" />
+    <MetadataFile FileName="metadata42.xsd" MetadataType="Schema" ID="9d1547db-fa60-40ed-a35b-2ebb34a1c4c0" SourceId="1" SourceUrl="http://localhost:9800/ProviderService/metadata?xsd=xsd2" />
+    <MetadataFile FileName="metadata43.xsd" MetadataType="Schema" ID="a502338e-2a05-42ec-ba3e-69d06bb85e15" SourceId="1" SourceUrl="http://localhost:9800/ProviderService/metadata?xsd=xsd3" />
+    <MetadataFile FileName="ProviderService1.wsdl" MetadataType="Wsdl" ID="12ea48a2-80ed-4a9f-b01a-029dc1374e74" SourceId="1" SourceUrl="http://localhost:9800/ProviderService/metadata" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,95 @@
+﻿@model FXT.DataCenter.WebUI.Areas.Office.Models.OfficeHouse
+
+@{
+    var unitNos = Model.UnitNos.ToList();
+}
+<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+    <thead>
+        <tr>
+            <th style="width: 65px;">物理层
+            </th>
+            @if (unitNos.Any())
+            {
+
+                for (var i = 0; i < unitNos.Count(); i++)
+                {
+                    var column = (string.IsNullOrWhiteSpace(unitNos[i].UnitNo) ? "" : unitNos[i].UnitNo + "-") + unitNos[i].HouseNo;
+
+                    if (i == 0)
+                    {
+                <th style="width: 65px;">实际层
+                </th>
+                    }
+                <th>
+                    @column
+                </th>
+                }
+
+            }
+            else
+            {
+                <th style="width: 65px;">实际层
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (var i = 1; i <= Model.TotalFloor; i++)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                @if (unitNos.Any())
+                {
+                    for (var j = 0; j < unitNos.Count(); j++)
+                    {
+                        var house = Model.Houses.Select(" FloorNo='" + i + "' and UnitNo ='" + (unitNos[j].UnitNo == null ? "" : unitNos[j].UnitNo) + "'  and   HouseNo='" + unitNos[j].HouseNo + "' ").FirstOrDefault();
+                        if (house != null)
+                        {
+                            var floorNum = house["FloorNum"] == DBNull.Value ? i.ToString() : house["FloorNum"].ToString();
+                            if (j == 0)
+                            {
+                    <td>
+                        @floorNum
+                    </td>
+                            }
+
+                            if (Html.ViewData["HouseAttr"].ToString() == "HouseName")
+                            {
+                    <td fxtcompanyid="@house["FxtCompanyId"]" houseid="@house["HouseId"]">
+                        <a title="编辑办公房号" style="cursor:pointer;" class="thickbox" href="@Url.Action("Edit", new { houseId = house["HouseId"], fxtCompanyId = house["FxtCompanyId"] })TB_iframe=true&height=400&width=860">@house[Html.ViewData["HouseAttr"].ToString()]</a>
+                    </td>
+                            }
+                            else
+                            {
+                    <td fxtcompanyid="@house["FxtCompanyId"]"  houseid="@house["HouseId"]">
+                        @house[Html.ViewData["HouseAttr"].ToString()]
+                    </td>
+                            }
+
+                        }
+                        else
+                        {
+                            if (j == 0)
+                            {
+                    <td>@i
+                    </td>
+                            }
+                    <td></td>
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    <td>
+                        @i
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

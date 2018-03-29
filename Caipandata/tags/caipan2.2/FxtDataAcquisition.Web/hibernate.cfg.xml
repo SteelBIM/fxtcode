@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2-x-factories">
+  <!--- FxtProject -->
+  <session-factory name="Default">
+    <property name="current_session_context_class">web</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+    <!--<property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>-->
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <!--<property name="connection.driver_class">NHibernate.Driver.Sql2008ClientDriver</property>-->
+    <!--<property name="connection.connection_string">Data Source=.;Initial Catalog=FxtTemp;Persist Security Info=True;User ID=fxtdata_user;Password=data123654</property>-->
+    <property name="proxyfactory.factory_class">NHibernate.Bytecode.DefaultProxyFactoryFactory,NHibernate</property>
+    <mapping assembly="FxtNHibernate.FxtTempDomain" />
+  </session-factory>
+
+</hibernate-configuration>

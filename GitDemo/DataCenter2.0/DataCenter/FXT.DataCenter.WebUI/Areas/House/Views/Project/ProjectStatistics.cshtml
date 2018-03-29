@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewBag.title = "自定义导出";
+ }
+@section StyleSheet{
+    <style type="text/css">
+        legend
+        {
+            font-weight: 300 !important;
+            font-size: 18px;
+        }
+
+        .tbsta
+        {
+            margin-left: 10px;
+        }
+
+        input[type='text'], select
+        {
+            margin-bottom: 0px;
+        }
+
+        input[type='checkbox']
+        {
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+
+        div.pagination
+        {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        input[type='radio']
+        {
+            margin-bottom: 20px;
+        }
+
+        .td_input
+        {
+            width: 80px;
+            margin-left: 5px;
+        }
+
+        .select_input
+        {
+            width: 120px;
+            margin-right: 30px;
+        }
+
+        .select_input_firsth
+        {
+            margin-left: 5px;
+        }
+
+        .tbInputCon select
+        {
+            width: 70px;
+        }
+
+        .td_two
+        {
+            width: 80px;
+        }
+
+        .td_three
+        {
+            width: 150px;
+        }
+
+        .tr_height
+        {
+            height: 40px;
+        }
+
+        .div
+        {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .content_div
+        {
+            float: left;
+            width: 50%;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var urlSubArea = '@Url.Action("GetSubArea")', urlhouseSubArea = "@Url.Action("GetHouseSubArea")";
+        $(document).ready(function () {
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("House/Project/ProjectStatistics")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/Project/Index\">楼盘基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>自定义导出</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+            //日期控件渲染
+            $("#SaleDate,#HendTime,#HstarTime,#PendTime,#PstarTime,#BendTime,#BstarTime,#BuildDateTo,#BuildDate,#BuildSaleDateTo,#BuildSaleDate,#EndDateTo,#EndDate,#SaleDateTo,#BuildingDate,#BuildingDateTo").datepicker({ format: 'yyyy-mm-dd' });
+       
+            //行政区片区联动
+            $("select[name='areaid']").change(function () {
+                $.post(urlSubArea, { areaid: $(this).val() }, function (data) {
+                    $("select[name='subareaid']").html("");
+                    $.each(data, function (i, item) {
+                        $("select[name='subareaid']").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+            //行政区片区联动
+            $("select[name='houseareaid']").change(function () {
+                $.post(urlhouseSubArea, { areaid: $(this).val() }, function (data) {
+                    $("select[name='housesubareaid']").html("");
+                    $.each(data, function (i, item) {
+                        $("select[name='housesubareaid']").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+            $('#myTab a').click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            $(function () {
+                @* var active = '@Session["active"]';
+                if (active == "") {
+                    $("#myTab a:first").tab('show');
+                }*@
+                $("#myTab a:first").tab('show');
+                $("#myTab li").each(function () {
+                    var hre = $(this).children("a").attr("href");
+                    if (active == hre) {
+                        $(this).addClass("active");
+                        $(active).addClass("active");
+                    }
+                });
+
+            })
+            $("input[name='project'],input[name='building'],input[name='house']").click(function () {
+                if ($(this).parent().attr("class") == "checked") {
+                    $(this).attr("checked", "checked");
+                } else {
+                    $(this).removeAttr("checked");
+                }
+            });
+        });
+        //全选、全不选
+        function selectAll(obj) {
+            if ($("#all_" + obj).attr('checked') == "checked") {
+                $("input[name='" + obj + "']").each(function () {
+                    $(this).attr("checked", "checked");
+                    $(this).parent().addClass("checked");
+                });
+            } else {
+                $("input[name='" + obj + "']").each(function () {
+                    $(this).removeAttr("checked");
+                    $(this).parent().removeClass("checked");
+                });
+            }
+        }
+        function RunMsg(obj) {
+            //$("#btn" + obj).val("正在为您导出数据,请等待.....");
+        }
+
+        //楼盘导出
+        $("#btnproject").bind("click", function () {
+            var flag = 0;
+            $("input[name=project]").each(function () {
+                flag += $(this).prop("checked");
+            });
+            if (flag == 0) {
+                $("#all_project").prop("checked", true);
+                $("input[name=project]").each(function () {
+                    $(this).prop("checked", true);
+                });
+                $.uniform.update();
+            }
+        });
+        //楼栋导出
+        $("#btnbuilding").bind("click", function () {
+            var flag = 0;
+            $("input[name=building]").each(function () {
+                flag += $(this).prop("checked");
+            });
+            if (flag == 0) {
+                $("#all_building").prop("checked", true);
+                $("input[name=building]").each(function () {
+                    $(this).prop("checked", true);
+                });
+                $.uniform.update();
+            }
+        });
+        //房号导出
+        $("#btnhouse").bind("click", function () {
+            var flag = 0;
+            $("input[name=house]").each(function () {
+                flag += $(this).prop("checked");
+            });
+            if (flag == 0) {
+                $("#all_house").prop("checked", true);
+                $("input[name=house]").each(function () {
+                    $(this).prop("checked", true);
+                });
+                $.uniform.update();
+            }
+        });
+        
+        function showOrhide(obj) {
+            var value = $("#attr_" + obj).css("display");
+            if (value == "none") {
+                $("#attr_" + obj).css("display", "block");
+                $("#a_" + obj).text("收起∧");
+
+            } else {
+                $("#attr_" + obj).css("display", "none");
+                $("#a_" + obj).text("展开∨");
+            }
+
+        }
+    </script>
+}
+<div class="tabbable tabbable-custom">
+    <ul class="nav nav-tabs" id="myTab">
+        <li><a href="#divone">楼盘基础信息</a></li>
+        <li><a href="#divtwo">楼栋信息</a></li>
+        <li><a href="#divthree">房号信息</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="divone">
+            @using (Html.BeginForm("ProImportStat", "Project", FormMethod.Post))
+            {
+                <table id="project" class="tbsta" style="line-height: 40px; width:100%;">
+
+                    @{
+                Html.RenderPartial("DAT_Project");
+                    }
+                </table>
+            }
+        </div>
+        <div class="tab-pane" id="divtwo">
+            @using (Html.BeginForm("BuidImportStat", "Project", FormMethod.Post))
+            {
+                <table id="building" class="tbsta" style="line-height: 40px;width:100%;">
+
+                    @{
+                Html.RenderPartial("DAT_Building");
+                    }
+                </table>
+            }
+        </div>
+        <div class="tab-pane" id="divthree">
+            @using (Html.BeginForm("HouseImportStat", "Project", FormMethod.Post))
+            {
+                <table id="house" class="tbsta" style="line-height: 40px;width:100%;">
+                    @{
+                Html.RenderPartial("DAT_House");
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>

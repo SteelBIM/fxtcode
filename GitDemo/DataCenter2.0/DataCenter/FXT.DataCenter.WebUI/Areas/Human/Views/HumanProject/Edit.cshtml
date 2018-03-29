@@ -1,0 +1,375 @@
+﻿@{
+    ViewBag.Title = "新增、编辑";
+}
+@using FXT.DataCenter.Domain.Models;
+@using FXT.DataCenter.Domain.Models.QueryObjects;
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+@model DAT_Human
+@section StyleSheet{
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .tr {
+            height: 50px;
+        }
+
+        .textarea {
+            resize: none;
+        }
+
+        .projectName {
+            width: 500px;
+            height: 100%;
+            float: left;
+        }
+
+        .projectName_div {
+            width: 250px;
+            float: left;
+            height: 100%;
+        }
+
+        .projectName_buid {
+            width: 180px;
+            float: left;
+            height: 100%;
+        }
+
+        .clare {
+            clear: both;
+        }
+
+        .GetCoordinate, .MapCallout {
+            display: none;
+        }
+
+        .xubox_layer {
+            top: 50px!important;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+    <link href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+}
+@section Javascript{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("Human/HumanProject/Edit")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/Human/HumanProject/Index\">业主楼盘数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>编辑</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+        });
+
+        $("#IDCard").bind("change", function () {
+            if ($("#IDCard").val() == "") {
+                return;
+            }
+            card();
+        });
+        $("#Birthday").bind("change", function () {
+            var birthday = $("#Birthday").val();
+            abc(birthday);
+        });
+        function abc(birthday) {
+            if (!(birthday.substr(5, 2) > 0 && birthday.substr(5, 2) < 13 && birthday.substr(9, 2) > 0 && birthday.substr(9, 2) < 32)) {
+                return;
+            }
+            $("#Birthday").val(birthday);
+            var nowDate = new Date();
+            var age = nowDate.getFullYear() - birthday.substr(0, 4);
+            $("#Age").val(age);
+            var agegroup = 0;
+            var ages = age / 10;
+            switch (parseInt(age / 10)) {
+                case 0:
+                case 1:
+                case 2: agegroup = 8009001; break;
+                case 3: agegroup = 8009002; break;
+                case 4: agegroup = 8009003; break;
+                case 5: agegroup = 8009004; break;
+                case 6:
+                case 7:
+                case 8:
+                case 9: agegroup = 8009005; break;
+                default: agegroup = -1; break;
+            }
+            $("#AgeGroup").val(agegroup);
+        }
+        function card() {
+            var identityCard = $("#IDCard").val();
+            if (identityCard.length != 15 && identityCard.length != 18)//身份证号码只能为15位或18位其它不合法
+            {
+                //alert("身份证号码为15位或18位，才能自动生成信息！");
+                //$("#IDCard").focus();
+                return;
+            }
+            var birthday = "";
+            var sex = 0;
+            var sexid = 0;
+            if (identityCard.length == 18)//处理18位的身份证号码从号码中得到生日和性别代码
+            {
+                birthday = identityCard.substr(6, 4) + "-" + identityCard.substr(10, 2) + "-" + identityCard.substr(12, 2);
+                sex = identityCard.substr(14, 3);
+            }
+            if (identityCard.length == 15) {
+                birthday = "19" + identityCard.substr(6, 2) + "-" + identityCard.substr(8, 2) + "-" + identityCard.substr(10, 2);
+                sex = identityCard.substr(12, 3);
+            }
+
+            if (sex % 2 == 0)//性别代码为偶数是女性奇数为男性
+            {
+                sexid = 2019002;
+            }
+            else {
+                sexid = 2019001;
+            }
+            var ridaolen = $('input:radio[name=sex]').length;
+            for (var i = 0; i < ridaolen; i++) {
+                if (sexid == $('input:radio[name=sex]')[i].value) {
+                    $('input:radio[name=sex]')[i].checked = true;
+                    $.uniform.update();
+                }
+            }
+            abc(birthday);
+        }
+
+        $("#Birthday").datepicker({ format: 'yyyy-mm-dd' });
+        $('input:radio[name=sex]').filter('[value="@ViewBag.Sex"]').prop('checked', true);
+        $("#ProjectId").select2({
+            minimumInputLength: 2,
+            ajax: {
+                url: "@Url.Action("ProjectSelect")",
+                dataType: 'json',
+                data: function (term, page) {
+                    return {
+                        key: term
+                    };
+                },
+                results: function (data, page) {
+                    return { results: data };
+                }
+            },
+            formatResult: function (data) {
+                return data.text;
+            },
+            formatSelection: function (data) {
+                return data.text;
+            },
+        });
+        $(".select2-container").width(221); //重置select2宽度
+        $("#ProjectId").select2("val", { id: '@ViewBag.select2ProjectId', text: '@ViewBag.select2ProjectName' });
+
+        //确定
+        $("#btnsubmit").bind("click", function () {
+            var projectId = $("#ProjectId").val();
+            var name = $("#Name").val();
+            if (projectId == -1 || name == "") {
+
+                if (projectId == -1) {
+                    $("#msgForProjectId").text("*必选");
+                }
+                else {
+                    $("#msgForProjectId").text("*");
+                }
+
+                if (name == "") {
+                    $("#msgForName").text("*必填");
+                }
+                else {
+                    $("#msgForName").text("*");
+                }
+                return;
+            }
+            else {
+                $("#msgForProjectId").text("*");
+                $("#msgForName").text("*");
+            }
+            $("#mainForm").submit();
+        });
+    </script>
+}
+<div class="row-fluid">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+    { 
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;" id="tbInputCon">
+            <tr>
+                <td>楼盘名称:
+                </td>
+                <td colspan="3">@Html.HiddenFor(m => m.ProjectId) <span class="required" id="msgForProjectId">*</span>
+                    @Html.HiddenFor(m => m.HumanId)@Html.HiddenFor(m => m.CityId)@Html.HiddenFor(m => m.FxtcompanyId)
+                </td>
+            </tr>
+            <tr>
+                <td>姓名:
+                </td>
+                <td>@Html.TextBoxFor(m => m.Name)<span class="required" id="msgForName">*</span>
+                </td>
+                <td>性别:
+                </td>
+                <td>
+                    <label style="width: 50px;">
+                        <input type="radio" value="2019001" name="sex" />男</label><label style="width: 50px;"><input type="radio" value="2019002" name="sex" />女</label>
+                </td>
+            </tr>
+            <tr>
+                <td>身份证:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.IDCard)
+                </td>
+                <td>出生年月:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Birthday, new { Value = Model.Birthday == null ? "" : Model.Birthday.Value.ToString("yyyy-MM-dd") })
+                </td>
+            </tr>
+            <tr>
+                <td>年龄段:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.AgeGroup, (ViewBag.AgeGroupList) as List<SelectListItem>)
+                </td>
+                <td>年龄:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Age)@Html.ValidationMessageFor(m => m.Age)
+                </td>
+            </tr>
+            <tr>
+                <td>籍贯:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Origin)
+                </td>
+                <td>婚姻状态:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Marriage, (ViewBag.MarriageList) as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>手机号码:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Telephone)@Html.ValidationMessageFor(m => m.Telephone)
+                </td>
+                <td>学历:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Education, (ViewBag.EducationList) as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>行业:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Occupation, (ViewBag.OccupationList) as List<SelectListItem>)
+                </td>
+                <td>职位:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Position, (ViewBag.PositionList) as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>所在公司:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Company)
+                </td>
+                <td>年薪范围:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Salary, (ViewBag.SalaryList) as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>常用交通工具:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Transportation, (ViewBag.TransportationList) as List<SelectListItem>)
+                </td>
+                <td>家庭成员总数:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FamilyNum)@Html.ValidationMessageFor(m => m.FamilyNum)
+                </td>
+            </tr>
+            <tr>
+                <td>购房数:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Houses)@Html.ValidationMessageFor(m => m.Houses)
+                </td>
+                <td>备注:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Remark)
+                </td>
+            </tr>
+        </table>
+        <table style="margin-left: 30px; width: 100%; margin-bottom: 40px;">
+            <tr>
+                <td>
+                    <button class="btn blue" type="button" id="btnsubmit">
+                        <i class="icon-ok"></i>确定
+                    </button>
+                </td>
+            </tr>
+        </table>
+    }
+</div>

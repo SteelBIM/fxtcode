@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+  <class name="FxtNHibernate.DATProjectDomain.Entities.LNKPPhoto, FxtNHibernate.DATProjectDomain" table="LNK_P_Photo">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="ProjectId" column="ProjectId" type="int"  />
+    <property name="PhotoTypeCode" column="PhotoTypeCode" type="int"  />
+    <property name="CityId" column="CityId" type="int"  />
+    <property name="Valid" column="Valid" type="int"  />
+    <property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="Path" column="Path" type="string"  />
+		<property name="PhotoDate" column="PhotoDate" type="DateTime"  />
+		<property name="PhotoName" column="PhotoName" type="string"  />
+		<property name="BuildingId" column="BuildingId" type="long"  />
+		<property name="X" column="X" type="decimal"  />
+		<property name="Y" column="Y" type="decimal"  />
+				
+	</class>
+</hibernate-mapping>

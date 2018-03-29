@@ -1,0 +1,191 @@
+﻿@model FXT.DataCenter.Domain.Models.DatOfficePeiTao
+@{
+    ViewBag.Title = "办公商务配套";
+}
+
+@section stylesheet{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        #tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .required
+        {
+            color: red;
+        }
+
+        .btn
+        {
+            margin-bottom: 10px;
+        }
+    </style>
+}
+@section javascript{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".page-sidebar>ul>li>a[href='/Office/OfficeProject/Index']").append("<span class='selected'></span>").parent().addClass("active");
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href='@Url.Action("Index", "OfficeProject")'>办公基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+            html += " <li><span><a href='/Office/OfficePeitao/Index?ProjectId=" + "@ViewBag.ProjectId" + "'>办公商务配套</a></span> <i class=\"icon-angle-right\"></i><li>";
+            if ('@Model' == "") {
+                html += " <li><span>新增</span></li>";
+            }
+            else {
+                html += " <li><span>编辑</span></li>";
+            }
+            $("ul.breadcrumb").append(html);
+
+            $('#TenantName').autocomplete('@Url.Action("TenantNameSelect")', {
+                max: 12,    //列表里的条目数
+                minChars: 0,    //自动完成激活之前填入的最小字符
+                width: 218,     //提示的宽度，溢出隐藏
+                scrollHeight: 200,   //提示的高度，溢出显示滚动条
+                matchContains: true,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+                autoFill: false,    //自动填充
+                parse: function (data) {
+                    return $.map(eval(data), function (row) {
+                        return {
+                            data: row,
+                            value: row.name, //显示结果
+                            result: row.id  //填充结果
+                        }
+                    });
+                },
+                formatItem: function (row, i, max) {
+                    return row.name;
+                },
+                formatMatch: function (row, i, max) {
+                    return row.name;
+                },
+                formatResult: function (row) {
+                    return row.name;
+                }
+            }).result(function (event, row, formatted) {
+                $('#TenantName').val(row.name);
+                $("#TenantID").val(row.id);
+            });
+
+            //确定
+            $("#btnSave").bind("click", function () {
+                var PeiTaoCode = $("#PeiTaoCode").val();
+                var PeiTaoName = $.trim($("#PeiTaoName").val());
+                var Floor = $.trim($("#Floor").val());
+                var TenantName = $.trim($("#TenantName").val());
+
+                var PeiTaoID = $("#PeiTaoID").val() ? $("#PeiTaoID").val() : -1;
+                var ProjectId = $("#ProjectId").val();
+
+                if (PeiTaoCode == -1 || PeiTaoName == "" || Floor == "" || TenantName == "") {
+                    if (PeiTaoCode == -1) {
+                        $("#msgForPeiTaoCode").text("*必选");
+                    }
+                    else {
+                        $("#msgForPeiTaoCode").text("*");
+                    }
+                    if (PeiTaoName == "") {
+                        $("#msgForPeiTaoName").text("*必填");
+                    }
+                    else {
+                        $("#msgForPeiTaoName").text("*");
+                    }
+                    if (Floor == "") {
+                        $("#msgForFloor").text("*必填");
+                    }
+                    else {
+                        $("#msgForFloor").text("*");
+                    }
+                    if (TenantName == "") {
+                        $("#msgForTenantName").text("*必填");
+                    }
+                    else {
+                        $("#msgForTenantName").text("*");
+                    }
+                    return;
+                }
+                else {
+                    $("#msgForPeiTaoCode").text("*");
+                    $("#msgForPeiTaoName").text("*");
+                    $("#msgForPeiTaoName").text("*");
+                }
+
+                $.post('@Url.Action("IsExistOfficePeiTao")', { peiTaoID: PeiTaoID, peiTaoName: PeiTaoName, projectId: ProjectId }, function (data) {
+                    if (data) {
+                        alert("该办公商务配套已存在");
+                    } else {
+                        $("#mainForm").submit();
+                    }
+                });
+            });
+
+        });
+
+    </script>
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>配套类型</td>
+            <td>
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(m => m.ProjectId)
+                    @Html.HiddenFor(m => m.CityId)
+                    @Html.HiddenFor(m => m.FxtCompanyId)
+                    @Html.HiddenFor(m => m.PeiTaoID)
+                    @Html.HiddenFor(m => m.TenantID)
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.TenantID, new { Value = -1 })
+                    @Html.Hidden("ProjectId", new { Value = @ViewBag.ProjectId })
+                }
+                @Html.DropDownListFor(m => m.PeiTaoCode, ViewBag.PeiTaoCodeName as List<SelectListItem>)
+                <span class="required" id="msgForPeiTaoCode">*</span>
+            </td>
+            <td>配套名称</td>
+            <td>
+                @Html.TextBoxFor(m => m.PeiTaoName)
+                <span class="required" id="msgForPeiTaoName">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>楼层</td>
+            <td>
+                @Html.TextBoxFor(m => m.Floor)
+                <span class="required" id="msgForFloor">*</span>
+            </td>
+            <td>部位</td>
+            <td>@Html.TextBoxFor(m => m.Location)</td>
+        </tr>
+        <tr>
+            <td>面积(㎡)</td>
+            <td>@Html.TextBoxFor(m => m.BuildingArea)@Html.ValidationMessageFor(m => m.BuildingArea)</td>
+            <td>商家名称</td>
+            <td>
+                @Html.TextBoxFor(m => m.TenantName)
+                <span class="required" id="msgForTenantName">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>备注</td>
+            <td colspan="3">@Html.TextBoxFor(m => m.Remarks)</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding-top: 10px;">
+                <a id="btnSave" class="btn blue" title='保存'><i class="icon-ok"></i>保存</a>
+            </td>
+        </tr>
+    </table>
+}

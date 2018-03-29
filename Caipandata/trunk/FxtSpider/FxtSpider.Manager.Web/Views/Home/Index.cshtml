@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section script{ 
+<script type="text/javascript">
+    $(function () {
+        SetLeftMenu("1_1");
+//        $.post("/Spider/testrequst2", { "abc": "第三方" }, function (data) {
+//            $("#name").html(data.name);
+//        }, "json");
+//                $.extendAjax({ url: "/Spider/testrequst2",
+//                               data: {"abc":"第三方"},
+//                               type: "post", dataType: "json" },
+//                               function (data) {
+//                                    $("#name").html(data.name+"sdf"); 
+//                               });
+    });
+</script>
+}
+<div class="container-fluid">
+<h2 id="name">Index2</h2>
+</div>

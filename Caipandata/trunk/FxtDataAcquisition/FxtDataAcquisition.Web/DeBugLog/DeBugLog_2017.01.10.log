@@ -1,0 +1,103 @@
+2017-01-10 10:54:22,313 [5] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-10 10:54:28,198 [6] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 10:54:29,517 [14] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 10:54:29,827 [6] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 10:55:20,805 [6] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-10 10:55:49,926 [8] ERROR CASLog [(null)] <(null)> - System.Exception: 未设置楼栋模板！
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.EditBuilding(Int64 allotId, Building building, LoginUser loginUser, Int32 type) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 1336
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-10 10:57:30,510 [6] ERROR CASLog [(null)] <(null)> - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.ImportProjectData(Project project, List`1& resultBuilding, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 110
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 271
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-10 11:01:31,289 [6] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-10 11:01:33,372 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:01:34,041 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:01:34,216 [6] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:01:42,777 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:03:32,893 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:07:20,424 [38] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:08:24,687 [25] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:13:22,595 [26] ERROR CASLog [(null)] <(null)> - System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, Byte[] data, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 237
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.AddProjectPhoto(Int32 projectId, Int64 buildingId, Int32 cityId, Int32 photoTypeCode, String fileName, String photoName, Byte[] data, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 410
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 306
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-10 11:13:40,918 [26] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:13:41,228 [64] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:13:44,856 [60] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:17:55,165 [61] ERROR CASLog [(null)] <(null)> - System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Common.PostDataCenter(String userName, String signName, String functionName, Object parasObj, Byte[] data, List`1 appList) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Common.cs:行号 237
+   在 FxtDataAcquisition.FxtAPI.FxtDataCenter.Manager.DataCenterProjectApi.AddProjectPhoto(Int32 projectId, Int64 buildingId, Int32 cityId, Int32 photoTypeCode, String fileName, String photoName, Byte[] data, String username, String signname, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.FxtAPI.FxtDataCenter\Manager\DataCenterProjectApi.cs:行号 410
+   在 FxtDataAcquisition.Application.Services.AllotFlowService.ImportToDataCenter(Int64 allowId, Int32 cityId, Int32 companyId, String userName, String userTrueName, String signName, List`1 appList, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Application\Services\AllotFlowService.cs:行号 306
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_ImportData(Int64 allotId, LoginUser loginUser, String& message) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 894
+   在 FxtDataAcquisition.Web.Controllers.AllotFlowInfoController.AllotDetailed_SubmitData_Api(Int64 allotId, String actionType, String remark, LoginUser loginUser) 位置 d:\FangXunTong\Caipandata\trunk\FxtDataAcquisition\FxtDataAcquisition.Web\Controllers\AllotFlowInfoController.cs:行号 832
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-10 11:28:32,113 [20] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-10 11:28:32,626 [42] INFO  CASLog [(null)] <(null)> - 读取行政区缓存

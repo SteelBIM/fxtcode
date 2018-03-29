@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.DATProjectDomain" 
+				   namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.DATAvgPriceMonth, FxtNHibernate.DATProjectDomain" 
+		   table="DAT_AvgPrice_Month">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+    </id>   
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="AreaId" column="AreaId" type="int"  />
+		<property name="ProjectId" column="ProjectId" type="int"  />
+		<property name="AvgPriceDate" column="AvgPriceDate" type="DateTime"  />
+		<property name="SubAreaId" column="SubAreaId" type="int"  />
+		<property name="AvgPrice" column="AvgPrice" type="int"  />
+		<property name="BuildingAreaType" column="BuildingAreaType" type="int"  />
+				
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,90 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DAT_AvgPrice_Month
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#CaseDate").datepicker({
+                format: "yyyy-mm",
+                startView: 1,
+                maxViewMode: 1,
+                minViewMode: 1,
+            });
+
+            $("#btnCalculate").on("click", function () {
+                var areaId = $("#AreaId").val();
+                var caseDate = $("#CaseDate").val();
+
+                if (caseDate == "") {
+                    return;
+                }
+
+                $.get('@Url.Action("GetAvgPrice")', { areaId: areaId, caseDate: caseDate }, function (data) {
+                    if (data.ret) {
+                        $("#AvgPrice").val(data.data);
+                    }
+                });
+            });
+
+            $("#btnCalculateByFloatvalue").on("click", function () {
+                $("#AvgPrice").val("");
+                var areaId = $("#AreaId").val();
+                var caseDate = $("#CaseDate").val();
+                var floatvalue = $("#floatvalue").val();
+
+                if (caseDate == "" || floatvalue == "") {
+                    return;
+                }
+
+                $.get('@Url.Action("GetAvgPriceByFloatvalue")', { areaId: areaId, caseDate: caseDate, floatvalue: floatvalue }, function (data) {
+                    if (data.ret) {
+                        $("#AvgPrice").val(data.data);
+                    }
+                });
+            });
+        });
+
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">
+                    行政区：</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.AreaId, ViewBag.AreaName as List<SelectListItem>, new { style = "width:140px;" })
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 日期：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.CaseDate, new { style = "width:140px;" })
+                    &nbsp;<span style="display: inline-block; padding-top: 7px; color: red;">格式：2015-01</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 均价：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.AvgPrice, new { style = "width:140px;" })
+                    <a id="btnCalculate" class="btn">根据案例计算均价</a>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    浮动值(%)：</label>
+                <div class="controls">
+                    @Html.TextBox("floatvalue", "", new { style = "width:140px;" })
+                    <a id="btnCalculateByFloatvalue" class="btn">根据浮动值计算均价</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtDataUserDomain" 
+				   namespace="FxtNHibernate.FxtDataUserDomain.Entities">
+	<class name="FxtNHibernate.FxtDataUserDomain.Entities.SysMenuPurview, FxtNHibernate.FxtDataUserDomain" 
+		   table="Sys_MenuPurview">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="MenuId" column="MenuId" type="int"  />
+		<property name="PurviewId" column="PurviewId" type="int"  />
+				
+	</class>
+</hibernate-mapping>

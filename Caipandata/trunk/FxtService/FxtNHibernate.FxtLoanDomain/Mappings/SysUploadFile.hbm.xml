@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="FxtNHibernate.FxtLoanDomain"
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+  <class name="FxtNHibernate.FxtLoanDomain.Entities.SysUploadFile, FxtNHibernate.FxtLoanDomain"
+		   table="Sys_UploadFile">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Name" column="Name" type="string"  />
+    <property name="FilePath" column="FilePath" type="string"  />
+    <property name="FileType" column="FileType" type="string"  />
+    <property name="FileSize" column="FileSize" type="int"  />
+    <property name="UserId" column="UserId" type="string"  />
+    <property name="CreateDate" column="CreateDate" type="DateTime"  />
+    <property name="PageIndex" column="PageIndex" type="int"  />
+    <property name="Count" column="Count" type="int"  />
+    <property name="BankProid" column="BankProid" type="int"  />
+    <property name="BankId" column="BankId" type="int"  />
+    
+  </class>
+</hibernate-mapping>

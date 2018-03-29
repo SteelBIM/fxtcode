@@ -1,0 +1,246 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<Dat_P_B_Price_Biz>
+@section StyleSheet{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+
+        .p5
+        {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label
+            {
+                width: 100px;
+            }
+
+            .p5 select
+            {
+                width: 133px;
+            }
+
+        #hourslider
+        {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar
+        {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var UrlExport = '@Url.Action("Export")';
+        var UrlDelete = '@Url.Action("Delete")';
+
+        $(document).ready(function() {
+            $(".page-sidebar > ul > li > a[href='/Business/BusinessCase/']").append("<span class='selected'></span>").parent().addClass("active");
+            //日期控件渲染
+            // $("#CaseDateStart, #CaseDateEnd").datepicker({ format: 'yyyy-mm-dd' });
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function() {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function() {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: UrlDelete,
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function(data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            //导出
+            $("#btnExport").click(function() {
+                var projectId = $("#ProjectId").val();
+                location.href= UrlExport + "?projectId=" + projectId;
+               
+            });
+        });
+    </script>
+
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+
+<div class="row-fluid">
+    <div class="span4">
+        <div style="width:400px;">
+           <a class="btn blue thickbox" title='新增' href="@Url.Action("Create")?TB_iframe=true&height=480&width=860">
+                        <i class="icon-plus icon-white"></i>新增</a> <a class="btn red" id="delete" href="javascript:;">
+                            <i class="icon-trash icon-white"></i>删除</a>
+                    &nbsp; &nbsp;
+                    <a id="btnImport" title="Excel导入" class = "btn" href="@Url.Action("UploadFile")">导入</a>
+            <input type="button" id="btnExport" class="btn" value="导 出" />
+        </div>
+    </div>
+    <div class="span8">
+        @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search" }))
+        { 
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn">
+                        搜索 <i class="icon-search"></i>
+                    </button>
+                </label>
+                <label>
+                    <span>商业街：</span>
+                    @Html.TextBox("ProjectName", null, new { @style = "width:138px;" })
+                </label>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="scrollBar">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>
+                <th>商业街
+                </th>
+                <th>商业楼栋
+                </th>
+                <th>租金方式
+                </th>
+                <th>平均租金
+                </th>
+                <th>平均售价
+                </th>
+                <th>最低日租金
+                </th>
+                <th>最高日租金
+                </th>
+                <th>最低售价
+                </th>
+                <th>最高售价
+                </th>
+                <th>已租面积
+                </th>
+                <th>空置面积
+                </th>
+               @* <th>平均租售比(月租金/销售单价)
+                </th>
+                 <th>管理费(元月/平方米)
+                </th>*@
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var m in Model)
+                {
+                    var chValue = m.FxtCompanyId + "#" + m.Id;
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />
+                    </td>
+                    <td>
+                        <a class="thickbox" title="编辑"  href="@Url.Action("Edit", new { id = chValue })?TB_iframe=true&height=500&width=900">
+                        @m.ProjectName
+                        </a>
+                    </td>
+                    <td>
+                        @m.BuildingName
+                    </td>
+                    <td>
+                        @m.RentTypeName
+                    </td>
+                    <td>
+                        @m.AvgRent
+                    </td>
+                    <td>
+                        @m.AvgSalePrice
+                    </td>
+                    <td>
+                        @m.Rent1
+                    </td>
+                    <td>
+                        @m.Rent2
+                    </td>
+                      <td>
+                        @m.SalePrice1
+                    </td>
+                    <td>
+                        @m.SalePrice2
+                    </td>
+                      <td>
+                        @m.TenantArea
+                    </td>
+                    <td>
+                        @m.VacantArea
+                    </td>
+                   @* <td>
+                        @m.RentSaleRate
+                    </td>
+                     <td>
+                        @m.ManagerPrice
+                    </td>*@
+                    <td>
+                        <a class="btn mini purple thickbox" title='编辑' href="@Url.Action("Edit", new { id = chValue })?TB_iframe=true&height=480&width=860">
+                            <i class="icon-edit"></i>编辑 </a>
+                    </td>
+                </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+
+</div>
+
+
+
+

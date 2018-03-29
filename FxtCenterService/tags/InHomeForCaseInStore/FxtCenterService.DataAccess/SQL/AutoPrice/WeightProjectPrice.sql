@@ -1,0 +1,2 @@
+﻿SELECT ProjectAvgPrice,LowLayerPrice,MultiLayerPrice,SmallHighLayerPrice,HighLayerPrice,SingleVillaPrice,PlatoonVillaPrice,MoveBackHousePrice
+FROM @table where 1 = 1 and FxtCompanyId = @fxtcompanyid and CityId = @cityid and ProjectId = @projectid and UpdateDate between @begindate and @enddate

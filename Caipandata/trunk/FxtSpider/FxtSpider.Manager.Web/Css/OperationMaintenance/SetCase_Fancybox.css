@@ -1,0 +1,18 @@
+﻿.control-group{float:left; width:50%; height:30px;}
+.control-group .controls{margin-left:auto !important; float:left; width:200px; }/* width:500px !important;*/
+/*.control-group .control-label2{ padding-top:5px !important;}*/
+/*.control-group2 select{width:60px !important;}*/
+.control-group2 .select2-container{width:125px !important; float:left; }
+.control-group3{float:left; width:100%; }
+.select2-container{width:100% !important;  }
+.alert-error{text-align:center;}
+.input-large, .input-xlarge, .input-xxlarge, input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable-input
+{min-height: 0px !important;}
+.select2-container .select2-choice {height:20px;line-height:20px;}
+select{height:20px!important;line-height:20px; width:100%; font-size:12px;padding: 0px 0px!important;}
+input{font-size:12px;}
+.form-horizontal .control-label {padding-top:4px !important; font-weight:bold;width:75px !important;}
+.form-horizontal .controls {padding: 4px 0 0 0 !important;}
+.widget-box{margin-top:0px !important;}
+body{margin-top:-20px;}
+.alert {padding: 0px 35px 0px 14px !important; margin-bottom:0px !important;}

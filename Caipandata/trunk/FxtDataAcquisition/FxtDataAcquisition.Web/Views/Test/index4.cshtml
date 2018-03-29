@@ -1,0 +1,554 @@
+﻿@model FxtDataAcquisition.Domain.Models.Project
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index4</title>
+</head>
+<body>
+    <div>
+        <h4>Project</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProjectName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SubAreaId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SubAreaId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FieldNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FieldNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PurposeCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PurposeCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LandArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LandArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UsableYear)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UsableYear)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BuildingArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BuildingArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalableArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalableArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CubageRate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CubageRate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GreenRate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GreenRate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BuildingDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BuildingDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CoverDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CoverDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SaleDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SaleDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.JoinDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.JoinDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.InnerSaleDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.InnerSaleDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RightCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RightCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ParkingNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ParkingNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AveragePrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AveragePrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ManagerTel)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ManagerTel)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ManagerPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ManagerPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalNum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TotalNum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BuildingNum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BuildingNum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Detail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Detail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BuildingTypeCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BuildingTypeCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdateDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UpdateDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OfficeArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OfficeArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OtherArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OtherArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PlanPurpose)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PlanPurpose)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PriceDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PriceDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsComplete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsComplete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OtherName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OtherName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SaveDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SaveDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SaveUser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SaveUser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Weight)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Weight)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BusinessArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IndustryArea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IndustryArea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsEValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PinYin)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PinYin)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CityID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CityID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AreaID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AreaID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OldId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OldId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AreaLineId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AreaLineId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Valid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Valid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalePrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalePrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FxtCompanyId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FxtCompanyId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PinYinAll)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PinYinAll)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.X)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.X)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Y)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Y)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.XYScale)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.XYScale)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Creator)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Creator)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEmpty)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsEmpty)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TotalId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.East)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.East)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.West)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.West)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.South)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.South)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.North)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.North)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FxtProjectId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FxtProjectId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ParkingStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ParkingStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ManagerQuality)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ManagerQuality)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PhotoCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PhotoCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TempletId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TempletId)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

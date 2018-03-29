@@ -1,0 +1,18 @@
+2016-12-10 15:06:58.9098 
+Url：ProjectExcelUpload
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“*行政区”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Project.cs:行号 142
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.ProjectExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Project.cs:行号 47
+Source：System.Data
+StackTrace：System.ArgumentException: 列“*行政区”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Project.cs:行号 142
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.ProjectExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Project.cs:行号 47
+

@@ -1,0 +1,195 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DAT_SampleProject
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //日期控件渲染
+            $("#BuildingDate").datepicker({
+                format: "yyyy-mm-dd"
+            });
+
+            //行政区片区联动
+            $("#areaid").change(function () {
+                $.post('@Url.Action("GetSubArea")', { areaid: $("#areaid").val() }, function (data) {
+                    $("#subareaid").html("");
+                    $.each(data, function (i, item) {
+                        $("#subareaid").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            if ("@ViewBag.modal" == "edit") {
+                $("#projectid").attr("disabled", "disabled");
+            }
+
+            $("#btnSubmit").unbind();
+            $("#btnSubmit").bind("click", function (e) {
+                //用途
+                if ($("#purposecode").val() == "-1") {
+                    alert("请选择用途！");
+                    return false;
+                }
+                //建筑类型
+                if ($("#buildingtypecode").val() == "-1") {
+                    alert("请选择建筑类型！");
+                    return false;
+                }
+                //判断竣工日期是否选择
+                if ($.trim($("#BuildingDate").val()) == "") {
+                    alert("请选择竣工日期！");
+                    return false;
+                }
+                ////判断行政区是否选择
+                //if ($("#areaid").val() == "-1") {
+                //    alert("请选择行政区！");
+                //    return false;
+                //}
+
+
+                //判断该样本楼盘是否存在
+                $.ajax({
+                    type: "get",
+                    url: '@Url.Action("ValidateProject")',
+                    data: { projectId: $("#projectid").select2("val") },
+                    async: false,
+                    success: function (data) {
+                        if (data) {
+                            alert("已存在该样本楼盘，请重新选择！");
+                            return false;
+                        } else {
+                            $("#mainForm").submit();
+                        }
+                    }
+                });
+                @* $.get('@Url.Action("ValidateProject")', { projectId: $("#projectid").select2("val") }, function(data) {
+                    if (data) {
+                        alert("已存在该样本楼盘，请重新选择！");
+                        return false;
+                    }
+
+                });*@
+                return false;
+            });
+
+            //$("#projectid").select2({
+            //    matcher: function (term, text) {
+            //        var mod = ZhToPinyin(text);
+            //        var tf1 = mod.a.toUpperCase().indexOf(term.toUpperCase()) == 0;
+            //        var tf2 = mod.b.toUpperCase().indexOf(term.toUpperCase()) == 0;
+            //        return (tf1 || tf2);
+            //    }
+            //});
+            $("#ProjectId").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("ProjectSelect")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    return data.text;
+                },
+                matcher: function (term, text) {
+                    var mod = ZhToPinyin(text);
+                    var tf1 = mod.a.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    var tf2 = mod.b.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    return (tf1 || tf2);
+                }
+            });
+            $(".select2-container").width(221); //重置select2宽度
+            $("#ProjectId").select2("val", { id: '@ViewBag.select2ProjectId', text: '@ViewBag.select2ProjectName' });
+
+            $("#ProjectId").change(function () {
+                $.post('@Url.Action("GetProjectInfo")', { projectid: $("#ProjectId").val() }, function (data) {
+                    $("#purposecode").val(data.purposecode);
+                    $("#buildingtypecode").val(data.buildingtypecode);
+                    $("#BuildingDate").val(data.enddate);
+                    $("#areaid").val(data.areaid);
+                    var subareaid = data.subareaid;
+                    $.post('@Url.Action("GetSubArea")', { areaid: data.areaid }, function (data) {
+                        $("#subareaid").html("");
+                        $.each(data, function (i, item) {
+                            $("#subareaid").append($("<option></option>").val(item.Value).html(item.Text));
+                        });
+                        $("#subareaid").val(subareaid);
+                    });
+                });
+            });
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>样本楼盘：</label>
+                <div class="controls">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <input type="hidden" name="projectIdTemp" value="@Model.ProjectId"/>
+                    }
+                    @Html.HiddenFor(m => m.ProjectId)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 用途：</label>
+                <div class="controls">
+                    @Html.DropDownList("purposecode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 建筑类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("buildingtypecode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 竣工日期：</label>
+                <div class="controls">
+                    @Html.TextBox("BuildingDate", (Model == null ? "" : Model.BuildingDate.ToString("yyyy-MM-dd")))
+                </div>
+            </div>
+            <div class="control-group" style="visibility: hidden;">
+                <label class="control-label">
+                    <span class="required">*</span> 行政区：</label>
+                <div class="controls">
+                    @Html.DropDownList("areaid")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    片区：</label>
+                <div class="controls">
+                    @Html.DropDownList("subareaid")
+                </div>
+            </div>
+            @*   <div class="control-group">
+                <label class="control-label">
+                    案例数：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m=>m.CaseNumber)
+                </div>
+            </div>*@
+        </div>
+    </div>
+}

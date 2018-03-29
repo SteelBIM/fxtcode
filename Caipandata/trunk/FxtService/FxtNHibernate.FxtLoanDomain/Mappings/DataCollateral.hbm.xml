@@ -1,0 +1,65 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="FxtNHibernate.FxtLoanDomain"
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+  <class name="FxtNHibernate.FxtLoanDomain.Entities.DataCollateral, FxtNHibernate.FxtLoanDomain"
+		   table="Data_Collateral">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Number" column="Number" type="string"  />
+    <property name="Branch" column="Branch" type="string"  />
+    <property name="PurposeCode" column="PurposeCode" type="int"  />
+    <property name="PurposeName" column="PurposeName" type="string"  />
+    <property name="Name" column="Name" type="string"  />
+    <property name="BuildingArea" column="BuildingArea" type="decimal"  />
+    <property name="BuildingAreaCode" column="BuildingAreaCode" type="int"  />
+    <property name="Address" column="Address" type="string"  />
+    <property name="BranchCityId" column="BranchCityId" type="int"  />
+    <property name="ProjectId" column="ProjectId" type="int"  />
+    <property name="ProvinceId" column="ProvinceId" type="int"  />
+    <property name="CityId" column="CityId" type="int"  />
+    <property name="AreaId" column="AreaId" type="int"  />
+    <property name="SubAreaId" column="SubAreaId" type="int"  />
+    <property name="BuildingId" column="BuildingId" type="int"  />
+    <property name="RoomId" column="RoomId" type="int"  />
+    <property name="ProjectName" column="ProjectName" type="string"  />
+    <property name="ProjectAddress" column="ProjectAddress" type="string"  />
+    <property name="Installment" column="Installment" type="string"  />
+    <property name="ProjectType" column="ProjectType" type="string"  />
+    <property name="Road" column="Road" type="string"  />
+    <property name="RoadNumber" column="RoadNumber" type="string"  />
+    <property name="BuildingNumber" column="BuildingNumber" type="string"  />
+    <property name="FloorNumber" column="FloorNumber" type="string"  />
+    <property name="RoomNumber" column="RoomNumber" type="string"  />
+    <property name="Clerk" column="Clerk" type="string"  />
+    <property name="Agency" column="Agency" type="string"  />
+    <property name="FirstPay" column="FirstPay" type="decimal"  />
+    <property name="MonthsPay" column="MonthsPay" type="decimal"  />
+    <property name="LoanDate" column="LoanDate" type="DateTime"  />
+    <property name="LoanYear" column="LoanYear" type="decimal"  />
+    <property name="LoanInterestRate" column="LoanInterestRate" type="decimal"  />
+    <property name="LoanCardinalNumber" column="LoanCardinalNumber" type="decimal"  />
+    <property name="LoanAmount" column="LoanAmount" type="decimal"  />
+    <property name="LoanBalance" column="LoanBalance" type="decimal"  />
+    <property name="LoanPeople" column="LoanPeople" type="string"  />
+    <property name="LoanSex" column="LoanSex" type="int"  />
+    <property name="LoanAge" column="LoanAge" type="int"  />
+    <property name="LoanCardID" column="LoanCardID" type="string"  />
+    <property name="LoanCensus" column="LoanCensus" type="string"  />
+    <property name="LoanProfession" column="LoanProfession" type="string"  />
+    <property name="LoanEducationalBackground" column="LoanEducationalBackground" type="string"  />
+    <property name="LoanMarriage" column="LoanMarriage" type="string"  />
+    <property name="LoanSalary" column="LoanSalary" type="decimal"  />
+    <property name="CreditRating" column="CreditRating" type="string"  />
+    <property name="LoanCompany" column="LoanCompany" type="string"  />
+    <property name="LineOfcredit" column="LineOfcredit" type="decimal"  />
+    <property name="Status" column="Status" type="int"  />
+    <property name="CreateDate" column="CreateDate" type="DateTime"  />
+    <property name="MatchStatus" column="MatchStatus" type="int"  />
+    <property name="OldRate" column="OldRate" type="decimal"  />
+    <property name="GuaranteePrice" column="GuaranteePrice" type="decimal"  />
+    <property name="OldMortgageRates" column="OldMortgageRates" type="decimal"  />
+    
+  </class>
+</hibernate-mapping>

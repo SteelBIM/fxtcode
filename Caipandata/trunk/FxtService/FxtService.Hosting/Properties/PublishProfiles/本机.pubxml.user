@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Web\Wcf</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="API/FxtAPI.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="API/FxtMobileAPI.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="API/FxtTask.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="bin/CAS.DataAccess.BaseDAModels.dll">
+      <publishTime>10/22/2014 18:16:55</publishTime>
+    </File>
+    <File Include="bin/CAS.DataAccess.BaseDAModels.pdb">
+      <publishTime>10/22/2014 18:16:55</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.BaseDAModels.dll">
+      <publishTime>10/22/2014 18:16:54</publishTime>
+    </File>
+    <File Include="bin/FxtCommonLibrary.dll">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtCommonLibrary.pdb">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.DATProjectDomain.dll">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.DATProjectDomain.pdb">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.DTODomain.dll">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.DTODomain.pdb">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtDataUserDomain.dll">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtDataUserDomain.pdb">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtLoanDomain.dll">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtLoanDomain.pdb">
+      <publishTime>10/23/2014 15:36:27</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtTempDomain.dll">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernate.FxtTempDomain.pdb">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernater.Data.dll">
+      <publishTime>10/23/2014 15:36:30</publishTime>
+    </File>
+    <File Include="bin/FxtNHibernater.Data.pdb">
+      <publishTime>10/23/2014 15:36:30</publishTime>
+    </File>
+    <File Include="bin/FxtService.Common.dll">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtService.Common.pdb">
+      <publishTime>10/23/2014 15:36:29</publishTime>
+    </File>
+    <File Include="bin/FxtService.Contract.dll">
+      <publishTime>10/23/2014 15:36:30</publishTime>
+    </File>
+    <File Include="bin/FxtService.Contract.pdb">
+      <publishTime>10/23/2014 15:36:30</publishTime>
+    </File>
+    <File Include="bin/FxtService.Hosting.dll">
+      <publishTime>10/23/2014 15:36:31</publishTime>
+    </File>
+    <File Include="bin/FxtService.Hosting.pdb">
+      <publishTime>10/23/2014 15:36:31</publishTime>
+    </File>
+    <File Include="bin/FxtService.Service.dll">
+      <publishTime>10/23/2014 15:36:31</publishTime>
+    </File>
+    <File Include="bin/FxtService.Service.pdb">
+      <publishTime>10/23/2014 15:36:31</publishTime>
+    </File>
+    <File Include="bin/Iesi.Collections.dll">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="bin/log4net.config">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>10/21/2014 18:34:22</publishTime>
+    </File>
+    <File Include="bin/Lucene.Net.dll">
+      <publishTime>10/21/2014 18:35:22</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="bin/NHibernate.dll">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="clientaccesspolicy.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="crossdomain.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="FxtLoan/FxtCollateral.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="FxtSpider/FxtSpider.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="FxtUsers/FxtUsers.svc">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="hibernate.cfg.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="hibernate.Debug.cfg.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="hibernate.Release.cfg.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="MatchClass.xml">
+      <publishTime>10/21/2014 18:35:30</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>10/23/2014 15:36:53</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/23/2014 15:36:51</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

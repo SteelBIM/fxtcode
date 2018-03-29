@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.PriviCompanyShowData, FxtNHibernate.DATProjectDomain" table="Privi_Company_ShowData">
+    <id name="Id" column="Id" type="long" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+    <property name="CityId" column="CityId" type="int"  />
+    <property name="Id" column="Id" type="long"  />
+    <property name="ShowCompanyId" column="ShowCompanyId" type="string"  />
+    <property name="TypeCode" column="TypeCode" type="int"  />
+    <property name="CaseCompanyId" column="CaseCompanyId" type="string"  />
+	</class>
+</hibernate-mapping>

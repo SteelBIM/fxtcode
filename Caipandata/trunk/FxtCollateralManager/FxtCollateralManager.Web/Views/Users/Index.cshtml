@@ -1,0 +1,225 @@
+﻿@{
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+<div class="portlet box light-grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>用户列表</div>
+        <div class="actions">
+            <a class="btn green" href="#" 
+                data-title="新增"  
+                data-type="c"
+                data-url="/Users/AddUsers">
+                <i class="icon-pencil"></i>新增
+             </a>
+        </div>
+        <div class="tools" style="padding-right: 8px;">
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div id="sample_2_wrapper" class="dataTables_wrapper form-inline" role="grid">
+            <div class="table-scrollable">
+                <table class="table table-striped table-hover table-bordered" id="listuser">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 450px !important">
+                                用户名
+                            </th>
+                            <th scope="col">
+                                所属公司
+                            </th>
+                            <th scope="col" style="width: 150px !important">
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    <div id="page_info" class="dataTables_info">
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                    <div class="dataTables_paginate paging_bootstrap">
+                        <ul class="pagination"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $.ActionSelectList = [
+    {
+        name: 'companyid',
+        url: '/Users/GetCompanylist',
+        val: 'companyname',
+        key: 'companyid'
+    }];
+
+    $.ActionPage.pageSize = 10;
+    $.ActionPage.pageIndex = 1;
+
+    $.ActionList({
+        tourl: "/Users/GetUserList",
+        toid: "listuser>tbody",
+        sdata: $.ActionPage
+    });
+    $.ActionOperta({
+        toid: ".actions",
+        ActionFormRules: $.userrules,
+        ReloadUrl: '/Users/Index'
+    });
+
+</script>
+<script id="template" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${username}</td>
+        <td>${companyname}</td>
+        <td>
+            <a class="btn notunbinding">
+                删除
+            </a>
+            <a class="btn"
+               url="/Users/GetUsers/?username=${username}&&companyid=${companyid}"
+               data-url="/Users/UpdateUsers"
+               data-type="u"
+               data-title='修改'
+               data-rules='$.userrules'
+               data-rloadurl='/Users/Index'>
+                修改
+            </a>            
+            <a class="btn notunbinding" href="javascript:$.ActionNext('${username}')">
+                权限
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script id="template-form" type="text/x-jquery-tmpl">
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet-body form">
+            <form id="form" action="" class="form-horizontal">
+                <div class="form-body">
+                    <!-- BEGIN FORM-->
+                    <div class="alert alert-error display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>输入有错误,请检查.</span>
+                    </div>
+                    <div class="alert alert-success display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>验证成功的!</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            公司<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control select2me" name="companyid">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            用户名<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="username" data-required="1" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            密码<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="password" name="userpwd" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            电子邮箱<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="emailstr" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            手机<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input name="mobile" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            微信号<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input name="wxopenid" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <!-- END FORM-->
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            下一步
+                        </button>
+                        <button type="button" class="btn default">
+                            取消
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+</script>
+<script id="template-formpurview" type="text/x-jquery-tmpl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet-body">
+                <form id="formpurview" action="" class="form-horizontal">
+                    <input name="userid" type="hidden"/>
+                    <input name="productid" type="hidden" />
+                    <div class="form-body">
+                        <div class="alert alert-success display-hide">
+                            <button class="close" data-dismiss="alert"></button>
+                            <span>验证成功的!</span>
+                        </div>
+                    </div>
+                        <div class="tabbable-custom">
+                            <!-- BEGIN FORM-->
+                            <ul class="nav nav-tabs"></ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active customdiv_user">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END FORM-->
+                        <div class="form-actions fluid">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">
+                                    提交
+                                </button>
+                                <button type="button" class="btn default">
+                                    取消
+                                </button>
+                            </div>
+                        </div>
+</form>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</script>
+

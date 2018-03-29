@@ -1,0 +1,175 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<LNKBPhoto>
+@{
+    ViewBag.Title = "工业楼栋图片";
+}
+@section StyleSheet{
+    <style type="text/css">
+        #divCenter {
+            position: fixed;
+            _position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            margin: -141px 0 0 -201px;
+            border: 1px solid #CCC;
+            line-height: 280px;
+            text-align: center;
+            font-size: 14px;
+            background-color: #F4F4F4;
+            overflow: hidden;
+            display: none;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        $(function () {
+
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href=\"/Industry/IndustryProject/Index\">工业基础数据</a></span><i class=\"icon-angle-right\"></i></li>";
+            html += " <li><span><a href=\"/Industry/IndustryBuilding/Index?projectId=" + "@ViewBag.projectId" + "\">工业楼栋</a></span><i class=\"icon-angle-right\"></i></li>";
+            html += "<li><span><a>工业楼栋图片</a></span></li>";
+            $("ul.breadcrumb").append(html);
+
+            //checkbox联动全选
+            $("input[name=ids]").bind("click", function () {
+                var flag = true;
+                $("input[name=ids]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#checkall").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            $("#btnRefresh").on("click", function () {
+                location.reload();
+            });
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("DeletePicture")',
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        var isoss = "@(ViewBag.IsOss)";
+        function picBig(phoPath) {
+            var v = document.getElementById('divCenter');
+            v.style.display = "block";
+            var picBigImg = document.getElementById("picBigImg");
+            picBigImg.src = (isoss.toUpperCase() == "TRUE" ? phoPath + "@@400w_500h" : phoPath);
+        }
+
+        function picClose() {
+            var v = document.getElementById('divCenter');
+            v.style.display = "none";
+            var picBigImg = document.getElementById("picBigImg");
+            picBigImg.src = "/Content/Images/no_picture.jpg";
+        }
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div class="row-fluid" style="margin-bottom: 10px;">
+    <div class="span4">
+        <div>
+            <a class="btn blue thickbox" title='添加工业楼栋图片' href="@Url.Action("PictureCreate", new { ViewBag.projectId, ViewBag.buildingId })?TB_iframe=true&height=400&width=900">
+                <i class="icon-plus icon-white"></i>新增
+            </a><a class="btn red" id="delete" href="javascript:;">
+                <i class="icon-trash icon-white"></i>删除
+            </a>
+            <a class="btn" id="btnRefresh"><i class="icon-refresh"></i>刷新</a>
+        </div>
+    </div>
+</div>
+
+<div class="scrollBar">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>
+                <th>图片名称</th>
+                <th>图片</th>
+                <th>图片类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var m in Model)
+                {
+                    var chValue = m.FxtCompanyId + "#" + m.Id;
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />
+                    </td>
+                    <td>
+                        @m.PhotoName
+                    </td>
+                    <td>
+                        @{
+                    string path = Model == null ? "/Content/Images/no_picture.jpg" : (@ViewBag.IsOss ? @ViewBag.OssImgServer + m.Path : m.Path);
+                        }
+                        <a href='javascript:void(0);' onclick='picBig("@(path)");'>
+                            <img src="@(path)" width="100" height="100" id="path" name="path" alt="工业楼栋图片"/></a>
+                    </td>
+                    <td>
+                        @m.PhotoTypeCodeName
+                    </td>
+                    <td>
+                        <a class="btn mini purple thickbox" title='编辑工业楼栋图片' href="@Url.Action("PictureEdit", new { chValue = chValue, ViewBag.projectId, ViewBag.buildingId })?TB_iframe=true&height=400&width=900">编辑</a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div id="divCenter" onclick="picClose();">
+    <img id="picBigImg" style="max-width: 500px; max-height: 500px;" src="/Content/Images/no_picture.jpg" />
+</div>
+
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+</div>

@@ -1,0 +1,405 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@model PagedList<Dat_House_Biz>
+@{
+    ViewBag.Title = "商业房号";
+}
+@section StyleSheet
+{
+    <style type="text/css">
+        .scrollBar
+        {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        $(function () {
+            $("div.page-sidebar ul li").eq(2).addClass("active").find("a span").eq(1).addClass("selected");
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("Business/BusinessHouse/Index")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = "<li><span><a href=\"/Business/BusinessStreet/Index\">商业街</a></span><i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span><a href=\"/Business/BusinessBuild/Index?ProjectId=@(ViewBag.projectId)\">商业楼栋</a></span><i class=\"icon-angle-right\"></i></li>";
+                 html += " <li><span><a href=\"/Business/BusinessFloor/Index?projectId=@(ViewBag.projectId)&buildingId=@(ViewBag.buildingId)\">商业楼层</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += " <li><span>商业房号</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("DeleteHouse")',
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            <a class="btn blue" title='添加商业房号' href="@Url.Action("Create", new { Id = (ViewBag.BuildingId) + "#" + (ViewBag.FloorId)+"#"+(ViewBag.ProjectId) })">
+                <i class="icon-plus icon-white"></i>新增
+            </a>
+            <a class="btn red" id="delete" href="javascript:;">
+                <i class="icon-trash icon-white"></i>删除
+            </a>
+            <a id="btnImport" title="Excel导入" class = "btn" href="@Url.Action("UploadFile")">导 入</a>
+            <a class="btn" id="btnExport" href="@Url.Action("ExportHouse", new { BuildingId = ViewBag.BuildingId, FloorId = ViewBag.FloorId })">导 出</a>
+        </div>
+    </div>
+</div>
+<div class="scrollBar">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>
+                <th>楼栋名称
+                </th>
+                <th>楼层
+                </th>
+                <th>房号名称
+                </th>
+                <th>室号
+                </th>
+                <th>证载用途
+                </th>
+                <th>建筑面积
+                </th>
+                <th>商铺类型
+                </th>
+                <th>人流量
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var m in Model)
+                {
+                    var chValue = m.BuildingId + "#" + m.FloorId + "#" + m.HouseId + "#" + m.FxtCompanyId + "#" + ViewBag.ProjectId;
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />
+                    </td>
+                    <td>
+                        @m.BuildName
+                    </td>
+                    <td>
+                        @m.FloorNo
+                    </td>
+                    <td>
+                        <a  title='编辑商业房号' href="@Url.Action("EdityHouse", new { id = chValue })">@m.HouseName</a>
+                    </td>
+                    <td>
+                        @m.UnitNo
+                    </td>
+                    <td>
+                        @PurposeCode(m.PurposeCode)
+                    </td>
+                    <td>
+                        @m.BuildingArea
+                    </td>
+                    <td>@BizHouseType(m.BizHouseType)</td>
+                    <td>@FlowType(m.FlowType)</td>
+                    <td>
+                        <a class="btn mini purple"  title='编辑商业房号' href="@Url.Action("EdityHouse", new { id = chValue })"><i class="icon-edit"></i>编 辑</a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+
+</div>
+@helper PurposeCode(int? purposeCode)
+{
+    #region 证载用途、实际用途
+    switch (purposeCode)
+    {
+        case 1002001:
+            WriteLiteral("普通住宅");
+            break;
+        case 1002002:
+            WriteLiteral("非普通住宅");
+            break;
+        case 1002003:
+            WriteLiteral("公寓");
+            break;
+        case 1002004:
+            WriteLiteral("酒店式公寓");
+            break;
+        case 1002005:
+            WriteLiteral("独立别墅");
+            break;
+        case 1002006:
+            WriteLiteral("联排别墅");
+            break;
+        case 1002007:
+            WriteLiteral("叠加别墅");
+            break;
+        case 1002008:
+            WriteLiteral("双拼别墅");
+            break;
+        case 1002009:
+            WriteLiteral("旅馆");
+            break;
+        case 1002010:
+            WriteLiteral("花园洋房");
+            break;
+        case 1002011:
+            WriteLiteral("老洋房");
+            break;
+        case 1002012:
+            WriteLiteral("新式里弄");
+            break;
+        case 1002013:
+            WriteLiteral("旧式里弄");
+            break;
+        case 1002014:
+            WriteLiteral("商业");
+            break;
+        case 1002015:
+            WriteLiteral("办公");
+            break;
+        case 1002016:
+            WriteLiteral("厂房");
+            break;
+        case 1002017:
+            WriteLiteral("酒店");
+            break;
+        case 1002018:
+            WriteLiteral("仓库");
+            break;
+        case 1002019:
+            WriteLiteral("车位");
+            break;
+        case 1002020:
+            WriteLiteral("综合");
+            break;
+        case 1002021:
+            WriteLiteral("商住");
+            break;
+        case 1002022:
+            WriteLiteral("其他");
+            break;
+        case 1002023:
+            WriteLiteral("经济适用房");
+            break;
+        case 1002024:
+            WriteLiteral("补差商品住房");
+            break;
+        case 1002025:
+            WriteLiteral("地下室,储藏室");
+            break;
+        case 1002026:
+            WriteLiteral("车库");
+            break;
+        case 1002027:
+            WriteLiteral("别墅");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+    #endregion
+}
+@helper FrontCode(int? frontCode)
+{
+    switch (frontCode)
+    {
+        case 2004001:
+            WriteLiteral("东");
+            break;
+        case 2004002:
+            WriteLiteral("南");
+            break;
+        case 2004003:
+            WriteLiteral("西");
+            break;
+        case 2004004:
+            WriteLiteral("北");
+            break;
+        case 2004005:
+            WriteLiteral("东南");
+            break;
+        case 2004006:
+            WriteLiteral("东北");
+            break;
+        case 2004007:
+            WriteLiteral("西南");
+            break;
+        case 2004008:
+            WriteLiteral("西北");
+            break;
+        case 2004009:
+            WriteLiteral("南北");
+            break;
+        case 2004010:
+            WriteLiteral("东西");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}
+@helper Shape(int? shape)
+{
+    switch (shape)
+    {
+        case 1156001:
+            WriteLiteral("矩形");
+            break;
+        case 1156002:
+            WriteLiteral("梯形");
+            break;
+        case 1156003:
+            WriteLiteral("不规则形状");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}
+@helper BizCutOff(int bizCutOff)
+{
+    switch (bizCutOff)
+    {
+        case 1153001:
+            WriteLiteral("无");
+            break;
+        case 1153002:
+            WriteLiteral("绿化带阻隔");
+            break;
+        case 1153003:
+            WriteLiteral("交通设施阻隔");
+            break;
+        case 1153004:
+            WriteLiteral("与路面不齐平");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}
+@helper BizHouseType(int bizHouseType)
+{
+    switch (bizHouseType)
+    {
+        case 1110001:
+            WriteLiteral("临街商铺");
+            break;
+        case 1110002:
+            WriteLiteral("内铺");
+            break;
+        case 1110003:
+            WriteLiteral("社区商铺");
+            break;
+        case 1110004:
+            WriteLiteral("地下交通商铺");
+            break;
+        case 1110005:
+            WriteLiteral("柜台式内铺");
+            break;
+        case 1110006:
+            WriteLiteral("中岛式内铺");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}
+@helper BizHouseLocation(int bizHouseLocation)
+{
+    switch (bizHouseLocation)
+    {
+        case 1113001:
+            WriteLiteral("出入口处，人流量大");
+            break;
+        case 1113002:
+            WriteLiteral("主要通道两侧，醒目的商铺");
+            break;
+        case 1113003:
+            WriteLiteral("位置偏远，人流量小");
+            break;
+        case 1113004:
+            WriteLiteral("其他");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}
+@helper FlowType(int? flowType)
+{
+    switch (flowType)
+    {
+        case 1157001:
+            WriteLiteral("大");
+            break;
+        case 1157002:
+            WriteLiteral("较大");
+            break;
+        case 1157003:
+            WriteLiteral("一般");
+            break;
+        case 1157004:
+            WriteLiteral("小");
+            break;
+        case 1157005:
+            WriteLiteral("较小");
+            break;
+        default:
+            WriteLiteral("");
+            break;
+    }
+}

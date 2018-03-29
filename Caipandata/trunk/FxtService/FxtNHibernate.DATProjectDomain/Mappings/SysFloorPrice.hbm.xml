@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.DATProjectDomain" 
+				   namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.SysFloorPrice, FxtNHibernate.DATProjectDomain" 
+		   table="Sys_FloorPrice">
+		<id name="id" column="id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="id" column="id" type="int"  insert="false" update="false" />
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="总楼层开始" column="总楼层开始" type="int"  />
+		<property name="总楼层结束" column="总楼层结束" type="int"  />
+		<property name="所在楼层" column="所在楼层" type="int"  />
+		<property name="楼栋均价开始" column="楼栋均价开始" type="int"  />
+		<property name="楼栋均价结束" column="楼栋均价结束" type="int"  />
+		<property name="楼层差" column="楼层差" type="decimal"  />
+		<property name="是否带电梯" column="是否带电梯" type="int"  />
+		<property name="均价层" column="均价层" type="string"  />
+		<property name="是否百分比" column="是否百分比" type="int"  />
+				
+	</class>
+</hibernate-mapping>

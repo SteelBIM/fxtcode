@@ -1,0 +1,72 @@
+2016-12-27 16:50:55.7505 
+Url：BuildingExcelUpload
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+Source：System.Data
+StackTrace：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+
+2016-12-27 16:51:47.3437 
+Url：BuildingExcelUpload
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+Source：System.Data
+StackTrace：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+
+2016-12-27 16:53:54.2074 
+Url：BuildingExcelUpload
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+Source：System.Data
+StackTrace：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+
+2016-12-27 16:57:26.8896 
+Url：BuildingExcelUpload
+UserIP：
+UserID：admin@fxt
+CityID：6
+FXTCompanyID：25
+Message：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+Source：System.Data
+StackTrace：System.ArgumentException: 列“*楼栋用途”不属于表 。
+   在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.DataFilter(Int32 taskId, Double integer, Int32 cityId, Int32 fxtCompanyId, DataTable dt, List`1& listTrue, DataTable& dtError, List`1& modifiedProperty) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 181
+   在 FXT.DataCenter.WCF.Services.ExcelUpload.BuildingExcelUpload(Int32 cityid, Int32 fxtcompanyid, String filePath, String userid, String taskName) 位置 d:\FangXunTong\GitDemo\DataCenter2.0\DataCenter\FXT.DataCenter.WCF.Services\ExcelUploadServices\Building.cs:行号 52
+

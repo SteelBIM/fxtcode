@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section link{
+}
+@section script{
+    <script src="~/Scripts/DatabaseCall/BuildingCall.js"></script>
+}
+
+<div class="page-header" style="display:none">
+    <h1>
+        Tables
+        <small>
+            <i class="icon-double-angle-right"></i>
+            Static &amp; Dynamic Tables
+        </small>
+    </h1>
+</div>
+<!--整块-->
+<div class="row">
+    <!--整块-->
+    <div class="col-xs-12">
+        <!--第一个表格-->
+        <div class="row" id="databaseCallPanel">
+            <div class="col-xs-12">
+                <div class="col-xs-6 col-sm-3 diy_col_left" id="topOperate">
+                    共<span id="countShow">0</span>条
+                </div>
+                <div class="col-xs-6 col-sm-9 diy_col_right">
+                    楼栋名称
+                    <input type="text" class="search-query" style="width:20%;" id="txtBuildingName">
+                    <button type="button" class="btn btn-inverse btn-xs diy_search_btn" id="btnSearch">
+                        搜索
+                        <i class="icon-search icon-on-right bigger-110"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <label id="cbAllPanel">
+                                        <input type="checkbox" class="ace" id="cbAll">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>楼栋名称</th>
+                                <th>单元数</th>
+                                <th>总层数</th>
+                                <th>总户数</th>
+                            </tr>
+                        </thead>
+                        <tbody id="databaseCallRowList">
+                            <tr id="databaseCallRow" style="display:none;">
+                                <td class="center" width="50">
+                                    <label class="cbPanel">
+                                        <input type="checkbox" class="ace cb_select">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td width="100">
+                                    <span><a href="javascript:;" class="txt_buildingname" target="_blank">楼盘名称</a></span>
+                                </td>
+                                <td width="100">
+                                    <span class="txt_unitsnumber" data-statusid="">单元数</span>
+                                </td>
+                                <td width="100">
+                                    <span class="txt_totalfloor" data-statusid="">总层数</span>
+                                </td>
+                                <td width="100">
+                                    <button type="button" class="btn btn-info btn-xs diy_search_btn txt_totalnumber" id="btnSearch">
+                                        总户数
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /span -->
+            <div class="col-xs-12">
+                <input type="hidden" value="" id="hdDatabaseCallCount" />
+                <ul id="example" data-count=""></ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*存储当前用户所拥有的权限*@
+<div style="display:none;" id="divFunctionCodes">
+    @foreach (int code in ViewBag.FunctionCodes)
+    {
+        <span class="functioncode functioncode_@code">@code</span>
+    }
+</div>
+<input type="hidden" id="projectId" value="@ViewBag.ProjectID" />

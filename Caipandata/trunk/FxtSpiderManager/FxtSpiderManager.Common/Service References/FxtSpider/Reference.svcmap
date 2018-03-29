@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="08647a33-d4e1-49d0-aa35-aecef11bf0c9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:6300/FxtSpider/FxtSpider.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtSpider.disco" MetadataType="Disco" ID="79777009-e1d6-4a05-a910-dbe14e5bf310" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?disco" />
+    <MetadataFile FileName="FxtSpider.xsd" MetadataType="Schema" ID="66b8fff4-042c-4b5c-b98b-77ae5c1f0945" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?xsd=xsd1" />
+    <MetadataFile FileName="FxtSpider1.xsd" MetadataType="Schema" ID="3ca149d1-262c-497c-8988-0e7c816165ff" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?xsd=xsd0" />
+    <MetadataFile FileName="Fxtspider.wsdl" MetadataType="Wsdl" ID="5f8a9689-f678-4eb1-ba13-cd24672242be" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

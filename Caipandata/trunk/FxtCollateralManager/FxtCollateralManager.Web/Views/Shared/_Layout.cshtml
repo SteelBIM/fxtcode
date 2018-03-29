@@ -1,0 +1,228 @@
+﻿@using FxtCollateralManager.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>贷后押品管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta name="MobileOptimized" content="320">
+    <title>@ViewBag.Title</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="/Content/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css" />
+    <link href="/Content/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Content/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <link href="/Content/plugins/tree/css/jquery.treeview.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Content/plugins/jquery-select/select2_metro.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Content/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+
+    <!-- BEGIN THEME STYLES -->
+    <link href="/Content/css/style-metronic.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/pages/tasks.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/Content/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/custom.css" rel="stylesheet" />
+
+</head>
+<body class="page-header-fixed">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="header-inner">
+            <!-- BEGIN LOGO -->
+            <a class="navbar-brand" href="/">
+                <!-- <img src="assets/img/logo.png" alt="logo" class="img-responsive" /> -->
+                房讯通
+            </a>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <img src="Content/img/menu-toggler.png" alt="" />
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-left">
+                @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.ManageMyFile)){
+                <li class="dropdown"  >
+                    <a href="#portlet-config" data-toggle="modal" data-id="myfile">
+                        <i class="icon icon-cog"></i>
+                        <span class="text">我的文件</span>
+                    </a>
+                </li> 
+                }              
+                <li>
+                    <div class="row dn" id="horizontalRow" style="margin:15px 0 0 5px;">
+                        <select name="horizontalprovince" class="selectStyle">
+                            <option value="">-请选择-</option>
+                        </select>
+                        <select name="horizontalcity" class="selectStyle">
+                            <option value="">-请选择-</option>
+                        </select>
+                        <select name="horizontalarea" class="selectStyle">
+                            <option value="">-请选择-</option>
+                        </select>
+                    </div>
+                </li>
+            </ul> 
+            <ul class="nav navbar-nav pull-right">
+                @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.Export)){
+                <li>
+                    <a href="#portlet-config" data-toggle="modal" data-id="down">
+                        <i class="icon-long-arrow-down"></i>
+                        导出
+                    </a>
+                </li>     
+                }        
+                @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.Import)){
+                <li style="display:none">
+                    <a href="#portlet-config" data-toggle="modal" data-id="up">
+                        <i class="icon-long-arrow-up"></i>
+                        导入
+                    </a>
+                    <form id="allupupload" action="/Upload/fileUpload"
+                          method="post" enctype="multipart/form-data"
+                          style="display:none">
+                        <input type="hidden" name="type" id="type" value="up" />
+                    </form>
+                </li>
+                } 
+                @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CollateralRePrice)){
+                <li class="dropdown">
+                    <a href="#" id="taknav" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <i class="icon-tasks"></i>
+                        <span class="badge" id="tasknum" ></span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks">
+                        <li>
+                            <p id="tasknumtip"></p>
+                        </li>
+                        <li>
+                            <div style="position: relative; overflow: hidden; width: auto; height: 350px;" class="slimScrollDiv">
+                                <ul class="dropdown-menu-list scroller" style="height: 350px; overflow-y: auto; overflow-x: hidden; width: auto; ">
+                                   
+                                </ul>                                
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                }
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown user" style="margin-top:5px;">
+                   <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">               
+                   <span class="username">@Public.LoginInfo.TrueName</span>
+                   <i class="icon-angle-down"></i>
+                   </a>
+                   <ul class="dropdown-menu user-nemu">
+                      <li><a href="javascript:void(0);" data-id="modifypass"><i class="icon-user"></i>修改密码</a></li>                 
+                      <li><a href="javascript:void(0);" data-id="logout"><i class="icon-key"></i>注销</a></li>
+                   </ul>
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+            </ul> 
+                <!-- END TOP NAVIGATION MENU -->
+</div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <div class="clearfix"></div>
+    @RenderBody()
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="footer-inner">
+            2013 &copy; Metronic by keenthemes.
+        </div>
+        <div class="footer-tools">
+            <span class="go-top">
+                <i class="icon-angle-up"></i>
+            </span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <script src="/Content/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+    <script src="/Content/plugins/jquery-ui/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
+    <script src="/Content/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/Content/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+            type="text/javascript"></script>
+    <script src="/Content/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="/Content/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/Content/plugins/tree/jquery.treeview.js" type="text/javascript"></script>
+    <script src="/Content/plugins/tree/jquery.treeview.contenmenu.js" type="text/javascript"></script>
+
+    <script src="/Content/plugins/jquery-select/select2.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery-select/select2_locale_zh-CN.js" type="text/javascript"></script>
+
+    <script src="/Content/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="/Content/plugins/bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.js" type="text/javascript"></script>
+
+    <script src="/Content/plugins/flot/jquery.flot.js"></script>
+    <script src="/Content/plugins/flot/jquery.flot.pie.js"></script>
+
+    <script src="/Content/plugins/highcharts/highcharts.js"></script>
+
+    <script src="/Scripts/jquery.extend.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+    <script src="/Scripts/FxtNavigation.js" type="text/javascript"></script>
+    <script src="/Scripts/FxtAutoComplete.js" type="text/javascript"></script>
+
+    <script src="/Content/plugins/jquery-validation/jquery.validate.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery-validation/additional-methods.js" type="text/javascript"></script>
+    <script src="/Content/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
+
+    <!--<script src="/Content/upload/jquery.tmpl.min.js" type="text/javascript"></script>-->
+    <script src="/Content/plugins/jquery-tmpl/jquery.tmpl.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="/Content/scripts/app.js" type="text/javascript"></script>
+    <script src="/Content/scripts/tasks.js" type="text/javascript"></script>
+
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=yUIEBpXhiAajYfNBDH8nFzj0" type="text/javascript"></script>    
+    <!-- END PAGE LEVEL SCRIPTS -->
+        <script type="text/x-jquery-tmpl" id="task_tmpl">
+        <li onclick="RedireUrl('/Collateral/Index', { uploadfileid: ${uploadfileid} });" data-count="${count}" fid="${id}" data-success="${successcount}" data-fail="${failurecount}"  data-tasktype="${tasktype}" data-num="${count} ${successcount} ${failurecount} ${tasktype}" >
+            <a href="#">
+                <span class="task">
+                    <span class="desc">${title}</span>
+                    <span class="percent">${$item.dataProcess('num')}%</span>
+                </span>
+                <span class="progress">
+                    <span style="width:${$item.dataProcess('num')}%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only"> ${$item.dataProcess('num')}% Complete</span>
+                    </span>
+                </span>
+            </a>
+        </li>
+    </script>
+
+
+    <script type="text/x-jquery-tmpl" id="item_tmpl">
+        <div class="projectchecker" val="${Id}" ><input type="checkbox"  value="${Id}">${ProjectName}</div>
+    </script>
+
+     <script type="text/x-jquery-tmpl" id="city_tmpl">
+         <div class="projectchecker" val="${cityid}" va="1"  ><input type="checkbox"  value="${cityid}">${cityname}</div>
+    </script>
+
+     <script type="text/x-jquery-tmpl" id="singlecity_tmpl">
+           <div class="projectchecker" val="${cityid}" >
+               <label><input type="radio" value="${cityid}" name ="singcity" >${cityname} 
+                </label></div>
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CDIService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="EndPointHttps_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="EndPointTCP_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/CDIService/CDIService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/CDIService/CDIService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICDIService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_ValidateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateAddress" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_ValidateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryCityInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryCityInfoList" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryCityInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryCityInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryAreaInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryAreaInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryAreaInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryAreaInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryPurposeInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPurposeInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryPurposeInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPurposeInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryFrontInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryFrontInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryFrontInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryFrontInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryBuildingTypeInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryBuildingTypeInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryBuildingTypeInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryBuildingTypeInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryHouseTypeInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryHouseTypeInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryHouseTypeInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryHouseTypeInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryStructureInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryStructureInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryStructureInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryStructureInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryFitmentInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryFitmentInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryFitmentInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryFitmentInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryMoneyUnitInfoMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryMoneyUnitInfoMap" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryMoneyUnitInfoMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryMoneyUnitInfoMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_BatchInsertDataCase_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchInsertDataCase" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_BatchInsertDataCase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchInsertDataCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryDataProjectList_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataProjectList" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_QueryDataProjectList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDataProjectListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_PagingQueryProjectList_InputMessage">
+    <wsdl:part name="parameters" element="tns:PagingQueryProjectList" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_PagingQueryProjectList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PagingQueryProjectListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_GetNetworkNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNetworkNames" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_GetNetworkNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNetworkNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_PagingQueryCityList_InputMessage">
+    <wsdl:part name="parameters" element="tns:PagingQueryCityList" />
+  </wsdl:message>
+  <wsdl:message name="ICDIService_PagingQueryCityList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PagingQueryCityListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICDIService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/Echo" message="tns:ICDIService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/EchoResponse" message="tns:ICDIService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/ValidateAddress" message="tns:ICDIService_ValidateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/ValidateAddressResponse" message="tns:ICDIService_ValidateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/Login" message="tns:ICDIService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/LoginResponse" message="tns:ICDIService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/Logout" message="tns:ICDIService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/LogoutResponse" message="tns:ICDIService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCityInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryCityInfoList" message="tns:ICDIService_QueryCityInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryCityInfoListResponse" message="tns:ICDIService_QueryCityInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAreaInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryAreaInfoMap" message="tns:ICDIService_QueryAreaInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryAreaInfoMapResponse" message="tns:ICDIService_QueryAreaInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPurposeInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryPurposeInfoMap" message="tns:ICDIService_QueryPurposeInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryPurposeInfoMapResponse" message="tns:ICDIService_QueryPurposeInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFrontInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryFrontInfoMap" message="tns:ICDIService_QueryFrontInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryFrontInfoMapResponse" message="tns:ICDIService_QueryFrontInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBuildingTypeInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryBuildingTypeInfoMap" message="tns:ICDIService_QueryBuildingTypeInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryBuildingTypeInfoMapResponse" message="tns:ICDIService_QueryBuildingTypeInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryHouseTypeInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryHouseTypeInfoMap" message="tns:ICDIService_QueryHouseTypeInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryHouseTypeInfoMapResponse" message="tns:ICDIService_QueryHouseTypeInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryStructureInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryStructureInfoMap" message="tns:ICDIService_QueryStructureInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryStructureInfoMapResponse" message="tns:ICDIService_QueryStructureInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFitmentInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryFitmentInfoMap" message="tns:ICDIService_QueryFitmentInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryFitmentInfoMapResponse" message="tns:ICDIService_QueryFitmentInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryMoneyUnitInfoMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryMoneyUnitInfoMap" message="tns:ICDIService_QueryMoneyUnitInfoMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryMoneyUnitInfoMapResponse" message="tns:ICDIService_QueryMoneyUnitInfoMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertDataCase">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/BatchInsertDataCase" message="tns:ICDIService_BatchInsertDataCase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/BatchInsertDataCaseResponse" message="tns:ICDIService_BatchInsertDataCase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataProjectList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/QueryDataProjectList" message="tns:ICDIService_QueryDataProjectList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/QueryDataProjectListResponse" message="tns:ICDIService_QueryDataProjectList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryProjectList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/PagingQueryProjectList" message="tns:ICDIService_PagingQueryProjectList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/PagingQueryProjectListResponse" message="tns:ICDIService_PagingQueryProjectList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/GetNetworkNames" message="tns:ICDIService_GetNetworkNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/GetNetworkNamesResponse" message="tns:ICDIService_GetNetworkNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryCityList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICDIService/PagingQueryCityList" message="tns:ICDIService_PagingQueryCityList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICDIService/PagingQueryCityListResponse" message="tns:ICDIService_PagingQueryCityList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EndPointHttps" type="tns:ICDIService">
+    <wsp:PolicyReference URI="#EndPointHttps_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateAddress">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/ValidateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCityInfoList">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryCityInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAreaInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryAreaInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPurposeInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryPurposeInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFrontInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryFrontInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBuildingTypeInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryBuildingTypeInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryHouseTypeInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryHouseTypeInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryStructureInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryStructureInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFitmentInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryFitmentInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMoneyUnitInfoMap">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryMoneyUnitInfoMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertDataCase">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/BatchInsertDataCase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataProjectList">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/QueryDataProjectList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryProjectList">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/PagingQueryProjectList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkNames">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/GetNetworkNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryCityList">
+      <soap:operation soapAction="http://tempuri.org/ICDIService/PagingQueryCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EndPointTCP" type="tns:ICDIService">
+    <wsp:PolicyReference URI="#EndPointTCP_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Echo">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/Echo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateAddress">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/ValidateAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCityInfoList">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryCityInfoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAreaInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryAreaInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPurposeInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryPurposeInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFrontInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryFrontInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBuildingTypeInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryBuildingTypeInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryHouseTypeInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryHouseTypeInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryStructureInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryStructureInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFitmentInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryFitmentInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMoneyUnitInfoMap">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryMoneyUnitInfoMap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertDataCase">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/BatchInsertDataCase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataProjectList">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/QueryDataProjectList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryProjectList">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/PagingQueryProjectList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkNames">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/GetNetworkNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagingQueryCityList">
+      <soap12:operation soapAction="http://tempuri.org/ICDIService/PagingQueryCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CDIService">
+    <wsdl:port name="EndPointHttps" binding="tns:EndPointHttps">
+      <soap:address location="https://yuds.fxtcn.cn/CDIService/CDIService.svc" />
+    </wsdl:port>
+    <wsdl:port name="EndPointTCP" binding="tns:EndPointTCP">
+      <soap12:address location="net.tcp://yuds.fxtcn.cn/CDIService/CDIService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://yuds.fxtcn.cn/CDIService/CDIService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Content.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        table.table tr th, table.table tr td
+        {
+            text-align: center;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#companyid").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("GetGroup")",
+                    dataType: 'json',
+                    data: function(term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function(data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function(data) {
+                    return data.text;
+                },
+                formatSelection: function(data) {
+                    $("#companyname").val(data.text);
+                    return data.text;
+                },
+            });
+
+            $("#companyid").select2("val", { id: '@Request["companyid"]',text:'@Request["companyname"]' });
+        });
+    </script>
+}
+<div>
+    @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search", @class = "well form-inline" }))
+    { 
+        <table style="margin-left:15px; text-align:center;">
+            <tr>
+                <td>公司：</td>
+                <td style="padding-top: 5px">
+                    <input type="hidden" id="companyid" name="companyid" />
+                    <input type="hidden" id="companyname" name="companyname" /></td>
+                <td>
+                    &nbsp;&nbsp;
+                    <button type="submit" class="btn">
+                        统计 <i class="icon-search"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        
+@*<div style="margin-left: 15px;">
+              公司：
+            <input type="hidden" id="companyid" name="companyid" />
+            <input type ="hidden" id="companyname" name="companyname" />
+            <button type="submit" class="btn">
+                统计 <i class="icon-search"></i>
+            </button>
+        </div>*@
+    }
+</div>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>公司名称
+            </th>
+            <th>土地数
+            </th>
+            <th>楼盘数
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var data = ViewBag.Statistics;
+        }
+        @if (data != null)
+        {
+            <tr>
+                <td>
+                    @data.CompanyName
+                </td>
+                <td>
+                    @data.LandCount
+                </td>
+                <td>
+                    @data.ProjectCount
+                </td>
+            </tr>
+           
+        }
+
+    </tbody>
+</table>

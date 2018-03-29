@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/VQOperatCenter.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VQOperatCenter.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PropertyMain">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="caseid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="companyid" type="xs:int" />
+      <xs:element minOccurs="0" name="entrustsource" type="xs:int" />
+      <xs:element minOccurs="0" name="entrusttype" type="xs:int" />
+      <xs:element minOccurs="0" name="property" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="serialid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertyMain" nillable="true" type="tns:PropertyMain" />
+  <xs:complexType name="ArrayOfProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty" />
+  <xs:complexType name="Property">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="areaid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="areaname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="artifpricedate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="artifpriceuserid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="artiftotalprice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="artifunprice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="autopricedate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="autototalprice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="autounprice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="bankpropertyid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="bankserialid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="buildingarea" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="buildingid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="buildingname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cityid" type="xs:int" />
+      <xs:element minOccurs="0" name="cityname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="enddate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="floornumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="housecardno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="houseid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="housename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="housestate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="housetype" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="issub" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="landtype" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="projectid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="projectname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="propertype" type="xs:int" />
+      <xs:element minOccurs="0" name="provinceid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="provincename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="querypricetype" type="xs:int" />
+      <xs:element minOccurs="0" name="regdate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="road" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="totalfloor" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Property" nillable="true" type="tns:Property" />
+  <xs:complexType name="LoanExcelParam">
+    <xs:sequence>
+      <xs:element name="_x003C_BusinessTypeDesc_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BusinessType_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_bankid_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_excellist_x003E_k__BackingField" nillable="true" type="tns:ArrayOfLoanExcelModel" />
+      <xs:element name="_x003C_excelmappath_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_excelpath_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ssss_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_subcompany_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_subcompanyid_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_userid_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_username_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanExcelParam" nillable="true" type="tns:LoanExcelParam" />
+  <xs:complexType name="ArrayOfLoanExcelModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LoanExcelModel" nillable="true" type="tns:LoanExcelModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLoanExcelModel" nillable="true" type="tns:ArrayOfLoanExcelModel" />
+  <xs:complexType name="LoanExcelModel">
+    <xs:sequence>
+      <xs:element name="_x003C_bus_areaname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_branch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_cityname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_collateraladdress_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_collateralarea_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_collateralid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_collateralname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_collateraltype_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_lenderage_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_bus_loanbalance_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_loancredits_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_loanpercent_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_loanyears_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_bus_onebranch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_originalrates_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_originalvaluation_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_pawnarea_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_bus_provincename_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_bus_twobranch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_error_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_index_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_pawn_affiliatedpro_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_areaid_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_pawn_areaname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_buildingid_x003E_k__BackingField" nillable="true" type="xs:long" />
+      <xs:element name="_x003C_pawn_buildingname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_cityid_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_pawn_cityname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_completiondate_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_pawn_developersname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_flatstruct_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_floorno_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_houseid_x003E_k__BackingField" nillable="true" type="xs:long" />
+      <xs:element name="_x003C_pawn_housename_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_iscity_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_latitude_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_pawn_longitude_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_pawn_number_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_pawnname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_propertyaddress_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_propertyid_x003E_k__BackingField" nillable="true" type="xs:long" />
+      <xs:element name="_x003C_pawn_propertyname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_propertytype_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_provinceid_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_pawn_provincename_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_road_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_pawn_staging_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_project_no_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_task_no_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_work_currassesstotalprice_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_work_currassesstotalval_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_work_currassessunprice_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_work_currrates_x003E_k__BackingField" nillable="true" type="xs:decimal" />
+      <xs:element name="_x003C_work_loantaskadddate_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_work_loantasksplitdate_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_work_loantasksuccessdate_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_work_remark_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_work_suppliername_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_work_surveyid_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_work_workname_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanExcelModel" nillable="true" type="tns:LoanExcelModel" />
+</xs:schema>

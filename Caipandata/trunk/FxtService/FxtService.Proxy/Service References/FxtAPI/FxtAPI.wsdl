@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FxtAPI" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:6300/API/FxtAPI.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:6300/API/FxtAPI.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFxtAPI_Cross_InputMessage">
+    <wsdl:part name="parameters" element="tns:Cross" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_Cross_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrossResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvince_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvince" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetProvince_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCity" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetArea_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArea" />
+  </wsdl:message>
+  <wsdl:message name="IFxtAPI_GetArea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFxtAPI">
+    <wsdl:operation name="Cross">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/Cross" message="tns:IFxtAPI_Cross_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/CrossResponse" message="tns:IFxtAPI_Cross_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvince">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetProvince" message="tns:IFxtAPI_GetProvince_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetProvinceResponse" message="tns:IFxtAPI_GetProvince_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetCity" message="tns:IFxtAPI_GetCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetCityResponse" message="tns:IFxtAPI_GetCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtAPI/GetArea" message="tns:IFxtAPI_GetArea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtAPI/GetAreaResponse" message="tns:IFxtAPI_GetArea_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFxtAPI" type="tns:IFxtAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Cross">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/Cross" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvince">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetProvince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArea">
+      <soap:operation soapAction="http://tempuri.org/IFxtAPI/GetArea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FxtAPI">
+    <wsdl:port name="BasicHttpBinding_IFxtAPI" binding="tns:BasicHttpBinding_IFxtAPI">
+      <soap:address location="http://localhost:6300/API/FxtAPI.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

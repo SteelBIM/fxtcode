@@ -1,0 +1,105 @@
+﻿@using FxtDataAcquisition.Common;
+@{
+    ViewBag.Title = "字段";
+    Layout = null;
+}
+
+<!--整块-->
+<div class="row">
+    <!--整块-->
+    <div class="col-xs-12">
+        <!--第一个表格-->
+        <div class="row" id="panel">
+            <div class="col-xs-12">
+                <div class="col-xs-6 col-sm-3 diy_col_left" style="width:15%" id="topOperate">
+                    <button class="btn btn-xs btn-danger diy_btn topOperate" id="btnDelete">
+                        删除
+                        <i class="ace-icon fa fa-times icon-on-right bigger-110"></i>
+                    </button>
+                    共<span id="countShow">0</span>条
+                </div>
+                <div class="col-xs-6 col-sm-9 diy_col_right" style="width:85%">
+                    <input type="text" placeholder="字段名称" class="search-query" style="width:150px;" id="name">
+                    &nbsp;
+                    <input type="text" placeholder="标题" class="search-query" style="width:150px;" id="title">
+                    &nbsp;
+                    <select id="dataType" data-nowid="">
+                        <option value="0">---类型--</option>
+                        <option value="@SYSCodeManager.DATATYPECODE_1">楼盘</option>
+                        <option value="@SYSCodeManager.DATATYPECODE_2">楼栋</option>
+                        <option value="@SYSCodeManager.DATATYPECODE_4">房号</option>
+                    </select>
+                    &nbsp;
+                    <button type="button" class="btn btn-inverse btn-xs diy_search_btn" id="btnSearch">
+                        搜索
+                        <i class="ace-icon fa fa-search icon-search icon-on-right bigger-110"></i>
+                    </button>
+                    <button class="btn btn-xs btn-primary diy_btn" id="btnAdd">
+                        新增字段
+                        <i class="ace-icon fa fa-plus icon-on-right bigger-110"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <label id="cbAllPanel">
+                                        <input type="checkbox" class="ace" id="cbAll">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>字段名称</th>
+                                <th>标题</th>
+                                <th>字段类型</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rowList">
+                            <tr id="rowobj" style="display:none;">
+                                <td class="center" width="100">
+                                    <label class="cbPanel">
+                                        <input type="checkbox" class="ace cb_select">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td class="center">
+                                    <span class="txt_name" data-statusid="">字段名称</span>
+                                </td>
+                                <td class="center">
+                                    <span class="txt_title" data-statusid="">标题</span>
+                                </td>
+                                <td>
+                                    <span class="txt_datatypename" data-statusid="">字段类型</span>
+                                </td>
+                                <td width="150">
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                        <button class="btn btn-xs btn-info btn_edit" data-id="" title="修改">
+                                            <i class="ace-icon fa fa-edit bigger-120"></i>
+                                        </button>
+                                        <button class="btn btn-xs btn-danger btn_delete" data-id="" title="删除">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /span -->
+            <div class="col-xs-12">
+                <input type="hidden" value="" id="hdCount" />
+                <ul id="example" data-count=""></ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var scripts = [null, "/Scripts/FieldTemplet/FieldTempletManager.js"]
+    ace.load_ajax_scripts(scripts, function () {
+        FieldTempletManager.init();
+    });
+</script>

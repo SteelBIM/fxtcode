@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtDataUserDomain" 
+				   namespace="FxtNHibernate.FxtDataUserDomain.Entities">
+	<class name="FxtNHibernate.FxtDataUserDomain.Entities.SysRelationTable, FxtNHibernate.FxtDataUserDomain" 
+		   table="Sys_Relation_Table">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			      			
+      	</id>      		
+		<property name="UserId" column="UserId" type="int"  />
+		<property name="RelationTableName" column="RelationTableName" type="string"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+				
+	</class>
+</hibernate-mapping>

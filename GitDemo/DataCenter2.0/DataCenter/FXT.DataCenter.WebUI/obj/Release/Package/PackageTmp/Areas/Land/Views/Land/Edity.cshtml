@@ -1,0 +1,479 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.Map.cshtml"; 
+}
+@model FXT.DataCenter.Domain.Models.DAT_Land
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Plugin/MutilSelect/jquery.multiselect.css")" />
+   @* <link href="@Url.Content("~/Content/Assets/mapcss/MapCss.css")" rel="stylesheet" />*@
+    <style type="text/css">
+        #tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+            
+        }
+        .xubox_layer
+        {
+            top:5px!important;
+        }
+        .select2-container
+        {
+            width:220px!important;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript" src="@Url.Content("~/Content/Plugin/MutilSelect/jquery.multiselect.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Plugin/MutilSelect/jquery.multiselect.zh-cn.js")"></script>
+    <script type="text/javascript">
+        var MapLineLng_Lat = [], ClikcLng_Lat = [], map;
+        $(function () {
+            //$(".select2-container").css("width", "220px");
+            var landId = '@Model.landid', landno = '@Model.landno',flg =false;
+            $("#btnSubmit").click(function () {
+                var startdate = $.trim($("#startdate").val());
+                var startenddate = $.trim($("#enddate").val());
+                if (startdate != null || startenddate != null || startdate != "" || startenddate != "") {
+                    if (Date.parse(startenddate) - Date.parse(startdate) < 0) {
+                        alert("土地终止日期不得小于土地起始日期！")
+                        return false;
+                    }
+                }
+
+                if (landId == 0 || landId == "0") {
+                    flg=ValidaLandNo();
+                } else {
+                    if ($.trim(landno) != $.trim($("#landno").val())) {
+                        flg = ValidaLandNo();
+                    } else {
+                        flg = true;
+                    }
+                }
+
+                if (!flg)
+                {
+                   return false;
+                }
+
+            });
+            function ValidaLandNo() {
+                $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    cache: false,
+                    async: false,
+                    url: "/land/land/ValidLandNo",
+                    data: { landNo: $.trim($("#landno").val()) },
+                    success: function (j) {
+                        if (j) {
+                            alert("已经存在该宗地号");
+                            flg = false;
+                        } else {
+                            flg = true;
+                        }
+                    }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        flg = false;;
+                    }
+                });
+                return flg;
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var planpurpose = "@(Model.planpurpose)";
+        var landId = '@(Model.landid)';
+
+        $(function () {
+            //BindSubArea($("#areaid").find("option:selected").val(), $("#subareaid").find("option:selected").val());
+            if (parseInt(landId) > 0) {
+                BindCity('@(Model.cityid)', '@(Model.areaid)');
+            BindSubArea('@(Model.areaid)', '@(Model.subareaid)');
+            //BindLandCode('@@(Model.planpurpose)', "#planpurpose");
+            BindLandCode('@(Model.factpurpose)', "#factpurpose");
+        }
+    });
+</script>
+<script src="@Url.Content("~/Content/Scripts/cityBind/city.js")" type="text/javascript"></script>
+<script src="/Content/Scripts/autocomplete/localdata.js" type="text/javascript"></script>
+<script src="/Content/Scripts/landemptyvalid.js" type="text/javascript"></script>
+}
+@section MainContent{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>&nbsp;&nbsp;土地名称:
+            </td>
+            <td>@Html.TextBoxFor(m => m.landname)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;<b style="color: Red;">*</b>城市:
+            </td>
+            <td>@Html.DropDownListFor(m => m.cityid, (ViewBag.citylist) as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;<b style="color: Red;">*</b>行政区:
+            </td>
+            <td>@Html.DropDownListFor(m => m.areaid, ViewBag.arealist as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;片区:
+            </td>
+            <td>@Html.DropDownListFor(m => m.subareaid, new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "--请选择--" } })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;<b style="color: Red;">*</b>宗地号:
+            </td>
+            <td>@Html.TextBoxFor(m => m.landno)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;土地使用证号:
+            </td>
+            <td>@Html.TextBoxFor(m => m.fieldno)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;土地位置:
+            </td>
+            <td>@Html.TextBoxFor(m => m.address)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;使用权类型:
+            </td>
+            <td>@Html.DropDownListFor(m => m.landtypecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "3002001", Text = "政府出让" },
+               new SelectListItem { Value = "3002002", Text = "企业转让" },
+               new SelectListItem { Value = "3002003", Text = "行政划拨" },
+               new SelectListItem { Value = "3002004", Text = "旧城改造" }
+           })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;使用权性质:
+            </td>
+            <td>@Html.DropDownListFor(m => m.usetypecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "6030001", Text = "国家" },
+               new SelectListItem { Value = "6030002", Text = "集体" }
+           })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;土地使用起始日期:
+            </td>
+            <td>@Html.TextBoxFor(m => m.startdate, new { Value = Model.startdate == null ? "" : Model.startdate.Value.ToString("yyyy-MM-dd") })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;土地使用结束日期:
+            </td>
+            <td>@Html.TextBoxFor(m => m.enddate, new { Value = Model.enddate == null ? "" : Model.enddate.Value.ToString("yyyy-MM-dd") })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;土地使用年限:
+            </td>
+            <td>@Html.TextBoxFor(m => m.useyear)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;规划用途:
+            </td>
+            <td>
+                @*@Html.DropDownListFor(m => m.planpurpose, (ViewBag.landcodelist) as List<SelectListItem>)
+                <input id="opValue" name="opValue" type="hidden" />*@
+                @Html.DropDownListFor(m => m.Description, ViewBag.LandPlanUse as List<SelectListItem>, new { multiple = true})
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;土地面积
+            </td>
+            <td>@Html.TextBoxFor(m => m.landarea)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;规划总建筑面积:
+            </td>
+            <td>@Html.TextBoxFor(m => m.buildingarea)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;容积率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.cubagerate)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;最大容积率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.maxcubagerate)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;最小容积率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.mincubagerate)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;覆盖率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.coverage)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;最大覆盖率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.maxcoverage)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;绿化率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.greenrage)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;最小绿化率:
+            </td>
+            <td>@Html.TextBoxFor(m => m.mingreenrage)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;四至 东:
+            </td>
+            <td>@Html.TextBoxFor(m => m.east)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;四至 西:
+            </td>
+            <td>@Html.TextBoxFor(m => m.west)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;四至 南:
+            </td>
+            <td>@Html.TextBoxFor(m => m.south)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;四至 北:
+            </td>
+            <td>@Html.TextBoxFor(m => m.north)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;X坐标:
+            </td>
+            <td>@Html.TextBoxFor(m => m.x, new { @readonly="readonly"  })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;Y坐标:
+            </td>
+            <td>@Html.TextBoxFor(m => m.y, new { @readonly="readonly"  })
+                <a href="javascript:void(0)" id="GetCoordinate" @*onclick="GetLngLat()"*@>拾取坐标</a>
+                <a href="javascript:void(0)" id="MapCallout" @*onclick="MapLine()"*@>地图标注</a>
+            </td>
+            @* <td>
+                <select id="getxy_select" style="width: 100px;">
+                    <option value="-1">请选择</option>
+                    <option value="getxy">拾取坐标</option>
+                    <option value="mapmaks">地图标注</option>
+                </select>
+            </td>*@
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;图号:
+            </td>
+            <td>@Html.TextBoxFor(m => m.mapno)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;实际用途:
+            </td>
+            <td>@Html.DropDownListFor(m => m.factpurpose, (ViewBag.landcodelist) as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;土地形状:
+            </td>
+            <td>@Html.DropDownListFor(m => m.landshapecode, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "6035001", Text = "矩形" } ,
+               new SelectListItem { Value = "6035002", Text = "梯形" } ,
+               new SelectListItem { Value = "6035003", Text = "不规则形状" }              
+           })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;开发程度:
+            </td>
+            <td>@Html.DropDownListFor(m => m.developmentcode, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "3005001", Text = "三通一平" } ,
+               new SelectListItem { Value = "3005002", Text = "五通一平" } ,
+               new SelectListItem { Value = "3005003", Text = "六通一平" } ,
+               new SelectListItem { Value = "3005004", Text = "七通一平" } ,
+               new SelectListItem { Value = "3005005", Text = "生地" } ,
+               new SelectListItem { Value = "3005006", Text = "八通一平" } ,
+               new SelectListItem { Value = "3005007", Text = "熟地" } 
+              
+           })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;土地利用状况
+            </td>
+            <td>@Html.TextBoxFor(m => m.landusestatus)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;土地等级:
+            </td>
+            <td>@Html.DropDownListFor(m => m.landclass, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1209001", Text = "一级" } ,
+               new SelectListItem { Value = "1209002", Text = "二级" } ,
+               new SelectListItem { Value = "1209003", Text = "三级" } ,
+               new SelectListItem { Value = "1209004", Text = "四级" } ,
+               new SelectListItem { Value = "1209005", Text = "五级" } ,
+               new SelectListItem { Value = "1209006", Text = "六级" } ,
+               new SelectListItem { Value = "1209007", Text = "七级" } 
+              
+           })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;建筑物限高:
+            </td>
+            <td>@Html.TextBoxFor(m => m.heightlimited)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;规划限制:
+            </td>
+            <td>@Html.TextBoxFor(m => m.planlimited)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;土地所有者:
+            </td>
+            <td>@Html.TextBoxFor(m => m.LandOwnerName)
+            </td>
+            <td class="help-inline">
+                @Html.HiddenFor(m => m.landownerid)
+            </td>
+            <td>&nbsp;&nbsp;土地使用者:
+            </td>
+            <td>@Html.TextBoxFor(m => m.LandUseName)
+            </td>
+            <td class="help-inline">
+                @Html.HiddenFor(m => m.landuseid)
+            </td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;距离商服中心距离:
+            </td>
+            <td>@Html.TextBoxFor(m => m.businesscenterdistance)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;交通条件:
+            </td>
+            <td>@Html.TextBoxFor(m => m.traffic)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;基础设施状况:
+            </td>
+            <td>@Html.TextBoxFor(m => m.infrastructure)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;公用设施状况:
+            </td>
+            <td>@Html.TextBoxFor(m => m.publicservice)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;环境质量:
+            </td>
+            <td>@Html.DropDownListFor(m => m.environmentcode, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1012001", Text = "优" } ,
+               new SelectListItem { Value = "1012002", Text = "良" } ,
+               new SelectListItem { Value = "1012003", Text = "一般" } ,
+               new SelectListItem { Value = "1012004", Text = "差" } ,
+               new SelectListItem { Value = "1012005", Text = "很差" }
+              
+           })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;宗地自身条件:
+            </td>
+            <td>@Html.TextBoxFor(m => m.landdetail)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;地价指数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.weight)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;综合修正系数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.coefficient)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr name="zhan">
+            <td>&nbsp;&nbsp;备注:
+            </td>
+            <td colspan="5">
+                @Html.TextAreaFor(m => m.remark, new { cols = "20", rows = "2", style = "margin: 0px; width: 581px; height: 68px;" })
+            </td>
+            <td class="help-inline"></td>
+            <td>
+                <input type="hidden" value="@(Model==null?0:Model.fxtcompanyid)" id="fxtcompanyid" name="fxtcompanyid" />
+                 <input type="hidden" value="@(Model==null?0:Model.landid)" id="landid" name="landid" />
+                 <input type="hidden" value="@(Model==null?"":Model.LngOrLat)" id="LngOrLat" name="LngOrLat" />
+                @*@Html.HiddenFor(m => m.fxtcompanyid)
+                @Html.HiddenFor(m => m.landid)
+                @Html.HiddenFor(m => m.LngOrLat)*@
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>&nbsp;&nbsp;<a href="javascript:void(0)" id="click_ok" value="">点击更多</a>
+            </td>
+        </tr>
+    </table>
+    <div id="div_body"></div>
+    <div id="div_show"></div>
+   @* <script src="@Url.Content("~/Content/layer-v1.7.1/jquery-1.10.2.min.js")" type="text/javascript"></script>*@
+   
+}
+

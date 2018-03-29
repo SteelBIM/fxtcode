@@ -1,0 +1,289 @@
+﻿
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+@model FXT.DataCenter.Domain.Models.DatCaseIndustry
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        .tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .hidden
+        {
+            display: none;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //日期控件渲染
+            $("#CaseDate").datepicker({ format: 'yyyy-mm-dd' });
+
+            //行政区联动
+            $("#AreaId").bind("change", function () {
+                //片区联动
+                $.post('@Url.Action("GetSubAreaName")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+                projectNameSelect();
+            });
+
+            //片区联动
+            $("#SubAreaId").bind("change", function () {
+                projectNameSelect();
+            });
+
+            $("#BuildingArea").bind("change", function () {
+                var unitprice = $.trim($("#UnitPrice").val());
+                var buildingarea = $.trim($(this).val());
+                if (buildingarea <= 0) {
+                    alert("建筑面积不能小于等于0");
+                    $(this).val(1);
+                }
+                buildingarea = $.trim($(this).val());
+                $(this).val(((Number)(buildingarea)).toFixed(2));
+                buildingarea = $.trim($(this).val());
+
+                if (buildingarea != "" && unitprice != "") {
+                    var totalPrice = (Number)(unitprice) * (Number)(buildingarea);
+                    $("#TotalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#TotalPrice").val("");
+                }
+            });
+
+            $("#UnitPrice").bind("change", function () {
+                var buildingarea = $.trim($("#BuildingArea").val());
+                var unitprice = $.trim($(this).val());
+                if (unitprice <= 0) {
+                    alert("单价不能小于等于0");
+                    $(this).val(1);
+                }
+                unitprice = $.trim($(this).val());
+                $(this).val(((Number)(unitprice)).toFixed(2));
+                unitprice = $.trim($(this).val());
+
+                if (buildingarea != "" && unitprice != "") {
+                    var totalPrice = (Number)(unitprice) * (Number)(buildingarea);
+                    $("#TotalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#TotalPrice").val("");
+                }
+
+            });
+
+            $("#btnSubmit").unbind();
+            $("#btnSubmit").on("click", function () {
+                var companyId = $("#FxtCompanyId").val();
+                if (companyId > 0 && companyId != '@Passport.Current.FxtCompanyId') {
+                    alert("对不起，该条数据您没有修改权限！");
+                    return false;
+                }
+
+                var projectName = $.trim($("#ProjectName").val());
+                if (projectName == "") {
+                    alert("请填写楼盘名称");
+                    return false;
+                }
+            });
+
+            function projectNameSelect() {
+                $('#ProjectName').autocomplete('@Url.Action("ProjectNameSelect")', {
+                    max: 12,    //列表里的条目数
+                    minChars: 0,    //自动完成激活之前填入的最小字符
+                    width: 218,     //提示的宽度，溢出隐藏
+                    scrollHeight: 200,   //提示的高度，溢出显示滚动条
+                    matchContains: true,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+                    autoFill: false,    //自动填充
+                    extraParams: { areaId: function () { return $("#AreaId").val(); }, subAreaId: function () { return $("#SubAreaId").val(); } },
+                    parse: function (data) {
+                        return $.map(eval(data), function (row) {
+                            return {
+                                data: row,
+                                value: row.name, //显示结果
+                                result: row.id  //填充结果
+                            }
+                        });
+                    },
+                    formatItem: function (row, i, max) {
+                        return row.name;
+                    },
+                    formatMatch: function (row, i, max) {
+                        return row.name;
+                    },
+                    formatResult: function (row) {
+                        return row.name;
+                    }
+                }).result(function (event, row, formatted) {
+                    $('#ProjectName').val(row.name);
+                    $("#ProjectId").val(row.id);
+                    $("#Address").val(row.address);
+                });
+            }
+        });
+    </script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>行政区:
+            </td>
+            <td>
+                @if (Model != null)
+                {
+                    <input type="hidden" name="id" value="@Model.Id" />
+                }
+                @Html.DropDownListFor(m => m.AreaId, ViewBag.AreaName as List<SelectListItem>)
+                <a style="color: Red">*</a>
+            </td>
+            <td>工业片区:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.SubAreaId, ViewBag.SubAreaName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>工业楼盘:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ProjectName)
+                @Html.HiddenFor(m => m.ProjectId, new { Value = 0 })
+                <a style="color: Red">*</a>
+            </td>
+            <td>地址:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Address)
+            </td>
+        </tr>
+        <tr>
+            <td>工业楼栋:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingName)
+            </td>
+            <td>工业房号：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.HouseName)
+            </td>
+        </tr>
+        <tr>
+            <td>建筑面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingArea)
+                <a style="color: Red">*</a>
+            </td>
+            <td>单价(元)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.UnitPrice)
+                <a style="color: Red">*</a>
+            </td>
+        </tr>
+        <tr>
+            <td>总价(元):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalPrice, new { @readOnly = "readOnly" })
+            </td>
+            <td>案例类型:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.CaseTypeCode, ViewBag.CaseTypeName as List<SelectListItem>)
+                <a style="color: Red">*</a>
+            </td>
+        </tr>
+        <tr>
+            <td>案例时间:
+            </td>
+            <td>
+                @Html.TextBox("CaseDate", (Model == null ? string.Empty : Model.CaseDate.ToString("yyyy-MM-dd")))
+                <a style="color: Red">*</a>
+            </td>
+        </tr>
+        <tr>
+            <td>所在楼层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorNo)
+            </td>
+            <td>总楼层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalFloor)
+            </td>
+        </tr>
+        <tr>
+            <td>物业费(元/㎡*月):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ManagerPrice)
+            </td>
+            <td>租金增长率(%/年):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.RentRate)
+            </td>
+        </tr>
+        <tr>
+            <td>中介公司:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AgencyCompany)
+            </td>
+            <td>中介人员:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Agent)
+            </td>
+        </tr>
+        <tr>
+            <td>中介电话:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AgencyTel)
+            </td>
+            <td>来源名称:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourceName)
+            </td>
+        </tr>
+        <tr>
+            <td>来源电话:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourcePhone)
+            </td>
+            <td>来源链接：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourceLink)
+
+                @{
+                    var companyId = Model == null ? 0 : Model.FxtCompanyId;
+                }
+
+                <input type="hidden" id="FxtCompanyId" name="fxtcompanyid" value="@companyId" />
+            </td>
+        </tr>
+    </table>
+}
+

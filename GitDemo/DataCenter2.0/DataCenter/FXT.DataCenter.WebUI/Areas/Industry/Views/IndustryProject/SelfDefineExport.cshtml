@@ -1,0 +1,328 @@
+﻿@{
+    ViewBag.Title = "工业楼盘自定义导出";
+}
+
+@using FXT.DataCenter.Domain.Models
+@using Webdiyer.WebControls.Mvc
+@model PagedList<DatProjectIndustry>
+@section StyleSheet{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var UrlExport = '@Url.Action("Export")';
+
+        $(document).ready(function () {
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href='/Industry/IndustryProject/Index'>工业基础数据</a></span> <i class='icon-angle-right'></i></li>";
+            html += " <li><span>工业楼盘自定义导出</span></li>";
+            $("ul.breadcrumb").append(html);
+
+            //行政区商圈联动
+            $("#AreaId").change(function () {
+                $.post('@Url.Action("GetSubAreaName")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //全选联动
+            $("input[name=project]").live("click", function () {
+                var flag = true;
+                $("input[name=project]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#all_project").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            //导出
+            $("#btnProject").bind("click", function () {
+                var flag = 0;
+                $("input[name=project]").each(function () {
+                    flag += $(this).prop("checked");
+                });
+                if (flag == 0) {
+                    $("#all_project").prop("checked", true);
+                    $("input[name=project]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+                    $.uniform.update();
+                }
+            });
+        });
+
+        function showData() {
+            var value = $("#projectTable").css("display");
+            if (value == "block") {
+                $("#projectTable").css("display", "none");
+                $("#showAll").html("展开∨");
+            }
+            else {
+                $("#projectTable").css("display", "block");
+                $("#showAll").html("收起∧");
+            }
+        }
+
+        function selectAll() {
+            var flag = $("#all_project").prop("checked");
+            $("input[name=project]").each(function () {
+                $(this).prop("checked", flag);
+            });
+            $.uniform.update();
+        }
+
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+{
+    <div class="row-fluid" id="condi">
+        <table style="margin-bottom: 10px; line-height: 35px; width: 75%;">
+            <tr>
+                <td>具体楼盘:
+                </td>
+                <td>
+                    @Html.TextBox("projectName", Request["projectName"], new { @style = "width: 138px;" })
+                </td>
+                <td>别名:
+                </td>
+                <td>
+                    @Html.TextBox("otherName", Request["otherName"], new { @style = "width: 138px;" })
+                </td>
+            </tr>
+            <tr>
+                <td>行政区:
+                </td>
+                <td>
+                    @Html.DropDownList("AreaId", ViewBag.AreaName as List<SelectListItem>)
+                </td>
+                <td>商务中心:
+                </td>
+                <td>
+                    @Html.DropDownList("SubAreaId", ViewBag.SubAreaName as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>工业类型:
+                </td>
+                <td>
+                    @Html.DropDownList("IndustryType", ViewBag.IndustryTypeName as List<SelectListItem>)
+                </td>
+                <td>租售方式:
+                </td>
+                <td>
+                    @Html.DropDownList("RentSaleType", ViewBag.RentSaleTypeName as List<SelectListItem>)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="checkbox" name="all_project" id="all_project" value="all_project" onclick="selectAll()" /><b>全选</b>
+        <a style="cursor: pointer;" id="showAll" href="javascript:showData();">收起∧</a>
+    </div>
+    <table id="projectTable" style="display: block;">
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="AreaName&行政区" />行政区</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="SubAreaName&工业片区" />工业片区</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ProjectName&工业楼盘" />工业楼盘</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="OtherName&别名" />别名</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="PinYin&拼音简写" />拼音简写</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="PinYinAll&楼盘名称全拼" />楼盘名称全拼</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="CorrelationTypeName&与片区关联度" />与片区关联度</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="PurposeCodeName&主要用途" />主要用途</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="FieldNo&宗地号" />宗地号</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="Address&地址" />地址</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="East&四至东" />四至东</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="south&四至南" />四至南</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="west&四至西" />四至西</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="north&四至北" />四至北</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="X&X坐标" />X坐标</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="Y&Y坐标" />Y坐标</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="StartDate&土地起始日期" />土地起始日期</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="StartEndDate&土地终止日期" />土地终止日期
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="UsableYear&土地使用年限_年" />土地使用年限(年)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="LandArea&土地面积_平方米" />土地面积(㎡)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="BuildingArea&总建筑面积_平方米" />总建筑面积(㎡)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="CubageRate&容积率" />容积率</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="GreenRate&绿化率_百分比" />绿化率(%)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="BuildingNum&总栋数_栋" />总栋数(栋)</label>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="BuildingTypeName&建筑类型" />建筑类型
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="EndDate&竣工时间" />竣工时间</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="SaleDate&销售时间" />销售时间</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="IndustryTypeName&工业类型" />工业类型</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="OfficeArea&办公面积_平方米" />办公面积(㎡)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="BizArea&商业面积_平方米" />商业面积(㎡)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="IndustryArea&工业面积_平方米" />工业面积(㎡)</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ManagerPrice&管理费" />管理费</label>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ManagerTel&管理处电话" />管理处电话
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="TrafficTypeName&交通便捷度" />交通便捷度</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="TrafficDetails&交通便捷度描述" />交通便捷度描述</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ParkingLevelName&停车便捷度" />停车便捷度</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ParkingTypeName&车位类型" />车位类型</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="ParkingPrice&停车费" />停车费</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="RentSaleTypeName&租售方式" />租售方式</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="AirConditionTypeName&空调系统类型" />空调系统类型</label>
+            </td>            
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="Details&项目概况" />项目概况
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="Remarks&备注" />备注</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="project" value="AveragePrice&楼盘均价_元每平方米" />楼盘均价(元/㎡)</label>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div>
+        <input class="btn" id="btnProject" type="submit" value="导出" />
+    </div>
+}

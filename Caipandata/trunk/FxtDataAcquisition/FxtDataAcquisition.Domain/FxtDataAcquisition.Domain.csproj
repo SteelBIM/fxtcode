@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78DA0A32-26B2-4416-BC5F-3D2472D46724}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtDataAcquisition.Domain</RootNamespace>
+    <AssemblyName>FxtDataAcquisition.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\BuildingApiDto.cs" />
+    <Compile Include="DTO\BuildingDto.cs" />
+    <Compile Include="DTO\ExportHouseDto.cs" />
+    <Compile Include="DTO\FeedbackDto.cs" />
+    <Compile Include="DTO\FieldDto.cs" />
+    <Compile Include="DTO\FieldGroupDto.cs" />
+    <Compile Include="DTO\FxtDataCenterDTO\DataCenterResult.cs" />
+    <Compile Include="DTO\FxtDataWcfDTO\FxtApi_PublicResult.cs" />
+    <Compile Include="DTO\FxtDataWcfDTO\FxtApi_SYSArea.cs" />
+    <Compile Include="DTO\FxtDataWcfDTO\FxtApi_SYSCity.cs" />
+    <Compile Include="DTO\FxtDataWcfDTO\FxtApi_SYSProvince.cs" />
+    <Compile Include="DTO\FxtDataWcfDTO\FxtApi_SYSSubArea.cs" />
+    <Compile Include="DTO\FxtUserCenterDTO\Apps.cs" />
+    <Compile Include="DTO\FxtUserCenterDTO\LoginUser.cs" />
+    <Compile Include="DTO\FxtUserCenterDTO\UserInfo.cs" />
+    <Compile Include="DTO\HouseApiDto.cs" />
+    <Compile Include="DTO\HouseDetailsDto.cs" />
+    <Compile Include="DTO\HouseDto.cs" />
+    <Compile Include="DTO\MenuDto.cs" />
+    <Compile Include="DTO\PAppendageDto.cs" />
+    <Compile Include="DTO\PCompanyDto.cs" />
+    <Compile Include="DTO\ProjectAllotFlowSurveyDto.cs" />
+    <Compile Include="DTO\ProjectApiDto.cs" />
+    <Compile Include="DTO\ProjectDto.cs" />
+    <Compile Include="DTO\ResultData.cs" />
+    <Compile Include="DTO\SurveyCountDto.cs" />
+    <Compile Include="DTO\SysCodeDto.cs" />
+    <Compile Include="DTO\TempletDto.cs" />
+    <Compile Include="DTO\UserInfoDto.cs" />
+    <Compile Include="IDbContextFactory.cs" />
+    <Compile Include="IGenericRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Models\AllotFlow.cs" />
+    <Compile Include="Models\AllotSurvey.cs" />
+    <Compile Include="Models\Building.cs" />
+    <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\Field.cs" />
+    <Compile Include="Models\FieldGroup.cs" />
+    <Compile Include="Models\FieldGroupTemplet.cs" />
+    <Compile Include="Models\FieldTemplet.cs" />
+    <Compile Include="Models\HouseEndity.cs" />
+    <Compile Include="Models\HouseOperate.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\House.cs" />
+    <Compile Include="Models\HouseDetails.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\PAppendage.cs" />
+    <Compile Include="Models\PCompany.cs" />
+    <Compile Include="Models\PPhoto.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DepartmentUser.cs" />
+    <Compile Include="Models\SYSCode.cs" />
+    <Compile Include="Models\SYS_Menu.cs" />
+    <Compile Include="Models\SYS_Role.cs" />
+    <Compile Include="Models\SYS_Role_Menu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\SYS_Role_Menu_Function.cs" />
+    <Compile Include="Models\SYS_Role_User.cs" />
+    <Compile Include="Models\SYS_UserInfo.cs" />
+    <Compile Include="Models\Templet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IProjectAllotFlowSurveyRepository.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "押品管理";
+}
+@using FxtCollateralManager.Common
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu">
+            <li>
+                <div class="sidebar-toggler hidden-phone">
+                </div>
+                &nbsp;
+            </li>
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.ProjectManage)){
+            <li class="">
+                <a class="ajaxify" href="javascript:;">
+                    <i class="icon-cogs"></i>
+                    <span class="title">项目及任务</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="javascript:" url="/Task/Index" name="任务中心" data-parent="true">
+                            任务中心
+                        </a>
+                        </li>
+                    <li>
+                         <a href="javascript:" url="/Projects/Index" name="项目中心" data-parent="true">
+                            项目中心
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            }
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CollateralManage)){
+            <li class="">
+                <a class="ajaxify" href="javascript:" url="/Collateral/" number="0" name="押品管理">
+                    <i class="icon-home"></i>
+                    <span class="title">押品管理</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            }
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CollateralMonitor)){
+            <li class="">
+                <a class="ajaxify" href="javascript:" url="/CollateralDetect/" number="1" name="押品监测">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">押品监测</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            }
+            @*@if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CollateralRePrice)){
+            <li class="">
+                <a class="ajaxify" href="javascript:" url="/CollateralReassessment/" number="3" name="押品复估">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">押品复估</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            }*@
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CollateralAssetsValueMonitor)){
+            <li class="">
+                <a class="ajaxify" href="javascript:" url="/AssetsCollateralDetect/" number="2" name="押品资产价值动态监测">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">押品资产价值动态监测</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            }
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.StressTest)){
+            <li class="">
+                <a class="ajaxify" href="javascript:" url="/CollateralStressTest/Index" number="4" name="压力测试">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">压力测试</span>
+                    <span class="arrow "></span>
+                </a>
+            </li>
+            }
+            @if(Public.CheckHasPrivilege(EnumHelper.PrivilegeNo.CustomerManage)){
+            <li class="">
+                <a class="ajaxify" href="javascript:;">
+                    <i class="icon-cogs"></i>
+                    <span class="title">客户管理</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="javascript:" url="/Users/Customer" name="客户列表" data-parent="true">
+                            客户列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:" url="/Users/UserInfo" name="用户列表" data-parent="true">
+                            用户列表
+                        </a>
+                    </li>                   
+                </ul>
+            </li>
+            }
+        </ul>
+        <!-- END SIDEBAR MENU -->
+</div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE -->
+    <div class="page-content">
+     <div id="customDialog" style="overflow-x:hidden;display:none;z-index:101;"></div>
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row" style="margin-top:-30px;height:60px;">
+            <div class="col-md-12">
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <ul class="page-breadcrumb breadcrumb">
+                    <li>
+                    <i class="icon-home"></i><a href="/">首页</a> <i class="icon-angle-right"></i>
+                    </li>
+                    <li id="navparent" style="display:none">
+                        <a>首页</a> <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="javascript:" id="ctitle">@ViewBag.Title</a></li>
+                </ul>
+                
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+            <div style="margin:0 auto;width:200px;display:none;color:Red;" 
+            id="listmessage">
+            获取列表错误!
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>        
+        <!-- END PAGE HEADER  内容-->
+        <div class="row">
+            <div class="col-md-12" id="main_content">
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+    <!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->

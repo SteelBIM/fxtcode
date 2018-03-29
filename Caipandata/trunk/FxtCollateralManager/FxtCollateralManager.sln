@@ -1,0 +1,110 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtCollateralManager.Common", "FxtCollateralManager.Common\FxtCollateralManager.Common.csproj", "{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtCollateralManager.Web", "FxtCollateralManager.Web\FxtCollateralManager.Web.csproj", "{B9E428C0-556B-49AB-A94D-A04DE549F93E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtNHibernate.DTODomain", "..\FxtService\FxtNHibernate.DTODomain\FxtNHibernate.DTODomain.csproj", "{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtNHibernate.FxtDataUserDomain", "..\FxtService\FxtNHibernate.FxtDataUserDomain\FxtNHibernate.FxtDataUserDomain.csproj", "{33967EF1-D246-4EC2-BDF5-981B78B82387}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtCommonLibrary", "FxtCommonLibrary\FxtCommonLibrary.csproj", "{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtNHibernate.DATProjectDomain", "..\FxtService\FxtNHibernate.DATProjectDomain\FxtNHibernate.DATProjectDomain.csproj", "{50C6C35D-8D7D-4B1F-B510-B07374413A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtNHibernate.FxtLoanDomain", "..\FxtService\FxtNHibernate.FxtLoanDomain\FxtNHibernate.FxtLoanDomain.csproj", "{EBF122FC-1CE4-4E96-9854-F9C1867F583F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxtCollateralTimer", "FxtCollateralTimer\FxtCollateralTimer.csproj", "{C948A683-DB4F-4268-9F36-4383CBA03C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAS.Entity", "..\..\CommonProject\trunk\CAS.Entity\CAS.Entity.csproj", "{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAS.Entity.BaseDAModels", "..\..\CommonDll\CAS.Entity.BaseDAModels\CAS.Entity.BaseDAModels.csproj", "{2F0D611E-E9FC-429E-945B-1656F7435761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAS.Common.MVC4", "..\..\CommonProject\trunk\CAS.Common.MVC4\CAS.Common.MVC4.csproj", "{FA2001F0-7369-4521-924E-05EFF30462F0}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		godlike|Any CPU = godlike|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E428C0-556B-49AB-A94D-A04DE549F93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33967EF1-D246-4EC2-BDF5-981B78B82387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8C38D2-582F-4C82-8EF5-2B052272DAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C6C35D-8D7D-4B1F-B510-B07374413A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF122FC-1CE4-4E96-9854-F9C1867F583F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C948A683-DB4F-4268-9F36-4383CBA03C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.godlike|Any CPU.ActiveCfg = godlike|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.godlike|Any CPU.Build.0 = godlike|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.godlike|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.godlike|Any CPU.Build.0 = Release|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0D611E-E9FC-429E-945B-1656F7435761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.godlike|Any CPU.ActiveCfg = godlike|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.godlike|Any CPU.Build.0 = godlike|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2001F0-7369-4521-924E-05EFF30462F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

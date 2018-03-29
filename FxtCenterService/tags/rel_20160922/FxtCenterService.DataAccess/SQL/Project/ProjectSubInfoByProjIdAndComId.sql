@@ -1,0 +1,1 @@
+﻿select ProjectId, ProjectName, Valid, Fxt_CompanyId as FxtCompanyId from @dat_project_sub with(nolock) where  ProjectId=@projectid and CityId=@cityid and Fxt_CompanyId=@fxtcompanyid 

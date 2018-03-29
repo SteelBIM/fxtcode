@@ -1,0 +1,302 @@
+﻿@{
+    ViewBag.Title = "抓取后台维护与管理_案例爬取管理_案例整理";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section bootstraplink{
+    <!--表单相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/colorpicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/datepicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/bootstrap-wysihtml5.css" />
+}
+@section bootstrapscript{ 
+    <!--表单相关-->   
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-colorpicker.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-datepicker.js"></script> 
+    @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/masked.js"></script> 
+     @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/wysihtml5-0.3.0.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/jquery.peity.min.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-wysihtml5.js"></script>
+}
+@section link{
+  <link type="text/css" href="/Scripts/Jquery.Autocomplete/jquery.autocomplete.css" rel="stylesheet" />
+  <link type="text/css" rel="Stylesheet" href="/Css/Shared/Partial_SelectCity.css" /><!--(分布页)/Shared/Partial_SelectCity-->
+  <link type="text/css" rel="Stylesheet" href="/Css/Spider/CaseImportManager.css" />
+  <style type="text/css">
+
+  </style>
+
+
+}
+@section script{      
+    <script src="/Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/Jquery.Autocomplete/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.freezeheader-1.5.0/js/jquery.freezeheader.js"></script>
+    <script src="/Scripts/Shared/Partial_SelectCity.js" type="text/javascript">// (分布页)/Shared/Partial_SelectCity</script>
+    <script type="text/javascript" src="/Scripts/Spider/CaseImportManager.js"></script>
+    <script type="text/javascript" src="/Scripts/Spider/CaseImportManager_InfoOperate.js"></script>
+    <script type="text/javascript" src="/Scripts/Spider/CaseImportManager_ColumnOperate.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SetLeftMenu("2_3");
+        });
+    </script>
+}
+
+<div class="container-fluid" > 
+    <!--选择城市-->
+    @Html.Action("Partial_SelectCity", "Shared")   
+    <div class="row-fluid _row-fluid">
+        <div class="widget-box" id="dataPanel" style="display:none;">
+          <div class="widget-title">
+            <div class="control-group2 selectWhere">
+                    <label>楼盘名:</label>
+                    <label>
+                        <input type="text" class="input_text" id="txtProjectName" />
+                    </label>
+            </div>
+            <div class="dataTables_length  dataTables_length3">
+              <button class="btn icon-search btn-inverse" id="btnSearch">查询</button>
+            </div>
+          </div>
+          <div class="widget-title selectWhere"> 
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="javascript:;" class="importCase" data="0">未入库案例</a></li>
+              <li class=""><a data-toggle="tab" href="javascript:;" class="importCase" data="1">已入库案例</a></li>
+            </ul>
+            <input type="hidden" value="0" id="hdIsImport" />
+          </div>
+          <div class="widget-title selectWhere selectDate"> 
+            <div class="widget-title_div">
+                 <div class="control-group" >
+                      <label class="control-label" style="float:left; padding-top:4px;">爬取时间: </label>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="开始时间" value="" id="startCreateDate" onfocus="WdatePicker()"  /> 
+                      </div>
+                      <font class="control-label" style="float:left; padding-top:4px;">到</font>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="结束时间" value="" id="endCreateDate" onfocus="WdatePicker()"/>
+                      </div>
+                  </div>
+                 <div class="control-group" >
+                      <label class="control-label" style="float:left; padding-top:4px;">案例时间: </label>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="开始时间" value="" id="startCaseDate" onfocus="WdatePicker()" /> 
+                      </div>
+                      <font class="control-label" style="float:left; padding-top:4px;">到</font>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="结束时间" value="" id="endCaseDate" onfocus="WdatePicker()"/>
+                      </div>
+                  </div>
+                 <div class="control-group" id="importDateWhere" >
+                      <label class="control-label" style="float:left; padding-top:4px;">导入时间: </label>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="开始时间" value="" id="startImportDate" onfocus="WdatePicker()"/> 
+                      </div>
+                      <font class="control-label" style="float:left; padding-top:4px;">到</font>
+                      <div class="controls" style="width:100px; float:left;">
+                        <input type="text" placeholder="结束时间" value="" id="endImportDate" onfocus="WdatePicker()" />
+                      </div>
+                  </div>
+            </div>
+          </div>
+          <div class="widget-title  widget-title2 selectWhere"> 
+            <div class="widget-title_div">
+               <div class="dataTables_length  dataTables_length6">
+                   <span class="left_span">网站:</span>
+                   <span class="right_span" id="selectWeb"> 
+                    @foreach (FxtSpider.DAL.LinqToSql.网站表 obj in ViewBag.WebList)
+                    {
+                      <span class="cb_span"><input type="checkbox" value="@obj.ID" /> @obj.网站名称</span>
+                    }
+                   </span>
+               </div>
+               <div class="dataTables_length  dataTables_length6">
+                   <span class="left_span">用途:</span>
+                   <span class="right_span" id="selectPurpose"> 
+                    @foreach (FxtSpider.DAL.LinqToSql.SysData_用途 obj in ViewBag.purposeList)
+                    {
+                       <span class="cb_span2"><input type="checkbox" value="@obj.ID"/>@obj.用途</span>
+                    }
+                   </span>
+               </div>
+            </div>
+          </div>
+          <div class="widget-content nopadding2 tablepanel2" style="width:100%; float:left; display:none;" id="caseCount"></div>          
+          <div class="widget-content nopadding tablepanel" id="tablepanel">
+             <div style="width:5000px; height:310px;" id="tableWindow">@*310*@
+                <table class="table table-bordered data-table" id="tableCase">
+                    <thead id="topTitle">
+                        <tr role="row" class="table2">
+                            <th class="th_check"><input type="checkbox" value="" title="全选" class="cbSelectAll" /></th>
+                            <th class="th_optionType">操作</th>
+                            <th>ID</th>
+                            <th>来源.</th>
+                            <th>城市*</th>
+                            <th>楼盘名*</th>
+                            <th>行政区.</th>
+                            <th>片区</th>
+                            <th>设置网络名</th>
+                            <th>总量</th>
+                            <th>楼栋.</th>
+                            <th>房号.</th>
+                            <th>案例时间.</th>
+                            <th>用途*</th>
+                            <th>面积*</th>
+                            <th>单价*</th>
+                            <th>总价*</th>
+                            <th>案例类型*</th>
+                            <th>结构.</th>
+                            <th>建筑类型.</th>
+                            <th>总楼层.</th>
+                            <th>所在层.</th>
+                            <th>户型.</th>
+                            <th>朝向.</th>
+                            <th>币种.</th>
+                            <th>建筑年代.</th>
+                            <th>装修.</th>
+                            <th>配套设施.</th>
+                            <th>URL.</th>
+                            <th>电话.</th>
+                            <th>地址</th>
+                            <th>创建时间</th>
+                            <th>建筑形式</th>
+                            <th>花园面积</th>
+                            <th>厅结构</th>
+                            <th>车位数量</th>
+                            <th>地下室面积</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody id="caseList" data="" data-operation="0">
+                        <tr class="gradeX caserow" id="caseRom" style="display:none" data-fxtId="" data-Id="">
+                            <td class="check center" data="check"><input type="checkbox" class="text"  value="" /></td>
+                            <td class="optionType center" data="optionType"><a href="javascript:;" class="btn btn-danger btn-mini text delCase" data-Id="">删除</a></td>
+                            <td class="Id center" data="Id"><span class="text">Id_数据</span></td>
+                            <td class="laiyuan center" data="laiyuan"><span class="text">来源_数据</span></td>
+                            <td class="chengshi center" data="chengshi" data-cityId="""><span class="text">城市_数据</span></td>
+                            <td class="loupan btnShow center" data="loupan" data-inputType="text"><span class="text">楼盘_数据</span></td>
+                            <td class="xingzhengqu btnShow center" data="xingzhengqu" data-inputType="text" data-selectSource="select_areaList"><span class="text">行政区_数据</span> </td>
+                            <td class="pianqu btnShow center" data="pianqu" data-inputType="text"><span class="text">片区_数据</span></td>
+                            <td class="fxtloupan btnShow center" data="fxtloupan" data-inputType="text"><span class="text">对应库楼盘_数据</span></td>
+                            <td class="count center" data="count"><span class="text">总量_数据</span></td>
+                            <td class="loudong center" data="loudong"><span class="text">楼栋_数据</span></td>
+                            <td class="fanghao center" data="fanghao"><span class="text">房号_数据</span></td>
+                            <td class="anlishijian btnShow center" data="anlishijian" data-inputType="text"><span class="text">案例时间_数据</span></td>
+                            <td class="yongtu btnShow center" data="yongtu" data-inputType="text" data-selectSource="select_purposeList"><span class="text">用途_数据</span></td>
+                            <td class="mianji btnShow center" data="mianji" data-inputType="text"><span class="text">面积_数据</span></td>
+                            <td class="danjia btnShow center" data="danjia" data-inputType="text"><span class="text">单价_数据</span></td>
+                            <td class="zongjia btnShow center" data="zongjia" data-inputType="text"><span class="text">总价_数据</span></td>
+                            <td class="anlileixing btnShow center" data="anlileixing" data-inputType="text" data-selectSource="select_caseTypeList"><span class="text">案例类型_数据</span></td>
+                            <td class="jiegou btnShow center" data="jiegou" data-inputType="text" data-selectSource="select_structureList"><span class="text">结构_数据</span></td>
+                            <td class="jianzhuleixing btnShow center" data="jianzhuleixing" data-inputType="text" data-selectSource="select_buildingTypeList"><span class="text">建筑类型_数据</span></td>
+                            <td class="zonglouceng btnShow center" data="zonglouceng" data-inputType="text"><span class="text">总楼层_数据</span></td>
+                            <td class="suozailouceng btnShow center" data="suozailouceng" data-inputType="text"><span class="text">所在楼层_数据</span> </td>
+                            <td class="huxing btnShow center" data="huxing" data-inputType="text" data-selectSource="select_houseTypeList"><span class="text">户型_数据</span></td>
+                            <td class="chaoxiang btnShow center" data="chaoxiang" data-inputType="text" data-selectSource="select_frontList"><span class="text">朝向_数据</span></td>
+                            <td class="bizhong btnShow center" data="bizhong" data-inputType="text" data-selectSource="select_moneyUnitList"><span class="text">币种_数据</span></td>
+                            <td class="niandai btnShow center" data="niandai" data-inputType="text"><span class="text">建筑年代_数据</span></td>
+                            <td class="zhuangxiu btnShow center" data="zhuangxiu" data-inputType="text" data-selectSource="select_zhuangxiuList"><span class="text">装修_数据</span></td>
+                            <td class="peitao center" data="peitao"><span class="text">配套设置_数据</span></td>
+                            <td class="titleUrl center" data="titleUrl"><span class="text">URL_数据</span></td>
+                            <td class="dianhua center" data="dianhua"><span class="text">电话_数据</span></td>
+                            <td class="dizhi center" data="dizhi"><span class="text">地址_数据</span></td>
+                            <td class="shijian center" data="shijian"><span class="text">创建时间_数据</span></td>
+                            <td class="xingshi center" data="xingshi"><span class="text">建筑形式_数据</span></td>
+                            <td class="huayuan center" data="huayuan"><span class="text">花园面积_数据</span></td>
+                            <td class="tingjiegou center" data="tingjiegou"><span class="text">厅结构_数据</span></td>
+                            <td class="chewei center" data="chewei"><span class="text">车位数量_数据</span></td>
+                            <td class="dixiashi center" data="dixiashi"><span class="text">地下室面积_数据</span></td>
+                            <td class="infoTitle center" data="infoTitle"><span class="text">备注_数据</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="txt_span" id="txtSpan" style="display:none;">
+                    <input type="text" class="textValue textInput" data="" data-column="" data-row="" />
+                        <select class="textValue selectInput" data="" data-column="" data-row="">     
+                    </select>
+                </span>
+                <span class="btn_span" id="btnSpan" style="display:none;">      
+                    <img src="/Images/Loading.gif"  class="loading" style="display:none;" />            
+                    <input type="button" value="修改" class="btn btn-mini up" data-column="" data-row="" style="display:none;" />
+                    <input type="button" value="确定" class="btn btn-mini btn-primary subm" data-column="" data-row="" style="display:none;" />
+                    <input type="button" value="建盘" class="btn btn-mini btn-info add" data-column="" data-row="" style="display:none;"/>
+                    <input type="button" value="取消" class="btn btn-mini cancel" data-column="" data-row="" style="display:none;" /> 
+                </span>
+                <span style="display:none;">
+                    <select id="select_purposeList">                    
+                        <option value="" selected="selected">--请选择--</option>
+                        @foreach (FxtSpider.DAL.LinqToSql.SysData_用途 obj in ViewBag.purposeList)
+                        {
+                        <option value="@obj.用途">@obj.用途</option>
+                        }
+                    </select>
+                    <select id="select_caseTypeList">            
+                        <option value="" selected="selected">--请选择--</option>
+                        @foreach (FxtSpider.DAL.LinqToSql.SysData_案例类型 obj in ViewBag.caseTypeList)
+                        {
+                        <option value="@obj.案例类型">@obj.案例类型</option>
+                        }
+                    </select>
+                    <select id="select_structureList">      
+                        <option value="" selected="selected">--请选择--</option>
+                         @foreach (FxtSpider.DAL.LinqToSql.SysData_结构 obj in ViewBag.structureList)
+                         {
+                         <option value="@obj.结构">@obj.结构</option>
+                         }
+                    </select>
+                    <select id="select_buildingTypeList">
+                        <option value="" selected="selected">--请选择--</option>
+                         @foreach (FxtSpider.DAL.LinqToSql.SysData_建筑类型 obj in ViewBag.buildingTypeList)
+                         {
+                         <option value="@obj.建筑类型">@obj.建筑类型</option>
+                         }
+                    </select>
+                    <select id="select_houseTypeList">
+                        <option value="" selected="selected">--请选择--</option>
+                         @foreach (FxtSpider.DAL.LinqToSql.SysData_户型 obj in ViewBag.houseTypeList)
+                         {
+                        <option value="@obj.户型">@obj.户型</option>
+                         }
+                    </select>
+                    <select id="select_frontList">
+                        <option value="" selected="selected">--请选择--</option>
+                         @foreach (FxtSpider.DAL.LinqToSql.SysData_朝向 obj in ViewBag.frontList)
+                         {
+                         <option value="@obj.朝向">@obj.朝向</option>
+                         }
+                    </select>
+                    <select id="select_moneyUnitList">
+                        <option value="" selected="selected">--请选择--</option>
+                         @foreach (FxtSpider.DAL.LinqToSql.SysData_币种 obj in ViewBag.moneyUnitList)
+                         {
+                        <option value="@obj.币种">@obj.币种</option>
+                         }
+                    </select>
+                    <select id="select_zhuangxiuList">
+                        <option value="" selected="selected">--请选择--</option>
+                        @foreach (FxtSpider.DAL.LinqToSql.SysData_装修 obj in ViewBag.zhuangxiuList)
+                        {
+                        <option value="@obj.装修">@obj.装修</option>
+                        }
+                    </select>
+                    <select id="select_areaList">
+                        <option value="" selected="selected">--请选择--</option>
+                    </select>
+                </span>
+           </div>
+          </div>
+          <div>
+              <div class="option" id="optionPanel">
+                  <a href="javascript:;" class="btn btn-mini btn-primary optionBtn" id="btnImport" style="display:none;">导入案例</a>
+                  <a href="javascript:;" class="btn btn-danger btn-mini optionBtn" id="btnDelSelect" style="display:none;">删除</a>
+              </div>
+              <div class="example_page">
+                  <div id="example"></div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model IEnumerable<DatAnalysisMarket>
+@{
+    ViewBag.Title = "市场背景分析";
+}
+@section StyleSheet{
+    <style type="text/css">
+        select {
+            margin: 1px;
+            width: 150px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        $(function () {
+            var subAreaId = "@ViewBag.SubAreaId";
+            BindSubArea(subAreaId);
+            $("#AreaId").change(function () {
+                BindSubArea(-1);
+            });
+            //查询
+            $("#btnRetrive").bind("click", function () {
+                $("#search").attr("action", "/Business/MarketAnalysis/Index");
+            });
+        });
+        function BindSubArea(subid) {
+            var areaId = $("#AreaId").find("option:selected").val();
+            var areaListUrl = "@Url.Action("GetSubAreaList")";
+            $.post(areaListUrl, { areaId: areaId }, function (json) {
+                var html = "<option value='-1'>请选择</option>";
+                if (json.flag) {
+                    for (var i = 0; i < json.data.length; i++) {
+                        if (json.data[i].SubAreaId == subid) {
+                            html += "<option value='" + json.data[i].SubAreaId + "' selected='selected'>";
+                        } else {
+                            html += "<option value='" + json.data[i].SubAreaId + "'>";
+                        }
+                        html += json.data[i].SubAreaName;
+                        html += "</option>";
+                    }
+                }
+                $("#SubAreaId").empty().append(html);
+            }, "json");
+        }
+    </script>
+    @*    @{Html.RegisterMvcPagerScriptResource();}*@
+}
+<div class="row-fluid" id="condi">
+    @using (Html.BeginForm("Index", "MarketAnalysis", null, FormMethod.Get, new { id = "search", @class = "form-inline" }))
+    {
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;">
+            <tr>
+                <td width="100px">
+                    行政区:
+                </td>
+                <td>
+                    @Html.DropDownList("AreaId", ViewBag.AreaList as List<SelectListItem>)
+                </td>
+                @*<td>
+                        片区:
+                    </td>
+                    <td>
+                        @Html.DropDownList("SubAreaId", new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "请选择" } })
+                    </td>*@
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a class="btn blue thickbox" title='添加市场背景分析' href="@Url.Action("Create")?TB_iframe=true&height=400&width=600">
+                        <i class="icon-plus icon-white"></i>新增
+                    </a>
+                    <button id="btnRetrive" class="btn">
+                        查 询 <i class="icon-search"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<div class="scrollBar">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    @*<input type="checkbox" id="checkall" class="group-checkable" />*@
+                </th>
+                <th>
+                    行政区
+                </th>
+                <th>
+                    商圈
+                </th>
+                <th>
+                    分析
+                </th>
+                <th>
+                    创建日期
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var m in Model)
+                {
+                    var chValue = m.FxtCompanyId + "#" + m.ID;
+                    <tr>
+                        <td>
+                            @* <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />*@
+                        </td>
+                        <td>
+                            @m.AreaName
+                        </td>
+                        <td>
+                            @m.BizSubAreaName
+                        </td>
+                        <td>
+                            <a class="thickbox" title='编辑市场背景分析' href="@Url.Action("Edit", new { id = chValue })?TB_iframe=true&height=400&width=600">
+                                @if (!string.IsNullOrEmpty(m.Analysis))
+                                {
+                                    if (m.Analysis.Length > 50)
+                                    {
+                                        Write(m.Analysis.Substring(0, 50) + "...");
+                                    }
+                                    else
+                                    {
+                                        Write(m.Analysis);
+                                    }
+                                }
+                            </a>
+                        </td>
+                        <td>
+                            @(m.CreateTime == null ? "" : Convert.ToDateTime(m.CreateTime).ToString("yyyy-MM-dd"))
+                        </td>
+                        <td>
+                            <a class="btn mini purple thickbox" title='编辑市场背景分析' href="@Url.Action("Edit", new { id = chValue })?TB_iframe=true&height=400&width=600"><i class="icon-edit"></i>编 辑</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

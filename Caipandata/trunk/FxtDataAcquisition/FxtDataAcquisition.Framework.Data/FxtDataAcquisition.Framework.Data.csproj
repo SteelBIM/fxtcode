@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20FF1E25-A6AA-4F90-BC9C-71FC4587C82B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtDataAcquisition.Framework.Data</RootNamespace>
+    <AssemblyName>FxtDataAcquisition.Framework.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityFramework\DbContextFactory.cs" />
+    <Compile Include="EntityFramework\FxtDataAcquisitionContext.cs" />
+    <Compile Include="EntityFramework\GenericRepository.cs" />
+    <Compile Include="EntityFramework\Mapping\AllotFlowMap.cs" />
+    <Compile Include="EntityFramework\Mapping\AllotSurveyMap.cs" />
+    <Compile Include="EntityFramework\Mapping\BuildingMap.cs" />
+    <Compile Include="EntityFramework\Mapping\CheckMap.cs" />
+    <Compile Include="EntityFramework\Mapping\DepartmentMap.cs" />
+    <Compile Include="EntityFramework\Mapping\DepartmentUserMap.cs" />
+    <Compile Include="EntityFramework\Mapping\FieldGroupMap.cs" />
+    <Compile Include="EntityFramework\Mapping\FieldGroupTempletMap.cs" />
+    <Compile Include="EntityFramework\Mapping\FieldMap.cs" />
+    <Compile Include="EntityFramework\Mapping\FieldTempletMap.cs" />
+    <Compile Include="EntityFramework\Mapping\HouseDetailsMap.cs" />
+    <Compile Include="EntityFramework\Mapping\HouseMap.cs" />
+    <Compile Include="EntityFramework\Mapping\PAppendageMap.cs" />
+    <Compile Include="EntityFramework\Mapping\PCompanyMap.cs" />
+    <Compile Include="EntityFramework\Mapping\PPhotoMap.cs" />
+    <Compile Include="EntityFramework\Mapping\ProjectMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSCodeMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSFeedbackMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSMenuMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSRoleMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSRoleMenuFunctionMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSRoleMenuMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntityFramework\Mapping\SYSRoleUserMap.cs" />
+    <Compile Include="EntityFramework\Mapping\SYSUserInfoMap.cs" />
+    <Compile Include="EntityFramework\Mapping\TempletMap.cs" />
+    <Compile Include="EntityFramework\Repositories\ProjectAllotFlowSurveyRepository.cs" />
+    <Compile Include="EntityFramework\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\commonproject\trunk\CAS.Common.MVC4\CAS.Common.MVC4.csproj">
+      <Project>{fa2001f0-7369-4521-924e-05eff30462f0}</Project>
+      <Name>CAS.Common.MVC4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Domain\FxtDataAcquisition.Domain.csproj">
+      <Project>{78da0a32-26b2-4416-bc5f-3d2472d46724}</Project>
+      <Name>FxtDataAcquisition.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

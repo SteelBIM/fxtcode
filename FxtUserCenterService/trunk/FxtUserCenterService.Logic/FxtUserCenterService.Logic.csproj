@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31FBF05E-27A5-48F0-9640-EB8A4D98D9D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtUserCenterService.Logic</RootNamespace>
+    <AssemblyName>FxtUserCenterService.Logic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.DataAccess.BaseDAModels">
+      <HintPath>..\..\..\CommonDll\CAS.DataAccess.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\..\CommonDll\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompanyBL.cs" />
+    <Compile Include="CompanyProductAppBL.cs" />
+    <Compile Include="CompanyProductAppFuncBL.cs" />
+    <Compile Include="CompanyProductBL.cs" />
+    <Compile Include="CompanyProductModuleBL.cs" />
+    <Compile Include="CompanyProductSafeBL.cs" />
+    <Compile Include="DatPhoneMessageBL.cs" />
+    <Compile Include="DatPushMessageBL.cs" />
+    <Compile Include="MobilePushBL.cs" />
+    <Compile Include="OperateLogBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimplePassWordBL.cs" />
+    <Compile Include="UserBL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Common\CAS.Common.csproj">
+      <Project>{FA2001F0-7369-4521-924E-05EFF30462F0}</Project>
+      <Name>CAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtUserCenterService.DataAccess\FxtUserCenterService.DataAccess.csproj">
+      <Project>{51B84AE2-AD35-45BF-AAB4-B7CBEB6A1EAA}</Project>
+      <Name>FxtUserCenterService.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtUserCenterService.Entity\FxtUserCenterService.Entity.csproj">
+      <Project>{F73D3259-F27E-43B9-B886-F457E3B3573B}</Project>
+      <Name>FxtUserCenterService.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

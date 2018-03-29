@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.LNKPCompany,  FxtDataAcquisition.NHibernate" table="LNK_P_Company">
+
+    <!--<id name="ProjectId" column="ProjectId" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>-->
+    <composite-id name="LNKPCompanyPX" class="FxtDataAcquisition.NHibernate.Entities.ProjectPKCompanyTypePKCity,FxtDataAcquisition.NHibernate">
+      <key-property name="ProjectId" column="ProjectId" type="int"  />
+      <key-property name="CompanyType" column="CompanyType" type="int"  />
+      <key-property name="CityId" column="CityId" type="int"  />
+    </composite-id>
+    <!--<property name="CompanyType" column="CompanyType" type="int"  />
+    <property name="CityId" column="CityId" type="int"  />-->
+		<property name="CompanyName" column="CompanyName" type="string"  />
+    
+	</class>
+</hibernate-mapping>

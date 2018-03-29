@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Content.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Assets/bootstrap-fileupload/bootstrap-fileupload.css")" />
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Assets/bootstrap-fileupload/bootstrap-fileupload.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#startupload").click(function () {
+                $("#uploadForm").submit();
+            });
+        });
+    </script>
+}
+<div class="alert alert-info">
+    <button class="close" data-dismiss="alert">
+    </button>
+    <strong>提示：</strong>请先点击 <strong><a href="@Url.Content("~/DownloadTemplate/House/待建楼盘导入格式.xlsx")">此处</a></strong>下载Excel模板，然后再进行导入操作。
+</div>
+@using (Html.BeginForm("UploadFile", "WaitBuildingProject", FormMethod.Post, new { id = "uploadForm", enctype = "multipart/form-data" }))
+{
+    <div class="fileupload fileupload-new" data-provides="fileupload" style="margin-top: 10px; margin-left:15px;">
+        <div class="input-group">
+            <span class="input-group-btn"><span class="uneditable-input"><i class="icon-file fileupload-exists">
+            </i><span class="fileupload-preview"></span></span></span>&nbsp;&nbsp;<span class="btn default btn-file">
+                <span class="fileupload-new"><i class="icon-paper-clip"></i>选择文件</span> <span class="fileupload-exists">
+                    <i class="icon-undo"></i>重新选择</span>
+                <input type="file" name="file" class="default"  accept=".xlsx,.xls" />
+            </span>&nbsp;&nbsp;<a href="#" class="btn red fileupload-exists" data-dismiss="fileupload"><i
+                class="icon-trash"></i>移除</a> <span class="fileupload-exists"><a id="startupload"
+                    class="btn fileupload-exists">开始上传</a></span> 
+        </div>
+    </div>
+}

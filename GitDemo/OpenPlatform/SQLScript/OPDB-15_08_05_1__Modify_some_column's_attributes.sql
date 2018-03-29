@@ -1,0 +1,22 @@
+/*
+Date: 20150805
+Description:各字段属性微调
+*/
+
+-- 修改各表Valid字段属性
+ALTER TABLE buildingbase MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE entrustappraise MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE fxtcustomersyscode MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE housebase MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE person MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE projectbase MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE propertytransactionrecode MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+ALTER TABLE surveyfiles MODIFY `Valid` BIT(1) NULL DEFAULT 1;
+
+-- Date相关属性
+ALTER TABLE entrustappraise MODIFY `UpdateDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日期';
+ALTER TABLE propertytransactionrecode MODIFY `CreateDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- entrustobject
+ALTER TABLE entrustobject CHANGE COLUMN `Room` RoomNum SMALLINT(6) UNSIGNED NULL DEFAULT NULL COMMENT '房(房间数)';
+ALTER TABLE entrustobject CHANGE COLUMN `Balcony` BalconyNum SMALLINT(6) NULL DEFAULT NULL COMMENT '阳台(阳台数)';

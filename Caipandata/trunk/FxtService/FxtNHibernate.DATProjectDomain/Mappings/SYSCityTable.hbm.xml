@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.SYSCityTable, FxtNHibernate.DATProjectDomain" table="SYS_City_Table">
+		<id name="CityId" column="CityId" type="int" unsaved-value="0">
+      			      			
+      	</id>      		
+		<property name="ProjectTable" column="ProjectTable" type="string"  />
+		<property name="BuildingTable" column="BuildingTable" type="string"  />
+		<property name="HouseTable" column="HouseTable" type="string"  />
+		<property name="CaseTable" column="CaseTable" type="string"  />
+		<property name="QueryInfoTable" column="QueryInfoTable" type="string"  />
+		<property name="ReportTable" column="ReportTable" type="string"  />
+		<property name="PrintTable" column="PrintTable" type="string"  />
+		<property name="HistoryTable" column="HistoryTable" type="string"  />
+		<property name="QueryTaxTable" column="QueryTaxTable" type="string"  />
+		<property name="CaseBusinessTable" column="CaseBusinessTable" type="string"  />
+		<property name="CaseLandTable" column="CaseLandTable" type="string"  />
+		<property name="QueryAdjustTable" column="QueryAdjustTable" type="string"  />
+		<property name="QueryTaxSOATable" column="QueryTaxSOATable" type="string"  />
+		<property name="QueryFlowTable" column="QueryFlowTable" type="string"  />
+		<property name="CASHistoryTable" column="CASHistoryTable" type="string"  />
+		<property name="MessageTable" column="MessageTable" type="string"  />
+		<property name="QueryCheckTable" column="QueryCheckTable" type="string"  />
+		<property name="ReportCheckTable" column="ReportCheckTable" type="string"  />
+		<property name="SurveyTable" column="SurveyTable" type="string"  />
+		<property name="SurveyBusinessTable" column="SurveyBusinessTable" type="string"  />
+		<property name="SurveyFactoryTable" column="SurveyFactoryTable" type="string"  />
+		<property name="SurveyLandTable" column="SurveyLandTable" type="string"  />
+		<property name="SurveyOfficeTable" column="SurveyOfficeTable" type="string"  />
+		<property name="SurveyOtherTable" column="SurveyOtherTable" type="string"  />
+		<property name="QueryFilesTable" column="QueryFilesTable" type="string"  />
+		<property name="SurveyTextTable" column="SurveyTextTable" type="string"  />
+		<property name="SubHousePriceTable" column="SubHousePriceTable" type="string"  />
+		<property name="QProjectTable" column="QProjectTable" type="string"  />
+		<property name="ReportEntrustTable" column="ReportEntrustTable" type="string"  />
+		<property name="SurveyCaseTable" column="SurveyCaseTable" type="string"  />
+		<property name="SearchHistoryTable" column="SearchHistoryTable" type="string"  />
+		<property name="QueryYPDat" column="QueryYPDat" type="string"  />
+		<property name="QueryYPCheckTable" column="QueryYPCheckTable" type="string"  />
+				
+	</class>
+</hibernate-mapping>

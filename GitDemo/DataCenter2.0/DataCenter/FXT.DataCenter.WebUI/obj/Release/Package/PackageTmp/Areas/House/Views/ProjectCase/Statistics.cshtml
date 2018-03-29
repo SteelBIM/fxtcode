@@ -1,0 +1,1152 @@
+﻿@using Webdiyer.WebControls.Mvc
+
+@model FXT.DataCenter.WebUI.Areas.House.Models.ProjectCaseStastics
+@section StyleSheet{
+    <style type="text/css">
+        legend {
+            font-weight: 300 !important;
+            font-size: 18px;
+        }
+
+        .tbsta {
+            margin-left: 10px;
+        }
+
+            .tbsta input[type='text'], select {
+                margin-bottom: 0px;
+            }
+
+        input[type='checkbox'] {
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+
+        div.pagination {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        input[type='radio'] {
+            margin-bottom: 20px;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var UrlCaseExport = '@Url.Action("CaseExport")';
+        var urlSubArea = '@Url.Action("GetSubArea")';
+        var UrlAvgPriceExport = '@Url.Action("AvgPriceExport")';
+        var UrlProjectEValue = '@Url.Action("ProjectEValueExport")';
+        var UrlBuildingEValue = '@Url.Action("BuildingEValueExport")';
+
+        $(document).ready(function () {
+
+            //日期控件渲染
+            $("#CaseUpLoadtimeFrom, #CaseUpLoadtimeTo, #CaseDateFrom, #CaseDateTo,#ProjectEValueTimeFrom,#ProjectEValueTimeTo,#BuildingEValueTimeFrom,#BuildingEValueTimeTo").datepicker({
+                format: "yyyy-mm-dd"
+            });
+            $("#TimeFrom,#TimeTo").datepicker({
+                format: "yyyy-mm",
+                startView: 1,
+                maxViewMode: 1,
+                minViewMode: 1,
+            });
+            if ($("#CaseUpLoadtimeFrom").val() == "") {
+                var startdate = new Date();
+                startdate.setMonth(startdate.getMonth() - 1);
+                var month = startdate.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                $("#CaseUpLoadtimeFrom").val(startdate.getFullYear() + "-" + month + "-01");
+            }
+            if ($("#CaseUpLoadtimeTo").val() == "") {
+                var date = new Date();
+                var month = date.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                var enddate = new Date(date.getFullYear() + "-" + month + "-01");
+                enddate.setDate(enddate.getDate() - 1);
+                month = enddate.getMonth() + 1;
+                var day = enddate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#CaseUpLoadtimeTo").val(enddate.getFullYear() + "-" + month + "-" + day);
+            }
+
+            if ($("#CaseDateFrom").val() == "") {
+                var startdate = new Date();
+                startdate.setMonth(startdate.getMonth() - 3);
+                var month = startdate.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                $("#CaseDateFrom").val(startdate.getFullYear() + "-" + month + "-01");
+            }
+            if ($("#CaseDateTo").val() == "") {
+                var date = new Date();
+                var month = date.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                var enddate = new Date(date.getFullYear() + "-" + month + "-01");
+                enddate.setDate(enddate.getDate() - 1);
+                month = enddate.getMonth() + 1;
+                var day = enddate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#CaseDateTo").val(enddate.getFullYear() + "-" + month + "-" + day);
+            }
+
+            if ($("#ProjectEValueTimeFrom").val() == "") {
+                var startdate = new Date();
+                startdate.setMonth(startdate.getMonth() - '@ViewBag.casemonth');
+                var month = startdate.getMonth() + 1;
+                var day = startdate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#ProjectEValueTimeFrom").val(startdate.getFullYear() + "-" + month + "-" + day);
+            }
+            if ($("#ProjectEValueTimeTo").val() == "") {
+                var enddate = new Date();
+                var month = enddate.getMonth() + 1;
+                var day = enddate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#ProjectEValueTimeTo").val(enddate.getFullYear() + "-" + month + "-" + day);
+            }
+
+            if ($("#BuildingEValueTimeFrom").val() == "") {
+                var startdate = new Date();
+                startdate.setMonth(startdate.getMonth() - '@ViewBag.casemonth');
+                var month = startdate.getMonth() + 1;
+                var day = startdate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#BuildingEValueTimeFrom").val(startdate.getFullYear() + "-" + month + "-" + day);
+            }
+            if ($("#BuildingEValueTimeTo").val() == "") {
+                var enddate = new Date();
+                var month = enddate.getMonth() + 1;
+                var day = enddate.getDate();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                $("#BuildingEValueTimeTo").val(enddate.getFullYear() + "-" + month + "-" + day);
+            }
+
+            var peareaname = "@ViewBag.peareaname";
+            if (peareaname != "") {
+                var peareanamelist = peareaname.split(',');
+                for (var i = 0; i < peareanamelist.length; i++) {
+                    $("input[name=peareaname]").each(function () {
+                        if (this.value == peareanamelist[i]) {
+                            $(this).attr("checked", true);
+                        }
+                    });
+                }
+                var flag = true;
+                $("input[name=peareaname]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#peAreanameCheckAll").prop("checked", flag);
+                $.uniform.update();
+            }
+
+            var bpeareaname = "@ViewBag.bpeareaname";
+            if (bpeareaname != "") {
+                var bpeareanamelist = bpeareaname.split(',');
+                for (var i = 0; i < bpeareanamelist.length; i++) {
+                    $("input[name=bpeareaname]").each(function () {
+                        if (this.value == bpeareanamelist[i]) {
+                            $(this).attr("checked", true);
+                        }
+                    });
+                }
+                var flag = true;
+                $("input[name=bpeareaname]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#bpeAreanameCheckAll").prop("checked", flag);
+                $.uniform.update();
+            }
+
+            //查询（工作量）
+            $("#btnQuery").click(function () {
+                $("#Type").val("WorkLoad");
+                var datefrom = $.trim($("#CaseUpLoadtimeFrom").val());
+                var dateto = $.trim($("#CaseUpLoadtimeTo").val());
+                if (datefrom == "" || dateto == "") {
+                    alert("案例上传时间不能为空！");
+                    return false;
+                }
+            });
+
+            //楼盘均价查询
+            $("#btnQuery1").click(function () {
+                $($("input[name='Type']").get(1)).val("Statist");
+                var datefrom = $.trim($("#CaseDateFrom").val());
+                var dateto = $.trim($("#CaseDateTo").val());
+                var count = $.trim($("#Amount").val());
+
+                if (datefrom == "" || dateto == "" || count == "") {
+                    alert("所有条件不能为空！");
+                    return false;
+                }
+
+                $("#form2").attr("action", '@Url.Action("Statistics")');
+            });
+
+            //楼盘均价导出
+            $("#btnExport1").click(function () {
+                var datefrom = $.trim($("#CaseDateFrom").val());
+                var dateto = $.trim($("#CaseDateTo").val());
+                var condition = $("#Condition").val();
+                var count = $.trim($("#Amount").val());
+
+                if (datefrom == "" || dateto == "" || count == "") {
+                    alert("所有条件不能为空！");
+                    return false;
+                }
+                $("#form2").attr("action", UrlCaseExport);
+                //  location.href = UrlCaseExport + "?datefrom=" + datefrom + "&dateto=" + dateto + "&condition=" + condition + "&count=" + count;
+
+            });
+
+            //案例均价导出
+            $("#btnExport2").click(function () {
+                var timeFrom = $.trim($("#TimeFrom").val());
+                var timeTo = $.trim($("#TimeTo").val());
+                if (timeFrom == "" || timeTo == "") {
+                    alert("时间不能为空");
+                    return false;
+                }
+
+                var flag = false;
+                $("input[name=casetypecode]").each(function () {
+                    flag = flag || $(this).prop("checked");
+                });
+                $.uniform.update();
+                if (!flag) {
+                    $("input[name=casetypecode]").each(function () {
+                        if ($(this).val() == "3001001" || $(this).val() == "3001002" || $(this).val() == "3001003" || $(this).val() == "3001004" || $(this).val() == "3001005") {
+                            $(this).prop("checked", true);
+                        }
+                    });
+                }
+                $.uniform.update();
+            });
+
+            //楼盘可估查询
+            $("#btnQuery4").bind("click", function () {
+                $($("input[name='Type']").get(3)).val("ProjectEValue");
+                var datefrom = $.trim($("#ProjectEValueTimeFrom").val());
+                var dateto = $.trim($("#ProjectEValueTimeTo").val());
+                if (datefrom == "" || dateto == "") {
+                    alert("案例查询时间不能为空！");
+                    return false;
+                }
+                $("#form4").attr("action", '@Url.Action("Statistics")');
+            });
+
+            //楼盘可估导出
+            $("#btnExport4").bind("click", function () {
+                $($("input[name='Type']").get(3)).val("ProjectEValue");
+                var datefrom = $.trim($("#ProjectEValueTimeFrom").val());
+                var dateto = $.trim($("#ProjectEValueTimeTo").val());
+
+                if (datefrom == "" || dateto == "") {
+                    alert("案例查询时间不能为空！");
+                    return false;
+                }
+                $("#form4").attr("action", UrlProjectEValue);
+            });
+
+            //楼栋可估查询
+            $("#btnQuery5").bind("click", function () {
+                $($("input[name='Type']").get(4)).val("BuildingEValue");
+                var datefrom = $.trim($("#BuildingEValueTimeFrom").val());
+                var dateto = $.trim($("#BuildingEValueTimeTo").val());
+                if (datefrom == "" || dateto == "") {
+                    alert("案例查询时间不能为空！");
+                    return false;
+                }
+                $("#form5").attr("action", '@Url.Action("Statistics")');
+            });
+
+            //楼栋可估导出
+            $("#btnExport5").bind("click", function () {
+                $($("input[name='Type']").get(3)).val("BuildingEValue");
+                var datefrom = $.trim($("#BuildingEValueTimeFrom").val());
+                var dateto = $.trim($("#BuildingEValueTimeTo").val());
+
+                if (datefrom == "" || dateto == "") {
+                    alert("案例查询时间不能为空！");
+                    return false;
+                }
+                $("#form5").attr("action", UrlBuildingEValue);
+            });
+
+            $("#controller").click(function () {
+                var value = $("#AvgPrice").css("display");
+                if (value == "none") {
+                    $("#AvgPrice").css("display", "block");
+                    $("#controller").text("收起∧");
+
+                } else {
+                    $("#AvgPrice").css("display", "none");
+                    $("#controller").text("展开∨");
+                }
+            });
+
+            $('#myTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            var active = '@ViewBag.active';
+            if (active == "") {
+                $("#myTab a:first").tab('show');
+            }
+            $("#myTab li").each(function () {
+                var hre = $(this).children("a").attr("href");
+                if (active == hre) {
+                    $(this).addClass("active");
+                    $(active).addClass("active");
+                }
+            });
+
+            $("#areanameCheckAll").click(function () {
+
+                if ($(this).is(":checked")) {
+                    $("input[name='areaname']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='areaname']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#casetypecodeCheckAll").click(function () {
+
+                if ($(this).is(":checked")) {
+                    $("input[name='casetypecode']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='casetypecode']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#buildingCheckAll").click(function () {
+
+                if ($(this).is(":checked")) {
+                    $("input[name='Buildingtypecode']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='Buildingtypecode']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#purposeCheckAll").click(function () {
+
+                if ($(this).is(":checked")) {
+                    $("input[name='Purposecode']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='Purposecode']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#buildingdatecodeCheckAll").click(function () {
+
+                if ($(this).is(":checked")) {
+                    $("input[name='Buildingdatecode']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='Buildingdatecode']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#peAreanameCheckAll").click(function () {
+                if ($(this).is(":checked")) {
+                    $("input[name='peareaname']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='peareaname']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+            $("#bpeAreanameCheckAll").click(function () {
+                if ($(this).is(":checked")) {
+                    $("input[name='bpeareaname']").each(function () {
+                        $(this).parent().addClass("checked");
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='bpeareaname']").each(function () {
+                        $(this).parent().removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                }
+            });
+
+            //全选联动
+            $("input[name=areaname]").live("click", function () {
+                var flag = true;
+                $("input[name=areaname]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#areanameCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=casetypecode]").live("click", function () {
+                var flag = true;
+                $("input[name=casetypecode]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#casetypecodeCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=Buildingtypecode]").live("click", function () {
+                var flag = true;
+                $("input[name=Buildingtypecode]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#buildingCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=Purposecode]").live("click", function () {
+                var flag = true;
+                $("input[name=Purposecode]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#purposeCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=Buildingdatecode]").live("click", function () {
+                var flag = true;
+                $("input[name=Buildingdatecode]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#buildingdatecodeCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=peareaname]").live("click", function () {
+                var flag = true;
+                $("input[name=peareaname]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#peAreanameCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+            $("input[name=bpeareaname]").live("click", function () {
+                var flag = true;
+                $("input[name=bpeareaname]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#bpeAreanameCheckAll").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("House/ProjectCase/Statistics")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/ProjectCase/Index\">楼盘案例数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>统计</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+
+        });
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div class="tabbable tabbable-custom">
+    <ul class="nav nav-tabs" id="myTab">
+        <li><a href="#divone">工作量统计</a></li>
+        <li><a href="#divtwo">楼盘案例统计</a></li>
+        <li><a href="#divthree">案例均价统计</a></li>
+        <li><a href="#divfour">楼盘可估统计</a></li>
+        <li><a href="#divfive">楼栋可估统计</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="divone">
+            @using (Html.BeginForm("Statistics", "ProjectCase", null, FormMethod.Get))
+            { 
+           
+                <table class="tbsta">
+                    <tr>
+                        <td>案例上传时间：
+                        </td>
+                        <td>
+                            @Html.TextBox("CaseUpLoadtimeFrom", Request["CaseUpLoadtimeFrom"], new { @class = "m-wrap small" })
+                        </td>
+                        <td>&nbsp;到：
+                        </td>
+                        <td>
+                            @Html.TextBox("CaseUpLoadtimeTo", Request["CaseUpLoadtimeTo"], new { @class = "m-wrap small" })
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;
+                            @Html.Hidden("Type")
+                            <button id="btnQuery" class="btn">
+                                查 询
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            }
+            @{
+                var model1 = Model == null ? null : Model.WorkLoad;
+            }
+            @if (model1 != null)
+            {
+               
+                <table class="table table-striped table-hover " style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>姓名
+                            </th>
+                            <th>案例上传条数
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in model1)
+                        {
+                            <tr>
+                                <td>
+                                    @item.UserName
+                                </td>
+                                <td>
+                                    @item.Count
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="pager">
+                    <div>共 @model1.TotalPageCount 页  @model1.TotalItemCount 条记录,当前为第 @Model.WorkLoad.CurrentPageIndex 页</div>
+                    @Html.Pager(@model1, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+                </div>
+              
+            }
+
+        </div>
+        <div class="tab-pane" id="divtwo">
+            @using (Html.BeginForm("Statistics", "ProjectCase", null, FormMethod.Get, new { id = "form2" }))
+            { 
+                <table class="tbsta" style="width: 960px;">
+                    <tr>
+                        <td>案例时间：
+                        </td>
+                        <td>
+                            @Html.TextBox("CaseDateFrom", Request["CaseDateFrom"], new { @class = "m-wrap small" })
+                        </td>
+                        <td>到：
+                        </td>
+                        <td>
+                            @Html.TextBox("CaseDateTo", Request["CaseDateTo"], new { @class = "m-wrap small" })
+                        </td>
+                        <td>案例类型：
+                        </td>
+                        <td>
+                            @Html.DropDownList("CaseTypeCode", ViewBag.CaseTypeName as IEnumerable<SelectListItem>, new { @class = "m-wrap small" })
+                        </td>
+                        <td>案例条数：
+                        </td>
+                        <td>
+                            @Html.DropDownList("Condition", new List<SelectListItem> { new SelectListItem { Value = "0", Text = "大于等于" }, new SelectListItem { Value = "1", Text = "小于" } }, new { style = "width:60px;" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Amount", Request["Amount"] ?? "10", new { style = "width: 25px; display: block;" })
+                        </td>
+                        <td style="padding-left: 20px;">
+                            @Html.Hidden("Type")
+                            <button id="btnQuery1" class="btn" title="统计在查询时间范围内、所有楼盘、用途在“普通住宅,非普通住宅,公寓,新式里弄,旧式里弄,商住,经济适用房”范围内、默认是售价案例的，分建筑类型显示案例总条数及均价。">
+                                查 询
+                            </button>
+                        </td>
+                        <td>
+                            <button id="btnExport1" class="btn">导 出</button>
+                        </td>
+                    </tr>
+                </table>
+            }
+            @{
+                var model2 = Model == null ? null : Model.Statist ?? null;
+            }
+            @if (model2 != null)
+            {
+                <table class="table table-striped table-hover " style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">行政区
+                            </th>
+                            <th rowspan="2">楼盘名称
+                            </th>
+                            <th rowspan="2">主用途
+                            </th>
+                            <th rowspan="2">主建筑物类型
+                            </th>
+                            <th rowspan="2">案例总数
+                            </th>
+                            <th rowspan="2">案例均价
+                            </th>
+                            <th colspan="2" style="text-align: center;">低层
+                            </th>
+                            <th colspan="2" style="text-align: center;">多层
+                            </th>
+                            <th colspan="2" style="text-align: center;">小高层
+                            </th>
+                            <th colspan="2" style="text-align: center;">高层
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>案例</th>
+                            <th>均价</th>
+                            <th>案例</th>
+                            <th>均价</th>
+                            <th>案例</th>
+                            <th>均价</th>
+                            <th>案例</th>
+                            <th>均价</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in model2)
+                        {
+                            <tr>
+                                <td>
+                                    @item.AreaName
+                                </td>
+                                <td>
+                                    @item.ProjectName
+                                </td>
+                                <td>
+                                    @item.PurposeCodeName
+                                </td>
+                                <td>
+                                    @item.pBuildingTypeCodeName
+                                </td>
+                                <td>
+                                    @item.casecount (<span title="房讯通">@item.casecount_fxt</span> / <span title="非房讯通">@item.casecount_nfxt</span>)
+                                </td>
+                                <td>
+                                    @item.caseprice
+                                </td>
+                                <td>
+                                    @item.LowerCount
+                                </td>
+                                <td>
+                                    @item.lowerprice
+                                </td>
+                                <td>
+                                    @item.MultiCount
+                                </td>
+                                <td>
+                                    @item.multiprice
+                                </td>
+                                <td>
+                                    @item.SmallHighCount
+                                </td>
+                                <td>
+                                    @item.smallhighprice
+                                </td>
+                                <td>
+                                    @item.HighCount
+                                </td>
+                                <td>
+                                    @item.highprice
+                                </td>
+                            </tr>
+                
+                        }
+                    </tbody>
+                </table>
+                <div class="pager">
+                    <div>共 @model2.TotalPageCount 页 @model2.TotalItemCount 条记录,当前为第 @model2.CurrentPageIndex 页</div>
+                    @Html.Pager(model2, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+                </div>
+            }
+        </div>
+        <div class="tab-pane" id="divthree">
+            <div style="text-align: right;">
+                <a style="cursor: pointer;" id="controller">收起∧</a>
+            </div>
+            @using (Html.BeginForm("AvgPriceExport", "ProjectCase", null, FormMethod.Get))
+            { 
+                <table id="AvgPrice" class="tbsta" style="line-height: 40px;">
+                    <tr>
+                        <td style="width: 80px;">时间：
+                        </td>
+                        <td>
+                            @Html.TextBox("TimeFrom", Request["TimeFrom"] ?? (DateTime.Now.AddMonths(-3).ToString("yyyy-MM")), new { @class = "m-wrap small" })
+                            到：
+                            @Html.TextBox("TimeTo", Request["TimeTo"] ?? (DateTime.Now.AddMonths(-1).ToString("yyyy-MM")), new { @class = "m-wrap small" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">统计周期：
+                        </td>
+                        <td>
+                            <input type="checkbox" name="groupcycle" value="month" />逐月份
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">统计范围：
+                        </td>
+                        <td>
+                            <input type="radio" name="Grouparea" value="area" />每个行政区
+                            <input type="radio" name="Grouparea" value="subarea" />每个片区
+                            <input type="radio" name="Grouparea" value="project" />每个楼盘
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">行政区：
+                        </td>
+                        <td>
+                            <input id="areanameCheckAll" type="checkbox" value="-1" />
+                            全市
+                            @{
+                var arealist = ViewData["areaid"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in arealist)
+                            {
+                                if (item.Value != "-1")
+                                {
+                                <input type="checkbox" name="areaname" value="@item.Value" /> @item.Text
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">案例类型：
+                        </td>
+                        <td>
+                            <input id="casetypecodeCheckAll" type="checkbox" value="-1" />
+                            全部
+                            @{
+                            var casetypecode = ViewData["CaseTypeName"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in casetypecode)
+                            {
+                                if (item.Value != "-1")
+                                {
+                                <input type="checkbox" name="casetypecode" value="@item.Value" /> @item.Text 
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">样本楼盘：
+                        </td>
+                        <td>
+                            <input type="radio" name="Sampleproject" value="0" />否
+                            <input type="radio" name="Sampleproject" value="1" />是
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">建筑年代：
+                        </td>
+                        <td>
+                            <input id="buildingdatecodeCheckAll" type="checkbox" />
+                            全部
+                            <input id="buildingdatecodeCheck" name="Buildingdatecode" type="checkbox" value="-1" />
+                            不限
+                            @{
+                            var buildingdatecode = ViewData["buildingdatecode"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in buildingdatecode)
+                            {
+                                <input type="checkbox" name="Buildingdatecode" value="@item.Value" /> @item.Text
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">建筑类型：
+                        </td>
+                        <td>
+                            <input id="buildingCheckAll" type="checkbox" />
+                            全部
+                            <input id="buildingCheck" name="Buildingtypecode" type="checkbox" value="-1" />
+                            不限
+                            @{
+                            var buildingtype = ViewData["Buildingtypecode"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in buildingtype)
+                            {
+                                <input type="checkbox" name="Buildingtypecode" value="@item.Value" /> @item.Text
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px; vertical-align: top;">居住用途：
+                        </td>
+                        <td>
+                            <input id="purposeCheckAll" type="checkbox" />
+                            全部
+                            <input id="purposeCheck" name="Purposecode" type="checkbox" value="-1" />
+                            不限
+                            @{
+                            var purposecode = ViewData["Purposecode"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in purposecode)
+                            {
+                                <input type="checkbox" name="Purposecode" value="@item.Value" /> @item.Text
+                            }
+                            @* @Html.DropDownList("purposecode")*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @Html.Hidden("Type")
+                            @*<button id="btnQuery2" class="btn">
+                                查 询</button>*@
+                            <input id="btnExport2" class="btn" type="submit" value="导 出" />
+                        </td>
+                    </tr>
+                </table>
+            }
+            @{
+                var model3 = Model == null ? null : Model.AvePrice;
+            }
+            @if (model3 != null && model3.Any())
+            { 
+                <table class="table table-striped table-hover " style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>时间
+                            </th>
+                            <th>范围
+                            </th>
+                            <th>案例条数
+                            </th>
+                            <th>均价
+                            </th>
+                            @*<th>占比
+                            </th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in model3)
+                        {
+                            <tr>
+                                <td>
+                                    @item.CaseDate
+                                </td>
+                                <td>
+                                    @item.Num
+                                </td>
+                                <td>
+                                    @item.AvgPrice
+                                </td>
+                                @*<td>
+                                    @item.PricePercent
+                                </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="pager">
+                    <div>共 @model3.TotalPageCount 页 @model3.TotalItemCount 条记录,当前为第 @model3.CurrentPageIndex 页</div>
+                    @Html.Pager(model3, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+                </div>
+            }
+        </div>
+        <div class="tab-pane" id="divfour">
+            @using (Html.BeginForm("Statistics", "ProjectCase", null, FormMethod.Get, new { id = "form4" }))
+            {
+                <table id="ProjectEValue" class="tbsta" style="width: 960px;">
+                    <tr>
+                        <td style="width: 80px;">时间：</td>
+                        <td>
+                            @Html.TextBox("ProjectEValueTimeFrom", Request["ProjectEValueTimeFrom"], new { @class = "m-wrap small" })
+                            到:
+                            @Html.TextBox("ProjectEValueTimeTo", Request["ProjectEValueTimeTo"], new { @class = "m-wrap small" })
+                        </td>
+                        <td style="width: 100px;padding-left: 10px;">楼盘名称:</td>
+                        <td>@Html.TextBox("ProjectEValueProjectName", Request["ProjectEValueProjectName"], new { @class = "m-wrap small" })</td>
+                        <td style="width: 100px;padding-left: 10px;">不可估原因:</td>
+                        <td>
+                            @Html.DropDownList("ProjectUEReason", new List<SelectListItem>{
+                                new SelectListItem(){Text = "自身案例不足", Value = "1"},
+                                new SelectListItem(){Text = "案例不足", Value = "2"}
+                            }, "--请选择--", new { @class = "m-wrap small valid" })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 80px;">
+                        行政区：
+                    </td>
+                    <td colspan="5">
+                        <input id="peAreanameCheckAll" type="checkbox" value="-1" />
+                        全市
+                        @{
+                var arealist = ViewData["areaid"] as IEnumerable<SelectListItem>;
+                        }
+                        @foreach (var item in arealist)
+                        {
+                            if (item.Value != "-1")
+                            {
+                                <input type="checkbox" name="peareaname" value="@item.Value" /> @item.Text
+                            }
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        @Html.Hidden("Type")
+                        <button id="btnQuery4" class="btn">查 询</button>
+                        <input id="btnExport4" class="btn" type="submit" value="导 出" />
+                    </td>
+                </tr>
+            </table>
+            }
+            @{
+                var model4 = Model == null ? null : Model.ProjectEValue;
+            }
+            @if (model4 != null && model4.Any())
+            { 
+                <table class="table table-striped table-hover " style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>行政区
+                            </th>
+                            <th>楼盘
+                            </th>
+                            <th>楼盘地址
+                            </th>
+                            <th>是否可估
+                            </th>
+                            <th>可估系数
+                            </th>
+                            <th>案例条数
+                            </th>
+                            <th>估价结果
+                            </th>
+                            <th>不可估原因
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in model4)
+                        {
+                            <tr>
+                                <td>
+                                    @item.AreaName
+                                </td>
+                                <td>
+                                    @item.ProjectName
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Address))
+                                    {
+                                        if (item.Address.Length > 7)
+                                        {
+                                            Write(item.Address.Substring(0, 5) + "...");
+                                        }
+                                        else
+                                        {
+                                            Write(item.Address);
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @item.PIsEValue
+                                </td>
+                                <td>
+                                    @item.PWeight
+                                </td>
+                                <td>
+                                    @item.CaseCount
+                                </td>
+                                <td>
+                                    @item.PEPrice
+                                </td>
+                                <td>
+                                    @item.Remark
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="pager">
+                    <div>共 @model4.TotalPageCount 页 @model4.TotalItemCount 条记录,当前为第 @model4.CurrentPageIndex 页</div>
+                    @Html.Pager(model4, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+                </div>
+            }
+        </div>
+        <div class="tab-pane" id="divfive">
+            @using (Html.BeginForm("Statistics", "ProjectCase", null, FormMethod.Get, new { id = "form5" }))
+            {
+                <table id="BuildingEValue" class="tbsta" style="width: 960px;">
+                    <tr>
+                        <td style="width: 80px;">
+                            时间：
+                        </td>
+                        <td>
+                            @Html.TextBox("BuildingEValueTimeFrom", Request["BuildingEValueTimeFrom"], new { @class = "m-wrap small" })
+                            到：
+                            @Html.TextBox("BuildingEValueTimeTo", Request["BuildingEValueTimeTo"], new { @class = "m-wrap small" })
+                        </td>
+                        <td style="width: 100px;padding-left: 10px;">楼盘名称:</td>
+                        <td>@Html.TextBox("BuildingEValueProjectName", Request["BuildingEValueProjectName"], new { @class = "m-wrap small" })</td>
+                        <td style="width: 100px;padding-left: 10px;">不可估原因:</td>
+                        <td>
+                            @Html.DropDownList("BuildingUEReason", new List<SelectListItem>{
+                                new SelectListItem(){Text = "楼栋不可估", Value = "1"},
+                                new SelectListItem(){Text = "案例不足", Value = "2"}
+                            }, "--请选择--", new { @class = "m-wrap small valid" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 80px;">
+                            行政区：
+                        </td>
+                        <td colspan="5">
+                            <input id="bpeAreanameCheckAll" type="checkbox" value="-1" />
+                            全市
+                            @{
+                var arealist = ViewData["areaid"] as IEnumerable<SelectListItem>;
+                            }
+                            @foreach (var item in arealist)
+                            {
+                                if (item.Value != "-1")
+                                {
+                                    <input type="checkbox" name="bpeareaname" value="@item.Value" /> @item.Text
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            @Html.Hidden("Type")
+                            <button id="btnQuery5" class="btn">查 询</button>
+                            <input id="btnExport5" class="btn" type="submit" value="导 出" />
+                        </td>
+                    </tr>
+                </table>
+            }
+            @{
+                var model5 = Model == null ? null : Model.BuildingEValue;
+            }
+            @if (model5 != null && model5.Any())
+            { 
+                <table class="table table-striped table-hover " style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>行政区
+                            </th>
+                            <th>楼盘名称
+                            </th>
+                            <th>楼盘地址
+                            </th>
+                            <th>楼栋名称
+                            </th>
+                            <th>案例条数
+                            </th>
+                            <th>楼盘估价结果
+                            </th>
+                            <th>楼栋估价结果
+                            </th>
+                            <th>不可估原因
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in model5)
+                        {
+                            <tr>
+                                <td>
+                                    @item.AreaName
+                                </td>
+                                <td>
+                                    @item.ProjectName
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Address))
+                                    {
+                                        if (item.Address.Length > 7)
+                                        {
+                                            Write(item.Address.Substring(0, 5) + "...");
+                                        }
+                                        else
+                                        {
+                                            Write(item.Address);
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @item.BuildingName
+                                </td>
+                                <td>
+                                    @item.CaseCount
+                                </td>
+                                <td>
+                                    @item.PEPrice
+                                </td>
+                                <td>
+                                    @item.BEPrice
+                                </td>
+                                <td>
+                                    @item.Remark
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="pager">
+                    <div>共 @model5.TotalPageCount 页 @model5.TotalItemCount 条记录,当前为第 @model5.CurrentPageIndex 页</div>
+                    @Html.Pager(model5, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{115AE51E-4D5A-480B-AACC-2C5F928D3DC2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSpiderRule</RootNamespace>
+    <AssemblyName>WebSpiderRule</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Old\jquery-1.8.3.min.js" />
+    <Content Include="Old\test.aspx" />
+    <Content Include="Old\test2.aspx" />
+    <Content Include="成交\链家成交上海苏州.aspx" />
+    <Content Include="成交\链家成交成都重庆厦门.aspx" />
+    <Content Include="我爱我家.aspx" />
+    <Content Include="房天下esfhouse.aspx" />
+    <Content Include="楼盘\房价网.aspx" />
+    <Content Include="楼盘\我爱我家.aspx" />
+    <Content Include="赶集.aspx" />
+    <Content Include="楼盘\城市房产.aspx" />
+    <Content Include="楼盘\房天下新房二.aspx" />
+    <Content Include="楼盘\房天下新房.aspx" />
+    <Content Include="淘房屋.aspx" />
+    <Content Include="三六五淘房2.aspx" />
+    <Content Include="三六五淘房.aspx" />
+    <Content Include="行政区\中原地产_广州.aspx" />
+    <Content Include="行政区\中原地产.aspx" />
+    <Content Include="房探网.aspx" />
+    <Content Include="行政区\房途网杭州.aspx" />
+    <Content Include="行政区\房途网.aspx" />
+    <Content Include="行政区\中国房产超市.aspx" />
+    <Content Include="房天下.aspx" />
+    <Content Include="lianjia3_sh.aspx" />
+    <Content Include="lianjia2.aspx" />
+    <Content Include="lianjia.aspx" />
+    <Content Include="aiwujiwu.aspx" />
+    <Content Include="Old\aiwujiwu.aspx" />
+    <Content Include="Old\anjuke.aspx" />
+    <Content Include="Old\chengshi_list.aspx" />
+    <Content Include="Old\ganji_list.aspx" />
+    <Content Include="Old\lianjia.aspx" />
+    <Content Include="Old\lianjia2.aspx" />
+    <Content Include="Old\lianjia3_sh.aspx" />
+    <Content Include="Old\qfang.aspx" />
+    <Content Include="Old\qfang2.aspx" />
+    <Content Include="Old\souhu.aspx" />
+    <Content Include="Old\WebForm1.aspx" />
+    <Content Include="Old\WebForm2.aspx" />
+    <Content Include="Old\WebForm3.aspx" />
+    <Content Include="Old\woaiwojia.aspx" />
+    <Content Include="Old\xinlang_list.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Old\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Old\test2.aspx.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\test2.aspx.designer.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="成交\链家成交上海苏州.aspx.cs">
+      <DependentUpon>链家成交上海苏州.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="成交\链家成交上海苏州.aspx.designer.cs">
+      <DependentUpon>链家成交上海苏州.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="成交\链家成交成都重庆厦门.aspx.cs">
+      <DependentUpon>链家成交成都重庆厦门.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="成交\链家成交成都重庆厦门.aspx.designer.cs">
+      <DependentUpon>链家成交成都重庆厦门.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="我爱我家.aspx.cs">
+      <DependentUpon>我爱我家.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="我爱我家.aspx.designer.cs">
+      <DependentUpon>我爱我家.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="房天下esfhouse.aspx.cs">
+      <DependentUpon>房天下esfhouse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="房天下esfhouse.aspx.designer.cs">
+      <DependentUpon>房天下esfhouse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="楼盘\房价网.aspx.cs">
+      <DependentUpon>房价网.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="楼盘\房价网.aspx.designer.cs">
+      <DependentUpon>房价网.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="楼盘\我爱我家.aspx.cs">
+      <DependentUpon>我爱我家.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="楼盘\我爱我家.aspx.designer.cs">
+      <DependentUpon>我爱我家.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="赶集.aspx.cs">
+      <DependentUpon>赶集.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="赶集.aspx.designer.cs">
+      <DependentUpon>赶集.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="楼盘\城市房产.aspx.cs">
+      <DependentUpon>城市房产.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="楼盘\城市房产.aspx.designer.cs">
+      <DependentUpon>城市房产.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="楼盘\房天下新房二.aspx.cs">
+      <DependentUpon>房天下新房二.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="楼盘\房天下新房二.aspx.designer.cs">
+      <DependentUpon>房天下新房二.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="楼盘\房天下新房.aspx.cs">
+      <DependentUpon>房天下新房.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="楼盘\房天下新房.aspx.designer.cs">
+      <DependentUpon>房天下新房.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="淘房屋.aspx.cs">
+      <DependentUpon>淘房屋.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="淘房屋.aspx.designer.cs">
+      <DependentUpon>淘房屋.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="三六五淘房2.aspx.cs">
+      <DependentUpon>三六五淘房2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="三六五淘房2.aspx.designer.cs">
+      <DependentUpon>三六五淘房2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="三六五淘房.aspx.cs">
+      <DependentUpon>三六五淘房.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="三六五淘房.aspx.designer.cs">
+      <DependentUpon>三六五淘房.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="行政区\中原地产_广州.aspx.cs">
+      <DependentUpon>中原地产_广州.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="行政区\中原地产_广州.aspx.designer.cs">
+      <DependentUpon>中原地产_广州.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="行政区\中原地产.aspx.cs">
+      <DependentUpon>中原地产.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="行政区\中原地产.aspx.designer.cs">
+      <DependentUpon>中原地产.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="房探网.aspx.cs">
+      <DependentUpon>房探网.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="房探网.aspx.designer.cs">
+      <DependentUpon>房探网.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="行政区\房途网杭州.aspx.cs">
+      <DependentUpon>房途网杭州.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="行政区\房途网杭州.aspx.designer.cs">
+      <DependentUpon>房途网杭州.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="行政区\房途网.aspx.cs">
+      <DependentUpon>房途网.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="行政区\房途网.aspx.designer.cs">
+      <DependentUpon>房途网.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="行政区\中国房产超市.aspx.cs">
+      <DependentUpon>中国房产超市.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="行政区\中国房产超市.aspx.designer.cs">
+      <DependentUpon>中国房产超市.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="房天下.aspx.cs">
+      <DependentUpon>房天下.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="房天下.aspx.designer.cs">
+      <DependentUpon>房天下.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lianjia3_sh.aspx.cs">
+      <DependentUpon>lianjia3_sh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lianjia3_sh.aspx.designer.cs">
+      <DependentUpon>lianjia3_sh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lianjia2.aspx.cs">
+      <DependentUpon>lianjia2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lianjia2.aspx.designer.cs">
+      <DependentUpon>lianjia2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lianjia.aspx.cs">
+      <DependentUpon>lianjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lianjia.aspx.designer.cs">
+      <DependentUpon>lianjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aiwujiwu.aspx.cs">
+      <DependentUpon>aiwujiwu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aiwujiwu.aspx.designer.cs">
+      <DependentUpon>aiwujiwu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Old\aiwujiwu.aspx.cs">
+      <DependentUpon>aiwujiwu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\anjuke.aspx.cs">
+      <DependentUpon>anjuke.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\chengshi_list.aspx.cs">
+      <DependentUpon>chengshi_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\ganji_list.aspx.cs">
+      <DependentUpon>ganji_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\JSONHelper.cs" />
+    <Compile Include="Old\lianjia.aspx.cs">
+      <DependentUpon>lianjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\lianjia2.aspx.cs">
+      <DependentUpon>lianjia2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\lianjia3_sh.aspx.cs">
+      <DependentUpon>lianjia3_sh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\qfang.aspx.cs">
+      <DependentUpon>qfang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\qfang2.aspx.cs">
+      <DependentUpon>qfang2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\souhu.aspx.cs">
+      <DependentUpon>souhu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\UC_Case.cs" />
+    <Compile Include="Old\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\woaiwojia.aspx.cs">
+      <DependentUpon>woaiwojia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old\xinlang_list.aspx.cs">
+      <DependentUpon>xinlang_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Old\Web.config" />
+    <None Include="Old\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17566</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9887/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

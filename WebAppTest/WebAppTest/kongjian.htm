@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>相册对外js接口</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="utf-8" />
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<script type="text/javascript">
+    var omitformtags = ["input", "textarea", "select"]
+    omitformtags = omitformtags.join("|")
+    function disableselect(e) {
+        if (omitformtags.indexOf(e.target.tagName.toLowerCase()) == -1)
+            return false
+    }
+    function reEnable() {
+        return true
+    }
+    if (typeof document.onselectstart != "undefined")
+        document.onselectstart = new Function("return false")
+    else {
+        document.onmousedown = disableselect
+        document.onmouseup = reEnable
+    } 
+    document.write
+</script>
+</head>
+<body oncopy="return false;" >
+<div style="text-align:center;margin:auto;">
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+<p>不许复制内容！！！！</p>
+</div>
+</body>
+</HTML>

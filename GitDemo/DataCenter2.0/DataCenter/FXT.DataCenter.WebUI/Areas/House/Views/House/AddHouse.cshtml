@@ -1,0 +1,368 @@
+﻿@{
+    ViewBag.Title = "编辑房号";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using FXT.DataCenter.Domain.Models
+@model DAT_House
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        #tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+        }
+
+        .xubox_layer
+        {
+            top: 5px!important;
+        }
+
+        .select2-container
+        {
+            width: 220px!important;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+
+}
+@section MainContent{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>&nbsp;&nbsp;<b style="color: Red;">*</b>房号名称:
+            </td>
+            <td>@Html.TextBoxFor(m => m.housename)
+            </td>
+            <td class="help-inline"></td>
+            <td>实际层:
+            </td>
+            <td>@Html.TextBoxFor(m => m.nominalfloor)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+
+            <td>物理层:
+            </td>
+            <td>
+                @{
+                    var str_floor = "<select id='floorno' name='floorno'>";
+                    if(Model!=null)
+                    {
+                        for (int i = 1; i <=Model.totalFloor; i++)
+                        {
+                            str_floor += "<option value='"+i+"'>"+i+"</option>";
+                        }
+                    }
+                    str_floor += "</select>";
+                 }
+                @Html.Raw(str_floor)
+            </td>
+            <td class="help-inline"></td>
+           <td>
+               单元
+           </td>
+            <td>
+                 @{
+                     var str_unitno = "<select id='unitno' name='unitno'>";
+                    if(Model!=null)
+                    {
+                        for (int i = 0; i <Model.ListUnitNo.Count; i++)
+                        {
+                            str_unitno += "<option value='" + Model.ListUnitNo[i].unitno + "'>" + Model.ListUnitNo[i].unitno + "</option>";
+                        }
+                    }
+                    str_unitno += "</select>";
+                 }
+                @Html.Raw(str_unitno)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+             <td>&nbsp;&nbsp;户型:
+            </td>
+            <td>@Html.DropDownListFor(m => m.housetypecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "4001001", Text = "单房" },
+               new SelectListItem { Value = "4001002", Text = "单身公寓" },
+               new SelectListItem { Value = "4001003", Text = "一室一厅" },
+               new SelectListItem { Value = "4001004", Text = "两室一厅" },
+               new SelectListItem { Value = "4001005", Text = "两室两厅" },
+               new SelectListItem { Value = "4001006", Text = "三室一厅" },
+               new SelectListItem { Value = "4001007", Text = "三室两厅" },
+               new SelectListItem { Value = "4001008", Text = "四室一厅" },
+               new SelectListItem { Value = "4001009", Text = "四室两厅" },
+               new SelectListItem { Value = "4001010", Text = "四室三厅" },
+               new SelectListItem { Value = "4001017", Text = "四室四厅" },
+               new SelectListItem { Value = "4001011", Text = "五室" },
+               new SelectListItem { Value = "4001012", Text = "六室" },
+               new SelectListItem { Value = "4001013", Text = "七室及以上" },
+               new SelectListItem { Value = "4001014", Text = "一室两厅" },
+               new SelectListItem { Value = "4001015", Text = "两室零厅" },
+               new SelectListItem { Value = "4001016", Text = "三室零厅" }
+           })
+            </td>
+            <td class="help-inline"></td>
+             <td>&nbsp;&nbsp;面积:
+            </td>
+            <td>@Html.TextBoxFor(m => m.buildarea)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>朝向:
+            </td>
+            <td>@Html.DropDownListFor(m => m.frontcode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2004001", Text = "东" },
+               new SelectListItem { Value = "2004002", Text = "南" },
+               new SelectListItem { Value = "2004003", Text = "西" },
+               new SelectListItem { Value = "2004004", Text = "北" },
+               new SelectListItem { Value = "2004005", Text = "东南" },
+               new SelectListItem { Value = "2004006", Text = "东北" },
+               new SelectListItem { Value = "2004007", Text = "西南" },
+               new SelectListItem { Value = "2004008", Text = "西北" },
+               new SelectListItem { Value = "2004009", Text = "南北" },
+               new SelectListItem { Value = "2004010", Text = "东西" }
+           })
+            </td>
+            <td class="help-inline"></td>
+             <td>&nbsp;&nbsp;景观:
+            </td>
+            <td>@Html.DropDownListFor(m => m.sightcode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2006001", Text = "公园景观" },
+               new SelectListItem { Value = "2006002", Text = "绿地景观" },
+               new SelectListItem { Value = "2006003", Text = "小区景观" },
+               new SelectListItem { Value = "2006004", Text = "街景" },
+               new SelectListItem { Value = "2006005", Text = "市景" },
+               new SelectListItem { Value = "2006006", Text = "海景" },
+               new SelectListItem { Value = "2006007", Text = "山景" },
+               new SelectListItem { Value = "2006008", Text = "江景" },
+               new SelectListItem { Value = "2006009", Text = "湖景" },
+               new SelectListItem { Value = "2006010", Text = "无特别景观" },
+               new SelectListItem { Value = "2006011", Text = "小区绿地" },
+               new SelectListItem { Value = "2006012", Text = "河景" },
+               new SelectListItem { Value = "2006013", Text = "有建筑物遮挡" },
+               new SelectListItem { Value = "2006014", Text = "临高架桥" },
+               new SelectListItem { Value = "2006015", Text = "临铁路" },
+               new SelectListItem { Value = "2006016", Text = "临其他厌恶设施" }
+           })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+           
+            
+            <td>单价:
+            </td>
+            <td>@Html.TextBoxFor(m => m.unitprice)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;总价:
+            </td>
+            <td>@Html.TextBoxFor(m => m.totalprice)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            
+            <td>价格系数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.weight)
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;户型结构:
+            </td>
+            <td>@Html.DropDownListFor(m => m.structurecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2005001", Text = "平面" },
+               new SelectListItem { Value = "2005002", Text = "跃式" },
+               new SelectListItem { Value = "2005003", Text = "复式" },
+               new SelectListItem { Value = "2005004", Text = "错层" },
+               new SelectListItem { Value = "2005005", Text = "LOFT" }
+                })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            <td>用途:
+            </td>
+            <td>@Html.DropDownListFor(m => m.purposecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "1002001", Text = "普通住宅" },
+               new SelectListItem { Value = "1002002", Text = "非普通住宅" },
+               new SelectListItem { Value = "1002003", Text = "公寓" },
+               new SelectListItem { Value = "1002004", Text = "酒店式公寓" },
+               new SelectListItem { Value = "1002005", Text = "独立别墅" },
+               new SelectListItem { Value = "1002006", Text = "联排别墅" },
+               new SelectListItem { Value = "1002007", Text = "叠加别墅" },
+               new SelectListItem { Value = "1002008", Text = "双拼别墅" },
+               new SelectListItem { Value = "1002009", Text = "旅馆" },
+               new SelectListItem { Value = "1002010", Text = "花园洋房" },
+               new SelectListItem { Value = "1002011", Text = "老洋房" },
+               new SelectListItem { Value = "1002012", Text = "新式里弄" },
+               new SelectListItem { Value = "1002013", Text = "旧式里弄" },
+               new SelectListItem { Value = "1002014", Text = "商业" },
+               new SelectListItem { Value = "1002015", Text = "办公" },
+               new SelectListItem { Value = "1002016", Text = "厂房" },
+               new SelectListItem { Value = "1002017", Text = "酒店" },
+               new SelectListItem { Value = "1002018", Text = "仓库" },
+               new SelectListItem { Value = "1002019", Text = "车位" },
+               new SelectListItem { Value = "1002020", Text = "综合" },
+               new SelectListItem { Value = "1002021", Text = "商住" },
+               new SelectListItem { Value = "1002023", Text = "经济适用房" },
+               new SelectListItem { Value = "1002024", Text = "补差商品住房" },
+               new SelectListItem { Value = "1002025", Text = "地下室,储藏室" },
+               new SelectListItem { Value = "1002026", Text = "车库" },
+               new SelectListItem { Value = "1002027", Text = "别墅" },
+               new SelectListItem { Value = "1002022", Text = "其他" }
+                })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;是否可估:
+            </td>
+            <td>@Html.DropDownListFor(m => m.isevalue, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "1", Text = "是" },
+               new SelectListItem { Value = "0", Text = "否" }
+                })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            <td>面积确认:
+            </td>
+            <td>@Html.DropDownListFor(m => m.isshowbuildingarea, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "1", Text = "是" },
+               new SelectListItem { Value = "0", Text = "否" }
+                })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;套内面积:
+            </td>
+            <td>@Html.TextBoxFor(m => m.innerbuildingarea)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            <td>附属房屋类型:
+            </td>
+            <td>@Html.DropDownListFor(m => m.subhousetype, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1015001", Text = "地下室"},
+               new SelectListItem { Value = "1015002", Text = "杂物间"},
+               new SelectListItem { Value = "1015003", Text = "车库"},
+               new SelectListItem { Value = "1015004", Text = "摩托车库"},
+               new SelectListItem { Value = "1015005", Text = "下房"},
+               new SelectListItem { Value = "1015006", Text = "储藏室"},
+               new SelectListItem { Value = "1015007", Text = "阁楼"},
+               new SelectListItem { Value = "1015008", Text = "厦子"},
+               new SelectListItem { Value = "1015009", Text = "附房"},
+               new SelectListItem { Value = "1015010", Text = "夹层"},
+               new SelectListItem { Value = "1015011", Text = "地下车库"}
+                })
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;附属房屋面积:
+            </td>
+            <td>@Html.TextBoxFor(m => m.subhousearea)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            <td>通风采光:
+            </td>
+            <td>@Html.DropDownListFor(m => m.VDCode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1216001", Text = "全明通透"},
+               new SelectListItem { Value = "1216002", Text = "采光欠佳"},
+               new SelectListItem { Value = "1216003", Text = "通风欠佳"},
+               new SelectListItem { Value = "1216004", Text = "通风采光欠佳"}
+                 })
+            </td>
+            <td class="help-inline"></td>
+             <td>&nbsp;&nbsp;装修:
+            </td>
+            <td>@Html.DropDownListFor(m => m.FitmentCode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "6026001", Text = "豪华"},
+               new SelectListItem { Value = "6026002", Text = "高档"},
+               new SelectListItem { Value = "6026003", Text = "中档"},
+               new SelectListItem { Value = "6026004", Text = "普通"},
+               new SelectListItem { Value = "6026005", Text = "简易"},
+               new SelectListItem { Value = "6026006", Text = "毛坯"}
+                 })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+           
+            <td>有无厨房:
+            </td>
+            <td>@Html.DropDownListFor(m => m.Cookroom, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "1", Text = "有" },
+               new SelectListItem { Value = "0", Text = "无" }})
+            </td>
+            <td class="help-inline"></td>
+            <td>&nbsp;&nbsp;阳台数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.Balcony)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            
+            <td>洗手间数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.Toilet)
+            </td>
+            <td class="help-inline"></td>           
+            <td>噪音情况:
+            </td>
+            <td>@Html.DropDownListFor(m => m.NoiseCode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2025001", Text = "安静" },
+               new SelectListItem { Value = "2025002", Text = "较安静" },
+               new SelectListItem { Value = "2025003", Text = "微吵" },
+               new SelectListItem { Value = "2025004", Text = "较吵" },
+               new SelectListItem { Value = "2025005", Text = "很吵" }})
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;备注:
+            </td>
+            <td colspan="5"> @Html.TextAreaFor(m => m.remark, new { cols = "20", rows = "2", style = "margin: 0px; width: 620px; height: 68px;" })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+    </table>
+    <div>
+        <input type="hidden"  name="BuildingId" id="BuildingId" value="@Model.buildingid"/>
+        <input type="hidden"  name="CityID" id="CityID" value="@Model.cityid"/>
+        <input type="hidden"  name="FxtCompanyId" id="FxtCompanyId" value="@Model.fxtcompanyid"/>
+    </div>
+}

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.DatAllotFlow, FxtDataAcquisition.NHibernate" table="Dat_AllotFlow">
+		<id name="id" column="id" type="long" unsaved-value="0">
+    			<generator class="native" />       			
+    </id>      		
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="DatType" column="DatType" type="int"  />
+		<property name="DatId" column="DatId" type="long"  />
+		<property name="OtherId" column="OtherId" type="string"  />
+		<property name="StateCode" column="StateCode" type="int"  />
+		<property name="StateDate" column="StateDate" type="DateTime"  />
+		<property name="CreateTime" column="CreateTime" type="DateTime"  />
+		<property name="UserName" column="UserName" type="string"  />
+		<property name="SurveyUserName" column="SurveyUserName" type="string"  />
+		<property name="Remark" column="Remark" type="string"  />
+    <property name="X" column="X" type="decimal"  />
+    <property name="Y" column="Y" type="decimal"  />
+    <property name="UserTrueName" column="UserTrueName" type="string"  />
+    <property name="SurveyUserTrueName" column="SurveyUserTrueName" type="string"  />
+				
+	</class>
+</hibernate-mapping>

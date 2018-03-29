@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile>2017-02-15T17:38:47.2776055+08:00</TimeStampOfAssociatedLegacyPublishXmlFile>
+    <_PublishTargetUrl>D:\Publish\wcfdatacenter</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CAS.Common.dll">
+      <publishTime>03/08/2017 19:56:42</publishTime>
+    </File>
+    <File Include="bin/CAS.DataAccess.BaseDAModels.dll">
+      <publishTime>03/08/2017 09:47:47</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.Attribute.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.BaseDAModels.dll">
+      <publishTime>02/21/2017 18:38:27</publishTime>
+    </File>
+    <File Include="bin/CAS.Entity.dll">
+      <publishTime>03/08/2017 09:47:53</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.Actualize.dll">
+      <publishTime>03/08/2017 20:19:23</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.Contract.dll">
+      <publishTime>03/08/2017 19:56:43</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.DataAccess.dll">
+      <publishTime>03/08/2017 19:56:43</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.Hosting.dll">
+      <publishTime>03/08/2017 20:19:24</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.Logic.dll">
+      <publishTime>03/08/2017 19:56:44</publishTime>
+    </File>
+    <File Include="bin/FxtCenterService.Ut.dll">
+      <publishTime>03/08/2017 19:56:43</publishTime>
+    </File>
+    <File Include="bin/FxtCommon.dll">
+      <publishTime>12/15/2016 16:59:54</publishTime>
+    </File>
+    <File Include="bin/FxtOpenClient.dll">
+      <publishTime>12/15/2016 16:59:54</publishTime>
+    </File>
+    <File Include="bin/Gma.QrCodeNet.Encoding.dll">
+      <publishTime>11/22/2016 14:54:07</publishTime>
+    </File>
+    <File Include="bin/Google.Protobuf.dll">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>11/22/2016 14:54:08</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>02/15/2017 17:38:48</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/22/2016 14:54:08</publishTime>
+    </File>
+    <File Include="bin/OpenPlatform.Framework.FlowMonitor.dll">
+      <publishTime>02/15/2017 17:38:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>11/22/2016 14:54:11</publishTime>
+    </File>
+    <File Include="data.htm">
+      <publishTime>03/08/2017 10:06:28</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="js/date.js">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="js/jquery-1.8.2-min.js">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="js/jquery.json.js">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="js/json2.js">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="log.config">
+      <publishTime>02/15/2017 17:38:47</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/15/2017 18:17:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

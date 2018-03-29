@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FxtProject_RawData" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.SysData_案例类型" Member="SysData_案例类型">
+    <Type Name="SysData_案例类型">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="案例类型" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_币种" Member="SysData_币种">
+    <Type Name="SysData_币种">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="币种" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_朝向" Member="SysData_朝向">
+    <Type Name="SysData_朝向">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="朝向" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_户型" Member="SysData_户型">
+    <Type Name="SysData_户型">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="户型" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_建筑类型" Member="SysData_建筑类型">
+    <Type Name="SysData_建筑类型">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="建筑类型" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_结构" Member="SysData_结构">
+    <Type Name="SysData_结构">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="结构" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_用途" Member="SysData_用途">
+    <Type Name="SysData_用途">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="用途" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_装修" Member="SysData_装修">
+    <Type Name="SysData_装修">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="装修" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.案例库上传记录表" Member="案例库上传记录表">
+    <Type Name="案例库上传记录表">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="案例ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="上传时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_案例库上传记录表" Member="城市表" ThisKey="城市ID" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="网站表_案例库上传记录表" Member="网站表" ThisKey="网站ID" OtherKey="ID" Type="网站表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.城市表" Member="城市表">
+    <Type Name="城市表">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="城市名称" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="省份ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_案例库上传记录表" Member="案例库上传记录表" ThisKey="ID" OtherKey="城市ID" Type="案例库上传记录表" />
+      <Association Name="城市表_案例库上传信息过滤表" Member="案例库上传信息过滤表" ThisKey="ID" OtherKey="城市ID" Type="案例库上传信息过滤表" />
+      <Association Name="城市表_SysData_Project" Member="SysData_Project" ThisKey="ID" OtherKey="CityId" Type="SysData_Project" />
+      <Association Name="城市表_SysData_SubArea" Member="SysData_SubArea" ThisKey="ID" OtherKey="CityId" Type="SysData_SubArea" />
+      <Association Name="城市表_SysData_Area" Member="SysData_Area" ThisKey="ID" OtherKey="CityId" Type="SysData_Area" />
+      <Association Name="城市表_SysData_WebJoinProxyIp" Member="SysData_WebJoinProxyIp" ThisKey="ID" OtherKey="WebId" Type="SysData_WebJoinProxyIp" />
+      <Association Name="城市表_Dat_SpiderErrorLog" Member="Dat_SpiderErrorLog" ThisKey="ID" OtherKey="CityId" Type="Dat_SpiderErrorLog" />
+      <Association Name="城市表_案例信息" Member="案例信息" ThisKey="ID" OtherKey="城市ID" Type="案例信息" />
+      <Association Name="城市表_网站爬取配置" Member="网站爬取配置" ThisKey="ID" OtherKey="城市ID" Type="网站爬取配置" />
+      <Association Name="省份表_城市表" Member="省份表" ThisKey="省份ID" OtherKey="ID" Type="省份表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.省份表" Member="省份表">
+    <Type Name="省份表">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="省份名称" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="省份表_城市表" Member="城市表" ThisKey="ID" OtherKey="省份ID" Type="城市表" />
+    </Type>
+  </Table>
+  <Table Name="dbo.新浪二手房_Log" Member="新浪二手房_Log">
+    <Type Name="新浪二手房_Log">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="城市" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="当前列表页面页码" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="当前详细页面Url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="创建时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="更新时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="开始爬取时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_错误类型" Member="SysData_错误类型">
+    <Type Name="SysData_错误类型">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="错误类型" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Association Name="SysData_错误类型_案例库上传信息过滤表" Member="案例库上传信息过滤表" ThisKey="ID" OtherKey="错误类型ID" Type="案例库上传信息过滤表" />
+    </Type>
+  </Table>
+  <Table Name="dbo.案例库上传信息过滤表" Member="案例库上传信息过滤表">
+    <Type Name="案例库上传信息过滤表">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="案例ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="错误类型ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="错误说明" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="过滤时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="SysData_错误类型_案例库上传信息过滤表" Member="SysData_错误类型" ThisKey="错误类型ID" OtherKey="ID" Type="SysData_错误类型" IsForeignKey="true" />
+      <Association Name="城市表_案例库上传信息过滤表" Member="城市表" ThisKey="城市ID" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="网站表_案例库上传信息过滤表" Member="网站表" ThisKey="网站ID" OtherKey="ID" Type="网站表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_Company" Member="SysData_Company">
+    <Type Name="SysData_Company">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_CompanyArea" Member="SysData_CompanyArea">
+    <Type Name="SysData_CompanyArea">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyAreaName" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_Project" Member="SysData_Project">
+    <Type Name="SysData_Project">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_SysData_Project" Member="城市表" ThisKey="CityId" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_ProjectCaseCount" Member="SysData_ProjectCaseCount">
+    <Type Name="SysData_ProjectCaseCount">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="AreaId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="NotImportCaseCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_SubArea" Member="SysData_SubArea">
+    <Type Name="SysData_SubArea">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SubAreaName" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_SysData_SubArea" Member="城市表" ThisKey="CityId" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_Area" Member="SysData_Area">
+    <Type Name="SysData_Area">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AreaName" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_SysData_Area" Member="城市表" ThisKey="CityId" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_WebJoinProxyIp" Member="SysData_WebJoinProxyIp">
+    <Type Name="SysData_WebJoinProxyIp">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProxyIp" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="城市表_SysData_WebJoinProxyIp" Member="城市表" ThisKey="WebId" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="SysData_ProxyIp_SysData_WebJoinProxyIp" Member="SysData_ProxyIp" ThisKey="ProxyIp" OtherKey="ID" Type="SysData_ProxyIp" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SYS_Code" Member="SYS_Code">
+    <Type Name="SYS_Code">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SubCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dat_SpiderErrorLog" Member="Dat_SpiderErrorLog">
+    <Type Name="Dat_SpiderErrorLog">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorTypeCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Association Name="城市表_Dat_SpiderErrorLog" Member="城市表" ThisKey="CityId" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="网站表_Dat_SpiderErrorLog" Member="网站表" ThisKey="WebId" OtherKey="ID" Type="网站表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_ProxyIp" Member="SysData_ProxyIp">
+    <Type Name="SysData_ProxyIp">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ip" Type="System.String" DbType="VarChar(800) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IpArea" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="SysData_ProxyIp_SysData_WebJoinProxyIp" Member="SysData_WebJoinProxyIp" ThisKey="ID" OtherKey="ProxyIp" Type="SysData_WebJoinProxyIp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WebJoinProxyIp" Member="View_WebJoinProxyIp">
+    <Type Name="View_WebJoinProxyIp">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ProxyIp" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ip" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="IpCreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IpArea" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.网站表" Member="网站表">
+    <Type Name="网站表">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="网站名称" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="BlockadeOfIP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BlockadeOfIPType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="网站表_案例库上传记录表" Member="案例库上传记录表" ThisKey="ID" OtherKey="网站ID" Type="案例库上传记录表" />
+      <Association Name="网站表_案例库上传信息过滤表" Member="案例库上传信息过滤表" ThisKey="ID" OtherKey="网站ID" Type="案例库上传信息过滤表" />
+      <Association Name="网站表_Dat_SpiderErrorLog" Member="Dat_SpiderErrorLog" ThisKey="ID" OtherKey="WebId" Type="Dat_SpiderErrorLog" />
+      <Association Name="网站表_案例信息" Member="案例信息" ThisKey="ID" OtherKey="网站ID" Type="案例信息" />
+      <Association Name="网站表_网站爬取配置" Member="网站爬取配置" ThisKey="ID" OtherKey="网站ID" Type="网站爬取配置" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dat_SpiderRepetitionLog" Member="Dat_SpiderRepetitionLog">
+    <Type Name="Dat_SpiderRepetitionLog">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RepetitionCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dat_KeyValueConfig" Member="Dat_KeyValueConfig">
+    <Type Name="Dat_KeyValueConfig">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KeyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="KeyValue" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysData_WorkItem" Member="SysData_WorkItem">
+    <Type Name="SysData_WorkItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsExec" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.案例信息" Member="案例信息">
+    <Type Name="案例信息">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="楼盘名" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="案例时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="行政区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="片区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="楼栋" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="房号" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="单价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="总价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="所在楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="总楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑年代" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="信息" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="电话" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="地址" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="创建时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="来源" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑形式" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="花园面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="厅结构" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="车位数量" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="配套设施" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="地下室面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="案例类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="币种ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="朝向ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="户型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="建筑类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="结构ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="用途ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="是否已进行入库整理" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="进行入库整理时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fxtId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CompanyAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProjectId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="城市表_案例信息" Member="城市表" ThisKey="城市ID" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="网站表_案例信息" Member="网站表" ThisKey="网站ID" OtherKey="ID" Type="网站表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VIEW_案例信息_城市表_网站表" Member="VIEW_案例信息_城市表_网站表">
+    <Type Name="VIEW_案例信息_城市表_网站表">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="楼盘名" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="案例时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="行政区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="片区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="楼栋" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="房号" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="单价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="总价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="所在楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="总楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑年代" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="信息" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="电话" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="地址" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="创建时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="来源" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑形式" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="花园面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="厅结构" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="车位数量" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="配套设施" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="地下室面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="案例类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="币种ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="朝向ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="户型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="建筑类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="结构ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="用途ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="是否已进行入库整理" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="进行入库整理时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fxtId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CompanyAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProjectId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="网站" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="城市" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SysData案例类型" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SysData币种" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData朝向" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData户型" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData建筑类型" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData结构" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData用途" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData装修" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="动态排序字段" Type="System.Decimal" DbType="Decimal(15,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="AreaName" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SubAreaName" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VIEW_案例信息_城市表_网站表2" Member="VIEW_案例信息_城市表_网站表2">
+    <Type Name="VIEW_案例信息_城市表_网站表2">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="楼盘名" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="案例时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="行政区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="片区" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="楼栋" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="房号" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="单价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="总价" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="所在楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="总楼层" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑年代" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="信息" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="电话" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="地址" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="创建时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="来源" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="建筑形式" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="花园面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="厅结构" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="车位数量" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="配套设施" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="地下室面积" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="案例类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="币种ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="朝向ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="户型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="建筑类型ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="结构ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="用途ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="装修ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="是否已进行入库整理" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="进行入库整理时间" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fxtId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CompanyAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProjectId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubAreaId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="网站" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="城市" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SysData案例类型" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SysData币种" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData朝向" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData户型" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData建筑类型" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SysData结构" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData用途" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SysData装修" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="动态排序字段" Type="System.Decimal" DbType="Decimal(15,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="VarChar(900)" CanBeNull="true" />
+      <Column Name="AreaName" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="SubAreaName" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="NotImportCaseCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.网站爬取配置" Member="网站爬取配置">
+    <Type Name="网站爬取配置">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="域名" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="列表页链接" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="列表页分页参数链接" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="详细页面爬取频率" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="列表页面爬取频率" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="规则编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="主要用途" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="主要案例类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="城市表_网站爬取配置" Member="城市表" ThisKey="城市ID" OtherKey="ID" Type="城市表" IsForeignKey="true" />
+      <Association Name="网站表_网站爬取配置" Member="网站表" ThisKey="网站ID" OtherKey="ID" Type="网站表" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VIEW_网站爬取配置_城市表_网站表" Member="VIEW_网站爬取配置_城市表_网站表">
+    <Type Name="VIEW_网站爬取配置_城市表_网站表">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="域名" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="列表页链接" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="列表页分页参数链接" Type="System.String" DbType="VarChar(900) NOT NULL" CanBeNull="false" />
+      <Column Name="详细页面爬取频率" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="列表页面爬取频率" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="规则编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="主要用途" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="主要案例类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="城市名称" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="网站名称" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.get_案例信息_获取时间段内城市网站的爬取个数" Method="get_案例信息_获取时间段内城市网站的爬取个数">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="get_案例信息_获取时间段内城市网站的爬取个数Result">
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="个数" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_案例信息_获取时间段内城市网站的未入库的案例个数" Method="get_案例信息_获取时间段内城市网站的未入库的案例个数">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="get_案例信息_获取时间段内城市网站的未入库的案例个数Result">
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="个数" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_案例信息_获取时间段内城市网站的已入库的案例个数" Method="get_案例信息_获取时间段内城市网站的已入库的案例个数">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="get_案例信息_获取时间段内城市网站的已入库的案例个数Result">
+      <Column Name="城市ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="网站ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="个数" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

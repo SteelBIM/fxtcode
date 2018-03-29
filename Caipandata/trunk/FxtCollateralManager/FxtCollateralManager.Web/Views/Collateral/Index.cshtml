@@ -1,0 +1,543 @@
+﻿@{
+    ViewBag.Title = "押品信息";
+    Layout = "";
+}
+
+
+
+<div class="portlet-body">
+    <div class="tabbable-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#advance_ok" data-toggle="tab">已标准化</a></li>
+            <li class=""><a href="#advance" data-toggle="tab">进行中</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="advance_ok" class="filedown tab-pane fade active in">
+                <div class="tab-content">
+                    <div class="form-group">
+                        <label class="col-md-2" style="width: 89px;">城市</label>
+                        <div class="procheckbox-listcity">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2" style="width: 89px;">项目</label>
+                        <div class="procheckbox-list">
+                        </div>
+                    </div>
+
+                </div>
+                <input type="hidden" value="@ViewData["uploadfileid"]" id="uploadfileid" />
+                <button type="button" class="btn green oksearch" onclick="CreateItemList('.procheckbox-list'); $('#uploadfileid').val(0); getCollateral();">
+                    查询
+                </button>
+                <div class="table-scrollable" style="position:relative;max-height:405px;overflow-y:auto;">
+                    <table data-saveurl="/Collateral/UpdateDATCollateral"
+                           data-downurl="/Upload/ExcelAllDown"
+                           data-options="true"
+                           class="table table-striped table-hover table-bordered"
+                           id="collateraltable_ok" style="display:inline;">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align: middle;">
+                                    <input type="checkbox" />全选/反选
+                                </th>
+                                <th scope="col">
+                                    押品编号
+                                </th>
+                                <th scope="col">
+                                    分行
+                                </th>
+                                <th scope="col">
+                                    押品类型
+                                </th>
+                                <th scope="col">
+                                    押品名称
+                                </th>
+                                <th scope="col">
+                                    面积
+                                </th>
+                                <th scope="col">
+                                    押品地址
+                                </th>
+                                <th scope="col">
+                                    省份
+                                </th>
+                                <th scope="col">
+                                    城市
+                                </th>
+                                <th scope="col">
+                                    行政区
+                                </th>
+                                <th scope="col">
+                                    路
+                                </th>
+                                <th scope="col">
+                                    号
+                                </th>
+                                <th scope="col">
+                                    楼盘名
+                                </th>
+                                <th scope="col">
+                                    分期
+                                </th>
+                                <th scope="col">
+                                    楼栋
+                                </th>
+                                <th scope="col">
+                                    楼层
+                                </th>
+                                <th scope="col">
+                                    房号
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+                <div class="row" id="collateraltable_ok" style="height:45px;margin-top:-15px">
+                    <div class="col-md-5 col-sm-12">
+                        <div id="page_info" class="dataTables_info">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="advance" class="fileup filedown form-inline tab-pane fade" role="grid">
+                <div class="clearfix">
+                    <a class="btn green excesave">入库</a>
+                </div>
+                <div class="clearfix" id="savemessage" style="color:red;font-size:25px"></div>
+                <div class="table-scrollable" style="position:relative;max-height:405px;overflow-y:auto;">
+                    <table data-saveurl="/Collateral/CreateDATCollateral"
+                           data-downurl="/Upload/ExcelDown"
+                           data-options="true"
+                           class="table table-striped table-hover table-bordered"
+                           id="collateraltable" style="display:inline;">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align: middle;">
+                                    <input type="checkbox" />全选/反选
+                                </th>
+                                <th scope="col">
+                                    押品编号
+                                </th>
+                                <th scope="col">
+                                    分行
+                                </th>
+                                <th scope="col">
+                                    押品类型
+                                </th>
+                                <th scope="col">
+                                    押品名称
+                                </th>
+                                <th scope="col">
+                                    面积
+                                </th>
+                                <th scope="col">
+                                    押品地址
+                                </th>
+                                <th scope="col">
+                                    省份
+                                </th>
+                                <th scope="col">
+                                    城市
+                                </th>
+                                <th scope="col">
+                                    行政区
+                                </th>
+                                <th scope="col">
+                                    路
+                                </th>
+                                <th scope="col">
+                                    号
+                                </th>
+                                <th scope="col">
+                                    楼盘名
+                                </th>
+                                <th scope="col">
+                                    分期
+                                </th>
+                                <th scope="col">
+                                    楼栋
+                                </th>
+                                <th scope="col">
+                                    楼层
+                                </th>
+                                <th scope="col">
+                                    房号
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="row" id="collaterpage" style="height:45px;margin-top:-15px">
+                    <div class="col-md-5 col-sm-12">
+                        <div id="page_info" class="dataTables_info">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="templete" type="text/x-jquery-tmpl">
+    <tr {{if ProjectNameMatch&&BuildingNumberMatch&&RoomNumberMatch}}data-matchstatus="${MatchStatus}" {{/if}}>
+        <td style="text-align:center" data-val="${Id}" name="Id">
+            <input type="checkbox" />
+        </td>
+        <td name="Number">${Number}</td>
+        <td name="Branch">${Branch}</td>
+        <td name="PurposeName">${PurposeName}</td>
+        <td name="Name">${Name}</td>
+        <td name="BuildingArea">${BuildingArea}</td>
+        <td name="Address" class="tdwidth">${Address}</td>
+        <td data-type="select"
+            data-url="/Collateral/Province"
+            id="Province" data-val="${ProvinceId}" name="ProvinceId">
+            ${ProvinceName}
+        </td>
+        <td style="vertical-align: middle;"
+            data-type="select"
+            data-url="/Collateral/City/?id={0}"
+            id="City"
+            data-val="${CityId}" name="CityId">
+            ${CityName}
+        </td>
+        <td style="vertical-align: middle;"
+            data-type="select"
+            data-url="/Collateral/Area/?id={0}"
+            id="Area"
+            data-val="${AreaId}" name="AreaId">
+            ${AreaName}
+        </td>
+        <td name="Road">${Road}</td>
+        <td name="RoadNumber">${RoadNumber}</td>
+        <td style="background-color:{{if !ProjectNameMatch}}#e99c9c;{{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'areaId',v2:$(jqTds[9]),v3:'data-val'}]"
+            data-url="/Collateral/Search"
+            data-val=" ${ProjectId}" name="ProjectName">
+            ${ProjectName}
+        </td>
+        <td name="Installment">${Installment}</td>
+        <td style="background-color:{{if !BuildingNumberMatch}}#e99c9c;{{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'pId',v2:$(jqTds[12]),v3:'data-val'}]"
+            data-url="/Collateral/SearchBuilding"
+            data-val="${BuildingId}"
+            name="BuildingNumber">
+            ${BuildingNumber}
+        </td>
+        <td name="FloorNumber">${FloorNumber}</td>
+        <td style="background-color:{{if !RoomNumberMatch}}#e99c9c;{{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'bId',v2:$(jqTds[14]),v3:'data-val'}]"
+            data-url="/Collateral/SearchHouse"
+            data-val="${RoomId}"
+            name="RoomNumber">
+            ${RoomNumber}
+        </td>
+    </tr>
+</script>
+<script id="templete_ok" type="text/x-jquery-tmpl">    
+    <tr {{if ProjectNameMatch&&BuildingNumberMatch&&RoomNumberMatch}} data-matchstatus="${MatchStatus}" {{/if}}>
+
+        <td style="text-align:center" data-val="${Id}" name="Id">
+            <input type="checkbox" />
+        </td>
+        <td name="Number">${Number}</td>
+        <td name="Branch">${Branch}</td>
+        <td name="PurposeName">${PurposeName}</td>
+        <td name="Name">${Name}</td>
+        <td name="BuildingArea">${BuildingArea}</td>
+        <td name="Address" class="tdwidth">${Address}</td>
+        <td data-type="select"
+            data-url="/Collateral/Province"
+            id="Province" data-val="${ProvinceId}" name="ProvinceId">
+            ${ProvinceName}
+        </td>
+        <td data-type="select"
+            data-url="/Collateral/City/?id={0}"
+            id="City"
+            data-val="${CityId}" name="CityId">
+            ${CityName}
+        </td>
+        <td data-type="select"
+            data-url="/Collateral/Area/?id={0}"
+            id="Area"
+            data-val="${AreaId}" name="AreaId">
+            ${AreaName}
+        </td>
+        <td name="Road">${Road}</td>
+        <td name="RoadNumber">${RoadNumber}</td>
+        <td style="background-color:{{if !ProjectNameMatch}}#e99c9c;{{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'areaId',v2:$(jqTds[9]),v3:'data-val'}]"
+            data-url="/Collateral/Search"
+            data-val="${ProjectId}" name="ProjectName">
+            ${ProjectName}
+        </td>
+        <td name="Installment">${Installment}</td>
+        <td style="background-color:{{if !BuildingNumberMatch}}#e99c9c;{{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'pId',v2:$(jqTds[12]),v3:'data-val'}]"
+            data-url="/Collateral/SearchBuilding"
+            data-val="${BuildingId}"
+            name="BuildingNumber">
+            ${BuildingNumber}
+        </td>
+        <td name="FloorNumber">${FloorNumber}</td>
+        <td style="background-color:{{if !RoomNumberMatch}}#e99c9c; {{/if}}"
+            data-type="autocomplete"
+            data-column="[{v1:'cityid',v2:$(jqTds[8]),v3:'data-val'},{v1:'bId',v2:$(jqTds[14]),v3:'data-val'}]"
+            data-url="/Collateral/SearchHouse"
+            data-val="${RoomId}"
+            name="RoomNumber">
+            ${RoomNumber}
+        </td>
+    </tr>
+</script>
+<script id="templeteAdd" type="text/x-jquery-tmpl">
+    <div class="tabbable-custom">
+        <form id="province_city_area">
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">
+                                省份<span class="required">*</span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="provinceid" data-required="1" class="form-control">
+                                <option value="">-请选择-</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">
+                                城市<span class="required">*</span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="cityid" data-required="1" class="form-control">
+                                <option value="">-请选择-</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">
+                                县区<span class="required">*</span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="areaid" data-required="1" class="form-control">
+                                <option value="">-请选择-</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <ul class="nav nav-tabs">
+            <li class="active" id="newAddtab1"><a href="javascript:void(0);">楼盘</a></li>
+            <li class="" id="newAddtab2"><a href="javascript:void(0);">楼栋</a></li>
+            <li class="" id="newAddtab3"><a href="javascript:void(0);">房号</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="row tab-pane fade active in" id="newAddtab1">
+                <div class="col-md-12">
+                    <div class="portlet-body form">
+                        <form id="form" action="/Collateral/CreateDATAProject" class="form-horizontal">
+                            <div class="form-body">
+                                <!-- BEGIN FORM-->
+                                <div class="alert alert-error display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>输入有错误,请检查.</span>
+                                </div>
+                                <div class="alert alert-success display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>验证成功的!</span>
+                                </div>
+                                <div style="display:none">
+                                    <input type="hidden" name="provinceid" />
+                                    <input type="hidden" name="cityid" />
+                                    <input type="hidden" name="areaid" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼盘名<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="projectname" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        主用途<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select name="purposecode" data-required="1" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼盘地址&nbsp;&nbsp;
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="address" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions fluid">
+                                <div class="col-md-offset-3 col-md-5">
+                                    <button type="submit" class="btn green">
+                                        确定
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row tab-pane fade" id="newAddtab2">
+                <div class="col-md-12">
+                    <div class="portlet-body form">
+                        <form id="form" action="/Collateral/CreateDATABuilding" class="form-horizontal">
+                            <div class="form-body">
+                                <!-- BEGIN FORM-->
+                                <div class="alert alert-error display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>输入有错误,请检查.</span>
+                                </div>
+                                <div class="alert alert-success display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>验证成功的!</span>
+                                </div>
+                                <div style="display:none">
+                                    <input type="hidden" name="provinceid" />
+                                    <input type="hidden" name="cityid" />
+                                    <input type="hidden" name="areaid" />
+                                    <input type="hidden" name="projectid" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼栋<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="buildingname" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼栋用途<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select name="purposecode" data-required="1" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼层总数<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="totalfloor" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions fluid">
+                                <div class="col-md-offset-3 col-md-5">
+                                    <button type="submit" class="btn green">
+                                        确定
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row tab-pane fade" id="newAddtab3">
+                <div class="col-md-12">
+                    <div class="portlet-body form">
+                        <form id="form" action="/Collateral/CreateDATAHouse" class="form-horizontal">
+                            <div class="form-body">
+                                <!-- BEGIN FORM-->
+                                <div class="alert alert-error display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>输入有错误,请检查.</span>
+                                </div>
+                                <div class="alert alert-success display-hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    <span>验证成功的!</span>
+                                </div>
+                                <div style="display:none">
+                                    <input type="hidden" name="provinceid" />
+                                    <input type="hidden" name="cityid" />
+                                    <input type="hidden" name="areaid" />
+                                    <input type="hidden" name="buildingid" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        楼层<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="floorno" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        单元&nbsp;&nbsp;
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="unitno" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        房号<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="housename" data-required="1" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions fluid">
+                                <div class="col-md-offset-3 col-md-5">
+                                    <button type="submit" class="btn green">
+                                        确定
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+    App.init();
+</script>
+<script src="/Scripts/FxtCollateral.js" type="text/javascript"/>

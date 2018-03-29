@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.SYSMenu, FxtDataAcquisition.NHibernate" table="SYS_Menu">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="ParentID" column="ParentID" type="int"  />
+		<property name="MenuName" column="MenuName" type="string"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="Remark" column="Remark" type="string"  />
+		<property name="URL" column="URL" type="string"  />
+		<property name="TypeCode" column="TypeCode" type="int"  />
+		<property name="ModuleCode" column="ModuleCode" type="int"  />
+				
+	</class>
+</hibernate-mapping>

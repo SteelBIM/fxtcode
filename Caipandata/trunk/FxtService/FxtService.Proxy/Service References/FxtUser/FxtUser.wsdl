@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FxtUser" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFxtUsers_GetProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProduct" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Products_InputMessage">
+    <wsdl:part name="parameters" element="tns:Products" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Products_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductAll" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductMenuByPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductMenuByPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductMenuByPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductMenuByPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Menus_InputMessage">
+    <wsdl:part name="parameters" element="tns:Menus" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Menus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MenusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_MenuPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:MenuPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_MenuPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MenuPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuListByProductId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByProductId" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuListByProductId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByProductIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuListAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListAll" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenuListAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenus" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetMenus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_ProductMenus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductMenus" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_ProductMenus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductMenusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductMenus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductMenus" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetProductMenus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductMenusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurviewAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurviewAll" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurviewAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurviewAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Purviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:Purviews" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Purviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PurviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurviews" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetPurviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetUserPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_GetUserPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_UserPurview_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserPurview" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_UserPurview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserPurviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Entrance_InputMessage">
+    <wsdl:part name="parameters" element="tns:Entrance" />
+  </wsdl:message>
+  <wsdl:message name="IFxtUsers_Entrance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EntranceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFxtUsers">
+    <wsdl:operation name="GetProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetProduct" message="tns:IFxtUsers_GetProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetProductResponse" message="tns:IFxtUsers_GetProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetProducts" message="tns:IFxtUsers_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetProductsResponse" message="tns:IFxtUsers_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Products">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/Products" message="tns:IFxtUsers_Products_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/ProductsResponse" message="tns:IFxtUsers_Products_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetProductAll" message="tns:IFxtUsers_GetProductAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetProductAllResponse" message="tns:IFxtUsers_GetProductAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductMenuByPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetProductMenuByPurview" message="tns:IFxtUsers_GetProductMenuByPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetProductMenuByPurviewResponse" message="tns:IFxtUsers_GetProductMenuByPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Menus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/Menus" message="tns:IFxtUsers_Menus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/MenusResponse" message="tns:IFxtUsers_Menus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MenuPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/MenuPurview" message="tns:IFxtUsers_MenuPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/MenuPurviewResponse" message="tns:IFxtUsers_MenuPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuPurview" message="tns:IFxtUsers_GetMenuPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuPurviewResponse" message="tns:IFxtUsers_GetMenuPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByProductId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuListByProductId" message="tns:IFxtUsers_GetMenuListByProductId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuListByProductIdResponse" message="tns:IFxtUsers_GetMenuListByProductId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuListAll" message="tns:IFxtUsers_GetMenuListAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetMenuListAllResponse" message="tns:IFxtUsers_GetMenuListAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetMenus" message="tns:IFxtUsers_GetMenus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetMenusResponse" message="tns:IFxtUsers_GetMenus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductMenus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/ProductMenus" message="tns:IFxtUsers_ProductMenus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/ProductMenusResponse" message="tns:IFxtUsers_ProductMenus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductMenus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetProductMenus" message="tns:IFxtUsers_GetProductMenus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetProductMenusResponse" message="tns:IFxtUsers_GetProductMenus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetPurview" message="tns:IFxtUsers_GetPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetPurviewResponse" message="tns:IFxtUsers_GetPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurviewAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetPurviewAll" message="tns:IFxtUsers_GetPurviewAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetPurviewAllResponse" message="tns:IFxtUsers_GetPurviewAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Purviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/Purviews" message="tns:IFxtUsers_Purviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/PurviewsResponse" message="tns:IFxtUsers_Purviews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetPurviews" message="tns:IFxtUsers_GetPurviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetPurviewsResponse" message="tns:IFxtUsers_GetPurviews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/GetUserPurview" message="tns:IFxtUsers_GetUserPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/GetUserPurviewResponse" message="tns:IFxtUsers_GetUserPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserPurview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/UserPurview" message="tns:IFxtUsers_UserPurview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/UserPurviewResponse" message="tns:IFxtUsers_UserPurview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Entrance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFxtUsers/Entrance" message="tns:IFxtUsers_Entrance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFxtUsers/EntranceResponse" message="tns:IFxtUsers_Entrance_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFxtUsers" type="tns:IFxtUsers">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProduct">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Products">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/Products" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductAll">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetProductAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductMenuByPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetProductMenuByPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Menus">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/Menus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MenuPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/MenuPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetMenuPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByProductId">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetMenuListByProductId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListAll">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetMenuListAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenus">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetMenus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductMenus">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/ProductMenus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductMenus">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetProductMenus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurviewAll">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetPurviewAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Purviews">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/Purviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurviews">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetPurviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/GetUserPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPurview">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/UserPurview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Entrance">
+      <soap:operation soapAction="http://tempuri.org/IFxtUsers/Entrance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FxtUser">
+    <wsdl:port name="BasicHttpBinding_IFxtUsers" binding="tns:BasicHttpBinding_IFxtUsers">
+      <soap:address location="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

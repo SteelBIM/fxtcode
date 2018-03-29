@@ -1,0 +1,30 @@
+﻿
+<ul class="nav nav-list">
+    @foreach (FxtDataAcquisition.Web.Models.WebMenuClass obj in @ViewBag.Menus)
+   {
+    <li class="left_submenu@(obj.Index)">
+        <a href="@obj.Url" class="@(obj.ChildrenMenus!=null&&obj.ChildrenMenus.Count>0?"dropdown-toggle":"")">
+            <i class="@obj.Icon"></i>
+            <span class="menu-text submenuText">@obj.Name</span>
+            @if (obj.ChildrenMenus != null && obj.ChildrenMenus.Count > 0)
+            {
+                <b class="arrow icon-angle-down"></b> 
+            }
+        </a>
+        @if (obj.ChildrenMenus != null && obj.ChildrenMenus.Count > 0)
+        {
+        <ul class="submenu">
+            @foreach (FxtDataAcquisition.Web.Models.WebMenuClass obj2 in obj.ChildrenMenus)
+            {
+            <li class="left_menu@(obj2.Index)">
+                <a href="@obj2.Url" class="menuText">
+                    <i class="icon-double-angle-right"></i>
+                    @obj2.Name
+                </a>
+            </li>                 
+            } 
+        </ul>
+        }
+    </li>
+    }
+</ul><!-- /.nav-list -->

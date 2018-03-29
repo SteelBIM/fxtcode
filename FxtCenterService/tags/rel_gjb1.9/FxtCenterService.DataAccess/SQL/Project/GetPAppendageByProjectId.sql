@@ -1,0 +1,1 @@
+﻿select * from dbo.LNK_P_Appendage with(nolock) where ProjectId=@projectid and CityId=@cityid

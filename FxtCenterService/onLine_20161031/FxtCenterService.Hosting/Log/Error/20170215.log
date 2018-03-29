@@ -1,0 +1,270 @@
+﻿2017-02-15 18:24:20
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-15 18:26:09
+错误编号:2017021518260994Xae18fd0aba
+Message:调用的目标发生了异常。
+Message2:caselistbyareaanduse执行时间：110248ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"693287535","signname":"60765FEC-9156-409D-923E-A12EB53A1D1F","time":"20161013094914","functionname":"caselistbyareaanduse","code":"52c1973a0dfe1a04ef964c6ee9acba54"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003018,"vcode":"1.0","version":"1.0"},"uinfo":{"username":null,"password":null,"fxtcompanyid":25,"subcompanyid":1},"funinfo":{"cityid":6,"projectid":45609,"buildingarea":100,"purposecode":"1002001","casetypecode":"1","floorno":"","houseno":"","buildingtypecode":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 多次为 't' 指定了列 'remainyear'。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.SPDBDA.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode, DateTime datebegin, DateTime dateend) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\SPDBDA.cs:行号 132
+   在 FxtCenterService.Logic.SPDBBL.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\SPDBBL.cs:行号 93
+   在 FxtCenterService.Actualize.DataController.GetCaselist_SPDB(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\SPDBController.cs:行号 68
+ClientConnectionId:897f4fc0-7621-410f-bd7f-b64781801862
+Error Number:8156,State:1,Class:16
+2017-02-15 18:27:12
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-15 18:27:39
+错误编号:2017021518273921X98c56ee1eb
+Message:调用的目标发生了异常。
+Message2:caselistbyareaanduse执行时间：27229ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"693287535","signname":"60765FEC-9156-409D-923E-A12EB53A1D1F","time":"20161013094914","functionname":"caselistbyareaanduse","code":"52c1973a0dfe1a04ef964c6ee9acba54"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003018,"vcode":"1.0","version":"1.0"},"uinfo":{"username":null,"password":null,"fxtcompanyid":25,"subcompanyid":1},"funinfo":{"cityid":6,"projectid":45609,"buildingarea":100,"purposecode":"1002001","casetypecode":"1","floorno":"","houseno":"","buildingtypecode":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 多次为 't' 指定了列 'remainyear'。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.SPDBDA.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode, DateTime datebegin, DateTime dateend) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\SPDBDA.cs:行号 132
+   在 FxtCenterService.Logic.SPDBBL.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\SPDBBL.cs:行号 93
+   在 FxtCenterService.Actualize.DataController.GetCaselist_SPDB(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\SPDBController.cs:行号 68
+ClientConnectionId:897f4fc0-7621-410f-bd7f-b64781801862
+Error Number:8156,State:1,Class:16
+2017-02-15 18:27:42
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-15 18:28:07
+错误编号:2017021518280737X35bb426811
+Message:调用的目标发生了异常。
+Message2:caselistbyareaanduse执行时间：24938ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"693287535","signname":"60765FEC-9156-409D-923E-A12EB53A1D1F","time":"20161013094914","functionname":"caselistbyareaanduse","code":"52c1973a0dfe1a04ef964c6ee9acba54"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003018,"vcode":"1.0","version":"1.0"},"uinfo":{"username":null,"password":null,"fxtcompanyid":25,"subcompanyid":1},"funinfo":{"cityid":6,"projectid":45609,"buildingarea":100,"purposecode":"1002001","casetypecode":"1","floorno":"","houseno":"","buildingtypecode":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 多次为 't' 指定了列 'remainyear'。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.SPDBDA.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode, DateTime datebegin, DateTime dateend) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\SPDBDA.cs:行号 132
+   在 FxtCenterService.Logic.SPDBBL.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\SPDBBL.cs:行号 93
+   在 FxtCenterService.Actualize.DataController.GetCaselist_SPDB(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\SPDBController.cs:行号 68
+ClientConnectionId:e05428b2-d9f8-4562-ad52-bea5cca1817f
+Error Number:8156,State:1,Class:16
+2017-02-15 18:28:16
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-15 18:28:28
+错误编号:2017021518282841Xc69173d70e
+Message:调用的目标发生了异常。
+Message2:caselistbyareaanduse执行时间：11821ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"693287535","signname":"60765FEC-9156-409D-923E-A12EB53A1D1F","time":"20161013094914","functionname":"caselistbyareaanduse","code":"52c1973a0dfe1a04ef964c6ee9acba54"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003018,"vcode":"1.0","version":"1.0"},"uinfo":{"username":null,"password":null,"fxtcompanyid":25,"subcompanyid":1},"funinfo":{"cityid":6,"projectid":45609,"buildingarea":100,"purposecode":"1002001","casetypecode":"1","floorno":"","houseno":"","buildingtypecode":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 多次为 't' 指定了列 'remainyear'。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.SPDBDA.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode, DateTime datebegin, DateTime dateend) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\SPDBDA.cs:行号 132
+   在 FxtCenterService.Logic.SPDBBL.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\SPDBBL.cs:行号 93
+   在 FxtCenterService.Actualize.DataController.GetCaselist_SPDB(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\SPDBController.cs:行号 68
+ClientConnectionId:e05428b2-d9f8-4562-ad52-bea5cca1817f
+Error Number:8156,State:1,Class:16
+2017-02-15 18:28:31
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-02-15 18:28:54
+错误编号:2017021518285486Xb3751b7418
+Message:调用的目标发生了异常。
+Message2:caselistbyareaanduse执行时间：22980ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"693287535","signname":"60765FEC-9156-409D-923E-A12EB53A1D1F","time":"20161013094914","functionname":"caselistbyareaanduse","code":"52c1973a0dfe1a04ef964c6ee9acba54"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003018,"vcode":"1.0","version":"1.0"},"uinfo":{"username":null,"password":null,"fxtcompanyid":25,"subcompanyid":1},"funinfo":{"cityid":6,"projectid":45609,"buildingarea":100,"purposecode":"1002001","casetypecode":"1","floorno":"","houseno":"","buildingtypecode":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Data.SqlClient.SqlException (0x80131904): 多次为 't' 指定了列 'remainyear'。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command, String connectionName) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 128
+   在 CAS.DataAccess.DA.BaseDA.ExecuteDataSet(SqlCommand command) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 112
+   在 FxtCenterService.DataAccess.SPDBDA.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode, DateTime datebegin, DateTime dateend) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\SPDBDA.cs:行号 132
+   在 FxtCenterService.Logic.SPDBBL.GetProjectCaseList(SearchBase search, Int32 projectid, Decimal buildingarea, List`1 purposecodes, Int32 casetypecode, Int32 floorno, String houseno, Int32 buildingtypecode, Int32 housetypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\SPDBBL.cs:行号 93
+   在 FxtCenterService.Actualize.DataController.GetCaselist_SPDB(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\SPDBController.cs:行号 68
+ClientConnectionId:e05428b2-d9f8-4562-ad52-bea5cca1817f
+Error Number:8156,State:1,Class:16

@@ -1,0 +1,90 @@
+﻿@using FXT.DataCenter.Domain.Models
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+@model DAT_Project
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        .tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#projectid").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("ProjectSelect")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    $("#projectid").val(data.id)
+                    return data.text;
+                },
+            });
+            $(".select2-container").width(221); //重置select2宽度
+            $("#projectid").select2("val", { id: '@ViewBag.select2ProjectId', text: '@ViewBag.select2ProjectName' });
+          
+        });
+    </script>
+    <script src="@Url.Content("~/Areas/House/Scripts/project_merger.js")" type="text/javascript"></script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>从</td>
+            <td>
+                @Html.HiddenFor(m => m.projectid)
+            </td>
+            <td>合并到</td>
+            <td>
+                <input type="text" style="width:170px;" value="@Model.projectname|@Model.AreaName" readonly />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Hidden("projectid", Model.projectid.ToString())
+                @Html.Hidden("projectidTo", Model.projectid.ToString())
+                @Html.Hidden("areaid", Model.areaid.ToString())
+                @Html.Hidden("projectname", Model.projectname.ToString())
+                @Html.Hidden("fxtcompanyid", Model.fxtcompanyid.ToString())
+            </td>
+        </tr>
+    </table>
+}

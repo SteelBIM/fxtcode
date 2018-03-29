@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        body
+        {
+            background: #eee;
+        }
+        *
+        {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+        .maintable
+        {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+        .maintable th
+        {
+            background: #069;
+            color: #fff;
+            line-height: 30px;
+            font-size: 14px;
+        }
+        .maintable td
+        {
+            background: #fff;
+            line-height: 20px;
+        }
+        .maintable td.left
+        {
+            width: 180px;
+            background: #f9f9f9;
+        }
+        .tbparams
+        {
+            background: #ccc;
+            width: 100%;
+        }
+        .tbparams th
+        {
+            background: #eee;
+            color: #000;
+            font-weight: normal;
+            line-height: 22px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .tbparams td
+        {
+            background: #fff;
+            padding: 3px;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        ul.params, div.content
+        {
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        ul.params li
+        {
+            border-bottom: 1px solid #ccc;
+            line-height: 25px;
+            margin: 1px;
+        }
+        ul.index li
+        {
+            padding: 10px;
+            line-height: 25px;
+            color: #069;
+        }
+        
+        div.content
+        {
+            padding: 5px;
+        }
+        #apilist
+        {
+            margin: 5px;
+        }
+        #apilist li
+        {
+            cursor: default;
+            padding: 3px;
+        }
+        #apilist li.over
+        {
+            background: #ccc;
+        }
+        #apilist li.active
+        {
+            background: #069;
+            color: #fff;
+            font-weight: bold;
+        }
+        #apicontent
+        {
+            margin: 5px;
+            word-break: break-all;
+        }
+        #apicontent li
+        {
+            cursor: default;
+        }
+        #apicontent li strong
+        {
+            display: block;
+            background: #eee;
+            line-height: 25px;
+            text-indent: 10px;
+            border-left: 8px solid #ccc;
+        }
+        ul.ulapi li
+        {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+        #apicontent li.desc
+        {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+        #apicontent span.mobile
+        {
+            color: #c00;
+        }
+        #apicontent li.step
+        {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        font.red
+        {
+            color: #c00;
+        }
+        font.memo
+        {
+            color: #063;
+        }
+        #apicontent li label
+        {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+        
+        textarea
+        {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="http://192.168.0.7:5100/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="http://192.168.0.7:5100/js/json2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = [
+        { name: "strdate", value: "", desc: "验证时间", must: true },
+        { name: "strcode", value: "", desc: "验证字符串，MD5加密strdate参数", must: true }
+        ]
+
+        //api
+        var api = [
+        { name: "登录验证", url: "handlers/user_check.ashx", params: [
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "userpwd", value: "", desc: "密码，MD5加密userpwd参数", must: true },
+            { name: "systypecode", value: "1003008", desc: "系统类型", must: true }
+            ], output: { "returntype": 1, "returntext": "", "data": { "username": null, "uservalid": 1, "companyvalid": 1, "productvalid": 1, "businessdb": "41F11989F545640A6426E812639CAA60D17386DFAADE5FCEC6460727104FB04016F22B1FA86A5F8E95E5022A5DC731FDBDF5C90C67BF1C6F2FD6112EE33918AFE053A3ADA946C2895DB69EF1E440950C", "currentversion": "1.0", "startdate": "\/Date(1364745600000)\/", "overdate": "\/Date(1396368000000)\/", "companyid": 365, "companycode": "gjb", "producttypecode": 0, "weburl": "", "emailstr": "", "mobile": "", "wxopenid": "", "truename": "管理员", "signname": "fxtgjb", "applicationid": "gjb", "applicationpwd": "654321", "encryptionkey": "123123", "apiurl": "", "msgserver": "", "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false }, "debug": null }
+        },
+        { name: "新增用户信息", url: "handlers/user_handler.ashx", params: [
+            { name: "type", value: "add", desc: "操作类型", must: true },
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "userpwd", value: "", desc: "密码，MD5加密userpwd参数", must: true },
+            { name: "emailstr", value: "", desc: "电子邮箱", must: false },
+            { name: "mobile", value: "", desc: "手机号码", must: true },
+            { name: "wxopenid", value: "", desc: "微信号", must: false },
+            { name: "truename", value: "", desc: "真实名", must: true }            
+            ], output: { "returntype": 1, "returntext": "新增用户成功", "data": null, "debug": null }
+        },
+        { name: "删除用户信息", url: "handlers/user_handler.ashx", params: [
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "companyid", value: "", desc: "用户机构ID", must: true },
+            { name: "type", value: "delete", desc: "操作类型", must: true }
+            ], output: { "returntype": 1, "returntext": "删除用户成功", "data": null, "debug": null }
+        },
+         { name: "修改用户信息", url: "handlers/user_handler.ashx", params: [
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "companyid", value: "", desc: "用户机构ID", must: true },
+            { name: "emailstr", value: "", desc: "电子邮箱", must: false },
+            { name: "mobile", value: "", desc: "手机号码", must: false },
+            { name: "wxopenid", value: "", desc: "微信号", must: false },
+            { name: "truename", value: "", desc: "真实名", must: true },
+            { name: "type", value: "edit", desc: "操作类型", must: true }
+            ], output: { "returntype": 1, "returntext": "修改用户成功", "data": null, "debug": null }
+         },
+         { name: "获取用户信息", url: "handlers/user_find.ashx", params: [
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "companyid", value: "", desc: "用户机构ID", must: true }
+            ], output: { "returntype": 1, "returntext": "", "data": { "username": null, "uservalid": 1, "companyvalid": 1, "productvalid": 1, "businessdb": "41F11989F545640A6426E812639CAA60D17386DFAADE5FCEC6460727104FB04016F22B1FA86A5F8E95E5022A5DC731FDBDF5C90C67BF1C6F2FD6112EE33918AFE053A3ADA946C2895DB69EF1E440950C", "currentversion": "1.0", "startdate": "\/Date(1364745600000)\/", "overdate": "\/Date(1396368000000)\/", "companyid": 365, "companycode": "gjb", "producttypecode": 0, "weburl": "", "emailstr": "", "mobile": "", "wxopenid": "", "apiurl": "", "msgserver": "", "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false }, "debug": null }
+         },
+           { name: "获取用户列表", url: "handlers/user_list.ashx", params: [
+            { name: "type", value: "list", desc: "查询类型", must: true },
+            { name: "companyid", value: "", desc: "用户机构ID", must: false },
+            { name: "companycode", value: "", desc: "机构代码", must: false },
+            { name: "username", value: "", desc: "用户名（多个用,分割）", must: false }
+            ], output: { "returntype": 1, "returntext": "", "data": [{ "username": "admin@tjzsh", "uservalid": 1, "companyvalid": 1, "productvalid": 0, "businessdb": null, "currentversion": null, "startdate": "\/Date(-62135596800000)\/", "overdate": "\/Date(-62135596800000)\/", "companyid": 367, "companycode": "zy", "companyname": "房讯通", "producttypecode": 0, "weburl": null, "apiurl": null, "outapiurl": null, "msgserver": null, "smssendname": null, "wxname": null, "emailstr": null, "mobile": null, "wxopenid": null, "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false }, { "username": "admin@zy", "uservalid": 1, "companyvalid": 1, "productvalid": 0, "businessdb": null, "currentversion": null, "startdate": "\/Date(-62135596800000)\/", "overdate": "\/Date(-62135596800000)\/", "companyid": 367, "companycode": "zy", "companyname": "房讯通", "producttypecode": 0, "weburl": null, "apiurl": null, "outapiurl": null, "msgserver": null, "smssendname": null, "wxname": null, "emailstr": null, "mobile": null, "wxopenid": null, "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false}], "debug": null }
+           },
+        { name: "发送短信", url: "handlers/sendsms.ashx", params: [
+            { name: "username", value: "", desc: "账号", must: true },
+            { name: "companyid", value: "", desc: "用户机构ID", must: true },
+            { name: "fxtcompanyid", value: "", desc: "用户机构ID", must: true },
+            { name: "cityid", value: "", desc: "城市ID", must: true },
+            { name: "mobile", value: "", desc: "接收手机", must: true },
+            { name: "content", value: "", desc: "信息内容", must: true },
+            { name: "messcode", value: "", desc: "信息类型", must: true },
+            { name: "objectid", value: "", desc: "业务对象ID", must: true },
+            { name: "typecode", value: "", desc: "业务类型", must: true }
+            ], output: { "returntype": 1, "returntext": "", "data": null, "debug": null }
+        },
+        { name: "获取公司信息", url: "handlers/company.ashx", params: [
+            { name: "type", value: "companycode", desc: "类型", must: true },
+            { name: "companycode", value: "gjb", desc: "机构代码", must: true }
+            ], output: { "returntype": 1, "returntext": "", "data": { "companyid": 1, "businessdb": "41F11989F545640A6426E812639CAA60D17386DFAADE5FCEC6460727104FB04016F22B1FA86A5F8E95E5022A5DC731FDBDF5C90C67BF1C6F2FD6112EE33918AFE053A3ADA946C2895DB69EF1E440950C", "weburl": "", "apiurl": "", "msgserver": "", "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false }, "debug": null }
+        },
+        { name: "获取公司产品", url: "handlers/companyproduct.ashx", params: [
+            { name: "type", value: "companyproduct", desc: "类型", must: true },
+            { name: "companyid", value: "365", desc: "公司id", must: false },
+            { name: "signname", value: "", desc: "公司标识", must: false },
+            { name: "producttypecode", value: "1003008", desc: "产品code", must: true }
+            ], output: { "returntype": 1, "returntext": "", "data": { "companyid": 365, "producttypecode": 1003008, "currentversion": "3.0", "startdate": "\/Date(1364745600000)\/", "overdate": "\/Date(1404230400000)\/", "weburl": "http://192.168.0.99:3001", "apiurl": "http://192.168.0.99:3000", "outapiurl": null, "msgserver": null, "createdate": null, "valid": 1, "recordcount": 0, "CustomPrimaryKeyIdentify": 0, "IsSetCustomerFields": false }, "debug": null }
+        }
+        ];
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+            });
+            $("#apilist li").click(function () {
+
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                var html = [];
+                var item = $(this).data("data");
+                html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+                html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+                var params = [];
+                function addparam(p) {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[ = "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+                if (item.name != "登录") {
+                    $.each(mustparams, function (i, p) {
+                        addparam(p);
+                    });
+                }
+                $.each(item.params, function (i, p) {
+                    addparam(p);
+                });
+                html.push('<li><strong>参数</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+                html.push('<li><strong>输出格式</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+                $("#apicontent").html(html.join(""));
+
+            }).mouseenter(function () { $(this).addClass("over"); })
+            .mouseout(function () { $(this).removeClass("over"); });
+        });
+    </script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <th colspan="2">
+                中心服务器用户接口说明
+            </th>
+        </tr>
+        <tr>
+            <td valign="top" class="left">
+                <ul id="apilist">
+                </ul>
+            </td>
+            <td valign="top">
+                <ul class="index">
+                    <li>本说明用于协助和指导相关开发人员熟悉和使用中心服务器用户接口。点击左侧功能名称查看具体说明。<br />
+                    </li>
+                </ul>
+                <ul id="apicontent">
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

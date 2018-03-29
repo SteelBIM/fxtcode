@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.PriviDepartment, FxtDataAcquisition.NHibernate" table="Privi_Department">
+		<id name="DepartmentId" column="DepartmentId" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+    </id>      		
+		<property name="Fk_CompanyId" column="Fk_CompanyId" type="int"  />
+		<property name="DepartmentName" column="DepartmentName" type="string"  />
+		<property name="FK_CityId" column="FK_CityId" type="int"  />
+		<property name="FK_DepTypeCode" column="FK_DepTypeCode" type="int"  />
+		<property name="FK_ParentId" column="FK_ParentId" type="int"  />
+		<property name="Address" column="Address" type="string"  />
+		<property name="Fax" column="Fax" type="string"  />
+		<property name="Telephone" column="Telephone" type="string"  />
+		<property name="EMail" column="EMail" type="string"  />
+		<property name="LinkMan" column="LinkMan" type="string"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="DValid" column="DValid" type="int"  />
+		<property name="FK_DepAttr" column="FK_DepAttr" type="int"  />
+				
+	</class>
+</hibernate-mapping>

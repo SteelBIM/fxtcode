@@ -1,0 +1,235 @@
+﻿@using FXT.DataCenter.Domain.Models
+@model DAT_Company
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //省份和城市联动
+            $("#Province").change(function () {
+                $.post('@Url.Action("GetCity")', { proId: $("#Province").val() }, function (data) {
+                    $("#CityId").html("");
+                    $.each(data, function (i, item) {
+                        $("#CityId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //行业大类和行业小类联动
+            $("#IndustryCode").change(function () {
+                $.get('@Url.Action("GetSubIndustry")', { code: $("#IndustryCode").val() }, function (data) {
+                    $("#SubIndustryCode").html("");
+                     $.each(data, function (i, item) {
+                         $("#SubIndustryCode").append($("<option></option>").val(item.Value).html(item.Text));
+                     });
+                 });
+             });
+
+
+            $("#GroupId").select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: "@Url.Action("GetGroup")",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            key: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return { results: data };
+                    }
+                },
+                formatResult: function (data) {
+                    return data.text;
+                },
+                formatSelection: function (data) {
+                    return data.text;
+                },
+            });
+            $(".select2-container").width(221); //重置select2宽度
+
+            $("#GroupId").select2("val", { id: '@ViewBag.companyId', text: '@ViewBag.chineseName' });
+
+
+            $("#GroupId").bind("change", function () {
+                var temp = $(".select2-choice > span").text();
+                $("#GroupName").val(temp);
+            });
+
+            $('#btnSubmit').unbind();
+            $('#btnSubmit').click(function () {
+                var companyId = $("#CompanyId").val();
+                var chineseName = $("#ChineseName").val();
+                if (chineseName != "") {
+                    $.get("@Url.Action("CompanyIsExit")", { chineseName: chineseName, companyId: companyId }, function (data) {
+                        if (data) {
+                            alert("系统中已存在该公司，请重新输入！");
+
+                        } else {
+                            $("#mainForm").submit();
+                        }
+                    });
+                    return false;
+                }
+            });
+
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">
+                    省份：</label>
+                <div class="controls">
+                    @Html.DropDownList("Province")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    城市：</label>
+                <div class="controls">
+                    @Html.DropDownList("CityId")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>中文名称：</label>
+                <div class="controls">
+                    @if (Model != null)
+                    {
+                        @Html.HiddenFor(m => m.CompanyId)
+                    }
+                    @Html.TextBoxFor(m => m.ChineseName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    英文名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.EnglishName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    集团公司ID：</label>
+                <div class="controls">
+                    <input type="hidden" id="GroupId" name="GroupId" />
+                    <input type="hidden" id="GroupName" name="GroupName" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    公司类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("CompanyTypeCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    地址：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Address)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    电话：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Telephone)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    传真：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Fax)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    网址：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Website)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    简称/名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.COtherName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    主营品牌：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Brand)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    公司原注册国家：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.FromCountry)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    原注册城市：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.FromCity)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    性质：</label>
+                <div class="controls">
+                    @Html.DropDownList("NatureCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    行业大类：</label>
+                <div class="controls">
+                    @Html.DropDownList("IndustryCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    行业小类：</label>
+                <div class="controls">
+                    @Html.DropDownList("SubIndustryCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    公司规模(人)：</label>
+                <div class="controls">
+                    @Html.TextBox("ScaleCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    注册资本(万)：</label>
+                <div class="controls">
+                    @Html.TextBox("RegistCapital")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    行业地位：</label>
+                <div class="controls">
+                    @Html.DropDownList("StandingCode")
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

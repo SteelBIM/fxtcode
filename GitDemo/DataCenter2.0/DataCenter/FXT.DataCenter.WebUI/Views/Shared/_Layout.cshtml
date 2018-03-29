@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewBag.title</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+	<link href="@Url.Content("~/Content/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/assets/css/metro.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/assets/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/assets/css/style.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/assets/css/style_responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/css/style_light.css")" rel="stylesheet" id="style_color" />
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("/content/styles/jquery.thickbox.css")" />*@
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/uniform/css/uniform.default.css")" />
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/data-tables/DT_bootstrap.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/content/styles/admin.main.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/content/Assets/select2/select2.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/bootstrap-datepicker/css/datepicker.css")" />
+    @RenderSection("PageSpecificStyleSheetIncludes", required: false)
+    <style>
+        .ui-dialog .ui-dialog-content {overflow:hidden;}
+        .ui-widget-header { border: 0px;background-color: #e8e8e8; color: #222222; font-weight: bold;background:none; }
+        .ui-button-icon-only .ui-button-text {padding:0}
+        .ui-widget-overlay {background: black none repeat scroll 0 0;opacity: 0.7;}
+    </style>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+	<!-- BEGIN HEADER -->
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		@Html.Partial("_Header")
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+    <div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	@RenderSection("_LeftMenu")
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	@Html.Partial("_Footer")
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS -->
+	<!-- Load javascripts at bottom, this will reduce page load time -->
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-1.8.3.min.js")"></script>	
+    @*<script type="text/javascript" src="@Url.Content("/content/scripts/jquery.thickbox.js")"></script>*@
+    <script src="~/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery.validate.min.js")"></script>	
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery.validate.unobtrusive.min.js")"></script>	
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/breakpoints/breakpoints.js")"></script>	
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/bootstrap/js/bootstrap.min.js")"></script>	
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery.blockui.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery.cookie.js")"></script>
+	<!-- ie8 fixes -->
+	<!--[if lt IE 9]>
+	<script src="@Url.Content("~/Content/assets/js/excanvas.js")"></script>
+	<script src="@Url.Content("~/Content/assets/js/respond.js")"></script>
+	<![endif]-->	
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/uniform/jquery.uniform.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/data-tables/jquery.dataTables.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/data-tables/DT_bootstrap.js")"></script>
+    @*<script type="text/javascript" src="@Url.StaticFile("~/Content/assets/js/jquery.pulsate.min.js")"></script>	*@	
+	<script type="text/javascript" src="@Url.Content("~/Content/assets/js/app.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.numeric.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("/content/scripts/jquery.ui.datapicker-zh-CN.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/Assets/bootstrap-datepicker/js/bootstrap-datepicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/select2/select2.min.js")"></script>	
+    <script type="text/javascript" src="@Url.Content("~/Content/Assets/select2/select2_locale_zh-CN.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Assets/select2/mod.udatas.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/admin.main.js")"></script>	
+	<script type="text/javascript">
+        var modalDialog;
+        var ifhasmodal = false;
+        (function ($) {
+            $.fn.openWidow = function (options) {
+                if (ifhasmodal) {
+                    modalDialog.dialog("close");
+                    ifhasmodal = false;
+                }
+                var divId = "dialog" + Math.round(Math.random() * 100);
+                var settings = {
+                    id: divId,
+                    width: 900,
+                    height: 500,
+                    modal: true,
+                    buttons: {
+                    },
+                    hide: "highlight",
+                    title: "提示",
+                    url: "/test.aspx",
+                    close: function () {
+                        $(this).dialog("close");
+                        $("#" + this.id).remove();
+                        ifhasmodal = false;
+                    }
+                };
+                if (options) {
+                    $.extend(settings, options);
+                }
+                $("body").append('<div id="' + settings.id + '" title="Dialog Title"><p class="loading"> </div>');
+                // Dialog   
+                modalDialog = $('#' + settings.id).dialog({
+                    autoOpen: false,
+                    title: settings.title,
+                    width: settings.width,
+                    height: settings.height,
+                    modal: true,
+                    bgiframe: true,
+                    show: settings.show,
+                    hide: settings.hide,
+                    buttons: settings.buttons,
+                    close: settings.close,
+                    open: function () {
+                        $("#" + settings.id).html('<iframe src="' + settings.url + '" frameborder="0" height="100%" width="100%" id="dialogFrame" scrolling="auto"></iframe>');
+                    },
+                    resizeStop: function () {
+                        $("#dialogFrame").css("width", parseInt($(this).css("width")) - 5);
+                        $("#dialogFrame").css("height", parseInt($(this).css("height")) - 5);
+                    }
+                });
+                ifhasmodal = true;
+                modalDialog.dialog("open");
+                return this;
+            };
+            $.fn.tb_windowAddFooter = function (options) {
+                if (ifhasmodal) {
+                    modalDialog.dialog("close");
+                    ifhasmodal = false;
+                }
+                var dialogheight = 500;
+                var dialogwidth = 900;
+                var altMessage = $(this).attr("alt");
+                var divId = altMessage.match('inlineId=\\w+')[0].replace("inlineId=", "");
+                $.each(altMessage.match(/(height=\d+|width=\d+)/g), function (n, value) {
+                    if (value.indexOf("height=") > -1) {
+                        dialogheight = parseInt(value.replace("height=", ""));
+                    }
+                    else {
+                        dialogwidth = parseInt(value.replace("width=", ""));
+                    }
+                });
+                var settings = {
+                    id: divId,
+                    width: dialogwidth,
+                    height: dialogheight,
+                    modal: true,
+                    buttons: {
+                        "确定": options.sen1func,
+                        "取消": function () {
+                            ifhasmodal = false;
+                            $(this).dialog("close");
+                        }
+                    },
+                    title: "提示",
+                    close: function () {
+                        ifhasmodal = false;
+                        $(this).dialog("close");
+                    }
+                };
+                if (options) {
+                    $.extend(settings, options);
+                }
+                // Dialog
+                modalDialog = $('#' + settings.id).dialog({
+                    autoOpen: false,
+                    title: settings.title,
+                    width: settings.width,
+                    height: settings.height,
+                    modal: true,
+                    bgiframe: true,
+                    show: settings.show,
+                    hide: settings.hide,
+                    buttons: settings.buttons,
+                    close: settings.close
+                });
+                ifhasmodal = true;
+                modalDialog.dialog("open");
+                return this;
+            };
+            top.tb_remove = function () {
+                ifhasmodal = false;
+                modalDialog.dialog("close");
+            };
+        })(jQuery);
+	    jQuery(document).ready(function () {
+	        // initiate layout and plugins
+	        App.init();
+	        $("a[class$='thickbox']").click(function () {
+	            var url = $(this).attr("href");
+	            var dialogheight = 500;
+	            var dialogwidth = 900;
+	            $.each(url.match(/(height=\d+|width=\d+)/g), function (n, value) {
+	                if (value.indexOf("height=") > -1) {
+	                    dialogheight = parseInt(value.replace("height=", ""));
+	                }
+	                else {
+	                    dialogwidth = parseInt(value.replace("width=", ""));
+	                }
+	            });
+	            url = url.substring(0, url.indexOf('TB_iframe'));
+                $(this).openWidow({
+                    autoOpen: false,
+                    height: dialogheight,
+                    width: dialogwidth,
+                    modal: true,
+                    url: url,
+                    title: $(this).attr("title"),
+                });
+                return false;
+	        });
+	    });
+	</script>
+    @RenderSection("PageSpecificJavascriptIncludes", required: false)
+
+    <!-- loading mask -->
+    <div id="over" class="over"></div>
+    <div id="overlay" class="overlay" style="background: url('@Url.Content("~/Content/Images/loadingmask.gif")') 50% 50% no-repeat;"></div>
+</body>
+<!-- END BODY -->
+</html>

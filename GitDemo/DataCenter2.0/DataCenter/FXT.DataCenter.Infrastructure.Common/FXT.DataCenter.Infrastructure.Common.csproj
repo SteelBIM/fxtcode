@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED63DE3F-A21B-4316-987F-634BCC3939BB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.Infrastructure.Common</RootNamespace>
+    <AssemblyName>FXT.DataCenter.Infrastructure.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\..\Lib\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Lib\NPOI_dotNet4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.1.1\lib\net40\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NPOI_dotNet4.0\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NPOI_dotNet4.0\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NPOI_dotNet4.0\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NPOI_dotNet4.0\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress">
+      <HintPath>..\packages\p3-sharpcompress.0.10.5.2\lib\net40\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonWeb\CacheHelper.cs" />
+    <Compile Include="CommonWeb\CookieHelper.cs" />
+    <Compile Include="CommonWeb\CustomConfigHelper.cs" />
+    <Compile Include="CommonWeb\HttpHelper.cs" />
+    <Compile Include="CommonWeb\ImageHandler.cs" />
+    <Compile Include="CommonWeb\PageHelper.cs" />
+    <Compile Include="CommonWeb\RequestHelper.cs" />
+    <Compile Include="CommonWeb\ScriptHelper.cs" />
+    <Compile Include="CommonWeb\SessionHelper.cs" />
+    <Compile Include="CommonWeb\VerifyCodeHelper.cs" />
+    <Compile Include="Common\EncryptHelper.cs" />
+    <Compile Include="Common\CurrencyHelper.cs" />
+    <Compile Include="Common\EnumHelper.cs" />
+    <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\OssHelper.cs" />
+    <Compile Include="Common\TryParseHelper.cs" />
+    <Compile Include="Common\JSONHelper.cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Common\SecurityHelper.cs" />
+    <Compile Include="Common\StringHelper.cs" />
+    <Compile Include="Common\XmlHelper.cs" />
+    <Compile Include="Common\CompressionHelper.cs" />
+    <Compile Include="DBHelper\ConfigurationHelper.cs" />
+    <Compile Include="DBHelper\Dapper.cs" />
+    <Compile Include="DBHelper\DBHelperSql.cs" />
+    <Compile Include="DBHelper\ModelConvertHelper.cs" />
+    <Compile Include="DBHelper\SqlModelHelper.cs" />
+    <Compile Include="Dictionary\SYS_Code_Dict.cs" />
+    <Compile Include="Dictionary\Sys_TypeCodeOrName.cs" />
+    <Compile Include="ExtensionMethod\DataTableConvertToList.cs" />
+    <Compile Include="NPOI\ExcelExportIgnoreAttribute.cs" />
+    <Compile Include="NPOI\ExcelHandle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

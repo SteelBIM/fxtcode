@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>chmod755 - 演示站</title>
+<style type="text/css">
+html,body{margin:0; padding:0;}
+
+.wrap{height:2000px;}
+.float
+{
+    text-align: center;
+    font-size: 12px;
+    z-index: 9999;
+    position: fixed;
+    _position: absolute;
+}
+
+#top{
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    top: 0;
+    _top: expression(eval(documentElement.scrollTop));
+    _bottom:auto;
+}
+
+#center{
+    width:200px;
+    height:100px;
+    line-height:100px;
+    margin:-50px 0 0 -100px;
+    top: 50%;
+    left: 50%;
+    _top: expression(eval(documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2));
+    _left: expression(eval(documentElement.scrollLeft + (document.documentElement.clientWidth-this.offsetWidth)/2));
+    _margin:0;
+}
+
+#fotter{
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    bottom:0;
+    margin:-50px 0 0 0;
+    _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+    _margin:0;
+    background-color:#111111;
+}
+
+#right_center{
+    width:100px;
+    height:200px;
+    line-height: 200px;
+    right: 0;
+    top: 50%;
+    margin:-100px 0 0 0;
+    _top: expression(eval(documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2));
+    _margin:0;
+    _right:-1px;
+}
+
+#right_fotter{
+    background:green;
+    width:100px;
+    height:200px;
+    line-height: 200px;
+    right: 0;
+    bottom:0;
+    _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+    _right:-1px;
+
+
+}
+#fotter
+{
+     background-color: #1A1A1A;
+    text-align: center;
+    font-size: 12px;
+    z-index: 9999;
+    position: fixed;
+    _position: absolute;
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    bottom:0;
+    margin:-50px 0 0 0;
+    _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+    _margin:0;
+    color:#fff;
+}
+</style>
+</head>
+<body>
+    <!--<div class="float" id="top">顶部</div>
+    <div class="float" id="center">垂直居中</div>-->
+    <div id="fotter">返回 <a style="background:url(../images/reload.png) no-repeat; height:48px;width:48px; display:inline-block;">aa</a></div>
+   <!-- <div class="float" id="right_center">右中</div>
+    <div class="float" id="right_fotter">右下</div>-->
+    <div class="wrap"></div>
+</body>
+</html>

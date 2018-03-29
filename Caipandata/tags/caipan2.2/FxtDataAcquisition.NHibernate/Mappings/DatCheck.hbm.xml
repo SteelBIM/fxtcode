@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.DatCheck, FxtDataAcquisition.NHibernate" table="Dat_Check">
+		<id name="Id" column="Id" type="long" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="AllotId" column="AllotId" type="long"  />
+		<property name="DatType" column="DatType" type="int"  />
+		<property name="DatId" column="DatId" type="long"  />
+		<property name="OtherId" column="OtherId" type="string"  />
+		<property name="CheckUserName1" column="CheckUserName1" type="string"  />
+		<property name="CheckState1" column="CheckState1" type="int"  />
+		<property name="CheckRemark1" column="CheckRemark1" type="string"  />
+		<property name="CheckDate1" column="CheckDate1" type="DateTime"  />
+		<property name="CheckUserName2" column="CheckUserName2" type="string"  />
+		<property name="CheckState2" column="CheckState2" type="int"  />
+		<property name="CheckRemark2" column="CheckRemark2" type="string"  />
+		<property name="CheckDate2" column="CheckDate2" type="DateTime"  />
+				
+	</class>
+</hibernate-mapping>

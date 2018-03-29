@@ -1,0 +1,115 @@
+﻿@using System.Data
+@{
+    var ds = (DataSet)Model;
+}
+@*<div class="scrollBar">*@
+<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+    <thead>
+        <tr>
+            <th style="width: 65px;">物理层
+            </th>
+            @if (ds.Tables[0].Rows.Count > 0)
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    if (i == 0)
+                    { 
+                <th style="width: 65px;">实际层
+                </th>
+                    }
+                <th fanghao='@ds.Tables[0].Rows[i]["UnitNo"]'>
+                    @ds.Tables[0].Rows[i]["UnitNo"]
+                </th>
+                }
+            }
+            else
+            {
+                <th style="width: 65px;">实际层
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int FloorNo = 0;
+
+            if (ds.Tables[1].Rows.Count > 0)
+            {
+                var FloorNo_num = ds.Tables[1].Rows[ds.Tables[1].Rows.Count - 1]["FloorNo"];
+                if (FloorNo_num != null)
+                {
+                    if (Convert.ToInt32(FloorNo_num) > Convert.ToInt32(Html.ViewData["TotalFloor"]))
+                    {
+                        FloorNo = Convert.ToInt32(FloorNo_num);
+                    }
+                    else
+                    {
+                        FloorNo = Convert.ToInt32(Html.ViewData["TotalFloor"]);
+                    }
+                }
+                else
+                {
+                    FloorNo = Convert.ToInt32(Html.ViewData["TotalFloor"]);
+                }
+
+            }
+            else
+            {
+                FloorNo = Convert.ToInt32(Html.ViewData["TotalFloor"]);
+            }
+        }
+        @for (int i = 1; i <= FloorNo; i++)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                @if (ds.Tables[0].Rows.Count > 0)
+                {
+                    for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
+                    {
+                        var dataRow = ds.Tables[2].Select(" FloorNo='" + i + "' and UnitNo='" + ds.Tables[0].Rows[j]["UnitNo"] + "'");
+                        if (dataRow != null && dataRow.Count() > 0)
+                        {
+                            var NominalFloor = dataRow[0]["NominalFloor"].ToString() == "" ? i.ToString() : dataRow[0]["NominalFloor"].ToString();
+                            if (j == 0)
+                            {
+                    <td>
+                        @NominalFloor
+                    </td>
+                            }
+                            if (Html.ViewData["HouseName"].ToString() == "HouseName")
+                            {
+                    <td fxtcompanyid="@dataRow[0]["FxtCompanyId"]" houseid="@dataRow[0]["HouseId"]">
+                        <a style="cursor:pointer;" class="thickbox" href="@Url.Action("EndityHou", new { houseId = dataRow[0]["HouseId"], fxtCompanyId = ViewBag.FxtCompanyId })TB_iframe=true&height=500&width=860">@dataRow[0][Html.ViewData["HouseName"].ToString()]</a>
+                    </td>
+                            }
+                            else
+                            {
+                    <td fxtcompanyid="@dataRow[0]["FxtCompanyId"]" houseid="@dataRow[0]["HouseId"]">
+                        @dataRow[0][Html.ViewData["HouseName"].ToString()]
+                    </td>
+                            }
+                        }
+                        else
+                        {
+
+                            if (j == 0)
+                            {
+                    <td>@i
+                    </td>
+                            }
+                    <td></td>
+                        }
+                    }
+                }
+                else
+                {
+                    <td>
+                        @i
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

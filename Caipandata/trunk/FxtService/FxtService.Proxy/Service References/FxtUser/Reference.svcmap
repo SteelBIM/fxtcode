@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c7932bb5-5074-42c2-8524-6627bb1572d9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtUsers.disco" MetadataType="Disco" ID="acd86330-11b9-4ba8-b2ae-0adfb1bb6725" SourceId="1" SourceUrl="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?disco" />
+    <MetadataFile FileName="FxtUser.wsdl" MetadataType="Wsdl" ID="a7423936-7ffa-4c96-b9e7-d62084166ece" SourceId="1" SourceUrl="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?wsdl" />
+    <MetadataFile FileName="FxtUsers.xsd" MetadataType="Schema" ID="2013cc37-60f2-4f1e-b2f4-573c6ec7b54f" SourceId="1" SourceUrl="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?xsd=xsd1" />
+    <MetadataFile FileName="FxtUsers1.xsd" MetadataType="Schema" ID="45b31da3-78ec-4930-abda-06ac590105c7" SourceId="1" SourceUrl="http://192.168.0.7:6300/FxtUsers/FxtUsers.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

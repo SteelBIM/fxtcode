@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;EndPointHttps&quot;&gt;&lt;security mode=&quot;Transport&quot; /&gt;&lt;/Data&gt;" bindingType="basicHttpBinding" name="EndPointHttps" />
+    <binding digest="System.ServiceModel.Configuration.NetTcpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;EndPointTCP&quot;&gt;&lt;security mode=&quot;None&quot; /&gt;&lt;/Data&gt;" bindingType="netTcpBinding" name="EndPointTCP" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://yuds.fxtcn.cn/CDIService/CDIService.svc&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;EndPointHttps&quot; contract=&quot;CDIService.ICDIService&quot; name=&quot;EndPointHttps1&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://yuds.fxtcn.cn/CDIService/CDIService.svc&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;EndPointHttps&quot; contract=&quot;CDIService.ICDIService&quot; name=&quot;EndPointHttps1&quot; /&gt;" contractName="CDIService.ICDIService" name="EndPointHttps1" />
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;net.tcp://yuds.fxtcn.cn/CDIService/CDIService.svc&quot; binding=&quot;netTcpBinding&quot; bindingConfiguration=&quot;EndPointTCP&quot; contract=&quot;CDIService.ICDIService&quot; name=&quot;EndPointTCP&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;net.tcp://yuds.fxtcn.cn/CDIService/CDIService.svc&quot; binding=&quot;netTcpBinding&quot; bindingConfiguration=&quot;EndPointTCP&quot; contract=&quot;CDIService.ICDIService&quot; name=&quot;EndPointTCP&quot; /&gt;" contractName="CDIService.ICDIService" name="EndPointTCP" />
+  </endpoints>
+</configurationSnapshot>

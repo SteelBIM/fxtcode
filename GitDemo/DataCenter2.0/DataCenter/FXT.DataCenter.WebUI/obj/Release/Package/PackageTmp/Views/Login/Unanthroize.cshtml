@@ -1,0 +1,105 @@
+﻿@{
+    
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+   
+    <title>无权限</title>
+    <style type="text/css">
+        ::selection
+        {
+            background-color: #E13300;
+            color: white;
+        }
+        ::moz-selection
+        {
+            background-color: #E13300;
+            color: white;
+        }
+        ::webkit-selection
+        {
+            background-color: #E13300;
+            color: white;
+        }
+        body
+        {
+            background-color: #E1E2E4;
+            margin: 40px;
+            font: 13px/20px normal Helvetica, Arial, sans-serif;
+            color: #4F5155;
+        }
+        a
+        {
+            color: #003399;
+            background-color: transparent;
+            font-weight: normal;
+        }
+        code
+        {
+            font-family: Consolas, Monaco, Courier New, Courier, monospace;
+            font-size: 12px;
+            background-color: #f9f9f9;
+            border: 1px solid #D0D0D0;
+            color: #002166;
+            display: block;
+            margin: 14px 0 14px 0;
+            padding: 12px 10px 12px 10px;
+        }
+        #container
+        {
+            margin: 10px;
+            border: 1px solid #D0D0D0;
+            -webkit-box-shadow: 0 0 8px #D0D0D0;
+            background: url('@Url.Content("~/Content/Images/404_bg.jpg")') no-repeat;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        p
+        {
+            margin: 12px 15px 12px 15px;
+        }
+        .slogan
+        {
+            font-size: 28px;
+            color: #454545;
+            font-weight: bold;
+            margin: 220px 0 0 380px;
+            padding: 20px;
+            line-height: 110%;
+        }
+        .getout
+        {
+            font-size: 16px;
+            margin: 50px 0 0 450px;
+            line-height: 150%;
+        }
+        .getout a
+        {
+            text-decoration: none;
+            color: #333333;
+            border-bottom: 1px dotted #454545;
+        }
+        .getout a:hover
+        {
+            border-bottom: 1px dotted #FFB400;
+            color: #FFB400;
+            background: #333;
+            padding: 3px;
+        }
+    </style>
+    <style type="text/css"></style>
+</head>
+<body>
+    <div id="container">
+        <h1 class="slogan">
+            您没有没有任何查看权限:-O</h1>
+        <h2 class="getout">
+            请联系管理员给您分配权限<br />
+            或换个帐号重新<a href="@Url.Action("Index")" target="_self">登录</a></h2>
+    </div>
+</body>
+</html>

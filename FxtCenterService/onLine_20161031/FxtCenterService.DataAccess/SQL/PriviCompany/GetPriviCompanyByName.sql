@@ -1,0 +1,1 @@
+﻿select top 1 * from FxtProject.dbo.Privi_Company where CompanyName=@name or EnglishName=@name or CompanyCode = @companycode

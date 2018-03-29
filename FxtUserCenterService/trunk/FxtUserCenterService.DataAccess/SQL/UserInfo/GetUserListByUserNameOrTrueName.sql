@@ -1,0 +1,1 @@
+﻿select * from dbo.UserInfo with(nolock) where companyid = @companyid and valid = 1 @strwhere

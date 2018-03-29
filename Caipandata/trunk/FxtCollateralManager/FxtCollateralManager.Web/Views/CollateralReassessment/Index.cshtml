@@ -1,0 +1,280 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<div class="portlet-body">
+    <div class="tabbable-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab">复估管理</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab">复估风险分析</a></li>
+            <li class=""><a href="#tab_3" data-toggle="tab">复估明细查询</a></li>
+        </ul>
+        <div class="tab-content">
+
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">城市</label>
+                    <div class="procheckbox-listcity" >
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">项目</label>
+                    <div class="procheckbox-list" >
+                    </div>
+                </div>
+
+            <div id="tab_1" class="tab-pane fade active in">
+                <div class="form-group">
+                    <div class="col-md-2" style="display:none">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                月数
+                            </span>
+                            <input class="form-control ac_input" type="text" autocomplete="off"
+                                   onkeyup="if (this.value.match(new RegExp(/^\d+(\.\d+)?$/)) == null) { this.value = ''; }">
+                        </div>
+                    </div>
+                    <button type="button" class="btn green" style="display:none">
+                        设置
+                    </button>
+                    <button type="button" class="btn green creassessments">
+                        押品复估
+                    </button>
+                </div>
+                <div class="table-scrollable" >
+                    <table class="table table-striped table-hover table-bordered" id="tab1_table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    押品编号
+                                </th>
+                                <th scope="col">
+                                    押品名称
+                                </th>
+                                <th scope="col">
+                                    押品地址
+                                </th>
+                                <th scope="col">
+                                    楼盘名
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="row" id="tab1_page" style="height:45px;margin-top:-15px">
+                    <div class="col-md-5 col-sm-12">
+                        <div id="page_info" class="dataTables_info">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab_2" class="tab-pane fade">
+                <table class="table table-bordered tablemiddlecenter" id="tab2_table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">风险状况</th>
+                            <th rowspan="2">区间</th>
+                            <th colspan="2">业务量</th>
+                            <th colspan="2">原贷款额</th>
+                            <th colspan="2">贷款余额</th>
+                            <th colspan="2">原估价值</th>
+                            <th colspan="2">现估价值</th>
+                        </tr>
+                        <tr>
+                            <th>笔数</th>
+                            <th>占比(%)</th>
+                            <th>金额</th>
+                            <th>占比(%)</th>
+                            <th>金额</th>
+                            <th>占比(%)</th>
+                            <th>金额</th>
+                            <th>占比(%)</th>
+                            <th>金额</th>
+                            <th>占比(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                    </tbody>
+                </table>
+            </div>
+            <div id="tab_3" class="tab-pane fade">
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">物业类型</label>
+                    <div class="checkbox-list wuyetype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">建筑类型</label>
+                    <div class="checkbox-list jianzhutype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">建筑年代</label>
+                    <div class="checkbox-list niandaitype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">贷款额度</label>
+                    <div class="checkbox-list daikuantype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2" style="width: 89px;">押品面积</label>
+                    <div class="checkbox-list mianjitype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1" style="width: 89px;">年龄</label>
+                    <div class="checkbox-list nianlingtype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        开发商
+                                    </span>
+                                    <input class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        楼盘
+                                    </span>
+                                    <input class="form-control" type="text" id="dd">
+                                </div>
+                            </div>
+                            <button class="btn green detailbutton">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="table table-striped table-hover table-bordered" id="tb_colldetials">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:300px">
+                                    押品名称
+                                </th>                                
+                                <th scope="col" style="width:90px">
+                                    物业类型
+                                </th>
+                                <th scope="col" style="width:50px">
+                                    面积
+                                </th>
+                                <th scope="col" style="width:110px">
+                                    原评估单价
+                                </th>
+                                <th scope="col" style="width:90px">
+                                    复评单价
+                                </th>
+                                <th scope="col" style="width:90px">
+                                    复评方法
+                                </th>
+                                <th scope="col" style="width:70px">
+                                    涨跌幅
+                                </th>
+                                <th scope="col" style="width:90px">
+                                    风险状况
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="row" id="colldetials_ok" style="height:45px;margin-top:-15px">
+                    <div class="col-md-5 col-sm-12">
+                        <div id="page_info" class="dataTables_info">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="tab1_Tmpl" type="text/x-jquery-tmpl">
+    <tr data-id="${Id}">
+        <td>${Number}</td>
+        <td>${Name}</td>
+        <td>${Address}</td>
+        <td>${ProjectName}</td>
+    </tr>
+</script>
+<script id="tab2_Tmpl" type="text/x-jquery-tmpl">
+    <tr>
+        <td rowspan="3">${title}</td>
+        <td>${v1.one}</td>
+        <td>${v1.two}</td>
+        <td>${v1.three}</td>
+        <td>${v1.four}</td>
+        <td>${v1.five}</td>
+        <td>${v1.six}</td>
+        <td>${v1.seven}</td>
+        <td>${v1.eight}</td>
+        <td>${v1.nine}</td>
+        <td>${v1.ten}</td>
+        <td>${v1.eleven}</td>
+    </tr>
+    <tr>
+        <td>${v2.one}</td>
+        <td>${v2.two}</td>
+        <td>${v2.three}</td>
+        <td>${v2.four}</td>
+        <td>${v2.five}</td>
+        <td>${v2.six}</td>
+        <td>${v2.seven}</td>
+        <td>${v2.eight}</td>
+        <td>${v2.nine}</td>
+        <td>${v2.ten}</td>
+        <td>${v2.eleven}</td>
+    </tr>
+    <tr>        
+        <td>${v3.one}</td>
+        <td>${v3.two}</td>
+        <td>${v3.three}</td>
+        <td>${v3.four}</td>
+        <td>${v3.five}</td>
+        <td>${v3.six}</td>
+        <td>${v3.seven}</td>
+        <td>${v3.eight}</td>
+        <td>${v3.nine}</td>
+        <td>${v3.ten}</td>
+        <td>${v3.eleven}</td>
+    </tr>
+</script>
+<script id="tab3_Tmpl" type="text/x-jquery-tmpl">
+    <tr data-id="${Id}">
+        <td>${Name}</td>
+        <td>${PurposeCodeName}</td>
+        <td>${BuildingArea}</td>
+        <td>${OldRate}</td>
+        <td>${Price}</td>
+        <td>${CalculationMode}</td>
+        <td>${PriceChange}%</td>
+        <td>{{if ArrivedLoanRates<=0.6}}
+            安全
+            {{else ArrivedLoanRates>0.6&&ArrivedLoanRates<=0.8}}
+            正常
+            {{else ArrivedLoanRates>0.8&&ArrivedLoanRates<=1}}
+            风险
+            {{else}}
+            危险
+            {{/if}}
+        </td>
+    </tr>
+</script>
+<script src="/Scripts/FxtCollateralReassessment.js" type="text/javascript" />

@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "编辑楼盘项目图片";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@model FXT.DataCenter.Domain.Models.FxtProject.LNK_P_Photo
+@section PageSpecificStyleSheetIncludes{
+
+    <link href="/Content/Scripts/uploadify-v3.2/uploadify.css" rel="stylesheet" />
+}
+@section PageSpecificJavascriptIncludes{
+    <script src="@Url.Content("~/Content/Scripts/uploadify-v3.2/jquery.uploadify-3.2.min.js?ver=")@DateTime.Now.Ticks" type="text/javascript"></script>
+    <script type="text/javascript">
+        var auth = "@(Request.Cookies[FormsAuthentication.FormsCookieName] == null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value)";
+        var ASPSESSID = "@Session.SessionID";
+        var isoss = "@ViewBag.IsOss";
+        $(function () {
+            setTimeout(function () {
+                $("#file_upload").uploadify({
+                    //buttonImage:'/Content/Images/buttom_upload.jpg',
+                    buttonText: "选择您的图片",
+                    height: 36,
+                    width: 120,
+                    multi: false,
+                    fileTypeExts: "*.jpg;*.jpeg;*.gif;*.png;*.bmp", //上传的图片格式
+                    swf: '/Content/Scripts/uploadify-v3.2/uploadify.swf',
+                    fileSizeLimit: 5120, //限于500kb的文件
+                    fileTypeDesc: '图片类型', //文件描述
+                    uploader: '/Build/BuildPicUp',
+                    uploadLimit: 10, //上传文件个数
+                    formData: { projectid: '@(Model.projectid)', buildId: '@Model.buildingid', ASPSESSID: ASPSESSID, AUTHID: auth },
+                    onUploadSuccess: function (file, data, response) {
+                        eval("data=" + data);
+                        if (data.result) {
+                            var path = (isoss.toUpperCase() == "TRUE" ? "@ViewBag.OssImgServer" + data.path : data.path);
+                            $("#imgPath").attr("src", path);
+                            $("#path").val("").val(data.path);
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }, 10);
+        });
+    </script>
+}
+@section  MainContent{
+
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">
+                    图片名称：</label>
+                <div class="controls">
+                    @if (Model != null)
+                    {
+                        @Html.HiddenFor(m => m.id)
+                        @Html.HiddenFor(m => m.projectid)
+                        @Html.HiddenFor(m => m.buildingid)
+                        @Html.HiddenFor(m => m.fxtcompanyid)
+                    }
+                    @Html.TextBoxFor(m => m.photoname)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span> 图片类型：</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.phototypecode, ViewBag.PhotoTypeName as List<SelectListItem>)
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <label class="control-label">
+                    图片：</label>
+                <div class="controls">
+                    <input type="file" id="file_upload" name="file_upload" value="" />
+                </div>
+            </div>
+            @{
+                var path = Model == null ? "/Content/Images/no_picture.jpg" : (@ViewBag.IsOss ? @ViewBag.OssImgServer + Model.path : Model.path);
+            }
+            <img id="imgPath" style="height:200px;width:350px;" src="@path" />
+            @Html.HiddenFor(m => m.path)
+        </div>
+    </div>
+}

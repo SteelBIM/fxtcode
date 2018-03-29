@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SpiderExport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpiderExportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SpiderExportResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDatProjectResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

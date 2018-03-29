@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.SYSSubArea, FxtNHibernate.DATProjectDomain" table="SYS_SubArea">
+		<id name="SubAreaId" column="SubAreaId" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="SubAreaName" column="SubAreaName" type="string"  />
+		<property name="AreaId" column="AreaId" type="int"  />
+		<property name="ConstructionCount" column="ConstructionCount" type="int"  />
+		<property name="GISID" column="GIS_ID" type="int"  />
+		<property name="RegionPlacePicName" column="RegionPlacePicName" type="string"  />
+		<property name="OldId" column="OldId" type="int"  />
+		<property name="X" column="X" type="decimal"  />
+		<property name="Y" column="Y" type="decimal"  />
+		<property name="XYScale" column="XYScale" type="int"  />
+				
+	</class>
+</hibernate-mapping>

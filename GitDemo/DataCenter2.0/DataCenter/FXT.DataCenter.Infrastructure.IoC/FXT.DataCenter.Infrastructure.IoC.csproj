@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF06AB7C-F8AA-4AD9-9835-C18C4558499B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.Infrastructure.IoC</RootNamespace>
+    <AssemblyName>FXT.DataCenter.Infrastructure.IoC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Binder\VQPrice\BuildingWeightRevisedModule.cs" />
+    <Compile Include="Binder\VQPrice\HouseWeightRevisedModule.cs" />
+    <Compile Include="Binder\VQPrice\ProjectAvgPriceModule.cs" />
+    <Compile Include="Binder\VQPrice\ProjectWeightRevisedModule.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Binder\House\CityAvgPriceModule.cs" />
+    <Compile Include="Binder\Share\MarketAnalysisModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Application\FXT.DataCenter.Application.csproj">
+      <Project>{cc439221-2a68-44c2-a461-0d5224ae965e}</Project>
+      <Name>FXT.DataCenter.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Domain\FXT.DataCenter.Domain.csproj">
+      <Project>{c368021b-9c65-4bdc-a6ee-523efc2969f3}</Project>
+      <Name>FXT.DataCenter.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Data\FXT.DataCenter.Infrastructure.Data.csproj">
+      <Project>{20ce707a-120f-4761-8f38-7be5ee164f97}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

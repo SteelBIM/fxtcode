@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECharts">
+    <title>ECharts</title>
+    <script src="http://www.yungujia.com/echarts-2.2.7/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        var curTheme = "macarons";
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://www.yungujia.com/echarts-2.2.7/build/dist'
+            }
+        });
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/line',
+                'echarts/theme/macarons'
+            ],
+            function (ec,theme) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'), curTheme);
+                curTheme = theme;
+                var option = {
+                    title: {
+                        text: ''
+                    },
+                    tooltip: {
+                        trigger: 'axis' @tooltip
+                    },                    
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            @magictype
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    calculable: true,
+                    xAxis: [
+                        {
+                            type: 'value',
+                            boundaryGap: [0, 0.01]
+                        }
+                    ],
+                    @data
+                };
+
+                // 为echarts对象加载数据 
+                myChart.setOption(option);
+            }
+        );
+    </script>    
+</head>
+<body>
+    <div id="main" style="height:600px"></div>
+</body>
+</html>

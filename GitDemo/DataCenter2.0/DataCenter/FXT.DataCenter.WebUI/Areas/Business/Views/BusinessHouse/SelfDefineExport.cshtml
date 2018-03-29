@@ -1,0 +1,244 @@
+﻿@{
+    ViewBag.Title = "商业房号自定义导出";
+}
+
+@using FXT.DataCenter.Domain.Models
+@using Webdiyer.WebControls.Mvc
+@model PagedList<Dat_House_Biz>
+@section StyleSheet{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var UrlExport = '@Url.Action("Export")';
+
+        $(document).ready(function () {
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href='/Business/BusinessStreet/Index'>商业基础数据</a></span> <i class='icon-angle-right'></i></li>";
+            html += " <li><span>商业房号自定义导出</span></li>";
+            $("ul.breadcrumb").append(html);
+
+            //行政区商圈联动
+            $("#AreaId").change(function () {
+                $.post('@Url.Action("GetSubAreaName")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //全选联动
+            $("input[name=house]").live("click", function () {
+                var flag = true;
+                $("input[name=house]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#all_house").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            //导出
+            $("#btnHouse").bind("click", function () {
+                var flag = 0;
+                $("input[name=house]").each(function () {
+                    flag += $(this).prop("checked");
+                });
+                if (flag == 0) {
+                    $("#all_house").prop("checked", true);
+                    $("input[name=house]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+                    $.uniform.update();
+                }
+            });
+        });
+
+        function showData() {
+            var value = $("#houseTable").css("display");
+            if (value == "block") {
+                $("#houseTable").css("display", "none");
+                $("#showAll").html("展开∨");
+            }
+            else {
+                $("#houseTable").css("display", "block");
+                $("#showAll").html("收起∧");
+            }
+        }
+
+        function selectAll() {
+            var flag = $("#all_house").prop("checked");
+            $("input[name=house]").each(function () {
+                $(this).prop("checked", flag);
+            });
+            $.uniform.update();
+        }
+
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+{
+    <div class="row-fluid" id="condi">
+        <table style="margin-bottom: 10px; line-height: 35px; width: 75%;">
+            <tr>
+                <td>具体商业街:
+                </td>
+                <td>
+                    @Html.TextBox("projectName", Request["projectName"], new { @style = "width: 138px;" })
+                </td>
+                <td>别名:
+                </td>
+                <td>
+                    @Html.TextBox("projectOtherName", Request["projectOtherName"], new { @style = "width: 138px;" })
+                </td>
+            </tr>
+            <tr>
+                <td>具体商业楼栋:
+                </td>
+                <td>
+                    @Html.TextBox("buildingName", Request["buildingName"], new { @style = "width: 138px;" })
+                </td>
+                <td>行政区:
+                </td>
+                <td>
+                    @Html.DropDownList("AreaId", ViewBag.AreaList as List<SelectListItem>)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="checkbox" name="all_house" id="all_house" value="all_house" onclick="selectAll()" /><b>全选</b>
+        <a style="cursor: pointer;" id="showAll" href="javascript:showData();">收起∧</a>
+    </div>
+    <table id="houseTable" style="display: block;">
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="AreaName&行政区" />行政区</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="SubAreaName&商圈" />商圈</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="ProjectName&商业街" />商业街</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="BuildingName&商业楼栋" />商业楼栋</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="FloorName&物理层" />物理层</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="UnitNo&室号" />室号</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="HouseName&房号名称" />房号名称</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="PurposeCodeName&证载用途" />证载用途</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="SJPurposeCodeName&实际用途" />实际用途</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="BuildingArea&建筑面积" />建筑面积</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="InnerBuildingArea&套内面积" />套内面积</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="FrontCodeName&朝向" />朝向</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="ShapeName&平面形状" />平面形状</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="Width&开间" />开间</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="Length&进深" />进深</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="IsMezzanineName&有无夹层" />有无夹层</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="BizCutOffName&商业阻隔" />商业阻隔</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="BizHouseTypeName&商铺类型" />商铺类型</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="BizHouseLocationName&商铺位置类型" />商铺位置类型</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="Location&临街位置描述" />临街、位置描述</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="FlowTypeName&人流量" />人流量</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="DoorNum&开门数" />开门数</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="RentRate&出租率" />出租率</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="UnitPrice&单价" />单价</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="Weight&价格系数" />价格系数</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="IsEValueName&是否可估" />是否可估</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="house" value="Remarks&备注" />备注</label>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div>
+        <input class="btn" id="btnHouse" type="submit" value="导出" />
+    </div>
+}

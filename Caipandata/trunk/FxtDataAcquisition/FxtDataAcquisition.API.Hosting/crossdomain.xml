@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+
+<cross-domain-policy>
+  <allow-access-from domain="*" /> <!-- 所有域 -->
+  <allow-http-request-headers-from domain="*" headers="*" /> <!-- 所有请求及头部标识 -->
+</cross-domain-policy>
+

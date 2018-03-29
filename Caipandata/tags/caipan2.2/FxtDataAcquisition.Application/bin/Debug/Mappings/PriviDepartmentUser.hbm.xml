@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.PriviDepartmentUser, FxtDataAcquisition.NHibernate" table="Privi_Department_User">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="DepartmentID" column="DepartmentID" type="int"  />
+		<property name="UserName" column="UserName" type="string"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="FxtCompanyID" column="FxtCompanyID" type="int"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+				
+	</class>
+</hibernate-mapping>

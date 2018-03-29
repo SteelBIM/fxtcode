@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A17D848-85B3-4FDC-A7D3-7AEF8C1BDC30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.WCF.Services</RootNamespace>
+    <AssemblyName>FXT.DataCenter.WCF.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Wcf, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Extensions.Wcf.3.2.1.0\lib\net40-full\Ninject.Extensions.Wcf.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\packages\StackExchange.Redis.1.0.450\lib\net40\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BatchAddPicServices\BatchAddPicture.cs" />
+    <Compile Include="ExcelUploadServices\Building.cs" />
+    <Compile Include="ExcelUploadServices\BusinessBuilding.cs" />
+    <Compile Include="ExcelUploadServices\BusinessCase.cs" />
+    <Compile Include="ExcelUploadServices\BusinessDynamicPriceSurvey.cs" />
+    <Compile Include="ExcelUploadServices\BusinessFloor.cs" />
+    <Compile Include="ExcelUploadServices\BusinessHouse.cs" />
+    <Compile Include="ExcelUploadServices\BusinessStore.cs" />
+    <Compile Include="ExcelUploadServices\BusinessStreet.cs" />
+    <Compile Include="CustomModules\InternalModule.cs" />
+    <Compile Include="CustomModules\ServiceModule.cs" />
+    <Compile Include="ExcelUploadServices\ExcelUpload.cs" />
+    <Compile Include="ExcelUploadServices\HouseConvert.cs" />
+    <Compile Include="ExcelUploadServices\HouseNo.cs" />
+    <Compile Include="ExcelUploadServices\HouseRatio.cs" />
+    <Compile Include="ExcelUploadServices\HumanHouse.cs" />
+    <Compile Include="ExcelUploadServices\HumanProject.cs" />
+    <Compile Include="ExcelUploadServices\IndustryBuilding.cs" />
+    <Compile Include="ExcelUploadServices\IndustryCase.cs" />
+    <Compile Include="ExcelUploadServices\IndustryDynamicPrice.cs" />
+    <Compile Include="ExcelUploadServices\IndustryHouse.cs" />
+    <Compile Include="ExcelUploadServices\IndustryPeiTao.cs" />
+    <Compile Include="ExcelUploadServices\IndustryProject.cs" />
+    <Compile Include="ExcelUploadServices\IndustrySubArea.cs" />
+    <Compile Include="ExcelUploadServices\IndustryTenant.cs" />
+    <Compile Include="ExcelUploadServices\LandCase.cs" />
+    <Compile Include="ExcelUploadServices\LandInfo.cs" />
+    <Compile Include="ExcelUploadServices\LandPrice.cs" />
+    <Compile Include="ExcelUploadServices\OfficeCase.cs" />
+    <Compile Include="ExcelUploadServices\OfficeDynamicPrice.cs" />
+    <Compile Include="ExcelUploadServices\OfficeHouse.cs" />
+    <Compile Include="ExcelUploadServices\OfficeTenant.cs" />
+    <Compile Include="ExcelUploadServices\Project.cs" />
+    <Compile Include="ExcelUploadServices\ProjectAvgPrice.cs" />
+    <Compile Include="ExcelUploadServices\ProjectCase.cs" />
+    <Compile Include="ExcelUploadServices\OfficeBuilding.cs" />
+    <Compile Include="ExcelUploadServices\OfficePeiTao.cs" />
+    <Compile Include="ExcelUploadServices\OfficeProject.cs" />
+    <Compile Include="ExcelUploadServices\OfficeSubArea.cs" />
+    <Compile Include="ExcelUploadServices\ProjectOtherName.cs" />
+    <Compile Include="ExcelUploadServices\ProjectWeightRevised.cs" />
+    <Compile Include="ExcelUploadServices\PropertyAddress.cs" />
+    <Compile Include="ExcelUploadServices\SampleProject.cs" />
+    <Compile Include="ExcelUploadServices\ProjectPeiTao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResidentialServices\Residential.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Domain\FXT.DataCenter.Domain.csproj">
+      <Project>{c368021b-9c65-4bdc-a6ee-523efc2969f3}</Project>
+      <Name>FXT.DataCenter.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Redis\FXT.DataCenter.Infrastructure.Redis.csproj">
+      <Project>{36adf15f-e5c6-440a-a149-27a294703acc}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.WCF.Contract\FXT.DataCenter.WCF.Contract.csproj">
+      <Project>{55f97d48-8922-4013-ab82-1f1e1028b66f}</Project>
+      <Name>FXT.DataCenter.WCF.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Common\FXT.DataCenter.Infrastructure.Common.csproj">
+      <Project>{ed63de3f-a21b-4316-987f-634bcc3939bb}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Data\FXT.DataCenter.Infrastructure.Data.csproj">
+      <Project>{20ce707a-120f-4761-8f38-7be5ee164f97}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

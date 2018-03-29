@@ -1,0 +1,119 @@
+﻿
+@using FXT.DataCenter.Infrastructure.Common.Dictionary
+@using FXT.DataCenter.Infrastructure.Data.ServicesImpl
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+
+@helper DisplayUrl(int code)
+{
+    var firstOrDefault = new Menu().GetMenuByTypeCode(code).FirstOrDefault();
+    if (firstOrDefault == null)
+    {
+        return;
+    }
+    var url = firstOrDefault.URL;
+    @url
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    @RenderSection("StyleSheet", false)
+}
+@section PageSpecificJavascriptIncludes{
+    @RenderSection("Javascript", false)
+}
+@section _LeftMenu{
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        @*@Html.Partial("_Menu")*@
+        <div class="page-sidebar nav-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul>
+                <li>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler hidden-phone">
+                    </div>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                </li>
+                <li>
+                    <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                    @*  <form id="search_submit" target="_blank" class="sidebar-search" action="@Url.RouteUrl("Search_default", new { controller = "Search" })" method="get">
+                            <div class="input-box">
+                                <a href="@Url.RouteUrl("Search_default", new { controller = "Search" })" class="remove"></a>
+                                <input id="inputSer" name="inputStr" type="text" placeholder="搜索..." />
+                                <input type="button" class="submit" value=" " />
+                            </div>
+                        </form>*@
+                    <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                </li>
+
+                @{
+
+                    var productModuleCodes = Passport.Current.AccessedModules.Where(m => m.cityid == Passport.Current.CityId);
+                    var secondMenus = productModuleCodes.Where(m => m.parentmodulecode == SYS_Code_Dict.数据大类.办公).OrderBy(m=>m.createdate);
+
+                }
+                @foreach (var item in secondMenus)
+                {
+                    <li><a href="@DisplayUrl(item.modulecode)"><i class="icon-bar-chart"></i><span class="title">@item.CodeName</span> </a></li>
+                }
+
+
+                @*<li class="active ">
+                      <a title = "添加修改删除基础数据" href="@Url.Action("../Land")">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">土地基础数据</span>
+                      </a>
+                    </li>*@
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"></button>
+                    <h3>portlet Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Here will be a configuration form
+                    </p>
+                </div>
+            </div>
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12" id="navigation">
+                        <!-- BEGIN STYLE CUSTOMIZER -->
+                        @*@Html.Partial("_Theme")*@
+                        <!-- END BEGIN STYLE CUSTOMIZER -->
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        @*<h3 class="page-title">
+                                <span>土地基础数据</span> <small>添加修改删除数据</small>
+                            </h3>*@
+                        <ul class="breadcrumb" style="margin-top: 20px;">
+                            <li><i class="icon-home"></i><span>办公</span> <i class="icon-angle-right"></i></li>
+                            <li><span>办公基础数据</span></li>
+                            <li><span></span></li>
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                @RenderBody()
+                <!-- END PAGE CONTENT-->
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+}

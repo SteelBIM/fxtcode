@@ -1,0 +1,54 @@
+﻿<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = (function () {
+            var iosocket = io.connect();
+            var userid = queryString('userid');
+            var companyid = queryString('companyid');
+            var departmentid = queryString('departmentid');
+            var username = queryString('username');
+            var allowPostMessage = false;
+            if (userid || username) {
+                iosocket.on('connect', function () {
+                    var t = parent.window;
+                    if (typeof (Worker) !== "undefined") {
+                        t.postMessage('cs', '*');
+                        allowPostMessage = true;
+                    }
+                    else { allowPostMessage = false; t.cs(); }
+                    iosocket.emit('adduser', { userid: userid, companyid: companyid, departmentid: departmentid, username: username });
+                    iosocket.on('message', function (message) {
+                        if (allowPostMessage)
+                            t.postMessage(message, '*');
+                        else {
+                            if (1 == message.type) {
+                                t.realtimemessage().addTask(message);
+                            }
+                            else if (2 == message.type) {
+                                t.realtimemessage().addMssage(message);
+                            }
+                            else if (3 == message.type) {
+                                t.realtimemessage().addNotice(message);
+                            }
+                            else if (4 == message.type) {
+                                t.realtimemessage().offLine(message);
+                            }
+                        }
+                    });
+                    iosocket.on('disconnect', function () {
+                        if (allowPostMessage)
+                            t.postMessage('cd', '*');
+                        else
+                            t.cd();
+                    });
+                });
+            }
+        });
+        var queryString = function (key) {
+            return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+        };
+    </script>
+</head>
+<body><b>Welcome</b></body>
+</html>

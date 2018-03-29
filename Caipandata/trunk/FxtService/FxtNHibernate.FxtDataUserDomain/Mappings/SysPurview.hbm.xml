@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtDataUserDomain" 
+				   namespace="FxtNHibernate.FxtDataUserDomain.Entities">
+	<class name="FxtNHibernate.FxtDataUserDomain.Entities.SysPurview, FxtNHibernate.FxtDataUserDomain" 
+		   table="Sys_Purview">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="PurviewName" column="PurviewName" type="string"  />
+		<property name="ParentId" column="ParentId" type="int"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+				
+	</class>
+</hibernate-mapping>

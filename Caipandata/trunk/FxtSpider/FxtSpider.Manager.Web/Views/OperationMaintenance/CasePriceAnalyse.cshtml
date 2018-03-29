@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "抓取后台维护与管理_运维中心管理_案例价格分析";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section bootstraplink{
+    <!--表格相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <!--表单相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/colorpicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/datepicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/bootstrap-wysihtml5.css" />
+}
+@section bootstrapscript{ 
+    <!--表单相关-->   
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-colorpicker.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-datepicker.js"></script> 
+    @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/masked.js"></script> 
+     @*ie8报错*@
+    <script src="/bootstrap/matrix-admin00/js/wysihtml5-0.3.0.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/jquery.peity.min.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-wysihtml5.js"></script>
+}
+@section link{
+  <link type="text/css" rel="Stylesheet" href="/Css/Shared/Partial_SelectCity.css" /><!--(分布页)/Shared/Partial_SelectCity-->
+    <link type="text/css" rel="Stylesheet" href="/Css/OperationMaintenance/CasePriceAnalyse.css" />
+}
+@section script{     
+    <script src="/Scripts/Shared/Partial_SelectCity.js" type="text/javascript">// (分布页)/Shared/Partial_SelectCity</script> 
+    <script src="/Scripts/OperationMaintenance/CasePriceAnalyse.js" type="text/javascript"></script> 
+    <script src="/Scripts/OperationMaintenance/CasePriceAnalyse_Cross.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            SetLeftMenu("3_1");
+        });
+    </script>
+}
+<div class="container-fluid" >
+    <!--选择城市-->
+    @Html.Action("Partial_SelectFxtCity", "Shared")   
+    <div class="row-fluid"> 
+        <div class="widget-box dataPanel" id="dataPanel">
+            <div class="widget-title where"> 
+                <div class="dataTables_length  dataTables_length2">
+                    <label>
+                        查看月份:
+                        <select id="selectDate">
+                            <option value="1" selected="selected">--1个月--</option>
+                            <option value="2">--2个月--</option>
+                            <option value="3">--3个月--</option>
+                            <option value="4">--4个月--</option>
+                            <option value="5">--5个月--</option>
+                            <option value="6">--6个月--</option>
+                            <option value="7">--7个月--</option>
+                            <option value="8">--8个月--</option>
+                            <option value="9">--9个月--</option>
+                            <option value="10">--10个月--</option>
+                            <option value="11">--11个月--</option>
+                            <option value="12">--12个月--</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="dataTables_length  dataTables_length3 byWeek byDate">
+                    <button class="btn icon-search btn-inverse" id="btnSearch">查询</button>
+                    @*<a href="javascript:;" id="test1">普通住宅</a>
+                    <a href="javascript:;" id="test2">别墅</a>*@
+                </div>
+            </div>
+            <div class="widget-content nopadding tablepanel" id="tableWindow">
+                <div style=" height:310px;" id="divTable">
+                    <input type="hidden" id="hdProjectPriceJsonData" value="" />
+                    <table class="table table-bordered data-table" width="5000px" id="tablePrice">
+                        <thead id="topTitle">
+                            <tr role="row" class="table2" id="topTitle_tr">
+                                <th rowspan="2">楼盘名称</th>
+                                <th colspan="2" id="dateColumn" style="display:none;"><font class="font_moths"></font>月(均价)(总量)(涨跌幅)</th>
+                            </tr>
+                            <tr role="row" class="table2" id="topTitle_tr2"> 
+                                <th class="center" style="display:none;" id="dateColumn2">普通住宅[<a href="javascript:;" data="" class="order aOrderAse">升序</a>|<a href="javascript:;" data="" class="order aOrderDesc">降序</a>]</th>
+                                <th class="center" style="display:none;" id="dateColumn3">别墅[<a href="javascript:;" data="" class="order aOrderAse">升序</a>|<a href="javascript:;" data="" class="order aOrderDesc">降序</a>]</th>
+                            </tr>
+                        </thead>
+                        <tbody  data-operation="0" id="contentColumn">
+                            <tr class="gradeX" id="purposeColumn" style="display:none;" data-index="" data-projectid="" data-cityid="">
+                                <td class="center projectNameValue">楼盘名称1</td>
+                                <td class="nowJsonData" style="display:none"><input type="hidden" class="hdJsonData" value="" /></td>
+                                <td class="center" id="publicColumnValue" style="display:none;"><a href="javascript:;" class="aClick" data-projectid="" data-cityid="" data-date="">10000(100) 5%</a></td>
+                                <td class="center" id="villaColumnValue" style="display:none;"><a href="javascript:;" class="aClick" data-projectid="" data-cityid="" data-date="">10000(100) 5%</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="example_page">
+                <div id="example" data-count=""></div>
+            </div>
+        </div>
+        <div class="widget-box" style="display:none;">
+            <input type="hidden" id="hdPublicJsonData" value="" />
+            <table class="table alertAvgPrice_table table-bordered data-table" id="alert_pubAvgPrice" data-fancyboxOpen="0">
+                <thead>
+                    <tr role="row" class="table2" id="publicAvgPriceRowTitle">
+                        <th>类型</th>
+                        <th>面积<30(总量)(<a href="javascript:;" data="Area1FloatValue,desc">↑</a><a href="javascript:;" data="Area1FloatValue,asc">↓</a>)</th>
+                        <th>30<=面积<60(总量)(<a href="javascript:;" data="Area2FloatValue,desc">↑</a><a href="javascript:;" data="Area2FloatValue,asc">↓</a>)</th>
+                        <th>60<=面积<90(总量)(<a href="javascript:;" data="Area3FloatValue,desc">↑</a><a href="javascript:;" data="Area3FloatValue,asc">↓</a>)</th>
+                        <th>90<=面积<120(总量)(<a href="javascript:;" data="Area4FloatValue,desc">↑</a><a href="javascript:;" data="Area4FloatValue,asc">↓</a>)</th>
+                        <th>120< 面积(总量)(<a href="javascript:;" data="Area5FloatValue,desc">↑</a><a href="javascript:;" data="Area5FloatValue,asc">↓</a>)</th>
+                    </tr>
+                </thead>
+                <tbody  data-operation="0" id="publicCrossRowList">
+                    <tr class="gradeX" id="publicCrossRow" style="display:none;">
+                        <td class="center buildingTypeName">底层</td>
+                        <td class="center buildingArea30">5000(2)(10%)</td>
+                        <td class="center buildingArea3060">6000(2)(10%)</td>
+                        <td class="center buildingArea6090">4500(2)(10%)</td>
+                        <td class="center buildingArea90120">4300(2)(10%)</td>
+                        <td class="center buildingArea120">5000(2)(10%)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table alertAvgPrice_table table-bordered data-table" id="alert_villaAvgPrice" data-fancyboxOpen="0">
+                <thead>
+                    <tr role="row" class="table2">
+                        <th>类型</th>
+                        <th>别墅(总量)</th>
+                        <th>联排(总量)</th>
+                        <th>双拼(总量)</th>
+                        <th>独栋(总量)</th>
+                        <th>叠加(总量)</th>
+                    </tr>
+                </thead>
+                <tbody  data-operation="0" id="villaCrossRowList">
+                    <tr class="gradeX" id="villaCrossRow" style="display:none;">
+                        <td class="center"></td>
+                        <td class="center purposeType1">5000(2)(10%)</td>
+                        <td class="center purposeType2">6000(2)(10%)</td>
+                        <td class="center purposeType3">4500(2)(10%)</td>
+                        <td class="center purposeType4">4300(2)(10%)</td>
+                        <td class="center purposeType5">5000(2)(10%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="display:none" id="divFxtCompanyIds">
+        <input type="hidden" id="fxtShowDataCaseCompanyIds" value="" />
+    </div>
+    <input type="hidden" id="nowDateTime" value="@ViewBag.NowDate" />
+</div>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtLoanDomain" 
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+	<class name="FxtNHibernate.FxtLoanDomain.Entities.DataReassessmentHistory, FxtNHibernate.FxtLoanDomain" 
+		   table="Data_ReassessmentHistory">
+		<id name="ReassessmentID" column="ReassessmentID" type="int" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+		<property name="Price" column="Price" type="decimal"  />
+		<property name="IsFirst" column="IsFirst" type="int"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+		<property name="ArrivedLoanRates" column="ArrivedLoanRates" type="decimal"  />
+		<property name="RiskStatus" column="RiskStatus" type="int"  />
+		<property name="CalculationMode" column="CalculationMode" type="string"  />
+		<property name="Operator" column="Operator" type="int"  />
+				
+	</class>
+</hibernate-mapping>

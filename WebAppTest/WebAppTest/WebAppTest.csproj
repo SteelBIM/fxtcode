@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37CC4062-FFD0-4F2B-8B8F-54C9A7DD304F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAppTest</RootNamespace>
+    <AssemblyName>WebAppTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1091984.jpg" />
+    <Content Include="action.aspx" />
+    <Content Include="autocomplete\default.aspx" />
+    <Content Include="callback.aspx" />
+    <Content Include="fileupload.aspx" />
+    <Content Include="gjbmobile.aspx" />
+    <Content Include="htmlcss\CSS3样式.htm" />
+    <Content Include="htmlcss\浮动字母下沉.htm" />
+    <Content Include="htmlupload.aspx" />
+    <Content Include="images\reload.png" />
+    <Content Include="javascript\checkbox.htm" />
+    <Content Include="javascript\clone.htm" />
+    <Content Include="javascript\Interface.htm" />
+    <Content Include="javascript\mapgoogle.htm" />
+    <Content Include="javascript\page.htm" />
+    <Content Include="javascript\process.htm" />
+    <Content Include="javascript\prototype.htm" />
+    <Content Include="javascript\单元格合并.htm" />
+    <Content Include="kongjian.htm" />
+    <Content Include="oamiblie.aspx" />
+    <Content Include="Scripts\default.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.autocomplete.min.js" />
+    <Content Include="Scripts\JScript1.js" />
+    <Content Include="Scripts\xheditor.js" />
+    <None Include="Service References\ServiceReference1\EmployeesService.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Styles\css3.css" />
+    <Content Include="Styles\jquery.autocomplete.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Test\autoprice.aspx" />
+    <Content Include="WCF.htm" />
+    <Content Include="WCFTEST.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebForm1.aspx" />
+    <Content Include="wx.png" />
+    <Content Include="WXTest.aspx" />
+    <Content Include="xheditor.htm" />
+    <Content Include="Scripts\xheditor_skin\blank.gif" />
+    <Content Include="Scripts\xheditor_skin\default\iframe.css" />
+    <Content Include="Scripts\xheditor_skin\default\img\anchor.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\close.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\flash.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\icons.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\loading.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\progress.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="Scripts\xheditor_skin\default\img\wordimg.gif" />
+    <Content Include="Scripts\xheditor_skin\default\ui.css" />
+    <Content Include="Scripts\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\anchor.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\img\wordimg.gif" />
+    <Content Include="Scripts\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\anchor.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\img\wordimg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\anchor.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\img\wordimg.gif" />
+    <Content Include="Scripts\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="Scripts\xheditor_skin\vista\iframe.css" />
+    <Content Include="Scripts\xheditor_skin\vista\img\anchor.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\close.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\img\wordimg.gif" />
+    <Content Include="Scripts\xheditor_skin\vista\ui.css" />
+    <Content Include="微信\float.htm" />
+    <Content Include="微信\sendmessage.aspx" />
+    <Content Include="锚点例子.htm" />
+    <None Include="Service References\ServiceReference1\EmployeesService.wsdl" />
+    <None Include="Service References\ServiceReference1\EmployeesService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\WebAppTest.ServiceReference1.Employee.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="action.aspx.cs">
+      <DependentUpon>action.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="action.aspx.designer.cs">
+      <DependentUpon>action.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="autocomplete\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="autocomplete\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="callback.aspx.cs">
+      <DependentUpon>callback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="callback.aspx.designer.cs">
+      <DependentUpon>callback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fileupload.aspx.cs">
+      <DependentUpon>fileupload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fileupload.aspx.designer.cs">
+      <DependentUpon>fileupload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gjbmobile.aspx.cs">
+      <DependentUpon>gjbmobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gjbmobile.aspx.designer.cs">
+      <DependentUpon>gjbmobile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="htmlupload.aspx.cs">
+      <DependentUpon>htmlupload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="htmlupload.aspx.designer.cs">
+      <DependentUpon>htmlupload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oamiblie.aspx.cs">
+      <DependentUpon>oamiblie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oamiblie.aspx.designer.cs">
+      <DependentUpon>oamiblie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Test\autoprice.aspx.cs">
+      <DependentUpon>autoprice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\autoprice.aspx.designer.cs">
+      <DependentUpon>autoprice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="upload.ashx.cs">
+      <DependentUpon>upload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WCFTEST.aspx.cs">
+      <DependentUpon>WCFTEST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WCFTEST.aspx.designer.cs">
+      <DependentUpon>WCFTEST.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WXTest.aspx.cs">
+      <DependentUpon>WXTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WXTest.aspx.designer.cs">
+      <DependentUpon>WXTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="微信\sendmessage.aspx.cs">
+      <DependentUpon>sendmessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="微信\sendmessage.aspx.designer.cs">
+      <DependentUpon>sendmessage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{51805BA3-0473-49B7-9827-AFD528EECD6B}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <Content Include="upload.ashx" />
+    <None Include="Service References\ServiceReference1\EmployeesService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\EmployeesService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3593</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

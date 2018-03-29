@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC247CF1-013F-48F3-ADB0-7E9DA43D97DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtUserCenterService.Actualize</RootNamespace>
+    <AssemblyName>FxtUserCenterService.Actualize</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.Entity.BaseDAModels, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\CommonDLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenPlatform.Framework.FlowMonitor">
+      <HintPath>..\..\..\FxtCenterService\trunk\Dlls\OpenPlatform.Framework.FlowMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entiry\LoginEntity.cs" />
+    <Compile Include="GeTui.cs" />
+    <Compile Include="Impl\CompanyProduct.cs" />
+    <Compile Include="Impl\Company.cs" />
+    <Compile Include="Impl\CompanyProductApp.cs" />
+    <Compile Include="Impl\CompanyProductModule.cs" />
+    <Compile Include="Impl\CompanyProductSafe.cs" />
+    <Compile Include="Impl\FuncList.cs" />
+    <Compile Include="Impl\GeTuiController.cs" />
+    <Compile Include="Impl\MobilePush.cs" />
+    <Compile Include="Impl\OperateLog.cs" />
+    <Compile Include="Impl\ProductFeedBack.cs" />
+    <Compile Include="Impl\SendSMS.cs" />
+    <Compile Include="Impl\User.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="MethodDictionary.cs" />
+    <Compile Include="SecurityVerify.cs" />
+    <Compile Include="UserCenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonProject\trunk\BaiduPush\BaiduPush.csproj">
+      <Project>{6D3DA30B-318D-4308-8D8B-80ECA031FED1}</Project>
+      <Name>BaiduPush</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonProject\trunk\CAS.Common\CAS.Common.csproj">
+      <Project>{FA2001F0-7369-4521-924E-05EFF30462F0}</Project>
+      <Name>CAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonProject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonProject\trunk\IOSPush\IOSPush\IOSPush.csproj">
+      <Project>{42542ECC-DC1B-47DF-B894-6731FEB8810C}</Project>
+      <Name>IOSPush</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtUserCenterService.Contract\FxtUserCenterService.Contract.csproj">
+      <Project>{0B7CC422-0958-4291-B601-BA3B786D96F2}</Project>
+      <Name>FxtUserCenterService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtUserCenterService.Entity\FxtUserCenterService.Entity.csproj">
+      <Project>{F73D3259-F27E-43B9-B886-F457E3B3573B}</Project>
+      <Name>FxtUserCenterService.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtUserCenterService.Logic\FxtUserCenterService.Logic.csproj">
+      <Project>{31FBF05E-27A5-48F0-9640-EB8A4D98D9D7}</Project>
+      <Name>FxtUserCenterService.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

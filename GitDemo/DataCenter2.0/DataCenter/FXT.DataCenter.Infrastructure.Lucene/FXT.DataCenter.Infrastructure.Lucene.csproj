@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CFE528B9-D9AA-4D98-A88B-2E5167181C86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.Infrastructure.Lucene</RootNamespace>
+    <AssemblyName>FXT.DataCenter.Infrastructure.Lucene</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\Lib\Lucene.NET\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu">
+      <HintPath>..\..\Lib\Lucene.NET\PanGu.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.HighLight">
+      <HintPath>..\..\Lib\Lucene.NET\PanGu.HighLight.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.Lucene.Analyzer">
+      <HintPath>..\..\Lib\Lucene.NET\PanGu.Lucene.Analyzer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GoLucene.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitContent.cs" />
+    <Compile Include="UpdateLuceneIndex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dict\ChsDoubleName1.txt" />
+    <Content Include="Dict\ChsDoubleName2.txt" />
+    <Content Include="Dict\ChsSingleName.txt" />
+    <Content Include="Dict\Stopword.txt" />
+    <Content Include="Dict\Synonym.txt" />
+    <Content Include="Dict\Wildcard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dict\Dict.dct" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Domain\FXT.DataCenter.Domain.csproj">
+      <Project>{C368021B-9C65-4BDC-A6EE-523EFC2969F3}</Project>
+      <Name>FXT.DataCenter.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Data\FXT.DataCenter.Infrastructure.Data.csproj">
+      <Project>{20CE707A-120F-4761-8F38-7BE5EE164F97}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,439 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="@Url.Content("~/Content/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/css/metro.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/css/style.css")" rel="stylesheet" />
+    <style type="text/css">
+        .GetCoordinate, .MapCallout
+        {
+            display: none;
+        }
+        .xubox_layer
+        {
+            top:50px!important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/content/Assets/select2/select2.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/bootstrap-datepicker/css/datepicker.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/content/styles/admin.main.css")" />
+    @RenderSection("PageSpecificStyleSheetIncludes", required: false)
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+    {
+
+        @RenderSection("MainContent", required: false)
+        @RenderBody()
+
+        <div style="height: 80px;">
+        </div>  
+      
+        <div class="form-actions navbar-fixed-bottom" style="float: right;">
+            <button type="submit" id="btnSubmit" class="btn blue">
+                <i class="icon-ok"></i>提交</button>
+            <span id="submitloading" style="display: none;">
+                <img alt="" src='@Url.Content("/content/images/loading.gif")'/></span>
+            @* <button type="button" class="btn" id="cancel">
+                撤销</button>*@
+            @Html.ValidationSummary(false)
+        </div>
+    }
+    @RenderSection("OtherContent", required: false)
+    <!-- BEGIN JAVASCRIPTS -->
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-1.8.3.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/bootstrap/js/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.numeric.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js")"></script>
+    @* <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.ui.datapicker-zh-CN.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/Assets/bootstrap-datepicker/js/bootstrap-datepicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/scripts/admin.edit.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/select2/select2.min.js")"></script>
+    <link href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")"type="text/javascript"></script>
+    <!--//百度地图的文件-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    @RenderSection("PageSpecificJavascriptIncludes", required: false)
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
+<script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+<script type="text/ecmascript">
+    $(function () {
+        var x = $("#x").val(), y = $("#y").val(), LngOrLat = $("#LngOrLat").val();
+        //初始化经纬度、默认深圳
+        var InitialLng_Lat = [{ Lng: '114.025974', Lat: '22.546054' }];
+        //保存坐标的数组
+        var ClikcLng_Lat = [];
+        //保存地图标注的数组
+        var MapLineLng_Lat = [];
+        //地图对象
+        //var map;
+        //坐标点对象
+        //var point;
+
+        //坐标拾取
+        $("#GetCoordinate").click(function () {
+
+            var clonum = $.layer({
+                type: 1,
+                title: false,
+                closeBtn: false,
+                //closeBtn: [1, true],//控制层右上角关闭按钮。closeBtn的值分别为: [关闭按钮的风格（支持0和1）, true]若不想显示关闭按钮，配置 closeBtn: false即可
+                border: [5, 0.5, '#666', true],
+                offset: ['0px', ''],
+                move: ['.xubox_title', false],
+                area: ['860px', '500px'],
+                page: {
+                    dom: "#baidumap"
+                },
+                success: function () {
+                    layer.shift('top', 500);
+                }
+                //, close: function (index) {//层右上角关闭按钮的点击事件触发回调函数。
+                //    ClikcLng_Lat = [];
+                //    map.clearOverlays();
+                //    layer.close(index);
+
+                //}
+            });
+
+            var currPage = "GetCoordinate";
+            $(".GetCoordinate").show();
+            $(".MapCallout").hide();
+            x = $.trim($("#x").val());
+            y = $.trim($("#y").val());
+            if (x != null && x != "" && y != null && y != "") {
+                ClikcLng_Lat.push({ Lng: x, Lat: y });
+            }
+
+            var map = new BMap.Map("container");
+            map.clearOverlays();//清除除标注
+            var point;
+            if (ClikcLng_Lat != null && ClikcLng_Lat.length > 0) {
+                point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+            } else {
+                point = new BMap.Point(InitialLng_Lat[0].Lng, InitialLng_Lat[0].Lat);
+            }
+
+
+            map.centerAndZoom(point, 15);
+            map.enableScrollWheelZoom();
+            // 添加带有定位的导航控件
+            var navigationControl = new BMap.NavigationControl({
+                // 靠左上角位置
+                anchor: BMAP_ANCHOR_TOP_LEFT,
+                // LARGE类型
+                type: BMAP_NAVIGATION_CONTROL_LARGE
+            });
+            map.addControl(navigationControl);
+            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+
+            map.addEventListener("click", function (e) {
+                map.setDefaultCursor("pointer");//设置鼠标手势
+                ClikcLng_Lat = [];
+                map.clearOverlays();//清除除标注
+                var json_str = { Lng: e.point.lng, Lat: e.point.lat };
+                ClikcLng_Lat.push(json_str);
+                point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+                //map.centerAndZoom(point, 15);
+                //map.enableScrollWheelZoom();
+                //$("#txtlatitude").val("").val(e.point.lat);
+                //$("#txtlongitude").val("").val(e.point.lng);
+                var marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+
+            });
+
+            if (ClikcLng_Lat.length > 0) {
+                //$("#txtlatitude").val("").val(ClikcLng_Lat[0].Lat);
+                //$("#txtlongitude").val("").val(ClikcLng_Lat[0].Lng);
+            }
+            //坐标拾取--确定
+            $("#btn_xy").click(function () {
+                if (ClikcLng_Lat != null && ClikcLng_Lat.length > 0) {
+                    $("#x").val("").val(ClikcLng_Lat[0].Lng);
+                    $("#y").val("").val(ClikcLng_Lat[0].Lat);
+                    map.clearOverlays();
+                }
+                layer.close(clonum);
+            });
+            //坐标拾取--取消
+            $("#btnClrearCallout").click(function () {
+                ClikcLng_Lat = [];
+                map.clearOverlays();
+                layer.close(clonum);
+            });
+            
+            //搜索
+            $("#areaSearch").click(function () {
+                // 创建地址解析器实例 
+                var myGeo = new BMap.Geocoder();
+                var searchTxt = $("#txtarea").val();
+                if ($.trim(searchTxt) == null || $.trim(searchTxt) == "") {
+                    layer.alert("请输入搜索条件");
+                    return false;
+                }
+                // 将地址解析结果显示在地图上，并调整地图视野 
+                myGeo.getPoint(searchTxt, function (point) {
+                    if (point) {
+                        map.clearOverlays();
+                        map.centerAndZoom(point, 15);
+                        if (currPage == "GetCoordinate") {
+                            //$("#txtlatitude").val('').val(point.lat);
+                            //$("#txtlongitude").val('').val(point.lng);
+                        }
+                        ClikcLng_Lat = [];
+                        var json_str = { Lng: point.lng, Lat: point.lat };
+                        ClikcLng_Lat.push(json_str);
+                        var point = new BMap.Point(point.lng, point.lat); // 创建标注的坐标
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        map.addOverlay(marker);
+                    }
+                    else {
+                        layer.alert("搜索不到结果");
+                        return false;
+                    }
+                }, "全国");
+
+            });
+
+        });
+
+        //地图标注
+        $("#MapCallout").click(function () {
+
+            var clonum = $.layer({
+                type: 1,
+                title: false,
+                closeBtn: false,
+                //closeBtn: [1, true],//控制层右上角关闭按钮。closeBtn的值分别为: [关闭按钮的风格（支持0和1）, true]若不想显示关闭按钮，配置 closeBtn: false即可
+                border: [5, 0.5, '#666', true],
+                offset: ['0px', ''],
+                move: ['.xubox_title', false],
+                area: ['860px', '500px'],
+                page: {
+                    dom: "#baidumap"
+                },
+                success: function () {
+                    layer.shift('top', 500);
+                }
+                //, close: function (index) {//层右上角关闭按钮的点击事件触发回调函数。
+                //    ClikcLng_Lat = [];
+                //    map.clearOverlays();
+                //    layer.close(index);
+
+                //}
+            });
+
+            // currPage = "MapCallout";
+            $(".GetCoordinate").hide();
+            $(".MapCallout").show();
+
+            var map = new BMap.Map("container");
+            map.clearOverlays();//清除除标注
+            var navigationControl = new BMap.NavigationControl({
+                // 靠左上角位置
+                anchor: BMAP_ANCHOR_TOP_LEFT,
+                // LARGE类型
+                type: BMAP_NAVIGATION_CONTROL_LARGE
+            });
+            map.addControl(navigationControl);
+            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+            LngOrLat = $("#LngOrLat").val();
+
+            if (LngOrLat != null && LngOrLat != "") {
+                MapLineLng_Lat = [];
+                if (LngOrLat.indexOf("|") > 0) {
+                    var str_arr = LngOrLat.split('|');
+                    for (var i = 0; i < str_arr.length; i++) {
+                        MapLineLng_Lat.push({ Lng: str_arr[i].split(',')[0], Lat: str_arr[i].split(',')[1] });
+                    }
+                } else {
+                    if (LngOrLat.indexOf(",") > 0) {
+                        MapLineLng_Lat.push({ Lng: LngOrLat.split(',')[0], Lat: LngOrLat.split(',')[1] });
+                    }
+                }
+                for (var i = 0; i < MapLineLng_Lat.length; i++) {
+
+                    var point = new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat);
+                    map.centerAndZoom(point, 15);
+                    map.enableScrollWheelZoom();
+                    var marker = new BMap.Marker(point);  // 创建标注
+                    map.addOverlay(marker);              // 将标注添加到地图中
+
+                }
+                PolygonLine();//画线
+            } else {
+                var point = new BMap.Point(InitialLng_Lat[0].Lng, InitialLng_Lat[0].Lat);
+                map.centerAndZoom(point, 15);
+                map.enableScrollWheelZoom();
+                
+            }
+
+            map.addEventListener("click", function (e) {
+                map.setDefaultCursor("pointer");//设置鼠标手势
+                ClikcLng_Lat = [];
+
+                var json_str = { Lng: e.point.lng, Lat: e.point.lat };
+                ClikcLng_Lat.push(json_str);//保存当前点
+                MapLineLng_Lat.push(json_str);//保存搜有点
+                point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+                var marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+
+            });
+
+
+
+            //地图标注--画线
+            $("#btnPaintline").click(function () {
+                PolygonLine();
+            });
+            //地图标注--重置
+            $("#btnlinereset").click(function () {
+                //保存地图标注的数组
+                MapLineLng_Lat = [];
+                map.clearOverlays();//清除除标注
+            });
+            $("#btnlineok").click(function () {
+                if (MapLineLng_Lat != null && MapLineLng_Lat.length > 0) {
+                    var str = "";
+                    for (var j = 0; j < MapLineLng_Lat.length; j++) {
+                        str += MapLineLng_Lat[j].Lng + "," + MapLineLng_Lat[j].Lat + "|"
+                    }
+                    if (str.length > 0) {
+                        str = str.substring(0, str.length - 1);
+                    }
+                    $("#LngOrLat").val("").val(str);
+                    map.clearOverlays();
+                }
+                MapLineLng_Lat = [];
+                layer.close(clonum);
+            });
+            $("#btnClrearLine").click(function () {
+
+                MapLineLng_Lat = [];
+                map.clearOverlays();//清除除标注
+                layer.close(clonum);
+            });
+
+            //搜索
+            $("#areaSearch").click(function () {
+                // 创建地址解析器实例 
+                var myGeo = new BMap.Geocoder();
+                var searchTxt = $("#txtarea").val();
+                if ($.trim(searchTxt) == null || $.trim(searchTxt) == "") {
+                    layer.alert("请输入搜索条件");
+                    return false;
+                }
+                // 将地址解析结果显示在地图上，并调整地图视野 
+                myGeo.getPoint(searchTxt, function (point) {
+                    if (point) {
+                        map.clearOverlays();
+                        map.centerAndZoom(point, 15);
+                        if (currPage == "GetCoordinate") {
+                            //$("#txtlatitude").val('').val(point.lat);
+                            //$("#txtlongitude").val('').val(point.lng);
+                        }
+                        var point = new BMap.Point(point.lng, point.lat); // 创建标注的坐标
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        map.addOverlay(marker);
+                    }
+                    else {
+                        layer.alert("搜索不到结果");
+                        return false;
+                    }
+                }, "全国");
+
+            });
+
+            //地图标注--画多边形
+            function PolygonLine() {
+                if (MapLineLng_Lat != null && MapLineLng_Lat.length > 0) {
+                    var line = [];
+                    for (var i = 0; i < MapLineLng_Lat.length; i++) {
+                        line.push(new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat));
+                    }
+                    if (line != null && line.length > 0) {
+                        //创建多边形  
+                        var curve = new BMap.Polygon(line, { strokeColor: "blue", strokeWeight: 3, strokeOpacity: 0.5 });
+                        map.addOverlay(curve); //添加到地图中
+                        //curve.enableEditing(); //开启编辑功能
+                    }
+                }
+            }
+
+
+        });
+
+
+
+    });
+</script>
+<div id="script">
+</div>
+<div id="baidumap" style="display: none;">
+    <div style="width: 100%">
+        <div style="margin-top: 10px; margin-left: 20px; float: left; width: 100%">
+            搜索:
+            <input id="txtarea" type="text" style="width: 100px;margin-right:10px;" /><a class="btn" href="javascript:void(0)" id="areaSearch">点击搜索</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @* <span class="GetCoordinate">经度:</span><input name="txtlongitude" type="text" style="width: 100px;" id="txtlongitude" class="GetCoordinate" readonly />
+            <span class="GetCoordinate">纬度:</span><input name="txtlatitude" type="text" style="width: 100px;" id="txtlatitude" class="GetCoordinate"  readonly/>*@
+            <a href="javascript:void(0)" id="btn_xy" class="GetCoordinate btn">确定</a>
+            <a href="javascript:void(0)" id="btnClrearCallout" class="GetCoordinate btn">取消</a>
+
+            <a href="javascript:void(0)" id="btnPaintline" class="MapCallout btn">绘制线</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="javascript:void(0)" id="btnlinereset" class="MapCallout btn">重 置</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" id="btnlineok" class="MapCallout btn">确 定</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" id="btnClrearLine" class="MapCallout btn">取消</a>
+        </div>
+        @* <p id="mask_latlng" style="display: none;" >
+            <!--标注点所在区域：-->
+           
+        </p>*@
+    </div>
+    <div style="width: 860px; height: 450px; border: 1px solid gray; text-align: center;" id="container">
+    </div>
+</div>
+@*加载地图end*@ @*<div id="mapline" style="display: none;">
+    <div style="margin-left: 10px;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p>
+            搜索:
+            <input id="txtseach" type="text" style="width: 300px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btnSearch">点击搜索</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="line">绘制线</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="linereset">重 置</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="lineok" >确 定</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+    </div>
+    <div style="width: 800px; height: 550px; border: 1px solid gray;"
+        id="containermap">
+    </div>
+</div>*@ 

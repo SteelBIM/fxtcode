@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtDataUserDomain" 
+				   namespace="FxtNHibernate.FxtDataUserDomain.Entities">
+	<class name="FxtNHibernate.FxtDataUserDomain.Entities.SysMenu, FxtNHibernate.FxtDataUserDomain" 
+		   table="Sys_Menu">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="MenuName" column="MenuName" type="string"  />
+		<property name="ParentId" column="ParentId" type="int"  />
+		<property name="Url" column="Url" type="string"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+    <!--<one-to-one name="ProductMenu"
+                class="FxtNHibernate.FxtDataUserDomain.Entities.SysProductMenu"
+                constrained="true"/>-->
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A43AD3F-7889-4C37-8F56-E83A5DB3F13F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtCenterServiceOpen.Actualize</RootNamespace>
+    <AssemblyName>FxtCenterServiceOpen.Actualize</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Dlls\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.Common">
+      <HintPath>..\..\..\..\CommonProject\trunk\CAS.Common\bin\Debug\CAS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity">
+      <HintPath>..\..\..\..\CommonProject\trunk\CAS.Common\bin\Debug\CAS.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\..\..\CommonProject\trunk\CAS.Common\bin\Debug\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CityModel.cs" />
+    <Compile Include="Common\CompanyModel.cs" />
+    <Compile Include="Common\JsonDataHelper.cs" />
+    <Compile Include="Common\JsonReturnData.cs" />
+    <Compile Include="Common\TempProject.cs" />
+    <Compile Include="Common\XMLDataHelper.cs" />
+    <Compile Include="Common\ZipCodeHelper.cs" />
+    <Compile Include="Common\ZipCodeMapModel.cs" />
+    <Compile Include="DataCenterService.cs" />
+    <Compile Include="DataCenter\CallDataCenter.cs" />
+    <Compile Include="MethodDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCenter\CallUserCenter.cs" />
+    <Compile Include="VQOperater\CallOperaterCenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.VQ.DataService\FXT.VQ.DataService.csproj">
+      <Project>{56d812d3-25ee-4c8f-840d-5ea5e296616f}</Project>
+      <Name>FXT.VQ.DataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.VQ.UserService\FXT.VQ.UserService.csproj">
+      <Project>{ed9c0898-9ec0-40ac-a779-df08cfccda32}</Project>
+      <Name>FXT.VQ.UserService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.VQ.VQCenter\FXT.VQ.VQCenter.csproj">
+      <Project>{d6705caa-51a7-40dd-bcef-1dca0a7fe0be}</Project>
+      <Name>FXT.VQ.VQCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtCenterServiceOpen.Contract\FxtCenterServiceOpen.Contract.csproj">
+      <Project>{a0752554-cbd1-473f-aa07-c94a8385fa28}</Project>
+      <Name>FxtCenterServiceOpen.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

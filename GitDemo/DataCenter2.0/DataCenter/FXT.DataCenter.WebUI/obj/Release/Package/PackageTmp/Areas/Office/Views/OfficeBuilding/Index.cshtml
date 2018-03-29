@@ -1,0 +1,280 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using FXT.DataCenter.Domain.Models
+@helper Truncate(string input, int length)
+{
+    if (string.IsNullOrEmpty(input) || input.Length <= length)
+    {
+    @input
+    }
+    else
+    {
+    @input.Substring(0, length)<text>...</text>
+    }
+}
+@model PagedList<DatBuildingOffice>
+@{
+    ViewBag.Title = "办公楼栋";
+}
+
+@section StyleSheet{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+
+        .scrollBar
+        {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+
+        var UrlExport = '@Url.Action("Export")';
+        var UrlDelete = '@Url.Action("Delete")';
+
+        $(document).ready(function () {
+
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href='@Url.Action("Index", "OfficeProject")'>办公基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+            html += " <li><span>办公楼栋</span><li>";
+            $("ul.breadcrumb").append(html);
+
+            //日期控件渲染
+            $("#CaseDateStart, #CaseDateEnd").datepicker({ format: 'yyyy-mm-dd' });
+
+            //checkbox联动全选
+            $("input[name=ids]").bind("click", function () {
+                var flag = true;
+                $("input[name=ids]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#checkall").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            //删除
+            $("#delete").unbind();
+            $("#delete").click(function () {
+                var ids = [];
+                var checks = $("input[name='ids']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要删除的数据");
+                    return;
+                }
+                if (confirm("是否确定删除？")) {
+                    checks.each(function () {
+                        ids.push($(this).val());
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: UrlDelete,
+                        data: { ids: ids },
+                        traditional: true,
+                        success: function (data) {
+                            if (data.result) {
+                                if (data.msg != "") {
+                                    alert(data.msg);
+                                }
+                                location.reload();
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            //导出
+            $("#btnExport").click(function () {
+
+                var projectId = $("#ProjectId").val();
+                var buildingName = $("#BuildingName").val();
+                var officeType = $("#OfficeType").val();
+                var purposeCode = $("#PurposeCode").val();
+                var structureCode = $("#StructureCode").val();
+                var buildingTypeCode = $.trim($("#BuildingTypeCode").val());
+                var rentSaleType = $.trim($("#RentSaleType").val());
+
+                var request = {
+                    projectId: projectId,
+                    buildingName: buildingName,
+                    officeType: officeType,
+                    purposeCode: purposeCode,
+                    structureCode: structureCode,
+                    buildingTypeCode: buildingTypeCode,
+                    rentSaleType: rentSaleType
+                };
+
+                var datBuildingOffice = JSON.stringify(request);
+                location.href = UrlExport + "?datBuildingOffice=" + datBuildingOffice;
+            });
+        });
+
+        function view(obj, buildingId) {
+            $.get('@Url.Action("OfficeHouseCount")', { buildingId: buildingId }, function (data) {
+                $(obj).html('<i class="icon-eye-close"></i>&nbsp;' + data);
+                $(obj).attr("href", "/Office/OfficeHouse/Index?buildingId=" + buildingId + "&projectId=" + '@ViewBag.ProjectId');
+            });
+        }
+    </script>
+
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div style="text-align: right;">
+    <a style="cursor: pointer;" id="control">收起∧</a>
+</div>
+<div class="row-fluid" id="condi">
+    @using (Html.BeginForm("Index", "OfficeBuilding", null, FormMethod.Get, new { id = "search", @class = "form-inline" }))
+    {
+        <table style="width: 85%; margin-bottom: 10px; line-height: 35px;">
+            <tr>
+                <td>办公楼栋:
+                </td>
+                <td>
+                    @Html.Hidden("ProjectId", (int)ViewBag.ProjectId)
+                    @Html.TextBox("BuildingName", null, new { @style = "width:138px;" })
+                </td>
+                <td>等级:
+                </td>
+                <td>@Html.DropDownList("OfficeType", ViewBag.OfficeTypeName as List<SelectListItem>)</td>
+                <td>用途:
+                </td>
+                <td>@Html.DropDownList("PurposeCode", ViewBag.PurposeName as List<SelectListItem>)</td>
+            </tr>
+            <tr>
+                <td>建筑结构：</td>
+                <td>@Html.DropDownList("StructureCode", ViewBag.StructureName as List<SelectListItem>)</td>
+                <td>建筑类型：</td>
+                <td>@Html.DropDownList("BuildingTypeCode", ViewBag.BuildingTypeName as List<SelectListItem>)</td>
+                <td>租售方式：</td>
+                <td>@Html.DropDownList("RentSaleType", ViewBag.RentSaleTypeName as List<SelectListItem>)</td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <a class="btn blue" title='新增' href="@Url.Action("Create", new { projectId = ViewBag.ProjectId })">
+                        <i class="icon-plus icon-white"></i>新增
+                    </a><a class="btn red" id="delete" href="javascript:;">
+                        <i class="icon-trash icon-white"></i>删除
+                    </a>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <button id="btnRetrive" class="btn">
+                        查 询 <i class="icon-search"></i>
+                    </button>
+                    <a id="btnImport" title="Excel导入" class="btn" href="@Url.Action("UploadFile")">导 入</a>
+
+                    <input type="button" id="btnExport" class="btn" value="导 出" />
+                    @*  <a id="btnStatitics" class = "btn" href="@Url.Action("Statistics")">统 计</a>*@
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+
+<div class="scrollBar">
+    <div>
+        <b>楼盘名称：</b><span style="margin-right: 20px;">&nbsp;&nbsp;<a href="@Url.Action("Edit", "OfficeProject", new { id = @ViewBag.FxtCompanyId + "#" + @ViewBag.ProjectId })">@ViewBag.ProjectName</a></span>
+    </div>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>
+                <th>办公楼栋
+                </th>
+                <th>等级
+                </th>
+                <th>用途
+                </th>
+                <th>建筑结构
+                </th>
+                <th>建筑类型
+                </th>
+                <th>租售方式
+                </th>
+                <th>总楼层
+                </th>
+                <th>总高度
+                </th>
+                <th>办公房号
+                </th>
+                <th>操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var m in Model)
+                {
+                    var chValue = m.FxtCompanyId + "#" + m.BuildingId;
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkboxes" name='ids' value='@chValue' />
+                    </td>
+                    <td>
+                        <a title="@m.BuildingName" href="@Url.Action("Edit", new { id = chValue, projectId = ViewBag.ProjectId })">
+                            @Truncate(@m.BuildingName, 10)
+                        </a>
+                    </td>
+                    <td>
+                        @m.OfficeTypeName
+                    </td>
+                    <td>
+                        @m.PurposeName
+                    </td>
+                    <td>
+                        @m.StructureName
+                    </td>
+                    <td>
+                        @m.BuildingTypeName
+                    </td>
+                    <td>
+                        @m.RentSaleTypeName
+                    </td>
+                    <td>
+                        @m.TotalFloor
+                    </td>
+                    <td>
+                        @m.TotalHigh
+                    </td>
+                    <td><a class="btn mini btn-xs blue" onclick="javascript:view(this,'@m.BuildingId');"><i class=" icon-eye-open"></i>查看</a></td>
+                    <td>
+                        <a class="btn mini purple" title='编辑办公楼栋' href="@Url.Action("Edit", new { id = chValue, projectId = ViewBag.ProjectId })">
+                            <i class="icon-edit"></i>编辑
+                        </a>
+                    </td>
+                </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="pager">
+    @{
+        var totalPageCount = Model == null ? 0 : Model.TotalPageCount;
+        var totalItemCount = Model == null ? 0 : Model.TotalItemCount;
+        var currentPageIndex = Model == null ? 0 : Model.CurrentPageIndex;
+    }
+    <div>共 @totalPageCount 页 @totalItemCount 条记录,当前为第 @currentPageIndex 页</div>
+    @if (Model != null && Model.Any())
+    {
+        @Html.Pager(Model, new PagerOptions { AutoHide = false, ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox })
+    }
+
+</div>
+
+

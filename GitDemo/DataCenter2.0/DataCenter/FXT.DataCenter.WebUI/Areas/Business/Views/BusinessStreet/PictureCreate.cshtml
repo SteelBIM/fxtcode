@@ -1,0 +1,178 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>批量添加图片</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="@Url.Content("~/Content/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Plugin/dropzone-master/dist/min/basic.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Plugin/dropzone-master/dist/min/dropzone.min.css")" rel="stylesheet" />
+    <style type="text/css">
+        .dz-message span {
+            font-family: "Microsoft Yahei","微软雅黑","宋体", "Simsun", "Open Sans";
+            font-size: 18px;
+            color: darkgray;
+        }
+
+        .dz-remove {
+            color: darkgray;
+        }
+
+            .dz-remove:hover {
+                color: black;
+            }
+
+        .tb {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            font-family: "Microsoft Yahei","微软雅黑","宋体", "Simsun", "Open Sans";
+            color: #000000;
+        }
+
+            .tb .td_dropdown {
+                padding-top: 8px;
+            }
+
+                .tb .td_dropdown select {
+                    width: 130px;
+                }
+
+            .tb .td {
+                padding-left: 8px;
+            }
+
+        #myDropzone {
+            width: 810px;
+            margin: auto;
+            border: darkgray dashed 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--main content-->
+    <table class="tb">
+        <tr>
+            <td>图片类型：</td>
+            <td class="td_dropdown">@Html.DropDownList("photoType", ViewBag.PhotoTypeName as List<SelectListItem>)
+            </td>
+            <td class="td">
+                <button class="btn" type="submit" id="submit-all" disabled="disabled"><i class=" icon-upload"></i>上 传</button>
+            </td>
+            <td class="td">
+                <a class="btn" id="clear-all" disabled="disabled"><i class=" icon-remove"></i>清除所选图片</a>
+            </td>
+            <td class="td">
+                <span style="color: red;">提示：一次批量只能上传10张。单张图片大小不能超过512K</span>
+            </td>
+        </tr>
+    </table>
+
+
+    <form action="/" class="dropzone" enctype="multipart/form-data" id="myDropzone" method="post">
+        @Html.Hidden("projectId", (int)ViewBag.ProjectId)
+        @Html.Hidden("photoTypeCode")
+    </form>
+    <!--end main content-->
+
+    <!--start javascript-->
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-1.8.3.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/Plugin/dropzone-master/dist/min/dropzone.min.js")"></script>
+    <script>
+        //Dropzone的初始化，myDropzone为form的id
+        Dropzone.options.myDropzone = {
+
+            //指定上传图片的路径
+            url: "@Url.Action("BatchAddPictureSave")",
+
+            //文件类型
+            acceptedFiles: "image/*",
+
+            //添加上传取消和删除预览图片的链接，默认不添加
+            addRemoveLinks: true,
+
+            //关闭自动上传功能，默认会true会自动上传
+            //也就是添加一张图片向服务器发送一次请求
+            autoProcessQueue: false,
+
+            //允许上传多个照片
+            uploadMultiple: true,
+
+            //每次上传的最多文件数，经测试默认为2，坑啊
+            //记得修改web.config 限制上传文件大小的节
+            parallelUploads: 10,
+
+            //上传文件大小（MB）
+            maxFilesize: 0.5,
+
+            init: function () {
+
+                var submitButton = document.querySelector("#submit-all");
+                var clearButton = document.querySelector("#clear-all");
+                var myDropzone = this; // closure
+
+                //为上传按钮添加点击事件
+                submitButton.addEventListener("click", function () {
+                    var photoType = $("#photoType").val();
+                    if (photoType < 0) {
+                        alert("请选择图片类型");
+                    } else {
+                        //手动上传所有图片
+                        myDropzone.processQueue();
+                    }
+                });
+
+                //为清除图片按钮添加点击事件
+                clearButton.addEventListener("click", function () {
+                    //清除所有图片
+                    myDropzone.removeAllFiles(true);
+
+                });
+
+                //当添加图片后的事件，上传按钮恢复可用
+                this.on("addedfile", function () {
+                    $("#submit-all").removeAttr("disabled");
+                    $("#clear-all").removeAttr("disabled");
+                });
+
+                //当上传完成后的事件，接受的数据为JSON格式
+                this.on("complete", function (data) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        var res = eval('(' + data.xhr.responseText + ')');
+                        var msg;
+                        if (res.Result) {
+                            msg = "恭喜，已成功上传" + res.Count + "张图片！";
+                        } else {
+                            msg = "上传失败!";
+                        }
+                        alert(msg);
+                    }
+                });
+
+                //删除图片的事件，当上传的图片为空时，使上传按钮不可用状态
+                this.on("removedfile", function () {
+                    if (this.getAcceptedFiles().length === 0) {
+                        $("#submit-all").attr("disabled", true);
+                        $("#clear-all").attr("disabled", true);
+                    }
+                });
+            }
+        };
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#photoType").on("change", function () {
+                $("#photoTypeCode").val($(this).val());
+            });
+        });
+    </script>
+    <!--end javascript-->
+</body>
+</html>

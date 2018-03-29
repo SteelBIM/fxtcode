@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.DATBuilding, FxtNHibernate.DATProjectDomain" table="DAT_Building">
+		<id name="BuildingId" column="BuildingId" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="BuildingName" column="BuildingName" type="string"  />
+		<property name="ProjectId" column="ProjectId" type="int"  />
+		<property name="PurposeCode" column="PurposeCode" type="int"  />
+		<property name="StructureCode" column="StructureCode" type="int"  />
+		<property name="BuildingTypeCode" column="BuildingTypeCode" type="int"  />
+		<property name="TotalFloor" column="TotalFloor" type="int"  />
+		<property name="FloorHigh" column="FloorHigh" type="decimal"  />
+		<property name="SaleLicence" column="SaleLicence" type="string"  />
+		<property name="ElevatorRate" column="ElevatorRate" type="string"  />
+		<property name="UnitsNumber" column="UnitsNumber" type="int"  />
+		<property name="TotalNumber" column="TotalNumber" type="int"  />
+		<property name="TotalBuildArea" column="TotalBuildArea" type="decimal"  />
+		<property name="BuildDate" column="BuildDate" type="DateTime"  />
+		<property name="SaleDate" column="SaleDate" type="DateTime"  />
+		<property name="AveragePrice" column="AveragePrice" type="decimal"  />
+		<property name="AverageFloor" column="AverageFloor" type="int"  />
+		<property name="JoinDate" column="JoinDate" type="DateTime"  />
+		<property name="LicenceDate" column="LicenceDate" type="DateTime"  />
+		<property name="OtherName" column="OtherName" type="string"  />
+		<property name="Weight" column="Weight" type="decimal"  />
+		<property name="IsEValue" column="IsEValue" type="int"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="CreateTime" column="CreateTime" type="DateTime"  />
+		<property name="OldId" column="OldId" type="string"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="SalePrice" column="SalePrice" type="decimal"  />
+		<property name="SaveDateTime" column="SaveDateTime" type="DateTime"  />
+		<property name="SaveUser" column="SaveUser" type="string"  />
+		<property name="LocationCode" column="LocationCode" type="int"  />
+		<property name="SightCode" column="SightCode" type="int"  />
+		<property name="FrontCode" column="FrontCode" type="int"  />
+		<property name="StructureWeight" column="StructureWeight" type="decimal"  />
+		<property name="BuildingTypeWeight" column="BuildingTypeWeight" type="decimal"  />
+		<property name="YearWeight" column="YearWeight" type="decimal"  />
+		<property name="PurposeWeight" column="PurposeWeight" type="decimal"  />
+		<property name="LocationWeight" column="LocationWeight" type="decimal"  />
+		<property name="SightWeight" column="SightWeight" type="decimal"  />
+		<property name="FrontWeight" column="FrontWeight" type="decimal"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="X" column="X" type="decimal"  />
+		<property name="Y" column="Y" type="decimal"  />
+		<property name="XYScale" column="XYScale" type="int"  />
+		<property name="Wall" column="Wall" type="int"  />
+		<property name="IsElevator" column="IsElevator" type="int"  />
+		<property name="SubAveragePrice" column="SubAveragePrice" type="decimal"  />
+		<property name="PriceDetail" column="PriceDetail" type="string"  />
+		<property name="BHouseTypeCode" column="BHouseTypeCode" type="int"  />
+		<property name="BHouseTypeWeight" column="BHouseTypeWeight" type="decimal"  />
+		<property name="Creator" column="Creator" type="string"  />
+		<property name="Distance" column="Distance" type="int"  />
+		<property name="DistanceWeight" column="DistanceWeight" type="decimal"  />
+		<property name="basement" column="basement" type="int"  />
+    <property name="Remark" column="Remark" type="string"  />		
+	</class>
+</hibernate-mapping>

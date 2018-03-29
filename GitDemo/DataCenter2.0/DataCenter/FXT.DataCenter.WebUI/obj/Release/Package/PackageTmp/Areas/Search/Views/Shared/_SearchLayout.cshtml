@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+@section PageSpecificStyleSheetIncludes{
+  @RenderSection("StyleSheet",false)
+}
+@section PageSpecificJavascriptIncludes{
+    @RenderSection("Javascript",false)
+}
+@section _LeftMenu{
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        <!-- BEGIN PAGE -->
+        <div class="page-content" style=" margin-left:0px;">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">
+                    </button>
+                    <h3>
+                        portlet Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Here will be a configuration form</p>
+                </div>
+            </div>
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+              @*  <div class="row-fluid">
+                    <div class="span12" id="navigation">*@
+                        <!-- BEGIN STYLE CUSTOMIZER -->
+                        @*@Html.Partial("_Theme")*@
+                        <!-- END BEGIN STYLE CUSTOMIZER -->
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                      @*  <h3 class="page-title" style="text-align: center;">
+                            <span>全 站 检 索</span> <small></small>
+                        </h3>*@
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                  @*  </div>
+                </div>*@
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                @RenderBody()
+                <!-- END PAGE CONTENT-->
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+}

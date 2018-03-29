@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Seach";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row-fluid">
+    @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search" }))
+    { 
+        <div class="">
+            <div class="checkbox-list" style=" float:left;">
+                <label>
+                    行政区:
+                    @Html.DropDownList("areaid", (ViewBag.arealist) as List<SelectListItem>, new { @class = "m-wrap small" })
+                </label>
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;片区:
+                    @Html.DropDownList("subareaid", new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "--请选择--" } }, new { @class = "m-wrap small" })
+                </label>
+                @* <label for="addBehaviorOnToastClick" style=" display:inline;">
+                    <input id="addBehaviorOnToastClick" type="checkbox" value="checked" class="input-small" />Add
+                    behavior on toast click
+                </label>
+                <label for="debugInfo" style=" display:inline;">
+                    <input id="debugInfo" type="checkbox" value="checked" class="input-small" />Debug
+                </label>*@
+            </div>
+            <div class="checkbox-list" style=" float:left; margin-left:10px;">
+                <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宗地号:
+                    @Html.TextBox("LandNo", null, new { @class = "m-wrap small", @style = "vertical-align:middle" })
+                </label>
+                <label>
+                    土地使用证号:
+                    @Html.TextBox("FieldNo", null, new { @class = "m-wrap small", @style = "vertical-align:middle" })
+                </label>
+            </div>
+
+             <div class="checkbox-list" style=" float:left; margin-left:10px;">
+                <label>
+                    土地使用者:
+                    @Html.DropDownList("LandOwnerId", new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "--请选择--" } }, new { @class = "m-wrap small" })
+                </label>
+                <label>
+                    土地所有者:
+                    @Html.DropDownList("LandUseId",new List<SelectListItem> { new SelectListItem { Value = "-1", Text = "--请选择--" } }, new { @class = "m-wrap small"})
+                </label>
+            </div>
+             <div class="checkbox-list" style=" float:left; margin-left:10px;">
+                <label>
+                    土地使用起始日期:
+                    @Html.TextBox("StartDate", null, new { @class = "m-wrap small Wdate",@style = "vertical-align:middle"})
+                </label>
+                <label>
+                    土地使用结束日期:
+                    @Html.TextBox("EndDate", null, new { @class = "m-wrap small Wdate",@style = "vertical-align:middle"})
+                </label>
+            </div>
+
+            <div class="checkbox-list" style=" float:left; margin-left:10px;">
+              <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;用途:
+                    @Html.DropDownList("PlanPurpose", (ViewBag.landcodelist) as List<SelectListItem>, new { @class = "m-wrap small" })
+                </label>
+              
+            </div>
+        </div>
+    }
+</div>
+<script src="@Url.Content("~/Content/layer-v1.7.1/jquery-1.10.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/cityBind/city.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#areaid").change(function () {
+            var areaId = $(this).find("option:selected").val();
+            BindSubArea(areaId);
+        });
+    });
+</script>

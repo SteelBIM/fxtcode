@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "客户列表";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+<div class="portlet box light-grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>客户列表</div>
+        <div class="actions">
+            <a class="btn green" href="#" 
+                data-title="新增"  
+                data-type="c"
+                data-url="/Users/AddEditCustomer">
+                <i class="icon-pencil"></i>新增
+             </a>
+        </div>
+        <div class="tools" style="padding-right: 8px;">
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div id="sample_2_wrapper" class="dataTables_wrapper form-inline" role="grid">
+            <div class="actions">
+                <div class="input-group">
+                    <div class="col-md-12">
+                        <div class="row" style="width:750px;">
+                            <div class="col-md-9">
+                                <div class="input-group">                          
+                                    <span class="input-group-addon">
+                                        客户类型
+                                    </span>
+                                    <select class="form-control notSelect" style="width:150px" id="sel_customertype">
+                                        <option value="0">-请选择-</option>
+                                        <option value="2001013">银行</option>
+                                        <option value="2001010">评估机构</option>
+                                    </select>
+                                    <span class="input-group-addon">
+                                        客户名称
+                                    </span>
+                                    <input type="text" id="searchkey"  style="width:240px;"  class="form-control">                          
+                                </div>
+                            </div>                           
+                            <button class="btn green" type="submit" id="searchcustomer" >查询</button> 
+                        </div>
+                    </div>    
+                </div>                   
+            </div>
+            <div class="table-scrollable">
+                <table class="table table-striped table-hover table-bordered" id="listuser">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 300px !important">
+                                客户名
+                            </th>
+                            <th scope="col">
+                                客户类型
+                            </th>
+                            <th scope="col">
+                                从属公司
+                            </th>
+                            <th scope="col" style="width: 180px !important">
+                                创建时间
+                            </th>
+                            <th scope="col" style="width: 150px !important">
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    <div id="page_info" class="dataTables_info">
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                    <div class="dataTables_paginate paging_bootstrap">
+                        <ul class="pagination"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //$.ActionSelectList = [
+    //{
+    //    name: 'fxtcompanyname',
+    //    url: '/Users/GetUserCenterCompany',
+    //    val: 'companyname',
+    //    key: 'companyid'
+    //}];
+    
+    $.ActionOperta({
+        toid: ".actions",
+        ActionFormRules: $.customerrules,
+        ReloadUrl: '/Users/Customer'
+    });
+
+    searchCustomer();
+    $("#searchcustomer").click(function () {
+        searchCustomer();
+    });
+    function searchCustomer()
+    {
+        $.ActionPage.pageIndex = 1;
+        $.ActionPage.pageSize = 10;
+        $.ActionPage.orderProperty = "CustomerId desc";
+        $.ActionPage.key = $("#searchkey").val();
+        $.ActionPage.fxtCompanyId = 0;
+        $.ActionPage.customerType = $("#sel_customertype").val();
+        $.ActionPage.valid = 1;
+
+        $.ActionList({
+            tourl: "/Users/GetCustomerList",
+            toid: "listuser>tbody",
+            sdata: $.ActionPage
+        });
+    }    
+</script>
+<script id="template" type="text/x-jquery-tmpl">
+    <tr data-id="${CustomerId}">
+        <td>${CustomerName}</td>
+        <td>${($item.data.CustomerType == 2001010 ? "评估机构" : ($item.data.CustomerType == 2001013 ? "银行" : "房迅通"))}</td>
+        <td>${FxtCompanyName}</td>
+        <td>${$item.dataFromat("yyyy-MM-dd")}</td>
+        <td>            
+            <a class="btn ${$item.data.FxtCompanyId==25? 'dn':''}"
+               url="/Users/GetCustomer/?customerId=${CustomerId}"
+               data-url="/Users/AddEditCustomer"
+               data-type="u"
+               data-title='修改'
+               data-rules='$.customerrules'
+               data-rloadurl='/Users/Customer'>
+                修改
+            </a>
+            <a class="btn ${$item.data.FxtCompanyId==25? 'dn':''}"
+               url="/Users/DeleteActiveCustomer/?valid=0&&customerId=${CustomerId}"
+               data-type="d"
+               data-rloadurl='/Users/Customer'>
+                删除
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script id="template-form" type="text/x-jquery-tmpl">
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet-body form">
+            <form id="form" action="" class="form-horizontal">
+                <div class="form-body">
+                    <!-- BEGIN FORM-->
+                    <div class="alert alert-error display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>输入有错误,请检查.</span>
+                    </div>
+                    <div class="alert alert-success display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>验证成功的!</span>
+                    </div>
+                    <input type="hidden" name="customerid" class="form-control" />
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            客户类型<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control notSelect" name="customertype" key="modifydisabled">
+                                 <option value="">-请选择-</option>
+                                <option value="2001013">银行</option>
+                                <option value="2001010">评估机构</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            从属公司<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">  
+                            <select class="form-control" style="width:400px;" name="fxtcompanyid" key="modifydisabled">  
+                                <option value="">-请选择-</option>                             
+                            </select>  
+                            <input type="hidden" name="fxtcompanyname" class="form-control" />       
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            客户名称<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="customername" data-required="1" class="form-control" />
+                        </div>
+                    </div>
+                    <div style="height:100px;"></div>
+                    <!-- END FORM-->
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            提交
+                        </button>
+                        <button type="button" class="btn default">
+                            取消
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+<script type="text/javascript">
+    //加载从属公司列表    
+    $("select[name=customertype]").change(function () {
+        var customerType = $(this).val();
+        var customerarray = [];
+        customerarray.push("<option value=\"\" >-请选择-</option>");
+        //清空从属公司名称       
+        if (customerType > 0) {
+            //加载从属公司列表 
+            $.extendAjax({
+                url: '/Users/GetUserCenterCompany',
+                type: 'post',
+                data: { customerType: customerType, companyName: "" },
+                wait: true 
+            }, function (data) {
+                var selval = 0;               
+                $(data.data).each(function (i, o) {
+                    if(o.companyname==$("input[name=fxtcompanyname]").val()){
+                        selval=o.companyid;
+                    }
+                    customerarray.push("<option value='" + o.companyid + "' >" + o.companyname + "</option>");
+                });
+                $("select[name=fxtcompanyid]").empty().append(customerarray.join(""));
+                //赋值             
+                if (selval > 0) $("select[name=fxtcompanyid]").val(selval);
+            });
+        } else {
+            $("input[name=fxtcompanyname]").val("");
+            $("select[name=fxtcompanyid]").empty().append(customerarray.join(""));
+            $("select[name=fxtcompanyid]").val("");
+        }
+    });
+    //获取从属公司名称
+    $("select[name=fxtcompanyid]").change(function () {
+        $("input[name=fxtcompanyname]").val($(this).find("option:selected").text());
+    });
+</script>
+</script>

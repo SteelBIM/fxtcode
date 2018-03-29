@@ -1,0 +1,95 @@
+﻿@using FXT.DataCenter.Infrastructure.Data.ServicesImpl
+@using FXT.DataCenter.WebUI.Infrastructure.WebSecurity
+
+@helper DisplayUrl(int code)
+{
+    var productModuleCodes = Passport.Current.AccessedModules.Where(m => m.cityid == Passport.Current.CityId);
+
+    var secondMenu = productModuleCodes.Where(m => m.parentmodulecode == code).OrderBy(m => m.modulecode).FirstOrDefault();
+
+    if (secondMenu == null)
+    {
+    @String.Empty
+    }
+    else
+    {
+        var firstOrDefault = new Menu().GetMenuByTypeCode(secondMenu.modulecode).FirstOrDefault();
+        if (firstOrDefault == null)
+        {
+            return;
+        }
+        var url = firstOrDefault.URL;
+    @url
+    }
+}
+
+<div class="header-inner">
+    <!-- BEGIN LOGO -->
+    <a class="navbar-brand" href="/Search/Search/Welcome">
+        <img src="@Url.Content("~/Content/assets/img/logo.png")" alt="logo" class="img-responsive" />
+    </a>
+    <!-- END LOGO -->
+    <!-- BEGIN HORIZANTAL MENU -->
+    <div class="hor-menu hidden-sm hidden-xs" style="margin-left: 20px;">
+        <ul class="nav navbar-nav">
+            <li><a class="thickbox" href="/Login/CityReplace/Index?TB_iframe=true&height=250&width=400" id="cutoverCity" title="切换城市">@Passport.Current.CityName </a></li>
+
+            @{
+                var productModuleCodes = Passport.Current.AccessedFirstModules.Where(m => m.cityid == Passport.Current.CityId).OrderBy(m => m.modulecode);
+            }
+
+            @foreach (var item in productModuleCodes)
+            { 
+                <li><a href="@DisplayUrl(item.modulecode)" title="@item.CodeName">@item.CodeName </a></li>
+            }
+
+            <li><a href="/Company/Company/Index">商家/企业</a></li>
+        </ul>
+    </div>
+    <!-- END HORIZANTAL MENU -->
+    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+    <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <img src="@Url.Content("~/Content/assets/img/menu-toggler.png")" alt="" />
+    </a>
+    <!-- END RESPONSIVE MENU TOGGLER -->
+    <!-- BEGIN TOP NAVIGATION MENU -->
+    <ul class="nav navbar-nav pull-right">
+        <!-- BEGIN EXCEL DOWNLOAD -->
+        @* <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+            Excel下载管理
+            </a>
+        </li>*@
+        <!-- END EXCEL DOWNLOAD -->
+        <!-- BEGIN USER LOGIN DROPDOWN -->
+        <li class="dropdown user"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+            data-hover="dropdown" data-close-others="true" style="padding-top: 10px;">
+            <span class="username">@if (!string.IsNullOrEmpty(Passport.Current.ID))
+                                   {
+                                       var trueName = string.IsNullOrEmpty(Passport.Current.TrueName) ? Passport.Current.ID : Passport.Current.TrueName;
+                                       var userName = "欢迎您！" + trueName;
+                @userName
+                                   }
+
+            </span><i class="icon-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                @{
+                    var roles = Passport.Current.Roles;
+                }
+                @if (roles.Any(m => m.RoleName == "管理员"))
+                {
+                    <li><a href="/Authorize/Role/Index"><i class="icon-tasks"></i>权限管理
+                    </a></li>
+                }
+@* <li class="divider"></li>
+                <li><a href="#"><i class="icon-download-alt"></i>Excel下载管理 </a></li>*@
+                <li class="divider"></li>
+                <li><a href="/login/LoginOut"><i class="icon-key"></i>注销 </a>
+                </li>
+
+            </ul>
+        </li>
+        <!-- END USER LOGIN DROPDOWN -->
+    </ul>
+    <!-- END TOP NAVIGATION MENU -->
+</div>

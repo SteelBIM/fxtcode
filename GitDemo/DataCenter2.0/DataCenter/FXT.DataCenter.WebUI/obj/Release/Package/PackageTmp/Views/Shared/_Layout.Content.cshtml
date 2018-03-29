@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <link href="@Url.Content("~/Content/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+  <link href="@Url.Content("~/Content/assets/css/metro.css")" rel="stylesheet" />
+  <link href="@Url.Content("~/Content/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+  <link href="@Url.Content("~/Content/assets/css/style.css")" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/content/Assets/select2/select2.css")" />
+     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/bootstrap-datepicker/css/datepicker.css")" />
+  <link rel="stylesheet" type="text/css" href="@Url.Content("/content/styles/admin.main.css")" />
+  @RenderSection("PageSpecificStyleSheetIncludes", required: false)
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body>
+   
+        @RenderSection("MainContent", required: false)
+        @RenderBody()
+
+        <div style="height: 80px;">
+        </div>  
+  
+    @RenderSection("OtherContent", required: false)
+    <!-- BEGIN JAVASCRIPTS -->
+  <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-1.8.3.min.js")"></script>
+  <script src="~/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+  <script type="text/javascript" src="@Url.Content("~/Content/assets/bootstrap/js/bootstrap.min.js")"></script>  
+  <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.validate.min.js")"></script>	
+  <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.validate.unobtrusive.min.js")"></script>	
+  <script type="text/javascript" src="@Url.Content("/content/scripts/jquery.numeric.js")"></script>
+  <script type="text/javascript" src="@Url.Content("~/Content/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("/content/scripts/jquery.ui.datapicker-zh-CN.js")"></script>*@
+  <script type="text/javascript" src="@Url.Content("~/Content/Assets/bootstrap-datepicker/js/bootstrap-datepicker.js")"></script>
+  <script type="text/javascript" src="@Url.Content("~/Content/assets/select2/select2.min.js")"></script>	
+  <script type="text/javascript" src="@Url.Content("/content/scripts/admin.edit.js")"></script>	
+    @RenderSection("PageSpecificJavascriptIncludes", required: false)
+    <!-- END JAVASCRIPTS -->
+        <!-- loading mask -->
+    <div id="over" class="over"></div>
+    <div id="overlay" class="overlay" style="background: url('@Url.Content("~/Content/Images/loadingmask.gif")') 50% 50% no-repeat;"></div>
+</body>
+<!-- END BODY -->
+</html>

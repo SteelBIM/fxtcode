@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "贷后押品管理--登录";
+    Layout = "";
+}
+<style type="text/css">    
+/*form*/
+.user_ipt,.pw_ipt,.ipt_focus{ background:url(/Content/img/login_input.png) no-repeat; padding:10px; width:230px; height:45px; line-height:45px; border:0 none; font-size:16px;  font-family:'Microsoft YaHei'; color:#333333;}
+.user_ipt{ background-position:0 0;}
+.pw_ipt{ background-position:0 -45px;}
+.ipt_focus{ background-position:0 -90px;}
+.mr10{margin-right:10px;}
+.mt50{margin-top:50px;}
+.tc{text-align:center;}
+.blue_btn2,.blue_btn2:hover{ text-decoration:none; background:url(/Content/img/btn.png) no-repeat; width:119px; height:30px; line-height:30px; display:inline-block; *display:inline;*zoom:1; text-align:center; color:#FFFFFF; }
+.blue_btn2{ background-position:0 -60px }
+.blue_btn2:hover{ background-position:0 -90px }
+.login {border: 1px solid #AAAAAA;background: url(/Content/img/login_bg.jpg) repeat-x 0 0;height: 200px;width: 648px;margin: 200px auto 0;}
+</style>
+<script src="/Content/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.extend.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        //默认用户名、密码
+        $("#txtusername").val("admin@fxt");
+        $("#txtpassword").val("654321");
+
+        $(document).keydown(function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 13) {
+                $("#btnlogin").click();
+            }
+        });
+        $("#txtusername").focus(function () {
+            $(this).addClass("ipt_focus");
+        })
+        $("#txtpassword").focus(function () {
+            $(this).addClass("ipt_focus");
+        })
+        $("#txtusername").blur(function () {
+            if ($(this).val() == "") {
+                $(this).removeClass("ipt_focus");
+            }
+        })
+        $("#txtpassword").blur(function () {
+            if ($(this).val() == "") {
+                $(this).removeClass("ipt_focus");
+            }
+        })
+        $("#btnlogin").click(function () {
+            var username = $("#txtusername").val();
+            var password = $("#txtpassword").val();
+            if (username == null || username == "") {
+                alert("用户名不能为空");
+                $("#txtusername").focus()
+                return;
+            }
+            if (password == null || password == "") {
+                alert("密码不能为空");
+                $("#txtpassword").focus()
+                return;
+            }
+            $.extendAjax({
+                type: "post",
+                url: "/Home/UserLogin",
+                data: { userName: username, userPwd: password },
+                isBlockUI:false
+            }, function (rdata) {
+                if (rdata.type == 1) {
+                    window.location.href = "/";
+                } else {
+                    alert(rdata.message);
+                }
+                $("#btnlogin").val("登录");
+                $("#btnlogin").removeAttr("disabled");
+            });
+        });
+    });
+</script>
+<div class="page-container login"> 
+    <div class="pt30">        
+        <form class="tc">
+            <p class="mt50">
+                <input type="text" id="txtusername" class="user_ipt mr10" />
+                <input type="password" id="txtpassword" class="pw_ipt" />
+            </p>
+            <p class="mt20"><a href="javascript:;" id="btnlogin" class="blue_btn2">登录</a></p>                
+            <div id="TipError" class="infotips infotips_error dn"></div>
+		    <div id="TipSuccess" class="infotips infotips_suc dn"></div>  
+        </form> 
+    </div>   
+</div>
+

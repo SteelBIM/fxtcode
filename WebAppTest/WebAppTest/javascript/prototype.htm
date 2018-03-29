@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.getName = function () {
+            return this.name;
+        }
+
+        function Author(name,books) {
+            Person.call(this, name);
+            this.books = books;
+        }
+        Author.prototype = new Person();
+        Author.prototype.constructor = Author;
+        Author.prototype.getBooks = function () {
+            return this.books;
+        }
+
+        var a = new Author("谭", "乐");
+        alert(a.getName());
+        alert(a.getBooks());
+        //
+        function extend(subclass, superclass) {
+            var F = function () { };
+            F.prototype = superclass.prototype;
+            subclass.prototype = new F();
+            subclass.prototype.constructor = subclass;
+
+            subclass.superclass = superclass.prototype;
+            if (superclass.prototype.constructor = Object.prototype.constructor) {
+                superclass.prototype.constructor = superclass;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

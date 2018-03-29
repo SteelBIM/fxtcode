@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "新增、编辑项目配套";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using FXT.DataCenter.Domain.Models
+@model LNK_P_Appendage
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+        .p5
+        {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+        .p5 label
+        {
+            width: 100px;
+        }
+        .p5 select
+        {
+            width: 133px;
+        }
+        #hourslider
+        {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+        .scrollBar
+        {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        tr
+        {
+            height: 60px;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(function() {
+            $("#btnSubmit").unbind();
+            $("#btnSubmit").on("click", function() {
+                var length = $("#p_aname").val().length;
+                if (length > 255) {
+                    alert("配套信息不能超过255个字符！");
+                    return false;
+                }
+
+                $("#mainForm").submit();
+            });
+
+        });
+    </script>
+}
+@section  MainContent{
+<div class="row-fluid">
+   
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;">
+            <tr>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color: Red;">*</b>配套类型:
+                </td>
+                <td>@Html.DropDownListFor(m => m.appendagecode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "2008001", Text = "会所" },
+                   new SelectListItem { Value = "2008002", Text = "超市" },
+                   new SelectListItem { Value = "2008003", Text = "幼儿园" },
+                   new SelectListItem { Value = "2008004", Text = "无轨公交" },
+                   new SelectListItem { Value = "2008005", Text = "银行" },
+                   new SelectListItem { Value = "2008006", Text = "学校" },
+                   new SelectListItem { Value = "2008007", Text = "医院" },
+                   new SelectListItem { Value = "2008008", Text = "公园" },
+                   new SelectListItem { Value = "2008009", Text = "商场" },
+                   new SelectListItem { Value = "2008010", Text = "菜市场" },
+                   new SelectListItem { Value = "2008011", Text = "其他配套" },
+                   new SelectListItem { Value = "2008012", Text = "有轨公交" },
+                   new SelectListItem { Value = "2008013", Text = "道路通达度" },
+                   new SelectListItem { Value = "2008014", Text = "停车状况" },
+                   new SelectListItem { Value = "2008015", Text = "污染状况" },
+                   new SelectListItem { Value = "2008016", Text = "人文环境" },
+                   new SelectListItem { Value = "2008017", Text = "自然环境" },
+                   new SelectListItem { Value = "2008018", Text = "基础设施" },
+                   new SelectListItem { Value = "2008019", Text = "厌恶设施" },
+                   new SelectListItem { Value = "2008020", Text = "增值因素" }
+               }, new { @class = "m-wrap small" })
+                </td>
+                <td>
+                    是否内部:
+                </td>
+                <td>@Html.DropDownListFor(m => m.isinner, new List<SelectListItem> { 
+                   new SelectListItem { Value = "false", Text = "否" },
+                   new SelectListItem { Value = "true", Text = "是" }
+               }, new { @class = "m-wrap small" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.area, new { @class = "m-wrap small" })
+                </td>
+                <td>
+                    配套信息:
+                </td>
+                <td>@Html.TextBoxFor(m => m.p_aname, new { @class = "m-wrap small" })
+                </td>
+            </tr>
+            <tr>
+                <td class="td">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配套等级:
+                </td>
+                <td>@Html.DropDownListFor(m => m.classcode, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1012001", Text = "优" } ,
+               new SelectListItem { Value = "1012002", Text = "良" } ,
+               new SelectListItem { Value = "1012003", Text = "一般" } ,
+               new SelectListItem { Value = "1012004", Text = "差" } ,
+               new SelectListItem { Value = "1012005", Text = "很差" }
+           }, new { @class = "m-wrap small" })
+                   <input type="hidden" value="@(ViewBag.projectid)" id="projectid" name="projectid" />
+                    <input type="hidden" value="@(Model==null?0:Model.id)" id="id" name="id" />
+                </td>
+            </tr>
+        </table>
+ 
+</div>
+}

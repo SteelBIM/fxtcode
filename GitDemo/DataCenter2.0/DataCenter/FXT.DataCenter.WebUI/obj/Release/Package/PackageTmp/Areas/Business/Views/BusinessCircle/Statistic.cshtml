@@ -1,0 +1,87 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<FXT.DataCenter.Domain.Models.DTO.SubAreaBizStatisticDTO>
+@{
+    ViewBag.Title = "商业基础数据";
+}
+@section Javascript{
+    <script type="text/javascript">
+        
+        $("#navigation .breadcrumb li:eq(1)").remove();
+        $("#navigation .breadcrumb li:eq(2)").remove();
+        var html = " <li><span><a href=\"/Business/BusinessCircle/Index\">商业基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+         html += "<li><span>统计</span></li>";
+
+        $("ul.breadcrumb").append(html);
+    </script>
+}
+@section StyleSheet{
+    <style type="text/css">
+        .dataTables_filter select { 
+            width:150px;
+        }
+    </style>
+}
+<div class="row-fluid">
+    <div class="span4">
+        <div></div>
+    </div>
+    <div class="span8">
+        @using (Html.BeginForm(null, null, null, FormMethod.Get, new { id = "search" }))
+        { 
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn">
+                        搜索 <i class="icon-search"></i>
+                    </button>
+                </label>
+                <label>
+                    <span>行政区：</span>
+                    @Html.DropDownList("AreaId")
+                </label>
+            </div>
+        }
+    </div>
+</div>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>行政区
+            </th>
+            <th>商业圈数
+            </th>
+            <th>商业街数
+            </th>
+            <th>商业楼栋数
+            </th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var m in Model)
+            {
+               
+<tr>
+               
+                <td>
+                    @m.AreaName
+            </td>
+                <td>
+                    @m.SubAreaBizQuantity
+            </td>
+                <td>
+                    @m.ProjectBizQuantity
+            </td>
+                <td>
+                    @m.BuildingBizQuantity
+        </td>
+              
+            </tr>
+            }
+        }
+</tbody>
+</table>
+
+

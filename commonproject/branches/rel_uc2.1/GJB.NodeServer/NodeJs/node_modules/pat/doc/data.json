@@ -1,0 +1,2851 @@
+{
+    "project": {},
+    "files": {
+        "../lib/cultures/deAT.js": {
+            "name": "../lib/cultures/deAT.js",
+            "modules": {
+                "cultures": 1
+            },
+            "classes": {
+                "cultures.deAT": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../lib/cultures/deDE.js": {
+            "name": "../lib/cultures/deDE.js",
+            "modules": {},
+            "classes": {
+                "cultures.deDE": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../lib/cultures/enUS.js": {
+            "name": "../lib/cultures/enUS.js",
+            "modules": {},
+            "classes": {
+                "cultures.enUS": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../lib/flavors/java.js": {
+            "name": "../lib/flavors/java.js",
+            "modules": {
+                "flavors": 1
+            },
+            "classes": {
+                "flavors.java": 1,
+                "flavors.java.Formatter": 1,
+                "flavors.java.Formatter.util": 1,
+                "flavors.java.Formatter.number": 1,
+                "flavors.java.Formatter.number.localize": 1,
+                "flavors.java.Scanner": 1,
+                "flavors.java.Scanner.tokenCategories": 1,
+                "flavors.java.Parser": 1
+            },
+            "fors": {
+                "flavors.java.Scanner": 1,
+                "flavors.java.Parser": 1,
+                "flavors.java": 1
+            },
+            "namespaces": {
+                "flavors": 1
+            }
+        },
+        "../lib/pat.js": {
+            "name": "../lib/pat.js",
+            "modules": {
+                "pat": 1
+            },
+            "classes": {
+                "Formatter": 1,
+                "Formatter.util": 1,
+                "Formatter.util.number": 1,
+                "Formatter.util.date": 1,
+                "Formatter.number": 1,
+                "Formatter.date": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "pat": {
+            "name": "pat",
+            "submodules": {
+                "cultures": 1,
+                "flavors": 1
+            },
+            "classes": {
+                "cultures.deAT": 1,
+                "cultures.deDE": 1,
+                "cultures.enUS": 1,
+                "flavors.java": 1,
+                "flavors.java.Formatter": 1,
+                "flavors.java.Formatter.util": 1,
+                "flavors.java.Formatter.number": 1,
+                "flavors.java.Formatter.number.localize": 1,
+                "flavors.java.Scanner": 1,
+                "flavors.java.Scanner.tokenCategories": 1,
+                "flavors.java.Parser": 1,
+                "Formatter": 1,
+                "Formatter.util": 1,
+                "Formatter.util.number": 1,
+                "Formatter.util.date": 1,
+                "Formatter.number": 1,
+                "Formatter.date": 1
+            },
+            "fors": {
+                "flavors.java.Scanner": 1,
+                "flavors.java.Parser": 1,
+                "flavors.java": 1
+            },
+            "namespaces": {
+                "flavors": 1
+            },
+            "tag": "module",
+            "file": "../lib/pat.js",
+            "line": 1158,
+            "description": "Represents a data formatter. Data to be formatted is described by format\nspecifiers of a certain flavor.\n\nSupported format specifiers:\n\n+    Java (java.util.Formatter)",
+            "license": "FreeBSD License",
+            "date": "2012-06-27",
+            "author": "Michael Pecherstorfer"
+        },
+        "cultures": {
+            "name": "cultures",
+            "submodules": {},
+            "classes": {
+                "cultures.deAT": 1,
+                "cultures.deDE": 1,
+                "cultures.enUS": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/cultures/enUS.js",
+            "line": 6,
+            "description": "Culture specific information."
+        },
+        "flavors": {
+            "name": "flavors",
+            "submodules": {},
+            "classes": {
+                "flavors.java": 1,
+                "flavors.java.Formatter": 1,
+                "flavors.java.Formatter.util": 1,
+                "flavors.java.Formatter.number": 1,
+                "flavors.java.Formatter.number.localize": 1,
+                "flavors.java.Scanner": 1,
+                "flavors.java.Scanner.tokenCategories": 1,
+                "flavors.java.Parser": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {
+                "flavors": 1
+            },
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/flavors/java.js",
+            "line": 776,
+            "description": "Formatting data described by format specifiers of a certain flavor."
+        }
+    },
+    "classes": {
+        "cultures.deAT": {
+            "name": "cultures.deAT",
+            "shortname": "cultures.deAT",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "cultures",
+            "namespace": "",
+            "file": "../lib/cultures/deAT.js",
+            "line": 6,
+            "description": "German language. Austrian culture.",
+            "static": 1
+        },
+        "cultures.deDE": {
+            "name": "cultures.deDE",
+            "shortname": "cultures.deDE",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "cultures",
+            "namespace": "",
+            "file": "../lib/cultures/deDE.js",
+            "line": 6,
+            "description": "German language. German culture.",
+            "static": 1
+        },
+        "cultures.enUS": {
+            "name": "cultures.enUS",
+            "shortname": "cultures.enUS",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "cultures",
+            "namespace": "",
+            "file": "../lib/cultures/enUS.js",
+            "line": 6,
+            "description": "English language. US culture.",
+            "static": 1
+        },
+        "flavors.java": {
+            "name": "flavors.java",
+            "shortname": "flavors.java",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 7,
+            "description": "Represents a data formatter that parses format specifiers known from Java's\nFormatter class (java.util.Formatter).\n\nThe module includes a Scanner, a Parser and the format function. It exports\nitself as a Node module, an AMD module or to the global scope, depending on\nthe environment.",
+            "static": 1
+        },
+        "flavors.java.Formatter": {
+            "name": "flavors.java.Formatter",
+            "shortname": "flavors.java.Formatter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 65,
+            "description": "Java flavored data formatter.",
+            "static": 1
+        },
+        "flavors.java.Formatter.util": {
+            "name": "flavors.java.Formatter.util",
+            "shortname": "flavors.java.Formatter.util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 71,
+            "description": "Utility functions.",
+            "static": 1
+        },
+        "flavors.java.Formatter.number": {
+            "name": "flavors.java.Formatter.number",
+            "shortname": "flavors.java.Formatter.number",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 104,
+            "description": "Java flavored number formatter.",
+            "static": 1
+        },
+        "flavors.java.Formatter.number.localize": {
+            "name": "flavors.java.Formatter.number.localize",
+            "shortname": "flavors.java.Formatter.number.localize",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 127,
+            "description": "Java number localization algorithm.",
+            "static": 1
+        },
+        "flavors.java.Scanner": {
+            "name": "flavors.java.Scanner",
+            "shortname": "flavors.java.Scanner",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 306,
+            "description": "Allocates a new Scanner for Java format specifiers.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "input",
+                    "description": "String or character array to be scanned",
+                    "type": "String|Array"
+                }
+            ],
+            "return": {
+                "description": "New Scanner instance",
+                "type": "Scanner"
+            }
+        },
+        "flavors.java.Scanner.tokenCategories": {
+            "name": "flavors.java.Scanner.tokenCategories",
+            "shortname": "flavors.java.Scanner.tokenCategories",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 317,
+            "description": "Different categories of scanned tokens.",
+            "static": 1
+        },
+        "flavors.java.Parser": {
+            "name": "flavors.java.Parser",
+            "shortname": "flavors.java.Parser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors",
+            "file": "../lib/flavors/java.js",
+            "line": 776,
+            "description": "Allocates a new Parser for Java format specifiers.",
+            "is_constructor": 1,
+            "return": {
+                "description": "New Parser instance",
+                "type": "Parser"
+            }
+        },
+        "Formatter": {
+            "name": "Formatter",
+            "shortname": "Formatter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 231,
+            "description": "Allocates a new formatter with the specified options.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Formatter"
+            }
+        },
+        "Formatter.util": {
+            "name": "Formatter.util",
+            "shortname": "Formatter.util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 446,
+            "description": "Utility functions.",
+            "static": 1
+        },
+        "Formatter.util.number": {
+            "name": "Formatter.util.number",
+            "shortname": "Formatter.util.number",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 548,
+            "description": "Number utility functions.",
+            "static": 1
+        },
+        "Formatter.util.date": {
+            "name": "Formatter.util.date",
+            "shortname": "Formatter.util.date",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 662,
+            "description": "Date utility functions for the Gregorian calendar.",
+            "static": 1
+        },
+        "Formatter.number": {
+            "name": "Formatter.number",
+            "shortname": "Formatter.number",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 951,
+            "description": "Number formatter.",
+            "static": 1
+        },
+        "Formatter.date": {
+            "name": "Formatter.date",
+            "shortname": "Formatter.date",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "pat",
+            "namespace": "",
+            "file": "../lib/pat.js",
+            "line": 1158,
+            "description": "Functions ought to format date components.",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 19,
+            "license": "FreeBSD License",
+            "date": "2012-06-27",
+            "author": "Michael Pecherstorfer",
+            "class": "flavors.java",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 77,
+            "description": "Appends or prepends spaces to the given array until it has the given\nlength.",
+            "static": 1,
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "spacePad",
+            "params": [
+                {
+                    "name": "array",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "width",
+                    "description": "Resulting width of the given array",
+                    "type": "Number"
+                },
+                {
+                    "name": "[prepend",
+                    "description": "= false] Whether to append or prepend to the\n       given array",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Formatter.util"
+            },
+            "class": "flavors.java.Formatter.util",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 110,
+            "description": "Default mantissa precision for number strings in computerized\nscientific notation.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "DEFAULT_PRECISION",
+            "type": "{Number}",
+            "class": "flavors.java.Formatter.number",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 118,
+            "description": "Default exponent width (excluding 'e' and sign) for number strings\nin computerized scientific notation.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "DEFAULT_MIN_EXPONENT_WIDTH",
+            "type": "{Number}",
+            "class": "flavors.java.Formatter.number",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 133,
+            "final": "@static",
+            "itemtype": "property",
+            "name": "ASCII_ZERO ASCII code for '0' (48)",
+            "type": "{Number}",
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 139,
+            "final": "@static",
+            "itemtype": "property",
+            "name": "ASCII_9 ASCII code for '9' (57)",
+            "type": "{Number}",
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 146,
+            "description": "Java number localization algorithm.\nEach digit character d in the string is replaced by a culture-specific\ndigit computed relative to the current culture's zero digit z; that is\nd - '0' + z.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "digits",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Character array representing the Number to be localized",
+                    "type": "Array"
+                }
+            ],
+            "para": "{Object} culture Culture specific information",
+            "return": {
+                "description": "undefined"
+            },
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 169,
+            "description": "Java number localization algorithm.\nIf a decimal separator is present, a culture-specific decimal separator\nis substituted.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "decimalSeparator",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Character array representing the Number to be localized",
+                    "type": "Array"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "undefined"
+            },
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 185,
+            "description": "Java number localization algorithm.\nIf the ',' ('\\u002c') flag is given, then the culture-specific grouping\nseparator is inserted by scanning the integer part of the string from\nleast significant to most significant digits and inserting a separator\nat intervals defined by the culture's grouping size.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "groupingSeparator",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Character array representing the Number to be localized",
+                    "type": "Array"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "result": "undefined",
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 209,
+            "description": "Java number localization algorithm.\nIf the '0' flag is given, then the culture-specific zero digits are\ninserted after the sign character, if any, and before the first non-zero\ndigit, until the length of the string is equal to the requested field\nwidth.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "localize",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Character array representing the Number to be localized",
+                    "type": "Array"
+                },
+                {
+                    "name": "width",
+                    "description": "Length of the resulting string",
+                    "type": "Number"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "undefined"
+            },
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 240,
+            "description": "Java flavored number localization algorithm.\n\nIf the value is negative and the '(' flag is given, then a '(' is\nprepended and a ')' is appended.\n\nIf the value is negative and '(' flag is not given, then a '-' is\nprepended.\n\nIf the '+' flag is given and the value is positive or zero, then a '+'\nwill be prepended.\n\nIf the ' ' flag is given and the value is positive or zero, then a ' '\nwill be prepended.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "sign",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Character array representing the Number to be localized",
+                    "type": "Array"
+                },
+                {
+                    "name": "opt",
+                    "description": "Sign options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "undefined"
+            },
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 275,
+            "description": "Java localization algorithm for number strings.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "localizeNumber",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Number string to be localized",
+                    "type": "String"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture-specific information",
+                    "type": "Object"
+                },
+                {
+                    "name": "width",
+                    "description": "The result's minimum width",
+                    "type": "Number"
+                },
+                {
+                    "name": "options",
+                    "description": "Localization options (Options of a parsed token)",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The localized number string",
+                "type": "String"
+            },
+            "class": "flavors.java.Formatter.number.localize",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 323,
+            "description": "Represents a token of general conversion type.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "general",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 330,
+            "description": "Represents a token to be formatted as a character.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "character",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 337,
+            "description": "Represents a token to be formatted as an integer.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "integral",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 344,
+            "description": "Represents a token to be formatted as a floating point number.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "floatingPoint",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 351,
+            "description": "Represents a token to be formatted as a date.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "datetime",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 358,
+            "description": "Represents the percent literal token.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "percent",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 365,
+            "description": "Represents the line separator literal token.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "lineSeparator",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 372,
+            "description": "Represents a string token.",
+            "final": "@static",
+            "itemtype": "property",
+            "name": "text",
+            "type": "{Number}",
+            "class": "flavors.java.Scanner.tokenCategories",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 380,
+            "description": "Resets this Scanner's state.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "reset",
+            "return": {
+                "description": "",
+                "type": "Scanner"
+            },
+            "class": "flavors.java.Scanner",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 396,
+            "description": "Sets or returns this Scanner's input.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "input",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "String or character array to be scanned",
+                    "type": "String|Array",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "This Scanner if called as setter, this Scanner's\n        current input if called as getter.",
+                "type": "Scanner|Array"
+            },
+            "class": "flavors.java.Scanner",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 410,
+            "description": "Throws an error using the given hint for the error message.\nThe error message includes the relevant input substring, the index of\nthe error prone character within the input, and the given hint.",
+            "itemtype": "method",
+            "name": "err",
+            "params": [
+                {
+                    "name": "hint",
+                    "description": "To be included in the error message",
+                    "type": "String"
+                }
+            ],
+            "class": "flavors.java.Scanner",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 709,
+            "description": "Returns true if it's possible to scan another token, false otherwise.",
+            "itemtype": "method",
+            "name": "hasNext",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "flavors.java.Scanner",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 720,
+            "description": "Returns the next token or undefined if there is no more text to scan.",
+            "itemtype": "method",
+            "name": "next",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "flavors.java.Scanner",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 787,
+            "description": "Parses a format specifier of conversion type 'general'.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseGeneral",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 818,
+            "description": "Parses a format specifier of conversion type 'character'",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseCharacter",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "String or Unicode code point",
+                    "type": "String|Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 845,
+            "description": "Parses a symbolic number.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseSymbolicNumber",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 863,
+            "description": "Parses a decimal integer.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseDecInt",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 882,
+            "description": "Parses an octal integer.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseOctInt",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 912,
+            "description": "Parses a hexadecimal integer.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseHexInt",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 949,
+            "description": "Parses a format specifier of conversion type 'integral'.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseIntegral",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Any"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 977,
+            "description": "Parses decimal floats.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseDecimalFloat",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1000,
+            "description": "Parses computerized scientific floats.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseComputerizedScientificFloat",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1025,
+            "description": "Parses computerized scientific floats.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseGeneralScientificFloat",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1064,
+            "description": "Parses hexadecimal exponential floats.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseGeneralScientificFloat",
+            "params": [
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1075,
+            "description": "Parses a format specifier of conversion type 'floatingPoint'.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseFloatingPoint",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Any"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1106,
+            "description": "Parses a format specifier of conversion type 'datetime'",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseDatetime",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Date"
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1281,
+            "description": "Applies the given token to the given format argument.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "parseToken",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Token to be parsed",
+                    "type": "Object"
+                },
+                {
+                    "name": "fmtArg",
+                    "description": "Value to be formatted",
+                    "type": "Any",
+                    "optional": true
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Parser"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1320,
+            "description": "Parses the given input.",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "String or character array to be parsed",
+                    "type": "String|Array"
+                },
+                {
+                    "name": "fmtArgs",
+                    "description": "Data to be formatted",
+                    "type": "Array",
+                    "optional": true
+                },
+                {
+                    "name": "fmtOpt",
+                    "description": "Format options",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Formatted data",
+                "type": "String"
+            },
+            "class": "flavors.java.Parser",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/flavors/java.js",
+            "line": 1350,
+            "description": "Formats the given arguments described by the given formatstring.",
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "fstr",
+                    "description": "Format string",
+                    "type": "String"
+                },
+                {
+                    "name": "args",
+                    "description": "Data to be formatted",
+                    "type": "Array",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Formatted data",
+                "type": "String"
+            },
+            "class": "flavors.java",
+            "module": "pat",
+            "submodule": "flavors",
+            "namespace": "flavors"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 241,
+            "description": "Default options for a new Formatter.\nOverwrite this property if you intend to allocate several formatters with\ndefault options different to those initially specified by this module.",
+            "static": 1,
+            "itemtype": "property",
+            "name": "defaultOptions",
+            "type": "{Object}",
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 250,
+            "description": "Resets the Formatter.",
+            "static": 1,
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "reset",
+            "return": {
+                "description": "",
+                "type": "Formatter"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 261,
+            "description": "Tests if the given argument represents a valid culture object.\nThrows an error if it is not valid.",
+            "static": 1,
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "validateCulture",
+            "params": [
+                {
+                    "name": "culture",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Formatter"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 324,
+            "description": "Sets the Formatter options or returns them if called without an argument.",
+            "static": 1,
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "options",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Formatter options:\n\n     {\n         path: './',\n         flavorId: 'flavorId',\n         cultureId: 'cultureId',\n         lineSeparator: '\\n'\n     }",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "\n     Formatter if called as setter, Formatter options if called as getter",
+                "type": "Formatter|Object"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 348,
+            "description": "Formats the given arguments described by the given formatstring.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "fstr",
+                    "description": "Format string",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "Data to be formatted",
+                    "type": "Any",
+                    "optional": true,
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "Formatted data",
+                "type": "String"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 360,
+            "description": "Sets this Formatter's options or returns them if called without an\nargument.",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "options",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Formatter options:\n             \n     {\n         path: './',\n         flavorId: 'flavorId',\n         cultureId: 'cultureId',\n         lineSeparator: '\\n'\n     }",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "This Formatter's options if called as a getter, `this`\n        if called as a setter",
+                "type": "Object"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 423,
+            "description": "Formats the given arguments described by the given formatstring.",
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "fstr",
+                    "description": "Format string",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "Data to be formatted",
+                    "type": "Any",
+                    "optional": true,
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "Formatted data",
+                "type": "String"
+            },
+            "class": "Formatter",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 452,
+            "description": "Returns true if the given arg is an Array, false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isArray",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 462,
+            "description": "Returns true if the given arg is a String, false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isString",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 472,
+            "description": "Returns the argument, a character array or an array of length 1\ncontaining the argument depending whether the argument is an array,\na string or any other value.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "toArray",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 486,
+            "description": "Concatenates the given argument n-1 times with itself and returns the\nresulting string.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "concat",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "[n",
+                    "description": "= 1]",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 499,
+            "description": "Appends or prepends the given character to the given string until the\nresulting string has the specified length.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "pad",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "Append or prepend to this string",
+                    "type": "String"
+                },
+                {
+                    "name": "[ch",
+                    "description": "= ' '] Character to be appended or prepended",
+                    "type": "String"
+                },
+                {
+                    "name": "[len",
+                    "description": "= String(str).length] Length of the resulting string",
+                    "type": "Number"
+                },
+                {
+                    "name": "[left",
+                    "description": "= false] Prepend if true, append otherwise",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 521,
+            "description": "Prepends the given character to the given string until the resulting\nstring has the specified length.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "padLeft",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "Prepend to this string",
+                    "type": "String"
+                },
+                {
+                    "name": "[ch",
+                    "description": "= ' '] Character to be prepended",
+                    "type": "String"
+                },
+                {
+                    "name": "[len",
+                    "description": "= String(str).length] Length of the resulting string",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 534,
+            "description": "Appends the given character to the given string until the resulting\nstring has the specified length.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "padRight",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "Append to this string",
+                    "type": "String"
+                },
+                {
+                    "name": "[ch",
+                    "description": "= ' '] Character to be appended",
+                    "type": "String"
+                },
+                {
+                    "name": "[len",
+                    "description": "= String(str).length] Length of the resulting string",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.util",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 554,
+            "description": "Greatest precise integer value in JavaScript.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MAX_INT",
+            "type": "{Number}",
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 562,
+            "description": "Greatest precise integer value in two's complement range.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MAX_SIGNED_INT",
+            "type": "{Number}",
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 570,
+            "description": "Smallest precise integer value in two's complement range.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MIN_SIGNED_INT",
+            "type": "{Number}",
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 579,
+            "description": "Returns true if the given number is less than zero or negative zero.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isSigned",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 590,
+            "description": "Returns the given argument rounded to the given precision.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "round",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Number to be rounded",
+                    "type": "Number"
+                },
+                {
+                    "name": "precision",
+                    "description": "Number of precise fractional digits. A\n       falsy value specifies fractional precision of 0.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 604,
+            "description": "Returns the given argument as a Number within the range\n[Formatter.util.number.MIN_SIGNED_INT, Formatter.util.number.MAX_SIGNED_INT].",
+            "static": 1,
+            "itemtype": "method",
+            "name": "signedInt",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 622,
+            "description": "Returns a decimal integer representing two's complement of the given\nnumber.\n\nA JavaScript Number is a double-precision floating-point as specified by\nthe IEEE 754 standard. All positive integers up to 2^53 are represented\nprecisely, numbers beyond that threshold get their least significant bits\nclipped (((Math.pow(2,53) + 1) - Math.pow(2,53) results to 0, not 1).\n\nThe argument is therefore interpreted as an integer within the range\n[-2^52, 2^52-1]. A floating point argument is truncated, an argument out\nof the expected range is set to the smallest or to the greatest precise\nvalue depending on whether the argument is smaller than -2^52 or greater\nthan 2^52-1.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "twosComplement",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 649,
+            "description": "Returns true if the given argument represents a symbolic number (NaN,\nPOSITIVE_INFINITY, NEGATIVE_INFINITY), false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isSymbolicNumber",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 668,
+            "description": "Milliseconds per hour.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MILLISECONDS_PER_HOUR",
+            "type": "Number",
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 676,
+            "description": "Milliseconds per day.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MILLISECONDS_PER_DAY",
+            "type": "Number",
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 684,
+            "description": "Milliseconds per week.",
+            "final": 1,
+            "static": 1,
+            "itemtype": "property",
+            "name": "MILLISECONDS_PER_WEEK",
+            "type": "Number",
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 693,
+            "description": "Returns the UNIX timestamp of the given date. The UNIX timestamp\ndescribes a UTC date as number of seconds elapsed since the beginning\nof the UNIX epoche (Midnight, 1970-01-01). Milliseconds of the given\ndate are truncated.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "timestamp",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 706,
+            "description": "Returns the number of days for the specified month.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "daysOfMonth",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 720,
+            "description": "Returns the number of days for the specified year.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "daysOfYear",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "(Date is interpreted as a UTC value)",
+                    "type": "Date|Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 730,
+            "description": "Returns true if the specified year is a leap year, false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isLeapYear",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "(Date is interpreted as a UTC value)",
+                    "type": "Date|Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 741,
+            "description": "Returns the culture-specific weekday of the given date. The first day\nof the week corresponds to 0, the last day to 6.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "dayOfWeek",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 753,
+            "description": "Returns the day of the year specified by the given date. The first day\nof the year corresponds to 1.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "dayOfYear",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 772,
+            "description": "Returns a date representing the n-th day of the week specified by the\ngiven date.",
+            "example": [
+                "\n        var d = new Date('2012-07-04T00:00Z'), //Wednesday\n            c = { firstDayOfWeek: 1 }; //culture with Monday as first weekday\n            \n        Formatter.util.date.nthDayOfWeek(\n            d, c, 0); //Date representing '2012-07-02T00:00'\n            \n        Formatter.util.date.nthDayOfWeek(\n            d, c, 6); //Date representing '2012-07-08T00:00'"
+            ],
+            "static": 1,
+            "itemtype": "method",
+            "name": "nthDayOfWeek",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                },
+                {
+                    "name": "n",
+                    "description": "In [0,6]",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 798,
+            "description": "Returns a date representing the first day of the week specified by\nthe given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "firstDayOfWeek",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 810,
+            "description": "Returns a date representing the first day of the week specified by\nthe given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "lastDayOfWeek",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 822,
+            "description": "Returns a date representing the first day of the month specified by\nthe given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "firstDayOfMonth",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 833,
+            "description": "Returns a date representing the last day of the month specified by the\ngiven date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "lastDayOfMonth",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 848,
+            "description": "Returns a date representing the first day of the specified year.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "firstDayOfYear",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "(Date is interpreted as a UTC value)",
+                    "type": "Date|Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 862,
+            "description": "Returns a date representing the last day of the specified year.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "lastDayOfYear",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "(Date is interpreted as a UTC value)",
+                    "type": "Date|Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Date"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 879,
+            "description": "Returns the ISO-8601 week specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isoWeek",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 898,
+            "description": "Returns the century specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "century",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 908,
+            "description": "Returns the number of past centuries specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "pastCenturies",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 918,
+            "description": "Returns true if the time specified by the given date is in the range\n[00:00, 12:00). Returns false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isAM",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 934,
+            "description": "Returns true if the time specified by the given date is in the range\n[12:00, 00:00). Returns false otherwise.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isPM",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Formatter.util.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 957,
+            "description": "Returns the given number in hexadecimal exponential form.\n<br/><br/>\nDetails on hexadecimal exponential encoding:\n<ul>\n<li><a href=\"http://en.wikipedia.org/wiki/Hexadecimal#Hexadecimal_exponential_notation\">http://en.wikipedia.org/wiki/Hexadecimal#Hexadecimal_exponential_notation</a></li>\n<li><a href=\"http://de.wikipedia.org/wiki/IEEE_754\">http://de.wikipedia.org/wiki/IEEE_754</a></li>\n<li><a href=\"http://www.2ality.com/2012/04/number-encoding.html\">http://www.2ality.com/2012/04/number-encoding.html</a></li>\n<li><a href=\"http://osr507doc.sco.com/en/topics/FltPtOps_DeNormNums.html\">http://osr507doc.sco.com/en/topics/FltPtOps_DeNormNums.html</a></li>\n</ul>",
+            "static": 1,
+            "itemtype": "method",
+            "name": "toHexExp",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Number compatibel argument",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Hex exponential form of the given string",
+                "type": "String"
+            },
+            "class": "Formatter.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1014,
+            "description": "Returns a string representing the given number in decimal form.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "toDecimal",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Number compatible value to be formatted",
+                    "type": "Any"
+                },
+                {
+                    "name": "options",
+                    "description": "Formatting options. Default values:\n\n    {\n        precision: undefined,   // Number of significant fractional digits. Data\n                                // type limited for falsy values other than 0.\n        considerZeroSign: false // Whether to return a sign for negative zero or not\n    }",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1084,
+            "description": "Returns a string representing the given number in scientific notation.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "toScientific",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "Number compatible value to be formatted",
+                    "type": "Any"
+                },
+                {
+                    "name": "options",
+                    "description": "Formatting options. Default values:\n\n    {\n        precision: undefined,   // Mantissa precision. Data type limited for falsy\n                                // values other than 0.\n        expMinWidth: 1,         // Min width of the exponent (excl. 'e' and sign).\n        upperCase: false,       // Whether to use 'e' or 'E' for the exponent.\n        considerZeroSign: false // Whether to return a sign for negative zero or not\n    }",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.number",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1165,
+            "description": "Returns a string representing the specified year.\n\nNegative years are formatted with the prefix '-' by default. Set the\noption property `bcPrefix` or `bcPostfix` to change the default behavior.\nNote that setting a non-falsy postfix implies the prefix ''.\n\nThe number of digits in the resulting string depends on the option\nproperties `maxDigits` and `leadingZeros`.\nThe resulting year is zero padded if `maxDigits` is greater than the\nnumber of year digits and `leadingZeros` is set to true.\nMost significant digits of the resulting year are truncated if `maxDigits`\nis less than the number of year digits. In that case leading zeros are\nalso truncated except `leadingZeros` is set to true.",
+            "example": [
+                "\n        var d = new Date('2012-01-01T00:00Z');\n        Formatter.date.year(d); //'2012'\n        Formatter.date.year(d, {maxDigits:3}); //'12'\n        Formatter.date.year(d, {maxDigits:3, leadingZeros:true}); //'012'\n        Formatter.date.year(d, {maxDigits:5, leadingZeros:true}); //'02012'\n        \n        d = new Date(Date.UTC(-2012, 1));\n        Formatter.date.year(d); //'-2012'\n        Formatter.date.year(d, {bcPostfix: ' BC.'}); //'2012 BC.'\n        Formatter.date.year(d, {bcPrefix: 'BC.'}); //'BC.2012'"
+            ],
+            "static": 1,
+            "itemtype": "method",
+            "name": "year",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "options",
+                    "description": "Format options. Default values are:\n\n       {\n           bcPrefix: '-',\n           bcPostfix: '',\n           leadingZeros: false\n           maxDigits: number of year digits\n       }",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1222,
+            "description": "Returns a string representing the day of the year specified by the\ngiven date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "dayOfYear",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZeros",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1236,
+            "description": "Returns a string representing the month specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "month",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZero",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1249,
+            "description": "Returns a string representing the day of the month specified by the\ngiven date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "dayOfMonth",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZero",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1263,
+            "description": "Returns the culture-specific month name specfied by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "monthName",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1274,
+            "description": "Returns the culture-specific abbreviated month name specfied by the\ngiven date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "abbreviatedMonthName",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1286,
+            "description": "Returns the culture-specific weekday name specfied by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "weekdayName",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1297,
+            "description": "Returns the culture-specific abbreviated weekday name specfied by\nthe given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "abbreviatedWeekdayName",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1309,
+            "description": "Returns the formatted hours specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "hours",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZero",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "h12",
+                    "description": "Hours in [1,12]?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1326,
+            "description": "Returns the formatted minutes specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "minutes",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZero",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1338,
+            "description": "Returns the formatted seconds specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "seconds",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZero",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1350,
+            "description": "Returns the formatted milliseconds specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "milliseconds",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZeros",
+                    "description": "Zero padded result?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1365,
+            "description": "Returns a string representing the morning/afternoon designator for the\ntime specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "timeDesignator",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "culture",
+                    "description": "Culture information",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1379,
+            "description": "Returns a string representing the given date's time zone offset from UTC.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "timezoneOffset",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a date with the same timezone as\n       provided by the host OS.",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1391,
+            "description": "Returns a string representing the time zone abbreviation specified by\nthe given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "abbreviatedTimezone",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a date with the same timezone as\n       provided by the host OS.",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1404,
+            "description": "Returns a string representing the 24h time specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "time",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZeros",
+                    "description": "Zero padded time components?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        },
+        {
+            "file": "../lib/pat.js",
+            "line": 1417,
+            "description": "Returns a string representing the 12h time specified by the given date.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "time12",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "Interpreted as a UTC value",
+                    "type": "Date"
+                },
+                {
+                    "name": "leadingZeros",
+                    "description": "Zero padded time components?",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "designator",
+                    "description": "Including time designator (AM/PM)?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Formatter.date",
+            "module": "pat"
+        }
+    ]
+}

@@ -1,0 +1,550 @@
+﻿@using FXT.DataCenter.Domain.Models;
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "编辑用户权限";
+    var provincelist = ViewBag.pclist as IEnumerable<FXT.DataCenter.WebUI.Areas.Authorize.Controllers.UserController.ProvinceCityList>;
+    var roles = ViewBag.roles == null ? new List<SYS_Role>() : ViewBag.roles as IEnumerable<SYS_Role>;
+}
+
+@section StyleSheet{
+    <style type="text/css">
+        li {
+            list-style: none;
+        }
+
+        .controls {
+            width: 80%;
+        }
+
+        #project {
+            text-align: center;
+        }
+
+        .btn {
+            margin: 3px;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var data = @Html.Raw(ViewBag.data);
+        Array.prototype.Contains = function (element) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == element) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        function getUnlimitValue(isremove)
+        {   
+            var userRole;
+            $.each(data, function (n, value) {
+                if (value.CityID === 0) {
+                    userRole = value;
+                    if (isremove === true) {
+                        data.splice(n,1);
+                    }
+                    return false;
+                }
+            });
+            return userRole;
+        }
+        $(document).ready(function () {
+            var result = "<tr><th style=\"width:200px;\">城市名称</th><th>权限</th></tr>";
+            $.each(data, function (n, value) {
+                if (value.RoleIDs != "") {
+                    var str = "<td>" + value.CityName + "</td><td>" + value.RoleNames + "</td>";
+                    result += "<tr>" + str + "</tr>";
+                }
+            });
+            $("#project").html(result);
+
+            $(".btnProvinceRole").click(function () {
+                var provinceArray = new Array();
+                $(this).next('table').find('input').each(function(n,value){
+                    provinceArray.push($(value).attr("id").replace("CityID", ""));
+                });
+                var dataProvinceCityCount = 0;
+                var commonRolesIDs = new Array();
+                $.each(data,function(n,value){
+                    if (provinceArray.Contains(value.CityID)) {
+                        dataProvinceCityCount = dataProvinceCityCount + 1;
+                        if (commonRolesIDs.length == 0) {
+                            commonRolesIDs = value.RoleIDs.split(',');
+                        }
+                        else {
+                            var tempCommonRolesIDs = new Array();
+                            $.each(value.RoleIDs.split(','),function(n1,value1){
+                                if (commonRolesIDs.Contains(value1)) {
+                                    tempCommonRolesIDs.push(value1);
+                                }
+                            });
+                            commonRolesIDs = tempCommonRolesIDs;
+                        }
+                    }
+                });
+                var selectedRole = new Array();
+                var unlimitRoles = getUnlimitValue();
+                if(unlimitRoles){
+                    if (dataProvinceCityCount == provinceArray.length) {
+                        selectedRole = commonRolesIDs;
+                    }
+                    else {
+                        selectedRole = unlimitRoles.RoleIDs.split(',');
+                    }
+                }
+                else if(dataProvinceCityCount == provinceArray.length){
+                    selectedRole = commonRolesIDs;
+                }
+                $("input[name=Users2Roles]").each(function () {
+                    if (selectedRole.Contains($(this).val())) {
+                        $(this).prop("checked", true);
+                    }
+                    else{
+                        $(this).prop("checked", false);
+                    }
+                    $.uniform.update();
+                });
+
+                var ProvinceID = $(this).attr("id").replace("ProvinceID", "");
+                var pclass = "." + $(this).attr("id");
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () {
+                        //权限
+                        var RoleIDs = "";
+                        var RoleNames = "";
+                        $("input[name=Users2Roles]").each(function () {
+                            if ($(this).prop("checked") == true) {
+                                RoleIDs += $(this).val() + ",";
+                                RoleNames += $(this).attr("class") + ",";
+                            }
+                        });
+                        RoleIDs = RoleIDs == "" ? "" : RoleIDs.substr(0, RoleIDs.length - 1);
+                        RoleNames = RoleNames == "" ? "" : RoleNames.substr(0, RoleNames.length - 1);
+                        $(pclass).each(function () {
+                            var cityid = $(this).attr("id").replace("CityID", "");
+                            var cityname = $(this).val();
+                            for (var i = 0; i < data.length; i++) {
+                                if (data[i] &&data[i].CityID == cityid) {
+                                    flag = true;
+                                    data.splice(i, 1);
+                                }
+                            }
+                        });
+                        unlimitRoles = getUnlimitValue(true);
+                        if (unlimitRoles) {
+                            var isContain = true;
+                            var inputArray = unlimitRoles.RoleIDs.split(",");
+                            var countlength = 0;
+                            $.each(RoleIDs.split(","),function(n,value){
+                                if(!inputArray.Contains(value)){
+                                    isContain = false;
+                                }
+                                else {
+                                    countlength = countlength + 1;
+                                }
+                            });
+                            if (!isContain && countlength == inputArray.length) {
+                                $(pclass).each(function () {
+                                    var cityid = $(this).attr("id").replace("CityID", "");
+                                    var cityname = $(this).val();
+                                    if (RoleIDs != "") {
+                                        var abc = new Object();
+                                        abc.CityID = cityid;
+                                        abc.CityName = cityname;
+                                        abc.RoleIDs = RoleIDs;
+                                        abc.RoleNames = RoleNames;
+                                        data.push(abc);
+                                    }
+                                });
+                                data.push(unlimitRoles);
+                            }
+                            else if(RoleIDs != unlimitRoles.RoleIDs){
+                                $(".btnCityRole").each(function(n,value){
+                                    var userPermission = new Object();
+                                    var mycityID = $(value).attr("id").replace("CityID", "");
+                                    var mycityName = $(value).val();
+                                    if (provinceArray.Contains(mycityID)) {
+                                        userPermission.RoleIDs = RoleIDs;
+                                        userPermission.RoleNames = RoleNames;
+                                    }
+                                    else {
+                                        userPermission.RoleIDs = unlimitRoles.RoleIDs;
+                                        userPermission.RoleNames = unlimitRoles.RoleNames;
+                                    }
+                                    userPermission.CityID = mycityID;
+                                    userPermission.CityName = mycityName;
+                                    data.push(userPermission);
+                                });
+                            }
+                            else {
+                                data.push(unlimitRoles);
+                            }
+                        }
+                        else {
+                            $(pclass).each(function () {
+                                var cityid = $(this).attr("id").replace("CityID", "");
+                                var cityname = $(this).val();
+                                if (RoleIDs != "") {
+                                    var abc = new Object();
+                                    abc.CityID = cityid;
+                                    abc.CityName = cityname;
+                                    abc.RoleIDs = RoleIDs;
+                                    abc.RoleNames = RoleNames;
+                                    data.push(abc);
+                                }
+                            });
+                        }
+                        var project = "<tr><th style=\"width:200px;\">城市名称</th><th>权限</th></tr>";
+                        $.each(data, function (n, value) {
+                            if (value.RoleIDs != "") {
+                                var str = "<td>" + value.CityName + "</td><td>" + value.RoleNames + "</td>";
+                                project += "<tr>" + str + "</tr>";
+                            }
+                        });
+                        $("#project").html(project);
+                        top.tb_remove();
+                    }
+                });
+            });
+
+            $(".btnCityRole").click(function () {
+                var CityID = $(this).attr("id").replace("CityID", "");
+                var CityName = $(this).val();
+                var checkarr = new Array();
+                var unlimitRoles = getUnlimitValue();
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].CityID == CityID) {
+                        checkarr = (data[i].RoleIDs).split(',');
+                    }
+                };
+                if (unlimitRoles && checkarr.length == 0) {
+                    checkarr = unlimitRoles.RoleIDs.split(',');
+                }
+                $("input[name=Users2Roles]").each(function () {
+                    $(this).prop("checked", false);
+                    if (checkarr.Contains($(this).val())) {
+                        $(this).prop("checked", true);
+                        $.uniform.update();
+                    }
+                    $.uniform.update();
+                });
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () {
+                        //权限
+                        var RoleIDs = "";
+                        var RoleNames = "";
+                        $("input[name=Users2Roles]").each(function () {
+                            if ($(this).prop("checked") == true) {
+                                RoleIDs += $(this).val() + ",";
+                                RoleNames += $(this).attr("class") + ",";
+                            }
+                        });
+                        RoleIDs = RoleIDs == "" ? "" : RoleIDs.substr(0, RoleIDs.length - 1);
+                        RoleNames = RoleNames == "" ? "" : RoleNames.substr(0, RoleNames.length - 1);
+                        unlimitRoles = getUnlimitValue(true);
+                        $.each(data,function(n,value){
+                            if (value && value.CityID == CityID) {
+                                data.splice(n, 1);
+                            }
+                        });
+                        if(unlimitRoles){
+                            var isContain = true;
+                            var inputArray = unlimitRoles.RoleIDs.split(",");
+                            var countlength = 0;
+                            $.each(RoleIDs.split(","),function(n,value){
+                                if(!inputArray.Contains(value)){
+                                    isContain = false;
+                                }
+                                else {
+                                    countlength = countlength + 1;
+                                }
+                            });
+                            if (!isContain && countlength == inputArray.length) {
+                                var userPermission = new Object();
+                                userPermission.CityID = CityID;
+                                userPermission.CityName = CityName;
+                                userPermission.RoleIDs = RoleIDs;
+                                userPermission.RoleNames = RoleNames;
+                                data.push(userPermission);
+                                data.push(unlimitRoles);
+                            }
+                            else if (RoleIDs != unlimitRoles.RoleIDs) {
+                                $(".btnCityRole").each(function(n,value){
+                                    var userPermission = new Object();
+                                    var mycityID = $(value).attr("id").replace("CityID", "");
+                                    var mycityName = $(value).val();
+                                    if (mycityID == CityID) {
+                                        userPermission.RoleIDs = RoleIDs;
+                                        userPermission.RoleNames = RoleNames;
+                                    }
+                                    else {
+                                        userPermission.RoleIDs = unlimitRoles.RoleIDs;
+                                        userPermission.RoleNames = unlimitRoles.RoleNames;
+                                    }
+                                    userPermission.CityID = mycityID;
+                                    userPermission.CityName = mycityName;
+                                    if (userPermission.RoleIDs != "") {
+                                        data.push(userPermission);
+                                    }
+                                });
+                            }
+                            else {
+                                data.push(unlimitRoles);
+                            }
+                        }
+                        else if(RoleIDs != ""){
+                            var userPermission = new Object();
+                            userPermission.CityID = CityID;
+                            userPermission.CityName = CityName;
+                            userPermission.RoleIDs = RoleIDs;
+                            userPermission.RoleNames = RoleNames;
+                            data.push(userPermission);
+                        }
+                        var project = "<tr><th style=\"width:200px;\">城市名称</th><th>权限</th></tr>";
+                        $.each(data, function (n, value) {
+                            if (value.RoleIDs != "") {
+                                var str = "<td>" + value.CityName + "</td><td>" + value.RoleNames + "</td>";
+                                project += "<tr>" + str + "</tr>";
+                            }
+                        });
+                        $("#project").html(project);
+                        top.tb_remove();
+                    }
+                });
+            });
+
+            $("#btnAllRole").click(function () {
+                var checkarr = new Array();
+                $.each(data,function(n,value){
+                    if (value.CityID == 0) {
+                        $.each(value.RoleIDs.split(','),function(n1,value1){
+                            checkarr.push(value1);
+                        });
+                    }
+                });
+
+                $("input[name=Users2Roles]").each(function () {
+                    $(this).prop("checked", false);
+                    if (checkarr.Contains($(this).val())) {
+                        $(this).prop("checked", true);
+                        $.uniform.update();
+                    }
+                    $.uniform.update();
+                });
+
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () {
+                        //权限
+                        var RoleIDs = "";
+                        var RoleNames = "";
+                        $("input[name=Users2Roles]").each(function () {
+                            if ($(this).prop("checked") == true) {
+                                RoleIDs += $(this).val() + ",";
+                                RoleNames += $(this).attr("class") + ",";
+                            }
+                        });
+                        RoleIDs = RoleIDs == "" ? "" : RoleIDs.substr(0, RoleIDs.length - 1);
+                        RoleNames = RoleNames == "" ? "" : RoleNames.substr(0, RoleNames.length - 1);
+
+                        var unlimitRoles = getUnlimitValue(true);
+                        if (unlimitRoles) {
+                            var unlimitRoleIDs = RoleIDs.split(",");
+                            var unlimitRoleNames = RoleNames.split(",");
+                            var oldUnlimitRoleIDs = unlimitRoles.RoleIDs.split(",");
+                            var oldUnlimitRoleNames = unlimitRoles.RoleNames.split(",");
+                            $.each(data,function(n,value){
+                                if (value && RoleIDs == value.RoleIDs) {
+                                    data.splice(n,1);
+                                    return true;
+                                }
+                                var purposeRolesIDs = new Array();
+                                var purposeRoleNames = new Array();
+                                var commonRolesIDs = new Array();
+                                var commonRoleNames = new Array();
+                                var selectRolesIDs = value.RoleIDs.split(",");
+                                var selectRoleNames = value.RoleNames.split(",");
+                                for (var i = 0; i < selectRolesIDs.length; i++) {
+                                    if (!oldUnlimitRoleIDs.Contains(selectRolesIDs[i])) {
+                                        purposeRolesIDs.push(selectRolesIDs[i]);
+                                        purposeRoleNames.push(selectRoleNames[i]);
+                                    }
+                                }
+                                for (var i = 0; i < unlimitRoleIDs.length; i++) {
+                                    if (oldUnlimitRoleIDs.Contains(unlimitRoleIDs[i])) {
+                                        commonRolesIDs.push(unlimitRoleIDs[i]);
+                                        commonRoleNames.push(unlimitRoleNames[i]);
+                                    }
+                                }
+                                $.each(purposeRolesIDs,function(n1,value1){
+                                    commonRolesIDs.push(purposeRolesIDs[n1]);
+                                    commonRoleNames.push(purposeRoleNames[n1])
+                                });
+                                value.RoleIDs = commonRolesIDs.join(",");
+                                value.RoleNames = commonRoleNames.join(",");
+                            });
+                            if (RoleIDs != "") {
+                                unlimitRoles.RoleIDs = RoleIDs;
+                                unlimitRoles.RoleNames = RoleNames;
+                                data.push(unlimitRoles);
+                            }
+                        }
+                        else {
+                            data = [];
+                            var abc = new Object();
+                            abc.CityID = 0;
+                            abc.CityName = "不限";
+                            abc.RoleIDs = RoleIDs;
+                            abc.RoleNames = RoleNames;
+                            data.push(abc);
+                        }
+
+                        var project = "<tr><th style=\"width:200px;\">城市名称</th><th>权限</th></tr>";
+                        $.each(data, function (n, value) {
+                            if (value.RoleIDs != "") {
+                                var str = "<td>" + value.CityName + "</td><td>" + value.RoleNames + "</td>";
+                                project += "<tr>" + str + "</tr>";
+                            }
+                        });
+                        $("#project").html(project);
+                        top.tb_remove();
+                    }
+                });
+                return false;
+            });
+
+            $("#btnsubmit").click(function () {
+                var dataresult = "";
+                var unlimitRoles = getUnlimitValue();
+                $.each(data, function (n, value) {
+                    if (unlimitRoles && value.CityID != 0) {
+                        var rolesids = new Array();
+                        var unlimitRoleIDs = unlimitRoles.RoleIDs.split(",");
+                        $.each(value.RoleIDs.split(","),function(n1,value1){
+                            if (!unlimitRoleIDs.Contains(value1)) {
+                                rolesids.push(value1);
+                            }
+                        })
+                        if (rolesids.length > 0) {
+                            dataresult += ";{\"CityID\":\"" + value.CityID + "\",\"RoleIDs\":\"" + rolesids.join(",") + "\"}";
+                        }
+                    }
+                    else if (value.RoleIDs != "") {
+                        dataresult += ";{\"CityID\":\"" + value.CityID + "\",\"RoleIDs\":\"" + value.RoleIDs + "\"}";
+                    }
+                });
+                if (confirm("确认保存？")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("Edit")",
+                        data: { UserName: "@ViewBag.UserName", dataresult: dataresult },
+                        traditional: true,
+                        success: function (data) {
+                            if (data) {
+                                location.reload();
+                            } else {
+                                alert("操作失败！");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+<div class="row-fluid">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "search", @class = "form-inline" }))
+    { 
+        <div class="control-group">
+            <label class="control-label">
+                <span class="required"></span>用户ID：@Html.TextBox("UserId", ViewBag.UserName as string, new { Readonly = "readonly" })</label>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                <span class="required">*</span>角色区域：</label>
+            <div class="controls">
+                <table id="project">
+                </table>
+                <table style="margin: 30px 10px;">
+                    <tr>
+                        <td>
+                            <button class="btn blue" type="button" id="btnsubmit"><i class="icon-ok"></i>保存</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                <span class="required">*</span>城市：<input type="button" title="不限" class="btn thickbox" id="btnAllRole" value="不限" alt="#TB_inline?height=200&width=600&inlineId=Role" /></label>
+            <div class="controls">
+                <div>
+                @foreach (var provinceid in provincelist)
+                {
+                    var pclass = "ProvinceID" + @provinceid.ProvinceId;
+                    var pclassAll = "ProvinceID" + @provinceid.ProvinceId + "All";
+                    <ul class="ProvinceList" >
+                        <li>
+                            @*<input name="@pclassAll" class="ProvinceListLi" id="@pclass" style="border: none;" type="checkbox" value="@provinceid.ProvinceId">*@
+                            <label></label>
+                            <input type="button" title="@provinceid.ProvinceName" class="btnProvinceRole btn thickbox" id="@pclass" value="@provinceid.ProvinceName" alt="#TB_inline?height=200&width=600&inlineId=Role" />
+                            <table>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            @foreach (var cityid in provinceid.CityList)
+                                            {
+                                                var cclass = "CityID" + @cityid.CityID;
+                                                <li style="display: inline-block;">
+                                                    @*<input name="@pclass" class="CityListLi" id="@cclass" style="border: none;" type="checkbox" value="@cityid.CityName">*@
+                                                    <input type="button" title="@cityid.CityName" class="@pclass btnCityRole btn thickbox" id="@cclass" value="@cityid.CityName" alt="#TB_inline?height=200&width=600&inlineId=Role" />
+                                                </li> 
+                                            }
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div id="Role" style="display: none;">
+    <div class="row-fluid">
+        <table>
+            <tr>
+                <td><span class="required">*</span>角色：</td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        @foreach (var item in roles)
+                        {
+                            <li style="display: inline-block;">
+                                <label>
+                                    <input name="Users2Roles" class="@item.RoleName" style="border: none;display:inline-block;" type="checkbox" value="@item.ID" />@item.RoleName
+                                </label>
+                            </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

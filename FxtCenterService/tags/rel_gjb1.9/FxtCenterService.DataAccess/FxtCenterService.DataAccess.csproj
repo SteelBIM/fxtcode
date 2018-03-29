@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51B84AE2-AD35-45BF-AAB4-B7CBEB6A1EAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtCenterService.DataAccess</RootNamespace>
+    <AssemblyName>FxtCenterService.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.DataAccess.BaseDAModels">
+      <HintPath>..\..\..\CommonDLL\CAS.DataAccess.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\..\CommonDll\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="CityTableDA.cs" />
+    <Compile Include="DATAvgPriceMonthDA.cs" />
+    <Compile Include="DatBuildingDA.cs" />
+    <Compile Include="DATCaseDA.cs" />
+    <Compile Include="DATCompanyDA.cs" />
+    <Compile Include="DatHouseDA.cs" />
+    <Compile Include="DATProjectAvgPriceDA.cs" />
+    <Compile Include="DatProjectDA.cs" />
+    <Compile Include="DATQueryHistoryDA.cs" />
+    <Compile Include="LNKPAppendageDA.cs" />
+    <Compile Include="LNKPCompanyDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\SQLName.cs" />
+    <Compile Include="SYSAreaDA.cs" />
+    <Compile Include="SYSCityDA.cs" />
+    <Compile Include="SYSCodeDA.cs" />
+    <Compile Include="SysCodePriceDA.cs" />
+    <Compile Include="SYSProvinceDA.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\DATProjectList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Configuration\SYSCityTableList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectInfoGetByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectDropDownList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\BuildingBaseList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\DATBuildingList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\FloorOrUnitDropDownList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\HouseDropDownList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\getdatcaselist.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectDetailInfo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectPhoto.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectTrend.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectCase.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\AutoPrice\ProjectList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\AutoPrice\BuildingList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\AutoPrice\FloorNoList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\AutoPrice\HouseList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\AutoPrice\ProjectDetail.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\getdatcaselistbycalculate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectAvgPrice.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetProjectAroundCase.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Code\CodeList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Code\CodePriceList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetBaseCaseList.sql" />
+    <EmbeddedResource Include="SQL\Project\OtherChannelCasePrice.sql" />
+    <EmbeddedResource Include="SQL\Project\SameProjectCasePrice.sql" />
+    <EmbeddedResource Include="SQL\Project\AvgPriceTrend.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetMapPrice.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\CityArea\ProvinceList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\CityArea\CityList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\CityArea\AreaList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\getdatcaselistbycalculateForSpecial.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\getdatcaselistForSpecial.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Common\CAS.Common.csproj">
+      <Project>{FA2001F0-7369-4521-924E-05EFF30462F0}</Project>
+      <Name>CAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\commonproject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\CityAreaAvgPriceTrend.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectCaseCount.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\CityArea\GetCityCaseMonth.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\ProjectInfo\ProjectDetails.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetQueryHistoryList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\DATCompany\GetDATCompanyByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectSubInfoByProjIdAndComId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectParentInfoByProjIdAndComId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\PCompany\GetPCompanyByCompanyIdAndProjectId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\BuildingInfoGetByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\HouseInfoGetByName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\PCompany\GetPCompanyByProjectId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetPAppendageByProjectId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectInfoGetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\BuildingInfoGetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\HouseInfoGetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\ProjectInfoGetByNames.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\AreaAvgPriceTrend.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Project\GetMatchingData.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

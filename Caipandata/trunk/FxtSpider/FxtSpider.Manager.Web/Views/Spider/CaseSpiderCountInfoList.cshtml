@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "抓取后台维护与管理_案例爬取管理_案例析取详情";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section bootstraplink{
+    <!--表格相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <!--表单相关-->
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/colorpicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/datepicker.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/uniform.css" />
+    <link rel="stylesheet" href="/bootstrap/matrix-admin00/css/bootstrap-wysihtml5.css" />
+}
+@section bootstrapscript{ 
+    <!--表单相关-->   
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-colorpicker.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-datepicker.js"></script> 
+    @*ie8报错*@
+    @*<script src="/bootstrap/matrix-admin00/js/jquery.toggle.buttons.html"></script>*@ 
+    <script src="/bootstrap/matrix-admin00/js/masked.js"></script> 
+     @*ie8报错*@
+    <script src="/Scripts/Spider/CaseSearch-matrix.form_common.js" type="text/javascript"></script>
+    <script src="/bootstrap/matrix-admin00/js/wysihtml5-0.3.0.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/jquery.peity.min.js"></script> 
+    <script src="/bootstrap/matrix-admin00/js/bootstrap-wysihtml5.js"></script>
+}
+@section link{
+  <link type="text/css" rel="Stylesheet" href="/Css/Spider/CaseSpiderCountInfoList.css" />
+}
+@section script{ 
+    <script type="text/javascript" src="/Scripts/Spider/CaseSpiderCountInfoList.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SetLeftMenu("2_2");
+        });
+    </script>
+}<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box" id="dataPanel" style="display:none;">
+          <div class="widget-title"> 
+            <div class="dataTables_length  dataTables_length2">
+                <label>
+                    计算周期:
+                    <select id="selectDate">
+                         <option value="byWeek" selected="selected">--按周--</option>
+                         <option value="byDays">--按天--</option>
+                    </select>
+                </label>
+            </div>
+            <div class="dataTables_length  dataTables_length5 byWeek byDate">
+                <label>
+                    变化浮动(超过): 
+                    <select id="selectFloatValue" class="selectFloatValue">
+                         <option value="0" selected="selected">--全部--</option>
+                         <option value="0.05">5%</option>
+                         <option value="0.1">10%</option>
+                         <option value="0.2">20%</option>
+                    </select>
+                    <input type="hidden" id="floatValue" value=""/>
+                </label>
+            </div>
+            <div class="dataTables_length  dataTables_length3 byWeek byDate">
+              <button class="btn icon-search btn-inverse" id="btnSearch">查询</button>
+            </div>
+          </div>
+          <div class="widget-content nopadding2 tablepanel2" style="display:none;" id="caseCount"></div>
+          <div class="widget-content nopadding tablepanel">
+             <!--按周数据-->
+             <div style="width:100%; display:none;" id="byWeekPanel" class="byWeek byDate">
+                <table class="table table-bordered data-table">
+              <thead>
+                <tr role="row" class="table2">
+                  <th>城市</th>
+                  <th>网站</th>
+                  <th>上周<br />(@ViewBag.lastWeek1-@ViewBag.lastWeek2)</th>
+                  <th>本周<br />(@ViewBag.week1-@ViewBag.week2)</th>
+                  <th>浮动值(<a href="javascript:;" class="floatValueOrder" data="FloatValue,desc">降序<font></font></a>|(<a href="javascript:;" class="floatValueOrder" data="FloatValue,asc">升序<font></font></a>)</th>
+                  <th>入库</th>
+                  <th>未入库</th>
+                </tr>
+              </thead>
+              <tbody id="caseList_week" data="">
+                <tr class="gradeX" id="caseRom_week" style="display:none">
+                  <td class="center spiderCity">城市_数据</td>
+                  <td class="center spiderWeb">网站_数据</td>
+                  <td class="center lastWeekCount">
+                      <font>
+                        上周_数据
+                      </font>
+                      <a href="javascript:;" data-cityId="" data-webId="" data-startDate="" data-endDate="">(失败详情)</a>
+                  </td>
+                  <td class="center weekCount">
+                      <font>
+                        本周_数据
+                      </font>
+                      <a href="javascript:;" data-cityId="" data-webId="" data-startDate="" data-endDate="">
+                        (失败详情)
+                      </a>
+                  </td>
+                  <td class="center floatValue">浮动值_数据</td>
+                  <td class="center importCount">入库_数据</td>
+                  <td class="center notImportCount">未入库</td>
+                </tr>
+              </tbody>
+              
+            </table>
+                <input type="hidden" value="" id="nowDataJsonValue_week" />
+                <input type="hidden" id="orderByValue_week" value="" />
+             </div>
+             <!--按天数据-->
+             <div style="width:100%;" id="byDaysPanel" class="byDays byDate">
+                <table class="table table-bordered data-table">
+                    <thead>
+                        <tr role="row" class="table2">
+                            <th>城市</th>
+                            <th>网站</th>
+                            @foreach (string dateStr in ViewBag.NowDates)
+                            {
+                               <th data="@dateStr" class="nowDates">@dateStr</th>  
+                            }
+                        </tr>
+                    </thead>
+                    <tbody id="caseList_days" data="">
+                        <tr class="gradeX" id="caseRom_days" style="display:none">
+                            <td class="center spiderCity">城市_数据</td>
+                            <td class="center spiderWeb">网站_数据</td>
+                            @for (int i=0;i<ViewBag.NowDates.Count;i++)
+                            {
+                               <td  class="dateColumn_@i">
+                                 <font></font>
+                                 <a href="javascript:;" data-cityId="" data-webId="" data-startDate="" data-endDate="">(失败详情)</a>
+                               </td>  
+                            }
+                        </tr>
+                    </tbody>
+              
+                </table>
+                <input type="hidden" value="" id="nowDataJsonValue_days" />
+                <input type="hidden" id="orderByValue_days" value="" />
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtNHibernate.FxtTempDomain" namespace="FxtNHibernate.FxtTempDomain.Entities">
+	<class name="FxtNHibernate.FxtTempDomain.Entities.DATProject, FxtNHibernate.FxtTempDomain" table="DAT_Project">
+		<id name="ProjectId" column="ProjectId" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="ProjectName" column="ProjectName" type="string"  />
+		<property name="SubAreaId" column="SubAreaId" type="int"  />
+		<property name="FieldNo" column="FieldNo" type="string"  />
+		<property name="PurposeCode" column="PurposeCode" type="int"  />
+		<property name="Address" column="Address" type="string"  />
+		<property name="LandArea" column="LandArea" type="decimal"  />
+		<property name="StartDate" column="StartDate" type="DateTime"  />
+		<property name="UsableYear" column="UsableYear" type="int"  />
+		<property name="BuildingArea" column="BuildingArea" type="decimal"  />
+		<property name="SalableArea" column="SalableArea" type="decimal"  />
+		<property name="CubageRate" column="CubageRate" type="decimal"  />
+		<property name="GreenRate" column="GreenRate" type="decimal"  />
+		<property name="BuildingDate" column="BuildingDate" type="DateTime"  />
+		<property name="CoverDate" column="CoverDate" type="DateTime"  />
+		<property name="SaleDate" column="SaleDate" type="DateTime"  />
+		<property name="JoinDate" column="JoinDate" type="DateTime"  />
+		<property name="EndDate" column="EndDate" type="DateTime"  />
+		<property name="InnerSaleDate" column="InnerSaleDate" type="DateTime"  />
+		<property name="RightCode" column="RightCode" type="int"  />
+		<property name="ParkingNumber" column="ParkingNumber" type="int"  />
+		<property name="AveragePrice" column="AveragePrice" type="decimal"  />
+		<property name="ManagerTel" column="ManagerTel" type="string"  />
+		<property name="ManagerPrice" column="ManagerPrice" type="string"  />
+		<property name="TotalNum" column="TotalNum" type="int"  />
+		<property name="BuildingNum" column="BuildingNum" type="int"  />
+		<property name="Detail" column="Detail" type="string"  />
+		<property name="BuildingTypeCode" column="BuildingTypeCode" type="int"  />
+		<property name="UpdateDateTime" column="UpdateDateTime" type="DateTime"  />
+		<property name="OfficeArea" column="OfficeArea" type="decimal"  />
+		<property name="OtherArea" column="OtherArea" type="decimal"  />
+		<property name="PlanPurpose" column="PlanPurpose" type="string"  />
+		<property name="PriceDate" column="PriceDate" type="DateTime"  />
+		<property name="IsComplete" column="IsComplete" type="int"  />
+		<property name="OtherName" column="OtherName" type="string"  />
+		<property name="SaveDateTime" column="SaveDateTime" type="DateTime"  />
+		<property name="SaveUser" column="SaveUser" type="string"  />
+		<property name="Weight" column="Weight" type="decimal"  />
+		<property name="BusinessArea" column="BusinessArea" type="decimal"  />
+		<property name="IndustryArea" column="IndustryArea" type="decimal"  />
+		<property name="IsEValue" column="IsEValue" type="int"  />
+		<property name="PinYin" column="PinYin" type="string"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="AreaID" column="AreaID" type="int"  />
+		<property name="OldId" column="OldId" type="string"  />
+		<property name="CreateTime" column="CreateTime" type="DateTime"  />
+		<property name="AreaLineId" column="AreaLineId" type="int"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="SalePrice" column="SalePrice" type="decimal"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="PinYinAll" column="PinYinAll" type="string"  />
+		<property name="X" column="X" type="decimal"  />
+		<property name="Y" column="Y" type="decimal"  />
+		<property name="XYScale" column="XYScale" type="int"  />
+		<property name="Creator" column="Creator" type="string"  />
+		<property name="IsEmpty" column="IsEmpty" type="int"  />
+		<property name="TotalId" column="TotalId" type="int"  />
+		<property name="East" column="East" type="string"  />
+		<property name="West" column="West" type="string"  />
+		<property name="South" column="South" type="string"  />
+		<property name="North" column="North" type="string"  />
+		<property name="FxtProjectId" column="FxtProjectId" type="int"  />
+		<property name="Status" column="Status" type="int"  />
+				
+	</class>
+</hibernate-mapping>

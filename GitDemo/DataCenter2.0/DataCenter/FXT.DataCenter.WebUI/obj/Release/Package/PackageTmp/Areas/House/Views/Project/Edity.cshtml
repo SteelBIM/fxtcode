@@ -1,0 +1,1159 @@
+﻿@{
+    ViewBag.Title = "新增、编辑楼盘";
+}
+@using FXT.DataCenter.Domain.Models
+@model DAT_Project
+@section StyleSheet{
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .p5 {
+            padding: 0px;
+            padding-top: 5px;
+            line-height: 200%;
+            background: #fbfbfb;
+        }
+
+            .p5 label {
+                width: 100px;
+            }
+
+            .p5 select {
+                width: 133px;
+            }
+
+        #hourslider {
+            display: inline-block;
+            width: 120px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        .scrollBar {
+            width: 100%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .tr {
+            height: 50px;
+        }
+
+        .textarea {
+            resize: none;
+        }
+
+        .projectName {
+            width: 600px;
+            height: 100%;
+            float: left;
+        }
+
+        .projectName_div {
+            width: auto;
+            float: left;
+            height: 100%;
+        }
+
+        .projectName_buid {
+            width: auto;
+            float: left;
+            height: 100%;
+        }
+
+        .clare {
+            clear: both;
+        }
+
+        .GetCoordinate, .MapCallout {
+            display: none;
+        }
+
+        .xubox_layer {
+            top: 50px!important;
+        }
+
+        .btn{
+           padding:5px 14px;
+        }
+    </style>
+    <link href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+}
+@section Javascript{
+    <script src="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.min.js")" type="text/javascript"></script>
+    <!--//百度地图的文件-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var projectId = '@Model.projectid';
+        var proj_Name = '@Model.projectname.Replace("\r", "").Replace("\n", "")';
+        var por_areaId = '@Model.areaid';
+        var baiduMapOption = {
+            type: 1,
+            title: false,
+            closeBtn: false,
+            //closeBtn: [1,true],//控制层右上角关闭按钮。closeBtn的值分别为: [关闭按钮的风格（支持0和1）, true]若不想显示关闭按钮，配置 closeBtn: false即可
+            border: [5, 0.5, '#666', true],
+            offset: ['0px', ''],
+            move: ['.xubox_title', false],
+            area: ['860px', '500px'],
+            page: {
+                dom: "#baidumap"
+            },
+            success: function () {
+                layer.shift('top', 500);
+            }
+            //, close: function (index) {//层右上角关闭按钮的点击事件触发回调函数。
+            //    ClikcLng_Lat = [];
+            //    map.clearOverlays();
+            //    layer.close(index);
+
+            //}
+        };
+        $(function () {
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("House/Project/Edity")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = " <li><span><a href=\"/House/Project/Index\">住宅基础数据</a></span> <i class=\"icon-angle-right\"></i></li>";
+                if (proj_Name) {
+                    html += "<li><span>" + proj_Name + "</span></li>";
+                } else {
+                    html += "<li><span>楼盘编辑</span></li>";
+                }
+                $("ul.breadcrumb").append(html);
+            }
+            $("#Merger_projectname").select2();
+            $("#Description").select2();
+            $("tr[name='show']").hide();
+            $("#DeveCompanyName, #ManagerCompanyName").autocomplete('@Url.Action("GetCompany")', {
+                max: 10, //列表里的条目数 
+                minChars: 0, //自动完成激活之前填入的最小字符 
+                width: 132,
+                matchContains: true //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示 
+            });
+            $("#projectname").autocomplete('@Url.Action("GetProject")', {
+                max: 10, //列表里的条目数 
+                minChars: 0, //自动完成激活之前填入的最小字符 
+                width: 228,
+                matchContains: true //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示 
+            }).result(function (e, selval, attr) {
+                var sel_newval = (selval.toString().split("|"))[0];
+                $("#projectname").val("").val(sel_newval);
+                pinying(sel_newval, 0);
+            });
+            $("#areaid").change(function () {
+                var proname = $.trim($("#projectname").val());
+                var areaId = $(this).find("option:selected").val();
+                BindSubArea(areaId);
+            });
+            $("#click_ok").bind("click", function () {
+                if ($(this).text() == "展开∨") {
+                    $("tr[name='show']").show();
+                    $(this).text("收起∧");
+                } else {
+                    $("tr[name='show']").hide();
+                    $(this).text("展开∨");
+                }
+            });
+            $("button[type='reset']").click(function () {
+                $("input[type='text']").each(function () {
+                    $(this).val("");
+                });
+                $("select").each(function () {
+                    $("select option[value='-1']").attr("selected", true);
+                });
+                $("textarea").each(function () {
+                    $(this).text("");
+                });
+                return false;
+
+            });
+            $("#btnsubmit").click(function () {                
+                var projectName = $.trim($("#projectname").val());
+                var areaId = $("#areaid").find("option:selected").val();
+                var projectId = $("#projectid").val();
+                var startdate = $.trim($("#startdate").val());
+                var startenddate = $.trim($("#startenddate").val());
+
+                if (startdate != null || startenddate != null || startdate != "" || startenddate != "") {
+                    if (Date.parse(startenddate) - Date.parse(startdate) < 0) {
+                        alert("土地终止日期不得小于土地起始日期！")
+                        return false;
+                    }
+                }
+                if (projectName != "" && areaId > 1) {
+                    $.get('@Url.Action("ValidProject")', { projectId: projectId, projectname: projectName, areaId: areaId }, function (data) {
+                    if (data.flag) {
+                        alert("该楼盘名称已存在");
+                    } else {
+                        $("#search").submit();
+                    }
+                });
+            } else {
+                $("#search").submit();
+            }
+
+            });
+            $("#projectname").change(function () {
+                var proname = $.trim($(this).val());
+                var areaIdval = $("#areaid").find("option:selected").val();
+                pinying(proname, areaIdval);
+            });
+
+            //日期控件渲染
+            $("#startdate,#startenddate, #buildingdate, #coverdate, #saledate, #joindate, #enddate, #innersaledate, #pricedate").datepicker({ format: 'yyyy-mm-dd' });
+            //            BindCity('@(Model.cityid)', '@(Model.areaid)');
+            BindSubArea('@(Model.areaid)', '@(Model.subareaid)');
+
+            var cityX = "@ViewBag.CityX";
+            var cityY = "@ViewBag.CityY";
+
+            //操作状态
+            var pointtype = 0;
+            //地图begin
+            var x = $("#x").val(), y = $("#y").val(), LngOrLat = $("#LngOrLat").val();
+            //初始化经纬度、默认深圳
+            var InitialLng_Lat = [{ Lng: cityX, Lat: cityY }];
+            //保存坐标的数组
+            var ClikcLng_Lat = [];
+            //保存地图标注的数组
+            var MapLineLng_Lat = [];
+
+            //地图标注
+            $("#MapCallout").click(function () {
+                var clonum = $.layer(baiduMapOption);
+                $(".MapCallout").show();
+                var map = new BMap.Map("container");
+                map.clearOverlays(); //清除除标注
+                var navigationControl = new BMap.NavigationControl({
+                    // 靠左上角位置
+                    anchor: BMAP_ANCHOR_TOP_LEFT,
+                    // LARGE类型
+                    type: BMAP_NAVIGATION_CONTROL_LARGE
+                });
+                map.addControl(navigationControl);
+                map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+                LngOrLat = $("#LngOrLat").val();                
+
+                //载入区域
+                if (LngOrLat != null && LngOrLat != "") {
+                    MapLineLng_Lat = [];
+                    if (LngOrLat.indexOf("|") > 0) {
+                        var str_arr = LngOrLat.split('|');
+                        for (var i = 0; i < str_arr.length; i++) {
+                            MapLineLng_Lat.push({ Lng: str_arr[i].split(',')[0], Lat: str_arr[i].split(',')[1] });
+                        }
+                    } else {
+                        if (LngOrLat.indexOf(",") > 0) {
+                            MapLineLng_Lat.push({ Lng: LngOrLat.split(',')[0], Lat: LngOrLat.split(',')[1] });
+                        }
+                    }
+                    loadarea(MapLineLng_Lat);
+                    PolygonLine(); //画线
+                }
+
+                //载入坐标
+                x = $.trim($("#x").val());
+                y = $.trim($("#y").val());
+                if (x != null && x != "" && y != null && y != "") {
+                    ClikcLng_Lat = [];
+                    ClikcLng_Lat.push({ Lng: x, Lat: y });
+                    var point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+                    map.centerAndZoom(point, getZoom(MapLineLng_Lat));
+                    map.enableScrollWheelZoom();
+                    var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png",
+                        new BMap.Size(23, 15),
+                        {
+                            anchor: new BMap.Size(13, 15), // 指定定位位置  
+                            imageOffset: new BMap.Size(11, -150), // 设置图片偏移变换图标
+                        }
+                    );
+                    var marker = new BMap.Marker(point, { icon: myIcon }); // 创建坐标
+                    map.addOverlay(marker); // 将坐标添加到地图中
+                }
+                else if (MapLineLng_Lat != null && MapLineLng_Lat != "") {
+                    for (var i = 0; i < MapLineLng_Lat.length; i++) {
+                        var point = new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat);
+                        map.centerAndZoom(point, getZoom(MapLineLng_Lat));
+                        map.enableScrollWheelZoom();
+                    }
+                }
+                else {
+                    var point = new BMap.Point(InitialLng_Lat[0].Lng, InitialLng_Lat[0].Lat);
+                    map.centerAndZoom(point, getZoom(MapLineLng_Lat));
+                    map.enableScrollWheelZoom();
+                }
+                
+
+                map.addEventListener("click", function (e) {
+                    map.setDefaultCursor("pointer"); //设置鼠标手势
+                    if (pointtype==0){
+                        return;
+                    }
+                    else if (pointtype == 1) { //设置坐标
+                        ClikcLng_Lat = [];
+                        map.clearOverlays(); //清除除标注
+                        var json_str = { Lng: e.point.lng, Lat: e.point.lat };
+                        ClikcLng_Lat.push(json_str);
+
+                        var point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+                        var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png",
+                            new BMap.Size(23, 15),
+                            {
+                                anchor: new BMap.Size(13, 15), // 指定定位位置  
+                                imageOffset: new BMap.Size(11, -150), // 设置图片偏移变换图标
+                            }
+                        );
+                        var marker = new BMap.Marker(point, { icon: myIcon }); // 创建坐标
+                        map.addOverlay(marker); // 将坐标添加到地图中
+
+                        loadarea();//每次点击标注后重新载入区域
+                        PolygonLine(); //画线
+                    }
+                    else if (pointtype == 2) { //设置区域 
+                        map.setDefaultCursor("pointer"); //设置鼠标手势
+                        var MapLineLng_Latadd = [];
+                        var json_str = { Lng: e.point.lng, Lat: e.point.lat };
+                        MapLineLng_Latadd.push(json_str); //获取当前点
+                        MapLineLng_Lat.push(json_str); //保存搜有点
+                        point = new BMap.Point(MapLineLng_Latadd[0].Lng, MapLineLng_Latadd[0].Lat);
+                        var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png",
+                            new BMap.Size(23, 15),
+                            {
+                                anchor: new BMap.Size(13, 13), // 指定定位位置  
+                                imageOffset: new BMap.Size(11, -164), // 设置图片偏移变换图标
+                            }
+                        );
+                        var marker = new BMap.Marker(point, { icon: myIcon }); // 创建区域
+                        map.addOverlay(marker); // 将标注添加到地图中
+                    }
+                });                
+
+                //地图标注--设置坐标
+                $("#btn_setxy").click(function () {
+                    pointtype = 1;
+                    ClikcLng_Lat = [];
+                    map.clearOverlays(); //清除除标注
+                    loadarea();//每次点击标注后重新载入区域
+                    PolygonLine(); //画线
+                });
+                //地图标注--设置区域
+                $("#btn_setarea").click(function () {
+                    pointtype = 2;
+                    //保存地图标注的数组
+                    MapLineLng_Lat = [];
+                    map.clearOverlays(); //清除除标注
+                    loadxy(); //地图标注载入坐标
+                });
+
+                //地图标注--画线
+                $("#btn_Paintline").click(function () {
+                    if (MapLineLng_Lat == null || MapLineLng_Lat.length <= 2) {
+                        layer.alert("定点少于3个,绘制不成功");
+                        return false;
+                    }
+                    PolygonLine();
+                });
+
+                //地图标注--取消——回到最近保存的状态
+                $("#btn_cancel").click(function () {
+                    var zoom = 15; //缩放比例
+                    map.clearOverlays(); //清除除标注
+                    ClikcLng_Lat = [];
+                    MapLineLng_Lat = [];                    
+
+                    //载入区域
+                    if (LngOrLat != null && LngOrLat != "") {
+                        if (LngOrLat.indexOf("|") > 0) {
+                            var str_arr = LngOrLat.split('|');
+                            for (var i = 0; i < str_arr.length; i++) {
+                                MapLineLng_Lat.push({ Lng: str_arr[i].split(',')[0], Lat: str_arr[i].split(',')[1] });
+                            }
+                        }
+                        else {
+                            if (LngOrLat.indexOf(",") > 0) {
+                                MapLineLng_Lat.push({ Lng: LngOrLat.split(',')[0], Lat: LngOrLat.split(',')[1] });
+                            }
+                        }
+                        loadarea(); //点击取消按钮载入区域
+                        PolygonLine(); //画线
+                    }                    
+
+                    //载入坐标
+                    x = $.trim($("#x").val());
+                    y = $.trim($("#y").val());
+                    if (x != null && x != "" && y != null && y != "") {
+                        ClikcLng_Lat.push({ Lng: x, Lat: y });                        
+                    }
+                    
+                    loadxy(); //点击取消按钮载入坐标
+                    pointtype = 0;
+                });
+
+                $("#btn_ok").click(function () {
+                    if (ClikcLng_Lat != null && ClikcLng_Lat.length > 0) {
+                        $("#x").val("").val(ClikcLng_Lat[0].Lng);
+                        $("#y").val("").val(ClikcLng_Lat[0].Lat);
+                        //ClikcLng_Lat = [];
+                    }
+                    else {
+                        $("#x").val("");
+                        $("#y").val("");
+                    }
+                    //////////////定点一个未选中也可以保存//////////////
+                    if (MapLineLng_Lat != null && MapLineLng_Lat.length > 0 && MapLineLng_Lat.length < 3) {
+                        layer.alert("定点少于3个,绘制不成功");
+                        return false;
+                    }
+                    else {
+                        var str = "";
+                        for (var j = 0; j < MapLineLng_Lat.length; j++) {
+                            str += MapLineLng_Lat[j].Lng + "," + MapLineLng_Lat[j].Lat + "|"
+                        }
+                        if (str.length > 0) {
+                            str = str.substring(0, str.length - 1);
+                        }
+                        $("#LngOrLat").val("").val(str);
+                        pointtype == 0
+                        //MapLineLng_Lat = [];
+                        layer.close(clonum);
+                    }
+                });
+                //地图标注--关闭
+                $("#btn_close").click(function () {
+                    ClikcLng_Lat = [];
+                    MapLineLng_Lat = [];
+                    map.clearOverlays(); //清除除标注
+                    layer.close(clonum);
+                    pointtype = 0;
+                });
+
+                //搜索
+                $("#areaSearch").click(function () {
+                    // 创建地址解析器实例 
+                    var myGeo = new BMap.Geocoder();
+                    var searchTxt = $("#txtarea").val();
+                    if ($.trim(searchTxt) == null || $.trim(searchTxt) == "") {
+                        layer.alert("请输入搜索条件");
+                        return false;
+                    }
+                    // 将地址解析结果显示在地图上，并调整地图视野 
+                    myGeo.getPoint(searchTxt, function (point) {
+                        if (point) {
+                            map.clearOverlays();
+                            map.centerAndZoom(point, getZoom(MapLineLng_Lat));
+                            if (currPage == "GetCoordinate") {
+                            }
+                            var point = new BMap.Point(point.lng, point.lat); // 创建标注的坐标
+                            var marker = new BMap.Marker(point); // 创建标注
+                            map.addOverlay(marker);
+                        } else {
+                            layer.alert("搜索不到结果");
+                            return false;
+                        }
+                    }, "全国");
+                });
+
+                function PolygonLine() {
+                    if (MapLineLng_Lat != null && MapLineLng_Lat.length >= 3) {
+                        var line = [];
+                        for (var i = 0; i < MapLineLng_Lat.length; i++) {
+                            line.push(new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat));
+                        }
+                        line.push(new BMap.Point(MapLineLng_Lat[0].Lng, MapLineLng_Lat[0].Lat));
+                        if (line != null && line.length > 0) {
+                            //创建多边形  
+                            var curve = new BMap.Polyline(line, { strokeColor: "black", strokeWeight: 2, strokeOpacity: 0 });
+                            map.addOverlay(curve); //添加到地图中
+                        }
+                    }
+                }
+
+                //地图标注--画多边形
+                function PolygonLine2() {
+                    if (MapLineLng_Lat != null && MapLineLng_Lat.length >= 3) {
+                        var line = [];
+                        for (var i = 0; i < MapLineLng_Lat.length; i++) {
+                            line.push(new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat));
+                        }
+                        if (line != null && line.length > 0) {
+                            //创建多边形  
+                            var curve = new BMap.Polygon(line, { strokeColor: "blue", strokeWeight: 3, strokeOpacity: 0.5 });
+                            map.addOverlay(curve); //添加到地图中
+                        }
+                    }
+                }
+
+                //计算绽放级别
+                function getZoom(points) {
+                    var zoomvalue = 14;
+                    if (points.length > 0) {
+                        var maxLng = points[0].Lng;
+                        var minLng = points[0].Lng;
+                        var maxLat = points[0].Lat;
+                        var minLat = points[0].Lat;
+                        var res;
+                        for (var i = points.length - 1; i >= 0; i--) {
+                            res = points[i];
+                            if (res.Lng > maxLng) maxLng = res.Lng;
+                            if (res.Lng < minLng) minLng = res.Lng;
+                            if (res.Lat > maxLat) maxLat = res.Lat;
+                            if (res.Lat < minLat) minLat = res.Lat;
+                        };
+                        var zoom = ["50", "100", "200", "500", "1000", "2000", "5000", "10000", "20000", "25000", "50000", "100000", "200000", "500000", "1000000", "2000000"]//级别18到3。  
+                        var pointA = new BMap.Point(maxLng, maxLat);  // 创建点坐标A  
+                        var pointB = new BMap.Point(minLng, minLat);  // 创建点坐标B  
+                        var distance = map.getDistance(pointA, pointB).toFixed(1);  //获取两点距离,保留小数点后两位  
+                        for (var i = 0, zoomLen = zoom.length; i < zoomLen; i++) {
+                            if (zoom[i] - distance > 0) {
+                                zoomvalue = 18 - i + 3;//之所以会多3，是因为地图范围常常是比例尺距离的10倍以上。所以级别会增加3。  
+                                break;
+                            }
+                        };
+
+                    }
+                    return zoomvalue;                    
+                }
+
+                function loadxy() {
+                    if (ClikcLng_Lat != null && ClikcLng_Lat.length > 0) {
+                        var point = new BMap.Point(ClikcLng_Lat[0].Lng, ClikcLng_Lat[0].Lat);
+                        //map.centerAndZoom(point, 15);
+                        //map.enableScrollWheelZoom();
+                        var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png",
+                            new BMap.Size(23, 15),
+                            {
+                                anchor: new BMap.Size(13, 15), // 指定定位位置  
+                                imageOffset: new BMap.Size(11, -150), // 设置图片偏移变换图标
+                            }
+                        );
+                        var marker = new BMap.Marker(point, { icon: myIcon }); // 创建坐标
+                        map.addOverlay(marker); // 将坐标添加到地图中
+                    }                   
+                }
+
+                function loadarea() {
+                    for (var i = 0; i < MapLineLng_Lat.length; i++) {
+                        var point = new BMap.Point(MapLineLng_Lat[i].Lng, MapLineLng_Lat[i].Lat);
+                        //map.centerAndZoom(point, 15);
+                        //map.enableScrollWheelZoom();
+                        var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png",
+                            new BMap.Size(23, 15),
+                            {
+                                anchor: new BMap.Size(13, 13), // 指定定位位置  
+                                imageOffset: new BMap.Size(11, -164), // 设置图片偏移变换图标
+                            }
+                        );
+                        var marker = new BMap.Marker(point, { icon: myIcon }); // 创建区域
+                        map.addOverlay(marker); // 将标注添加到地图中
+                    }
+                }
+
+            });
+        });
+
+        function pinying(proname, areaIdval) {
+            if (proname != null && proname != "") {
+                $.post("/House/project/ValidProject", { projectname: proname, areaId: areaIdval }, function (json) {
+                    $("#pinyin").val("").val(json.jianpin);
+                    $("#pinyinall").val("").val(json.quanpin);
+                }, "json");
+            } else {
+                $("#pinyin").val("");
+                $("#pinyinall").val("");
+            }
+        }
+    </script>
+    <script src="@Url.Content("~/Content/Scripts/cityBind/city.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var projectNameList = "@Html.Raw(ViewBag.ProjectName)";
+    </script>
+    <script src="@Url.Content("~/Areas/House/Scripts/project_copy.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Areas/House/Scripts/project_split.js")" type="text/javascript"></script>
+}
+@* <script type="text/javascript" src="@Url.Content("~/Content/Plugin/MutilSelect/jquery.multiselect.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Plugin/MutilSelect/jquery.multiselect.zh-cn.js")"></script>*@
+<div class="row-fluid">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "search", @class = "form-inline" }))
+    { 
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px;" id="tbInputCon">
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>行政区:
+                </td>
+                <td>@Html.DropDownListFor(m => m.areaid, (ViewBag.areaList) as List<SelectListItem>)@Html.ValidationMessageFor(m => m.areaid)
+                </td>
+                <td>片区:
+                </td>
+                <td>@Html.DropDownListFor(m => m.subareaid, new List<SelectListItem> { new SelectListItem { Text = "--全部--", Value = "-1" } })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>楼盘名称:
+                </td>
+                <td>@Html.TextBoxFor(m => m.projectname)@Html.ValidationMessageFor(m => m.projectname)
+                </td>
+                <td>楼盘别名:
+                </td>
+                <td>@Html.TextBoxFor(m => m.othername)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <b style="color: Red;">*</b>主用途:
+                </td>
+                <td>@Html.DropDownListFor(m => m.purposecode, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "1001001", Text = "居住" },
+                   new SelectListItem { Value = "1001002", Text = "居住(别墅)" },
+                   new SelectListItem { Value = "1001003", Text = "居住(洋房)" },
+                   new SelectListItem { Value = "1001004", Text = "商业" },
+                   new SelectListItem { Value = "1001005", Text = "办公" },
+                   new SelectListItem { Value = "1001006", Text = "工业" },
+                   new SelectListItem { Value = "1001007", Text = "商业、居住" },
+                   new SelectListItem { Value = "1001008", Text = "商业、办公" },
+                   new SelectListItem { Value = "1001009", Text = "办公、居住" },
+                   new SelectListItem { Value = "1001010", Text = "停车场" },
+                   new SelectListItem { Value = "1001011", Text = "酒店" },
+                   new SelectListItem { Value = "1001012", Text = "加油站" },
+                   new SelectListItem { Value = "1001013", Text = "综合" },
+                   new SelectListItem { Value = "1001014", Text = "其他" }
+               })@Html.ValidationMessageFor(m => m.purposecode)
+                </td>
+                <td>主建筑物类型:
+                </td>
+                <td>@Html.DropDownListFor(m => m.buildingtypecode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2003001", Text = "低层" },
+               new SelectListItem { Value = "2003002", Text = "多层" },
+               new SelectListItem { Value = "2003003", Text = "小高层" },
+               new SelectListItem { Value = "2003004", Text = "高层" }                           
+           })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>拼音简写:
+                </td>
+                <td>@Html.TextBoxFor(m => m.pinyin)
+                </td>
+                <td>楼盘名称全拼:
+                </td>
+                <td>@Html.TextBoxFor(m => m.pinyinall)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>楼盘地址:
+                </td>
+                <td>@Html.TextAreaFor(m => m.address, new { rows = "2", style = "margin: 0px; width: 218px; height: 64px;" })
+                </td>
+                <td>数据来源：
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.SourceName)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>产权形式:
+                </td>
+                <td>@Html.DropDownListFor(m => m.rightcode, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "2007001", Text = "商品房" },
+               new SelectListItem { Value = "2007002", Text = "微利房" },
+               new SelectListItem { Value = "2007003", Text = "福利房" },
+               new SelectListItem { Value = "2007004", Text = "军产房" },
+               new SelectListItem { Value = "2007005", Text = "集资房" },
+               new SelectListItem { Value = "2007006", Text = "自建房" },
+               new SelectListItem { Value = "2007007", Text = "经济适用房" },
+               new SelectListItem { Value = "2007008", Text = "小产权房" },
+               new SelectListItem { Value = "2007009", Text = "限价房" },
+               new SelectListItem { Value = "2007010", Text = "解困房" },
+               new SelectListItem { Value = "2007011", Text = "宅基地" },
+               new SelectListItem { Value = "2007012", Text = "房改房" },
+               new SelectListItem { Value = "2007013", Text = "平改房" },
+               new SelectListItem { Value = "2007014", Text = "回迁房" },
+               new SelectListItem { Value = "2007015", Text = "安置房" }                       
+           })
+                </td>
+                <td>开发商:
+                </td>
+                <td>@Html.TextBoxFor(m => m.DeveCompanyName)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>物管公司:
+                </td>
+                <td>@Html.TextBoxFor(m => m.ManagerCompanyName)
+                </td>
+                <td>物业费:
+                </td>
+                <td>@Html.TextBoxFor(m => m.managerprice)@Html.ValidationMessageFor(m => m.managerprice)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>宗地号:
+                </td>
+                <td>@Html.TextBoxFor(m => m.fieldno)
+                </td>
+                <td>占地面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.landarea)@Html.ValidationMessageFor(m => m.landarea)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>土地起始日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.startdate, new { Value = Model.startdate == null ? "" : Model.startdate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>
+                    土地终止日期:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.startenddate, new { Value = Model.startenddate == null ? "" : Model.startenddate.Value.ToString("yyyy-MM-dd") })
+            </td>
+            </tr>
+            <tr class="tr">
+                <td>建筑面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.buildingarea)@Html.ValidationMessageFor(m => m.buildingarea)
+                </td>
+                <td>可销售面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.salablearea)@Html.ValidationMessageFor(m => m.salablearea)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>开工日期
+                </td>
+                <td>@Html.TextBoxFor(m => m.buildingdate, new { Value = Model.buildingdate == null ? "" : Model.buildingdate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>封顶日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.coverdate, new { Value = Model.coverdate == null ? "" : Model.coverdate.Value.ToString("yyyy-MM-dd") })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>容积率:
+                </td>
+                <td>@Html.TextBoxFor(m => m.cubagerate)@Html.ValidationMessageFor(m => m.cubagerate)
+                </td>
+                <td>绿化率:
+                </td>
+                <td>@Html.TextBoxFor(m => m.greenrate)@Html.ValidationMessageFor(m => m.greenrate)
+                    <input id="opValue" name="opValue" type="hidden" />
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>车位数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.parkingnumber)@Html.ValidationMessageFor(m => m.parkingnumber)
+                </td>
+                <td>车位描述:
+                </td>
+                <td>@Html.TextBoxFor(m => m.parkingdesc)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>开盘日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.saledate, new { Value = Model.saledate == null ? "" : Model.saledate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>竣工日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.enddate, new { Value = Model.enddate == null ? "" : Model.enddate.Value.ToString("yyyy-MM-dd") })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>项目均价:
+                </td>
+                <td>@Html.TextBoxFor(m => m.averageprice)@Html.ValidationMessageFor(m => m.averageprice)
+                </td>
+                <td>开盘均价:
+                </td>
+                <td>@Html.TextBoxFor(m => m.saleprice)@Html.ValidationMessageFor(m => m.saleprice)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>总栋数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.buildingnum)@Html.ValidationMessageFor(m => m.buildingnum)
+                </td>
+                <td>总套数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.totalnum)@Html.ValidationMessageFor(m => m.totalnum)
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>是否完成基础数据:
+                </td>
+                <td>@Html.DropDownListFor(m => m.iscomplete, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "0", Text = "否" },
+               new SelectListItem { Value = "1", Text = "是" }                           
+           })
+                </td>
+                <td>是否可估:
+                </td>
+                <td>@Html.DropDownListFor(m => m.isevalue, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "0", Text = "否" },
+               new SelectListItem { Value = "1", Text = "是" }                           
+           })
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>经度:
+                </td>
+                <td>@Html.TextBoxFor(m => m.x, new { @readonly = "readonly" })
+                </td>
+                <td>纬度:
+                </td>
+                <td>@Html.TextBoxFor(m => m.y, new { @readonly = "readonly" })
+                    <a href="javascript:void(0)" id="MapCallout">坐标与区域</a>
+                    <input type="hidden" id="LngOrLat" name="LngOrLat" value="@Model.LngOrLat" />
+                </td>
+            </tr>
+            <tr class="tr">
+                <td>
+                    土地使用年限:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.usableyear)@Html.ValidationMessageFor(m => m.usableyear)
+                </td>
+                <td>项目概况:
+                </td>
+                <td>@Html.TextAreaFor(m => m.detail, new { rows = "2", style = "margin: 0px; width: 218px; height: 64px;" })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>入伙日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.joindate, new { Value = Model.joindate == null ? "" : Model.joindate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>内部认购日期:
+                </td>
+                <td>@Html.TextBoxFor(m => m.innersaledate, new { Value = Model.innersaledate == null ? "" : Model.innersaledate.Value.ToString("yyyy-MM-dd") })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>办公面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.officearea)@Html.ValidationMessageFor(m => m.officearea)
+                </td>
+                <td>商业面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.businessarea)@Html.ValidationMessageFor(m => m.businessarea)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>工业面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.industryarea)@Html.ValidationMessageFor(m => m.industryarea)
+                </td>
+                <td>其他用途面积:
+                </td>
+                <td>@Html.TextBoxFor(m => m.otherarea)@Html.ValidationMessageFor(m => m.otherarea)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>管理处电话:
+                </td>
+                <td>@Html.TextBoxFor(m => m.managertel)
+                </td>
+                <td>土地规划用途:
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Description, ViewBag.LandPlanUse as List<SelectListItem>, new { multiple = true, style = "width:220px;" })
+                </td>
+                @*<td>@Html.DropDownListFor(m => m.planpurpose, new List<SelectListItem> { 
+                   new SelectListItem { Value = "-1", Text = "--请选择--" },
+                   new SelectListItem { Value = "1001001", Text = "居住" },
+                   new SelectListItem { Value = "1001002", Text = "居住(别墅)" },
+                   new SelectListItem { Value = "1001003", Text = "居住(洋房)" },
+                   new SelectListItem { Value = "1001004", Text = "商业" },
+                   new SelectListItem { Value = "1001005", Text = "办公" },
+                   new SelectListItem { Value = "1001006", Text = "工业" },
+                   new SelectListItem { Value = "1001007", Text = "商业、居住" },
+                   new SelectListItem { Value = "1001008", Text = "商业、办公" },
+                   new SelectListItem { Value = "1001009", Text = "办公、居住" },
+                   new SelectListItem { Value = "1001010", Text = "停车场" },
+                   new SelectListItem { Value = "1001011", Text = "酒店" },
+                   new SelectListItem { Value = "1001012", Text = "加油站" },
+                   new SelectListItem { Value = "1001013", Text = "综合" },
+                   new SelectListItem { Value = "1001014", Text = "其他" }
+               })
+                </td>*@
+            </tr>
+            <tr @*name="show"*@ class="tr" style="display:none;">
+                <td>价格调查时间:
+                </td>
+                <td>@Html.TextBoxFor(m => m.pricedate, new { Value = Model.pricedate == null ? "" : Model.pricedate.Value.ToString("yyyy-MM-dd") })
+                </td>
+                <td>价格修正系数:
+                </td>
+                <td>@Html.TextBoxFor(m => m.weight)@Html.ValidationMessageFor(m => m.weight)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>东:
+                </td>
+                <td>@Html.TextBoxFor(m => m.east)
+                </td>
+                <td>西:
+                </td>
+                <td>@Html.TextBoxFor(m => m.west)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>南:
+                </td>
+                <td>@Html.TextBoxFor(m => m.south)
+                </td>
+                <td>北:
+                </td>
+                <td>@Html.TextBoxFor(m => m.north)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>建筑质量:
+                </td>
+                <td>@Html.DropDownListFor(m => m.BuildingQuality, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1012001", Text = "优" } ,
+               new SelectListItem { Value = "1012002", Text = "良" } ,
+               new SelectListItem { Value = "1012003", Text = "一般" } ,
+               new SelectListItem { Value = "1012004", Text = "差" } ,
+               new SelectListItem { Value = "1012005", Text = "很差" }              
+           })
+                </td>
+                <td>小区规模:
+                </td>
+                <td>@Html.DropDownListFor(m => m.HousingScale, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1210001", Text = "10万㎡以下" } ,
+               new SelectListItem { Value = "1210002", Text = "10~20万㎡" } ,
+               new SelectListItem { Value = "1210003", Text = "20~50万㎡" } ,
+               new SelectListItem { Value = "1210004", Text = "50~100万㎡" } ,
+               new SelectListItem { Value = "1210005", Text = "100万㎡以上" }              
+           })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>地下室用途:
+                </td>
+                <td>@Html.TextBoxFor(m => m.BasementPurpose)
+                </td>
+                <td>物业管理质量:
+                </td>
+                <td>@Html.DropDownListFor(m => m.ManagerQuality, new List<SelectListItem> { 
+                        new SelectListItem { Value = "-1", Text = "--请选择--"},
+                        new SelectListItem { Value = "1012001", Text = "优" } ,
+                        new SelectListItem { Value = "1012002", Text = "良" } ,
+                        new SelectListItem { Value = "1012003", Text = "一般" } ,
+                        new SelectListItem { Value = "1012004", Text = "差" } ,
+                        new SelectListItem { Value = "1012005", Text = "很差" }
+                    })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>设备设施:
+                </td>
+                <td>@Html.TextBoxFor(m => m.Facilities)
+                </td>
+                <td>配套等级:
+                </td>
+                <td>@Html.DropDownListFor(m => m.AppendageClass, new List<SelectListItem> { 
+               new SelectListItem { Value = "-1", Text = "--请选择--"},
+               new SelectListItem { Value = "1012001", Text = "优" } ,
+               new SelectListItem { Value = "1012002", Text = "良" } ,
+               new SelectListItem { Value = "1012003", Text = "一般" } ,
+               new SelectListItem { Value = "1012004", Text = "差" } ,
+               new SelectListItem { Value = "1012005", Text = "很差" }            
+           })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+
+                <td>有利因素:
+                </td>
+                <td>@Html.TextBoxFor(m => m.Wrinkle)
+                </td>
+                <td>不利因素:
+                </td>
+                <td>@Html.TextBoxFor(m => m.Aversion)
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>区域分析:
+                </td>
+                <td>@Html.TextBoxFor(m => m.RegionalAnalysis)
+                </td>
+                <td>楼栋备注:
+                </td>
+                <td>@Html.TextAreaFor(m => m.BuildingDetail, new { rows = "2", style = "margin: 0px; width: 218px; height: 64px;" })
+                </td>
+            </tr>
+            <tr name="show" class="tr">
+                <td>房号备注:
+                </td>
+                <td>@Html.TextAreaFor(m => m.HouseDetail, new { rows = "2", style = "margin: 0px; width: 218px; height: 64px;" })
+                </td>
+                @if (Model != null)
+                {
+                    <td>公司：
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.CompanyName, new {@readonly =true })
+                    </td>
+                }
+            </tr>
+            <tr name="show" class="tr">
+                <td>
+                    数据建设机构:
+                </td>
+                <td>@Html.TextBoxFor(m => m.belongcompanyname, new { @readonly = true })</td>
+            </tr>
+            <tr name="hidder" style="height: 0px;">
+                <td>@Html.HiddenFor(m => m.cityid)
+                </td>
+                <td>@Html.HiddenFor(m => m.fxtcompanyid)
+                </td>
+                <td>
+                    <input type="hidden" id="projectid" name="projectid" value="@Model.projectid" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <a href="javascript:void(0)" id="click_ok">展开∨</a>
+                </td>
+            </tr>
+        </table>
+        <table style="margin-left: 30px; width: 100%; margin-bottom: 40px;">
+            <tr>
+                <td colspan='6'>
+                    <button class="btn blue" type="button" id="btnsubmit">
+                        <i class="icon-ok"></i>确定
+                    </button>
+                    @if (Model != null && Model.projectid > 0)
+                    {
+                        <a class="btn" title='添加项目配套'  href="@Url.Action("ProjectPeiTao", new { projectid = Model.projectid })">
+                            <i class=" icon-magnet"></i>项目配套 </a> 
+                        <a  class="btn" title='添加项目图片'  href="@Url.Action("ProjectPhoto", new { projectid = Model.projectid })">
+                            <i class="icon-picture"></i>项目图片 </a>
+                        <a  class="btn" title='添加附属房价格'  href="@Url.Action("GetProjectPrice", new { projectid = Model.projectid })">
+                            <i class="icon-credit-card"></i>附属房价格 </a>
+                        <input type="button" title="楼盘复制" id="btnProjectCopy" class="btn thickbox" alt="#TB_inline?height=360&width=600&inlineId=ProjectCopy" value="楼盘复制" />
+                        <input type="button" title="楼盘拆分" id="btnProjectSplit" class="btn thickbox" alt="#TB_inline?height=360&width=600&inlineId=ProjectSplit" value="楼盘拆分" />
+                        <a class="thickbox" style="background-color:#e5e5e5;color:#333333;padding:3px 15px 9px 15px;margin-right:3px;font-size:14px;font-family:Segoe UI, Helvetica, Arial, sans-serif" title='楼盘合并' href="@Url.Action("ProjectMerger", new { id = Model.projectid })?TB_iframe=true&height=400&width=650">
+                            楼盘合并
+                        </a>
+                        <a class="btn" title='楼栋'  href="@Url.Action("Index", "Build", new { projectid = Model.projectid })">
+                            <i class="icon-share-alt"></i>转到楼栋 </a>
+                    }
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<div id="baidumap" style="display: none;">
+    <div style="width: 100%">
+        <div style="margin-top: 10px; margin-left: 20px; float: left; width: 100%">
+            城市或地名:
+            <input id="txtarea" type="text" style="width: 100px; margin-right: 10px;margin-top:10px" />&nbsp;
+            <a class="btn" href="javascript:void(0)" id="areaSearch" style="background-color:#B1B1DE;">点击搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_setxy" class="MapCallout btn" style="background-color:red;">设置坐标</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_setarea" class="MapCallout btn" style="background-color:orange;">设置标注</a>&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_Paintline" class="MapCallout btn" style="background-color:orange;">绘制线</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_ok" class="MapCallout btn">确 定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_cancel" class="MapCallout btn">取 消</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" id="btn_close" class="MapCallout btn">关闭</a>
+        </div>
+    </div>
+    <div style="width: 860px; height: 450px; border: 1px solid gray; text-align: center;" id="container">
+    </div>
+</div>
+<div id="ProjectCopy" style="display: none;">
+    <div class="row-fluid">
+        <table style="width: 100%; margin-bottom: 10px; line-height: 35px; margin-top: 10px;">
+            <tr>
+                <td>从&nbsp;&nbsp;<input type="text" value="@Model.projectname|@Model.AreaName" id="Original_ProjectName" readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;复制到
+                </td>
+                <td>
+                    <input type="text" id="copy_project_name" value="@Model.projectname|@Model.AreaName" />
+                </td>
+            </tr>
+            <tr>
+                <td>楼盘别名:
+                </td>
+                <td>
+                    <input type="text" id="copy_project_othername" name="copy_project_othername" value="@Model.othername" />
+                </td>
+            </tr>
+            <tr>
+                <td>楼盘地址:
+                </td>
+                <td>
+                    <textarea style="margin: 0px; width: 219px; height: 59px;" id="copy_project_address" name="copy_project_address">@Model.address</textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="ProjectSplit" style="display: none;">
+    <div style="width: 100%; margin-left: 25px; line-height: 35px; margin-top: 10px;">
+        <div id="content">
+            <div class="projectName">
+                <div class="projectName_div">
+                    <label>
+                        从<input type="text" value="@Model.projectname | @Model.AreaName" id="p_name" name="p_name" class = "m-wrap" style="width:200px;vertical-align:middle;" readonly />拆分到
+                    </label>
+                </div>
+                <div class="projectName_div">
+                    <label>
+                        <input type="text" value="@Model.projectname | @Model.AreaName" id="p_nameTo" name="p_nameTo" class = "m-wrap" style="width:200px;vertical-align:middle;" />
+                    </label>
+                </div>
+                <div class="clare">
+                </div>
+            </div>
+            <div class="projectName">
+                <div class="projectName_buid">
+                    <span>楼栋:</span>
+                    <select name="ClassLevel" size="8" style="width: 180px; margin-left: 15px;" id="ClassLevel">
+                    </select>
+                </div>
+                <div class="projectName_buid" style="width: 74px; padding: 53px 0px; text-align: center;">
+                    <strong style="color: Red;">移动至→</strong>
+                </div>
+                <div class="projectName_buid">
+
+                    <select name="ClassLevel_sub" size="8" style="width: 180px; margin-left: 15px;" id="ClassLevel_sub">
+                    </select>
+                </div>
+                <div class="clare">
+                </div>
+            </div>
+            <div class="clare">
+            </div>
+        </div>
+    </div>
+</div>
+

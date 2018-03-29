@@ -1,0 +1,676 @@
+﻿@using FxtDataAcquisition.Domain.Models;
+@using FxtDataAcquisition.Application.Services;
+@model SYS_Role
+@{
+    Layout = null;
+}
+
+<!-- ajax layout which only needs content area -->
+<div class="page-header">
+    <h1>
+        <a href="#/Role/Index">角色列表</a>
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            分配权限
+        </small>
+    </h1>
+</div><!-- /.page-header -->
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <form class="form-horizontal" role="form">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <!-- #section:elements.form -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
+
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" value="@Model.RoleName" name="RoleName" class="col-xs-10 col-sm-5" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> 备注 </label>
+
+                <div class="col-sm-9">
+                    <textarea class="form-control" id="form-field-8" name="Remarks">@Model.Remarks</textarea>
+                </div>
+            </div>
+            <!-- /section:elements.form -->
+            <div class="space-4"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1">  </label>
+
+                <div class="col-sm-9">
+                    <button class="btn btn-primary" id="save">保存</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-2">
+                    权限
+
+                </label>
+
+                <div class="col-sm-9 well " style="margin-left:10px" id="will">
+                    <label class="position-relative">
+                        <input type="checkbox" class="ace" id="all" />
+                        <span class="lbl"></span>
+                    </label>
+                    全选
+                    @{
+                        var menus = ViewBag.Menus as List<SYS_Menu> ?? new List<SYS_Menu>();
+                        if (menus != null && menus.Count > 0)
+                        {
+                            foreach (var menu in menus.Where(m => m.ParentID == 0))
+                            {
+                                <div style="border-color:#a1a1a1;border-width:1px;border-style:solid;padding:10px 10px 10px 10px" name="menuPanl">
+                                    <span style="font-size:16px;font-weight:bold">
+                                        <label class="position-relative">
+                                            @if (Model.RoleMenus.Any(m => m.MenuID == menu.Id))
+                                            {
+                                                <input type="checkbox" class="ace myMenu" name="menu" value="@menu.Id" checked="checked" />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" class="ace myMenu" name="menu" value="@menu.Id" />
+                                            }
+                                            <span class="lbl"></span>
+                                        </label>
+                                        @menu.MenuName
+                                    </span>
+                                    <br />
+                                    @{
+                                            var myMenuRole = Model.RoleMenus.FirstOrDefault(m => m.MenuID == menu.Id) ?? new SYS_Role_Menu();
+                                            var myFunction = myMenuRole.Functions == null ? new List<SYS_Role_Menu_Function>
+                                                () : myMenuRole.Functions.ToList();
+                                    }
+
+                                    @if (menus.Any(m => m.ParentID == menu.Id))
+                                    {
+                                        foreach (var item in menus.Where(m => m.ParentID == menu.Id))
+                                        {
+                                            myMenuRole = Model.RoleMenus.FirstOrDefault(m => m.MenuID == item.Id) ?? new SYS_Role_Menu();
+                                            myFunction = myMenuRole.Functions == null ? new List<SYS_Role_Menu_Function>
+                                                () : myMenuRole.Functions.ToList();
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                            <span style="font-size:14px;font-weight:bold">
+                                                <label class="position-relative">
+                                                    @if (Model.RoleMenus.Any(m => m.MenuID == item.Id))
+                                                    {
+                                                        <input type="checkbox" class="ace myMenuChild" name="menu" value="@item.Id" checked="checked" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace myMenuChild" name="menu" value="@item.Id" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                @item.MenuName
+                                            </span>
+                                            <br />
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_3))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_3" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_3" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                查看全部
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_2))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_2" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_2" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                查看小组
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_1))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_1" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_1" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                查看自己
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_7))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_7" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_7" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                修改全部
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_6))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_6" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_6" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                修改小组
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_5))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_5" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_5" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                修改自己
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_9))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_9" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_9" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                删除全部
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_8))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_8" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_8" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                删除自己
+                                            </span>
+                                            <br />
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_4))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_4" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_4" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                新增
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_10))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_10" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_10" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                导入
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_13))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_13" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_13" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                导出全部
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_14))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_14" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_14" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                分配任务
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_15))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_15" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_15" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                撤销任务
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_16))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_16" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_16" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                撤销查勘
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_20))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_20" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_20" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                审核全部
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_19))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_19" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_19" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                审核小组
+                                            </span>
+                                            <span>
+                                                <label class="position-relative">
+                                                    @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_18))
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" checked="checked" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_18" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="ace" name="function" value="@item.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_18" />
+                                                    }
+                                                    <span class="lbl"></span>
+                                                </label>
+                                                审核自己
+                                            </span>
+                                            <br />
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_3))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_3" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_3" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            查看全部
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_2))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_2" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_2" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            查看小组
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_1))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_1" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_1" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            查看自己
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_7))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_7" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_7" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            修改全部
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_6))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_6" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_6" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            修改小组
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_5))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_5" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_5" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            修改自己
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_9))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_9" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_9" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            删除全部
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_8))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_8" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_8" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            删除自己
+                                        </span>
+                                        <br />
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_4))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_4" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_4" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            新增
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_10))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_10" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_10" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            导入
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_13))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_13" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_13" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            导出全部
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_14))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_14" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_14" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            分配任务
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_15))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_15" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_15" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            撤销任务
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_16))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_16" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_16" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            撤销查勘
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_20))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_20" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_20" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            审核全部
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_19))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_19" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_19" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            审核小组
+                                        </span>
+                                        <span>
+                                            <label class="position-relative">
+                                                @if (myFunction.Any(m => m.FunctionCode == SYSCodeManager.FunOperCode_18))
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" checked="checked" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_18" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" class="ace" name="function" value="@menu.Id#@myMenuRole.Id#@SYSCodeManager.FunOperCode_18" />
+                                                }
+                                                <span class="lbl"></span>
+                                            </label>
+                                            审核自己
+                                        </span>
+                                    }
+
+                                </div>
+                                <br />
+                            }
+                        }
+                    }
+
+                </div>
+            </div>
+
+            <div class="space-4"></div>
+
+        </form>
+
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- page specific plugin scripts -->
+<script type="text/javascript">
+    var scripts = [null, null]
+    ace.load_ajax_scripts(scripts, function () {
+        //inline scripts related to this page
+        jQuery(function ($) {
+            $("#all").die();
+            $("input[name='menu']").die();
+            $("#save").die();
+            $("input[name='function']").die();
+
+            $(document).on('click', '#all', function () {
+                var that = this;
+                $(this).closest('#will').find('input[class="ace myMenu"],input[class="ace myMenuChild"],input[name="function"]')
+                .each(function () {
+                    this.checked = that.checked;
+                    $(this).closest('tr').toggleClass('selected');
+                });
+            });
+
+            $(document).on('click', 'input[name="menu"]', function () {
+                var that = this;
+                $(this).closest('div[name="menuPanl"]').find('input[class="ace myMenuChild"],input[name="function"]')
+                .each(function () {
+                    this.checked = that.checked;
+                    $(this).closest('tr').toggleClass('selected');
+                });
+            });
+            $(document).on('click', '#save', function () {
+                var data = $("form").serializeArray();
+                //$(this).closest('div[name="menuPanl"]').find('input[class="ace myMenuChild"],input[name="function"]')
+                //.each(function () {
+                //    this.checked = that.checked;
+                //    $(this).closest('tr').toggleClass('selected');
+                //});
+
+                $.post("/Role/Save", data, function (r) {
+                    if (r.result) {
+                        AlertFancybox(r.message);
+                    } else {
+                        alert(r.message);
+                    }
+                });
+                return false;
+            });
+
+            $(document).on('click', 'input[name="function"]', function () {
+                var that = this;
+                var a = that.value.split("#");
+                $(this).closest('div[name="menuPanl"]').find('input[class="ace myMenu"],input[class="ace myMenuChild"][value="' + a[0] + '"]')
+
+                .each(function () {
+                    this.checked = true;
+                    $(this).closest('tr').toggleClass('selected');
+                });
+
+            });
+        })
+    });
+</script>

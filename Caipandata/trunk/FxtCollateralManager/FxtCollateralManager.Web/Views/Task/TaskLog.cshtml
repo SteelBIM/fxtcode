@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<div class="portlet-body" id="fileupload">
+    <div class="form-inline">
+        <form id="fupload" action="/Upload/fileUpload" method="post" enctype="multipart/form-data">
+            <div class="fileupload-buttonbar">
+                <div class="actions">
+                    <div class="input-group">
+                        <div class="col-md-12">
+                        <div class="row" style="width:700px; margin-bottom:5px;">
+                        </div>
+                    </div>
+                     </div>
+                </div>
+            </div>
+        </form>
+        <div class="table-scrollable">
+                <table class="table table-striped table-hover table-bordered" id="taskloglist">
+                    <thead>
+                        <tr>
+                            <th>日志信息</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
+                <div id="page_info" class="dataTables_info">
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-12">
+                <div class="dataTables_paginate paging_bootstrap">
+                    <ul class="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="tasklog_template" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${message}</td>
+    </tr>
+</script>
+
+
+<script src="/Scripts/TaskLog.js" type="text/javascript" />

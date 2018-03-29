@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="14986ec6-0a7f-4339-8779-ac8c8fb7d7fd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.128:8300/API/FxtAPI.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtAPI1.disco" MetadataType="Disco" ID="c3cea035-3061-41f3-bf45-d9991387b38a" SourceId="1" SourceUrl="http://192.168.0.128:8300/API/FxtAPI.svc?disco" />
+    <MetadataFile FileName="FxtAPI1.wsdl" MetadataType="Wsdl" ID="be92f1f4-8afa-4f27-81bb-4d1ff0bd3546" SourceId="1" SourceUrl="http://192.168.0.128:8300/API/FxtAPI.svc?wsdl" />
+    <MetadataFile FileName="FxtAPI2.xsd" MetadataType="Schema" ID="ad4719a6-b220-4543-a404-b02abd04d1ad" SourceId="1" SourceUrl="http://192.168.0.128:8300/API/FxtAPI.svc?xsd=xsd0" />
+    <MetadataFile FileName="FxtAPI21.xsd" MetadataType="Schema" ID="1f416542-4104-4546-a7d6-8c15d93b292e" SourceId="1" SourceUrl="http://192.168.0.128:8300/API/FxtAPI.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

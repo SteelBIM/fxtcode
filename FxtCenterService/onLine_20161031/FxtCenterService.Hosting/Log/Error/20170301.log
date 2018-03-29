@@ -1,0 +1,107 @@
+﻿2017-03-01 13:39:03
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 14:15:42
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 16:08:11
+错误编号:2017030116081076X504a966fc0
+Message:调用的目标发生了异常。
+Message2:gprojectpricerank执行时间：2551ms.
+Type:System.Reflection.TargetInvocationException
+Source:mscorlibsinfo:{"appid":"1003104","apppwd":"16517013807850","code":"082e72e4582db460cb5f18dbf2419458","functionname":"gprojectpricerank","signname":"4106DEF5-A760-4CD7-A6B2-8250420FCB18","time":"20160929163118"}
+info:{"appinfo":{"channel":"vqapi","splatype":"ie","stype":"vqapi","systypecode":1003038,"vcode":"1.0","version":"1.0"},"uinfo":{"username":"null","password":"null","fxtcompanyid":25,"subcompanyid":0},"funinfo":{"cityname":"深圳市","areaname":"罗湖区","projectname":"fiug","serialno":""}}
+
+StackTrace:   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 FxtCenterService.Actualize.DataCenterService.Entrance(String sinfo, String info) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\DataCenterService.cs:行号 248
+Method:InvokeMethod
+Class:System.RuntimeMethodHandle
+UserIP:127.0.0.1
+UserName:
+CompanyID:0
+CompanyName:
+BaseException:
+System.Threading.SemaphoreFullException: 将指定的计数添加到该信号量中会导致其超过最大计数。
+   在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.CloseInnerConnection()
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 CAS.DataAccess.BaseDAModels.SqlTransConn.Close() 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\SqlHelper.cs:行号 82
+   在 CAS.DataAccess.BaseDAModels.BaseDAO`1._findAllFromSQLText(String sql, List`1 parameters) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDAO.cs:行号 500
+   在 CAS.DataAccess.BaseDAModels.BaseDAO`1.GetItems(String sqlText, CommandType cmdType, List`1 parameters) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDAO.cs:行号 165
+   在 CAS.DataAccess.DA.BaseDA.ExecuteToEntityList[T](String sqlText, CommandType cmdType, List`1 parameters) 位置 d:\FangXunTong\CommonDll\CAS.DataAccess.BaseDAModels\BaseDA.cs:行号 506
+   在 FxtCenterService.DataAccess.CityTableDA.GetSYSCityTableListByName(SearchBase search, String cityname) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\CityTableDA.cs:行号 114
+   在 FxtCenterService.DataAccess.CityTableDA.GetCityTableByName(String cityname) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\CityTableDA.cs:行号 47
+   在 FxtCenterService.DataAccess.DATProjectAvgPriceDA.GetProjectPriceRank(String cityname, String areaname, String projectname, Int32 FxtCompanyId, Int32 systypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.DataAccess\DATProjectAvgPriceDA.cs:行号 523
+   在 FxtCenterService.Logic.DATProjectAvgPriceBL.GetProjectPriceRank(String cityname, String areaname, String projectname, Int32 FxtCompanyId, Int32 systypecode) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Logic\DATProjectAvgPriceBL.cs:行号 318
+   在 FxtCenterService.Actualize.DataController.GetProjectPriceRank(JObject funinfo, UserCheck company) 位置 d:\FangXunTong\FxtCenterService\onLine_20161031\FxtCenterService.Actualize\Controller\PriceController.cs:行号 1214
+2017-03-01 16:46:40
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 17:59:22
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 18:05:25
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 19:50:45
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)
+2017-03-01 20:00:44
+System.ArgumentException: 无效的 JSON 基元: 。
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   在 System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize[T](String input)
+   在 OpenPlatform.Framework.FlowMonitor.DataAccess.ApiRepository.GetFlowControlConfig(Int32 companyId, Int32 apiType, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.<.ctor>b__1(Int32 companyId, ApiType type, Int32 productTypeCode)
+   在 OpenPlatform.Framework.FlowMonitor.Api.Overflow(Int32 companyId, DateTime invokedTime, ApiType type, Int32 dataItems, String ip, String functionName, Int32 productTypeCode)

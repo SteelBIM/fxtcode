@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd50be50-13b6-4008-9bfe-2ca47bfd402d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.124/ExcelUpload.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExcelUpload1.wsdl" MetadataType="Wsdl" ID="d77005bc-baa5-4810-9769-cf45eb935403" SourceId="1" SourceUrl="http://192.168.0.124/ExcelUpload.svc?wsdl" />
+    <MetadataFile FileName="ExcelUpload2.xsd" MetadataType="Schema" ID="848e3672-8f3d-4e96-97a1-382e53a335f5" SourceId="1" SourceUrl="http://192.168.0.124/ExcelUpload.svc?xsd=xsd0" />
+    <MetadataFile FileName="ExcelUpload21.xsd" MetadataType="Schema" ID="cd41f9bc-8b65-4099-917b-de907eea540e" SourceId="1" SourceUrl="http://192.168.0.124/ExcelUpload.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

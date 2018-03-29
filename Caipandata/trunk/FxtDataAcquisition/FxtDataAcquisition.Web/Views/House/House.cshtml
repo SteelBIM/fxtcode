@@ -1,0 +1,199 @@
+﻿@using System.Data
+@using FxtDataAcquisition.Domain.Models
+@using FxtDataAcquisition.Domain.DTO
+@{
+    var house = Model as List<HouseDetailsDto>;
+
+    var floorNo = Html.ViewData["floorno"] as List<int>;
+    var unit = Html.ViewData["unit"] as List<HouseDetailsDto>;
+}
+@*<div class="scrollBar">*@
+<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+    <thead>
+        <tr>
+            <th style="width: 65px;">
+                物理层
+            </th>
+            @{
+                if (unit != null && unit.Count > 0)
+                {
+                    <th style="width: 65px;">
+                        实际层
+                    </th>
+                    foreach (var item in unit)
+                    {
+                        <th fanghao='@item' unitno="@item.UnitNo" roomno="@item.RoomNo">
+                            @(item.UnitNo + item.RoomNo)
+                        </th>
+                    }
+                }
+                else
+                {
+                    <th style="width: 65px;">
+                        实际层
+                    </th>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (floorNo != null && floorNo.Count > 0)
+            {
+                foreach (var f in floorNo)
+                {
+                    <tr>
+                        @{int index = 0;}
+
+                        @if (unit != null && unit.Count > 0)
+                    {
+                            <td>@f</td>
+                        foreach (var u in unit)
+                        {
+                            var hNominalFloor = house.Where(m => m.FloorNo == f).OrderBy(m => m.UnitNo).FirstOrDefault();
+                            if (index == 0)
+                            {
+                                <td>
+                                    @hNominalFloor.NominalFloor
+                                </td>
+                            }
+
+                            var h = house.Where(m => m.FloorNo == f && m.UnitNo == u.UnitNo && m.RoomNo == u.RoomNo).FirstOrDefault();
+                            if (h != null)
+                            {
+                                    @*if (index == 0)
+                                    {
+                                        <td>
+                                            @h.NominalFloor
+                                        </td>
+                                    }*@
+                                    string name = Html.ViewData["HouseName"].ToString();
+                                    if (name == "HouseName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            <a style="cursor:pointer;"  onclick="HouseObj.AddHouseDetails(@ViewBag.BuildingId,@ViewBag.AllotId,@ViewBag.FxtCompanyId,@ViewBag.CityId,@h.Id)" 
+                                               href="javascript:">@h.HouseName</a>
+                                        </td>
+                                    }
+                                    else if (name == "BuildArea")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.BuildArea
+                                        </td>
+                                    }
+                                    else if (name == "PurposeName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.PurposeCodeName
+                                        </td>
+                                    }
+                                    else if (name == "HouseTypeName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.HouseTypeCodeName
+                                        </td>
+                                    }
+                                    else if (name == "StructureName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.StructureCodeName
+                                        </td>
+                                    }
+                                    else if (name == "FrontName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.FrontCodeName
+                                        </td>
+                                    }
+                                    else if (name == "SightName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.SightCodeName
+                                        </td>
+                                    }
+                                    else if (name == "VDName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.VDCodeName
+                                        </td>
+                                    }
+                                    else if (name == "NoiseCodeName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.NoiseCodeName
+                                        </td>
+                                    }
+                                    else if (name == "SubHouseType")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.SubHouseTypeName
+                                        </td>
+                                    }
+                                    else if (name == "SubHouseArea")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.SubHouseArea
+                                        </td>
+                                    }
+                                    else if (name == "IsShowBuildingArea")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.IsShowBuildingAreaName
+                                        </td>
+                                    }
+                                    else if (name == "FitmentName")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.FitmentCodeName
+                                        </td>
+                                    }
+                                    else if (name == "Cookroom")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.CookroomName
+                                        </td>
+                                    }
+                                    else if (name == "Balcony")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.Balcony
+                                        </td>
+                                    }
+                                    else if (name == "Toilet")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.Toilet
+                                        </td>
+                                    }
+                                    else if (name == "UnitPrice")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.UnitPrice
+                                        </td>
+                                    }
+                                    else if (name == "Weight")
+                                    {
+                                        <td fxtcompanyid="@h.FxtCompanyId" houseid="@h.HouseId">
+                                            @h.Weight
+                                        </td>
+                                    }
+                            }
+                                @*else if (index == 0)
+                                {
+                                    <td></td>
+                                    <td></td>
+                                }*@
+                                else {
+                                    <td></td>
+                                }
+                                index++;
+
+                            }
+                            index = 0;
+                        }
+                    </tr>
+                                }
+                            }
+        }
+    </tbody>
+</table>

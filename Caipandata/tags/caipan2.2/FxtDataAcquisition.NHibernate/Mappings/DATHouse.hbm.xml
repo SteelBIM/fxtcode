@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+  <class name="FxtDataAcquisition.NHibernate.Entities.DATHouse, FxtDataAcquisition.NHibernate" table="DAT_House">
+		<id name="HouseId" column="HouseId" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="BuildingId" column="BuildingId" type="int"  />
+		<property name="HouseName" column="HouseName" type="string"  />
+		<property name="HouseTypeCode" column="HouseTypeCode" type="int"  />
+		<property name="FloorNo" column="FloorNo" type="int"  />
+    <property name="EndFloorNo" column="EndFloorNo" type="int"  />
+    <property name="NominalFloor" column="NominalFloor" type="string"  />
+		<property name="UnitNo" column="UnitNo" type="string"  />
+		<property name="BuildArea" column="BuildArea" type="decimal"  />
+		<property name="FrontCode" column="FrontCode" type="int"  />
+		<property name="SightCode" column="SightCode" type="int"  />
+		<property name="UnitPrice" column="UnitPrice" type="decimal"  />
+		<property name="SalePrice" column="SalePrice" type="decimal"  />
+		<property name="Weight" column="Weight" type="decimal"  />
+		<property name="PhotoName" column="PhotoName" type="string"  />
+		<property name="Remark" column="Remark" type="string"  />
+		<property name="StructureCode" column="StructureCode" type="int"  />
+		<property name="TotalPrice" column="TotalPrice" type="decimal"  />
+		<property name="PurposeCode" column="PurposeCode" type="int"  />
+		<property name="IsEValue" column="IsEValue" type="int"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="OldId" column="OldId" type="string"  />
+		<property name="CreateTime" column="CreateTime" type="DateTime"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="SaveDateTime" column="SaveDateTime" type="DateTime"  />
+		<property name="SaveUser" column="SaveUser" type="string"  />
+		<property name="FxtCompanyId" column="FxtCompanyId" type="int"  />
+		<property name="IsShowBuildingArea" column="IsShowBuildingArea" type="int"  />
+		<property name="InnerBuildingArea" column="InnerBuildingArea" type="decimal"  />
+		<property name="SubHouseType" column="SubHouseType" type="int"  />
+		<property name="SubHouseArea" column="SubHouseArea" type="decimal"  />
+		<property name="Creator" column="Creator" type="string"  />
+		<property name="FxtHouseId" column="FxtHouseId" type="int"  />
+    <property name="Status" column="Status" type="int"  />
+    <property name="VDCode" column="VDCode" type="int"  />
+    <property name="NoiseCode" column="NoiseCode" type="int"  />
+    
+  </class>
+</hibernate-mapping>

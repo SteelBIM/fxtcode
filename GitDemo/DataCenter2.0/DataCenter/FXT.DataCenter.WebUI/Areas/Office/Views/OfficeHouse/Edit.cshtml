@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "办公房号编辑";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using FXT.DataCenter.Domain.Models
+@model DatHouseOffice
+@section PageSpecificStyleSheetIncludes{
+    <style type="text/css">
+        #tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+        }
+
+        .xubox_layer
+        {
+            top: 5px!important;
+        }
+
+        .select2-container
+        {
+            width: 220px!important;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+
+}
+@section MainContent{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td>房号名称:
+            </td>
+            <td>@Html.TextBoxFor(m => m.HouseName)
+                <span style="color: red;">*</span>
+            </td>
+            <td class="help-inline"></td>
+            <td>单元号:
+            </td>
+            <td>@Html.TextBoxFor(m => m.UnitNo, new { @readonly = "readonly" })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>物理层:
+            </td>
+            <td>@Html.TextBoxFor(m => m.FloorNo, new { @readonly = "readonly" })
+            </td>
+            <td class="help-inline"></td>
+            <td>实际层:
+            </td>
+            <td>@Html.TextBoxFor(m => m.FloorNum, new { @readonly = "readonly" })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>室号:
+            </td>
+            <td>@Html.TextBoxFor(m => m.HouseNo, new { @readonly = "readonly" })
+            </td>
+            <td class="help-inline"></td>
+            <td>证载用途:
+            </td>
+            <td>@Html.DropDownListFor(m => m.PurposeCode, ViewBag.PurposeName as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>实际用途:
+            </td>
+            <td>@Html.DropDownListFor(m => m.SJPurposeCode, ViewBag.SJPurposeCodeName as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+            <td>建筑面积(㎡):
+            </td>
+            <td>@Html.TextBoxFor(m => m.BuildingArea)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>套内面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.InnerBuildingArea)
+            </td>
+            <td class="help-inline"></td>
+            <td>朝向:
+            </td>
+            <td>@Html.DropDownListFor(m => m.FrontCode, ViewBag.FrontName as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>景观:
+            </td>
+            <td>@Html.DropDownListFor(m => m.SightCode, ViewBag.SightName as List<SelectListItem>)
+            </td>
+            <td class="help-inline"></td>
+            <td>单价(元/㎡):
+            </td>
+            <td>@Html.TextBoxFor(m => m.UnitPrice)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>价格系数:
+            </td>
+            <td>@Html.TextBoxFor(m => m.Weight)
+            </td>
+            <td class="help-inline"></td>
+            <td>是否可估:
+            </td>
+            <td>@Html.DropDownListFor(m => m.IsEValue, new List<SelectListItem> {
+               new SelectListItem { Value = "-1", Text = "--请选择--" },
+               new SelectListItem { Value = "1", Text = "是" },
+               new SelectListItem { Value = "0", Text = "否" }
+                })
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+        <tr>
+            <td>备注:
+            </td>
+            <td>@Html.TextBoxFor(m => m.Remarks)
+            </td>
+            <td class="help-inline"></td>
+        </tr>
+    </table>
+    <div>
+        <input type="hidden"  name="HouseId" id="HouseId" value="@Model.HouseId"/>
+        <input type="hidden"  name="BuildingId" id="BuildingId" value="@Model.BuildingId"/>
+        <input type="hidden"  name="UnitNo" id="UnitNo" value="@Model.UnitNo"/>
+        <input type="hidden"  name="HouseNo" id="HouseNo" value="@Model.HouseNo"/>
+        <input type="hidden"  name="CityID" id="CityID" value="@Model.CityId"/>
+        <input type="hidden"  name="FxtCompanyId" id="FxtCompanyId" value="@Model.FxtCompanyId"/>
+    </div>
+}

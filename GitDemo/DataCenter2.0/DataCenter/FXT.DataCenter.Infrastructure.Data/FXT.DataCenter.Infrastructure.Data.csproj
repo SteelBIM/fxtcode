@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20CE707A-120F-4761-8F38-7BE5EE164F97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FXT.DataCenter.Infrastructure.Data</RootNamespace>
+    <AssemblyName>FXT.DataCenter.Infrastructure.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.25.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.25\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ServicesImpl\Authorize\Menu.cs" />
+    <Compile Include="ServicesImpl\Authorize\Role.cs" />
+    <Compile Include="ServicesImpl\Authorize\SYS_User_TimeDAL.cs" />
+    <Compile Include="ServicesImpl\Authorize\User.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessCase.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessCircle.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessStore.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessStreet.cs" />
+    <Compile Include="ServicesImpl\Business\DynamicPriceSurvey.cs" />
+    <Compile Include="ServicesImpl\Company\PublicPeiTao.cs" />
+    <Compile Include="ServicesImpl\House\CodePrice.cs" />
+    <Compile Include="ServicesImpl\House\FloorPrice.cs" />
+    <Compile Include="ServicesImpl\House\PropertyAddress.cs" />
+    <Compile Include="ServicesImpl\Human\HumanHouse.cs" />
+    <Compile Include="ServicesImpl\Human\HumanProject.cs" />
+    <Compile Include="ServicesImpl\Share\DAT_Analysis_CityDAL.cs" />
+    <Compile Include="ServicesImpl\Company\Company.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessBuilding.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessFloor.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessHouse.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessBuildingPhoto.cs" />
+    <Compile Include="ServicesImpl\Business\BusinessFloorPhoto.cs" />
+    <Compile Include="ServicesImpl\House\CityAvgPrice.cs" />
+    <Compile Include="ServicesImpl\House\Building.cs" />
+    <Compile Include="ServicesImpl\House\House.cs" />
+    <Compile Include="ServicesImpl\House\Project.cs" />
+    <Compile Include="ServicesImpl\House\ProjectCoordinate.cs" />
+    <Compile Include="ServicesImpl\House\ProjectCase.cs" />
+    <Compile Include="ServicesImpl\House\ProjectCaseTask.cs" />
+    <Compile Include="ServicesImpl\House\ProjectOtherName.cs" />
+    <Compile Include="ServicesImpl\House\ProjectSample.cs" />
+    <Compile Include="ServicesImpl\House\WaitBuildingProject.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryBuilding.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryCase.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryDynamicPrice.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryHouse.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryPeiTao.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryProject.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustrySubArea.cs" />
+    <Compile Include="ServicesImpl\Industry\IndustryTenant.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeBuilding.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeCase.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeDynamicPrice.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeHouse.cs" />
+    <Compile Include="ServicesImpl\Office\OfficePeiTao.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeProject.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeSubArea.cs" />
+    <Compile Include="ServicesImpl\Office\OfficeTenant.cs" />
+    <Compile Include="ServicesImpl\Share\ImportTask.cs" />
+    <Compile Include="ServicesImpl\Share\CompanyProduct_ModuleDAL.cs" />
+    <Compile Include="ServicesImpl\Land\Land.cs" />
+    <Compile Include="ServicesImpl\Land\LandBasePrice.cs" />
+    <Compile Include="ServicesImpl\Land\LandCoordinate.cs" />
+    <Compile Include="ServicesImpl\Share\DropDownList.cs" />
+    <Compile Include="ServicesImpl\Share\DAT_CompanyDAL.cs" />
+    <Compile Include="ServicesImpl\Land\LandCase.cs" />
+    <Compile Include="ServicesImpl\Share\Log.cs" />
+    <Compile Include="ServicesImpl\Share\MarketAnalysis.cs" />
+    <Compile Include="ServicesImpl\Share\Share.cs" />
+    <Compile Include="ServicesImpl\Share\SYS_LoginDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesImpl\VQPrice\BuildingWeightRevised.cs" />
+    <Compile Include="ServicesImpl\VQPrice\HouseWeightRevised.cs" />
+    <Compile Include="ServicesImpl\VQPrice\ProjectAvgPrice.cs" />
+    <Compile Include="ServicesImpl\VQPrice\ProjectWeightRevised.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FXT.DataCenter.Domain\FXT.DataCenter.Domain.csproj">
+      <Project>{C368021B-9C65-4BDC-A6EE-523EFC2969F3}</Project>
+      <Name>FXT.DataCenter.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FXT.DataCenter.Infrastructure.Common\FXT.DataCenter.Infrastructure.Common.csproj">
+      <Project>{ED63DE3F-A21B-4316-987F-634BCC3939BB}</Project>
+      <Name>FXT.DataCenter.Infrastructure.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

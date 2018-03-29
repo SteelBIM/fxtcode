@@ -1,0 +1,183 @@
+﻿@model FXT.DataCenter.Domain.Models.DatPbPriceOffice
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        .tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+        }
+
+        .required
+        {
+            color: red;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#SurveyDate").datepicker({ format: 'yyyy-mm-dd' });
+            $("#ProjectId,#BuildingId").select2({
+                matcher: function (term, text) {
+                    var mod = ZhToPinyin(text);
+                    var tf1 = mod.a.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    var tf2 = mod.b.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                    return (tf1 || tf2);
+                }
+            });
+            $("#ProjectId").select2();
+            $("#BuildingId").select2();
+            $(".select2-container").width(219);
+
+            $("#ProjectId").change(function () {
+                $.post('@Url.Action("GetOfficeBuilding")', { projectId: $("#ProjectId").val() }, function (data) {
+                    $("#BuildingId").html("");
+                    $.each(data, function (i, item) {
+                        $("#BuildingId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                    $("#BuildingId").select2({
+                        matcher: function (term, text) {
+                            var mod = ZhToPinyin(text);
+                            var tf1 = mod.a.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                            var tf2 = mod.b.toUpperCase().indexOf(term.toUpperCase()) == 0;
+                            return (tf1 || tf2);
+                        }
+                    });
+                    $("#BuildingId").select2();
+                    $(".select2-container").width(219);
+                });
+            });
+        });
+    </script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>办公楼盘:
+            </td>
+            <td>
+                @if (Model != null)
+                {
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="FxtCompanyId" value="@Model.FxtCompanyId" />
+                    // @Html.TextBoxFor(m => m.ProjectName, new { @readonly = "readonly" })
+                }
+
+                @Html.DropDownListFor(m => m.ProjectId, ViewBag.ProjectName as List<SelectListItem>)
+                <span class="required">*</span>
+            </td>
+            <td>办公楼栋:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BuildingId, ViewBag.BuildingName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>平均租金(元/㎡*日)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AvgRent)
+                <span class="required">*</span>
+            </td>
+            <td>调查方式:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.SurveyTypeCode, ViewBag.SurveyTypeName as List<SelectListItem>)
+                <span class="required">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>平均售价(元/㎡)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AvgSalePrice)
+            </td>
+            <td>平均租售比(月租金/销售单价):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.RentSaleRate)
+            </td>
+        </tr>
+        <tr>
+            <td>最低日租金(元/㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Rent1)
+            </td>
+            <td>最高日租金(元/㎡)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Rent2)
+            </td>
+        </tr>
+        <tr>
+            <td>最低售价(元/㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SalePrice1)
+            </td>
+            <td>最高售价(元/㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SalePrice2)
+            </td>
+        </tr>
+        <tr>
+            <td>已租面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TenantArea)
+            </td>
+            <td>空置面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.VacantArea)
+            </td>
+        </tr>
+        <tr>
+            <td>空置率(%)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.VacantRate)
+            </td>
+            <td>管理费(元/㎡*月)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ManagerPrice)
+            </td>
+        </tr>
+        <tr>
+            <td>调查时间:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SurveyDate, new { Value = @Model != null ? string.Format("{0:yyyy-MM-dd}", @Model.SurveyDate) : "" })
+                <span class="required">*</span>
+            </td>
+            <td>调查人：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SurveyUser)
+            </td>
+        </tr>
+    </table>
+}
+

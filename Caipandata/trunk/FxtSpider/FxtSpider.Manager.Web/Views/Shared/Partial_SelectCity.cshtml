@@ -1,0 +1,35 @@
+﻿
+<div class="widget-title" id="selectCityPanel">
+    <div class="dataTables_length  dataTables_length_province">
+        <label>
+            省份: 
+            <select id="selectProvinc" class="select1">
+                    <option value="0" selected="selected">--全部--</option>
+                @foreach (FxtSpider.DAL.LinqToSql.省份表 obj in ViewBag.ProvinceList)
+                {
+                    <option value="@obj.ID">@obj.省份名称</option>
+                }
+            </select>
+        </label>
+    </div> 
+    <div class="dataTables_length  dataTables_length_city">
+        <label>
+            城市: 
+            <select id="selectCity" class="select1">
+                    <option value="0," selected="selected">--全部--</option>
+                @foreach (FxtSpider.DAL.LinqToSql.城市表 obj in ViewBag.CityList)
+                {
+                    <option value="@obj.ID,@obj.城市名称" class="city province_@obj.省份ID">@obj.城市名称</option>
+                }
+            </select>
+        </label>
+    </div>
+    <div class="dataTables_length  dataTables_length_area">
+        <label>
+            行政区: 
+            <select id="selectArea" class="selectArea">
+                    <option value="0," selected="selected">--全部--</option>
+            </select>
+        </label>
+    </div>            
+</div>

@@ -1,0 +1,328 @@
+﻿@{
+    ViewBag.Title = "商业楼栋自定义导出";
+}
+
+@using FXT.DataCenter.Domain.Models
+@using Webdiyer.WebControls.Mvc
+@model PagedList<Dat_Building_Biz>
+@section StyleSheet{
+    <style type="text/css">
+        select
+        {
+            margin: 1px;
+            width: 150px;
+        }
+    </style>
+}
+@section Javascript{
+    <script type="text/javascript">
+        var UrlExport = '@Url.Action("Export")';
+
+        $(document).ready(function () {
+            //面包屑导航
+            $("#navigation .breadcrumb li:eq(1)").remove();
+            $("#navigation .breadcrumb li:eq(2)").remove();
+            var html = " <li><span><a href='/Business/BusinessStreet/Index'>商业基础数据</a></span> <i class='icon-angle-right'></i></li>";
+            html += " <li><span>商业楼栋自定义导出</span></li>";
+            $("ul.breadcrumb").append(html);
+
+            //行政区商圈联动
+            $("#AreaId").change(function () {
+                $.post('@Url.Action("GetSubAreaName")', { areaId: $("#AreaId").val() }, function (data) {
+                    $("#SubAreaId").html("");
+                    $.each(data, function (i, item) {
+                        $("#SubAreaId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                });
+            });
+
+            //全选联动
+            $("input[name=building]").live("click", function () {
+                var flag = true;
+                $("input[name=building]").each(function () {
+                    flag = flag && $(this).prop("checked");
+                });
+                $("#all_building").prop("checked", flag);
+                $.uniform.update();
+            });
+
+            //导出
+            $("#btnBuilding").bind("click", function () {
+                var flag = 0;
+                $("input[name=building]").each(function () {
+                    flag += $(this).prop("checked");
+                });
+                if (flag == 0) {
+                    $("#all_building").prop("checked", true);
+                    $("input[name=building]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+                    $.uniform.update();
+                }
+            });
+        });
+
+        function showData() {
+            var value = $("#buildingTable").css("display");
+            if (value == "block") {
+                $("#buildingTable").css("display", "none");
+                $("#showAll").html("展开∨");
+            }
+            else {
+                $("#buildingTable").css("display", "block");
+                $("#showAll").html("收起∧");
+            }
+        }
+
+        function selectAll() {
+            var flag = $("#all_building").prop("checked");
+            $("input[name=building]").each(function () {
+                $(this).prop("checked", flag);
+            });
+            $.uniform.update();
+        }
+
+    </script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm" }))
+{
+    <div class="row-fluid" id="condi">
+        <table style="margin-bottom: 10px; line-height: 35px; width: 75%;">
+            <tr>
+                <td>具体商业街:
+                </td>
+                <td>
+                    @Html.TextBox("projectName", Request["projectName"], new { @style = "width: 138px;" })
+                </td>
+                <td>商业楼栋:
+                </td>
+                <td>
+                    @Html.TextBox("buildingName", Request["buildingName"], new { @style = "width: 138px;" })
+                </td>
+                <td>行政区:
+                </td>
+                <td>
+                    @Html.DropDownList("AreaId", ViewBag.AreaList as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>楼栋商业类型:
+                </td>
+                <td>
+                    @Html.DropDownList("BuildingBizType", ViewBag.BuildingBizTypeName as List<SelectListItem>)
+                </td>
+                <td>临路类型:
+                </td>
+                <td>
+                    @Html.DropDownList("ProRoad", ViewBag.ProRoadName as List<SelectListItem>)
+                </td>
+                <td>商业阻隔:
+                </td>
+                <td>
+                    @Html.DropDownList("BizCutOff", ViewBag.BizCutOffeName as List<SelectListItem>)
+                </td>
+            </tr>
+            <tr>
+                <td>人流量:
+                </td>
+                <td>@Html.DropDownList("Flows", ViewBag.FlowsName as List<SelectListItem>)
+                </td>
+                <td>是否商业标杆:
+                </td>
+                <td>
+                    @Html.DropDownList("IsBenchmarks", new List<SelectListItem>{ 
+                    new SelectListItem{Value="-1",Text="--请选择--"},
+                    new SelectListItem{Value="0",Text="否"},
+                    new SelectListItem{Value="1",Text="是"}
+               })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="checkbox" name="all_building" id="all_building" value="all_building" onclick="selectAll()" /><b>全选</b>
+        <a style="cursor: pointer;" id="showAll" href="javascript:showData();">收起∧</a>
+    </div>
+    <table id="buildingTable" style="display: block;">
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="AreaName&行政区" />行政区</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="SubAreaName&商圈" />商圈</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="ProjectName&商业街" />商业街</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BuildingName&商业楼栋" />商业楼栋</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="PinYin&拼音简写" />拼音简写</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="PinYinAll&楼栋名称全拼" />楼栋名称全拼</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="CorrelationTypeName&与商圈关联度" />与商圈关联度</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Address&地址" />地址</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="FieldNo&宗地号" />宗地号</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="StructureCodeName&建筑结构" />建筑结构</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BuildingTypeCodeName&建筑类型" />建筑类型</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="ManagerPrice&管理费" />管理费</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="ManagerTel&管理处电话" />管理处电话</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BuildingArea&总建筑面积" />总建筑面积</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="EndDate&竣工日期" />竣工日期</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="OpenDate&开业日期" />开业日期</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="RentSaleTypeName&租售方式" />租售方式</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BizArea&商业总面积" />商业总面积</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BizFloor&商业总层数" />商业总层数</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="UpFloorNum&地上商业层数" />地上商业层数</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="DownFloorNum&地下商业层数" />地下商业层数</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Functional&功能分布" />功能分布</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="BizNum&商铺总数" />商铺总数</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="LiftNum&客梯数量" />客梯数量</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="LiftFitmentName&客梯装修" />客梯装修</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="LiftBrand&电梯品牌" />电梯品牌</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="EscalatorsNum&扶手电梯数量" />扶手电梯数量</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="EscalatorsBrand&扶手电梯品牌" />扶手电梯品牌</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="ToiletBrand&卫浴品牌" />卫浴品牌</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="PublicFitmentName&公共区域装修" />公共区域装修</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="WallFitmentName&外墙装修" />外墙装修</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="TrafficTypeName&交通便捷度" />交通便捷度</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="TrafficDetails&交通便捷度描述" />交通便捷度描述</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="ParkingLevelName&停车便捷度" />停车便捷度</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="AirConditionTypeName&空调系统类型" />空调系统类型</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Details&商业描述" />商业描述</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="East&四至东" />四至东</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="south&四至南" />四至南</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="west&四至西" />四至西</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="north&四至北" />四至北</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="BuildingBizTypeName&楼栋商业类型" />楼栋商业类型</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BizTypeName&主营商业种类" />主营商业种类</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BusinessHours&营业时间" />营业时间</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="ProRoadName&临路类型" />临路类型</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="BizCutOffName&商业阻隔" />商业阻隔</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="FlowsName&人流量" />人流量</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="checkbox" name="building" value="CustomerTypeName&客户消费定位" />客户消费定位</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="IsBenchmarksName&是否商业标杆" />是否商业标杆</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="X&经度" />经度</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Y&纬度" />纬度</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Remarks&备注" />备注</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="AveragePrice&楼栋均价" />楼栋均价</label>
+            </td>
+            <td>
+                <label><input type="checkbox" name="building" value="Weight&价格系数" />价格系数</label>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div>
+        <input class="btn" id="btnBuilding" type="submit" value="导出" />
+    </div>
+}

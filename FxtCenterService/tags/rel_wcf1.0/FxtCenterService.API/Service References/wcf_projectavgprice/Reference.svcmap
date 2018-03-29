@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cf672f5a-b3c1-4a37-8fc6-48a697df61ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.7:6300/API/FxtAPI.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtAPI.xsd" MetadataType="Schema" ID="48e488ea-508e-4f68-82d3-15cd7e3e61a9" SourceId="1" SourceUrl="http://192.168.0.7:6300/API/FxtAPI.svc?xsd=xsd0" />
+    <MetadataFile FileName="FxtAPI.disco" MetadataType="Disco" ID="7539e705-7d52-4594-bfa4-57d404413865" SourceId="1" SourceUrl="http://192.168.0.7:6300/API/FxtAPI.svc?disco" />
+    <MetadataFile FileName="FxtAPI.wsdl" MetadataType="Wsdl" ID="f35be9aa-3131-495d-9823-acbb222cf653" SourceId="1" SourceUrl="http://192.168.0.7:6300/API/FxtAPI.svc?wsdl" />
+    <MetadataFile FileName="FxtAPI1.xsd" MetadataType="Schema" ID="6b0d5470-fe4a-4d1a-83d0-d6db31ed3098" SourceId="1" SourceUrl="http://192.168.0.7:6300/API/FxtAPI.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

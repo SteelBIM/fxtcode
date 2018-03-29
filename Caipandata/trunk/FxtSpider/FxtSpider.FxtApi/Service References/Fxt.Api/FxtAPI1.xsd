@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ResetCrossBy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="purposeTypeCode" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingTypeCode" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingAreaType" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetCrossByResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResetCrossByResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Cross">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="codeType" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrossResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrossResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvince">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProvinceResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="provinceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProvinceByNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="provinceId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProvinceByIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="provinceId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCityResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByCityName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByCityNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCityByCityNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityListByCityName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityListByCityNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCityListByCityNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCity">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllCityResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceByCityId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvinceByCityIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProvinceByCityIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByCityId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByCityIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCityByCityIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArea">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAreaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaByCityName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaByCityNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAreaByCityNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaListByAraeName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="areaName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaListByAraeNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAreaListByAraeNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByAreaId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="areaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityByAreaIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCityByAreaIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaByAreaId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="areaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAreaByAreaIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAreaByAreaIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityNameAndLikePrjName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="length" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityNameAndLikePrjNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectByCityNameAndLikePrjNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityIDAndLikePrjName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+        <xs:element minOccurs="0" name="aId" type="xs:int" />
+        <xs:element minOccurs="0" name="pName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityIDAndLikePrjNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectByCityIDAndLikePrjNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectJoinPMatchByPNameOrPAddressCityId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectJoinPMatchByPNameOrPAddressCityIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectJoinPMatchByPNameOrPAddressCityIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectViewByCityNameAndLikePrjName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="length" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectViewByCityNameAndLikePrjNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectViewByCityNameAndLikePrjNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildingByProjectIdCityIDAndLikeBuildingName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+        <xs:element minOccurs="0" name="pId" type="xs:int" />
+        <xs:element minOccurs="0" name="bName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildingByProjectIdCityIDAndLikeBuildingNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBuildingByProjectIdCityIDAndLikeBuildingNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHouseByBuildingIdCityIDAndLikeHouseName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+        <xs:element minOccurs="0" name="bId" type="xs:int" />
+        <xs:element minOccurs="0" name="hName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHouseByBuildingIdCityIDAndLikeHouseNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetHouseByBuildingIdCityIDAndLikeHouseNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityIdAndProjectIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectIds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityIdAndProjectIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectByCityIdAndProjectIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectJoinProjectMatchByProjectNameCityId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectJoinProjectMatchByProjectNameCityIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectJoinProjectMatchByProjectNameCityIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByProjectNameAndCityName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByProjectNameAndCityNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectByProjectNameAndCityNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityNameAndPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="isGetCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByCityNameAndPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectByCityNameAndPageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="areaId" type="xs:int" />
+        <xs:element minOccurs="0" name="purposeCode" type="xs:int" />
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertProjectResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSYSProjectMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="netName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSYSProjectMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertSYSProjectMatchResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSYSProjectMatchList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonData" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSYSProjectMatchListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertSYSProjectMatchListResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHouseByHouse_City_Building">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="houseName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+        <xs:element minOccurs="0" name="bId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHouseByHouse_City_BuildingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetHouseByHouse_City_BuildingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildingByProject_City_Build">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pId" type="xs:int" />
+        <xs:element minOccurs="0" name="cId" type="xs:int" />
+        <xs:element minOccurs="0" name="bName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildingByProject_City_BuildResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBuildingByProject_City_BuildResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndCaseIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="caseIds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndCaseIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseByCityIdAndCaseIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndCaseId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="caseId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndCaseIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseByCityIdAndCaseIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseIdJoinProjectNameByCityIdAndCaseIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="caseIds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseIdJoinProjectNameByCityIdAndCaseIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseIdJoinProjectNameByCityIdAndCaseIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="fxtCompanyId" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingTypeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="purposeCode" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingAreaCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="isGetCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseByCityIdAndProjectIdAndPurposeCodeAndBuildingTypeCodeAndAreaTypeAndDateAndPageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="dates" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseCountJoinProjectJoinPurposeTypeByCityIdAndProjectIdAndDatesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseCountJoinProjectJoinBuildingTypeJoinAreaTypeByPublicPurposeAndCityIdAndProjectIdAndDateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCaseCountJoinProjectJoinPurposeTypeByVillaPurposeAndCityIdAndProjectIdAndDateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCaseByCityNameAndCaseIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="caseIds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCaseByCityNameAndCaseIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteCaseByCityNameAndCaseIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCaseByCityIdAndCaseIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="caseIds" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCaseByCityIdAndCaseIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteCaseByCityIdAndCaseIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertCase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="houseNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="caseDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="purposeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingArea" nillable="true" type="xs:decimal" />
+        <xs:element minOccurs="0" name="unitPrice" nillable="true" type="xs:decimal" />
+        <xs:element minOccurs="0" name="totalPrice" nillable="true" type="xs:decimal" />
+        <xs:element minOccurs="0" name="caseTypeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="structureCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingTypeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="floorNumber" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="totalFloor" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="houseTypeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="frontCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="moneyUnitCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="areaId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fitmentCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="subHouse" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="peiTao" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="createUser" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sourceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sourceLink" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sourcePhone" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertCaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertCaseResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="caseJson" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateCaseResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProjectPurposeCode">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProjectPurposeCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllProjectPurposeCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSYSCodeByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSYSCodeByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSYSCodeByIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPurposeTypeCodeVillaType">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPurposeTypeCodeVillaTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPurposeTypeCodeVillaTypeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSYSCodeByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSYSCodeByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSYSCodeByCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectIds" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="dateRange" type="xs:int" />
+        <xs:element minOccurs="0" name="avgPriceDates" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectAvgPriceByProjectIdsAndCityIdAndDateRangeAndAvgPriceDatesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectAvgPriceByProjectIdAndCityIdAndBy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectId" type="xs:int" />
+        <xs:element minOccurs="0" name="cityId" type="xs:int" />
+        <xs:element minOccurs="0" name="purposeCode" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingTypeCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="buildingAreaCode" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dateRange" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectAvgPriceByProjectIdAndCityIdAndByResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProjectAvgPriceByProjectIdAndCityIdAndByResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Entrance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntranceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EntranceResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

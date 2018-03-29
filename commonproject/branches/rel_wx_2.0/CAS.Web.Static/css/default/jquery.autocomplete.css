@@ -1,0 +1,62 @@
+.ac_results {
+	padding: 0px;
+	border: solid #9A9A9A 1px;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+	overflow-x:hidden;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow-x:hidden;
+	overflow-y:auto;
+	max-height:200px;
+}
+.suggestion-ac_results li {cursor:pointer;padding:0 5px;zoom:1;color:#039;}
+	.ac_results li.novalue {color:#8F8F8F;}
+	.ac_results li.hover {background-color:#D9E8F9;}
+	.ac_resultsli.select {color:#fff;background-color:#003399;}
+.ac_results li {
+	margin: 0px;
+	padding:0 5px;
+	cursor: pointer;
+	display: block;
+	width:100%;
+	text-align:left;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font-size: 12px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 24px;
+	overflow: hidden;
+	zoom:1;color:#039;
+}
+.ac_results li.novalue {color:#8F8F8F;}
+.ac_results li.hover {background-color:#D9E8F9;}
+.ac_resultsli.select {color:#fff;background-color:#003399;}
+.ac_loading {
+	background:#fff url(../../images/loading.gif) no-repeat 0 50%;
+	height:20px;
+	border:1px solid #ccc;
+	position:absolute;
+}
+
+/*.ac_odd {
+	background-color: #fff;
+}
+
+.ac_over {
+	background-color: #fff;
+	color: white;
+}*/

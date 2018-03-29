@@ -1,0 +1,189 @@
+﻿<div>
+    具体楼盘：@Html.TextBox("ProjectName", null, new { @class = "m-wrap small" })
+</div>
+<div class="div">
+    <div class="content_div">
+        行政区：&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("houseareaid", null, new { @class = "m-wrap small" })
+    </div>
+    <div class="content_div">
+        片区：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("housesubareaid", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        户型：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("HouseTypeCode", null, new { @class = "m-wrap small" })
+    </div>
+    <div class="content_div">
+        户型结构：@Html.DropDownList("HouseStructureCode", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        朝向：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("FrontCode", null, new { @class = "m-wrap small" })
+    </div>
+    <div class="content_div">
+        景观：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("SightCode", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="div">
+    <div class="content_div">
+        房号用途：@Html.DropDownList("HousePurposeCode", null, new { @class = "m-wrap small" })
+        @*面积确认:*@<select class="m-wrap small" id="IsShowBuildingArea" name="IsShowBuildingArea" style="display: none;">
+            <option value="-1">--请选择--</option>
+            <option value="1">是</option>
+            <option value="0">否</option>
+        </select>
+    </div>
+    <div class="content_div">
+        创建日期：@Html.TextBox("HstarTime", null, new { @class = "m-wrap small" })&nbsp;&nbsp;～&nbsp;&nbsp;@Html.TextBox("HendTime", null, new { @class = "m-wrap small" })
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<tr>
+    <td colspan="2">
+        <input type="checkbox" name="all_house" id="all_house" value="all_house" onclick="selectAll('house')" /><b>全选</b>
+        <a style="cursor: pointer;" id="a_house" href="javascript:showOrhide('house');">收起∧</a>
+    </td>
+</tr>
+<tr>
+    <table style="width: 900px; margin-left: 10px;" id="attr_house">
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="CityName&城市名称" />城市名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="AreaName&*行政区" />行政区
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SubAreaName&片区" />片区
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="ProjectName&*楼盘名称" />楼盘名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="BuildingName&*楼栋名称" />楼栋名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="UnitNo&*单元室号" />单元室号
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="FloorNo&*所在楼层" />所在楼层
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="NominalFloor&实际层" />实际层
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="HouseName&*房号名称" />房号名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="BuildArea&建筑面积" />建筑面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="InnerBuildingArea&套内面积" />套内面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SubHouseTypeName&附属房屋类型" />附属房屋类型
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SubHouseArea&附属房屋面积" />附属房屋面积
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="HouseTypeCodeName&户型" />户型
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="StructureCodeName&户型结构" />户型结构
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="PurposeCodeName&用途" />用途
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="UnitPrice&单价" />单价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="TotalPrice&总价" />总价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Weight&价格系数" />价格系数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="FrontCodeName&朝向" />朝向
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SightCodeName&景观" />景观
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="VDCodeName&通风采光" />通风采光
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="FitmentCodeName&装修" />装修
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Cookroom&是否有厨房" />是否有厨房
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Balcony&阳台数" />阳台数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Toilet&洗手间数" />洗手间数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="IsShowBuildingArea&面积确认" />面积确认
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="IsEValue&是否可估" />是否可估
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="PhotoName&图片名称" />图片名称
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="NoiseCodeName&噪音情况" />噪音情况
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Remark&备注" />备注
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="PAveragePrice&楼盘项目均价" />楼盘项目均价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="BAveragePrice&楼栋销售均价" />楼栋销售均价
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="BWeight&楼栋价格系数" />楼栋价格系数
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="FxtCompanyId&评估机构ID" />评估机构ID
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="Creator&创建用户" />创建用户
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="CreateTime&创建时间" />创建时间
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SaveUser&保存用户" />保存用户
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="SaveDateTime&保存时间" />保存时间
+            </td>
+            <td style="width: 120px;">
+                <input type="checkbox" name="house" value="belongcompanyname&数据建设机构" />数据建设机构
+            </td>
+        </tr>
+    </table>
+</tr>
+<div style="float: right">
+    <input class="btn" id="btnhouse" type="submit" value=" 导出" onclick="RunMsg('house');" />
+</div>

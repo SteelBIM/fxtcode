@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtDataUserDomain" 
+				   namespace="FxtNHibernate.FxtDataUserDomain.Entities">
+	<class name="FxtNHibernate.FxtDataUserDomain.Entities.SysProduct, FxtNHibernate.FxtDataUserDomain" 
+		   table="Sys_Product">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="ProductName" column="ProductName" type="string"  />
+		<property name="UserId" column="UserId" type="int"  />
+		<property name="CreateDate" column="CreateDate" type="DateTime"  />
+		<property name="Remark" column="Remark" type="string"  />
+				
+	</class>
+</hibernate-mapping>

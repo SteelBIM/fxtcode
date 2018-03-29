@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="addr" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateAddressResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Logout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LogoutResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryCityInfoList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryCityInfoListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryCityInfoListResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryAreaInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryAreaInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryAreaInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPurposeInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPurposeInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryPurposeInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryFrontInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryFrontInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryFrontInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryBuildingTypeInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryBuildingTypeInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryBuildingTypeInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryHouseTypeInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryHouseTypeInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryHouseTypeInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryStructureInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryStructureInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryStructureInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryFitmentInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryFitmentInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryFitmentInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryMoneyUnitInfoMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryMoneyUnitInfoMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryMoneyUnitInfoMapResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchInsertDataCase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchInsertDataCaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BatchInsertDataCaseResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryDataProjectList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryDataProjectListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryDataProjectListResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PagingQueryProjectList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PagingQueryProjectListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PagingQueryProjectListResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNetworkNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNetworkNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNetworkNamesResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PagingQueryCityList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userToken" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="args" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PagingQueryCityListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PagingQueryCityListResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

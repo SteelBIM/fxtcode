@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="df2890e7-934d-4cc7-8b69-b387dda0c670" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:6300/API/FxtAPI.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtAPI.xsd" MetadataType="Schema" ID="1cb913aa-3542-44b0-8cf0-dbf2c5c0ea36" SourceId="1" SourceUrl="http://localhost:6300/API/FxtAPI.svc?xsd=xsd1" />
+    <MetadataFile FileName="FxtAPI1.xsd" MetadataType="Schema" ID="9e9339b2-ba44-4e9e-8b6f-6222ef4f3538" SourceId="1" SourceUrl="http://localhost:6300/API/FxtAPI.svc?xsd=xsd0" />
+    <MetadataFile FileName="FxtAPI.disco" MetadataType="Disco" ID="bcd5f402-dcba-41a4-abe4-9dd494bedaff" SourceId="1" SourceUrl="http://localhost:6300/API/FxtAPI.svc?disco" />
+    <MetadataFile FileName="FxtAPI.wsdl" MetadataType="Wsdl" ID="6ecf8886-08c0-485e-890a-e5c221344d02" SourceId="1" SourceUrl="http://localhost:6300/API/FxtAPI.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

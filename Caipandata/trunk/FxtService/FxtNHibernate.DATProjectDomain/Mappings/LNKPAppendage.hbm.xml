@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="FxtNHibernate.DATProjectDomain" namespace="FxtNHibernate.DATProjectDomain.Entities">
+	<class name="FxtNHibernate.DATProjectDomain.Entities.LNKPAppendage, FxtNHibernate.DATProjectDomain" table="LNK_P_Appendage">
+    <id name="id" column="id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="ProjectId" column="ProjectId" type="int"  />
+		<property name="AppendageCode" column="AppendageCode" type="int"  />
+		<property name="Area" column="Area" type="decimal"  />
+		<property name="P_AName" column="P_AName" type="string"  />
+		<property name="IsInner" column="IsInner" type="bool"  />
+		<property name="CityId" column="CityId" type="int"  />
+		<property name="ClassCode" column="ClassCode" type="int"  />
+				
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,140 @@
+2017-01-06 11:54:26,700 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入省份缓存
+2017-01-06 11:54:26,823 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入城市缓存
+2017-01-06 11:54:28,498 [8] INFO  FxtDataAcquisition.Web.Controllers.HomeController [(null)] <(null)> - 查看公司全部
+2017-01-06 11:54:32,331 [6] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 11:55:52,253 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入省份缓存
+2017-01-06 11:55:52,362 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入城市缓存
+2017-01-06 11:55:54,157 [8] INFO  FxtDataAcquisition.Web.Controllers.HomeController [(null)] <(null)> - 查看公司全部
+2017-01-06 11:55:56,421 [7] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 11:56:06,134 [7] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:56:06,699 [8] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 11:56:47,434 [15] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:56:47,535 [6] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 11:57:43,578 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入省份缓存
+2017-01-06 11:57:43,578 [5] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入省份缓存
+2017-01-06 11:57:43,724 [8] INFO  FxtDataAcquisition.Application.Services.CityService [(null)] <(null)> - 写入城市缓存
+2017-01-06 11:57:45,631 [8] INFO  FxtDataAcquisition.Web.Controllers.HomeController [(null)] <(null)> - 查看公司全部
+2017-01-06 11:57:45,635 [5] INFO  FxtDataAcquisition.Web.Controllers.HomeController [(null)] <(null)> - 查看公司全部
+2017-01-06 11:57:49,509 [5] INFO  CASLog [(null)] <(null)> - 写入行政区缓存
+2017-01-06 11:58:15,231 [15] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:58:15,681 [8] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 11:58:41,216 [5] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:58:41,317 [6] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 11:58:50,198 [8] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 11:58:50,273 [7] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 12:32:08,771 [67] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:32:08,880 [66] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 12:33:19,394 [70] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:33:19,513 [61] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 12:33:24,497 [74] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:33:24,615 [61] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+2017-01-06 12:34:32,512 [66] INFO  CASLog [(null)] <(null)> - 读取行政区缓存
+2017-01-06 12:34:32,660 [77] ERROR CASLog [(null)] <(null)> - System.ArgumentException: 对于“FxtDataAcquisition.Web.Controllers.AllotFlowInfoController”中方法“System.Web.Mvc.ActionResult AllotFlowManager_GetList_Api(System.String, System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, Int32, Int32, Int32, FxtDataAcquisition.Domain.DTO.FxtUserCenterDTO.UserCenter_LoginUserInfo)”的不可以为 null 的类型“System.Int32”的参数“isGetCount”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()

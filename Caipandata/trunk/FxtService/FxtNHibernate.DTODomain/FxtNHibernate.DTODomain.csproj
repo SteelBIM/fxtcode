@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36FCCDF4-CA87-4BFC-8C2C-02230FCF9B90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtNHibernate.DTODomain</RootNamespace>
+    <AssemblyName>FxtNHibernate.DTODomain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIActualizeDTO\ResultData.cs" />
+    <Compile Include="DATProjectDTO\DATProjectView.cs" />
+    <Compile Include="FxtLoanDTO\BankProject.cs" />
+    <Compile Include="FxtLoanDTO\CollateralMonitorDetails.cs" />
+    <Compile Include="FxtLoanDTO\SysUploadFiles.cs" />
+    <Compile Include="FxtLoanDTO\UserInfo.cs" />
+    <Compile Include="FxtLoanDTO\DataCollaterals.cs" />
+    <Compile Include="FxtDataUserDTO\SysMenus.cs" />
+    <Compile Include="FxtDataUserDTO\Tree.cs" />
+    <Compile Include="FxtLoanDTO\ReassessmentCollateral.cs" />
+    <Compile Include="FxtLoanDTO\TaskToFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\CommonDll\CAS.Entity.BaseDAModels\CAS.Entity.BaseDAModels.csproj">
+      <Project>{2f0d611e-e9fc-429e-945b-1656f7435761}</Project>
+      <Name>CAS.Entity.BaseDAModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.DATProjectDomain\FxtNHibernate.DATProjectDomain.csproj">
+      <Project>{50c6c35d-8d7d-4b1f-b510-b07374413a27}</Project>
+      <Name>FxtNHibernate.DATProjectDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.FxtDataUserDomain\FxtNHibernate.FxtDataUserDomain.csproj">
+      <Project>{33967EF1-D246-4EC2-BDF5-981B78B82387}</Project>
+      <Name>FxtNHibernate.FxtDataUserDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtNHibernate.FxtLoanDomain\FxtNHibernate.FxtLoanDomain.csproj">
+      <Project>{ebf122fc-1ce4-4e96-9854-f9c1867f583f}</Project>
+      <Name>FxtNHibernate.FxtLoanDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

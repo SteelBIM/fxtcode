@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "任务中心";
+    Layout = "";
+}
+<div class="portlet-body">
+    <div class="tabbable-custom">
+
+        <div class="tab-content">
+            <div id="tab1" class="filedown tab-pane fade active in">
+                <div class="actions">
+                    <div class="input-group">
+                        <div class="col-md-12">
+                        <div class="row" style="width:800px;">
+                            <div class="col-md-9">
+                                <div class="input-group"> 
+                                      <span class="input-group-addon">
+                                        任务状态
+                                    </span>
+                                    <select class="form-control notSelect" style="width:150px" id="taskstatus">
+                                         <option value="-1">-请选择-</option>
+                                        <option value="0">正在执行</option>
+                                        <option value="2">已暂停</option>
+                                        <option value="1">已完成</option>
+                                    </select>  
+                                    <span class="input-group-addon">
+                                        任务名称
+                                    </span>
+                                  <input type="text" id="projectname"  style="width:240px;"  class="form-control">
+                                </div>
+                               
+                            </div>
+                           
+                         <button class="btn green" type="submit" id="searchbankpro" >查询</button>
+
+                        </div>
+                    </div>
+    
+                     </div>
+                   
+                </div>
+                <div class="table-scrollable">
+                    
+<table class="table table-striped table-hover table-bordered" id="tasklist">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    任务名称
+                                </th>
+                               <th scope="col">
+                                    任务类型
+                                </th>
+                                <th scope="col">
+                                    进度
+                                </th>
+                                <th scope="col">
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        <div id="page_info" class="dataTables_info">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="tab2" class="filedown tab-pane fade">
+                文件中心
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="template" type="text/x-jquery-tmpl">
+    <tr data-id="${id}">
+        <td>${title}</td>
+        <td>${($item.data.tasktype == 0 ? "拆分" : "复估")}</td>
+        <td data-val="${uploadfileid}" data-count="${count}" data-success="${successcount}" data-fail="${failurecount}"  data-tasktype="${tasktype}" data-num="${count} ${successcount} ${failurecount} ${tasktype}" >${$item.dataProcess()}</td>
+        <td>
+          <a class="btn" data-val="${id}" data-status="${status}" data-file="${uploadfileid}" >
+                ${ProceStatus($item.data.status)}
+          </a>     
+          
+          <a class="btn" data-val="${id}" data-status="${status}" type="log" data-file="${uploadfileid}" >
+                日志
+          </a> 
+
+          <a class="btn ${( ($item.data.status == 1 && $item.data.tasktype == 1)? "" : "dn")}" data-val="${id}" data-status="${status}" type="export" data-file="${uploadfileid}" >导出</a>
+
+             <form id="frmtask_${id}" class="${( ($item.data.status == 1 && $item.data.tasktype == 1)? "" : "dn")}"  action="/Task/TaskExcelUp" method="post" enctype="multipart/form-data">
+            <div class="fileupload-buttonbar">
+                <label class="fileinput-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"  role="button">
+                    <span class="ui-button-icon-primary ui-icon ui-icon-plusthick"></span><span class="ui-button-text">
+                       导入
+                    </span>
+                    <input type="file" name="file" id="file_${id}"  onchange="TaskExport(${id})" multiple="multiple" />
+                    <input type="hidden" name="uploadfileid"  value="${uploadfileid}" />
+                </label>
+
+            </div>
+        </form>
+
+        </td>
+    </tr>
+</script>
+
+
+<script type="text/x-jquery-tmpl" id="template-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet-body form">
+                <form id="form" action="" class="form-horizontal">
+                    <div class="form-body">
+                        <!-- BEGIN FORM-->
+                        <div class="alert alert-error display-hide">
+                            <button class="close" data-dismiss="alert"></button>
+                            <span>输入有错误,请检查.</span>
+                        </div>
+                        <div class="alert alert-success display-hide">
+                            <button class="close" data-dismiss="alert"></button>
+                            <span>验证成功的!</span>
+                        </div>
+                        <input type="hidden" name="id"/>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                银行<span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control notSelect" name="bankid"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                项目名称<span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" name="projectname" data-required="1" class="form-control" />
+                            </div>
+                        </div>
+                        <!-- END FORM-->
+                    </div>
+                    <div class="form-actions fluid">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn green">
+                                提交
+                            </button>
+                            <button type="button" class="btn default">
+                                取消
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</script>
+
+<script src="Scripts/Task.js"></script>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="60abcdf2-b732-4b46-8507-d8b4982b7e45" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.122:9200/BatchAddPicture.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BatchAddPicture.xsd" MetadataType="Schema" ID="3831a568-0931-4252-9eb2-eb92b3977713" SourceId="1" SourceUrl="http://192.168.0.122:9200/BatchAddPicture.svc?xsd=xsd1" />
+    <MetadataFile FileName="BatchAddPicture.wsdl" MetadataType="Wsdl" ID="c85e1d62-09bc-4e59-968c-aeda1b74d4d6" SourceId="1" SourceUrl="http://192.168.0.122:9200/BatchAddPicture.svc?wsdl" />
+    <MetadataFile FileName="BatchAddPicture1.xsd" MetadataType="Schema" ID="acb110e7-84a0-43a0-8690-b6d794ffcb6a" SourceId="1" SourceUrl="http://192.168.0.122:9200/BatchAddPicture.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

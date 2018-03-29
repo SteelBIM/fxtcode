@@ -1,0 +1,1 @@
+﻿select count(*) from FxtUserCenter.dbo.CompanyProduct_Module where ProductTypeCode = @producttypecode and Valid = 1 and  CityId = @cityid and CompanyId = @companyid and ParentModuleCode = @parentmodulecode and ModuleCode = @modulecode and OverDate > GETDATE()

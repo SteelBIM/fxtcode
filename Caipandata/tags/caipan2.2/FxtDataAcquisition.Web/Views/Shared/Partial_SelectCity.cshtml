@@ -1,0 +1,82 @@
+﻿@using FxtDataAcquisition.Domain.DTO.FxtDataWcfDTO
+@*<script src="/Scripts/Common/CityJson.js?dd=d" type="text/javascript"></script>*@
+<span class="input-icon" id="selectCityPanel">
+    <select id="selectProvince" data-nowId="@ViewBag.NowProvinceId" onchange="">
+        <option value="0">--请选择--</option>
+        @{
+            var NowProvinceList = ViewBag.NowProvinceList as List<FxtApi_SYSProvince>;
+            if (NowProvinceList != null && NowProvinceList.Count > 0)
+            {
+                foreach (var item in NowProvinceList)
+                {
+                    <option value="@item.ProvinceId">@item.ProvinceName</option>
+                }
+            }
+        }
+    </select>
+    <select id="selectCity" style="width:100px" data-nowid="@ViewBag.NowCityId">
+        <option value="0">--请选择--</option>
+    </select>
+    <input type="button" value="确定" id="btnSelectCity" style="padding-left:6px;" />
+</span>
+@*<input type="hidden" id="hdCityResult"  value="@ViewBag.CityResult"/>*@
+<input type="hidden" id="hdRightCityData" value="@ViewBag.RightCityData" />
+<input type="hidden" id="hdCallbackUrl" value="@ViewBag.CallbackUrl">
+<script type="text/javascript">
+    $(function () {
+        $("#selectProvince").chosen();
+        $("#selectCity").chosen();
+
+        $("#selectProvince").bind("change", function () {
+            BindCity($("#selectProvince").val());
+        });
+    });
+
+    function BindCity(provinceId) {
+        $.post("/Home/SelectCity", { provinceId: provinceId }, function (data) {
+            if (data.Result) {
+                $("#selectCity").find(".cityInfo").remove();
+                for (var i = 0; i < data.Data.length; i++) {
+                    var obj = data.Data[i];
+                    var cityhtml = "<option value=\"" + obj.CityId + "\" class=\"cityInfo\">" + obj.CityName + "</option>";
+                    $("#selectCity").append(cityhtml);
+                }
+                $("#selectCity").chosen("destroy");
+                $("#selectCity").chosen();
+            } else {
+                alert(data.Message);
+            }
+        });
+
+    }
+
+    $("#btnSelectCity").bind("click", function () {
+        var provinceId = $("#selectProvince").val();
+        var cityId = $("#selectCity").val();
+        if (provinceId == null || provinceId == "" || provinceId == "0" || cityId == null || cityId == "" || cityId == "0") {
+            DA_Alert("请选择城市", function () { });
+            return;
+        }
+        var paraJson = { provinceId: provinceId, cityId: cityId };
+        $.extendAjax(
+                    {
+                        url: "/Login/SubmitChangeCity_Api",
+                        data: paraJson,
+                        type: "post",
+                        dataType: "json"
+                    },
+                    function (data) {
+                        if (data != null) {
+                            if (data.result != 1 && data.errorType == 0) {
+                                alert(decodeURIComponent(data.message));
+                                return;
+                            }
+                            else {
+                                var callbackUrl = $("#hdCallbackUrl").val() == "" ? parent.window.location.href : $("#hdCallbackUrl").val();
+                                parent.window.location.href = callbackUrl;
+                            }
+                        }
+                    },
+                   { dom: "#navbar" });
+    });
+</script>

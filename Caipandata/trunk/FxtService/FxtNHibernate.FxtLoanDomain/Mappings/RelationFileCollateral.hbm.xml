@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtLoanDomain" 
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+	<class name="FxtNHibernate.FxtLoanDomain.Entities.RelationFileCollateral, FxtNHibernate.FxtLoanDomain" 
+		   table="Relation_File_Collateral">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="UploadFileId" column="UploadFileId" type="int"  />
+		<property name="CollateralId" column="CollateralId" type="int"  />
+				
+	</class>
+</hibernate-mapping>

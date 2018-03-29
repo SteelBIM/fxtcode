@@ -1,0 +1,295 @@
+﻿@{
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+<div class="portlet box light-grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>用户列表</div>
+        <div class="actions">
+            <a class="btn green" href="#" 
+                data-title="新增"  
+                data-type="c"
+                data-url="/Users/AddEditUser">
+                <i class="icon-pencil"></i>新增
+             </a>
+        </div>
+        <div class="tools" style="padding-right: 8px;">
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div id="sample_2_wrapper" class="dataTables_wrapper form-inline" role="grid">
+            <div class="actions">
+                <div class="input-group">
+                    <div class="col-md-12">
+                        <div class="row" style="width:950px;">
+                            <div class="col-md-9">
+                                <div class="input-group">                          
+                                    <span class="input-group-addon">
+                                        客户
+                                    </span>
+                                    <select class="form-control notSelect" style="width:150px" id="sel_customerid">
+                                        <option value="0">-请选择-</option>                                       
+                                    </select>
+                                    <span class="input-group-addon">
+                                        状态
+                                    </span>
+                                    <select class="form-control notSelect" style="width:120px" id="sel_valid">
+                                        <option value="-1">-请选择-</option>      
+                                        <option value="1">正常</option>      
+                                        <option value="0">已注销</option>                                       
+                                    </select>
+                                    <span class="input-group-addon">
+                                        用户名称
+                                    </span>
+                                    <input type="text" id="searchkey"  style="width:240px;"  class="form-control">                          
+                                </div>
+                            </div>                           
+                            <button class="btn green" type="submit" id="searchuser" >查询</button> 
+                        </div>
+                    </div>    
+                </div>                   
+            </div>
+            <div class="table-scrollable">
+                <table class="table table-striped table-hover table-bordered" id="listuser">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 200px !important">
+                                用户名
+                            </th>
+                            <th scope="col" style="width: 200px !important">
+                                真实名
+                            </th>
+                            <th scope="col">
+                                客户
+                            </th>
+                            <th scope="col" style="width: 180px !important">
+                                创建时间
+                            </th>
+                            <th scope="col">
+                                状态
+                            </th>
+                            <th scope="col" style="width: 150px !important">
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    <div id="page_info" class="dataTables_info">
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                    <div class="dataTables_paginate paging_bootstrap">
+                        <ul class="pagination"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $.ActionSelectList = [
+    {
+        name: 'customerid',
+        url: '/Users/GetAllCustomer',
+        val: 'CustomerName',
+        key: 'CustomerId',
+        data: 'FxtCompanyId'
+    }];      
+    
+    $.ActionOperta({
+        toid: ".actions",
+        ActionFormRules: $.userrules,
+        ReloadUrl: '/Users/UserInfo'
+    });
+
+    searchUser();
+    $("#searchuser").click(function () {
+        searchUser();
+    });
+    function searchUser() {
+        $.ActionPage.pageIndex = 1;
+        $.ActionPage.pageSize = 10;
+        $.ActionPage.orderProperty = "Id desc";
+        $.ActionPage.key = $("#searchkey").val();
+        $.ActionPage.fxtCompanyId = 0;
+        $.ActionPage.customerId = $("#sel_customerid").val();
+        $.ActionPage.valid = $("#sel_valid").val();
+
+        $.ActionList({
+            tourl: "/Users/GetUserList",
+            toid: "listuser>tbody",
+            sdata: $.ActionPage
+        });
+    }
+    
+    //加载客户列表   
+    var customerarray = [];;
+    $.extendAjax({
+        url: '/Users/GetAllCustomer',
+        type: 'post',
+        data: { }
+    }, function (data) {
+        customerarray.push("<option value=\"0\" >-请选择-</option>");
+        $(data.data).each(function (i, o) {
+            customerarray.push("<option value='" + o.CustomerId + "' >" + o.CustomerName + "</option>");
+        });
+        $("#sel_customerid").empty().append(customerarray.join(""));
+    });
+</script>
+<script id="template" type="text/x-jquery-tmpl">
+    <tr data-id="${Id}">
+        <td>${UserName}</td>
+        <td>${TrueName}</td>    
+        <td>${CustomerName}</td>        
+        <td>${$item.dataFromat("yyyy-MM-dd")}</td>
+        <td>${$item.data.Valid==1?"正常":"已注销"}</td>
+        <td>
+            <a class="btn ${($item.data.Valid==0)? 'dn':''}"
+               url="/Users/GetUser/?id=${Id}"
+               data-url="/Users/AddEditUser"
+               data-type="u"
+               data-title='修改'
+               data-rules='$.userrules'
+               data-rloadurl='/Users/UserInfo'>
+                修改
+            </a>                    
+            <a class="btn ${($item.data.UserName=='admin@fxt'|| $item.data.Valid==0)? 'dn':''}"
+               url="/Users/DeleteActiveUser/?valid=0&&id=${Id}"
+               data-type="d"
+               data-content="确定注销吗?"
+               data-rloadurl='/Users/UserInfo'>
+                注销
+            </a>
+            <a class="btn ${($item.data.Valid==1 || $item.data.CustomerValid==0)? 'dn':''}"
+               url="/Users/DeleteActiveUser/?valid=1&&id=${Id}"
+               data-type="d"
+               data-content="确定激活吗?"
+               data-rloadurl='/Users/UserInfo'>
+                激活
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script id="template-form" type="text/x-jquery-tmpl">
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet-body form">
+            <form id="form" action="" class="form-horizontal">
+                <div class="form-body">
+                    <!-- BEGIN FORM-->
+                    <div class="alert alert-error display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>输入有错误,请检查.</span>
+                    </div>
+                    <div class="alert alert-success display-hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        <span>验证成功的!</span>
+                    </div>
+                    <input type="hidden" name="id" class="form-control" />
+                    <input type="hidden" name="fxtcompanyid" class="form-control" />
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            客户<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control select2me" name="customerid" key="modifydisabled">                               
+                            </select>                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            用户名<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="username" data-required="1" class="form-control" key="modifydisabled" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            真实名<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="truename" data-required="1" class="form-control" />
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            密码<span class="required" key="modify_hide">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="password" name="userpwd" data-required="1" class="form-control" key="addrequired" />
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            确认密码<span class="required" key="modify_hide">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="password" name="sureuserpwd" data-required="1" class="form-control" key="addrequired"  />
+                        </div>
+                    </div>   
+                    <div class="form-group dn" key="modify_show">
+                        <label class="control-label col-md-3">&nbsp;</label>
+                        <div class="col-md-9" style="color:gray;">
+                            密码不修改时，密码、确认密码项请留空
+                        </div>
+                    </div>                                    
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            电子邮箱
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="emailstr" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            手机
+                        </label>
+                        <div class="col-md-9">
+                            <input name="mobile" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            微信号
+                        </label>
+                        <div class="col-md-9">
+                            <input name="wxopenid" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <!-- END FORM-->
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green">
+                            提交
+                        </button>
+                        <button type="button" class="btn default">
+                            取消
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+<script type="text/javascript">  
+    //密码强度提示
+    $("input[name=userpwd]").casPassword();
+    //获取从属公司ID
+    $("select[name=customerid]").change(function () {
+        $("input[name=fxtcompanyid]").val($(this).find("option:selected").attr("fxtcompanyid"));
+    });
+</script>
+</script>
+

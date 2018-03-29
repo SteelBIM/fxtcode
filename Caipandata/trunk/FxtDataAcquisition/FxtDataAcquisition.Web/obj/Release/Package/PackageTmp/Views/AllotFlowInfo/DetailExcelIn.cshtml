@@ -1,0 +1,148 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="wuleying" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <!--<script type="text/javascript" src="ajax.js"></script>-->
+    <title>测试上传文件</title>
+    <style type="text/css">
+        * {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        body {
+            background: #fff;
+        }
+
+        form {
+            margin: 12px;
+        }
+
+        input.file {
+            vertical-align: middle;
+            position: relative;
+            left: 68px;
+            *left: -218px;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            z-index: 1;
+            *width: 223px;
+            display: none;
+        }
+
+        form input.viewfile {
+            z-index: 99;
+            border: 1px solid #ccc;
+            padding: 2px;
+            width: 150px;
+            vertical-align: middle;
+            color: #999;
+        }
+
+        form p span {
+            float: left;
+        }
+
+        form label.bottom {
+            border: 1px solid #38597a;
+            background: #4e7ba9;
+            color: #fff;
+            height: 19px;
+            line-height: 19px;
+            display: block;
+            width: 60px;
+            text-align: center;
+            cursor: pointer;
+            float: left;
+            position: relative;
+            *top: 1px;
+        }
+
+        form input.submit {
+            border: 0;
+            background: #380;
+            width: 70px;
+            height: 22px;
+            line-height: 22px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        p.clear {
+            clear: left;
+            margin-top: 12px;
+        }
+
+        p.filep {
+            height: 25px;
+        }
+
+        p.clear input {
+            float: left;
+            margin-right: 6px;
+        }
+
+        #error {
+            padding-top: 5px;
+            color: #f00;
+        }
+    </style>
+    <script type="text/javascript">
+        function fileChange(target) {
+            //var fileSize = 0;
+            //if (isIE && !target.files) {
+            //    var filePath = target.value;
+            //    var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+            //    var file = fileSystem.GetFile(filePath);
+            //    fileSize = file.Size;
+            //} else {
+            //    fileSize = target.files[0].size;
+            //}
+            //var size = fileSize / 1024;
+            //if (size > 2000) {
+            //    alert("附件不能大于2M");
+            //    target.value = "";
+            //    return
+            //}
+            var name = target.value;
+            var fileName = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
+            if (fileName != "xls" && fileName != "xlsx") {
+                $("#pmsg").html("请选择execl格式文件上传！");
+                target.value = "";
+                return
+            }
+            $("#pmsg").html("");
+            document.getElementById('viewfile').value = target.value;
+            target.style.display = 'none';
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form action="/AllotFlowInfo/DetailExcelInPost" method="post" name="upfiles" enctype="multipart/form-data">
+        <br />
+        <input type="hidden" name="max_file_size" value="2097152" />
+        <input type="hidden" name="do" value="upload" />
+        <p class="filep">
+            <span>
+                <label for="viewfile">上传文件：</label>
+                <input type="text" onmouseout="document.getElementById('upload').style.display='none';" name="viewfile" id="viewfile" class="viewfile" />
+            </span>
+            <label for="upload" class="bottom" onmouseover="document.getElementById('upload').style.display='block';">查找文件</label>
+            <input type="file" id="upload" size="27" name="upload[]" accept="application/msexcel" onchange="fileChange(this);"
+                   class="file" />
+        </p>
+        <p style="color: red; word-break: break-all; word-wrap: break-word;" id="pmsg">@ViewBag.Msg</p>
+        <p class="clear"><input class="submit" type="submit" value="确定上传" /><div id="error"></div></p>
+    </form>
+</body>
+</html>

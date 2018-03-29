@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.LNKPAppendage, FxtDataAcquisition.NHibernate" table="LNK_P_Appendage">
+		<id name="id" column="id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>
+    <property name="Uid" column="Uid" type="string"  />
+    <property name="AppendageCode" column="AppendageCode" type="int"  />
+		<property name="ProjectId" column="ProjectId" type="int"  />
+		<property name="Area" column="Area" type="decimal"  />
+		<property name="P_AName" column="P_AName" type="string"  />
+		<property name="IsInner" column="IsInner" type="bool"  />
+		<property name="CityId" column="CityId" type="int"  />
+    <property name="ClassCode" column="ClassCode" type="int"  />
+    <property name="Distance" column="Distance" type="int"  />
+    <property name="Address" column="Address" type="string"  />
+    <property name="x" column="x" type="decimal"  />
+    <property name="y" column="y" type="decimal"  />
+  </class>
+</hibernate-mapping>

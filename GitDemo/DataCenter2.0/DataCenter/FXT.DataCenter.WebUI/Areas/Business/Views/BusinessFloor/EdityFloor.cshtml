@@ -1,0 +1,321 @@
+﻿@using FXT.DataCenter.Domain.Models
+@{
+    ViewBag.Title = "商业楼层";
+}
+@model Dat_Floor_Biz
+@section StyleSheet{
+
+    <style type="text/css">
+        #tbInputCon {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect {
+            height: 35px;
+        }
+
+        input.hasDatepicker {
+            width: 205px;
+        }
+
+        .img_margin {
+            margin-left: 30px;
+            float: left;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+    <link href="/Content/Scripts/uploadify-v3.2/uploadify.css" rel="stylesheet" />
+}
+@section Javascript{
+    <script src="@Url.Content("~/Content/layer-v1.7.1/layer/layer.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/uploadify-v3.2/jquery.uploadify-3.2.min.js?ver=")@DateTime.Now.Ticks" type="text/javascript"></script>
+    <script type="text/javascript">
+        var auth = "@(Request.Cookies[FormsAuthentication.FormsCookieName] == null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value)";
+        var ASPSESSID = "@Session.SessionID";
+        var isoss = "@ViewBag.IsOss";
+        $(function () {
+            $("div.page-sidebar ul li").eq(2).addClass("active").find("a span").eq(1).addClass("selected");
+            var locationHref = window.location.href;
+            if (locationHref.indexOf("Business/BusinessFloor/EdityFloor")) {
+                $("#navigation .breadcrumb li:eq(1)").remove();
+                $("#navigation .breadcrumb li:eq(2)").remove();
+                var html = "<li><span><a href=\"/Business/BusinessStreet/Index\">商业街</a></span><i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span><a href=\"/Business/BusinessBuild/Index?ProjectId=@(ViewBag.projectId)\">商业楼栋</a></span><i class=\"icon-angle-right\"></i></li>";
+                html += " <li><span><a href='@Url.Action("Index", new { ProjectId = ViewBag.ProjectId, BuildingId = ViewBag.BuildingId })'>商业楼层</a></span> <i class=\"icon-angle-right\"></i></li>";
+                html += "<li><span>楼层编辑</span></li>";
+                $("ul.breadcrumb").append(html);
+            }
+            //提交
+            $("#btnsubmit").click(function () {
+                $("form").submit();
+
+            });
+            $("#txtupload").uploadify({
+                buttonText: "楼层平面图",
+                height: 36,
+                width: 120,
+                //auto: true,//是否自动提交
+                method: 'post', //传递给服务器文件的方式，默认就是post
+                swf: '/Content/Scripts/uploadify-v3.2/uploadify.swf',
+                uploader: '/Business/BusinessFloor/FloorPhotoUp',
+                fileSizeLimit: 500,//500KB//文件大小
+                fileTypeDesc: "请选择*.jpg;*.jpeg;*.gif;*.png;*.bmp文件",
+                fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png;*.bmp',//文件格式
+                multi: false,//允许多文件
+                //uploadLimit: 10,//最大上传文件个数
+                //fileObjName: "Filedata",
+                formData: { projectId: "@(ViewBag.projectId)", buildingId: "@(ViewBag.buildingId)", ASPSESSID: ASPSESSID, AUTHID: auth },//json参数{}
+                //onSelect: function (file) {
+                //    $('#file_upload').uploadify('settings', 'formData', {
+                //        name: '男',
+                //        sex: '23'
+                //    });
+                //}, //这里设置附件带的参数，因为某些参数不是在页面初始化时就已经确定了的，所以最好在这里设置参数，意思就是说在选择文件时候再去设置需要传递给后台的数据， 这样就能够附带一些诸如选择的上传日期呀，之类的不是在页面初始化完成时能确定的而需要用户在上传前设置的参数
+                //onQueueComplete: function (queueData) {
+                //    alert('所选文件已经全部上传');
+                //},//这里可以获取上传完成后所有上传队列里的信息
+                onUploadSuccess: function (file, data, response) {
+                    var imgdata = eval("(" + data + ")");
+                    if (imgdata.flag) {
+                        var path = (isoss.toUpperCase() == "TRUE" ? "@ViewBag.OssImgServer" + imgdata.imagePath + "@@200w_200h" : imgdata.imagePath);
+                        $("#imgPath").attr("src", path);
+                        $("#FloorPicture").val("").val(imgdata.imagePath);
+                    }
+                }
+            });
+            var floorNo_val = "", floorNum_val = "";
+            $("#FloorNo").focus(function () {
+                floor_val = $(this).val();
+            });
+            $("#FloorNum").focus(function () {
+                floorNum_val = $(this).val();
+            });
+            $("#FloorNo").change(function () {
+                var floorNoUrl = "@Url.Action("ValidFloor")";
+                var floorNoVal = $.trim($(this).val());
+                if (isNaN(floorNoVal)) {
+                    layer.alert("物理层必须是正整数");
+                    return false;
+                }
+                $.post(floorNoUrl, { floor: floorNoVal, dataAttr: "FloorNo", buildingId: "@(ViewBag.BuildingId)" }, function (json) {
+                    if (json) {
+                        layer.alert("已经存在相同物理层");
+                        $("#FloorNo").val(floor_val);
+                        $("#FloorNo").focus();
+                        return false;
+                    }
+                }, "json");
+            });
+            $("#FloorNum").change(function () {
+                var floorNoUrl = "@Url.Action("ValidFloor")";
+                var floorNoVal = $.trim($(this).val());
+                $.post(floorNoUrl, { floor: floorNoVal, dataAttr: "FloorNum", buildingId: "@(ViewBag.BuildingId)" }, function (json) {
+                    if (json) {
+                        layer.alert("已经存在相同实际层");
+                        $("#FloorNum").val(floorNum_val);
+                        $("#FloorNum").focus();
+                        return false;
+                    }
+                }, "json");
+            });
+            $("#btnsubmit").click(function () {
+                @*var floorNoUrl = "@Url.Action("FormValidFloor")";
+                var fNo = $.trim($("#FloorNo").val()), fNum = $.trim($("#FloorNum").val());
+                $.post(floorNoUrl, { floorNo: fNo, floorNum: fNum, buildingId: "@(ViewBag.BuildingId)" }, function (json) {
+                    if (json) {
+                        layer.alert("物理层或实际层已经存在");
+                        return false;
+                    }
+                }, "json");*@
+                $("#form_addFloor").submit();
+            });
+
+            //楼栋复制
+            $("#btnFloorCopy").click(function () {
+                $(this).tb_windowAddFooter({
+                    sender1: "sender1", //第一个按钮的ID
+                    name1: "确 定", //第一个按钮的名称
+                    sender2: "sender2", //第二个按钮的ID
+                    name2: "取 消", //第二个按钮的名称
+                    sen1func: function () { //第一个按钮的功能函数
+                        var floorNoTo = $.trim($("#FloorNoTo").val()); //floorNumTo = $.trim($("#FloorNumTo").val());
+                        if (floorNoTo == null || floorNoTo == "") {
+                            layer.alert("物理层不能为空");
+                            return false;
+                        } else if (isNaN(floorNoTo)) {
+                            layer.alert("物理层必须是正整数");
+                            return false;
+                        }
+                        if ($.trim($("#FloorNo").val()) == floorNoTo) {
+                            layer.alert("物理层不能相同");
+                            return false;
+                        }
+                        //if (floorNumTo == null || floorNumTo == "") {
+                        //    layer.alert("实际层不能为空");
+                        //    return false;
+                        //}
+
+                        var floorCopyUrl = "@Url.Action("FloorCopy")";
+                        $.post(floorCopyUrl, { floorId: $.trim($("#FloorId").val()), buildingId: "@(ViewBag.BuildingId)", floorNoTo: floorNoTo, floorNumTo: "" }, function (json) {
+                            if (json.flag) {
+                                //layer.alert(json.msg, -1, "楼层复制");
+                                //top.tb_remove();
+                                window.location.href = "/Business/BusinessFloor/Index?projectId=@(ViewBag.projectId)&buildingId=@(ViewBag.BuildingId)";
+                            } else {
+                                layer.alert(json.msg, -1, "楼层复制");
+                                return false;
+                            }
+                        }, "json");
+                    }
+                });
+            });
+        });
+        ////上传
+        //function doUplaod() {
+        //    $('#txtupload').uploadify('upload', '*');
+        //}
+        ////取消上传
+        //function closeLoad() {
+        //    $('#txtupload').uploadify('cancel', '*');
+        //    return false;
+        //}
+    </script>
+}
+@using (Html.BeginForm())
+{
+    <table id="tbInputCon" class="tbInputCon">
+        <tr>
+            <td><span class="required">*</span>物理层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorNo, new { Value = Model.FloorNo == 0 ? "" : Model.FloorNo.ToString() })
+                @Html.ValidationMessageFor(m => m.FloorNo)
+            </td>
+            <td><span class="required">*</span>实际层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorNum)
+                @Html.ValidationMessageFor(m => m.FloorNum)
+            </td>
+        </tr>
+        <tr>
+            <td>面积:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingArea)
+            </td>
+            <td>层高:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorHigh)
+            </td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span>楼层商业类型:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BuildingBizType, (ViewBag.BizTypeName) as List<SelectListItem>)
+                @Html.ValidationMessageFor(m => m.BuildingBizType)
+            </td>
+            <td>主营类型:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.BizType, (ViewBag.BizTypeName) as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>租售方式:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.RentSaleType, (ViewBag.rentSaleTypeName) as List<SelectListItem>)
+            </td>
+            <td>楼层平面图:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorPicture, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>楼层均价:</td>
+            <td>
+                @Html.TextBoxFor(m => m.AveragePrice)
+                @Html.ValidationMessageFor(m => m.AveragePrice)
+            </td>
+            <td>价格系数</td>
+            <td>@Html.TextBoxFor(m => m.Weight)@Html.ValidationMessageFor(m => m.Weight)</td>
+        </tr>
+        <tr>
+            <td>备注:
+            </td>
+            <td colspan="3">
+                @Html.TextAreaFor(m => m.Remarks, new { cols = "20", rows = "2", style = "margin-bottom: 5px; width: 535px; height: 68px;" })
+            </td>
+        </tr>
+    </table>
+    <div class="img_margin">
+        @{
+    string FloorPicture = (Model != null && Model.FloorId > 0) ? (@ViewBag.IsOss ? @ViewBag.OssImgServer + Model.FloorPicture + "@200w_200h" : Model.FloorPicture) : "/Content/Images/no_picture.jpg";
+        }
+        <img id="imgPath" style="max-width: 200px; max-height: 200px;" src="@FloorPicture" />
+        <input type="hidden" id="FloorPicture" name="FloorPicture" value="@(Model == null ? "" : Model.FloorPicture)" />
+        <input type="hidden" id="BuildingId" name="BuildingId" value="@ViewBag.buildingId" />
+        <input type="hidden" id="ProjectId" name="ProjectId" value="@(ViewBag.projectId)" />
+        <input type="hidden" id="CityId" name="CityId" value="@(Model.CityId)" />
+        <input type="hidden" id="FloorId" name="FloorId" value="@(Model.FloorId)" />
+        <input type="hidden" id="FxtCompanyId" name="FxtCompanyId" value="@(Model.FxtCompanyId)" />
+    </div>
+    <div class="img_margin">
+        <input type="file" id="txtupload" value="" />
+    </div>
+    <div style="clear: both;">
+    </div>
+    <div style="margin-left: 30px;">
+        <table>
+            <tr>
+                <td colspan="4" style="padding: 15px 0px;">
+                    <button class="btn blue" type="button" id="btnsubmit">
+                        <i class="icon-ok"></i>确定
+                    </button>
+                    @if (Model != null && Model.FloorId > 0)
+                    {
+                        <a class="btn" title='楼层图片'  href="@Url.Action("FloorPhoto", new { projectId = ViewBag.projectId, buildingId = Model.BuildingId, floorId = Model.FloorId })">
+                            <i class="icon-picture"></i>楼层图片 </a> 
+                        <input type="button" title="楼层复制" id="btnFloorCopy" class="btn thickbox" alt="#TB_inline?height=250&width=500&inlineId=FloorCopy" value="楼层复制" />
+                        <a class="btn"   title='房号'  href="@Url.Action("Index", "BusinessHouse", new { projectId = ViewBag.projectId, buildingId = Model.BuildingId, floorId = Model.FloorId })">
+                            <i class="icon-share-alt"></i>房号 </a> 
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+<div id="FloorCopy" style="display: none;">
+    <table style="width: 100%; margin-bottom: 10px; line-height: 35px; margin-top: 10px;">
+        <tr>
+            <td>从:
+            </td>
+            <td>物理层:@Html.TextBoxFor(m => m.FloorNo, new { @readonly = "readonly", style = "width:100px" })
+            </td>
+            <td>实际层:@Html.TextBoxFor(m => m.FloorNum, new { @readonly = "readonly", style = "width:100px" })
+            </td>
+        </tr>
+        <tr>
+            <td>复制到:
+            </td>
+            <td>物理层:@Html.TextBox("FloorNoTo", null, new { style = "width:100px;" })
+            </td>
+            @*<td>实际层:@Html.TextBox("FloorNumTo", null, new { style = "width:100px;" })
+            </td>*@
+        </tr>
+    </table>
+</div>

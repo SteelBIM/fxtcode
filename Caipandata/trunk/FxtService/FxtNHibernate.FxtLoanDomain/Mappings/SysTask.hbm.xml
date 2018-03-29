@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="FxtNHibernate.FxtLoanDomain" 
+				   namespace="FxtNHibernate.FxtLoanDomain.Entities">
+	<class name="FxtNHibernate.FxtLoanDomain.Entities.SysTask, FxtNHibernate.FxtLoanDomain" 
+		   table="Sys_Task">
+		<id name="Id" column="Id" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="Title" column="Title" type="string"  />
+		<property name="Status" column="Status" type="int"  />
+		<property name="Count" column="Count" type="int"  />
+		<property name="BankId" column="BankId" type="int"  />
+		<property name="OpeaterId" column="OpeaterId" type="int"  />
+		<property name="CreateDateTime" column="CreateDateTime" type="DateTime"  />
+		<property name="EndDateTime" column="EndDateTime" type="DateTime"  />
+		<property name="SuccessCount" column="SuccessCount" type="int"  />
+		<property name="FailureCount" column="FailureCount" type="int"  />
+		<property name="Url1" column="Url1" type="string"  />
+		<property name="Url2" column="Url2" type="string"  />
+		<property name="Url3" column="Url3" type="string"  />
+				
+	</class>
+</hibernate-mapping>

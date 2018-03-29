@@ -1,0 +1,164 @@
+﻿@using FxtDataAcquisition.Domain.DTO.FxtDataWcfDTO;
+@{
+    ViewBag.Title = "AllotFlowManager";
+    Layout = null;
+}
+<link type="text/css" rel="Stylesheet" href="/Css/AllotFlowInfo/AllotFlowManager.css" />
+<script type="text/javascript" src="/Scripts/AllotFlowInfo/AllotFlowManager.js?a=s"></script>
+
+<div class="page-header" style="display:none">
+    <h1>
+        Tables
+        <small>
+            <i class="icon-double-angle-right"></i>
+            Static &amp; Dynamic Tables
+        </small>
+    </h1>
+</div>
+<!--整块-->
+<div class="row">
+    <!--整块-->
+    <div class="col-xs-12">
+        <!--第一个表格-->
+        <div class="row" id="allotFlowPanel">
+            <div class="col-xs-12">
+                <div class="col-xs-6 col-sm-3 diy_col_left" id="topOperate">
+                    <button class="btn btn-xs btn-primary diy_btn topOperate" id="btnAdd">
+                        分配任务
+                        <i class="icon-plus icon-on-right bigger-110"></i>
+                    </button>
+                    <button class="btn btn-xs btn-primary diy_btn topOperate" id="btnCancelAllot">
+                        撤销任务
+                    </button>
+                    <button class="btn btn-xs btn-primary diy_btn topOperate" id="btnCancelSurvey">
+                        撤销查勘
+                    </button>
+                    <button class="btn btn-xs btn-danger diy_btn" id="btnDelete" style="display:none;">
+                        删除
+                        <i class="icon-trash icon-on-right bigger-110"></i>
+                    </button>
+                    共<span id="allotCountShow">0</span>条
+                </div>
+                <div class="col-xs-6 col-sm-9 diy_col_right">
+                    楼盘名称
+                    <input type="text" class="search-query" style="width:20%;padding:3px 4px 3px 0px" id="txtProjectName">
+                    <select id="selectArea">
+                        <option value="0">
+                            ---全市--</o ption>
+                            @foreach (FxtApi_SYSArea obj in ViewBag.AreaList)
+                            {
+                            <option value="@obj.AreaId" class="areaId_@obj.AreaId">@obj.AreaName</option>
+                            }
+                        </select>
+                        <select id="selectStatus" data-nowid="@ViewBag.NowStatus">
+                            <option value="0">---状态--</option>
+                        </select>
+                        <input type="text" class="search-query" style="width:150px;padding:3px 4px 3px 0px" id="txtStartDate" onfocus="WdatePicker()">
+                        到
+                        <input type="text" class="search-query" id="txtEndDate" style="width: 150px;padding:3px 4px 3px 0px" onfocus="WdatePicker()">
+                        <button type="button" class="btn btn-inverse btn-xs diy_search_btn" id="btnSearch">
+                            搜索
+                            <i class="icon-search icon-on-right bigger-110"></i>
+                        </button>
+                        @if (ViewBag.IomportAllotRight == 1)
+                        {
+                            <button type="button" id="btnExcelIn">
+                                任务导入
+                            </button>
+                        }
+
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="center">
+                                        <label id="cbAllPanel">
+                                            <input type="checkbox" class="ace" id="cbAll">
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </th>
+                                    <th>楼盘</th>
+                                    <th>信息</th>
+
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allotFlowRowList">
+                                <tr id="allotFlowRow" style="display:none;">
+                                    <td class="center">
+                                        <label class="cbPanel">
+                                            <input type="checkbox" class="ace cb_select">
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <span style="float:left; width:100%;"><font class="txt_area"></font><a href="javascript:;" class="txt_projectname" target="_blank">楼盘名称</a></span>
+                                        <span style="float:left; width:100%;"> 地址：<font class="txt_address"></font></span>
+                                    </td>
+                                    <td class="txt_">
+                                        <span style="float:left; width:100%;" class="txt_info1">@*管理员 上传资料*@</span>
+                                        <span style="float:left; width:100%;" class="txt_info2"> @*2013-09-09 10:25:29*@</span>
+                                    </td>
+                                    <td>
+                                        <span class="txt_status" data-statusId=""></span>
+                                        <div class="visible-md visible-lg hidden-sm hidden-xs btn-group op_function">
+                                            <a href="javascript:;" class="op_AssignAllot op_function_btn" data-allotId="" style="display:none;">分配任务</a>
+                                            <a href="javascript:;" class="op_CancelAllot op_function_btn" data-allotid="" style="display:none;">撤销任务</a>
+                                            <a href="javascript:;" class="op_CancelSurvey op_function_btn" data-allotid="" style="display:none;">撤销查勘</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /span -->
+                <div class="col-xs-12">
+                    <input type="hidden" value="" id="hdAllotFlowCount" />
+                    <ul id="example" data-count=""></ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @*存储当前用户所拥有的权限*@
+    <div style="display:none;" id="divFunctionCodes">
+        @foreach (int code in ViewBag.FunctionCodes)
+        {
+            <span class="functioncode functioncode_@code">@code</span>
+        }
+    </div>
+    @*待分配*@
+    <input type="hidden" value="@ViewBag.AllotStatus1" id="hdAllotStatus1" />
+    @*已分配*@
+    <input type="hidden" value="@ViewBag.AllotStatus2" id="hdAllotStatus2" />
+    @*查勘中*@
+    <input type="hidden" value="@ViewBag.AllotStatus4" id="hdAllotStatus4" />
+    @*分配任务FunctionCode*@
+    <input type="hidden" value="@ViewBag.FunctionCode14" id="hdFunctionCode14" />
+    @*撤销任务FunctionCode*@
+    <input type="hidden" value="@ViewBag.FunctionCode15" id="hdFunctionCode15" />
+    @*撤销查勘FunctionCode*@
+    <input type="hidden" value="@ViewBag.FunctionCode16" id="hdFunctionCode16" />
+<!-- page specific plugin scripts -->
+<script type="text/javascript">
+        var scripts = [null, null]
+        ace.load_ajax_scripts(scripts, function () {
+            //inline scripts related to this page
+            jQuery(function ($) {
+                $('#loading-btn').on(ace.click_event, function () {
+                    var btn = $(this);
+                    btn.button('loading')
+                    setTimeout(function () {
+                        btn.button('reset')
+                    }, 2000)
+                });
+
+                $('#id-button-borders').attr('checked', 'checked').on('click', function () {
+                    $('#default-buttons .btn').toggleClass('no-border');
+                });
+            })
+        });
+</script>

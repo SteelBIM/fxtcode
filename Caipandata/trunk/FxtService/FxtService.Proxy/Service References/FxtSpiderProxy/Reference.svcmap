@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b37d19c4-6ed9-44fa-b1e7-3485abf862a5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+      <CollectionMapping TypeName="System.Collections.SortedList" Category="Dictionary" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:6300/FxtSpider/FxtSpider.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FxtSpider.disco" MetadataType="Disco" ID="14b2d808-d52a-41a5-a10c-b47ada431562" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?disco" />
+    <MetadataFile FileName="FxtSpider.xsd" MetadataType="Schema" ID="db416c1f-7680-4677-854b-2c9792bf62f6" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?xsd=xsd1" />
+    <MetadataFile FileName="FxtSpider1.xsd" MetadataType="Schema" ID="8d002f05-9834-462d-97d8-fe58608ccaa0" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?xsd=xsd0" />
+    <MetadataFile FileName="Fxtspider.wsdl" MetadataType="Wsdl" ID="3c77a3c0-8756-4968-a7e4-f0660c922025" SourceId="1" SourceUrl="http://localhost:6300/FxtSpider/FxtSpider.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

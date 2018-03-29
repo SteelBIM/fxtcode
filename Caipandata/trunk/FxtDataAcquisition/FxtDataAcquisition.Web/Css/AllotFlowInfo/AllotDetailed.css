@@ -1,0 +1,47 @@
+﻿#sidebar{display:none;}
+#mainContent{margin-left:0px;}
+#breadcrumbs{display:none;}
+.hr1{margin-top:0px !important; margin-bottom:0px !important;}
+.widget-main{padding-top:0px !important;}
+.hdiy {margin-top: 0px !important;}
+#step1 button{margin-top:4px;margin-left:10px; margin-bottom:5px ;padding-left:10px; padding-right:10px;}
+.step-pane {
+    min-height: 0px !important;
+}
+.h4diy { margin-bottom:0px !important; font-size:14px; margin-top:10px;}
+.project_info{min-height:0px !important; color:black !important; border-top:none !important; background-color:white !important;}
+.project_info font{line-height: initial !important;}
+
+#buildingInfo .table thead > tr > th,
+#buildingInfo .table tbody > tr > th,
+#buildingInfo .table tfoot > tr > th,
+#buildingInfo .table thead > tr > td,
+#buildingInfo .table tbody > tr > td,
+#buildingInfo .table tfoot > tr > td {
+    padding: 2px;
+    border: none !important;
+}
+#buildingInfo .table-hover > tbody > tr:hover > td,
+#buildingInfo .table-hover > tbody > tr:hover > th {
+    background: none !important;
+}
+#buildingInfo .table-striped > tbody > tr:nth-child(odd) > td,
+#buildingInfo .table-striped > tbody > tr:nth-child(odd) > th {
+    background: none !important;
+}
+#buildingInfo .table {
+    margin-bottom: 0px !important;
+    border: none !important;
+}
+#buildingInfo .table {
+    font-size: 12px !important; font-weight:bold;
+}
+#buildingInfo .table font {
+    font-weight: 100 !important;
+}
+.diy_form-group {
+    float: left !important;
+}
+#buildingInfo .form-group {
+    margin-bottom: 0px !important;
+}

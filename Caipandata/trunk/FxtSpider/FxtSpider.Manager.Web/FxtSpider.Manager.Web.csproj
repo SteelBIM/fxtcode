@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9E428C0-556B-49AB-A94D-A04DE549F93E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtSpider.Manager.Web</RootNamespace>
+    <AssemblyName>FxtSpider.Manager.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="api\TestController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\MvcWebHelp.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OperationMaintenanceController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\SpiderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebCaseSpiderCountInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap\bootstrap-paginator\bootstrap-paginator.js" />
+    <Content Include="bootstrap\matrix-admin00\css\fonts.googleapis.com_css_family_Open_Sans_400,700,800.css" />
+    <Content Include="Css\OperationMaintenance\CaseList.css" />
+    <Content Include="Css\OperationMaintenance\CasePriceAnalyse.css" />
+    <Content Include="Css\OperationMaintenance\SetCase_Fancybox.css" />
+    <Content Include="Css\Shared\Admin.css" />
+    <Content Include="Css\Spider\CaseImportManager.css" />
+    <Content Include="Css\Spider\CaseSearch.css" />
+    <Content Include="Css\Spider\CaseSpiderCountInfoList.css" />
+    <Content Include="Css\Shared\Partial_SelectCity.css" />
+    <Content Include="Css\Spider\CaseSpiderErrorList.css" />
+    <Content Include="Css\Spider\ProxyIpManager.css" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\loading1.gif" />
+    <Content Include="Images\loading10.gif" />
+    <Content Include="Images\loading12.gif" />
+    <Content Include="Images\loading2.gif" />
+    <Content Include="Images\loading3.gif" />
+    <Content Include="Images\loading4.gif" />
+    <Content Include="Images\loading5.gif" />
+    <Content Include="Images\loading6.gif" />
+    <Content Include="Images\loading7.gif" />
+    <Content Include="Images\loading8.gif" />
+    <Content Include="Images\loading9.gif" />
+    <Content Include="Scripts\Common\Common.js" />
+    <Content Include="Scripts\Common\CommonDataManager.js" />
+    <Content Include="Scripts\Jquery.Autocomplete\autocomplete_docs.txt" />
+    <Content Include="Scripts\Jquery.Autocomplete\jquery.autocomplete.css" />
+    <Content Include="Scripts\Jquery.Autocomplete\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.blockUI.1.33\jquery.blockUI-1.33.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\ajax.txt" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\10_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\10_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\11_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\11_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\12_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\12_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\1_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\1_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\2_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\2_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\3_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\3_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\4_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\4_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\5_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\5_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\6_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\6_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\7_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\7_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\8_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\8_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\9_b.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\example\9_s.jpg" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\blank.gif" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancybox-x.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancybox-y.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancybox.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_close.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_loading.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_nav_left.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_nav_right.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_e.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_n.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_s.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_se.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_shadow_w.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_title_left.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_title_main.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_title_over.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\fancy_title_right.png" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\index.html" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\jquery-1.4.3.min.js" />
+    <Content Include="Scripts\jquery.fancybox-1.3.4\style.css" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\css\style.css" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\images\bg-header-grid.png" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\images\Icones\ico-ordem-hover.gif" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\images\Icones\ico-ordem.gif" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\index.html" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\js\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery.freezeheader-1.5.0\js\jquery.freezeheader.js" />
+    <Content Include="Scripts\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\My97DatePicker\config.js" />
+    <Content Include="Scripts\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="Scripts\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\OperationMaintenance\CaseList.js" />
+    <Content Include="Scripts\OperationMaintenance\CasePriceAnalyse.js" />
+    <Content Include="Scripts\OperationMaintenance\CasePriceAnalyse_Cross.js" />
+    <Content Include="Scripts\OperationMaintenance\SetCase_Fancybox.js" />
+    <Content Include="Scripts\Project\AddProject_Fancybox.js" />
+    <Content Include="Scripts\Shared\Admin.js" />
+    <Content Include="Scripts\Shared\Partial_SelectCity.js" />
+    <Content Include="Scripts\Spider\CaseImportManager.js" />
+    <Content Include="Scripts\Spider\CaseImportManager_ColumnOperate.js" />
+    <Content Include="Scripts\Spider\CaseImportManager_InfoOperate.js" />
+    <Content Include="Scripts\Spider\CaseSearch.js" />
+    <Content Include="bootstrap\matrix-admin00\css\bootstrap-responsive.min.css" />
+    <Content Include="bootstrap\matrix-admin00\css\bootstrap-wysihtml5.css" />
+    <Content Include="bootstrap\matrix-admin00\css\bootstrap.min.css" />
+    <Content Include="bootstrap\matrix-admin00\css\colorpicker.css" />
+    <Content Include="bootstrap\matrix-admin00\css\datepicker.css" />
+    <Content Include="bootstrap\matrix-admin00\css\fullcalendar.css" />
+    <Content Include="bootstrap\matrix-admin00\css\jquery.gritter.css" />
+    <Content Include="bootstrap\matrix-admin00\css\matrix-login.css" />
+    <Content Include="bootstrap\matrix-admin00\css\matrix-media.css" />
+    <Content Include="bootstrap\matrix-admin00\css\matrix-style.css" />
+    <Content Include="bootstrap\matrix-admin00\css\select2.css" />
+    <Content Include="bootstrap\matrix-admin00\css\uniform.css" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\css\font-awesome.css" />
+    <Content Include="bootstrap\matrix-admin00\images\backgrounds\calActiveBg.html" />
+    <Content Include="bootstrap\matrix-admin00\images\gallery\imgbox3.html" />
+    <Content Include="bootstrap\matrix-admin00\img\alpha.html" />
+    <Content Include="bootstrap\matrix-admin00\img\breadcrumb.png" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\av1.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\av2.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\av3.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\av4.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\av5.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\demo-image1.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\demo-image2.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\demo-image3.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\envelope.png" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\imgbox1.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\imgbox2.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\imgbox3.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\imgbox4.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\imgbox5.jpg" />
+    <Content Include="bootstrap\matrix-admin00\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap\matrix-admin00\img\glyphicons-halflings.html" />
+    <Content Include="bootstrap\matrix-admin00\img\gritter.png" />
+    <Content Include="bootstrap\matrix-admin00\img\hue.png" />
+    <Content Include="bootstrap\matrix-admin00\img\larrow.png" />
+    <Content Include="bootstrap\matrix-admin00\img\line.png" />
+    <Content Include="bootstrap\matrix-admin00\img\logo.png" />
+    <Content Include="bootstrap\matrix-admin00\img\menu-active.png" />
+    <Content Include="bootstrap\matrix-admin00\img\rarrow.png" />
+    <Content Include="bootstrap\matrix-admin00\img\saturation.png" />
+    <Content Include="bootstrap\matrix-admin00\img\select2.png" />
+    <Content Include="bootstrap\matrix-admin00\img\spinner.gif" />
+    <Content Include="bootstrap\matrix-admin00\img\sprite.png" />
+    <Content Include="bootstrap\matrix-admin00\js\bootstrap-colorpicker.js" />
+    <Content Include="bootstrap\matrix-admin00\js\bootstrap-datepicker.js" />
+    <Content Include="bootstrap\matrix-admin00\js\bootstrap-wysihtml5.js" />
+    <Content Include="bootstrap\matrix-admin00\js\bootstrap.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\excanvas.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\fullcalendar.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.dataTables.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.flot.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.flot.pie.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.flot.resize.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.gritter.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.peity.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.toggle.buttons.html" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.ui.custom.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.uniform.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.validate.js" />
+    <Content Include="bootstrap\matrix-admin00\js\jquery.wizard.js" />
+    <Content Include="bootstrap\matrix-admin00\js\maruti.html" />
+    <Content Include="bootstrap\matrix-admin00\js\masked.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.calendar.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.charts.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.chat.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.dashboard.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.form_common.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.form_validation.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.interface.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.login.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.popover.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.tables.js" />
+    <Content Include="bootstrap\matrix-admin00\js\matrix.wizard.js" />
+    <Content Include="bootstrap\matrix-admin00\js\select2.min.js" />
+    <Content Include="bootstrap\matrix-admin00\js\wysihtml5-0.3.0.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\buttons.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\calendar.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\charts.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\chat.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\bootstrap-responsive.min.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\bootstrap-wysihtml5.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\bootstrap.min.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\colorpicker.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\datepicker.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\fullcalendar.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\jquery.gritter.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\matrix-login.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\matrix-media.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\matrix-style.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\select2.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\css\uniform.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\dashboard.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\error403.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\error404.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\error405.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\error500.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\font-awesome\css\font-awesome.css" />
+    <Content Include="bootstrap\原模版\matrix-admin00\form-common.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\form-validation.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\form-wizard.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\gallery.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\grid.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\images\backgrounds\calActiveBg.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\images\gallery\imgbox3.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\alpha.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\breadcrumb.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\av1.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\av2.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\av3.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\av4.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\av5.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\demo-image1.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\demo-image2.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\demo-image3.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\demo\envelope.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gallery\imgbox1.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gallery\imgbox2.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gallery\imgbox3.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gallery\imgbox4.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gallery\imgbox5.jpg" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\glyphicons-halflings.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\gritter.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\hue.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\larrow.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\line.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\logo.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\menu-active.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\rarrow.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\saturation.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\select2.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\spinner.gif" />
+    <Content Include="bootstrap\原模版\matrix-admin00\img\sprite.png" />
+    <Content Include="bootstrap\原模版\matrix-admin00\index.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\index2.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\interface.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\invoice.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\bootstrap-colorpicker.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\bootstrap-datepicker.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\bootstrap-wysihtml5.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\bootstrap.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\excanvas.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\fullcalendar.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.dataTables.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.flot.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.flot.pie.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.flot.resize.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.gritter.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.peity.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.toggle.buttons.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.ui.custom.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.uniform.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.validate.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\jquery.wizard.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\maruti.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\masked.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.calendar.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.charts.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.chat.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.dashboard.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.form_common.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.form_validation.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.interface.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.login.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.popover.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.tables.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\matrix.wizard.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\select2.min.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\js\wysihtml5-0.3.0.js" />
+    <Content Include="bootstrap\原模版\matrix-admin00\login.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\tables.html" />
+    <Content Include="bootstrap\原模版\matrix-admin00\widgets.html" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.extend.js" />
+    <Content Include="Scripts\Spider\CaseSearch-matrix.form_common.js" />
+    <Content Include="Scripts\Spider\CaseSpiderCountInfoList.js" />
+    <Content Include="Scripts\Spider\CaseSpiderErrorList.js" />
+    <Content Include="Scripts\Spider\ProxyIpManager.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\MasterPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FxtSpider.Bll\FxtSpider.Bll.csproj">
+      <Project>{03E38760-E1F9-4134-94B3-5FC8B659B095}</Project>
+      <Name>FxtSpider.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.Common\FxtSpider.Common.csproj">
+      <Project>{DA94C630-BA79-47F6-9027-23C859B60385}</Project>
+      <Name>FxtSpider.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.DAL\FxtSpider.DAL.csproj">
+      <Project>{552621A9-42B7-45E9-986E-CBC2D6E07990}</Project>
+      <Name>FxtSpider.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.FxtApi\FxtSpider.FxtApi.csproj">
+      <Project>{BB182E4A-757C-4017-A571-1C3B18A1F522}</Project>
+      <Name>FxtSpider.FxtApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtSpider.Manager.Common\FxtSpider.Manager.Common.csproj">
+      <Project>{7E9A0377-E957-4CAB-ACF8-D74F3AE16B1F}</Project>
+      <Name>FxtSpider.Manager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap\matrix-admin00\font-awesome\css\Descr.WD3" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\font\Descr.WD3" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\font\fontawesome-webfont.eot%40" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="bootstrap\matrix-admin00\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="bootstrap\matrix-admin00\images\backgrounds\blank2" />
+    <Content Include="bootstrap\matrix-admin00\images\backgrounds\Descr.WD3" />
+    <Content Include="bootstrap\matrix-admin00\images\backgrounds\skype_3Asuniljoshi19%40call" />
+    <Content Include="bootstrap\matrix-admin00\img\demo\Descr.WD3" />
+    <None Include="bootstrap\matrix-admin00\img\demo\Thumbs.db" />
+    <Content Include="bootstrap\matrix-admin00\img\Descr.WD3" />
+    <Content Include="bootstrap\matrix-admin00\img\gallery\Descr.WD3" />
+    <None Include="bootstrap\matrix-admin00\img\gallery\Thumbs.db" />
+    <None Include="bootstrap\matrix-admin00\img\Thumbs.db" />
+    <Content Include="Views\Shared\Admin.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Spider\CaseSearch.cshtml" />
+    <None Include="bootstrap\原模版\matrix-admin00\.project" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\css\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\font\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\font\fontawesome-webfont.eot" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\font\fontawesome-webfont.eot%40" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\font\fontawesome-webfont.ttf" />
+    <None Include="bootstrap\原模版\matrix-admin00\font-awesome\font\fontawesome-webfont.woff" />
+    <None Include="bootstrap\原模版\matrix-admin00\images\backgrounds\blank2" />
+    <None Include="bootstrap\原模版\matrix-admin00\images\backgrounds\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\images\backgrounds\skype_3Asuniljoshi19%40call" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\demo\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\demo\Thumbs.db" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\gallery\Descr.WD3" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\gallery\Thumbs.db" />
+    <None Include="bootstrap\原模版\matrix-admin00\img\Thumbs.db" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\Jquery.Autocomplete\autocomplete_ajax.cfm" />
+    <None Include="Scripts\jquery.freezeheader-1.5.0\freezeheader.jquery.json" />
+    <None Include="Scripts\jquery.freezeheader-1.5.0\LICENSE.md" />
+    <None Include="Scripts\jquery.freezeheader-1.5.0\README.md" />
+    <None Include="Scripts\My97DatePicker\skin\default\Thumbs.db" />
+    <None Include="Scripts\My97DatePicker\skin\default\vssver2.scc" />
+    <None Include="Scripts\My97DatePicker\skin\Thumbs.db" />
+    <None Include="Scripts\My97DatePicker\skin\whyGreen\Thumbs.db" />
+    <None Include="Scripts\My97DatePicker\skin\whyGreen\vssver2.scc" />
+    <Content Include="Views\Spider\CaseSpiderCountInfoList.cshtml" />
+    <Content Include="Views\Spider\CaseImportManager.cshtml" />
+    <Content Include="Views\Common\AddProjecttest.cshtml" />
+    <Content Include="Views\Project\AddProject_Fancybox.cshtml" />
+    <Content Include="Views\OperationMaintenance\CasePriceAnalyse.cshtml" />
+    <Content Include="Views\Shared\Partial_SelectCity.cshtml" />
+    <Content Include="Views\OperationMaintenance\CaseList.cshtml" />
+    <Content Include="Views\OperationMaintenance\SetCase_Fancybox.cshtml" />
+    <Content Include="Views\Spider\CaseSpiderErrorList.cshtml" />
+    <Content Include="Views\Spider\ProxyIpManager.cshtml" />
+    <Content Include="Views\Shared\Partial_SelectFxtCity.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57602</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

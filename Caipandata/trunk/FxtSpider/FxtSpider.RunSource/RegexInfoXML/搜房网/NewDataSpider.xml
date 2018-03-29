@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RegexInfos>
+  <regexinfo Name="regex_lpm" Remark="楼盘名">
+    <!--<span[^<>]*>楼盘名称：</span>(([^<>\(]*)\(|<a href="[^"]*" target="_blank" title="[^"]+" id="esf[^"]+xq_11">([^<>]*)</a>)-->
+    <regex>%3Cspan%5B%5E%3C%3E%5D%2A%3E%E6%A5%BC%E7%9B%98%E5%90%8D%E7%A7%B0%EF%BC%9A%3C%2Fspan%3E%28%28%5B%5E%3C%3E%5C%28%5D%2A%29%5C%28%7C%3Ca%20href%3D%22%5B%5E%22%5D%2A%22%20target%3D%22_blank%22%20title%3D%22%5B%5E%22%5D%2B%22%20id%3D%22esf%5B%5E%22%5D%2Bxq_11%22%3E%28%5B%5E%3C%3E%5D%2A%29%3C%2Fa%3E%29</regex>
+    <index>$2$3</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<span[^<>]*>楼盘名称：</span>(<strong[^<>]*>([^<>]*)</strong>|<a[^<>]+><strong[^<>]*>([^<>]*)</strong></a>)-->
+        <regex>%3Cspan%5B%5E%3C%3E%5D%2A%3E%E6%A5%BC%E7%9B%98%E5%90%8D%E7%A7%B0%EF%BC%9A%3C%2Fspan%3E%28%3Cstrong%5B%5E%3C%3E%5D%2A%3E%28%5B%5E%3C%3E%5D%2A%29%3C%2Fstrong%3E%7C%3Ca%5B%5E%3C%3E%5D%2B%3E%3Cstrong%5B%5E%3C%3E%5D%2A%3E%28%5B%5E%3C%3E%5D%2A%29%3C%2Fstrong%3E%3C%2Fa%3E%29</regex>
+        <index>$2$3</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_xzq" Remark="行政区">
+    <!--\([^<>]*<a[^<>]* id="esf[^"]+xq_12"[^<>]*>([^<>]*)</a><a[^<>]* id="esf[^"]+xq_13"[^<>]*>[^<>]*</a>[^<>]*\)-->
+    <regex>%5C%28%5B%5E%3C%3E%5D%2A%3Ca%5B%5E%3C%3E%5D%2A%20id%3D%22esf%5B%5E%22%5D%2Bxq_12%22%5B%5E%3C%3E%5D%2A%3E%28%5B%5E%3C%3E%5D%2A%29%3C%2Fa%3E%3Ca%5B%5E%3C%3E%5D%2A%20id%3D%22esf%5B%5E%22%5D%2Bxq_13%22%5B%5E%3C%3E%5D%2A%3E%5B%5E%3C%3E%5D%2A%3C%2Fa%3E%5B%5E%3C%3E%5D%2A%5C%29</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<a href="[^"]*" target="_blank" id="esf[^"]+xq_12">([^<>]*)</a>-->
+        <regex>%3Ca%20href%3D%22%5B%5E%22%5D%2A%22%20target%3D%22_blank%22%20id%3D%22esf%5B%5E%22%5D%2Bxq_12%22%3E%28%5B%5E%3C%3E%5D%2A%29%3C%2Fa%3E</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_pq" Remark="片区">
+    <!--\( <a href="[^"]*" target="_blank" id="esf[^"]+xq_12">[^<>]*</a><a href="[^"]*" target="_blank" id="esf[^"]+xq_13">([^<>]*)</a>\)[^\[]*\[-->
+    <regex>%5c(%20%3ca%20href%3d%22%5b%5e%22%5d*%22%20target%3d%22_blank%22%20id%3d%22esf%5b%5e%22%5d%2bxq_12%22%3e%5b%5e%3c%3e%5d*%3c%2fa%3e%3ca%20href%3d%22%5b%5e%22%5d*%22%20target%3d%22_blank%22%20id%3d%22esf%5b%5e%22%5d%2bxq_13%22%3e(%5b%5e%3c%3e%5d*)%3c%2fa%3e%5c)%5b%5e%5c%5b%5d*%5c%5b</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<a [^<>]*target="_blank" id="esfjxxq_13">([^<>]*)</a>-->
+        <regex>%3ca%20%5b%5e%3c%3e%5d*target%3d%22_blank%22%20id%3d%22esfjxxq_13%22%3e(%5b%5e%3c%3e%5d*)%3c%2fa%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_yt" Remark="用途">
+    <!--<span class="gray6">住宅类别：</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e%e4%bd%8f%e5%ae%85%e7%b1%bb%e5%88%ab%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_hx" Remark="户型">
+    <!--<dd class="gray6"><span class="gray6">户<span class="padl27"></span>型：</span>([^<>]*)</dd>-->
+    <regex>%3cdd%20class%3d%22gray6%22%3e%3cspan%20class%3d%22gray6%22%3e%e6%88%b7%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e5%9e%8b%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--户　　型：</span>([^<>]*)</dt>-->
+        <regex>%e6%88%b7%e3%80%80%e3%80%80%e5%9e%8b%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdt%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_mj" Remark="面积">
+    <!--<dd class="gray6">建筑面积：<span class="black ">([\.\d]*)㎡</span></dd>-->
+    <regex>%3cdd%20class%3d%22gray6%22%3e%e5%bb%ba%e7%ad%91%e9%9d%a2%e7%a7%af%ef%bc%9a%3cspan%20class%3d%22black%20%22%3e(%5b%5c.%5cd%5d*)%e3%8e%a1%3c%2fspan%3e%3c%2fdd%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--建筑面积：<span class="red20b">([\.\d]*)</span>平方米</dd>-->
+        <regex>%e5%bb%ba%e7%ad%91%e9%9d%a2%e7%a7%af%ef%bc%9a%3cspan%20class%3d%22red20b%22%3e(%5b%5c.%5cd%5d*)%3c%2fspan%3e%e5%b9%b3%e6%96%b9%e7%b1%b3%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_dj" Remark="单价">
+    <!--万</span>\(([\.\d]+)元/㎡\)-->
+    <regex>%e4%b8%87%3c%2fspan%3e%5c((%5b%5c.%5cd%5d%2b)%e5%85%83%2f%e3%8e%a1%5c)</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<dd>单　　价：([\.\d]+)元/平方米</dd>-->
+        <regex>%3cdd%3e%e5%8d%95%e3%80%80%e3%80%80%e4%bb%b7%ef%bc%9a(%5b%5c.%5cd%5d%2b)%e5%85%83%2f%e5%b9%b3%e6%96%b9%e7%b1%b3%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_zj" Remark="总价">
+    <!--总<span class="padl27"></span>价：<span class="red20b">([\.\d]*)</span><span([^<>]*)class="black">万</span>\(\d*元/㎡\)-->
+    <regex>%e6%80%bb%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e4%bb%b7%ef%bc%9a%3cspan%20class%3d%22red20b%22%3e(%5b%5c.%5cd%5d*)%3c%2fspan%3e%3cspan(%5b%5e%3c%3e%5d*)class%3d%22black%22%3e%e4%b8%87%3c%2fspan%3e%5c(%5cd*%e5%85%83%2f%e3%8e%a1%5c)</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--总　　价：<span class="red20b">([\.\d]*)</span>万元</dd>-->
+        <regex>%e6%80%bb%e3%80%80%e3%80%80%e4%bb%b7%ef%bc%9a%3cspan%20class%3d%22red20b%22%3e(%5b%5c.%5cd%5d*)%3c%2fspan%3e%e4%b8%87%e5%85%83%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_jznd" Remark="建筑年代">
+    <!--<span class="gray6">(年<span class="padl27"></span>代：|建筑年代：)</span>(\d*)年</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e(%e5%b9%b4%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e4%bb%a3%ef%bc%9a%7c%e5%bb%ba%e7%ad%91%e5%b9%b4%e4%bb%a3%ef%bc%9a)%3c%2fspan%3e(%5cd*)%e5%b9%b4%3c%2fdd%3e</regex>
+    <index>$2</index>
+  </regexinfo>
+  <regexinfo Name="regex_cx" Remark="朝向">
+    <!--<span class="gray6">(朝<span class="padl27"></span>向：|进门朝向：)</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e(%e6%9c%9d%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e5%90%91%ef%bc%9a%7c%e8%bf%9b%e9%97%a8%e6%9c%9d%e5%90%91%ef%bc%9a)%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$2</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--朝　　向：</span>([^<>]*)</dd>-->
+        <regex>%e6%9c%9d%e3%80%80%e3%80%80%e5%90%91%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_szlc" Remark="所在楼层">
+    <!--<span class="gray6">楼<span class="padl27"></span>层：</span>第(\d*)层\(共\d*层\)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e%e6%a5%bc%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e5%b1%82%ef%bc%9a%3c%2fspan%3e%e7%ac%ac(%5cd*)%e5%b1%82%5c(%e5%85%b1%5cd*%e5%b1%82%5c)%3c%2fdd%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<span class="gray9">楼　　层：</span>第(\d*)层-->
+        <regex>%3cspan%20class%3d%22gray9%22%3e%e6%a5%bc%e3%80%80%e3%80%80%e5%b1%82%ef%bc%9a%3c%2fspan%3e%e7%ac%ac(%5cd*)%e5%b1%82</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_zlc" Remark="总楼层">
+    <!--<span class="gray6">(楼<span class="padl27"></span>层：|地上层数：)</span>(第\d*层\(共|[^\d]*)(\d*)层(\)|[^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e(%e6%a5%bc%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e5%b1%82%ef%bc%9a%7c%e5%9c%b0%e4%b8%8a%e5%b1%82%e6%95%b0%ef%bc%9a)%3c%2fspan%3e(%e7%ac%ac%5cd*%e5%b1%82%5c(%e5%85%b1%7c%5b%5e%5cd%5d*)(%5cd*)%e5%b1%82(%5c)%7c%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$3</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--共(\d*)层(\)|)</dd>-->
+        <regex>%E5%85%B1%28%5Cd%2A%29%E5%B1%82%28%5C%29%7C%29%3C%2Fdd%3E</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_jg" Remark="结构">
+    <!--<span class="gray6[^"]*">(结<span class="padl27"></span>构：|厅 结 构：)</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%5b%5e%22%5d*%22%3e(%e7%bb%93%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e6%9e%84%ef%bc%9a%7c%e5%8e%85%20%e7%bb%93%20%e6%9e%84%ef%bc%9a)%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$2</index>
+  </regexinfo>
+  <regexinfo Name="regex_zx" Remark="装修">
+    <!--<span class="gray6">(装<span class="padl27"></span>修：|装修程度：)</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e(%e8%a3%85%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e4%bf%ae%ef%bc%9a%7c%e8%a3%85%e4%bf%ae%e7%a8%8b%e5%ba%a6%ef%bc%9a)%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$2</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--装　　修：</span>([^<>]*)</dd>-->
+        <regex>%e8%a3%85%e3%80%80%e3%80%80%e4%bf%ae%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_title" Remark="信息">
+    <!--<input type="hidden" name="talkTitle" id="talkTitle" value="([^"]*)" />-->
+    <regex>%3cinput%20type%3d%22hidden%22%20name%3d%22talkTitle%22%20id%3d%22talkTitle%22%20value%3d%22(%5b%5e%22%5d*)%22%20%2f%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<div class="title flc"><h1><span>([^"]*)</span></h1>-->
+        <regex>%3cdiv%20class%3d%22title%20flc%22%3e%3ch1%3e%3cspan%3e(%5b%5e%22%5d*)%3c%2fspan%3e%3c%2fh1%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_phone" Remark="电话">
+    <!--<span id="phone">([^<>]*)</span>-->
+    <regex>%3cspan%20id%3d%22phone%22%3e(%5b%5e%3c%3e%5d*)%3c%2fspan%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--联系电话:<span class="font20">([^<>]*)</span>-->
+        <regex>%e8%81%94%e7%b3%bb%e7%94%b5%e8%af%9d%3a%3cspan%20class%3d%22font20%22%3e(%5b%5e%3c%3e%5d*)%3c%2fspan%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_address" Remark="地址">
+    <!--<p><span class="gray6">地<span class="padl27"></span>址：</span>([^<>]*)</p>-->
+    <regex>%3cp%3e%3cspan%20class%3d%22gray6%22%3e%e5%9c%b0%3cspan%20class%3d%22padl27%22%3e%3c%2fspan%3e%e5%9d%80%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fp%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--地　　址：</span>([^<>]*)</dt>-->
+        <regex>%e5%9c%b0%e3%80%80%e3%80%80%e5%9d%80%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdt%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_datetime" Remark="发布时间">
+    <!--发布时间：([^\(]*)\(-->
+    <regex>%e5%8f%91%e5%b8%83%e6%97%b6%e9%97%b4%ef%bc%9a(%5b%5e%5c(%5d*)%5c(</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_updatetime" Remark="更新时间">
+    <!--id="Time">([^<>]*)前更新</span>-->
+    <regex>id%3D%22Time%22%3E%28%5B%5E%3C%3E%5D%2A%29%E5%89%8D%E6%9B%B4%E6%96%B0%3C%2Fspan%3E</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_comName" Remark="公司">
+    <!--jjrcompanyname = '([^']+)'-->
+    <regex>jjrcompanyname%20%3d%20%27(%5b%5e%27%5d%2b)%27</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_comArea" Remark="门店">
+    <!--comArea = "([^"]+)"-->
+    <regex>comArea%20%3d%20%22(%5b%5e%22%5d%2b)%22</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_infUrl" Remark="url">
+    <!--<dd[^<>]*><p class="title"><a[^<>]*href="([^"]*)"[^<>]*>[^<>]*</a>-->
+    <regex>%3cdd%5b%5e%3c%3e%5d*%3e%3cp%20class%3d%22title%22%3e%3ca%5b%5e%3c%3e%5d*href%3d%22(%5b%5e%22%5d*)%22%5b%5e%3c%3e%5d*%3e%5b%5e%3c%3e%5d*%3c%2fa%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<p class="housetitle"><a href="([^"]*)" target="_blank" title="">[^<>]*</a>(?:(?!</p>).)*</p>-->
+        <regex>%3cp%20class%3d%22housetitle%22%3e%3ca%20href%3d%22(%5b%5e%22%5d*)%22%20target%3d%22_blank%22%20title%3d%22%22%3e%5b%5e%3c%3e%5d*%3c%2fa%3e(%3f%3a(%3f!%3c%2fp%3e).)*%3c%2fp%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="regex_nextPage" Remark="下一页正则">
+    <!--<a id="PageControl1_hlk_next" href="([^"]*)">下一页</a>-->
+    <regex>%3ca%20id%3d%22PageControl1_hlk_next%22%20href%3d%22(%5b%5e%22%5d*)%22%3e%e4%b8%8b%e4%b8%80%e9%a1%b5%3c%2fa%3e</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_jzxs" Remark="建筑形式">
+    <!--<span class="gray6">(建筑形式：)</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%22%3e(%e5%bb%ba%e7%ad%91%e5%bd%a2%e5%bc%8f%ef%bc%9a)%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$2</index>
+  </regexinfo>
+  <regexinfo Name="regex_cqxz" Remark="产权性质">
+    <!--<span class="gray6 ">产权性质：</span>([^<>]*)</dd>-->
+    <regex>%3cspan%20class%3d%22gray6%20%22%3e%e4%ba%a7%e6%9d%83%e6%80%a7%e8%b4%a8%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_ptss" Remark="配套设施">
+    <!--<dt><span class="gray6[^"]*">配套设施：</span>(<span class="sheshi">([^<>]*)</span>|([^<>]*))</dt>-->
+    <regex>%3cdt%3e%3cspan%20class%3d%22gray6%5b%5e%22%5d*%22%3e%e9%85%8d%e5%a5%97%e8%ae%be%e6%96%bd%ef%bc%9a%3c%2fspan%3e(%3cspan%20class%3d%22sheshi%22%3e(%5b%5e%3c%3e%5d*)%3c%2fspan%3e%7c(%5b%5e%3c%3e%5d*))%3c%2fdt%3e</regex>
+    <index>$2$3</index>
+  </regexinfo>
+  <regexinfo Name="regex_hymj" Remark="花园面积">
+    <!--花园面积：</span>([\d\.]*)平米-->
+    <regex>%e8%8a%b1%e5%9b%ad%e9%9d%a2%e7%a7%af%ef%bc%9a%3c%2fspan%3e(%5b%5cd%5c.%5d*)%e5%b9%b3%e7%b1%b3</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_tjg" Remark="厅结构">
+    <!--厅 结 构：</span>([^<>]*)</dd>-->
+    <regex>%e5%8e%85%20%e7%bb%93%20%e6%9e%84%ef%bc%9a%3c%2fspan%3e(%5b%5e%3c%3e%5d*)%3c%2fdd%3e</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_cwsl" Remark="车位数量">
+    <!--车位数量：</span>(\d*)个-->
+    <regex>%e8%bd%a6%e4%bd%8d%e6%95%b0%e9%87%8f%ef%bc%9a%3c%2fspan%3e(%5cd*)%e4%b8%aa</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="regex_dxsmj" Remark="地下室面积">
+    <!--地下室面积：</span>([\d\.]*)平米-->
+    <regex>%e5%9c%b0%e4%b8%8b%e5%ae%a4%e9%9d%a2%e7%a7%af%ef%bc%9a%3c%2fspan%3e(%5b%5cd%5c.%5d*)%e5%b9%b3%e7%b1%b3</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="总条数正则" Remark="总条数正则">
+    <!--<[^<>]*class="[^"]*floatl[^"]*"[^<>]*>共找到<[^<>]*>([\d]*)</[^<>]+>条-->
+    <regex>%3c%5b%5e%3c%3e%5d*class%3d%22%5b%5e%22%5d*floatl%5b%5e%22%5d*%22%5b%5e%3c%3e%5d*%3e%e5%85%b1%e6%89%be%e5%88%b0%3c%5b%5e%3c%3e%5d*%3e(%5b%5cd%5d*)%3c%2f%5b%5e%3c%3e%5d%2b%3e%e6%9d%a1</regex>
+    <index>$1</index>
+  </regexinfo>
+  <regexinfo Name="行政区文本正则" Remark="行政区文本正则">
+    <!--<[^<>]+id="list_38"[^<>]*><[^<>]+>区域：</[^<>]+><[^<>]+class="[^"]*qxName[^"]*"[^<>]*>((?:(?!div).)*)<-->
+    <regex>%3C%5B%5E%3C%3E%5D%2Bid%3D%22list_38%22%5B%5E%3C%3E%5D%2A%3E%3C%5B%5E%3C%3E%5D%2B%3E%E5%8C%BA%E5%9F%9F%EF%BC%9A%3C%2F%5B%5E%3C%3E%5D%2B%3E%3C%5B%5E%3C%3E%5D%2Bclass%3D%22%5B%5E%22%5D%2AqxName%5B%5E%22%5D%2A%22%5B%5E%3C%3E%5D%2A%3E%28%28%3F%3A%28%3F%21div%29.%29%2A%29%3C</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<dl class="quxian" id="dl_quxian"><dd>区<span class='pl5'>域：</span></dd>((?:(?!dl).)*)</dl>-->
+        <regex>%3cdl%20class%3d%22quxian%22%20id%3d%22dl_quxian%22%3e%3cdd%3e%e5%8c%ba%3cspan%20class%3d%27pl5%27%3e%e5%9f%9f%ef%bc%9a%3c%2fspan%3e%3c%2fdd%3e((%3f%3a(%3f!dl).)*)%3c%2fdl%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="行政区链接正则" Remark="行政区链接正则">
+    <!--<a  href=([^<>]+) >[^<>]*</a>-->
+    <regex>%3ca%20%20href%3d(%5b%5e%3c%3e%5d%2b)%20%3e%5b%5e%3c%3e%5d*%3c%2fa%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<dd ><a  href=([^<>]+) >[^<>]*</a></dd>-->
+        <regex>%3cdd%20%3e%3ca%20%20href%3d(%5b%5e%3c%3e%5d%2b)%20%3e%5b%5e%3c%3e%5d*%3c%2fa%3e%3c%2fdd%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="片区文本正则" Remark="片区文本正则">
+    <!--<[^<>]+id="shangQuancontain"[^<>]*>((?:(?!p>).)*)</[^<>]+>-->
+    <regex>%3c%5b%5e%3c%3e%5d%2bid%3d%22shangQuancontain%22%5b%5e%3c%3e%5d*%3e((%3f%3a(%3f!p%3e).)*)%3c%2f%5b%5e%3c%3e%5d%2b%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<div class="mid" id="tagContent0">((?:(?!div).)*)</div>-->
+        <regex>%3cdiv%20class%3d%22mid%22%20id%3d%22tagContent0%22%3e((%3f%3a(%3f!div).)*)%3c%2fdiv%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+  <regexinfo Name="片区链接正则" Remark="片区链接正则">
+    <!--<a href="([^"]+)" >[^<>]+</a>-->
+    <regex>%3ca%20href%3d%22(%5b%5e%22%5d%2b)%22%20%3e%5b%5e%3c%3e%5d%2b%3c%2fa%3e</regex>
+    <index>$1</index>
+    <regexinfolist>
+      <regexinfo>
+        <!--<a href="([^"]+)" >[^<>]+</a>-->
+        <regex>%3ca%20href%3d%22(%5b%5e%22%5d%2b)%22%20%3e%5b%5e%3c%3e%5d%2b%3c%2fa%3e</regex>
+        <index>$1</index>
+      </regexinfo>
+    </regexinfolist>
+  </regexinfo>
+</RegexInfos>

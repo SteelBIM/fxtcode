@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E71B5A9F-0A73-458D-8DF2-7FA0BD319DCA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtDataAcquisition.BLL</RootNamespace>
+    <AssemblyName>FxtDataAcquisition.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\..\..\CommonDll\CAS.Entity.BaseDAModels\bin\Debug\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FxtDataAcquisition.Common\DLL\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\FxtDataAcquisition.Common\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FxtDataAcquisition.Common\DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FxtDataAcquisition.Common\DLL\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaiduApiManager.cs" />
+    <Compile Include="DatabaseCallManager.cs" />
+    <Compile Include="DatAllotFlowManager.cs" />
+    <Compile Include="DatAllotSurveyManager.cs" />
+    <Compile Include="DATBuildingManager.cs" />
+    <Compile Include="DATCheckManager.cs" />
+    <Compile Include="DATHouseManager.cs" />
+    <Compile Include="DATProjectManager.cs" />
+    <Compile Include="FxtApi_SYSSubArea.cs" />
+    <Compile Include="LNKPAppendageManager.cs" />
+    <Compile Include="LNKPCompanyManager.cs" />
+    <Compile Include="LNKPPhotoManager.cs" />
+    <Compile Include="PriviDepartmentManager.cs" />
+    <Compile Include="PriviDepartmentUserManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SYSAreaManager.cs" />
+    <Compile Include="SYSCityManager.cs" />
+    <Compile Include="SYSMenuManager.cs" />
+    <Compile Include="SYSProvinceManager.cs" />
+    <Compile Include="SYSRoleManager.cs" />
+    <Compile Include="SYSRoleMenuFunctionManager.cs" />
+    <Compile Include="SYSRoleUserManager.cs" />
+    <Compile Include="SYSSubAreaManager.cs" />
+    <Compile Include="UserInfoManager.cs" />
+    <Compile Include="ViewUserJoinDepartmentManager.cs" />
+    <Compile Include="ViewUserJoinRoleJoinDepartmenManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\commonproject\trunk\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2c1cbb22-7cbf-485f-8ded-b2162f65f48f}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaiduAPI\BaiduAPI.csproj">
+      <Project>{18cc4427-af81-4928-972b-973b32d58ef9}</Project>
+      <Name>BaiduAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Application\FxtDataAcquisition.Application.csproj">
+      <Project>{4ead17b2-2c56-477a-b0b0-0c3f41bbe841}</Project>
+      <Name>FxtDataAcquisition.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Common\FxtDataAcquisition.Common.csproj">
+      <Project>{a9966a0a-146d-4143-b2ae-454dfbd5c346}</Project>
+      <Name>FxtDataAcquisition.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Data\FxtDataAcquisition.Data.csproj">
+      <Project>{78817218-4fe4-4433-a763-c33f56120194}</Project>
+      <Name>FxtDataAcquisition.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Domain\FxtDataAcquisition.Domain.csproj">
+      <Project>{78da0a32-26b2-4416-bc5f-3d2472d46724}</Project>
+      <Name>FxtDataAcquisition.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.DTODomain\FxtDataAcquisition.DTODomain.csproj">
+      <Project>{304a5bf7-a1be-4e5c-a8ae-818471e13eae}</Project>
+      <Name>FxtDataAcquisition.DTODomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtDataCenter\FxtDataAcquisition.FxtAPI.FxtDataCenter.csproj">
+      <Project>{578e2342-6293-4be0-ae47-b5a0eb54e066}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtDataCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtDataWcf\FxtDataAcquisition.FxtAPI.FxtDataWcf.csproj">
+      <Project>{230afa0f-7757-453a-95ca-edbc8499bac9}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtDataWcf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.FxtAPI.FxtUserCenter\FxtDataAcquisition.FxtAPI.FxtUserCenter.csproj">
+      <Project>{bda2c863-bd71-4bb9-a1ce-b5fbad0f1731}</Project>
+      <Name>FxtDataAcquisition.FxtAPI.FxtUserCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.NHibernate\FxtDataAcquisition.NHibernate.csproj">
+      <Project>{353b326d-79e2-458d-87d8-7abdef9baf2d}</Project>
+      <Name>FxtDataAcquisition.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{230AFA0F-7757-453A-95CA-EDBC8499BAC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FxtDataAcquisition.FxtAPI.FxtDataWcf</RootNamespace>
+    <AssemblyName>FxtDataAcquisition.FxtAPI.FxtDataWcf</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\FxtDataAcquisition.Common\DLL\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\FxtDataAcquisition.Common\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Manager\DATBuildingApi.cs" />
+    <Compile Include="Manager\DATHouseApi.cs" />
+    <Compile Include="Manager\EntranceApi.cs" />
+    <Compile Include="Manager\FxtAPIClientExtend.cs" />
+    <Compile Include="Manager\DATProjectApi.cs" />
+    <Compile Include="Manager\SYSAreaApi.cs" />
+    <Compile Include="Manager\SYSCityApi.cs" />
+    <Compile Include="Manager\SYSCode.cs" />
+    <Compile Include="Manager\SYSCodeApi.cs" />
+    <Compile Include="Manager\SYSProvinceApi.cs" />
+    <Compile Include="Manager\WcfCheck.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\Wcf.Api\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Wcf.Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Wcf.Api\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Wcf.Api\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Wcf.Api\FxtAPI1.wsdl" />
+    <None Include="Service References\Wcf.Api\FxtAPI2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Wcf.Api\FxtAPI21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Wcf.Api\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FxtDataAcquisition.Common\FxtDataAcquisition.Common.csproj">
+      <Project>{a9966a0a-146d-4143-b2ae-454dfbd5c346}</Project>
+      <Name>FxtDataAcquisition.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.Domain\FxtDataAcquisition.Domain.csproj">
+      <Project>{78da0a32-26b2-4416-bc5f-3d2472d46724}</Project>
+      <Name>FxtDataAcquisition.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.DTODomain\FxtDataAcquisition.DTODomain.csproj">
+      <Project>{304a5bf7-a1be-4e5c-a8ae-818471e13eae}</Project>
+      <Name>FxtDataAcquisition.DTODomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FxtDataAcquisition.NHibernate\FxtDataAcquisition.NHibernate.csproj">
+      <Project>{353b326d-79e2-458d-87d8-7abdef9baf2d}</Project>
+      <Name>FxtDataAcquisition.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Wcf.Api\FxtAPI1.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{183AEE74-9D04-4364-97FC-F66D575FFAC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAS.DataAccess</RootNamespace>
+    <AssemblyName>CAS.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'godlike|AnyCPU'">
+    <OutputPath>bin\godlike\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.DataAccess.BaseDAModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CommonDll\CAS.DataAccess.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="CAS.Entity.BaseDAModels">
+      <HintPath>..\..\CommonDll\CAS.Entity.BaseDAModels.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DA\Base.cs" />
+    <Compile Include="DA\Case\CaseDA.cs" />
+    <Compile Include="DA\Company\CompanyDA.cs" />
+    <Compile Include="DA\Company\DepartmentDA.cs" />
+    <Compile Include="DA\Company\UserDA.cs" />
+    <Compile Include="DA\Log\LogDA.cs" />
+    <Compile Include="DA\PBFH\BuildingDA.cs" />
+    <Compile Include="DA\PBFH\FloorDA.cs" />
+    <Compile Include="DA\PBFH\HouseDA.cs" />
+    <Compile Include="DA\PBFH\ProjectDA.cs" />
+    <Compile Include="DA\PriceTrend\AreaDA.cs" />
+    <Compile Include="DA\PriceTrend\CityDA.cs" />
+    <Compile Include="DA\PriceTrend\ProjectDA.cs" />
+    <Compile Include="DA\QueryAuto\QueryAutoDA.cs" />
+    <Compile Include="DA\QueryPerson\QueryPersonDA.cs" />
+    <Compile Include="DA\Survey\SurveyCaseDA.cs" />
+    <Compile Include="DA\Tax\TaxMathDA.cs" />
+    <Compile Include="DA\Tax\TaxTemplateDA.cs" />
+    <Compile Include="DA\User\LoginDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\Log.cs" />
+    <Compile Include="SQL\User.cs" />
+    <Compile Include="SQL\PBFH.cs" />
+    <Compile Include="DA\Survey\SurveyTemplateDA.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CAS.Common\CAS.Common.csproj">
+      <Project>{FA2001F0-7369-4521-924E-05EFF30462F0}</Project>
+      <Name>CAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CAS.Entity\CAS.Entity.csproj">
+      <Project>{2C1CBB22-7CBF-485F-8DED-B2162F65F48F}</Project>
+      <Name>CAS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

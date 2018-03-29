@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4c1fe85c-f704-40f6-9b16-a25b7e70d72d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.122:9200/Residential.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Residential2.xsd" MetadataType="Schema" ID="bb9b4a31-065f-4d8c-b37f-b3f38b812a4a" SourceId="1" SourceUrl="http://192.168.0.122:9200/Residential.svc?xsd=xsd1" />
+    <MetadataFile FileName="Residential21.xsd" MetadataType="Schema" ID="cb10600b-05bc-46f7-90d2-310609d6f59c" SourceId="1" SourceUrl="http://192.168.0.122:9200/Residential.svc?xsd=xsd0" />
+    <MetadataFile FileName="Residential1.wsdl" MetadataType="Wsdl" ID="e443f814-7cdd-49ad-8ea5-59528c39f456" SourceId="1" SourceUrl="http://192.168.0.122:9200/Residential.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

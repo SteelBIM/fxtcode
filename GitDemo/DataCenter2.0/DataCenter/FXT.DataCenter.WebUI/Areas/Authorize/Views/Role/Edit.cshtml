@@ -1,0 +1,174 @@
+﻿@using FXT.DataCenter.Domain.Models
+@using FXT.DataCenter.Infrastructure.Data.ServicesImpl
+@model SYS_Role
+
+@{
+    ViewBag.Title = "编辑角色";
+}
+
+@section StyleSheet{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/assets/jquery-ui/jquery-ui.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Plugin/Tree/css/jquery.tree.css")" />
+}
+
+@section Javascript{
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/jquery-ui/jquery-ui.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/content/Plugin/Tree/js/jquery.tree.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tree').tree({
+                selectable: false,
+                dnd: false
+            });
+            var ischeckall = true;
+            $("input[name='Roles2Menus']").each(function (e, n) {
+                if ($(this).attr("checked") === undefined) {
+                    ischeckall = false;
+                }
+            })
+            if (ischeckall) {
+                $("#checkAll").attr("checked", true);
+                $("#checkAll").parents("span").attr("class", "checked");
+            }
+
+            $("#checkAll").click(function () {
+                if ($(this).is(":checked")) {
+                    $('#tree').tree('checkAll');
+                    $.uniform.update();
+                } else {
+                    $('#tree').tree('uncheckAll');
+                    $.uniform.update();
+                }
+            });
+            $("input[name='Roles2Menus']").click(function () {
+                if ($(this).is(":checked")) {
+                    $(this).parents('.expanded').find('input[name="Funcs"]').each(function () {
+                        $(this).attr("checked", true);
+                    });
+                    $.uniform.update();
+                } else {
+                    $(this).parents('.expanded').find('input[name="Funcs"]').each(function () {
+                        $(this).removeAttr("checked");
+                    });
+                    $.uniform.update();
+                }
+            });
+
+            $("input[name='Funcs']").click(function () {
+                var isMenusAll = true;
+                if ($(this).is(":checked")) {
+                    $($(this).parents('ul')[0]).find('input[name="Funcs"]').each(function (n,value) {
+                        if (!$(value).is(":checked")) {
+                            isMenusAll = false;
+                            return false;
+                        }
+                    });
+                    if (isMenusAll) {
+                        $(this).parents('ul').prev().prev().find('input[name="Roles2Menus"]').attr("checked", true);
+                        $(this).parents('ul').prev().prev().find('span').attr("class", "checked");
+                    }
+                }
+                else {
+                    $($(this).parents('ul')[0]).find('input[name="Funcs"]').each(function (n, value) {
+                        if ($(value).is(":checked")) {
+                            isMenusAll = false;
+                            return false;
+                        }
+                    });
+                    if (isMenusAll) {
+                        $(this).parents('ul').prev().prev().find('input[name="Roles2Menus"]').removeAttr("checked");
+                        $(this).parents('ul').prev().prev().find('span').attr("class","");
+                    }
+                }
+            });
+            
+            $("#btnsubmit").click(function () {
+                var checks = $("input[name='Roles2Menus']:checked");
+                if (checks.length == 0) {
+                    alert("请选择要配置的权限");
+                    return;
+                }
+                if (confirm("确认保存？")) {
+                    $("#search").submit();
+                }
+            });
+        });
+    </script>
+}
+
+<div class="portlet-body form-horizontal form-bordered form-row-stripped">
+    <div class="row-fluid">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "search", @class = "form-inline" }))
+        { 
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="required">*</span>角色名：</label>
+                <div class="controls">
+                    <input id="roleId" name="RoleId" type="hidden" value = "@Model.ID" />
+                    @(ViewBag.Readonly as string == "true" ? Html.TextBoxFor(m => m.RoleName, new { @class = "m-wrap small", Readonly = "readonly" }) : Html.TextBoxFor(m => m.RoleName, new { @class = "m-wrap small" }))
+
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.RoleName)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    描述：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "m-wrap small" })
+                </div>
+                <div class="controls">
+                    <button class="btn blue" type="button" id="btnsubmit"><i class="icon-ok"></i>保存</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    权限：<br />
+                    <input type="checkbox" id="checkAll" />
+                    全选</label>
+                <div class="controls">
+                    @{
+            var data = ViewBag.actualMenus as List<SYS_Menu>;
+                    }
+                    @if (data != null && data.Count > 0)
+                    {
+                        <div id="tree">
+                            <ul style="font-size: inherit; font-weight: bold;">
+                                @foreach (var item in data)
+                                {
+                                    var isChecked = item.Selected ? "checked='checked'" : "";
+    
+                                    <li class="expanded">
+                                        <input type="checkbox" name="Roles2Menus" @isChecked value="@item.ID" /><span>@item.MenuName</span>
+                                        @{
+                                    var actualFuncs = new List<SYS_Func>();
+                                    List<SYS_Func> funcs = null;
+                                    var func = new Menu().GetFunctionsByParams(item.ID, int.Parse((string)ViewBag.RoleId)).Select(n => n.FunctionCode);
+                                    funcs = new Menu().GetFuncs().ToList();
+                                    foreach (var m in funcs)
+                                    {
+                                        m.Selected = func.Contains(m.Code);
+                                        actualFuncs.Add(m);
+                                    }
+                                        }
+                                        @if (actualFuncs.Count > 0)
+                                        {                                            
+                                            <ul style="font-size: small; font-weight: normal;">
+                                                @foreach (var m in actualFuncs)
+                                                {
+                                                    var sIsChecked = m.Selected ? "checked='checked'" : "";
+                                                    var value = item.ID + "#" + m.Code;                                                                                                        
+                                                    <li style="display: inline-block;">
+                                                        <input type="checkbox" name="Funcs" @sIsChecked value="@value" /><span>@m.CodeName</span></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

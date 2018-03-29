@@ -1,0 +1,232 @@
+﻿@model FXT.DataCenter.Domain.Models.DatCaseOffice
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/autocomplete/jquery.autocomplete.css")" />
+    <style type="text/css">
+        .tbInputCon
+        {
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 95%;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Simsun", "Open Sans";
+        }
+
+        .ui-multiselect
+        {
+            height: 35px;
+        }
+
+        input.hasDatepicker
+        {
+            width: 205px;
+        }
+
+        .hidden
+        {
+            display: none;
+        }
+
+        .required
+        {
+            color: red;
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //日期控件渲染
+            $("#CaseDate").datepicker({ format: 'yyyy-mm-dd' });
+
+            $("#ProjectId").change(function () {
+                var text = $("#ProjectId option:selected").text();
+                $("#ProjectName").val(text.split('(')[0]);
+            });
+
+            $("#ProjectId").select2();
+            $(".select2-container").width(219);
+
+            $("#BuildingArea").bind("change", function () {
+                var unitprice = $.trim($("#UnitPrice").val());
+                var buildingarea = $.trim($(this).val());
+                if (buildingarea <= 0) {
+                    alert("建筑面积不能小于等于0");
+                    $(this).val(1);
+                }
+                buildingarea = $.trim($(this).val());
+                $(this).val(((Number)(buildingarea)).toFixed(2));
+                buildingarea = $.trim($(this).val());
+
+                if (buildingarea != "" && unitprice != "") {
+                    var totalPrice = (Number)(unitprice) * (Number)(buildingarea);
+                    $("#TotalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#TotalPrice").val("");
+                }
+            });
+
+            $("#UnitPrice").bind("change", function () {
+                var buildingarea = $.trim($("#BuildingArea").val());
+                var unitprice = $.trim($(this).val());
+                if (unitprice <= 0) {
+                    alert("单价不能小于等于0");
+                    $(this).val(1);
+                }
+                unitprice = $.trim($(this).val());
+                $(this).val(((Number)(unitprice)).toFixed(2));
+                unitprice = $.trim($(this).val());
+
+                if (buildingarea != "" && unitprice != "") {
+                    var totalPrice = (Number)(unitprice) * (Number)(buildingarea);
+                    $("#TotalPrice").val(totalPrice.toFixed(2));
+                } else {
+                    $("#TotalPrice").val("");
+                }
+
+            });
+
+        });
+    </script>
+}
+@section MainContent{
+    <table class="tbInputCon">
+        <tr>
+            <td>办公楼盘:
+            </td>
+            <td>
+                @if (Model != null)
+                {
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="FxtCompanyId" value="@Model.FxtCompanyId" />
+                }
+                @Html.HiddenFor(m => m.ProjectName)
+                @Html.DropDownListFor(m => m.ProjectId, ViewBag.ProjectName as List<SelectListItem>)
+                <span class="required">*</span>
+            </td>
+            <td>办公楼栋:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingName)
+            </td>
+        </tr>
+        <tr>
+            <td>房号：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.HouseName)
+            </td>
+            <td>建筑面积(㎡):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BuildingArea)
+                <span class="required">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>单价(元/㎡)：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.UnitPrice)
+                <span class="required">*</span>
+            </td>
+            <td>总价(元):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalPrice, new { @readOnly = "readOnly" })
+            </td>
+        </tr>
+        <tr>
+            <td>案例类型:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.CaseTypeCode, ViewBag.CaseTypeName as List<SelectListItem>)
+                <span class="required">*</span>
+            </td>
+            <td>案例时间:
+            </td>
+            <td>
+                @Html.TextBox("CaseDate", (Model == null ? string.Empty : Model.CaseDate.ToString("yyyy-MM-dd")))
+                <span class="required">*</span>
+            </td>
+        </tr>
+        <tr>
+            <td>办公楼等级:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.OfficeType, ViewBag.OfficeTypeName as List<SelectListItem>)
+            </td>
+            <td>装修情况:
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.Fitment, ViewBag.FitmentName as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>所在楼层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FloorNo)
+            </td>
+            <td>总楼层:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TotalFloor)
+            </td>
+        </tr>
+        <tr>
+            <td>物业费(元/㎡*月):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ManagerPrice)
+            </td>
+            <td>约定租金增长率(%/年):
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.RentRate)
+            </td>
+        </tr>
+        <tr>
+            <td>中介公司:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AgencyCompany)
+            </td>
+            <td>中介人员：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Agent)
+            </td>
+        </tr>
+        <tr>
+            <td>中介电话：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.AgencyTel)
+            </td>
+            <td>来源名称:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourceName)
+            </td>
+        </tr>
+        <tr>
+            <td>来源电话：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourcePhone)
+            </td>
+            <td>来源链接:
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SourceLink)
+            </td>
+        </tr>
+    </table>
+}
+

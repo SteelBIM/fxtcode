@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FxtDataAcquisition.NHibernate" namespace="FxtDataAcquisition.NHibernate.Entities">
+	<class name="FxtDataAcquisition.NHibernate.Entities.SYSRole, FxtDataAcquisition.NHibernate" table="SYS_Role">
+		<id name="ID" column="ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>      		
+		<property name="RoleName" column="RoleName" type="string"  />
+		<property name="Remarks" column="Remarks" type="string"  />
+		<property name="Valid" column="Valid" type="int"  />
+		<property name="CreateTime" column="CreateTime" type="DateTime"  />
+		<property name="CityID" column="CityID" type="int"  />
+		<property name="FxtCompanyID" column="FxtCompanyID" type="int"  />
+				
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,2081 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        body
+        {
+            background: #eee;
+        }
+        
+        *
+        {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+        
+        .maintable
+        {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+        
+        .maintable th
+        {
+            background: #069;
+            color: #fff;
+            line-height: 30px;
+            font-size: 14px;
+        }
+        
+        .maintable td
+        {
+            background: #fff;
+            line-height: 20px;
+        }
+        
+        .maintable td.left
+        {
+            width: 220px;
+            background: #f9f9f9;
+        }
+        
+        .tbparams
+        {
+            background: #ccc;
+            width: 100%;
+        }
+        
+        .tbparams th
+        {
+            background: #eee;
+            color: #000;
+            font-weight: normal;
+            line-height: 22px;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .tbparams td
+        {
+            background: #fff;
+            padding: 3px;
+        }
+        
+        ul
+        {
+            list-style: none;
+        }
+        
+        ul.params, div.content
+        {
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        
+        ul.params li
+        {
+            border-bottom: 1px solid #ccc;
+            line-height: 25px;
+            margin: 1px;
+        }
+        
+        ul.index li
+        {
+            padding: 10px;
+            line-height: 25px;
+            color: #069;
+        }
+        
+        div.content
+        {
+            padding: 5px;
+        }
+        
+        #apilist
+        {
+            margin: 5px;
+        }
+        
+        #apilist li
+        {
+            cursor: default;
+            padding: 3px;
+        }
+        
+        #apilist li.over
+        {
+            background: #ccc;
+        }
+        
+        #apilist li.active
+        {
+            background: #069;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        #apicontent
+        {
+            margin: 5px;
+        }
+        
+        #apicontent li
+        {
+            cursor: default;
+            word-break: break-all;
+        }
+        
+        #apicontent li strong
+        {
+            display: block;
+            background: #eee;
+            line-height: 25px;
+            text-indent: 10px;
+            border-left: 8px solid #ccc;
+        }
+        
+        ul.ulapi li
+        {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+        
+        #apicontent li.desc
+        {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+        
+        #apicontent span.mobile
+        {
+            color: #c00;
+        }
+        
+        #apicontent li.step
+        {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        font.red
+        {
+            color: #c00;
+        }
+        
+        font.memo
+        {
+            color: #063;
+        }
+        
+        #apicontent li label
+        {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+        
+        textarea
+        {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="js/jquery-1.8.2-min.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var RootRul = top.location.href;
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = [
+        //            { name: "appid", value: "", desc: "调用方ID（产品CODE或第三方CODE", must: true },
+        //            { name: "apppwd", value: "", desc: "调用方（应用）密码", must: true },
+        //            { name: "signname", value: "", desc: "公司标识，来自用户中心的公司表  time 时间戳，格式yyyyMMddHHmmss  20140202121212  ", must: true },
+        //            { name: "time", value: "", desc: "验证字符串，MD5加密strdate参数后得出", must: true },
+        //            { name: "code", value: "", desc: "上面的参数排序（降序）后,再用MD5加密（使用约定KEY）", must: true },
+
+        //            { name: "username", value: "", desc: "用户名 ", must: true },
+        //            { name: "password", value: "", desc: "密码", must: false },
+        //            { name: "fxtcompanyid", value: "", desc: "fxtcompanyid", must: false },
+        //            { name: "subcompanyid", value: "", desc: "fxtcompanyid", must: false },
+
+        //            { name: "splatype", value: "", desc: "平台类型，如ios、android、ie等 ", must: true },
+        //            { name: "platVer", value: "", desc: "平台类型版本", must: true },
+        //            { name: "stype", value: "", desc: "产品类型，如云查勘、云风控", must: true },
+        //            { name: "version", value: "", desc: "产品类型版本名", must: true },
+        //            { name: "vcode", value: "", desc: "产品类型版本号", must: true },
+        //            { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+        //            { name: "channel", value: "", desc: "产品发布渠道", must: false },
+
+
+        ]
+
+        //api
+        var api = [
+                 {
+                     name: "登录", url: "http://192.168.0.212/uc/start  （这个地址为测试地址，如果需要用户中心这边打断点调试，请使用 http://192.168.0.212：8000/uc/start）",
+
+                     params: [
+                      { name: "time", value: "20140202121212", desc: "时间戳，格式yyyyMMddHHmmss", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "654321", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: true },
+                      { name: "splatype", value: "ios", desc: "平台类型，如ios、android、ie等", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false }
+                    ],
+                     paramsOut: [
+                      { name: "appid", value: "14654651", desc: "调用方ID（产品CODE或第三方CODE", must: true },
+                      { name: "apppwd", value: "F59FAE5A6C7F9473", desc: "调用方（应用）密码", must: true },
+                      { name: "appurl", value: "http://s4.fxtchina.com/SurveyService/sae", desc: "app对应前段请求URl地址，例如手机端请求的URL", must: true },
+                      { name: "signname", value: "165165165", desc: "公司标识，来自用户中心的公司表", must: true },
+                      { name: "truename", value: "谭柳", desc: "用户真实名，别名", must: true },
+                      { name: "fxtcompanyid", value: "", desc: "用户公司ID", must: true },
+                      { name: "companyname", value: "南粤评估", desc: "南粤评估", must: true },
+                      { name: "subcompanyid", value: "", desc: "评估公司ID", must: true },
+                      { name: "subcompany", value: "南粤评估珠海分公司", desc: "评估公司名称", must: true }
+
+                    ],
+                     output: { "returntype": 1, "returntext": "", data: {
+                         "sinfo": {
+                               "signname": "165165165",//公司标识，来自用户中心的公司表，必须
+                               "token": "", 
+                               "ProductTypeCode":0,
+                               "weburl":"",
+                               "bussinessdb": "",
+                               "overdate": "",
+                               "apps":[{
+                               
+                             "appid": 14654651, //调用方ID（产品CODE或第三方CODE），必须
+                             "apppwd": "F59FAE5A6C7F9473", //调用方（应用）密码，必须
+                             "appurl": "http://s4.fxtchina.com/SurveyService/sae", //app对应前段请求URl地址，例如手机端请求的URL，必须
+                             "appkey": ""
+                               
+                               },{
+                               
+                             "appid": 14654651, //调用方ID（产品CODE或第三方CODE），必须
+                             "apppwd": "F59FAE5A6C7F9473", //调用方（应用）密码，必须
+                             "appurl": "http://s4.fxtchina.com/SurveyService/sae", //app对应前段请求URl地址，例如手机端请求的URL，必须
+                             "appkey": ""
+                               }]
+                           
+                         },
+                         "uinfo": {
+                             "truename": "谭柳", //用户真实名，别名，必须
+                             "fxtcompanyid": "", //用户公司ID，必须
+                             "companyname": "南粤评估", //用户公司名，必须
+                             "subcompanyid": "",
+                             "subcompany": "南粤评估珠海分公司"
+                         }
+                     }, debug: null
+                     },
+                     demo: { "sinfo": {
+                         "time": "20140202121212", //时间戳，格式yyyyMMddHHmmss
+                         "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+                     },
+                         "info": {
+                             "uinfo": {
+                                 "username": "admin@gjb", //用户名
+                                 "password": "654321"//密码，统一MD5加密  加密：fxtproduct*&2014
+                             },
+                             "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+                                 "splatype": "ios", //平台类型，如ios、android、ie等
+                                 "platVer": "7.01", //平台类型版本
+                                 "stype": "yck", //产品类型，如云查勘、云风控
+                                 "version": "4.26", //产品类型版本名
+                                 "vcode": "16", //产品类型版本号
+                                 "systypecode": "", //产品类型编号
+                                 "channel": "360"//产品发布渠道
+                             }
+                         }
+                     }
+                 },
+        /************************************************分割线************************************************/
+
+{name: "获取清单", url: "http://192.168.0.212/uc/active （这个地址为测试地址，如果需要用户中心这边打断点调试，请使用 http://192.168.0.212：8000/uc/active）", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140202121212", desc: "时间戳，格式yyyyMMddHHmmss", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                         { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                         { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                         { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                         { name: "subcompanyid", value: "", desc: "分支机构ID", must: false }
+                    ]
+                    ,
+paramsOut: [
+                      { name: "funid", value: "2001", desc: "功能编号", must: true },
+                      { name: "istrue", value: "", desc: "功能是否可用", must: true },
+                      { name: "callbackurl", value: "", desc: "回调地址", must: false },
+                      { name: "callbackformat", value: "", desc: "回调数据格式", must: false },
+                      { name: "parame1", value: "", desc: "功能参数1", must: false },
+                      { name: "parame2", value: "", desc: "功能参数2", must: false },
+                      { name: "parame3", value: "", desc: "功能参数3", must: false },
+                      { name: "parame4", value: "", desc: "功能参数4", must: false }
+
+                    ],
+output: { "returntype": 1, "returntext": "", data: {
+    "funlist": [ //功能清单列表数组
+      {
+      "funid": "2001", //功能编号
+      "istrue": "", //功能是否可用
+      "callbackurl": "", //回调地址
+      "callbackformat": "", //回调数据格式
+      "parame1": "", //功能参数1
+      "parame2": "", //功能参数2
+      "parame3": "", //功能参数3
+      "parame4": ""//功能参数4
+  },
+      {
+          "funid": "2002", //功能编号
+          "istrue": "", //功能是否可用
+          "callbackurl": "", //回调地址
+          "callbackformat": "", //回调数据格式
+          "parame1": "", //功能参数1
+          "parame2": "", //功能参数2
+          "parame3": "", //功能参数3
+          "parame4": ""//功能参数4
+      }
+    ]
+}, debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+        "functionname": "flone"
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "token": "", //密码，统一MD5加密  加密：fxtmobile*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        }
+    }
+}
+},
+        /************************************************分割线************************************************/
+{name: "根据公司signname获取公司信息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: {
+        "companyid": "",
+        "companyname": "",
+        "companycode": "",
+        "createdate": "",
+        "valid": "",
+        "businessdb": "",
+        "smsloginname": "",
+        "smsloginpassword": "",
+        "wxid": "",
+        "wxname": "",
+        "signname": "",
+        "OverDate": "",
+        "recordcount": "",
+        "CustomPrimaryKeyIdentify": "",
+        "IsSetCustomerFields": ""
+
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"companyfive",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "根据公司CODE获取公司信息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                       { name: "companycode", value: "fxt", desc: "机构代码（用户名后缀）", must: true }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: {
+        "companyid": "",
+        "companyname": "",
+        "companycode": "",
+        "createdate": "",
+        "valid": "",
+        "businessdb": "",
+        "smsloginname": "",
+        "smsloginpassword": "",
+        "wxid": "",
+        "wxname": "",
+        "signname": "",
+        "OverDate": "",
+        "recordcount": "",
+        "CustomPrimaryKeyIdentify": "",
+        "IsSetCustomerFields": ""
+
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"companyone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "companycode": "fxt"
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "根据公司ID获取公司产品列表", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                       { name: "companyid", value: "365", desc: "获取该公司ID的产品列表", must: true }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [1003101,1003020],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"cptwo",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "companyid": "365"
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "根据公司ID获取公司信息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: {
+        "companyid": "",
+        "companyname": "",
+        "companycode": "",
+        "createdate": "",
+        "valid": "",
+        "businessdb": "",
+        "smsloginname": "",
+        "smsloginpassword": "",
+        "wxid": "",
+        "wxname": "",
+        "signname": "",
+        "OverDate": "",
+        "recordcount": "",
+        "CustomPrimaryKeyIdentify": "",
+        "IsSetCustomerFields": ""
+
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"companytwo",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "id": "25"
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "编辑公司信息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companycode", value: "fxt", desc: "机构代码（用户名后缀）", must: true },
+                      { name: "wxid", value: "gh_8e42e140224wx", desc: "", must: true },
+                      { name: "wxname", value: "", desc: "", must: true }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: {
+        "companyid": "",
+        "companyname": "",
+        "companycode": "",
+        "createdate": "",
+        "valid": "",
+        "businessdb": "",
+        "smsloginname": "",
+        "smsloginpassword": "",
+        "wxid": "",
+        "wxname": "",
+        "signname": "",
+        "OverDate": "",
+        "recordcount": "",
+        "CustomPrimaryKeyIdentify": "",
+        "IsSetCustomerFields": ""
+
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+         "functionname":"companythree",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "companycode": "fxt",
+            "wxid": "gh_8e42e140224wx",
+            "wxname": ""
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "查询公司列表", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "productTypeCode", value: "1003018", desc: "产品CODE", must: true },
+                      { name: "key", value: "FXT", desc: "机构名称", must: true },
+                      { name: "search", value: "", desc: "需要传参的search中写上属性，否，则不需要。例：我只想cityid赋值，其他不赋值,则，search：｛'cityid':'6'｝ 就行了", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [
+    {
+        "wxid": "",
+        "companyid": "",
+        "companycode": "",
+        "companyname": "",
+        "overdate": "",
+        "recordcount": ""
+    },
+        {
+            "wxid": "",
+            "companyid": "",
+            "companycode": "",
+            "companyname": "",
+            "overdate": "",
+            "recordcount": ""
+
+        }
+  ],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"companyfour",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "productTypeCode": "1003018",
+            "key": "FXT",
+            "search": {
+                "CityId": 6,
+                "AreaId": 0,
+                "CompanyId": 0,
+                "FxtCompanyId": 0,
+                "DateBegin": "",
+                "DateEnd": "",
+                "DepartmentId": "",
+                "UserId": "",
+                "UserName": "",
+                "isAdmin": "",
+                "Page": "",
+                "Sql": "",
+                "PageIndex": 1,
+                "Top": 1,
+                "PageRecords": 1,
+                "OrderBy": "",
+                "Where": "",
+                "Key": "",
+                "SysTypeCode": "",
+                "TrueName": "",
+                "MsgServer": "",
+                "StrCode": "",
+                "StrDate": "",
+                "SurveyTypeCode": "",
+                "SubCompanyId": ""
+            }
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "获取公司开通产品", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true },
+                      { name: "producttypecode", value: "1003018", desc: "功能名", must: true },
+                      { name: "signname", value: "", desc: "", must: true }
+
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data:
+    {
+        "companyid": "",
+        "producttypecode": "",
+        "currentversion": "",
+        "startdate": "",
+        "overdate": "",
+        "weburl": "",
+        "apiurl": "",
+        "outapiurl": "",
+        "msgserver": "",
+        "createdate": "",
+        "valid": "",
+        "applicationid": "",
+        "applicationpwd": "",
+        "encryptionkey": ""
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"cpone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "companyid": "25",
+            "producttypecode": "1003018",
+            "signname": ""
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "绑定手机推送号", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: true },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                         { name: "phshuserid", value: "", desc: "", must: true },
+                          { name: "channelid", value: "", desc: "", must: true },
+                           { name: "pushappid", value: "", desc: "百度返回pushappid", must: true }
+                    ]
+                    ,
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"mpone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "1003018", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "phshuserid": "",
+            "channelid": "",
+            "pushappi":""
+        }
+    }
+}
+},
+
+
+        /************************************************分割线************************************************/
+{name: "手机推送消息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: true },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "uinfo:登录用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                       { name: "tag", value: "", desc: "手机推送号参数", must: false },
+                        { name: "title", value: "", desc: " 推送的通知的标题", must: true },
+                         { name: "neirong", value: "", desc: "推送的通知的描述或透传消息的内容", must: true },
+                         { name: "username", value: "", desc: "funinfo：推送用户(手机推送号参数,消息不一定是推送给登录用户)", must: true },
+                           { name: "entrustid", value: "", desc: "自定义内容,为空或者json字符串", must: false }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+         "functionname":"mptwo",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "1003018", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "tag": "",
+            "title": "",
+            "neirong": "",
+            "entrustid": "",
+            "username": "admin@gjb" //推送用户ID 必须
+        }
+    }
+}
+},
+
+
+        /************************************************分割线************************************************/
+{name: "手机推送号修改", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: true },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "channelid", value: "", desc: "", must: true },
+                      { name: "phshuserid", value: "", desc: "", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"mpthree",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "1003018", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "channelid": "",
+            "phshuserid": ""
+        }
+    }
+}
+},
+
+
+        /************************************************分割线************************************************/
+{name: "产品反馈", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                       { name: "title", value: "", desc: "标题", must: true },
+                        { name: "content", value: "", desc: "内容", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"pfbone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "title": "",
+            "content": ""
+        }
+    }
+}
+},
+        /************************************************分割线************************************************/
+{name: "发送短信", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                         { name: "corpid", value: "", desc: "", must: true },
+                         { name: "mobile", value: "", desc: "手机号", must: true },
+                         { name: "content", value: "", desc: "内容", must: true },
+                         { name: "cell", value: "", desc: "", must: true },
+                         { name: "sendtime", value: "", desc: "发送时间", must: true },
+                         { name: "cityid", value: "6", desc: "城市ID", must: true },
+                         { name: "companyid", value: "25", desc: "机构ID", must: true },
+                         { name: "messcode", value: "", desc: "", must: true },
+                         { name: "objectid", value: "", desc: "", must: true },
+                         { name: "overdate", value: "", desc: "", must: true },
+                         { name: "sid", value: "", desc: "", must: true },
+                         { name: "typecode", value: "", desc: "", must: true }
+
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname":"ssone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "corpid": "",
+            "mobile": "",
+            "content": "",
+            "cell": "",
+            "sendtime": "",
+            "cityid": "6",
+            "companyid": "25",
+            "messcode": "",
+            "objectid": "",
+            "overdate": "",
+            "sid": "",
+            "typecode": ""
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "用户验证", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "",
+    data: {
+        "username": "",
+        "uservalid": "",
+        "companyvalid": "",
+        "productvalid": "",
+        "businessdb": "",
+        "currentversion": "",
+        "startdate": "",
+        "overdate": "",
+        "companyid": "",
+        "companycode": "",
+        "companyname": "",
+        "producttypecode": "",
+        "weburl": "",
+        "apiurl": "",
+        "outapiurl": "",
+        "msgserver": "",
+        "smssendname": "",
+        "wxname": "",
+        "emailstr": "",
+        "mobile": "",
+        "wxopenid": "",
+        "truename": "",
+        "signname": "",
+        "applicationid": "",
+        "applicationpwd": "",
+        "encryptionkey": ""
+    },
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+         "functionname":"userone",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        }
+    }
+}
+},
+
+
+       
+        /************************************************分割线************************************************/
+        {name: "添加用户", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，DES加密（C#端使用CAS.Common.EncryptHelper.TextToPassword方法） ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                        { name: "companyid", value: "25", desc: "机构ID", must: true },
+                        { name: "emailstr", value: "", desc: "Email", must: true },
+                         { name: "mobile", value: "", desc: "手机号", must: true },
+                          { name: "wxopenid", value: "", desc: "", must: true },
+                           { name: "truename", value: "", desc: "真实名称", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+        "functionname": "userfour"
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "username": "test",
+            "password": "123456",
+            "companyid": "",
+            "emailstr": "",
+            "mobile": "",
+            "wxopenid": "",
+            "truename": ""
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "编辑用户", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码（为空时不修改），DES加密（C#端使用CAS.Common.EncryptHelper.TextToPassword方法） ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true },
+                      { name: "emailstr", value: "", desc: "Email", must: true },
+                      { name: "mobile", value: "", desc: "手机号", must: true },
+                      { name: "wxopenid", value: "", desc: "", must: true },
+                      { name: "username", value: "", desc: "要修改用户的账号信息", must: true },
+                      { name: "truename", value: "", desc: "真实名称", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname": "userfive",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "username":"",
+            "companyid": "",
+            "emailstr": "",
+            "mobile": "",
+            "wxopenid": "",
+            "truename": "",
+            "password": "",
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+{name: "账号激活与注销", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true },
+                      { name: "valid", value: "25", desc: "valid=1激活账号，0注销账号", must: true },
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+         "functionname": "usersix",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "companyid": "25",
+            "username": "admin@gjb,admin1@gjb",
+            "valid":"0"
+        }
+    }
+}
+},
+
+        /************************************************分割线************************************************/
+        {name: "查询单个用户", url: "http://192.168.0.212/uc/active", params: [
+                              { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                              { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                              { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                              { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                              { name: "time", value: "20140313", desc: "时间戳", must: true },
+                              { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                              { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                              { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                              { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                              { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                              { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                              { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                              { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                              { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                              { name: "subcompanyid", value: "", desc: "分支机构ID", must: false }
+                            ],
+
+        output: {
+            "returntype": 1,
+            "returntext": "成功",
+            data: {
+                "username": "",
+                "uservalid": "",
+                "companyvalid": "",
+                "productvalid": "",
+                "businessdb": "",
+                "currentversion": "",
+                "startdate": "",
+                "overdate": "",
+                "companyid": "",
+                "companycode": "",
+                "companyname": "",
+                "producttypecode": "",
+                "weburl": "",
+                "apiurl": "",
+                "outapiurl": "",
+                "msgserver": "",
+                "smssendname": "",
+                "wxname": "",
+                "emailstr": "",
+                "mobile": "",
+                "wxopenid": "",
+                "truename": "",
+                "signname": "",
+                "applicationid": "",
+                "applicationpwd": "",
+                "encryptionkey": ""
+            },
+            debug: null
+        },
+        demo: {
+            "sinfo": {
+                "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+                "apppwd": 321321, //调用方（应用）密码，必须
+                "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+                "time": "20140313", //时间戳
+                "functionname": "userthree",
+                "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+            },
+            "info": {
+                "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+                    "splatype": "ios", //平台类型，如ios、android、ie等
+                    "platVer": "7.01", //平台类型版本
+                    "stype": "yck", //产品类型，如云查勘、云风控
+                    "version": "4.26", //产品类型版本名
+                    "vcode": "16", //产品类型版本号
+                    "systypecode": "", //产品类型编号
+                    "channel": "360"//产品发布渠道
+                },
+                "uinfo": {
+                    "username": "admin@gjb", //用户名 必须
+                    "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+                    "fxtcompanyid": "", //公司ID
+                    "subcompanyid": ""//分支机构ID
+                }
+
+            }
+        }
+        },
+
+        /************************************************分割线************************************************/
+{name: "获取用户列表", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "password", value: "", desc: "密码，统一MD5加密  加密：fxtproduct*&2014 ", must: false },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "username", value: "test1,test2,test3", desc: "用户名，多个用逗号分开", must: true },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true },
+                      { name: "companycode", value: "fxt", desc: "机构代码", must: true },
+                      { name: "search", value: "", desc: "需要传参的search中写上属性，否，则不需要。例：我只想cityid赋值，其他不赋值,则，search：｛'cityid':'6'｝ 就行了", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [{
+        "username": "",
+        "uservalid": "",
+        "companyvalid": "",
+        "productvalid": "",
+        "businessdb": "",
+        "currentversion": "",
+        "startdate": "",
+        "overdate": "",
+        "companyid": "",
+        "companycode": "",
+        "companyname": "",
+        "producttypecode": "",
+        "weburl": "",
+        "apiurl": "",
+        "outapiurl": "",
+        "msgserver": "",
+        "smssendname": "",
+        "wxname": "",
+        "emailstr": "",
+        "mobile": "",
+        "wxopenid": "",
+        "truename": "",
+        "signname": "",
+        "applicationid": "",
+        "applicationpwd": "",
+        "encryptionkey": ""
+    },
+    {
+        "username": "",
+        "uservalid": "",
+        "companyvalid": "",
+        "productvalid": "",
+        "businessdb": "",
+        "currentversion": "",
+        "startdate": "",
+        "overdate": "",
+        "companyid": "",
+        "companycode": "",
+        "companyname": "",
+        "producttypecode": "",
+        "weburl": "",
+        "apiurl": "",
+        "outapiurl": "",
+        "msgserver": "",
+        "smssendname": "",
+        "wxname": "",
+        "emailstr": "",
+        "mobile": "",
+        "wxopenid": "",
+        "truename": "",
+        "signname": "",
+        "applicationid": "",
+        "applicationpwd": "",
+        "encryptionkey": ""
+    }],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "functionname": "userseven",
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf"//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "password": "", //密码，统一MD5加密  加密：fxtproduct*&2014 
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "username":"test1,test2,test3",
+            "companyid": "",
+            "companycode": "",
+            "search": {
+                "CityId": 0,
+                "AreaId": 0,
+                "CompanyId": 0,
+                "FxtCompanyId": 0,
+                "DateBegin": "",
+                "DateEnd": "",
+                "DepartmentId": "",
+                "UserId": "",
+                "UserName": "",
+                "isAdmin": "",
+                "Page": "",
+                "Sql": "",
+                "PageIndex": 1,
+                "Top": 1,
+                "PageRecords": 1,
+                "OrderBy": "",
+                "Where": "",
+                "Key": "",
+                "SysTypeCode": "",
+                "TrueName": "",
+                "MsgServer": "",
+                "StrCode": "",
+                "StrDate": "",
+                "SurveyTypeCode": "",
+                "SubCompanyId": ""
+            }
+        }
+    }
+}
+},
+
+  /************************************************分割线************************************************/
+{name: "修改密码", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "oldpassword", value: "", desc: "// 密码，统一MD5加密 加密：fxtproduct*&2014 ", must: true },
+                      { name: "password", value: "", desc: "明文", must: true },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "companyid", value: "25", desc: "机构ID", must: true }
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+        "functionname":"usereight"
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "username": "admin@gjb",
+            "oldpassword":"",
+            "password":"123456"
+        }
+    }
+}
+},
+ /************************************************分割线************************************************/
+{name: "获取产品使用的Api信息", url: "http://192.168.0.212/uc/active", params: [
+                      { name: "appid", value: "20140202121212", desc: "调用方ID（产品CODE或第三方CODE）", must: true },
+                      { name: "apppwd", value: "321321", desc: "调用方（应用）密码，必须", must: true },
+                      { name: "code", value: "asdfqawerasdfasdfasdfasdfasdfasdfasdf", desc: "统一MD5加密(appid,apppwd,signname,functionname,time 放入数组降序排列，整体串起来，然后串上appkey,再进行MD5加密)", must: true },
+                      { name: "signname", value: "admin@gjb", desc: "公司标识，来自用户中心的公司表，", must: true },
+                      { name: "time", value: "20140313", desc: "时间戳", must: true },
+                      { name: "platVer", value: "7.01", desc: "平台类型版本", must: true },
+                      { name: "stype", value: "yck", desc: "产品类型，如云查勘、云风控", must: true },
+                      { name: "version", value: "4.26", desc: "产品类型版本名", must: true },
+                      { name: "vcode", value: "16", desc: "产品类型版本号", must: true },
+                      { name: "systypecode", value: "", desc: "产品类型编号", must: false },
+                      { name: "channel", value: "360", desc: "产品发布渠道", must: false },
+                      { name: "username", value: "admin@gjb", desc: "用户名", must: true },
+                      { name: "oldpassword", value: "", desc: "// 密码，统一MD5加密 加密：fxtproduct*&2014 ", must: true },
+                      { name: "password", value: "", desc: "明文", must: true },
+                      { name: "fxtcompanyid", value: "", desc: "公司ID", must: false },
+                      { name: "subcompanyid", value: "", desc: "分支机构ID", must: false },
+                      { name: "othersignname", value: "string", desc: "被查询公司的signname", must: true },
+                      { name: "appid", value: "int", desc: "API的code", must: false },
+                    ],
+
+output: {
+    "returntype": 1,
+    "returntext": "成功",
+    data: [],
+    debug: null
+},
+demo: {
+    "sinfo": {
+        "appid": "1003021", //调用方ID（产品CODE或第三方CODE），必须
+        "apppwd": 321321, //调用方（应用）密码，必须
+        "signname": "xdfIUw", //公司标识，来自用户中心的公司表，必须
+        "time": "20140313", //时间戳
+        "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf",//加密时间戳  统一MD5加密  加密：fxtproduct*&2014
+        "functionname":"productapiinfo"
+    },
+    "info": {
+        "appinfo": {//前段应用信息 用作日志记录，不同前段业务判断等
+            "splatype": "ios", //平台类型，如ios、android、ie等
+            "platVer": "7.01", //平台类型版本
+            "stype": "yck", //产品类型，如云查勘、云风控
+            "version": "4.26", //产品类型版本名
+            "vcode": "16", //产品类型版本号
+            "systypecode": "", //产品类型编号
+            "channel": "360"//产品发布渠道
+        },
+        "uinfo": {
+            "username": "admin@gjb", //用户名 必须
+            "fxtcompanyid": "", //公司ID
+            "subcompanyid": ""//分支机构ID
+        },
+        "funinfo": {
+            "othersignname": "admin@gjb",
+            "appid":""
+        }
+    }
+}
+},
+
+        ];
+
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+            });
+            $("#apilist li").click(function () {
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                var html = [];
+                var item = $(this).data("data");
+                html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+                html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+                var params = [];
+                function addparam(p) {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[ = "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+                //if (item.name.indexOf("登录") < 0) {
+                $.each(mustparams, function (i, p) {
+                    addparam(p);
+                });
+                //}
+                $.each(item.params, function (i, p) {
+                    addparam(p);
+                });
+                html.push('<li><strong>参数</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+
+
+
+                //                var paramsOut = [];
+                //                function addparamOut(p) {
+                //                    paramsOut.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[ = "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                //                }
+                //                $.each(item.paramsOut, function (i, p) {
+                //                    addparamOut(p);
+                //                });
+                //html.push('<li><strong>参数</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+                //html.push('<li><strong>输出参数</strong></li><li class="desc"><ul class="params">' + paramsOut.join("") + '</ul></li>');
+                html.push('<li><strong>输出格式</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+                html.push('<li><strong>功能参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+                // html.push('<li><strong>示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+                //            if (typeof (item.demo) != "undefined") {
+                //                var strtmp = '<p>返回示例：' + FormatJSON(item.demo.Url, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</p>';
+                //                html.push('<li><strong>示例</strong></li><li class="desc"><div class="content">' + strtmp + '</div></li>');
+                //                var descstr = (typeof (item.demo.Desc) != "undefined") ? item.demo.Desc:"";
+                ////                html.push('<li><strong>详细说明</strong></li><li class="desc"><div class="content">' + descstr + '</div></li>');
+                //            }
+                $("#apicontent").html(html.join(""));
+
+            }).mouseenter(function () { $(this).addClass("over"); })
+                .mouseout(function () { $(this).removeClass("over"); });
+        });
+    </script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <th colspan="2">
+                用户中心API文档说明 V1.0
+            </th>
+        </tr>
+        <tr>
+            <td valign="top" class="left">
+                <ul id="apilist">
+                </ul>
+            </td>
+            <td valign="top">
+                <ul class="index">
+                    <li>本说明用于协助和指导相关开发人员熟悉和使用用户中心功能接口。点击左侧功能名称查看具体说明。<br />
+                        访问地址:192.168.0.212 （战略资源部 伍秋言 电脑）
+                        <br />
+                        <span style="color: red;">本API文档兼容浏览器：IE9、火狐</span> </li>
+                    <li>
+                        <!-- <p>
+                            接口必须带的参数json<br />
+                            安全验证信息:<br />
+                            "sinfo": { "appid": "1003021", "apppwd": 321321, "signname": "xdfIUw", "time": 20140313,
+                            "code": "asdfqawerasdfasdfasdfasdfasdfasdfasdf" }
+                        </p>
+                        <p>
+                            功能参数:<br />
+                            用户信息: "uinfo": { "username": "admin@gjb", "password": "", "fxtcompanyid": "", "subcompanyid":
+                            "" }
+                        </p>
+                        <p>
+                            前段应用信息: "appinfo": { "splatype": "ios", "platVer": "7.01", "stype": "yck", "version":
+                            "4.26", "vcode": "16", "systypecode": "", "channel": "360" }
+                        </p>-->
+                    </li>
+                </ul>
+                <ul id="apicontent">
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

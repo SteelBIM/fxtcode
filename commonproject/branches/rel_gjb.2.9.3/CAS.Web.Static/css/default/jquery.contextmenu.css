@@ -1,0 +1,29 @@
+﻿/* Windows XP Theme */
+/* ================ */
+.context-menu-theme-xp {
+	border:1px solid #666;
+	padding:1px;
+	background-color:#eee;
+}
+.context-menu-theme-xp .context-menu-separator {
+	margin:4px 2px;
+	font-size:0px;
+	border-top:1px solid #808080;
+	border-bottom:1px solid white;
+}
+.context-menu-theme-xp .context-menu-item {
+	text-align:left;
+	color:black;
+	font-family:arial;
+	font-size:11px;
+	cursor:default;
+}
+.context-menu-theme-xp .context-menu-item .context-menu-item-inner {
+	background-color:#eee;
+	padding:4px 10px 4px 30px;
+}
+.context-menu-theme-xp .context-menu-item-hover .context-menu-item-inner {
+	background-color:#B6BDD2;
+	padding:3px 9px 3px 29px;
+	border:1px solid #0A246A;
+}

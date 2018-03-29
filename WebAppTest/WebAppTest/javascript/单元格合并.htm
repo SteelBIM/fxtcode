@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        ///////////////////////////////////////////////     
+        //   功能：合并表格     
+        //   参数：tb－－需要合并的表格ID     
+        //   参数：colLength－－需要对前几列进行合并，比如，     
+        //   想合并前两列，后面的数据列忽略合并，colLength应为2        
+        ///////////////////////////////////////////////     
+        function unionTab(tb, colLength) {
+            //   检查表格是否规整     
+            if (!checkTab(tb))
+                return;
+            var i = 0;
+            var j = 0;
+            var rowCount = tb.rows.length; // 行数  
+            var colCount = tb.rows[0].cells.length; // 列数  
+            var obj1 = null;
+            var obj2 = null;
+            var objtemp1 = new Array();
+            var objtemp2 = new Array();
+
+            //为每个单元格命名,表头不命名  
+            for (i = 1; i < rowCount; i++) {
+                for (j = 0; j < colCount; j++) {
+                    tb.rows[i].cells[j].id = "tb_" + i.toString() + "_" + j.toString();
+                }
+            }
+            var k = colLength - 1;
+            //从后往前检查，进行逐列检查合并,开始列为colLength-1  
+            for (i = k; i >= 0; i--) {
+                //当i>0时有前方的单元格  
+                if (i > 0) {
+                    //查找当前单元格前几单元格,l为列值  
+                    for (l = 0; l < i; l++) {
+                        objtemp1[l] = document.getElementById("tb_1_" + l.toString());
+                    }
+                }
+                obj1 = document.getElementById("tb_1_" + i.toString());
+                for (j = 2; j < rowCount; j++) {
+                    if (i > 0) {
+                        //查找当前单元格前几单元格,l为列值  
+                        for (l = 0; l < i; l++) {
+                            objtemp2[l] = document.getElementById("tb_" + j.toString() + "_"
+                            + l.toString());
+                        }
+                    }
+                    obj2 = document.getElementById("tb_" + j.toString() + "_" + i.toString());
+                    if (obj1.innerText == obj2.innerText) {
+                        if (i > 0) {
+                            if (checkArray(objtemp1, objtemp2)) {
+                                obj1.rowSpan++;
+                                obj2.parentNode.removeChild(obj2);
+                            } else {
+                                obj1 = document.getElementById("tb_" + j.toString()
+                                + "_" + i.toString());
+                                for (l = 0; l < i; l++) {
+                                    objtemp1[l] = document.getElementById("tb_" + j.toString() + "_"
+                                    + l.toString());
+                                }
+                            }
+                        } else {
+                            obj1.rowSpan++;
+                            obj2.parentNode.removeChild(obj2);
+                        }
+
+                    } else {
+                        obj1 = document.getElementById("tb_" + j.toString() + "_"
+                        + i.toString());
+                    }
+                }
+            }
+        }
+
+        /////////////////////////////////////////     
+        // 功能：检查表格是否规整  
+        // 参数：tb－－需要检查的表格ID  
+        // ///////////////////////////////////////  
+        function checkTab(tb) {
+            if (tb.rows.length == 0)
+                return false;
+            //如果只有一行表头也返回false  
+            if (tb.rows.length == 1)
+                return false;
+            if (tb.rows[0].cells.length == 0)
+                return false;
+            for (var i = 0; i < tb.rows.length; i++) {
+                if (tb.rows[0].cells.length != tb.rows[i].cells.length)
+                    return false;
+            }
+            return true;
+        }
+
+        //检查取出的值是否相等  
+        function checkArray(arr1, arr2) {
+            for (i = 0; i < arr1.length; i++) {
+                if (arr1[i].innerText == arr2[i].innerText) {
+
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }  
+    </script>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //函数说明：合并指定表格（表格id为_w_table_id）指定列（列数为_w_table_colnum）的相同文本的相邻单元格
+        //参数说明：_w_table_id 为需要进行合并单元格的表格的id。如在HTMl中指定表格 id="data" ，此参数应为 #data 
+        //参数说明：_w_table_colnum 为需要合并单元格的所在列。为数字，从最左边第一列为1开始算起。
+        function _w_table_rowspan(_w_table_id, _w_table_colnum) {
+            _w_table_firsttd = "";
+            _w_table_currenttd = "";
+            _w_table_SpanNum = 0;
+            _w_table_Obj = $(_w_table_id + " tr td:nth-child(" + _w_table_colnum + ")");
+            _w_table_Obj.each(function (i) {
+                if (i == 0) {
+                    _w_table_firsttd = $(this);
+                    _w_table_SpanNum = 1;
+                } else {
+                    _w_table_currenttd = $(this);
+                    if (_w_table_firsttd.text() == _w_table_currenttd.text()) {
+                        _w_table_SpanNum++;
+                        _w_table_currenttd.hide(); //remove();
+                        _w_table_firsttd.attr("rowSpan", _w_table_SpanNum);
+                    } else {
+                        _w_table_firsttd = $(this);
+                        _w_table_SpanNum = 1;
+                    }
+                }
+            });
+        }
+
+        //函数说明：合并指定表格（表格id为_w_table_id）指定行（行数为_w_table_rownum）的相同文本的相邻单元格
+        //参数说明：_w_table_id 为需要进行合并单元格的表格id。如在HTMl中指定表格 id="data" ，此参数应为 #data 
+        //参数说明：_w_table_rownum 为需要合并单元格的所在行。其参数形式请参考jQuery中nth-child的参数。
+        //          如果为数字，则从最左边第一行为1开始算起。
+        //          "even" 表示偶数行
+        //          "odd" 表示奇数行
+        //          "3n+1" 表示的行数为1、4、7、10.......
+        //参数说明：_w_table_maxcolnum 为指定行中单元格对应的最大列数，列数大于这个数值的单元格将不进行比较合并。
+        //          此参数可以为空，为空则指定行的所有单元格要进行比较合并。
+        function _w_table_colspan(_w_table_id, _w_table_rownum, _w_table_maxcolnum) {
+            if (_w_table_maxcolnum == void 0) { _w_table_maxcolnum = 0; }
+            _w_table_firsttd = "";
+            _w_table_currenttd = "";
+            _w_table_SpanNum = 0;
+            $(_w_table_id + " tr:nth-child(" + _w_table_rownum + ")").each(function (i) {
+                _w_table_Obj = $(this).children();
+                _w_table_Obj.each(function (i) {
+                    if (i == 0) {
+                        _w_table_firsttd = $(this);
+                        _w_table_SpanNum = 1;
+                    } else if ((_w_table_maxcolnum > 0) && (i > _w_table_maxcolnum)) {
+                        return "";
+                    } else {
+                        _w_table_currenttd = $(this);
+                        if (_w_table_firsttd.text() == _w_table_currenttd.text()) {
+                            _w_table_SpanNum++;
+                            _w_table_currenttd.hide(); //remove();
+                            _w_table_firsttd.attr("colSpan", _w_table_SpanNum);
+                        } else {
+                            _w_table_firsttd = $(this);
+                            _w_table_SpanNum = 1;
+                        }
+                    }
+                });
+            });
+        }
+        $(document).ready(function () {
+            var tdlen = $("#table1 tr").eq(0).find("td").length;
+            for (var i = 2; i >= 0; i--) {
+                _w_table_rowspan("#table1", i);
+            }
+        });
+    </script>
+</head>
+<body>     
+  <table   width="400"   border="1"   id="table1">     
+       <tr>     
+          <td>总公司</td>     
+          <td>分公司</td>     
+          <td>部门</td>     
+          <td>科室</td>   
+          <td>人员</td>     
+      </tr>     
+      <tr>     
+          <td>20010401</td>     
+          <td>10010003</td>     
+          <td>12</td>     
+          <td>0</td>  
+          <td>1</td>  
+      </tr>     
+      <tr>     
+          <td>20010401</td>     
+          <td>10010001</td>     
+          <td>12</td>  
+          <td>0</td>  
+          <td>1</td>  
+      </tr>     
+      <tr>     
+         <td>20010401</td>     
+          <td>10010002</td>     
+          <td>49</td>  
+          <td>1</td>  
+          <td>3</td>   
+      </tr>  
+       <tr>     
+         <td>20010401</td>     
+          <td>10010002</td>     
+          <td>12</td>  
+          <td>1</td>  
+          <td>4</td>   
+      </tr>  
+      <tr>     
+         <td>20010402</td>     
+          <td>10010003</td>     
+          <td>49</td>  
+          <td>0</td>  
+          <td>5</td>   
+      </tr>  
+      <tr>     
+         <td>20010402</td>     
+          <td>10010003</td>     
+          <td>12</td>  
+          <td>1</td>  
+          <td>6</td>   
+      </tr>  
+      <tr>     
+         <td>20010402</td>     
+          <td>10010001</td>     
+          <td>49</td>  
+          <td>1</td>  
+          <td>7</td>   
+      </tr>  
+       <tr>     
+         <td>20010402</td>     
+          <td>10010001</td>     
+          <td>12</td>  
+          <td>1</td>  
+          <td>8</td>   
+      </tr>  
+  </table>     
+  <br>     
+  <input   type="button"   value="合并表格"   onClick="unionTab(table1,4)">     
+  </body>    
+</html>
