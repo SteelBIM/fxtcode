@@ -1,0 +1,1 @@
+﻿select CompanyId,ChineseName,EnglishName,CityId from FxtDataCenter.dbo.DAT_Company where ChineseName=@name or EnglishName=@name
