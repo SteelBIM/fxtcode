@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+} 
+@using CBSS.Tbx.Contract.DataModel
+@model  Good
+
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>商品名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m =>m.GoodName, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.GoodName)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">商品出售方式：</label>
+                <div class="controls">
+                    @Html.DropDownList("GoodWay")
+                </div>
+            </div>  
+
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">描述：</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.Describe, new { @class = "m-wrap small", @style = "min-width:300px;min-height:80px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Describe)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}

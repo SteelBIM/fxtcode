@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑"; border:0;}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+.main{height:100%;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute; background-color:#EBF2F5;}
+
+/*班级列表*/
+.classlist{ margin:20px 5%;}
+.classlist h2{ font-size:18px; color:#AAABAC; font-weight:400; margin:0 0 10px 5px;}
+.classlist ul li{ background-color:#fff;  margin:0 0 10px; border-radius:5px; position:relative;}
+.classlist ul li:hover{ background-color:#E6ECF0;}
+.classlist ul li.noclick{background-color:#F5F5F5;}
+.classlist ul li.noclick a{color:#CECECE;}
+.classlist ul li a{ display:block;padding:20px 15px; font-size:20px; color:#64727A; text-decoration:none;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.classlist ul li em{ background:url(../images/newly.png) no-repeat; position:absolute; top:5px; right:5px; width:15px; height:15px; background-size:100%;}
+/*没有班级界面*/
+.noclass{height:100%;width:100%; position:relative;}
+.noclass p{ position:absolute; top:40%; left:5%; width:90%; text-align:center; color:#617078; font-size:18px;}
+.noclass a{ font-size:20px; color:#fff; border-radius:5px; position:absolute; bottom:5%; left:5%; width:90%; text-align:center; box-shadow: 0 5px 5px #B3D3F0;
+    height:50px; line-height:50px;
+    filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7ED8ED,endcolorstr=#61A0E9,gradientType=0);
+    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7ED8ED,endcolorstr=#61A0E9,gradientType=0);/*IE8*/	
+    background:#7ED8ED; /* 一些不支持背景渐变的浏览器 */  
+    background:-moz-linear-gradient(top, #7ED8ED, #61A0E9);  
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#7ED8ED), to(#61A0E9));  
+    background:-o-linear-gradient(top, #7ED8ED, #61A0E9); }
+
+/*册别单元情况*/
+.rule-single-select { position:relative;cursor: pointer; margin:0 0 10px 10%;}
+.single-select1{z-index: 998;width:80%;}
+.selectt{z-index: 999; width:79%;}
+.rule-single-select .select-tit {position: relative;display: block;padding: 0px 28px 0px 0px;text-decoration: none;background: #fff;white-space: nowrap;word-break: break-all; height:35px; line-height:35px; margin-top:12px;}
+.rule-single-select .select-tit span {display: inline-block;color: #c3c3c3;font-size: 16px;vertical-align: middle; padding:0; margin-left:10px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; width:85%;}
+.rule-single-select .select-tit .on{color: #333;}
+.rule-single-select .select-tit i {position: absolute;right: 0;top: 0;display: block;width: 40px;
+ height: 100%;background:url(../images/xiala.png) center  no-repeat; background-size:30%; background-color:#4D5D66;}
+.rule-single-select .select-items {display: none;position: absolute;left: 0;top: 30px; width:100%;}
+.rule-single-select .select-items ul {position: relative;background: #fff;overflow-y: auto;overflow-x: hidden; }
+.rule-single-select .select-items ul li.selected {color: #333;background: #1abf86;}
+.rule-single-select .select-items ul li {display: block;padding: 4px 10px; height:25px;line-height: 25px;font-size: 14px;color: #666;white-space: nowrap;cursor: pointer; border-bottom:1px solid #ddd;}
+.volume{ margin:10px 5%;}
+.volume select{ width:80%; margin:0 0 20px 10%; height:35px;}
+.volume ul li{ background-color:#fff;  margin:0 0 10px; border-radius:5px; position:relative;}
+.volume ul li:hover{ background-color:#E6ECF0;}
+.volume ul li.noclick{background-color:#F5F5F5;}
+.volume ul li.noclick a{color:#CECECE;}
+.volume ul li a{ display:block;padding:20px 15px; font-size:20px; color:#64727A; text-decoration:none;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.volume ul li em{ background:url(../images/newly.png) no-repeat; position:absolute; top:5px; right:5px; width:15px; height:15px; background-size:100%;}
+
+/*口语评测*/
+.speecheval h2{ height:40px; line-height:40px; color:#616F77; text-align:center; font-size:16px; background-color:#fff; font-weight:400;}
+.speecheval ul{margin:20px 5%;}
+.speecheval ul li{ background-color:#fff;  margin:0 0 10px; border-radius:5px; position:relative;}
+.speecheval ul li:hover{ background-color:#E6ECF0;}
+.speecheval ul li.noclick{background-color:#F5F5F5;}
+.speecheval ul li.noclick a{color:#CECECE;}
+.speecheval ul li a{ display:block;padding:20px 15px; font-size:20px; color:#64727A; text-decoration:none;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.speecheval ul li em{ background:url(../images/newly.png) no-repeat; position:absolute; top:5px; right:5px; width:15px; height:15px; background-size:100%;}
+
+/*最佳排行、记录*/
+.record .ul1{ overflow:hidden; border-bottom:1px solid #1A9EE8;}
+.record .ul1 li{ float:left; width:50%; color:#1A9EE8; text-align:center; height:40px; line-height:40px; font-size:16px;}
+.record .ul1 li.on{ background-color:#1A9EE8; color:#fff;}
+.record .content{ margin:10px 5%; color:#939DA2;}
+.record .content .p1{ color:#000; font-size:18px; margin:5px 0 10px 10px;}
+.record .content .p1 span{ margin-left:20px;}
+.record .content ul li{ background-color:#fff; border-radius:5px; margin-bottom:15px; padding:5px 15px 10px;}
+.record .content .p2{ overflow:hidden;}
+.record .content .p2 span{ float:left;}
+.record .content .p2 span em{ font-style:normal; margin-left:5px; font-size:18px;}
+.record .content .p2 span img{ width:40px; height:40px; border-radius:20px; vertical-align:middle;}
+.record .content .p2 b{ float:right; color:#FF7387; margin-top:5px; font-size:18px;}
+.record .content .p2 b em{ font-style:normal;}
+.record .content .content_nr{ overflow:hidden; margin-top:20px;}
+.record .content .p3{ float:left;}
+.record .content .p3 h2{ font-weight:500; margin-bottom:10px;}
+.record .content a{ float:right; background:url(../images/play.png) no-repeat;  width:45px; height:45px; background-size:100%; margin-top:10px;}
+.record .content2{ display:none;}
+
+
+
+
+

@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+    <link href="~/Scripts/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-treeview.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div style="margin:15px 0;">
+       
+        <input type="hidden" id="hidcid" value="@ViewBag.ClassID" />
+    </div>
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <span style="float:left;">班级统计</span>
+            <span class="glyphicon glyphicon-menu-left span2" id="aback" style="border:1px solid #ddd; padding:7px; border-radius:3px; margin-left:10px; cursor:pointer;">
+
+            </span>
+
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div class="col-sm-8" style="margin-top:10px;  margin-top:20px;">
+                <div class="input-group col-lg-12">
+                    <input placeholder="学生姓名、学生手机号" type="text" value="" class="form-control" id="searchkey" style="" />
+                    <span class="input-group-btn">
+                        <button id="searchbtn" type="button" class="btn btn-default" style="float:left;">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+                        </button>
+                    </span>
+                </div>
+                </div>
+                <div style="margin-top:10px; float:right; margin-right:15px; clear:both;">
+
+                    <button id="exportbtn" type="button" class="btn btn-default" style=" background-color:#F6C728; color:#fff; border:1px solid #F6C728;">
+                        <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+                    </button>
+
+                </div>
+               
+                <div style="clear:both;"></div>
+                <div class="panel-body" style="padding-bottom:0px; display:block; position:relative;">
+                    <div id="toolbar" class="input-group">
+                        <div>学生数量：<span id="stucount"></span></div>
+                    </div>
+                    <table id="tb_student"></table>
+                </div>
+                <div style="clear:both; height:30px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+}
+@section jsSrc{
+    <!-- Morris Charts JavaScript -->
+    <script src="../Template/vendor/raphael/raphael.js"></script>
+    <script src="../Template/vendor/morrisjs/morris.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+
+    <script src="~/Scripts/pages/StudentList.js"></script>
+    <script src="~/Scripts/CommonMetaData.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/bootstrap-dropdowntree.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var pageinit;
+        $(function () {
+            pageinit = new StudentListPage();
+            pageinit.Init();
+        })
+
+    </script>
+
+
+}

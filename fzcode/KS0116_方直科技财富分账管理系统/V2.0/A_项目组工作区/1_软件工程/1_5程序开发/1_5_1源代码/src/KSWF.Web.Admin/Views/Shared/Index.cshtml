@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    <script type="text/javascript">
+        document.onreadystatechange = onlad;
+        function onlad() {
+            var bodyWidth = document.documentElement.clientWidth;
+            var bodyHeight = document.documentElement.clientHeight;
+            document.getElementById("404img").style.left = (bodyWidth - 950) / 2 + "px";
+            document.getElementById("404img").style.top = (bodyHeight - 450) / 2 + "px";
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img id="404img" style="position:fixed;" src="~/Images/with/404.jpg" />
+    </div>
+</body>
+</html>

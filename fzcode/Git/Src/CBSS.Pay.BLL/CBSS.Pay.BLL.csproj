@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E418B61E-B5F8-48B8-ADD4-309FEF7A4AA9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.Pay.BLL</RootNamespace>
+    <AssemblyName>CBSS.Pay.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SqlSugar">
+      <HintPath>..\..\Lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PayOrderBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Core.Log\CBSS.Core.Log.csproj">
+      <Project>{8AE51EE2-67DB-4F57-98FE-CBB890C9A5A2}</Project>
+      <Name>CBSS.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Pay\CBSS.Core.Pay.csproj">
+      <Project>{47FF994B-7C36-49DC-937E-535A950F1966}</Project>
+      <Name>CBSS.Core.Pay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9F519EF8-800F-40CB-9545-9AEADF0F387D}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214D97-F23C-4E16-AA12-ECD824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Redis\CBSS.Framework.Redis.csproj">
+      <Project>{5eab063d-e939-4a48-a836-ea2cf771e4a8}</Project>
+      <Name>CBSS.Framework.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.SqlSuger\CBSS.Framework.SqlSuger.csproj">
+      <Project>{d988d0da-99c9-4bb6-98bb-4c0526f6f524}</Project>
+      <Name>CBSS.Framework.SqlSuger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Pay.Contract\CBSS.Pay.Contract.csproj">
+      <Project>{15147f27-6f62-4aae-b40c-888eebcb56b6}</Project>
+      <Name>CBSS.Pay.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Pay.IBLL\CBSS.Pay.IBLL.csproj">
+      <Project>{946f8a47-4642-40da-9a42-b6bf75b70c49}</Project>
+      <Name>CBSS.Pay.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Tbx.Contract\CBSS.Tbx.Contract.csproj">
+      <Project>{b5c93a51-4cbf-419c-a8b1-290b3f163b5e}</Project>
+      <Name>CBSS.Tbx.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.UserOrder.Contract\CBSS.UserOrder.Contract.csproj">
+      <Project>{e7d92797-7b72-4aed-bbc6-745106773a2b}</Project>
+      <Name>CBSS.UserOrder.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

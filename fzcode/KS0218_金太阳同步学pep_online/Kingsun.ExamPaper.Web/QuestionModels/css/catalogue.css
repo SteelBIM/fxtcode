@@ -1,0 +1,24 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;min-width:1200px;min-height:800px}
+ul,li,dd,tr,td{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+
+.content{background:url(../images/bag1.png) no-repeat; background-color:#C0E5FF;}
+.header{ background:url(../images/head.png) no-repeat; height:125px; line-height:125px;}
+.footer{background:url(../images/bag2.png) no-repeat; height:1080px; margin-top:-800px;}
+.header .header_nr{ width:1100px; margin:0 auto; text-align:center; color:#fff;}
+.choose .main{ width:1100px; margin:36px auto 0; background-color:#fff; border-radius:30px; opacity:0.8; text-align:center; padding:80px 0 150px;}
+.choose .ul1{  width:1050px; margin:0 auto;}
+.choose .ul1 li a{ background:url(../images/modu.png) 0 20px  no-repeat; height:121px; line-height:105px; color:#fff; text-align:center; display:block; width:565px; font-size:36px; margin:0 auto;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; padding:20px 20px;}
+.choose .ul1 li ul li{ height:73px; width:369px; line-height:73px; color:#fff; font-size:30px; text-align:center; background:url(../images/noselect.png) 0 20px no-repeat; background-size:100%; margin:14px auto;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; padding:20px 20px;}
+.choose .ul1 li ul li:hover{ background:url(../images/yesselect.png) 0 20px no-repeat; cursor:pointer;}
+
+.content1{  background:url(../images/bag2.png) no-repeat; background-size:cover; height:100%; width:100%;}
+.content1 .main{ width:1100px; background-color:#fff;  border-radius:30px;text-align:center; margin:0 auto; padding:40px 0 20px;background-color:rgba(255,255,255,0.8); /* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 */}
+.content1 .main h3{ margin:20px 0;}
+.content1 .main p{ color:#68A4FC; text-align:left; margin:10px 0 10px 230px;}
+.content1 .main a{ width:200px; height:60px; line-height:60px; color:#fff; background-color:#4EB9FD; margin:20px auto 40px; display:block; border-radius:5px; cursor:pointer;}
+

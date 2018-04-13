@@ -1,0 +1,29 @@
+﻿2017-11-30 13:50:02
+错误编号:2017113013500237X6489e74348
+Message:无法从传输连接中读取数据: 您的主机中的软件中止了一个已建立的连接。。
+Message2:错误：HashID为：IBS_ClassOtherID|Key为：'28930429'_1
+Type:System.IO.IOException
+Source:System
+StackTrace:   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 System.IO.BufferedStream.ReadByte()
+   在 ServiceStack.Redis.RedisNativeClient.ReadLine()
+   在 ServiceStack.Redis.RedisNativeClient.ReadData()
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectData(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectString(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.get_Info()
+   在 ServiceStack.Redis.RedisNativeClient.get_ServerVersion()
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectData(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.HGet(String hashId, Byte[] key)
+   在 ServiceStack.Redis.RedisClient.GetValueFromHash(String hashId, String key)
+   在 Kingsun.SynchronousStudy.Common.RedisHashOtherHelper.Get[T](String hashId, String key) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisHashOtherHelper.cs:行号 131
+Method:Read
+Class:System.Net.Sockets.NetworkStream
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 您的主机中的软件中止了一个已建立的连接。
+   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)

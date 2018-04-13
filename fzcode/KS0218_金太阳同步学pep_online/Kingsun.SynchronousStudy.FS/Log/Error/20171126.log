@@ -1,0 +1,61 @@
+﻿2017-11-26 15:15:54
+错误编号:2017112615155449Xbae27371c1
+Message:类型“System.String”的对象无法转换为类型“System.Int32”。
+Message2:同步班级信息异常！
+Type:System.ArgumentException
+Source:mscorlib
+StackTrace:   在 System.RuntimeType.TryChangeType(Object value, Binder binder, CultureInfo culture, Boolean needsSpecialCast)
+   在 System.RuntimeType.CheckValue(Object value, Binder binder, CultureInfo culture, BindingFlags invokeAttr)
+   在 System.Reflection.MethodBase.CheckArguments(Object[] parameters, Binder binder, BindingFlags invokeAttr, CultureInfo culture, Signature sig)
+   在 System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   在 Kingsun.SynchronousStudy.Common.Extension.ToEntity[T](DataRow dr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\Extension.cs:行号 36
+   在 Kingsun.SynchronousStudy.Common.Extension.Convert2Object[T](DataTable dt) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\Extension.cs:行号 25
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.MOD2IBSClassInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 328
+Method:TryChangeType
+Class:System.RuntimeType
+UserIP:
+UserName:
+
+2017-11-26 16:36:00
+错误编号:2017112616360022X51d8b7e47e
+Message:类型“System.String”的对象无法转换为类型“System.Int32”。
+Message2:同步班级信息异常！
+Type:System.ArgumentException
+Source:mscorlib
+StackTrace:   在 System.RuntimeType.TryChangeType(Object value, Binder binder, CultureInfo culture, Boolean needsSpecialCast)
+   在 System.RuntimeType.CheckValue(Object value, Binder binder, CultureInfo culture, BindingFlags invokeAttr)
+   在 System.Reflection.MethodBase.CheckArguments(Object[] parameters, Binder binder, BindingFlags invokeAttr, CultureInfo culture, Signature sig)
+   在 System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   在 Kingsun.SynchronousStudy.Common.Extension.ToEntity[T](DataRow dr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\Extension.cs:行号 36
+   在 Kingsun.SynchronousStudy.Common.Extension.Convert2Object[T](DataTable dt) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\Extension.cs:行号 25
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.MOD2IBSClassInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 327
+Method:TryChangeType
+Class:System.RuntimeType
+UserIP:
+UserName:
+
+2017-11-26 17:11:42
+错误编号:2017112617114246X13cb8bdaf3
+Message:未将对象引用设置到对象的实例。
+Message2:同步班级信息异常！559b614c-648d-452b-908f-d0a938b453b4
+Type:System.NullReferenceException
+Source:Kingsun.SynchronousStudy.Common
+StackTrace:   在 Kingsun.SynchronousStudy.Common.StringEnumHelper.GetStringValue[TEnum](TEnum value, Int32 index) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\StringEnumHelper.cs:行号 76
+   在 Kingsun.SynchronousStudy.Common.StringEnumHelper.GetStringValue[TEnum](TEnum value) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\StringEnumHelper.cs:行号 35
+   在 Kingsun.SynchronousStudy.Common.StringEnumHelper.GetStringValue[TEnum](Object value) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\Extensions\StringEnumHelper.cs:行号 44
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<>c__DisplayClass1c.<>c__DisplayClass20.<MOD2IBSClassInfo>b__14(MOD2IBS_TempStu x) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 399
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<>c__DisplayClass1c.<MOD2IBSClassInfo>b__11(MOD2IBS_TempClassUser ax) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 391
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.MOD2IBSClassInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 335
+Method:GetStringValue
+Class:Kingsun.SynchronousStudy.Common.StringEnumHelper
+UserIP:
+UserName:
+

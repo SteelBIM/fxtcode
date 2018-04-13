@@ -1,0 +1,12 @@
+﻿2017-11-19 09:23:16
+错误编号:2017111909231659Xee5173a802
+Message:未将对象引用设置到对象的实例。
+Message2:调用解除绑定关系接口异常!
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.UnBindClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 359
+Method:UnBindClass
+Class:Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL
+UserIP:
+UserName:
+

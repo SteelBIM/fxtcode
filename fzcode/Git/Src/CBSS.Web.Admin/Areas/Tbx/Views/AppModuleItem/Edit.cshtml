@@ -1,0 +1,70 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Tbx.Contract.DataModel
+
+@model  AppModuleItem
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+ 
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">书籍名称：</label>
+                <div class="controls">
+                   @Html.DropDownList("MarketBookName", "书籍名称")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">模块名称：</label>
+                <div class="controls">
+                    @Html.DropDownList("ModuleName", "模块名称")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>排序：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Sort, new { @class = "m-wrap small" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Sort)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">模型功能：</label>
+                <div class="controls">
+                    @Html.DropDownList("FunctionID") 
+                </div>
+            </div> 
+            <div class="control-group">
+                <label class="control-label">资源模板：</label>
+                <div class="controls"> 
+                    @Html.TextBoxFor(m => m.ResourceTemplate, new { @class = "m-wrap small" })
+                    <input type="file" id="ResourceTemplate" name="ResourceTemplate" style="border:0px solid red; width:75px;" onchange="$('#ResourceTemplate').val($(this).val())"/>
+                    <a href="javascript:alert('下载资源模板')">下载模板</a> 
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">模型资源分类：</label>
+                <div class="controls">
+                    @Html.DropDownList("ModelType")
+                    @*<span style="float:left;"> @Html.RadioButtonFor(model => model.ModelType, 1, new { @id = "protogenesis", @name = "ModelType", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="protogenesis">原生</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.ModelType, 2, new { @id = "h5", @name = "ModelType" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="h5">H5</label>*@
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">模型分类：</label>
+                <div class="controls">
+                    @Html.DropDownList("ModelSourceType")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

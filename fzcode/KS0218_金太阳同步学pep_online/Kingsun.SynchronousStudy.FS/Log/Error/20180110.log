@@ -1,0 +1,41 @@
+﻿2018-01-10 11:04:30
+错误编号:2018011011043053Xa4d96fba8c
+Message:Unexpected reply: {"BookId":"168","ClassID":null,"CreateTime":"2018\/1\/9 17:19:04","DubbingNum":0,"FirstModular":null,"FirstModularID":"10","FirstTitle":"Module 1  Getting to know you","FirstTitleID":"276194","IsEnableOss":0,"ModuleType":"3","NumberOfOraise":null,"SchoolID":null,"SecondModularID":"1001","SecondTitle":"Unit 1  Hello","SecondTitleID":"276195","SerialNumber":null,"TextSerialNumber":null,"TotalScore":"0","TrueName":null,"UserId":"1676744993","UserImage":null,"UserType":null,"VideoFileID":null,"VideoID":null,"VideoImageAddress":null,"VideoNumber":"2","VideoTitle":"è·è¯»åè¯"}, sPort: 59412, LastCommand: 
+Message2:错误：listId为：StudentClassRelationKey
+Type:ServiceStack.Redis.RedisResponseException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.CreateResponseError(String error)
+   在 ServiceStack.Redis.RedisNativeClient.ReadData()
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectData(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LPop(String listId)
+   在 ServiceStack.Redis.RedisClient.RemoveStartFromList(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.RemoveStartFromList(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 360
+Method:CreateResponseError
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+
+2018-01-10 11:04:31
+错误编号:2018011011043113Xfa354ff366
+Message:未将对象引用设置到对象的实例。
+Message2:学习报告同步异常,异常数据：
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 116
+Method:ExecuteLearningReport
+Class:Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL
+UserIP:
+UserName:
+
+2018-01-10 11:04:31
+错误编号:2018011011043120X437e28b715
+Message:未将对象引用设置到对象的实例。
+Message2:学习报告同步异常,异常数据：
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 116
+Method:ExecuteLearningReport
+Class:Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL
+UserIP:
+UserName:
+

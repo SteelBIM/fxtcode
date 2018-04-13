@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+body{ position:relative;}
+.main{overflow-x:hidden;overflow-y:auto;width:100%;left:0;position:absolute; background-color:#416815; }
+.beijin1{width:100%;}
+.bian{ position:absolute; left:10%; width:80%; margin-top:-40%; margin-bottom:10px;}
+.bian img{ width:20%;}
+.bian span{ color:#fff; font-size:16px;}
+.bian input{ height:30px; line-height:30px; font-size:18px; margin-top:20px; width:55%;}
+.bian .yanzheng{ padding:6px 0px; background:#52A4E0; color:#fff; text-align:center; border-radius:5px;  width:40%; display:inline; float:right; margin-top:20px;}
+
+.bian1{ position:absolute; left:10%; width:80%; margin-top:-28%; margin-bottom:80px;}
+.bian1 p{ color:#fff; font-size:16px;}
+.bian1 input{ height:30px; line-height:30px; font-size:18px; margin-top:10px; width:55%;}
+.bian1 .yanzheng{ padding:6px 0px; background:#52A4E0; color:#fff; text-align:center; border-radius:5px; width:40%; display:inline; float:right; margin-top:10px;}
+.bian1 .open{padding:10px 0; color:#fff; border-radius:5px; background:#52A4E0;text-align:center; display:block; margin-top:30px; width:60%; margin-left:20%;}
+
+@media screen and (max-width:374px){
+	
+	.bian input{ width:50%;}
+    .bian .yanzheng{ padding:6px 10px;}
+	
+	
+	.bian1 input{ width:50%;}
+    .bian1 .yanzheng{ padding:6px 10px;}
+}
+

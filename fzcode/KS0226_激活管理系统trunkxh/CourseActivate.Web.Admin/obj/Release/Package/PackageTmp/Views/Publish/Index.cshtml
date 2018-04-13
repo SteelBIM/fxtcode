@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+@section mainContent{
+
+    <div class="col-lg-12">
+        <h1 class="page-header">出版社设置</h1>
+    </div>
+
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom: 0px;">               
+                <button id="btnAdd" onclick="add()" style="background-color:#E16965; color:#fff;border-color:#e16965; margin-right:15px; border-radius:5px;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建 </button>
+                <table id="tb_departments"></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ResetPasswordDiv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">添加出版社</h4>
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> 出版社:</label>
+                        <div id="div_publishname" class="col-lg-5">
+                            <input type="text" class="form-control" name="txt_publishname" id="txt_publishname" />
+                        </div>
+                        <input type="hidden" id="publishname" />
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> 备注:</label>
+                        <div id="div_Remarks" class="col-lg-5">
+                            <textarea class="form-control" style="height:80px;" id="Remark" name="Remark"></textarea>
+                        </div>
+                        <input type="hidden" id="Remarks" />
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Publish.js"></script>
+}

@@ -1,0 +1,302 @@
+﻿@{
+    ViewBag.Title = "课时列表";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/js/JsBridge.js?v=1.2"></script>
+<script src="~/Scripts/js/Spokenmodule.js?v=1.2"></script>
+<link href="~/Content/css/Spokenmodule.css?v=1.2" rel="stylesheet" />
+<script src="~/Scripts/Common.js"></script>
+<!-- Google Tag Manager -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3MJ5KG');
+</script>
+<!-- End Google Tag Manager -->
+<div class="movieclass">
+    <div class="header">
+        <a class="back" href="/Index/Index?UserID=@Request["UserID"]&CourseType=@Request["CourseType"]&local=@Request["local"]"><img src="../images/back.png" alt="" /></a>
+        <a class="fenxiang" onclick="ShareUrl()" style="display:block;"><img src="../images/shareImg.png" alt="" /></a>
+        <h2>@(Request["CourseType"] == "0" ? "课时列表" : "我的课时")</h2>
+    </div>
+    <div class="main">
+
+        <div class="introduction">
+            <div class="introduction_nr">
+                @{
+                    if (ViewData["courseList"] != null)
+                    {
+                        foreach (var item in ViewData["courseList"] as IList<Kingsun.SpokenBroadcas.Model.Tb_Course>)
+                        {
+                            <h2>@item.Name</h2>
+                            <ul>
+                                @{if (@item.Type == 0)
+                                {
+                                    <li>电影课</li>}
+                                else
+                                {
+                                    <li>绘本课</li>}}
+                                <li>@item.Groups</li>
+                                <li>@item.Num 课时</li>
+                            </ul>
+                            <div class="jianjie">
+                                <span>简介：</span>
+                                <p>@item.Summary</p>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+        @*<div class="room">
+                <img src="../images/feimian.png" alt="" />
+                <div class="room_nr">
+                    <h3>小羊肖恩</h3>
+                    <p class="cost">¥<span>6</span><em>原价¥99</em></p>
+                    <p class="startime">开课时间：<span>5月17日</span></p>
+                    <p class="order"><span>已预约：<em>1000</em></span><a class="entroom">进入教室</a></p>
+                </div>
+            </div>
+            <div class="room">
+                <img src="../images/feimian.png" alt="" />
+                <div class="room_nr">
+                    <h3>小羊肖恩</h3>
+                    <p class="cost">¥<span>6</span><em>原价¥99</em></p>
+                    <p class="startime">开课时间：<span>5月17日</span></p>
+                    <p class="order"><span>已预约：<em>1000</em></span><a class="order1">预约</a></p>
+                </div>
+            </div>*@
+        @{
+            if (ViewData["returnList"] != null)
+            {
+                foreach (var item in ViewData["returnList"] as List<Kingsun.SpokenBroadcas.Web.Controllers.CoursePeriodListModel>)
+                {
+                    <div class="room">
+                        <img src="@item.Image" alt="" />
+                        <div class="room_nr">
+                            <h3>@item.Name</h3>
+                            <p class="cost">¥<span>@item.NewPrice</span><em>原价¥@item.Price</em></p>
+                            <p class="startime">开课时间：<span>@item.StartTime.ToString("M月d日")</span></p>
+                            <p class="order">
+                                <span>已预约：<em>@item.AppointNumShow</em></span>
+                                @{
+                    if (item.CoursePeriodState == "预约")
+                    {
+                        <a class="order1" courseid="@item.CourseID" courseperiodid="@item.ID" userid="@item.UserID">@item.CoursePeriodState</a>
+                    }
+                    else if (item.CoursePeriodState == "已结束")
+                    {
+                        <a class="over" courseid="@item.CourseID" courseperiodid="@item.ID">@item.CoursePeriodState</a>
+                    }
+                    @*else if (item.CoursePeriodState == "进入教室")
+                        {
+                            <a class="entroom" onclick="EnterRoom('@item.UserID', '@item.ID','@item.CourseID')" courseid="@item.CourseID" courseperiodid="@item.ID">@item.CoursePeriodState</a>
+                        }
+                        else if (item.CoursePeriodState == "已预约")//已预约
+                        {
+                            <a class="order2" onclick="ShowAppointInfo('@item.UserID','@item.ID')" courseid="@item.CourseID" courseperiodid="@item.ID">@item.CoursePeriodState</a>
+                        }*@
+                    else //预约已满
+                    {
+                        <a class="order3" courseid="@item.CourseID" courseperiodid="@item.ID">@item.CoursePeriodState</a>
+                    }
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    <div class="box">
+        <h2>预约时间</h2>
+        <img src="../images/tankuang.png" alt="" />
+        <ul>
+            @*<li class="over"><em>外教</em>18:00&mdash;19:00<span>已结束</span></li>
+                <li class="on"><em>外教</em>20:00&mdash;21:00</li>
+                <li><em>外教</em>20:00&mdash;21:00</li>
+                <li class="full"><em>外教</em>22:00&mdash;23:00<span>已满</span></li>*@
+        </ul>
+        <a class="next">下一步</a>
+    </div>
+    <div class="box1">
+        <h2>预约成功</h2>
+        <img src="../images/tankuang.png" alt="" />
+        <p>嗨，<span id="spanTrueName">刘沛</span>：</p>
+        <p>恭喜您,已经成功预约了课程《<span id="spanCourseName">恐龙当家</span>》，开课时间为：<span id="spanTime">7月1日 19:00</span> ,请在开课前<span id="spanAheadMinutes">5</span>分钟进入教室哦~</p>
+        <a onclick="CloseBox('box1')">确认</a>
+    </div>
+    <div class="box_AlreadyAppoint">
+        <h2>已预约</h2>
+        <img src="../images/tankuang.png" alt="" />
+        <p>嗨，<span id="spanAppointTrueName">刘沛</span>：</p>
+        <p>您预约的上课时间为：<span id="spanAppointTime">7月1日 19:00</span>,请在开课前<span id="spanAppointAheadMinutes">5</span>分钟进入教室哦~</p>
+        <a onclick="CloseBox('box_AlreadyAppoint')">确认</a>
+    </div>
+    <div class="shadow1"></div>
+    <input id="UserID" type="hidden" />
+    <input id="CoursePeriodID" type="hidden" />
+    <input id="CourseID" type="hidden" />
+    <input id="CourseType" type="hidden" value="@Request["CourseType"]" />
+</div>
+<div style="display:none;">
+    <script src="https://s22.cnzz.com/z_stat.php?id=1262360076&web_id=1262360076" language="JavaScript"></script>
+</div>
+<script type="text/javascript">
+    //添加默认图片
+    $("img").attr("onerror", "this.src='../images/defaultImg.jpg'");
+    //如果是分享出去的页面则隐藏分享空间
+    var CoursePeriodUrl = GetQueryString("local");
+    if (CoursePeriodUrl != null && CoursePeriodUrl.toString().length > 0 && CoursePeriodUrl.toString() == "weixin") {
+        $(".header").hide();
+        $(".movieclass .main").css("margin-top", "0");
+        //$(".fenxiang").hide();
+    }
+
+    $(function () {
+        var UserID = '@Request["UserID"]';
+        var CoursePeriodID = '@Request["CoursePeriodID"]';
+        var CoursePeriodTimeID = '@Request["CoursePeriodTimeID"]';
+        @*var CourseType = '@Request["CourseType"]';
+        alert(CourseType);*@
+        if (UserID != "" && CoursePeriodID != "" && CoursePeriodTimeID != "") {
+            ShowAppointSuccessInfo(UserID, CoursePeriodID, CoursePeriodTimeID);
+        }
+        $("#UserID").val(UserID);
+        // GetCoursePeriodTime($("#CoursePeriodID").val());
+    });
+
+    //根据课时ID：CoursePeriodID显示选择的时间段(未用)
+    function GetCoursePeriodTime(CoursePeriodID) {
+        //alert(CoursePeriodID);
+        if (CoursePeriodID == "") {
+            //alert('为空');
+        } else {
+            $(".movieclass .box").css("display", "block");
+            $(".movieclass .shadow1").css("display", "block");
+            //alert(CoursePeriodID);
+            $.post("/CoursePeriod/GetCoursePeriodTime", { CoursePeriodID: CoursePeriodID }, function (data) {
+                data = eval(data);
+                if (data.Success) {
+                    var courseList = eval(data.Data);
+                    var liHtml = '';
+                    var count = 0;
+                    for (var i = 0; i < courseList.length; i++) {
+                        if (courseList[i].CourseState == "已结束") {
+                            liHtml += ' <li class="over" CoursePeriodID=' + CoursePeriodID + ' CoursePeriodTimeID=' + courseList[i].ID + '><em>' + courseList[i].TeacherType + '</em>' + new Date(courseList[i].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '&mdash;' + new Date(courseList[i].EndTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '<span>' + courseList[i].CourseState + '</span></li>';
+                        } else if (courseList[i].CourseState == "已满") {
+                            liHtml += ' <li class="full" CoursePeriodID=' + CoursePeriodID + ' CoursePeriodTimeID=' + courseList[i].ID + '><em>' + courseList[i].TeacherType + '</em>' + new Date(courseList[i].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '&mdash;' + new Date(courseList[i].EndTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '<span>' + courseList[i].CourseState + '</span></li>';
+                        }
+                        else { //可预约
+                            if (count == 0) {
+                                liHtml += ' <li class="on" CoursePeriodID=' + CoursePeriodID + ' CoursePeriodTimeID=' + courseList[i].ID + '><em>' + courseList[i].TeacherType + '</em>' + new Date(courseList[i].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '&mdash;' + new Date(courseList[i].EndTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '</li>';
+                            } else {
+                                liHtml += ' <li CoursePeriodID=' + CoursePeriodID + ' CoursePeriodTimeID=' + courseList[i].ID + '><em>' + courseList[i].TeacherType + '</em>' + new Date(courseList[i].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '&mdash;' + new Date(courseList[i].EndTime.replace(/T/g, ' ').replace(/-/g, "/")).format("hh:mm") + '</li>';
+                            }
+                            count++;
+                        }
+                    }
+                    $(".movieclass .box ul").html(liHtml);
+                }
+            });
+        }
+    }
+
+    //显示已预约的信息(未)
+    function ShowAppointInfo(UserID, CoursePeriodID) {
+        //alert(UserID);
+        $.post("/CoursePeriod/GetAlreadyAppointInfo", { UserID: UserID, CoursePeriodID: CoursePeriodID }, function (data) {
+            data = eval(data);
+            if (data.Success) {
+                var AppointList = eval(data.Data);
+                $("#spanAppointTrueName").text(AppointList[0].TrueName);
+                var time = new Date(AppointList[0].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("M月d日 hh:mm");
+                $("#spanAppointTime").text(time);
+                $("#spanAppointAheadMinutes").text(AppointList[0].AheadMinutes);
+                $(".movieclass .box_AlreadyAppoint").css("display", "block");
+                $(".movieclass .shadow1").css("display", "block");
+            }
+        });
+    }
+    //显示预约成功的信息
+    function ShowAppointSuccessInfo(UserID, CoursePeriodID, CoursePeriodTimeID) {
+        $.post("/CoursePeriod/GetAlreadyAppointInfo", { UserID: UserID, CoursePeriodID: CoursePeriodID, CoursePeriodTimeID: CoursePeriodTimeID }, function (data) {
+            data = eval(data);
+            if (data.Success) {
+                var AppointList = eval(data.Data);
+                $("#spanTrueName").text(AppointList[0].TrueName);
+                $("#spanCourseName").text(AppointList[0].CourseName);
+                var time = new Date(AppointList[0].StartTime.replace(/T/g, ' ').replace(/-/g, "/")).format("M月d日 hh:mm");
+                $("#spanTime").text(time);
+                $("#spanAheadMinutes").text(AppointList[0].AheadMinutes);
+                $(".movieclass .box1").css("display", "block");
+                $(".movieclass .shadow1").css("display", "block");
+            }
+        });
+    }
+    /*点击遮罩弹窗消失*/
+    $(".movieclass .shadow1").click(function () {
+        $(".movieclass .box_AlreadyAppoint").css("display", "none");
+        $(".movieclass .box_AlreadyAppoint").css("display", "none");
+        $(".movieclass .shadow1").css("display", "none");
+    });
+    function CloseBox(clas) {
+        $(".movieclass ." + clas + "").css("display", "none");
+        $(".movieclass ." + clas + "").css("display", "none");
+        $(".movieclass .shadow1").css("display", "none");
+    }
+    //分享
+    function ShareUrl() {
+        //alert(window.location.href.replace(GetQueryString("UserID"), "0").replace("&local=", "") + "&local=weixin");
+        //调用移动端接口
+        var hostName = window.location.hostname;
+        var port = window.location.port;
+        if (port != null && port != "") {
+            hostName = hostName + ':' + port;
+        }
+        //alert(hostName);
+        //调用移动端接口
+        var data = {
+            //传递的参数json
+            "data": {
+                "shareUrl": hostName + "/Index/Index?UserID=0&local=weixin"
+            }
+        };
+        //调用移动端的方法
+        window.WebViewJavascriptBridge.callHandler(
+            'shareThirdparty', data, function (responseData) {
+
+            }
+        );
+    }
+
+
+    //退出教室
+    //function OutRoom(obj) {
+    //    alert(123);
+    //    return;
+    //    $.post("/CoursePeriod/OutRoom", { UserID: UserID, CoursePeriodTimeID: CoursePeriodTimeID }, function (data) {
+    //        data = eval(data);
+    //        if (data.Success) {
+    //            alert('退出成功');
+    //        } else {
+    //            alert('退出失败');
+    //        }
+    //    });
+    //}
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MJ5KG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->

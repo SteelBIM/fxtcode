@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "开始页面";
+}
+@model Kingsun.InterestDubbingGame.Web.Controllers.StartIndexStateModel
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>开始比赛</title>
+    <link href="~/Content/css/common/base.css" rel="stylesheet" />
+    <link href="~/Content/css/work/starGame.css?v=1.0" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script> 
+    <script src="~/Scripts/js/GameIndex.js?v=1.5"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+</head>
+<body>
+    <header class="head1">
+        <a href="#" class="back" onclick="finish()"><img src="~/images/common/back_black.png" alt=""></a>
+        <a href="#" class="share" onclick="ShareUrl()"><img src="~/images/common/share_black.png" alt=""></a>
+    </header>
+    <main class="main1">
+        <section>
+            <img class="bag" src="~/images/work/star/bag.png" alt="">
+            @{
+                if (@Model != null)
+                {
+                    if (@Model.StateID == -1)//未报名，显示开始比赛
+                    {
+            <a href="javascript:ClickHref(@Model.UserID,@Model.StateID,'@Model.AppID')" class="apply">@Model.StateName</a>
+                    }
+                    else if (@Model.StateID == 0)//比赛未开始，显示开始比赛
+                    {
+            <a href="javascript:ClickHref(@Model.UserID,@Model.StateID,'@Model.AppID')" class="apply">@Model.StateName</a>
+                    }
+                    else if (@Model.StateID == 1)//比赛开始，显示开始比赛
+                    {
+            <a href="javascript:ClickHref(@Model.UserID,@Model.StateID,'@Model.AppID')" class="apply">@Model.StateName</a>
+                    }
+                    else if (@Model.StateID == 2)//完成一个环节，显示继续比赛
+                    {
+            <a href="javascript:ClickHref(@Model.UserID,@Model.StateID,'@Model.AppID')" class="apply">@Model.StateName</a>
+                    }
+                    else if (@Model.StateID == 3)//完成两个环节，显示查看成绩
+                    {
+            <a href="javascript:ClickHref(@Model.UserID,@Model.StateID,'@Model.AppID')" class="apply">@Model.StateName</a>
+                    }
+                }
+                else
+                {
+            <a href="#" class="apply">开始比赛？</a>
+                }
+            }
+            <a href="../Details/Index?returnPage=Details2&MatchDetailsType=1&UserID=@Request["UserID"]&AppID=@Request["AppID"]" class="check">比赛详情</a>
+            <ul class="ul1">
+                <li>富强</li>
+                <li>民主</li>
+                <li>文明</li>
+                <li>和谐</li>
+                <li>自由</li>
+                <li>平等</li>
+                <li>公正</li>
+                <li>法治</li>
+                <li>爱国</li>
+                <li>敬业</li>
+                <li>诚信</li>
+                <li>友善</li>
+            </ul>
+            <ul class="ul2">
+                <li>
+                    <a href="javascript:StudentHonours(@Request["UserID"])">
+                        <img src="~/images/common/stuhonor.png" alt="">
+                        <p>学生荣誉榜</p>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="Javascript:popup('暂未开启，敬请期待')">
+                        <img src="~/images/common/classhonor.png" alt="">
+                        <p>班级荣誉榜</p>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="Javascript:popup('暂未开启，敬请期待')">
+                        <img src="~/images/common/sclhonor.png" alt="">
+                        <p>校级荣誉榜</p>
+                    </a>
+
+                </li>
+
+            </ul>
+        </section>
+    </main>
+
+    <!-- 分享弹窗 -->
+    <div class="box">
+        <img class="box_bag" src="~/images/common/sharebag.png" alt="">
+        <ul>
+            <li>
+                <a href="#"><img src="~/images/common/WeChat.png" alt=""></a>
+                <p>微信</p>
+            </li>
+            <li>
+                <a href="#"><img src="~/images/common/Circle.png" alt=""></a>
+                <p>朋友圈</p>
+            </li>
+            <li>
+                <a href="#"><img src="~/images/common/QQ.png" alt=""></a>
+                <p>QQ</p>
+            </li>
+            <li>
+                <a href="#"><img src="~/images/common/QQspace.png" alt=""></a>
+                <p>QQ空间</p>
+            </li>
+        </ul>
+        <a href="#" class="cancel">取消</a>
+    </div>
+    @*<div class="box2">
+        <p>确定报名吗？</p>
+        <a href="">确定</a>
+        <a href="">取消</a>
+    </div>*@
+    <div class="shadow"></div>
+
+    <script type="text/javascript">
+        var UserID = '@Request["UserID"]';
+        var AppID = '@Request["AppID"]';
+        $(function () {
+            //如果是分享出去的页面则隐藏分享空间
+            var CoursePeriodUrl = GetQueryString("local");
+            //alert(CoursePeriodUrl);
+            if (CoursePeriodUrl != null && CoursePeriodUrl.toString().length > 0 && CoursePeriodUrl.toString() == "weixin" || UserID == 0) {
+                $(".head1").hide();
+                $(".main1").css("margin-top", "35px");
+                //$(".fenxiang").hide();
+            }
+        });
+        //返回
+        function finish() {
+            window.WebViewJavascriptBridge.callHandler(
+            'finish', function (responseData) {
+
+            }
+            );
+        }
+
+        //分享
+        function ShareUrl() {
+            var nowAppID = GetQueryString("AppID");
+            //alert(window.location.href.replace(GetQueryString("UserID"), "0").replace("&local=", "") + "&local=weixin");
+            //调用移动端接口
+            var hostName = window.location.hostname;
+            var port = window.location.port;
+            if (port != null && port != "") {
+                hostName = hostName + ':' + port;
+            }
+
+            if (hostName.lastIndexOf("http://") == -1) {
+                hostName = "http://" + hostName;
+            }
+            if (hostName.lastIndexOf(".cn") != -1 || hostName.lastIndexOf(".com") != -1) {
+                hostName = hostName + "/InterestDubbingGameWeb"
+            }
+            //alert(hostName);
+            //调用移动端接口
+            var data = {
+                //传递的参数json 
+                    "title": encodeURI("2017北京市小学生英语配音比赛"),
+                    "content": encodeURI("同学们快来跟我一起参加比赛"),
+                    "linkUrl": hostName + "/StartIndex/Index?UserID=0&local=weixin&AppID=" + nowAppID,
+                    "shares": ["QQ","QZone","Wechat", "WechatMoments"] 
+            }; 
+            //调用移动端的方法
+            window.WebViewJavascriptBridge.callHandler(
+                'gotoDefaultShareDialog', data, function (responseData) {
+
+                }
+            );
+        }
+        //采用正则表达式获取地址栏参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Publisher\XHCourseActivateFS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CourseActivate.Activate.BLL.dll">
+      <publishTime>01/02/2018 14:17:37</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.Constract.dll">
+      <publishTime>01/02/2018 14:17:32</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.DAL.dll">
+      <publishTime>01/02/2018 14:17:35</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Core.Utility.dll">
+      <publishTime>01/02/2018 14:17:31</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Framework.BLL.dll">
+      <publishTime>01/02/2018 14:17:34</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Framework.DAL.dll">
+      <publishTime>01/02/2018 14:17:32</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Resource.Constract.dll">
+      <publishTime>01/02/2018 14:17:30</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Web.FS.dll">
+      <publishTime>01/02/2018 14:19:46</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>08/15/2016 17:51:10</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>09/14/2012 15:06:22</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>12/08/2016 01:11:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>12/08/2016 01:11:56</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>11/01/2011 00:21:14</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>11/01/2011 00:21:14</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>11/01/2011 00:21:14</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>11/01/2011 00:21:14</publishTime>
+    </File>
+    <File Include="bin/SqlSugarRepository.dll">
+      <publishTime>12/08/2016 01:11:56</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>07/29/2017 16:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.dll">
+      <publishTime>12/08/2016 01:11:58</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/25/2017 14:23:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/25/2017 14:23:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/25/2017 14:23:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/01/2013 20:54:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>02/10/2017 21:43:14</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/23/2017 09:18:41</publishTime>
+    </File>
+    <File Include="log4Net.config">
+      <publishTime>06/27/2017 16:59:42</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>06/23/2017 09:18:45</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>08/11/2017 17:03:39</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/21/2017 16:21:36</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/18/2017 19:33:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

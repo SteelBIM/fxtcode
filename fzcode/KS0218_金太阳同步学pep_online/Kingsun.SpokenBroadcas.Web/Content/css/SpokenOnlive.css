@@ -1,0 +1,102 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{width:100%;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;outline:none;-moz-outline-style:none;}
+body{ position:relative;}
+
+/*头部样式*/
+.header{ height:50px; background-color:#1C9EEA; position:fixed; width:100%; top:0; left:0; z-index:1000;}
+.header img{ width:30px; margin:10px 0 0 10px; float:left;}
+.header h2{ padding: 0 40px; text-align:center; line-height:50px; color:#fff; font-size:18px;}
+.header .fenxiang{ float:right; color:#fff; line-height:50px; margin-right:5px; cursor:pointer;}
+.header .fenxiang img {width:30px;margin:10px 10px 0 0;}
+
+
+
+/*口语课程*/
+.langcourses{background-color:#F1F1F1;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute;}
+.langcourses .main{  margin-top:50px;}
+.langcourses .main .chose1{display:block;}
+.langcourses .main .chose2{ display:none; background-color:#fff;}
+.langcourses .main ul{background-color:#fff; overflow:hidden;}
+.langcourses .main ul li{ float:left;  margin:0 5%; width:40%; text-align:center; height:40px; line-height:40px; font-size:16px;}
+.langcourses .main ul li.on{ border-bottom:2px solid #2FA2E7;}
+.langcourses .main .course1{ margin:20px 5% 15px; border-radius:10px; background-color:#fff; clear:both; overflow:hidden; display:block;}
+.langcourses .main .course1 div{ padding:10px 3%;}
+.langcourses .main .course1 img{ width:100%;}
+.langcourses .main .course1 h2{ font-size:16px; color:#5D5D5D; margin-bottom:10px;}
+.langcourses .main .course1 h2 span{ color:#fff; background-color:#F88C6A; padding:3px 10px; font-size:12px; border-radius:5px; font-weight:400; margin-left:25px; float:right;}
+.langcourses .main .course1 h2 .finished{color:#fff; background-color:#DCDCDC; padding:3px 10px; border-radius:5px; font-weight:400; margin-left:25px;}
+.langcourses .main .course1 p{ color:#777575; font-size:14px;}
+.langcourses .main .course1 p em{ font-style:normal;}
+.langcourses .main .course1 p .plan{ margin-left:10px;}
+.langcourses .main .course1 p .stud{margin-left:10px; font-size:12px;}
+
+.langcourses .main .chose2 .tishi{ height:40px; line-height:40px;     padding-left: 5%; color:#777575; font-size:12px;    background-color: #F1F1F1;}
+.langcourses .main  .room{  overflow:hidden; background-color:#fff; padding:10px 5%;border-bottom: 10px #F1F1F1 solid;}
+.langcourses .main  .room img{ width:40%; float:left; margin-right:4%;}
+.langcourses .main  .room .room_nr{ float:left; line-height:30px; margin-top:2%; width:56%;}
+.langcourses .main  .room .room_nr h3{ font-size:16px; color:#5D5D5D; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; width:100%;}
+.langcourses .main  .room .room_nr h3 span{ font-size:12px;}
+.langcourses .main .room .room_nr .schooltime{ font-size:12px; color:#777575;}
+.langcourses .main  .room .room_nr .apptime{ font-size:12px; color:#777575;}
+.langcourses .main  .room .room_nr .order{ font-size:12px; color:#ADACAC;}
+.langcourses .main  .room .room_nr .order em{font-style:normal;}
+.langcourses .main  .room .room_nr .order span{ float:left;}
+.langcourses .main  .room .room_nr .order a{ color:#fff;border-radius:5px; margin-left:30px; width:75px; height:30px; line-height:30px; text-align:center; display:block; float:right; font-size:14px;}
+.langcourses .main  .room .room_nr .order a.entroom{ background-color:#66D88F;}
+.langcourses .main  .room .room_nr .order a.notstarted{ background-color:#fff; color:#A0C0D4;}
+.langcourses .main .room .room_nr .order a.finished{ color:#dcdcdc;}
+
+
+@media screen and (max-width:330px){
+.langcourses .main .course1 p{font-size:12px;}
+.langcourses .main .room .room_nr{ line-height:22px;}
+.langcourses .main   .room .room_nr h3{ font-size:14px;}
+.langcourses .main  .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+    }
+@media screen and (min-width:331px) and (max-width:359px){
+
+.langcourses .main  .room .room_nr{ line-height:22px;}
+.langcourses .main  .room .room_nr h3{ font-size:14px;}
+.langcourses .main  .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+	}
+	@media screen and (min-width:360px) and (max-width:374px){
+
+.langcourses .main  .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+	}
+	@media screen and (min-width:600px)  and (max-width:669px){
+		
+			.langcourses .main .course1 h2{ font-size:20px;}
+			.langcourses .main .course1 h2 span{ font-size:18px}
+			.langcourses .main .course1 p{  font-size:18px;}
+			.langcourses .main .course1 p .stud{font-size:16px;}
+			.langcourses .main .chose2 .tishi{ height:60px; line-height:60px; font-size:16px;}
+.langcourses .main ul li{ font-size:20px;}
+.langcourses .main  .room .room_nr{ float:left; line-height:45px; margin-top:3%;}
+.langcourses .main  .room .room_nr h3{ font-size:26px;}
+.langcourses .main  .room .room_nr h3 span{ font-size:20px;}
+.langcourses .main  .room .room_nr .schooltime{font-size:20px;}
+.langcourses .main .room .room_nr .apptime{ font-size:20px;}
+.langcourses .main  .room .room_nr .order{ font-size:20px;}
+.langcourses .main  .room .room_nr .order a{ width:100px; height:50px; line-height:50px;font-size:20px;}
+	}
+	@media screen and (min-width:670px)  and (max-width:768px){
+		
+			.langcourses .main .course1 h2{ font-size:22px;}
+			.langcourses .main .course1 h2 span{ font-size:20px}
+			.langcourses .main .course1 p{  font-size:20px;}
+			.langcourses .main .course1 p .stud{font-size:18px;}
+			.langcourses .main .chose2 .tishi{ height:60px; line-height:60px; font-size:18px;}
+.langcourses .main ul li{ font-size:22px;}
+.langcourses .main  .room .room_nr{ float:left; line-height:50px; margin-top:5%;}
+.langcourses .main  .room .room_nr h3{ font-size:28px;}
+.langcourses .main  .room .room_nr h3 span{ font-size:22px;}
+.langcourses .main  .room .room_nr .schooltime{font-size:22px;}
+.langcourses .main .room .room_nr .apptime{ font-size:22px;}
+.langcourses .main  .room .room_nr .order{ font-size:22px;}
+.langcourses .main .room .room_nr .order a{ width:100px; height:50px; line-height:50px;font-size:22px;}
+
+    }

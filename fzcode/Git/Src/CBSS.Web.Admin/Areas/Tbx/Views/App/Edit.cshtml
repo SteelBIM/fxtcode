@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Tbx.Contract.DataModel
+@model  App
+
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>应用名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.AppName, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.AppName)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">描述：</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.Describe, new { @class = "m-wrap small", @style = "min-width:300px;min-height:80px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Describe)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>课本信息：</label>
+                <div class="controls">
+                    <ul id="demo">
+                        <img src="~/Content/Images/loading.gif" />
+                    </ul>
+                </div>
+                <input id="MarketClassifyID" name="MarketClassifyID" type="hidden" />
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="AppID" value="@ViewBag.AppID" />
+}
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Assets/tree/lay/css/layui.css" rel="stylesheet" />
+    <script src="~/Assets/tree/layui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                GetPitchOnMarketClassifyID();
+            });
+            var AppID = $("#AppID").val();
+            $.ajax({
+                type: "Post",
+                url: "/Tbx/App/GetTreeInfo",
+                data: { AppID: AppID },
+                dataType: "json",
+                success: function (hidJson) {
+                    layui.use('tree', function () {
+                        $("#demo").html("");
+                        var tree = layui.tree({
+                            elem: '#demo', //指定元素，生成的树放到哪个元素上
+                            check: 'checkbox', //勾选风格
+                            skin: 'as', //设定皮肤
+                            drag: true,//点击每一项时是否生成提示信息
+                            checkboxName: 'aa[]',//复选框的name属性值
+                            checkboxStyle: "",//设置复选框的样式，必须为字符串，css样式怎么写就怎么写
+                            click: function (item) { //点击节点回调
+                                GetPitchOnMarketClassifyID();
+                            },
+                            onchange: function () {//当当前input发生变化后所执行的回调
+                                GetPitchOnMarketClassifyID();
+                            },
+                            nodes: hidJson
+                        });
+                        if (AppID != "")
+                            GetPitchOnMarketClassifyID();
+                    });
+                }
+            });
+        });
+        function GetPitchOnMarketClassifyID() {//获取选中的市场分类ID
+            var MarketClassifyID = '';
+            $("#demo input:checkbox[name='aa[]']:checked").each(function () { // 遍历name=standard的多选框
+                MarketClassifyID += $(this).val() + ',';
+            });
+            $("#MarketClassifyID").val(MarketClassifyID);
+        }
+    </script>
+}

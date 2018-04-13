@@ -1,0 +1,560 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Language" content="utf-8" />
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+
+        .maintable {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+
+            .maintable th {
+                background: #069;
+                color: #fff;
+                line-height: 30px;
+                font-size: 14px;
+            }
+
+                .maintable th a {
+                    width: 100%;
+                    display: block;
+                    color: #fff;
+                    font-weight: normal;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .maintable td {
+                background: #fff;
+                line-height: 20px;
+            }
+
+                .maintable td.left {
+                    width: 220px;
+                    background: #f9f9f9;
+                }
+
+        .tbparams {
+            background: #ccc;
+            width: 100%;
+        }
+
+            .tbparams th {
+                background: #eee;
+                color: #000;
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .tbparams td {
+                background: #fff;
+                padding: 3px;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+            ul.params, div.content {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+
+                ul.params li {
+                    border-bottom: 1px solid #ccc;
+                    line-height: 25px;
+                    margin: 1px;
+                }
+
+            ul.index li {
+                padding: 10px;
+                line-height: 25px;
+                color: #069;
+            }
+
+        div.content {
+            padding: 5px;
+        }
+
+        #apilist {
+            margin: 5px;
+        }
+
+            #apilist li {
+                cursor: default;
+                padding: 3px;
+            }
+
+                #apilist li.over {
+                    background: #ccc;
+                }
+
+                #apilist li.active {
+                    background: #069;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+        #apicontent {
+            margin: 5px;
+        }
+
+            #apicontent li {
+                cursor: default;
+                word-break: break-all;
+            }
+
+                #apicontent li strong {
+                    display: block;
+                    background: #eee;
+                    line-height: 25px;
+                    text-indent: 10px;
+                    border-left: 8px solid #ccc;
+                }
+
+        ul.ulapi li {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+
+        #apicontent li.desc {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+
+        #apicontent span.mobile {
+            color: #c00;
+        }
+
+        #apicontent li.step {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        font.red {
+            color: #c00;
+        }
+
+        font.memo {
+            color: #063;
+        }
+
+        #apicontent li label {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="js/jquery-1.8.2-min.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script src="js/date.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var RootRul = top.location.href;
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = [];
+
+        //api
+        var api = [
+            /************************************************分割线************************************************/
+            {
+                name: "根据地区ID获取对应地区的学校信息",
+                url: "http://192.168.3.144:8089/api/PersonalCenter/GetSchoolInfo",
+                hover: true,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "AreaID", value: "int", desc: "地区ID，格式例如：168", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "ID": 181,
+                            "SchoolName": "北京景山学校",
+                            "DistrictID": 110101000
+                        },
+                        {
+                            "ID": 183,
+                            "SchoolName": "北京市第二十二中学",
+                            "DistrictID": 110101000
+                        }
+                    ],
+                    "Message": "",
+                    "SystemTime": "/Date(1501663277361)/"
+                },
+                outexplain: [
+                   { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                   { name: "Message", value: "string", desc: "信息", must: true },
+                   { name: "data", value: "json", desc: "返回数据集", must: false },
+                   { name: "ID", value: "int32", desc: "学校ID", must: true },
+                   { name: "SchoolName", value: "string", desc: "学校名称", must: true },
+                   { name: "DistrictID", value: "string", desc: "地区ID", must: true }
+                ],
+                demo: {
+                    "AreaID": 110101000,
+                    "Version": "V1"
+                }
+            },
+            {
+                name: "添加教师信息",
+                url: "http://192.168.3.144:8089/api/PersonalCenter/AddTeacherInfo",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int", desc: "用户ID，格式例如：168", must: true },
+                    { name: "UserName", value: "string", desc: "用户名，格式例如：张三", must: true },
+                    { name: "ProvinceID", value: "int", desc: "省份ID，格式例如：123", must: true },
+                    { name: "Province", value: "string", desc: "省份，格式例如：湖南省", must: true },
+                    { name: "CityID", value: "int", desc: "城市ID，格式例如：168", must: true },
+                    { name: "City", value: "string", desc: "城市，格式例如：北京市", must: true },
+                    { name: "AreaID", value: "int", desc: "地区ID，格式例如：168", must: true },
+                    { name: "Area", value: "string", desc: "地区，格式例如：东城区", must: true },
+                    { name: "SubjectID", value: "int", desc: "学科ID，格式例如：3", must: true },
+                    { name: "Subject", value: "string", desc: "学科，格式例如：英语", must: true },
+                    { name: "SchoolID", value: "int", desc: "学校ID，格式例如：168", must: true },
+                    { name: "SchoolName", value: "string", desc: "学校名称，格式例如：北京市第二十二中学", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": "新增成功",
+                    "Message": "",
+                    "SystemTime": "/Date(1501665096468)/"
+                },
+                outexplain: [
+                  { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                  { name: "Message", value: "string", desc: "信息", must: true },
+                  { name: "data", value: "json", desc: "返回数据集", must: false },
+                  { name: "SystemTime", value: "string", desc: "系统时间", must: true }
+                ],
+                demo: {
+
+                }
+            },
+            {
+                name: "获取个人中心订单列表",
+                url: "http://192.168.3.144:8089/api/PersonalCenter/GetOrderListByUserId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int", desc: "用户ID，格式例如：168", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "OrderID": "1761311924437426",
+                            "TotalMoney": 0.01,
+                            "CreateDate": "/Date(1496977789960)/",
+                            "CourseID": "168",
+                            "Month": 12,
+                            "TeachingNaterialName": "小学英语牛津深圳版一年级上册"
+                        },
+                        {
+                            "OrderID": "9145536874668214",
+                            "TotalMoney": 0.01,
+                            "CreateDate": "/Date(1499063024533)/",
+                            "CourseID": "266",
+                            "Month": 12,
+                            "TeachingNaterialName": "小学英语牛津深圳版四年级下册"
+                        }
+                    ],
+                    "Message": "操作成功",
+                    "SystemTime": "/Date(1501665309592)/"
+                },
+                outexplain: [
+                  { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                  { name: "Message", value: "string", desc: "信息", must: true },
+                  { name: "data", value: "json", desc: "返回数据集", must: false },
+                  { name: "OrderID", value: "int32", desc: "订单ID", must: true },
+                  { name: "TotalMoney", value: "string", desc: "购买金额", must: true },
+                  { name: "CreateDate", value: "string", desc: "购买时间", must: true },
+                  { name: "CourseID", value: "string", desc: "书籍ID", must: true },
+                  { name: "Month", value: "string", desc: "套餐时长（月）", must: true },
+                  { name: "TeachingNaterialName", value: "string", desc: "书籍名称", must: true }
+                ],
+                demo: {
+                    "AreaID": 110101000,
+                    "Version": "V1"
+                }
+            },
+            {
+                name: "根据用户ID获取用户信息",
+                url: "http://192.168.3.144:8089/api/PersonalCenter/GetUserInfoByUserID",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int", desc: "用户ID，格式例如：168", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": {
+                        "UserID": "1816963068",
+                        "TrueName": "",
+                        "UserType": 26,
+                        "SchoolID": 0,
+                        "SchoolName": null,
+                        "ClassID": null,
+                        "ClassName": null,
+                        "InvNum": null,
+                        "Telephone": "15974211245"
+                    },
+                    "Message": "",
+                    "SystemTime": "/Date(1502246857437)/"
+                },
+                outexplain: [
+                  { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                  { name: "Message", value: "string", desc: "信息", must: true },
+                  { name: "data", value: "json", desc: "返回数据集", must: false },
+                  { name: "UserID", value: "int32", desc: "用户ID", must: true },
+                  { name: "TrueName", value: "string", desc: "真实名称", must: true },
+                  { name: "UserType", value: "string", desc: "身份类别（1：普通，12：老师，26：学生）", must: true },
+                  { name: "SchoolID", value: "string", desc: "学校ID", must: true },
+                  { name: "SchoolName", value: "string", desc: "学校名称", must: true },
+                  { name: "ClassID", value: "string", desc: "班级ID", must: true },
+                { name: "ClassName", value: "string", desc: "班级名称", must: true },
+                { name: "InvNum", value: "string", desc: "邀请码", must: true },
+                { name: "Telephone", value: "string", desc: "手机号", must: true }
+                ],
+                demo: {
+                    "UserID": 110101000,
+                    "Version": "V1"
+                }
+            }, {
+                name: "修改用户身份为学生",
+                url: "http://192.168.3.144:8089/api/BanJiQuan/UpdateIsLogState",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int", desc: "用户ID，格式例如：168", must: true },
+                ],
+                output: {
+                    "Success": true,
+                    "data": {},
+                    "Message": "信息修改成功",
+                    "SystemTime": "/Date(1502246857437)/"
+                },
+                outexplain: [
+                  { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                  { name: "Message", value: "string", desc: "信息", must: true },
+                  { name: "data", value: "json", desc: "返回数据集", must: false }
+                ],
+                demo: {
+                    "UserID": 110101000,
+                    "Version": "V1"
+                }
+            }
+        ];
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+                if (item.hover) { loaddata(li); li.addClass("active"); }
+            });
+            $("#apilist li").click(function () {
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                loaddata(this);
+            }).mouseenter(function () { $(this).addClass("over"); })
+                .mouseout(function () { $(this).removeClass("over"); });
+        });
+        function loaddata(args) {
+            var html = [];
+            var item = $(args).data("data");
+            html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+            html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+            html.push('<li><strong>支持格式</strong></li><li class="desc">' + item.format + '</li>');
+            html.push('<li><strong>HTTP请求方式</strong></li><li class="desc">' + item.method + '</li>');
+            html.push('<li><strong style="color: red;">注意事项</strong></li><li class="desc">' + item.remark + '</li>');
+            html.push('<li><strong>请求参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            var params = [], explain = [];
+            function addparam(p) {
+                if (p.value == "json") {
+                    params.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            //if (item.name.indexOf("登录") < 0) {
+            $.each(mustparams, function (i, p) {
+                addparam(p);
+            });
+            //}
+            $.each(item.params, function (i, p) {
+                addparam(p);
+            });
+            function addexplain(p) {
+                if (p.value == "json") {
+                    explain.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    explain.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            $.each(item.outexplain, function (i, p) {
+                addexplain(p);
+            });
+            html.push('<li><strong>请求参数说明</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+            html.push('<li><strong>返回结果</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            html.push('<li><strong>返回参数说明</strong></li><li class="desc"><ul class="params">' + explain.join("") + '</ul></li>');
+
+            $("#apicontent").html(html.join(""));
+        }
+    </script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <th colspan="2">
+                <a style="font-weight: bold; font-size: 16px;" href="http://api.fxtcn.com/wdc/data.htm">同步学API接口文档说明 V1.0</a>
+            </th>
+        </tr>
+        <tr>
+            <td valign="top" class="left">
+                <ul id="apilist"></ul>
+            </td>
+            <td valign="top">
+                <ul class="index">
+                    <li>
+                        <!--本说明用于协助和指导相关开发人员熟悉和使用期末测评卷Api。点击左侧功能名称查看详细说明。<br />-->
+                        <span style="color: red;">本API文档兼容浏览器：IE9、火狐、谷歌</span>
+                    </li>
+                </ul>
+                <ul id="apicontent"></ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

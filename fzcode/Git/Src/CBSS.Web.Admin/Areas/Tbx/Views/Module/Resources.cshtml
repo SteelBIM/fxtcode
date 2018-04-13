@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Web
+@using CBSS.Tbx.Contract.DataModel
+
+@model  Module
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">模块名称：</label>
+                <div class="controls">
+                    <span class="help-inline" id="spanMarketBookName">@Model.ModuleName</span>
+                </div>
+            </div>
+            <div class="control-group" id="SourceAddressDiv">
+                <label class="control-label"><span class="required">*</span>资源 ：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.SourceAddress, new { @class = "m-wrap small" })
+                    <input type="file" id="SourceAddress" name="SourceAddress" style="border:0px solid red; width:75px;" onchange="$('#SourceAddress').val($(this).val())" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

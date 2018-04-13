@@ -1,0 +1,69 @@
+/* CSS reset */
+html{font-size:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;}
+a{ text-decoration:none;}
+body{font-size:14px;}
+input,textarea{outline:none;}
+*{font-family: "微软雅黑";}
+
+.wrap{background: url(../images/bodyBack.png) no-repeat center -100px;background-size:cover;}
+.header{background: url(../images/titleBack.png) repeat-x center -21px;height:120px;width:100%;text-align: center;}
+.header i.titleBefore{display: inline-block;width:104px;border-top:1px #ffffff solid;vertical-align: middle;height:50px;}
+.header i.titleAfter{display: inline-block;width:104px;border-bottom:1px #ffffff solid;vertical-align: middle;height:50px;}
+.header label{display:inline-block;font-size:45px;color:#ffffff;vertical-align: middle;line-height: 110px;font-weight: 900;margin:0 10px;-webkit-text-stroke: 2px #237ca3;}
+.mainBody{width:1200px;margin:30px auto 10px auto;background: url(../images/mainBack.png) no-repeat center top;background-size: contain;height:797px;position:relative;}
+.mainBody .catalog{background: url(../images/bt_fanhui.png) no-repeat center;background-size:contain;display: inline-block;position: absolute;width:23%;height:50px;top:-3.1%;cursor: pointer;}
+.mainBody .leftNav{position:absolute;top:40px;width:23%;height:500px;}
+.mainBody .leftNav li{height:24%;width:100%;text-align:center;}
+.mainBody .leftNav li a{display: inline-block;width:81%;height:56.5%;cursor: pointer;}
+.mainBody .leftNav li span{display: inline-block;width:58.53%;height:14.93%;margin:0 auto;background: url(../images/starBack.png) no-repeat center top;background-size: contain;text-align: left;;}
+.mainBody .leftNav li span i{display:inline-block;background:url(../images/xingxing1.png) no-repeat center top ;background-size:contain;height:100%;width:16.57%;}
+.mainBody .leftNav li span i+i{margin-left:4.2875%;}
+.mainBody .leftNav li.li1{margin-top:14.8%;}
+.mainBody .leftNav li.li1 a{background:url(../images/gddc.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li1.on a{background:url(../images/gddcOn.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li2 a{background:url(../images/gdjz.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li2.on a{background:url(../images/gdjzOn.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li3 a{background:url(../images/gdkw.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li3.on a{background:url(../images/gdkwOn.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li4 a{background:url(../images/gdyy.png) no-repeat center  top;background-size: contain;}
+.mainBody .leftNav li.li4.on a{background:url(../images/gdyyOn.png) no-repeat center  top;background-size: contain;}
+.mainBody .rightCont{margin-left:25%;height:100%;}
+.mainBody .rightCont h3{height:9.9121%;color:#ffffff;font:1.5rem/2.5 "微软雅黑";text-align: center;font-weight: 900;-webkit-text-stroke: 1.5px #a5630d;}
+.mainBody .rightCont .content{width:54.1068%;margin:0 auto;height:89.084%;text-align: center;}
+.mainBody .rightCont .content .tr{text-align: right;}
+.mainBody .rightCont .content .numbers{display:inline-block;width:70px;height:30px;font-size:16px;color:#ffffff;text-align:center;background-color: #ff9146;colot:#ffffff;-webkit-border-radius :10px;-moz-border-radius: 10px;border-radius: 10px;margin-right:-20px;margin-top:20px;}
+.mainBody .rightCont .content .numbers label{font-size :20px;vertical-align:middle;color:#ffffff;}
+.mainBody .rightCont .content .imgBox{width:100%;height:49.15493%;}
+.mainBody .rightCont .content .imgBox img{height:100%;width:100%;}
+.mainBody .rightCont .content .sentence{display: inline-block;border:1px #a5e2e3 solid;padding:3px 10px;color:#000;font-weight: bold;font-size: 22px;background-color: #ffffff;-webkit-border-radius :10px;-moz-border-radius: 10px;border-radius: 10px;margin-top:3.0986%;}
+.mainBody .rightCont .content .numbers label{font-size :20px;vertical-align:middle;color:#ffffff;display: inline-block;height:100%;}
+.mainBody .rightCont .content .score{text-align:left;display:inline-block;width:17.0778%;height:7.5%;background:url(../images/fishBack.png) no-repeat center;background-size:contain;}
+.mainBody .rightCont .content .score i{display: inline-block;width:16.595745%;height:100%;background: url(../images/fish.png) no-repeat center;background-size: contain;}
+.mainBody .rightCont .content .score i+i{margin-left:4.255319%;}
+.mainBody .rightCont .content .playBox{text-align: center;height:12.547051%;position: relative;margin-bottom: 10px;}
+.mainBody .rightCont .content .playBox .record{display:inline-block;width:18.9753%;height:100%;background: url(../images/record.png) no-repeat center;background-size: contain;}
+.mainBody .rightCont .content .playBox .record.start{background: url(../images/record.gif) no-repeat center;background-size: contain;}
+.mainBody .rightCont .content .playBox .play{position:absolute;display:inline-block;width:8.9184%;height:100%;background: url(../images/bt_play.png) no-repeat center;background-size:contain;right:32%;}
+.mainBody .rightCont .content .playBox .play.start{background: url(../images/stop.png) no-repeat center;background-size:contain;}
+.mainBody .rightCont .content .recording i{width:10px;height:10px;margin-right:5px;display: inline-block;background-color: #ff5a52;-webkit-border-radius :5px;-moz-border-radius: 5px;border-radius: 5px;vertical-align: middle;}
+.mainBody .rightCont .content .recording label{vertical-align: middle;color:#ff5a52;font-size:18px;}
+.mainBody .rightCont .pageBtn{width:75%;height:5%;position: absolute;bottom:7%;}
+.mainBody .rightCont .pageBtn .prev{position: absolute;left:10.4723%;width:6.98152%;height:100%;background: url(../images/prev.png) no-repeat center;background-size: contain;}
+.mainBody .rightCont .pageBtn .prev:active{width:7.2%;height:105%;}
+.mainBody .rightCont .pageBtn .next{position: absolute;left:80.5277%;width:6.98152%;height:100%;background: url(../images/next.png) no-repeat center;background-size: contain;}
+.mainBody .rightCont .pageBtn .next:active{width:7.2%;height:105%;}
+.mainBody .rightCont .dudu{width:18.4805%;height:22.5847%;position: absolute;right:4%;bottom:12%;}
+.mainBody .rightCont .dudu.one{background:url(../images/dudu/dudu1.gif) no-repeat center;background-size: contain;}
+.mainBody .rightCont .dudu.two{background:url(../images/dudu/dudu2.gif) no-repeat center;background-size: contain;}
+.mainBody .rightCont .dudu.three{background:url(../images/dudu/dudu3.gif) no-repeat center;background-size: contain;}
+.mainBody .rightCont .dudu.four{background:url(../images/dudu/dudu4.gif) no-repeat center;background-size: contain;}
+.mainBody .rightCont .dudu.five{background:url(../images/dudu/dudu5.gif) no-repeat center;background-size: contain;}

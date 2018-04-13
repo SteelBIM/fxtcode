@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div class="col-lg-12">
+        <h4 class="page-header" id="myModalLabel">新增角色</h4>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="modal-body" style=" font-weight:500;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span style="float:left; line-height:35px; margin-left:10px; width:100px; text-align:right;">角色名称：</span>
+                        
+                        <div class="col-lg-8"><input style="width:300px;" class="form-control" id="groupname" name="groupname" /></div>
+                        <div style="clear:both; height:20px;"></div>
+                       
+                        <span style="float:left; line-height:35px; margin-left:10px; width:100px; text-align:right;">操作权限设置：</span>
+                        
+                        <div class="col-lg-8">
+                            <div id="OperationAuthority"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" id="submit" value="提交" class="btn btn-primary" />
+                    <input type="button" onclick="history.back();" class="btn btn-default" value=" 返回上一层" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/AuthorityMgr_Add.js"></script>
+}

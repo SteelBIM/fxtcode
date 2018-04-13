@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/js/JsBridge.js?v=1.1"></script>
+<script src="~/Scripts/js/Spokenmodule.js?v=1.1"></script>
+<link href="~/Content/css/Spokenmodule.css?v=1.1" rel="stylesheet" />
+<link href="~/Content/css/owl.carousel.css" rel="stylesheet" />
+<link href="~/Content/css/owl.theme.css" rel="stylesheet" />
+<script src="~/Scripts/js/owl.carousel.js"></script>
+<!-- Google Tag Manager -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3MJ5KG');
+</script>
+<!-- End Google Tag Manager -->
+<div class="langcourses">
+    <div class="header">
+        <a class="back" href="/Index/Index?UserID=@Request["UserID"]&CourseType=@Request["CourseType"]&local=@Request["local"]"><img src="../images/back.png" alt="" /></a>
+        <h2>外教直播</h2>
+    </div>
+    <div class="main">
+        <img style="width:100%;" src="~/images/bannerIndex.png" />
+    </div>
+</div>
+<div style="display:none;">
+    <script src="https://s22.cnzz.com/z_stat.php?id=1262360076&web_id=1262360076" language="JavaScript"></script>
+</div>
+<script type="text/javascript">
+    function HrefClick() {
+        window.location.href = "/Index/Index?UserID=@Request["UserID"]&CourseType=@Request["CourseType"]";
+    }
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MJ5KG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+

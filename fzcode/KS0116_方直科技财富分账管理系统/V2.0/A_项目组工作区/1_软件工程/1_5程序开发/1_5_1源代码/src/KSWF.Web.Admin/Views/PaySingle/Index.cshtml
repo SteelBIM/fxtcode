@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "PaySingle_Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+@section mainContent{
+    <div style="margin:15px 0;">
+        <ul class="nav nav-pills">
+        </ul>
+        <input type="hidden" id="pannelType" />
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="col-lg-12 tab-pane fade in active" id="employee">
+                        <span style="float:left; line-height:55px;">生成日期：</span>
+                        <div class="col-sm-3" style="margin-top:10px; width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px; width:185px;" id="employeehidstartdate" name="employeehidstartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'employeehidenddate\')}', readOnly: true })" />
+                            </div>
+                        </div>
+                        <span style="float:left; line-height:55px;">至</span>
+                        <div class="col-sm-3" style="margin-top:10px;width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px;width:185px;" id="employeehidenddate" name="employeehidenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'employeehidstartdate\')}', readOnly: true })" />
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="margin-top:10px;" id="employeeExport">
+                            <button id="employeesearchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                        </div>
+                        <div id="employeeExport1">
+
+                        </div>
+                        <div class="col-lg-10" style="margin-left:-15px;">
+                            <div>结算提成总金额：<label id="employeeTotalBonus"></label>元 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </div>
+                        <table id="tb_employee"></table>
+                    </div>
+                    <div class="tab-pane fade" id="department">
+                        <span style="float:left; line-height:55px;">生成日期：</span>
+                        <div class="col-sm-3" style="margin-top:10px;width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px; width:185px;" id="departmenthidstartdate" name="departmenthidstartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'departmenthidenddate\')}', readOnly: true })" />
+
+                                @*<input type="hidden" id="departmenthidstartdate" value="" />
+                                <div class='input-group date' id='departmentdatetimepicker1'>
+                                    <input type='text' class="form-control" placeholder="开始日期" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>*@
+                            </div>
+                        </div>
+                        <span style="float:left; line-height:55px;">至</span>
+                        <div class="col-sm-3" style="margin-top:10px;width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px; width:185px;" id="departmenthidenddate" name="departmenthidenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'departmenthidstartdate\')}', readOnly: true })" />
+
+                                @*<input type="hidden" id="departmenthidenddate" value="" />
+                                <div class='input-group date ' id='departmentdatetimepicker2'>
+                                    <input type='text' class="form-control" placeholder="结束日期" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="margin-top:10px;" id="deptExport">
+                            <button id="departmentsearchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                            @*<button id="departmentexportbtn" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+            </button>*@
+                        </div>
+                        <div  id="deptExport1">
+
+                        </div>
+                        <div class="col-lg-10" style="margin-left:-15px;">
+                            <div>结算提成总金额：<label id="departmentTotalBonus"></label>元 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </div>
+                        <table id="tb_department"></table>
+                    </div>
+                    <div class="tab-pane fade" id="agent">
+                        <span style="float:left; line-height:55px;">生成日期：</span>
+                        <div class="col-sm-3" style="margin-top:10px;width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px; width:185px;" id="agenthidstartdate" name="agenthidstartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'agenthidenddate\')}', readOnly: true })" />
+
+                                @*<input type="hidden" id="agenthidstartdate" value="" />
+                                <div class='input-group date' id='agentdatetimepicker1'>
+                                    <input type='text' class="form-control" placeholder="开始日期" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>*@
+                            </div>
+                        </div>
+                        <span style="float:left; line-height:55px;">至</span>
+                        <div class="col-sm-3" style="margin-top:10px;width:auto">
+                            <div class="form-group">
+                                <input type="text" class="form-control" style="margin-left: 0px; width:185px;" id="agenthidenddate" name="agenthidenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'agenthidstartdate\')}', readOnly: true })" />
+                                @*<input type="hidden" id="agenthidenddate" value="" />
+                                <div class='input-group date ' id='agentdatetimepicker2'>
+                                    <input type='text' class="form-control" placeholder="结束日期" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>*@
+
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="margin-top:10px;" id="agentExport">
+                            <button id="agentsearchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                            @*<button id="agentexportbtn" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+            </button>*@
+                        </div>
+                        <div id="agentExport1">
+
+                        </div>
+                        <div class="col-lg-10" style="margin-left:-15px;">
+                            <div>结算提成总金额：<label id="agentTotalBonus"></label>元 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </div>
+                        <table id="tb_agent"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/Scripts/pages/PaySingle.js"></script>
+}

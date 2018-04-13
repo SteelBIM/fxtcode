@@ -1,0 +1,153 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>新华一城书集后台管理系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- MetisMenu CSS -->
+    <link href="~/Template/vendor/metisMenu/metisMenu.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/Template/dist/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href="~/Template/vendor/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="~/Template/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @RenderSection("cssLink")
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">新华一城书集后台管理系统</a>
+            </div>
+            @{
+                var masterinfo = CourseActivate.Core.Utility.JsonHelper.JsonDeserialize<CourseActivate.Account.Constract.Models.com_master>(CourseActivate.Core.Utility.CookieHelper.GetCookie("LoginInfo"));
+                var modulelist = CourseActivate.Core.Utility.JsonHelper.JSONStringToList<CourseActivate.Account.Constract.VW.vw_action>(CourseActivate.Core.Utility.CookieHelper.GetCookie("ActionInfo"));
+                var mastername = CourseActivate.Core.Utility.CookieHelper.GetCookie("Mastername"); ;
+                if (mastername == null)
+                {
+                    mastername = "";
+                }                
+                List<CourseActivate.Account.Constract.VW.vw_action> ParentList = new List<CourseActivate.Account.Constract.VW.vw_action>();
+                List<CourseActivate.Account.Constract.VW.vw_action> list = new List<CourseActivate.Account.Constract.VW.vw_action>();
+            }
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span style="color:#ffffff;">
+                        欢迎您：
+                        <a style=" font-size:14px; text-decoration:none; " href="/AccountInfo/Index"> @mastername</a>
+                    </span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/AccountInfo/Index"><i class="fa fa-user fa-fw"></i> 个人资料</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/Login/Index"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        @{
+                            if (modulelist != null && modulelist.Count > 0)
+                            {
+                                foreach (var item in modulelist)
+                                {
+                                    if (ParentList.Count == 0)
+                                    {
+                                        ParentList.Add(item);
+                                    }
+                                    else if (@item.parentcolumid == 0)
+                                    {
+                                        if (!ParentList.Exists(p => (p.parentcolumid == @item.parentcolumid && p.columnid == @item.columnid)))
+                                        {
+                                            ParentList.Add(item);
+                                        }
+                                    }
+                                    else if (!ParentList.Exists(p => p.parentcolumid == @item.parentcolumid))
+                                    {
+                                        ParentList.Add(item);
+                                    }
+                                    if (list.Count == 0 || !list.Exists(p => p.columnid == @item.columnid))
+                                    {
+                                        list.Add(item);
+                                    }
+                                }
+                                foreach (var item in ParentList)
+                                {
+                                    if (@item.parentcolumid == 0)
+                                    {
+                                        <li>
+                                            <a href="/@item.actionurl/Index"><img style="width: 20px; height: 20px;" src="@item.columnico" /> @item.columnname</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="javascript:;"><img style="width: 20px; height: 20px; " src="@item.columnico" />  @item.parentcolumname<span class="fa arrow"></span></a>
+                                            <ul class="nav nav-second-level">
+                                                @for (int i = 0; i < list.Count; i++)
+                                                {
+                                                    if (@item.parentcolumid == list[i].parentcolumid)
+                                                    {
+                                                        <li>
+                                                            <a href="/@list[i].actionurl/Index">  @list[i].columnname</a>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            @RenderSection("mainContent")
+        </div>
+    </div>
+    <script src="../Template/vendor/jquery/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../Template/vendor/bootstrap/js/bootstrap.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../Template/vendor/metisMenu/metisMenu.js"></script>
+    @RenderSection("jsSrc")
+    <!-- Custom Theme JavaScript -->
+    <script src="../Template/dist/js/sb-admin-2.js"></script>
+
+
+</body>
+</html>

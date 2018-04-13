@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09433796-0891-4005-AC0C-5B3752B45E7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.ExamPaper.BLL</RootNamespace>
+    <AssemblyName>Kingsun.ExamPaper.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\create\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kingsun.DB">
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingsun.SynchronousStudy.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Kingsun.SynchronousStudy.Common\bin\Debug\Kingsun.SynchronousStudy.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlankAnswerBLL.cs" />
+    <Compile Include="BookBLL.cs" />
+    <Compile Include="CatalogBLL.cs" />
+    <Compile Include="EditionBLL.cs" />
+    <Compile Include="FSServiceBLL.cs" />
+    <Compile Include="FZService\PracticeEveryDayBLL.cs" />
+    <Compile Include="ImportTool\CacheHelper.cs" />
+    <Compile Include="ImportTool\CatalogQuestion.cs" />
+    <Compile Include="ImportTool\ImportQuestion.cs" />
+    <Compile Include="ImportTool\ListItem.cs" />
+    <Compile Include="ImportTool\UploadFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionBLL.cs" />
+    <Compile Include="ResourceBLL.cs" />
+    <Compile Include="SelectItemBLL.cs" />
+    <Compile Include="StuAnswerBLL.cs" />
+    <Compile Include="StuCatalogBLL.cs" />
+    <Compile Include="UserOpenBLL.cs" />
+    <Compile Include="Web References\PracticeEveryDay\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kingsun.ExamPaper.Common\Kingsun.ExamPaper.Common.csproj">
+      <Project>{66bce65b-373f-4e62-8a18-811e4eaf3ef7}</Project>
+      <Name>Kingsun.ExamPaper.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.ExamPaper.DAL\Kingsun.ExamPaper.DAL.csproj">
+      <Project>{14d39972-0466-4e6c-869c-8a22f59ea4b5}</Project>
+      <Name>Kingsun.ExamPaper.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.ExamPaper.Model\Kingsun.ExamPaper.Model.csproj">
+      <Project>{ed1ee774-8043-43bd-a2f9-002b54693b07}</Project>
+      <Name>Kingsun.ExamPaper.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.IBS.BLL\Kingsun.IBS.BLL.csproj">
+      <Project>{989bba06-1be9-43c2-8784-d89be92552c5}</Project>
+      <Name>Kingsun.IBS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.IBS.IBLL\Kingsun.IBS.IBLL.csproj">
+      <Project>{57dc56dd-f3f8-4cae-99e0-c20b31108c8c}</Project>
+      <Name>Kingsun.IBS.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.IBS.Model\Kingsun.IBS.Model.csproj">
+      <Project>{c3707e30-f728-45bd-8a04-9dc23fa59f88}</Project>
+      <Name>Kingsun.IBS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PracticeEveryDay\PracticeEveryDay.wsdl" />
+    <None Include="Web References\PracticeEveryDay\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://183.47.42.221:8001/Service/PracticeEveryDay.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PracticeEveryDay\</RelPath>
+      <UpdateFromURL>http://183.47.42.221:8001/Service/PracticeEveryDay.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Kingsun_ExamPaper_BLL_PracticeEveryDay_PracticeEveryDay</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\PracticeEveryDay\PracticeEveryDay.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,128 @@
+﻿ 
+@using CBSS.Account.Contract
+@model Sys_Role
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+
+@section PageSpecificJavascriptIncludes{
+    <script src="~/Assets/pages/role.js"></script>
+    <script type="text/javascript">
+        var groupid = 0;
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Account/Role/GetAllAction",
+                async: true,
+                dataType: "json",
+                success: function (response) {
+                    if (response != null && response != "") {
+                        var actionhtml = "";
+                        var jsondata = eval(response);
+                        var parentlist = "";
+                        $(eval(response)).each(function (i, item) {
+                            if (parentlist != "") {
+                                var parentjsonlist = StrJson(parentlist);
+                                if (item.parentcolumid == 0) {
+                                    if (!ExistsColumid(parentjsonlist, item.columnid)) {
+                                        parentlist += "," + JSON.stringify(item);
+                                    }
+                                } else {
+                                    if (!ExistsParentColumid(parentjsonlist, item.parentcolumid)) {
+                                        parentlist += "," + JSON.stringify(item);
+                                    }
+                                }
+                            } else {
+                                parentlist += JSON.stringify(item);
+                            }
+                        });
+                        $(StrJson(parentlist)).each(function (i, item) {
+                            if (item.parentcolumid == 0) {
+                                actionhtml += "<div style=\"clear:both; height:25px;\" class=\"columaction\">";
+                                $(eval(response)).each(function (i, item2) {
+                                    if (item.actionurl == item2.actionurl) {
+                                        actionhtml += SingleActionHtml(item.actionurl, item2.actionname, item2.actionstr);
+                                    }
+                                });
+                                actionhtml += "</div>";
+                            } else {
+                                actionhtml += "<div style=\"clear:both; margin-top:10px; margin-bottom:10px; float:left; font-size:15px;font-weight:500;color:#23527c;  width:120px;\">" + item.parentcolumname + "</div>";// + ActionHtml("parentcolumname" + i, item.parentcolumname);
+                                actionhtml += "<div style=\"clear:both; \" >";
+                                var actionurl = "";
+                                $(eval(response)).each(function (a, item2) {
+                                    if (item.parentcolumid == item2.parentcolumid) {
+                                        if (actionurl.indexOf(item2.actionurl) == -1) {
+                                            actionhtml += "<div style=\"clear:both; height:25px;\" class=\"columaction\">";
+                                            $(eval(response)).each(function (i, item3) {
+                                                if (item2.actionurl == item3.actionurl) {
+                                                    actionhtml += SingleActionHtml(item2.actionurl, item3.actionname, item3.actionstr);
+                                                }
+                                            });
+                                            actionhtml += "</div>";
+                                            actionurl += item2.actionurl + ",";
+                                        }
+                                    }
+                                });
+                                actionhtml += "</div>";
+                            }
+                        });
+                        $("#OperationAuthority").html(actionhtml);
+
+
+                        var RoleId = $("#RoleId").val();
+                        if (RoleId != null && RoleId != "" && RoleId != undefined && RoleId != "undefined" && RoleId > 0) {
+                            var operationvalue = $("#BusinessPermissionString").val();
+                            $("#OperationAuthority input:checkbox").each(function (i, item) {
+                                var itemvalue = $(item).val();
+                                if (itemvalue.indexOf("_View") != -1) {
+                                    $("." + $(item).attr("go")).show();
+                                }
+                                if (operationvalue.indexOf(itemvalue) != -1) {
+                                    $(item).prop('checked', true);
+                                }
+                            });
+                        }
+                    } else {
+                        return;
+                    }
+                }
+            });
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <input type="hidden" value="@ViewBag.ReloId" id="RoleId" />
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>角色名：</label>
+                <div class="controls">
+
+                    @Html.TextBoxFor(m => m.Name, string.Empty, new { @class = "m-wrap small", placeholder = "角色名", data_val_required = "角色名不能为空", data_val = "true" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Name)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">描述：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Info, new { @class = "m-wrap small" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Info)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">权限：</label>
+                <div style="width:680px;height:320px; float:right; ">
+                    <div style=" overflow:auto; width:680px;height:320px;" id="OperationAuthority"></div>
+                </div>
+                @Html.HiddenFor(m => m.BusinessPermissionString, new { @class = "m-wrap small" })
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+

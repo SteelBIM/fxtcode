@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section MainContent{
+<div class="portlet-body form-horizontal form-bordered form-row-stripped">
+    <div class="row-fluid">
+        <div class="control-group">
+            <label class="control-label"><span class="required">*</span>课本排序号：</label>
+            <div class="controls">
+                <input type="text" id="BookSort" name="BookSort" value="@ViewData["BookSort"]" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><span class="required">*</span>分类排序号：</label>
+            <div class="controls">
+                <input type="text" id="ClassifySort" name="ClassifySort" value="@ViewData["ClassifySort"]" />
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="MarketBookID" name="MarketBookID" value="@ViewData["MarketBookID"]" />
+    <input type="hidden" id="MarketClassifyID" name="MarketClassifyID" value="@ViewData["MarketClassifyID"]" />
+    <input type="hidden" id="AppID" name="AppID" value="@ViewData["AppID"]" />
+</div>
+}

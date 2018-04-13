@@ -1,0 +1,32 @@
+/* CSS Document */
+.header{width:100%;padding-top:30px;}
+img{width:100%;}
+img.im1{width:80%;}
+b{}
+p{text-align:center;font-size:14px;}
+.content{width:92%;margin:0 4%;}
+.content p.p1{width:94%;margin:0 3%;}
+.content p.p2{text-decoration:underline;margin-top:8px;}
+.content p.p3{text-align:left;text-indent:20px;margin-top:12px;color:#2f2f2f;}
+img.im2{width:60%;margin:10px 20%;}
+.content .p4{text-align:left;}
+.content .p4 div{width:94%;margin-left:3%;margin-top:10px;}
+.content .p4 div p{width:75%;display:inline-block;text-align:left;}
+.content .p4 div b{font-size:14px;font-weight:normal;width:25%;display:inline-block;vertical-align:top;}
+.content .p4 p.textT{font-weight:bold;color:#f6810e;margin-top:40px;width:94%;margin-left:3%;text-align:left;}
+.content b.b1{font-size:14px;text-align:center;margin-top:10px;display:block;}
+.content .p5{margin-top:10px;font-weight:bold;}
+.content .p6{text-align:center;font-size:14px;font-weight:bold;margin:10px 0;}
+.content .p7{color:#f83d5c;margin:15px 0;}
+.content .im4{width:26%;margin: 0 37%;}
+.content span{width:30%;display:inline-block;padding:0 5%;margin-top:20px;}
+.content span img{width:100%;}
+.content span.sp1{float:left;}
+.content span.sp2{float:right;}
+.content span i{font-style:normal;font-size:14px;}
+.content .im5{width:40%;float:right;margin-top:20px;}
+.clear{clear:both;}
+.placeholder{height:30px;width:100%;}
+.head{height:40px;width:97%;padding-left:3%;}
+.head a.return{background:url(../images/return5.png) no-repeat center center;background-size:contain;float:left;width:10%;height:100%;}
+.head span{color:#7c96af;line-height:250%;height:100%;margin-left:10px;font-size:16px;}

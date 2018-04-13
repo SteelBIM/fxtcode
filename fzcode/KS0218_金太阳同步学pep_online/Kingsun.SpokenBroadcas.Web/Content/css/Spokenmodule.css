@@ -1,0 +1,166 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{-webkit-tap-highlight-color: rgba(0,0,0,0);}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;outline:none;-moz-outline-style:none;}
+
+body{ position:relative;}
+
+/*头部样式*/
+.header{ height:50px; background-color:#1C9EEA; position:fixed; width:100%; top:0; left:0; z-index:1000;}
+.header .back img{ width:30px; margin:10px 0 0 10px; float:left;}
+.header h2{ padding: 0 40px; text-align:center; line-height:50px; color:#fff; font-size:18px;}
+.header .fenxiang{ float:right; color:#fff; line-height:50px; margin-right:5px; cursor:pointer;}
+.header .fenxiang img {width:30px;margin:10px 10px 0 0;}
+
+/*补全信息*/
+.cominformation{width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute;}
+.cominformation .main{ padding:0 5% 0; margin-top:65px;}
+.cominformation .main h3{ font-size:16px; color:#1C9EEA; margin:15px 0 15px 10px; font-weight:400;}
+.cominformation .main h3 span{ font-size:14px; color:#FF8181; float:right; margin-right:30px; margin-top:6px; display:none;}
+.cominformation .main h3 span.error{ display:block;}
+.cominformation .main .nameinpt{ border:1px solid #1C9EEA; background-color:#F1FAFF; padding:5px 10px 5px 30px; border-radius:6px; height:30px; line-height:30px;}
+.cominformation .main .phoneinpt{ border:1px solid #1C9EEA; background-color:#F1FAFF; padding:5px 10px 5px 30px; border-radius:6px; height:30px; line-height:30px;}
+.cominformation .main  input{ border:0; background-color:#F1FAFF; height:30px; outline:none; width:70%; font-size:18px; color:#1C9EEA; float:left;}
+.cominformation .main .nameinpt span,.cominformation .main .phoneinpt span{width:16px;float:right; display:none;}
+.cominformation .main .nameinpt span.good,.cominformation .main .phoneinpt span.good{display:block;}
+.cominformation .main .nameinpt span img,.cominformation .main .phoneinpt span img{width:18px; }
+.cominformation .main a{ height:43px; background-color:#FFB200; color:#fff; text-align:center; border-radius:6px; display:block; margin-top:40px; line-height:43px; font-size:18px;}
+.cominformation .main p{ text-align:center; color:#979595; margin-top:50px; font-size:14px;}
+
+/*口语课程*/
+.langcourses{background-color:#F1F1F1;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute;}
+.langcourses .main{  margin-top:50px;}
+.langcourses .main .chose1{display:block;}
+.langcourses .main .chose2{ display:none;}
+.langcourses .main ul{background-color:#fff; overflow:hidden;}
+.langcourses .main ul li{ float:left;  margin:0 5%; width:40%; text-align:center; height:40px; line-height:40px;}
+.langcourses .main ul li.on{ border-bottom:2px solid #2FA2E7;}
+.langcourses .main .course1{ margin:20px 5% 15px; border-radius:10px; background-color:#fff;  clear:both; overflow:hidden; display:block;}
+.langcourses .main .course1 div{ padding:10px 3%;}
+.langcourses .main .course1 img{ height:60%; width:100%;}
+.langcourses .main .course1 h2{ font-size:16px; color:#5D5D5D; margin-bottom:10px;}
+.langcourses .main .course1 h2 span{ color:#fff; background-color:#F88C6A; padding:3px 10px; font-size:12px; border-radius:5px; font-weight:400; margin-left:25px;}
+.langcourses .main .course1 h2 .finished{color:#fff; background-color:#DCDCDC; padding:3px 10px; font-size:12px; border-radius:5px; font-weight:400; margin-left:25px;}
+.langcourses .main .course1 p{ color:#777575; font-size:14px;}
+.langcourses .main .course1 p em{ font-style:normal;}
+.langcourses .main .course1 p .plan{ margin-left:10px;}
+.langcourses .main .course1 p .stud{margin-left:10px; font-size:12px;}
+
+/*电影课*/
+.movieclass{width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute;}
+.movieclass .main{  margin-top:50px; position:relative;}
+.movieclass .main .introduction{padding:15px 5%;  width:90%; background:url(../../images/bag.png) no-repeat; background-size:100%;}
+.movieclass .main .bag{ width:100%;}
+.movieclass .main .introduction_nr{ border:1px solid #fff; background:rgba(0, 0, 0, 0.3)!important; filter:Alpha(opacity=60); background:#fff; border-radius:5px; padding:5px 5%; width:90%;}
+.movieclass .main .introduction_nr h2{ text-align:center; color:#fff; margin:2% 0 2%;}
+.movieclass .main .introduction_nr ul{ overflow:hidden;}
+.movieclass .main .introduction_nr ul li{ float:left; width:25%;  padding:0 4.1%; color:#fff; background:url(../../images/oval.png)  0 7px no-repeat; background-size:7%;}
+.movieclass .main .introduction_nr .jianjie{ color:#fff; margin-top:3%; clear:both; overflow:hidden;}
+.movieclass .main .introduction_nr .jianjie span{ float:left;  font-size:12px; line-height:20px;} 
+.movieclass .main .introduction_nr .jianjie p{ height:38px; float:left; width:85%; font-size:12px;line-height:20px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
+.movieclass .main .room{ margin:20px 5% 10px; overflow:hidden;}
+.movieclass .main .room img{ width:40%; float:left; margin-right:4%;}
+.movieclass .main .room .room_nr{ float:left; line-height:30px; margin-top:2%; width:56%;}
+.movieclass .main .room .room_nr h3{ font-size:16px; color:#5D5D5D;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.movieclass .main .room .room_nr .cost{ color:#ED5F5F; font-size:18px;}
+.movieclass .main .room .room_nr .cost em{ font-size:14px; text-decoration:line-through; color:#C5C3C3; font-style:normal; margin-left:10px;}
+.movieclass .main .room .room_nr .startime{ font-size:14px; color:#777575;}
+.movieclass .main .room .room_nr .order{ font-size:12px; color:#ADACAC;}
+.movieclass .main .room .room_nr .order em{font-style:normal;}
+.movieclass .main .room .room_nr .order span{ float:left;}
+.movieclass .main .room .room_nr .order a{ color:#fff;border-radius:5px; margin-left:30px; width:80px; height:30px; line-height:30px; text-align:center; display:block; float:right;}
+.movieclass .main .room .room_nr .order a.entroom{ background-color:#66D88F;}
+.movieclass .main .room .room_nr .order a.order1{ background-color:#F88C6A;}
+.movieclass .main .room .room_nr .order a.over{ background-color:#DCDCDC;}
+.movieclass .main .room .room_nr .order a.order2{ background-color:#a0c0d4;}
+.movieclass .main .room .room_nr .order a.order3{ background-color:#FB6A6A;}
+/*弹出框*/
+.box{position: fixed;width: 80%;top: 25%;left: 10%;z-index: 10001; background-color:#fff; text-align:center; display:none;}
+.box h2{ color:#fff; font-size:16px; position:absolute; top:0; left:50%; font-weight:600; margin-left:-40px; margin-top:10px;}
+.box img{ width:100%; margin-top:-5%;}
+.box ul{ width:80%; margin-left:10%; margin-top:20px; height:137px; overflow-y:auto;}
+.box ul li{border:1px solid #1C9EEA ; padding:8px 0; margin-bottom:10px; border-radius:5px; position:relative; cursor:pointer;}
+.box ul li span{ position:absolute; right:2%; padding:2px 5px; border-radius:5px; color:#fff; font-size:12px;}
+.box ul li em{ font-style:normal; position:absolute; left:8%; top:10px;  font-size:12px;}
+.box ul li.over{border:1px solid #B5B4B4; color:#B5B4B4;}
+.box ul li.over span{ background-color:#B5B4B4;}
+.box ul li.full{border:1px solid #B5B4B4; color:#B5B4B4;}
+.box ul li.full span{ background-color:#FB7B7B;}
+.box ul li.on{ background-color:#2DADFF; color:#fff;}
+.box ul li.bespoke {border: 1px solid #B5B4B4;color: #B5B4B4;}
+.box ul li.bespoke span{ background-color:#a0c0d4; color:#fff;}
+.box a{ width:80%;background-color:#FFB200; color:#fff; height:48px; line-height:48px; text-align:center; display:block; margin:30px 0 20px 10%; border-radius:5px;}
+.box1{position: fixed;width: 80%;top: 25%;left: 10%;z-index: 10001; background-color:#fff; display:none;}
+.box1 h2{color:#fff; text-align:center; font-size:16px;position:absolute; top:0; left:50%;font-weight:600; margin-left:-32px; margin-top:10px;}
+.box1 img{ width:100%; margin-top:-5%;}
+.box1 p{ width:80%;margin-left:10%; margin-top:20px;}
+.box1 a{ width:80%;background-color:#FFB200; color:#fff; height:48px; line-height:48px; text-align:center; display:block; margin:30px 0 20px 10%; border-radius:5px;}
+ .box_AlreadyAppoint{position: fixed;width: 80%;top: 25%;left: 10%;z-index: 10001; background-color:#fff; display:none;}
+ .box_AlreadyAppoint h2{color:#fff; text-align:center; font-size:16px;position:absolute; top:0; left:50%;font-weight:600; margin-left:-32px; margin-top:10px;}
+ .box_AlreadyAppoint img{ width:100%; margin-top:-5%;}
+ .box_AlreadyAppoint p{ width:80%;margin-left:10%; margin-top:20px;}
+ .box_AlreadyAppoint a{ width:80%;background-color:#FFB200; color:#fff; height:48px; line-height:48px; text-align:center; display:block; margin:30px 0 20px 10%; border-radius:5px;}
+.shadow1{position: fixed;opacity: 0.5;filter: alpha(opacity=50);bottom: 0;left: 0;
+right: 0;top: 0;background: black;z-index: 10000; display:none;}
+
+.box2{position: fixed;width: 80%;top: 20%;left: 10%;z-index: 10001; background-color:#fff; display:none; background:url(../../images/box2bag.png) no-repeat; background-size:100%; border-radius:10px;}
+.box2 h2{color:#5B5656; text-align:center; font-size:18px; margin-top:5%;}
+.box2 p{ text-align:center; color:#777575; font-size:16px;}
+.box2 #spanMsg{ margin-top:50%;}
+.box2 a{width:80%;background-color:#35BBFF; color:#fff; height:48px; line-height:48px; text-align:center; display:block; margin:18% 0 20px 10%; border-radius:5px;}
+@media screen and (max-width:330px){
+.langcourses .main .course1 p{ font-size:12px;}
+.movieclass .main .introduction_nr h2{font-size:16px; margin:3% 0;}
+.movieclass .main .introduction_nr .jianjie p{ line-height:18px; font-size:12px;}
+.movieclass .main .introduction_nr .jianjie{margin-top:3%;}
+.movieclass .main .introduction_nr ul li{ font-size:14px;}
+.movieclass .main .room .room_nr{ line-height:22px;}
+.movieclass .main .room .room_nr h3{ font-size:14px;}
+.movieclass .main .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+    }
+@media screen and (min-width:331px) and (max-width:359px){
+.movieclass .main .introduction_nr h2{ font-size:20px;}
+.movieclass .main .introduction_nr ul li{ font-size:14px;}
+
+.movieclass .main .room .room_nr{ line-height:22px;}
+.movieclass .main .room .room_nr h3{ font-size:14px;}
+.movieclass .main .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+	}
+	@media screen and (min-width:360px) and (max-width:374px){
+
+.movieclass .main .room .room_nr .order a{margin-left:10px;width:60px; font-size:12px; height:25px;line-height:25px;}
+	}
+	@media screen and (min-width:681px)  and (max-width:768px){
+		.box h2{ font-size:30px;margin-left:-75px; margin-top:20px;}
+
+.box ul{ width:80%; margin-left:10%; margin-top:20px; height:210px; overflow:scroll;}
+.box ul li{padding:20px 0;}
+.box ul li span{ position:absolute; right:2%; padding:2px 5px; border-radius:5px; color:#fff; font-size:16px;}
+.box ul li em{ top:20px;  font-size:16px;}
+.box a{ height:60px; line-height:60px;}
+
+.box1 h2{font-size:30px; margin-left:-60px; margin-top:20px;}
+.box1 p{ width:80%;margin-left:10%; margin-top:10%; line-height:30px; font-size:20px;}
+.box1 a{  height:60px; line-height:60px; margin:10% 0 20px 10%; }
+		    .box2 h2{ font-size:30px;}
+			.box2 p{ font-size:28px;}
+			.box2 a{ font-size:28px; height:60px; line-height:60px;}
+            .movieclass .main .introduction_nr h2{ font-size:28px; margin:6% 0;}
+			.movieclass .main .introduction_nr ul li{ font-size:24px;}
+			.movieclass .main .introduction_nr .jianjie{margin-top:6%;}
+			.movieclass .main .introduction_nr .jianjie span{ font-size:22px; line-height:40px;}
+			.movieclass .main .introduction_nr .jianjie p{ height:80px; font-size:22px; margin-bottom:10px; line-height:40px;}
+			
+			.movieclass .main .room{ margin:20px 5% 10px; overflow:hidden;}
+
+.movieclass .main .room .room_nr{ float:left; line-height:50px; margin-top:5%;}
+.movieclass .main .room .room_nr h3{ font-size:28px;}
+.movieclass .main .room .room_nr .cost{font-size:26px;}
+.movieclass .main .room .room_nr .cost em{ font-size:24px;}
+.movieclass .main .room .room_nr .startime{ font-size:22px;}
+.movieclass .main .room .room_nr .order{ font-size:22px;}
+.movieclass .main .room .room_nr .order a{ width:100px; height:50px; line-height:50px;}
+
+    }

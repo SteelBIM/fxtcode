@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Tbx.Contract.ViewModel
+@model  List<v_AppGoodItem>
+<style>
+    .form-horizontal.form-bordered .control-group .controls {
+        padding: 10px;
+        position: relative;
+        border-left: 1px solid #eee;
+        width: 20%;
+        float: left;
+    }
+
+        .form-horizontal.form-bordered .control-group .controls:first-child {
+            margin-left: 5px !important;
+        }
+</style>
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label" style="width:135px;">配置应用商品策略：</label>
+                <div class="controls_nr">
+                    @{
+                        if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="controls" style="margin-left:140px;">
+                                    <input style="float:left;" type="checkbox" value="@item.GoodID" checked="@item.isCheck" id="@item.GoodID" name="ckb" /> <label style="cursor:pointer; float:left; margin-left:5px; margin-top:2px;" for="@item.GoodID"> @item.GoodName</label>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

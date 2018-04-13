@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5C93A51-4CBF-419C-A8B1-290B3F163B5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.Tbx.Contract</RootNamespace>
+    <AssemblyName>CBSS.Tbx.Contract</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataModel\GoodModuleItem.cs" />
+    <Compile Include="DataModel\App.cs" />
+    <Compile Include="DataModel\AppMarketClassify.cs" />
+    <Compile Include="DataModel\AppMarketBook.cs" />
+    <Compile Include="DataModel\AppGoodItem.cs" />
+    <Compile Include="DataModel\AppSkinVersion.cs" />
+    <Compile Include="DataModel\AppVersion.cs" />
+    <Compile Include="DataModel\Article.cs" />
+    <Compile Include="DataModel\GoodPrice.cs" />
+    <Compile Include="DataModel\Good.cs" />
+    <Compile Include="DataModel\MarketBook.cs" />
+    <Compile Include="DataModel\MarketBookCatalog.cs" />
+    <Compile Include="DataModel\MarketBookCatalogModuleItem.cs" />
+    <Compile Include="DataModel\MarketClassify.cs" />
+    <Compile Include="DataModel\Model.cs" />
+    <Compile Include="DataModel\ModelImgLibrary.cs" />
+    <Compile Include="DataModel\AppModuleItem.cs" />
+    <Compile Include="DataModel\Module.cs" />
+    <Compile Include="DataModel\TB_UserHearResources.cs" />
+    <Compile Include="DataModel\TB_UserVideoDetails.cs" />
+    <Compile Include="DataModel\TB_UserVideoDialogue.cs" />
+    <Compile Include="DataModel\UserArticleReadRecord.cs" />
+    <Compile Include="DataModel\TreeView.cs" />
+    <Compile Include="DataModel\UserSpokenPaperRecord.cs" />
+    <Compile Include="DataModel\UserWordDictationRecord.cs" />
+    <Compile Include="DataModel\UserWordReadRecord.cs" />
+    <Compile Include="DataModel\Tb_PhoneCode.cs" />
+    <Compile Include="DataModel\PlatformModule.cs" />
+    <Compile Include="DataModel\TB_ApplicationVersion.cs" />
+    <Compile Include="DataModel\TB_APPManagement.cs" />
+    <Compile Include="DataModel\TeacherInfo.cs" />
+    <Compile Include="DataModel\UserInfo.cs" />
+    <Compile Include="DataModel\TB_UserMember.cs" />
+    <Compile Include="DataModel\Sys_ApiFunction.cs" />
+    <Compile Include="DataModel\Sys_ApiFunctionParam.cs" />
+    <Compile Include="IApiFunctionService.cs" />
+    <Compile Include="DataModel\Channel.cs" />
+    <Compile Include="DataModel\Tag.cs" />
+    <Compile Include="DataModel\Requests.cs" />
+    <Compile Include="IAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\HearResourceInfoModel.cs" />
+    <Compile Include="ViewModel\InterfaceClass.cs" />
+    <Compile Include="ViewModel\Rds_RedisVideoInfo.cs" />
+    <Compile Include="ViewModel\Rds_StudyReport_ModuleTitle.cs" />
+    <Compile Include="ViewModel\Rds_UserTopicSetAnswerModel.cs" />
+    <Compile Include="ViewModel\v_HearResources.cs" />
+    <Compile Include="ViewModel\v_DubbingInfo.cs" />
+    <Compile Include="ViewModel\v_RedisVideoInfo.cs" />
+    <Compile Include="ViewModel\v_SecondModule.cs" />
+    <Compile Include="ViewModel\TreeModel.cs" />
+    <Compile Include="ViewModel\UserTopicSetAnswerModel.cs" />
+    <Compile Include="ViewModel\v_AppBookCatalogModule.cs" />
+    <Compile Include="ViewModel\v_AppBookCatalogModuleItem.cs" />
+    <Compile Include="ViewModel\v_AppGoodItem.cs" />
+    <Compile Include="ViewModel\v_AppMarketBook.cs" />
+    <Compile Include="ViewModel\v_AppMarketClassify.cs" />
+    <Compile Include="ViewModel\v_AppModule.cs" />
+    <Compile Include="ViewModel\EnglishResourceModel.cs" />
+    <Compile Include="ViewModel\Rds_ArticleReadShare.cs" />
+    <Compile Include="ViewModel\Rds_ArticleReadReport.cs" />
+    <Compile Include="ViewModel\KeyAndType.cs" />
+    <Compile Include="ViewModel\v_AppModuleItem.cs" />
+    <Compile Include="ViewModel\V_AppSkinVersion.cs" />
+    <Compile Include="ViewModel\v_Good.cs" />
+    <Compile Include="ViewModel\v_GoodModuleItem.cs" />
+    <Compile Include="ViewModel\v_ListSubModules.cs" />
+    <Compile Include="ViewModel\V_MarketBookCatalog.cs" />
+    <Compile Include="ViewModel\V_MarketBook.cs" />
+    <Compile Include="ViewModel\v_MarketBookModule.cs" />
+    <Compile Include="ViewModel\V_MarketClassify.cs" />
+    <Compile Include="ViewModel\UserInfoModel.cs" />
+    <Compile Include="ViewModel\v_ModuleInfo.cs" />
+    <Compile Include="ViewModel\v_ModuleManage.cs" />
+    <Compile Include="ViewModel\ModuleManage.cs" />
+    <Compile Include="ViewModel\v_AppVersion.cs" />
+    <Compile Include="ViewModel\ApiDocModel.cs" />
+    <Compile Include="ViewModel\SchoolInfo.cs" />
+    <Compile Include="ViewModel\TB_UUMSUser.cs" />
+    <Compile Include="ViewModel\Rds_WordDictationShare.cs" />
+    <Compile Include="ViewModel\Rds_WordDictationReport.cs" />
+    <Compile Include="ViewModel\Rds_WordReadShare.cs" />
+    <Compile Include="ViewModel\Rds_WordReadReport.cs" />
+    <Compile Include="ViewModel\v_VideoDetail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9f519ef8-800f-40cb-9545-9aeadf0f387d}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214d97-f23c-4e16-aa12-ecd824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

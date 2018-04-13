@@ -1,0 +1,490 @@
+﻿@using System.Linq
+@using Kingsun.InterestDubbingGame.Model
+@using Kingsun.SynchronousStudy.Common
+
+@{
+    Layout = null;
+    KingResponse score = new KingResponse();
+    Redis_InterestDubbingGame_UserTotalScore_Rank userScore = new Redis_InterestDubbingGame_UserTotalScore_Rank();
+    if (ViewBag.Score != null)
+    {
+        score = ViewBag.Score as KingResponse;
+        userScore = score.Data as Redis_InterestDubbingGame_UserTotalScore_Rank;
+    }
+    string type = Request.QueryString["type"];//0是成绩报告页，1是荣誉榜进来,2查看成绩页，3微信，4.提交故事朗读或者配音，需要头部和尾部都要显示
+
+    string userId = Request.QueryString["userId"];
+    string voterId = Request.QueryString["voterId"] ?? "";
+    string openIdKey = Request.QueryString["openIdkey"] ?? "";
+    string openId = Request.Cookies[openIdKey] != null ? Request.Cookies[openIdKey].Value : "";
+    bool canVote = userScore != null && !userScore.Voted && userScore.RemainVote > 0 && userId != voterId;
+    #region type各种情况
+    //    type=0 ，表示来源于我的界面中的学习报告，不需要头部和投票按钮，参数只有userId和type  。因为没有头部显示，所以返回操作无意义，不需要提供
+
+    //type=4 ，表示来源于当两个模块的比赛内容全部完成，则会使用这个跳转，参数只有userId和type，应该显示头部和拉票按钮。需要注入jsBridge，提供返回操作,返回操作直接调用app的finish方法
+
+    // type=2 ，表示来源于完成两个比赛后，按钮变成查看成绩，需要头部和拉票按钮，参数只有userId和type 。应该显示头部和拉票按钮，你们自己决定跳转
+
+
+    //type=1，表示来源于学生荣誉版中的点击，参数只有userId和type，voterId，应该显示头部和底部按钮，当voterId==userId时，显示拉票按钮，相反则显示投票按钮，或者已投什么的。需要注入jsBridge，提供返回操作,返回操作直接调用app的finish方法
+
+    //type=3 ，表示来源于来源于微信端，。。。。。。
+    #endregion
+}
+
+<!DOCTYPE html>
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>作品详情</title>
+    <link href="~/DubbingContest/css/common/base.css" rel="stylesheet" type="text/css">
+    <link href="~/DubbingContest/css/work/details.css" rel="stylesheet" type="text/css">
+    <link href="~/DubbingContest/css/work/willesPlay.css" rel="stylesheet" />
+    <script language="javascript" type="text/javascript" src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script language="javascript" type="text/javascript" src="~/Scripts/js/common/common.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Scripts/js/willesPlay.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+    <script>
+
+        function isWeiXin() {//当前是微信浏览器
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        if (isWeiXin()) {
+            console.log("无voterId:" + !'@voterId');
+            $("#fshare").hide();
+            if (!'@openId') {//当前是微信页，且无投票人ID，则进入授权页面
+                window.location.href = '@Html.Raw(ViewBag.Link)';
+            }
+        }
+
+        //分享
+        function ShareUrl() {
+            //  var nowAppID = GetQueryString("AppID");
+            //alert(window.location.href.replace(GetQueryString("UserID"), "0").replace("&local=", "") + "&local=weixin");
+            //调用移动端接口
+
+            if (isWeiXin()) {
+
+            } else {
+                var hostName = window.location.hostname;
+                var port = window.location.port;
+                if (port != null && port != "") {
+                    hostName = hostName + ':' + port;
+                }
+
+                if (hostName.lastIndexOf("http://") == -1) {
+                    hostName = "http://" + hostName;
+                }
+                if (hostName.lastIndexOf(".cn") != -1 || hostName.lastIndexOf(".com") != -1) {
+                    hostName = hostName + "/InterestDubbingGameWeb"
+                }
+                //alert(hostName);
+                //调用移动端接口
+                var data = {
+                    title: encodeURI("2017北京市小学生英语配音比赛"),
+                    content: encodeURI("快来给我投票，帮我晋级！"),
+                    linkUrl: hostName + "/InterestDubbingGameMatch/UserGameMatchDetail_View?type=3&userId=@Html.Raw(userId)",
+                    shares: ["Wechat", "WechatMoments"]
+                };
+                //调用移动端的方法
+                window.WebViewJavascriptBridge.callHandler(
+                    'gotoDefaultShareDialog', data, function (responseData) {
+                    }
+                );
+
+                $("#shadow2").hide();
+                $(".box2").hide();
+            }
+
+
+        }
+
+        //返回
+        function finish() {
+            $("#playVideo").attr("src", "");
+            $("#my_audio").attr("src", "");
+            window.WebViewJavascriptBridge.callHandler(
+            'finish', function (responseData) {
+
+            }
+            );
+        }
+    </script>
+</head>
+
+<body>
+    @if (type == "0" || type == "3")
+    {
+
+    }
+    else if (type == "2")
+    {
+        <header class="head1">
+            <a href="javascript:history.go(-1)" class="back"><img src="~/images/common/back_white.png" alt=""></a>
+            <a href="#" class="share" onclick="ShareUrl()"><img src="~/images/common/share_white.png" alt=""></a>
+            <h2>作品详情</h2>
+        </header>
+    }
+    else
+    {
+        <header class="head1">
+            <a href="javascript:finish()" class="back"><img src="~/images/common/back_white.png" alt=""></a>
+            <a href="#" class="share" onclick="ShareUrl()"><img src="~/images/common/share_white.png" alt=""></a>
+            <h2>作品详情</h2>
+        </header>
+    }
+
+
+
+    <main class="main1">
+        <section>
+            <div class="xinxi">
+                <ul>
+                    <li><span>总得分</span><p>@userScore.TotalScore</p></li>
+                    <li>
+                        <img src="@userScore.UserImage" alt="" onerror="this.src = '/DubbingContest/img/work/details/tou.png'" />
+                        <p class="p1">@userScore.UserName</p>
+                    </li>
+                    <li><span>总票数</span><p>@userScore.VoteNum</p></li>
+                </ul>
+                @if (type == "3")
+                {
+                    <p class="p3">输掉比赛我会哭，请为我投上1票</p>
+
+                }
+                <p class="p2">投票截止日期：<span>@System.Configuration.ConfigurationManager.AppSettings["setActiveTime"]</span></p>
+
+            </div>
+            <div class="ul1">
+                <ul>
+                    <li><span>课本剧配音</span><p>@userScore.BookPlayScore</p></li>
+                    <span style="line-height: 48px; color: #D7DBE5;">|</span>
+                    <li><span>故事演绎</span><p>@userScore.StoryReadScore</p></li>
+                    <span style="line-height: 48px; color: #D7DBE5;">|</span>
+                    <li><span>投票得分</span><p>@(userScore.VoteNum * 0.1 > 20 ? 20 : userScore.VoteNum * 0.1)</p></li>
+                </ul>
+            </div>
+            <div class="content">
+                <!--<video  controls="controls" id="vid1" poster=""  webkit-playsinline webkit-playsinline>
+                    <source src="img/work/details/text.mp4" type="video/mp4" >示例视频1</source>
+                                                  您的浏览器不支持video标签
+                </video>-->
+                <div id="willesPlay">
+
+                    <div class="playContent">
+
+                        <video width="100%" height="100%" id="playVideo" poster="~/DubbingContest/img/work/details/bobag1.png">
+                            @*<source id="videoPath" src="http://120.25.0.163:9008/2017/07/25/44d1990d-7c44-4b5d-84ac-cdd3a71df08d.mp4" type="video/mp4"></source>
+                                当前浏览器不支持 video直接播放，点击这里下载视频：*@
+                            <a href="/">下载视频</a>
+                        </video>
+                        <div class="playTip glyphicon glyphicon-play">
+                            <img src="~/images/work/details/bofang.png" alt="" />
+                        </div>
+                        <div class="time">
+                            <span class="currentTime">0:00:00</span>
+                            <span>/</span>
+                            <span class="duration">0:00:00</span>
+                        </div>
+                    </div>
+                    <div class="playControll">
+
+                        <div class="timebar">
+
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:14px">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="otherControl">
+                            <span class="fullScreen glyphicon glyphicon-fullscreen"></span>
+                        </div>
+                    </div>
+                </div>
+                <p class="cour"><span id="vTitle">Patrick,you don't have feet.</span><b>@userScore.BookPlayScore</b></p>
+                <p class="time" id="vTime">2017.9.1</p>
+            </div>
+            <div class="content">
+                <div class="aud1" onclick="playPause()">
+                    <!--音乐-->
+                    <audio id="my_audio" preload="auto">
+                        @*<source id="audioPath" src="~/images/work/details/yp1.mp3" />您的浏览器不支持audio标签。*@
+                    </audio>
+
+                    <img src="~/images/work/details/bobag.png" width="100%" alt="" />
+                    <!--暂停或播放-->
+                    <div class="contros">
+                        <!--<button class="button" onClick="playPause()">暂停/播放</button>-->
+
+                        <a class="button"><img src="~/images/work/details/bofang.png" alt="" /></a>
+                        <!--时间-->
+                        <div class="time">
+                            <!--当前时间-->
+                            <span class="now_time" id="now_time">00:00</span>
+                            <!--总的时间-->
+                            <span class="all_time" id="all_time">00:00</span>
+                        </div>
+
+                    </div>
+                    <div class="show"></div>
+                    <!--时间轴-->
+                    <div class="time_progress">
+                        <div class="progress">
+                            <p class="bar" id="bar"></p>
+                            <div class="btn" id="btn"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="cour"><span id="aTitle"> How to sleep well?</span><b>@userScore.StoryReadScore</b></p>
+                <p class="time" id="aTime">2017.9.1 12:00</p>
+            </div>
+        </section>
+    </main>
+
+
+    @if (type == "1" || type == "3" || type == "0")
+    {
+        if (canVote)
+        { <footer>
+            <div>
+                <a id="vote" style="display:block" onclick="Vote()">投票</a>
+            </div>
+        </footer>
+        }
+        else
+        {<footer id="fshare">
+            <div>
+                <a id="share" style="display:block" onclick="ShareUrl()">拉票</a>
+            </div>
+        </footer>
+        }
+    }
+
+    @if (type == "2")
+    {
+        <footer id="fshare">
+            <div>
+                <a id="share" style="display:block" onclick="ShareUrl()">拉票</a>
+            </div>
+        </footer>
+    }
+    @if (type == "4")
+    {
+        <footer id="fshare">
+            <div>
+                <a id="share" style="display:block" onclick="ShareUrl()">拉票</a>
+            </div>
+        </footer>
+    }
+
+
+
+
+
+    <!-- 分享弹窗 -->
+    <div class="box">
+        <img class="box_bag" src="~/images/common/sharebag.png" alt="">
+        <ul>
+            <li>
+                <a href="#"><img src="~/images/common/WeChat.png" alt=""></a>
+                <p>微信</p>
+            </li>
+            <li>
+                <a href="#"><img src="~/images/common/Circle.png" alt=""></a>
+                <p>朋友圈</p>
+            </li>
+            @*<li>
+                    <a href="#"><img src="~/images/common/QQ.png" alt=""></a>
+                    <p>QQ</p>
+                </li>
+                <li>
+                    <a href="#"><img src="~/images/common/QQspace.png" alt=""></a>
+                    <p>QQ空间</p>
+                </li>*@
+        </ul>
+        <a href="#" class="cancel">取消</a>
+    </div>
+    <div id="shareDirect" style="display:none">
+        <div class="box3">
+            <img src="~/DubbingContest/img/work/details/zhiying.png" alt="" />
+            <p id="voteResult"></p>
+            <p>点击右上角图标分享给朋友</p>
+
+            <a href="javascript:closeShare()">我知道了</a>
+        </div>
+        <div class="shadow" style="display:block"></div>
+    </div>
+    @if (type == "4")
+    {
+        <div class="box2" style="display:block">
+            <img src="~/images/work/details/tan-bag.png" alt="" />
+            <div>
+                <p class="p1">恭喜你完成口语环节</p>
+                <p class="p2">赶紧去拉票吧</p>
+            </div>
+
+            <a href="javascript:ShareUrl()">去拉票</a>
+        </div>
+        <div id="shadow2" class="shadow" style="display:block"></div>
+    }
+
+
+
+    <script src="~/Scripts/js/details.js"></script>
+    <script type="text/javascript">
+        function closeShare() {
+            window.location.reload();
+        }
+
+        function Vote() {
+            // addcloud("正在投票...");
+            $.post("@Html.Raw(Url.Action("Vote", new { userId=userId,voterId=voterId}))", {}, function (data) {
+                if (data.Success) {
+                    debugger;
+                    $("#voteResult").html(data.Data);
+                    $("#shareDirect").show();                  
+                } else {
+                    alert(data.ErrorMsg);
+                }
+
+            });
+        }
+
+        $(function () {
+            LoadRecord();
+        })
+
+        function LoadRecord() {
+            var recordCache = getCookie("@userId");
+            var recordArry = [];
+            if (recordCache) {
+                recordArry = $.parseJSON(recordCache);
+                $(recordArry).each(function () {
+                    r = this;
+                    if (r.Type == 0) {
+                        $("#vTitle").html(r.DubbingTitle);
+                        $("#playVideo").attr("src", r.DubbingFilePath);
+                        $("#vTime").html(generateTimeReqestNumber((parseInt(r.CreateDate.replace("/Date(", "").replace(")/", "")))));
+                        // $(".duration").html(timeFormat($("#playVideo").duration));
+                    } else {
+                        $("#aTitle").html(r.DubbingTitle);
+                        $("#my_audio").attr("src", r.DubbingFilePath);
+                        $("#aTime").html(generateTimeReqestNumber((parseInt(r.CreateDate.replace("/Date(", "").replace(")/", "")))));
+                        setAudioTime();
+                    }
+                });
+            } else {
+                $.post("@Url.Action("GetUserContentRecords", new { userId=userId})", {}, function (data) {
+                    var records = data.Data;
+                    console.log("records:" + records);
+                    if (records) {
+                        setCookie("@userId", JSON.stringify(records), 365);
+                        recordArry = records;
+                        $(recordArry).each(function () {
+                            r = this;
+                            if (r.Type == 0) {
+                                $("#vTitle").html(r.DubbingTitle);
+                                $("#playVideo").attr("src", r.DubbingFilePath);
+                                $("#vTime").html(generateTimeReqestNumber((parseInt(r.CreateDate.replace("/Date(", "").replace(")/", "")))));
+                                //$(".duration").html(timeFormat($("#playVideo").duration));
+                            } else {
+                                $("#aTitle").html(r.DubbingTitle);
+                                $("#my_audio").attr("src", r.DubbingFilePath);
+                                $("#aTime").html(generateTimeReqestNumber((parseInt(r.CreateDate.replace("/Date(", "").replace(")/", "")))));
+                                setAudioTime();
+
+                            }
+                        });
+                    }
+                });
+            }
+
+        }
+
+        function generateTimeReqestNumber(date) {
+            var d = new Date(date);
+            return d.getFullYear().toString() + "/" + pad2(d.getMonth() + 1) + "/" + pad2(d.getDate()) + "   " + pad2(d.getHours()) + ":" + pad2(d.getMinutes());
+        }
+        function pad2(n) { return n < 10 ? '0' + n : n }
+
+        function setAudioTime() {
+            if ($("audio")[0].duration > -1) {
+                document.getElementById("all_time").innerHTML = timeFormat($("audio")[0].duration);
+            } else {
+                setTimeout(setAudioTime, 1000);
+            }
+        }
+        //读Cookie
+        function getCookie(objName) {//获取指定名称的cookie的值
+            var arrStr = document.cookie.split("; ");
+            for (var i = 0; i < arrStr.length; i++) {
+                var temp = arrStr[i].split("=");
+                if (temp[0] == objName) return unescape(temp[1]);
+            }
+            return "";
+        }
+        //设置cookie的值
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            //console.log(cname + '/' + cvalue + '/' + exdays)
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + escape(cvalue) + "; " + expires;
+            //console.log(document.cookie);
+        }
+        var timeFormat = function (seconds) {
+            var m = Math.floor(seconds / 60) < 10 ? "0" + Math.floor(seconds / 60) : Math.floor(seconds / 60);
+            var s = Math.floor(seconds - (m * 60)) < 10 ? "0" + Math.floor(seconds - (m * 60)) : Math.floor(seconds - (m * 60));
+            return m + ":" + s;
+        };
+        function addcloud(showName) {//增加页面遮罩
+            var bodyWidth = document.documentElement.clientWidth;
+            var bodyHeight = window.screen.availHeight; //Math.max(document.documentElement.clientHeight, document.body.scrollHeight);
+            var bgObj = document.createElement("div");
+            bgObj.setAttribute('id', 'bgDiv');
+            bgObj.style.position = "fixed";
+            bgObj.style.top = "0px";
+            bgObj.style.background = "#000000";
+            bgObj.style.filter = "progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=25,finishOpacity=75";
+            bgObj.style.opacity = "0.1";
+            bgObj.style.left = "0";
+            bgObj.style.width = bodyWidth + "px";
+            bgObj.style.height = bodyHeight + "px";
+            bgObj.style.zIndex = "10000"; //设置它的zindex属性，让这个div在z轴最大，用户点击页面任何东西都不会有反应|
+            document.body.appendChild(bgObj); //添加遮罩
+
+            var loadingObj = document.createElement("div");
+            loadingObj.setAttribute('id', 'loadingDiv');
+            loadingObj.style.position = "fixed";
+            loadingObj.style.top = bodyHeight / 2 + "px";
+            loadingObj.style.left = bodyWidth / 2 - 18 + "px";
+            //loadingObj.style.background = "white";//url(/images/loading.gif)
+            loadingObj.innerHTML = "<img style='width:36px;' src=\"../images/loading.gif\" /><p style='color:black'>" + showName + "</P>";//showName
+            loadingObj.style.width = "63px";
+            loadingObj.style.height = "36px";
+            loadingObj.style.zIndex = "10000";
+            document.body.appendChild(loadingObj); //添加loading动画-
+        }
+
+        if (isWeiXin()) {
+            console.log("无voterId:" + !'@voterId');
+            $("#fshare").hide();
+        }
+    </script>
+
+</body>
+
+</html>

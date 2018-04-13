@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Web
+@using CBSS.Tbx.Contract.DataModel
+@model  AppVersion
+
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>应用类型：</label>
+                <div class="controls">
+                    @{
+                        if (Model != null && Model.AppVersionID > 0)
+                        {
+                            <span id="AppType">@(Model.AppType== 1 ? "安卓" : "苹果")</span>
+                        }
+                        else
+                        {
+                            @Html.DropDownList("AppType")
+                        }
+                        <span class="help-inline">@Html.ValidationMessageFor(m => m.AppType)</span>
+                    }  
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>应用版本号：</label>
+                <div class="controls"><span style="line-height: 30px;">V</span>
+                    @{
+                        if (Model != null && Model.AppVersionID > 0)
+                        {
+                           @Model.AppVersionNumber
+                        }
+                        else
+                        { 
+                            @Html.TextBoxFor(m => m.AppVersionNumber, new { placeholder = "例如：1.0.0", @class = "m-wrap small", @style = "min-width:300px;" })
+                            <span class="help-inline">@Html.ValidationMessageFor(m => m.AppVersionNumber)</span>
+                        }
+                    } 
+                </div>
+            </div>
+            @*<div class="control-group">
+                    <label class="control-label">应用名称：</label>
+                    <div class="controls">
+                        @Html.DropDownList("AppID")
+                    </div>
+                </div>*@
+            @*<div class="control-group" id="AppVersionUpdateTypeDiv">
+                <label class="control-label">应用版本号更新类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("AppVersionUpdateType")
+                </div>
+            </div>*@
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>应用文件地址：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.AppVersionUpdateAddress, new { placeholder= "格式：http：//www.xxx.com/xx.apk", @class = "m-wrap small", @style = "min-width:300px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.AppVersionUpdateAddress)</span>
+                </div>
+            </div> 
+            <div class="control-group" id="AppVersionUpdateMD5Div">
+                    <label class="control-label"><span class="required">*</span>应用文件MD5值：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.AppVersionUpdateMD5, new { placeholder = "使用指定工具获取", @class = "m-wrap small", @style = "min-width:300px" })
+                        <span class="help-inline">@Html.ValidationMessageFor(m => m.AppVersionUpdateMD5)</span>
+                    </div>
+                </div>
+            
+            <div class="control-group">
+                <label class="control-label">更新简介：</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.AppVersionDescribe, new { @class = "m-wrap small", @style = "min-width:300px;min-height:80px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.AppVersionDescribe)</span>
+                </div>
+            </div>
+            <div class="control-group" id="IsForcedUpdateDiv">
+                <label class="control-label">是否强制更新：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.IsForcedUpdate, 1, new { @id = "startIsForcedUpdate", @name = "IsForcedUpdate", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">是</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.IsForcedUpdate, 2, new { @id = "forbiddenIsForcedUpdate", @name = "IsForcedUpdate" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">否</label>
+                </div>
+            </div>
+            <div class="control-group" style="display:none">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="@Url.StaticFile("/assets/js/jquery-1.8.3.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#AppType").click(function () {
+                SelectAppType();
+            });
+            SelectAppType();
+        });
+        function SelectAppType() {
+            if ($("#AppType").val() == "2" || $("#AppType").text() =="苹果") {//苹果 
+                //$("#AppVersionUpdateTypeDiv").hide();
+                $("#AppVersionUpdateMD5Div").hide();
+                $("#IsForcedUpdateDiv").hide();
+                $("#AppVersionUpdateMD5").val(0);
+            } else {
+                //$("#AppVersionUpdateTypeDiv").show();
+                $("#AppVersionUpdateMD5Div").show();
+                $("#IsForcedUpdateDiv").show();
+                //$("#AppVersionUpdateMD5").val("");
+            }
+        }
+    </script>
+}

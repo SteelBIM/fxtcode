@@ -1,0 +1,552 @@
+﻿@using CBSS.Web
+@{
+    ViewBag.Title = "接口Create";
+}
+@using CBSS.Cfgmanager.Contract.DataModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Language" content="utf-8" />
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+
+        .maintable {
+            width: 1200px;
+            background: #ccc;
+            margin: 0 auto 10px;
+        }
+
+            .maintable th {
+                background: #069;
+                color: #fff;
+                line-height: 30px;
+                font-size: 14px;
+            }
+
+                .maintable th a {
+                    width: 100%;
+                    display: block;
+                    color: #fff;
+                    font-weight: normal;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .maintable td {
+                background: #fff;
+                line-height: 20px;
+            }
+
+                .maintable td.left {
+                    width: 220px;
+                    background: #f9f9f9;
+                }
+
+        .tbparams {
+            background: #ccc;
+            width: 100%;
+        }
+
+            .tbparams th {
+                background: #eee;
+                color: #000;
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .tbparams td {
+                background: #fff;
+                padding: 3px;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+            ul.params, div.content {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+
+                ul.params li {
+                    border-bottom: 1px solid #ccc;
+                    line-height: 25px;
+                    margin: 1px;
+                }
+
+            ul.index li {
+                padding: 10px;
+                line-height: 25px;
+                color: #069;
+            }
+
+        div.content {
+            padding: 5px;
+        }
+
+        #apilist {
+            margin: 5px;
+        }
+
+            #apilist h2 {
+                padding: 5px;
+                background-color: #fff;
+                cursor: pointer;
+            }
+
+            #apilist li {
+                cursor: default;
+                padding: 8px;
+                border-bottom: 1px solid #eae7e7;
+                cursor: pointer;
+            }
+
+                #apilist li.over {
+                    background: #ccc;
+                }
+
+                #apilist li.active {
+                    background: #069;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+        #apicontent {
+            margin: 5px;
+        }
+
+            #apicontent li {
+                cursor: default;
+                word-break: break-all;
+            }
+
+                #apicontent li strong {
+                    display: block;
+                    background: #eee;
+                    line-height: 25px;
+                    text-indent: 10px;
+                    border-left: 8px solid #ccc;
+                }
+
+        ul.ulapi li {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+
+        #apicontent li.desc {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+
+        #apicontent span.mobile {
+            color: #c00;
+        }
+
+        #apicontent li.step {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        font.red {
+            color: #c00;
+        }
+
+        font.memo {
+            color: #063;
+        }
+
+        #apicontent li label {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src=@Url.StaticFile("/Assets/js/jquery-1.8.3.min.js")></script>
+    <script src=@Url.StaticFile("/Assets/js/json2.js")></script>
+    <script src=@Url.StaticFile("/Assets/js/date.js")></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnApiEnums").click(function () {
+                var txt = $("#btnApiEnums").text(); 
+                if (txt == "显示接口错误枚举") {
+                    $("#btnApiEnums").text("隐藏接口错误枚举");
+                    $("#liJk").show();
+                } else {
+                    $("#btnApiEnums").text("显示接口错误枚举");
+                    $("#liJk").hide();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style="height: 50px;line-height: 50px;text-align: center;background-color: #069;
+    color: #fff;font-size: 20px;">CBSS统一API接口文档说明 V1.0</div>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <td valign="top" id="apilist" class="left"></td>
+            <td valign="top">
+                <ul class="index">
+                    <li>
+                        <!--本说明用于协助和指导相关开发人员熟悉和使用期末测评卷Api。点击左侧功能名称查看详细说明。<br />-->
+                        <span style="color: red;">本API文档兼容浏览器：IE9、火狐、谷歌</span>
+                    </li>
+                    <li><a href="javascript:void(0)" id="btnApiEnums">显示接口错误枚举</a></li>
+                    <li id="liJk" style="display:none;">
+                        <table>
+                            <tr>
+                                <td>接口内部返回提示:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    请求参数有误 = 100001,
+                                    请求参数不能为空= 100002,
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>接口内部异常:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    数据库插入操作失败 = 200001,
+                                    数据库更新操作失败 = 200001,
+                                    数据库删除操作失败 = 200001,
+                                    用户使用App时长埋点失败 = 200002,
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>接口外部异常:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    请求接口失效 = 300001,
+                                    请求接口超时 = 300002,
+                                    返回参数有误 = 400001,
+                                    请求参数解密失败 = 400002,
+                                    返回参数加密失败 = 400003,
+                                    接口访问异常 = 400006,
+                                    接口方法名不正确 = 400007,
+                                    接口请求Info为空 = 400008,
+                                    接口请求Key为空 = 400008,
+                                    接口请求异常 = 400009,
+                                    发送短信失败= 400010,
+                                    验证码发送失败= 400011,
+                                    请使用五分钟内获取的验证码登陆= 400012,
+                                    未找到课本= 400013,
+                                    未获取到模块ID= 400014,
+                                    未找到资源= 400015,
+                                    未找到报告 = 400016,
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>接口其它异常:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    验证码错误 = 400017,
+                                    没有找到对应的手机号=400018,
+                                    登陆失败=4000019,
+
+                                    操作失败=4000020,
+                                    用户不存在=4000021
+                                </td>
+                            </tr>
+                        </table>
+                    </li> 
+                </ul>
+                <ul id="apicontent"></ul>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="hidJson" value="@ViewData["apiFunJson"]" />
+</body>
+</html>
+<script type="text/javascript">
+    var RootRul = top.location.href;
+    function FormatJSON(oData, sIndent) {
+        if (arguments.length < 2) {
+            var sIndent = "";
+        }
+        var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+        var sDataType = RealTypeOf(oData);
+
+        // open object
+        if (sDataType == "array") {
+            if (oData.length == 0) {
+                return "[]";
+            }
+            var sHTML = "[";
+        } else {
+            var iCount = 0;
+            $.each(oData, function () {
+                iCount++;
+                return;
+            });
+            if (iCount == 0) { // object is empty
+                return "{}";
+            }
+            var sHTML = "{";
+        }
+
+        // loop through items
+        var iCount = 0;
+        $.each(oData, function (sKey, vValue) {
+            if (iCount > 0) {
+                sHTML += ",";
+            }
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + sIndentStyle);
+            } else {
+                sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+            }
+
+            // display relevant data type
+            switch (RealTypeOf(vValue)) {
+                case "array":
+                case "object":
+                    sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                    break;
+                case "boolean":
+                case "number":
+                    sHTML += vValue.toString();
+                    break;
+                case "null":
+                    sHTML += "null";
+                    break;
+                case "string":
+                    sHTML += ("\"" + vValue + "\"");
+                    break;
+                default:
+                    sHTML += ("TYPEOF: " + typeof (vValue));
+            }
+
+            // loop
+            iCount++;
+        });
+
+        // close object
+        if (sDataType == "array") {
+            sHTML += ("<br>" + sIndent + "]");
+        } else {
+            sHTML += ("<br>" + sIndent + "}");
+        }
+
+        // return
+        return sHTML;
+    }
+    function RealTypeOf(v) {
+        if (typeof (v) == "object") {
+            if (v === null) return "null";
+            if (v.constructor == (new Array).constructor) return "array";
+            if (v.constructor == (new Date).constructor) return "date";
+            if (v.constructor == (new RegExp).constructor) return "regex";
+            return "object";
+        }
+        return typeof (v);
+    }
+    var mustparams = []
+
+    //api
+    var api2 = [
+        {
+            "name": "获取模块下视频信息列表(GetVideoInforList)",
+            "url": "http://183.47.42.221:8001/api/VedioInfo/GetVideoInforList2",
+            "hover": true,
+            "format": "json",
+            "method": "Post",
+            "apiway": "正常",
+            "demo": {
+                "FunName": "LoginByPhone",
+                "Key": "",
+                "Info": "{InputStr:'{telephone:\"18937373326\",code:\"\",equipmentID:\"\",deviceType:\"\",ipAddress:\"\",appID:\"\",isEnableOss:1}',RTime:\"2017-12-5 11:20:00\",PKey:\"\"}",
+                "FunWay": 0
+            }
+            ,
+            "inparams": [
+                {
+                    "name": "BookID",
+                    "value": "168",
+                    "desc": "书籍ID，格式例如：168",
+                    "must": true
+                },
+                {
+                    "name": "FirstTitleID",
+                    "value": "276194",
+                    "desc": "一级标题ID，格式例如：276194",
+                    "must": true
+                },
+                {
+                    "name": "Child",
+                    "value": "",
+                    "desc": "父参数名",
+                    "must": true
+                },
+                {
+                    "name": "UserID",
+                    "value": "1001",
+                    "desc": "用户ID",
+                    "must": true
+                },
+                {
+                    "name": "UserName",
+                    "value": "科比",
+                    "desc": "用户名",
+                    "must": true
+                }
+            ],
+            "output": { 'Success': 'true', 'data': '', 'ID': '2000', 'BookID': '789', 'Message': '' },
+            "outexplain": [
+                {
+                    "name": "Success",
+                    "value": "true",
+                    "desc": "状态",
+                    "must": true
+                },
+                {
+                    "name": "data",
+                    "value": "",
+                    "desc": "Data体",
+                    "must": true
+                },
+                {
+                    "name": "ID",
+                    "value": "2000",
+                    "desc": "视频ID",
+                    "must": true
+                },
+                {
+                    "name": "BookID",
+                    "value": "789",
+                    "desc": "书籍ID",
+                    "must": true
+                },
+                {
+                    "name": "Message",
+                    "value": "",
+                    "desc": "信息",
+                    "must": true
+                }
+            ]
+        }];
+    var api = JSON.parse($("#hidJson").val());
+
+    function u(o) { return typeof (o) != "undefined"; }
+    $(function () {
+        var index = 0;
+        var upName = '';
+        $.each(api, function (i, item) { 
+            if (upName != item.SystemName) {
+                index = 0;
+            }
+            var h2 = "<h2 class='" + item.SystemCode + "'>" + item.SystemName + "</h2>";
+            var ul = "<ul class='apilist_ul " + item.SystemCode + "'></ul>"
+            var li = $("<li>" + (index + 1) + " : " + item.name + "</li>");
+           
+            if (item.SystemCode == $("#apilist h2." + item.SystemCode + "").attr("class")) {
+                $("#apilist ul." + item.SystemCode + "").append(li);
+            }
+            else { 
+                $("#apilist").append(h2);
+                $("#apilist").append(ul);
+                $("#apilist ul." + item.SystemCode + "").append(li); 
+            }
+            li.data("data", item);
+            if (item.hover) {
+                loaddata(li);
+                li.addClass("active");
+            } else {
+                index++;
+            }
+            upName = item.SystemName;
+        });
+        $("#apilist li").click(function () {
+            $("#apilist li.active").removeClass("active");
+            $(this).addClass("active");
+            loaddata(this);
+        }).mouseenter(function () { $(this).addClass("over"); })
+            .mouseout(function () { $(this).removeClass("over"); });
+        $("#apilist h2").on("click", function () {
+            var classname = $(this).attr("class");
+            $("#apilist ul." + classname + "").toggle();
+        });
+    });
+    function loaddata(args) {
+        var html = [];
+        var item = $(args).data("data");
+        html.push('<li><strong>接口方法名称</strong></li><li class="desc">' + item.ApiFunctionName + '</li>');
+        html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+        html.push('<li><strong>支持格式</strong></li><li class="desc">' + item.format + '</li>');
+        html.push('<li><strong>HTTP请求方式</strong></li><li class="desc">' + item.method + '</li>');
+        html.push('<li><strong>传输方式</strong></li><li class="desc">' + item.apiway + '</li>');
+        html.push('<li><strong>接口备注</strong></li><li class="desc">' + item.ApiFunctionRemark + '</li>');
+        html.push('<li><strong>请求参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+        var params = [], explain = [];
+        function addparam(p) {
+            if (p.value == "json") {
+                params.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+            } else {
+                params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+            }
+        }
+        //if (item.name.indexOf("登录") < 0) {
+        $.each(mustparams, function (i, p) {
+            addparam(p);
+        });
+        //}
+        $.each(item.inparams, function (i, p) {
+            addparam(p);
+        });
+        function addexplain(p) {
+            if (p.value == "json") {
+                explain.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+            } else {
+                explain.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+            }
+        }
+        $.each(item.outexplain, function (i, p) {
+            addexplain(p);
+        });
+        html.push('<li><strong>请求参数说明</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+        html.push('<li><strong>返回结果</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+        html.push('<li><strong>返回参数说明</strong></li><li class="desc"><ul class="params">' + explain.join("") + '</ul></li>');
+
+        $("#apicontent").html(html.join(""));
+    }
+</script>

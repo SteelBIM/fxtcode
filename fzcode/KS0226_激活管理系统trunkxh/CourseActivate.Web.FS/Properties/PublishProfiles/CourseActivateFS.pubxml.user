@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Publisher\CourseActivateFS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CourseActivate.Account.Constract.dll">
+      <publishTime>07/19/2017 13:59:43</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.BLL.dll">
+      <publishTime>07/21/2017 18:05:51</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.BLL.XmlSerializers.dll">
+      <publishTime>06/28/2017 10:16:58</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.Constract.dll">
+      <publishTime>07/21/2017 18:05:48</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Activate.DAL.dll">
+      <publishTime>07/21/2017 18:05:51</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Core.Utility.dll">
+      <publishTime>07/21/2017 14:10:47</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Framework.BLL.dll">
+      <publishTime>07/21/2017 18:05:50</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Framework.DAL.dll">
+      <publishTime>07/21/2017 18:05:49</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Resource.Constract.dll">
+      <publishTime>07/21/2017 14:10:45</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Web.FS.dll">
+      <publishTime>07/21/2017 18:05:53</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>06/26/2017 14:13:18</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/05/2017 11:49:51</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/05/2017 11:49:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>07/05/2017 11:49:38</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>07/05/2017 11:49:47</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/05/2017 11:49:45</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>07/05/2017 11:49:47</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>07/05/2017 11:49:45</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>07/05/2017 11:49:46</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>07/05/2017 11:49:46</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>07/05/2017 11:49:46</publishTime>
+    </File>
+    <File Include="bin/SqlSugarRepository.dll">
+      <publishTime>07/05/2017 11:49:47</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.dll">
+      <publishTime>07/05/2017 11:49:47</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/05/2017 11:49:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/05/2017 11:49:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/05/2017 11:49:39</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/05/2017 11:49:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/05/2017 11:49:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/05/2017 11:49:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/05/2017 11:49:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/05/2017 11:49:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/05/2017 11:49:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>05/10/2013 14:59:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>05/10/2013 14:59:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>05/10/2013 14:59:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>05/10/2013 14:59:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>05/10/2013 14:59:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>05/10/2013 14:59:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>05/10/2013 14:59:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>05/10/2013 14:59:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>05/10/2013 14:59:28</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/05/2017 11:49:31</publishTime>
+    </File>
+    <File Include="log4Net.config">
+      <publishTime>07/05/2017 11:49:32</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/05/2017 11:49:32</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/21/2017 14:45:05</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/05/2017 11:49:32</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/21/2017 18:05:54</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

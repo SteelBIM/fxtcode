@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+} 
+@using CBSS.Tbx.Contract.DataModel
+@model  GoodPrice
+
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>使用时长：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m =>m.GoodsBpolicyMonths, new { @class = "m-wrap small", @style = "min-width:300px;" }) 
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.GoodsBpolicyMonths)</span>
+                    <span>月</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">原价：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.GoodsOriginalPrice, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                </div>
+            </div>  
+            <div class="control-group">
+                <label class="control-label">安卓价格：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.AndroidPrice, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                </div>
+            </div>  
+            <div class="control-group">
+                <label class="control-label">IOS商品ID：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.IOSCommodityID, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                </div>
+            </div>  
+            <div class="control-group">
+                <label class="control-label">IOS价格：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.IOSPrice, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                </div>
+            </div>  
+            <div class="control-group">
+                <label class="control-label">排序号：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Sort, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Sort)</span>
+                </div>
+            </div>    
+        </div>
+    </div>
+}

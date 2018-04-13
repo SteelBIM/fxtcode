@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{70A7663C-09AB-4BAB-9BFC-F0649FE6C8F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.Account.BLL</RootNamespace>
+    <AssemblyName>CBSS.Account.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Account.Contract\CBSS.Account.Contract.csproj">
+      <Project>{08cfb8ba-aa0e-42f5-b6bf-140c64e34377}</Project>
+      <Name>CBSS.Account.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Account.DAL\CBSS.Account.DAL.csproj">
+      <Project>{36c53c41-48db-4d74-9d83-78df614dc83b}</Project>
+      <Name>CBSS.Account.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Account.IBLL\CBSS.Account.IBLL.csproj">
+      <Project>{d75273f5-c24c-42ef-906d-3081cff23ff7}</Project>
+      <Name>CBSS.Account.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9f519ef8-800f-40cb-9545-9aeadf0f387d}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Account.DAL\CBSS.Account.DAL.csproj">
+      <Project>{36C53C41-48DB-4D74-9D83-78DF614DC83B}</Project>
+      <Name>CBSS.Account.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Cache\CBSS.Core.Cache.csproj">
+      <Project>{a155c5d8-fee0-415c-940a-26c94d61be9b}</Project>
+      <Name>CBSS.Core.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Config\CBSS.Core.Config.csproj">
+      <Project>{3bf4147e-d01d-4fff-b8e7-fe24959b2d7e}</Project>
+      <Name>CBSS.Core.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214d97-f23c-4e16-aa12-ecd824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Redis\CBSS.Framework.Redis.csproj">
+      <Project>{5EAB063D-E939-4A48-A836-EA2CF771E4A8}</Project>
+      <Name>CBSS.Framework.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.SqlSuger\CBSS.Framework.SqlSuger.csproj">
+      <Project>{d988d0da-99c9-4bb6-98bb-4c0526f6f524}</Project>
+      <Name>CBSS.Framework.SqlSuger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

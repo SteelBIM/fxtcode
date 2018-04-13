@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+/*顶部工具栏样式*/
+.toolBar{background:#fff;position:relative;zoom:1;height:45px;}
+.toolBar table{ border-collapse:collapse;}
+.toolBar table td{padding:0;padding-right:5px;}
+.leftTools{width:100%; position:absolute;left:0;top:5px;}
+.rightTools{width:220px; position:absolute;right:0;top:5px;}
+/*****
+     MainTable
+*****/
+.MainTable {width:100%; border-collapse:collapse;line-height:30px;}
+.MainTable thead {background:#fff; font-weight:bold; color:#454545;border-bottom:1px solid #c7c7c7;}
+.MainTable thead td{text-align:left;}
+/*升序降序*/
+.MainTable thead td span{clear:both;display:block;height:0; position:relative;width:100%;}
+.MainTable thead td span i{ position:absolute;right:5px;top:-19px; cursor:pointer;}
+.MainTable thead td span i.ascIco{width:0;height:10px;border-left:5px #fff solid;border-right:5px #fff solid;border-bottom:5px #f3a03f solid;top:-29px;}
+.MainTable thead td span i.descIco{width:0;height:10px;border-left:5px #fff solid;border-right:5px #fff solid;border-top:5px #f3a03f solid;}
+
+.MainTable td {height:24px;}
+
+.MainTable tbody strong {display:block; color:#333; margin-bottom:6px;}
+.MainTable tbody strong s {position:relative; top:4px; *top:2px; margin-left:6px; z-index:1;}
+.MainTable tbody strong a {line-height:18px;}
+.TdNoBorder{width:100%;}
+.TdNoBorder tbody tr {border:2px solid #fff; background:#f5f5f5;}
+.TdNoBorder tbody tr.evenRow {background:#f5f5f5;}
+.TdNoBorder tbody tr.oddRow {background:#f0f0f0;}
+.TdNoBorder tbody tr.activeRow{background:#e0e9c2;}
+.TdNoBorder td {font-size:12px;height:24px;}
+.TdNoBorder td span.singleRow{display:block;height:24px;line-height:24px;overflow:hidden;}
+
+/*行子表样式*/
+.TdNoBorder tbody tr.hidTr{display:none;}
+.TdNoBorder tbody tr td a{text-decoration:none;}
+.TdNoBorder tbody tr td div.trDetail{height:80px; background:#fff;padding-left:40px;padding-top:20px;}
+.TdNoBorder tbody tr td div.trDetail span{padding:5px 10px;}
+.TdNoBorder tbody tr td div.trDetail span label{ font-weight:bold;}
+.TdNoBorder tbody tr td div.trDetail span label.red{color:red;}
+
+.MainTableQuote{width:50px; height:15px; float:left; margin-right:5px;}
+.MainTableQuote:hover{background-position:0 -15px;}
+.MainTableQuote:active{background-position:0 -30px;}
+.MainTableQuoteNormal,.MainTableQuoteNormal:hover,.MainTableQuoteNormal:active{background-position:0 -45px;}
+
+.MainTableComment{width:25px; height:15px; float:left; margin-right:5px;}
+.MainTableComment:hover{background-position:0 -15px;}
+.MainTableComment:active{background-position:0 -30px;}
+.MainTableCommentNormal,.MainTableCommentNormal:hover,.MainTableCommentNormal:active{background-position:0 -45px;}
+
+.MainTableStar{width:63px; height:11px; float:left; margin:2px 0 0 0; overflow:hidden; background:url(/images/Public/icons/MainTableStar.png) 0 -12px no-repeat;}
+.MainTableStar s{width:63px; height:11px; float:left; background:url(/images/Public/icons/MainTableStar.png) 0 0 no-repeat;}
+s.MainTableStarWidth{width:0px;}
+s.MainTableStarWidth_01{width:13px;}
+s.MainTableStarWidth_01_1{width:20px;}
+s.MainTableStarWidth_02 {width:26px;}
+s.MainTableStarWidth_02_1{width:33px;}
+s.MainTableStarWidth_03 {width:39px;}
+s.MainTableStarWidth_03_1 {width:45px;}
+s.MainTableStarWidth_04 {width:52px;}
+s.MainTableStarWidth_04_1 {width:58px;}
+s.MainTableStarWidth_05 {width:65px;}
+.StarSpan {float:left; margin:-6px 0 0 8px;}
+
+.LessonMainRightItem #dvLesson table tr b,
+.LessonMainRightItem #dvTutorial table tr b,
+.LessonMainRightItem #dvWork table tr b,
+.LessonMainRightItem #dvResource table tr strong,
+.LessonMainRightItem #dvVideoWork table tr strong,
+.LessonMainRightItem #dvCourseTarget table tr b,
+.LessonMainRightItem #dvCourseWork table tr strong,
+.LessonMainRightItem #dvBBS  table tr strong,
+#dvProcessType table tr b,#dvProcessType table tr strong{margin-left:20px;}
+#lessonBBS table{line-height:normal;}
+#lessonBBS .DiscussListItem{border-top:none;}
+#lessonBBS .DiscussListItem .DiscussName{width:530px;}
+.MainTable .mceEditor tr{background:none;}
+/*****
+  分页控件
+*****/
+.MainTable .FontTable{margin-top:10px;}
+.MainTable .FontTable tr,.MainTable .FontTable tr td {border:0;}
+.MainTable .FontTable tr{ background:#fff;}
+.MainTable .FontTable tr td{padding-left:10px; background:#fff;}
+.font_page a{display:inline-block; height:28px; width:30px; text-align: center; line-height: 30px; font-family:Arial;position:relative; text-decoration:none; color:#000; font-size:12px; font-weight:normal; margin:0 1px;background:#f2f2f2;}
+.font_page a:hover{background:#25C2B7;color:#fff;}
+.font_page a:active{background:#82d8d2;color:White;}
+.font_page a.Current{background:#25C2B7;color:#fff;}
+.font_page a b{display:none;}
+.font_page a.PrevPage{height:28px;width:28px;background:#383b44;}
+.font_page a.PrevPage:hover{background:#25C2B7;}
+.font_page a.PrevPage b{display:block;float:left;width:15px;height:11px;margin-left:5px;margin-top:8px;background:url(page.gif) no-repeat left -377px;}
+
+.font_page a.NextPage{height:28px; width:28px;background:#383b44;}
+.font_page a.NextPage:hover{background:#25C2B7;}
+.font_page a.NextPage b{display:block;float:left;width:15px;height:11px;margin-left:5px;margin-top:8px;background:url(page.gif) no-repeat left -414px;}
+
+.font_page a em{display:none;}
+.font_page a.FirstPage{height:28px; width:34px;background:#383b44;}
+.font_page a.FirstPage:hover{background:#25C2B7;}
+.font_page a.FirstPage em{display:block;float:left;width:15px;height:11px;margin-left:10px;margin-top:8px;background:url(page.gif) no-repeat left -294px;}
+
+.font_page a.LastPage{height:28px; width:34px;background:#383b44;}
+.font_page a.LastPage:hover{background:#25C2B7;}
+.font_page a.LastPage em{display:block;float:left;width:15px;height:11px;margin-left:5px;margin-top:8px;background:url(page.gif) no-repeat left -336px;}
+
+.font_page a.goto:link,.font_page a.goto:visited,.font_page a.goto:hover{background:url(page.gif) no-repeat right bottom;color:#fff;}
+.PageInput {width:40px; height:24px; line-height:26px; border:1px solid #c1c1c1; padding:0 2px; margin-left:10px;margin-right:10px; margin-top:-4px; *margin-top:0px;}
+.font_page a.font12 {font-size:12px;}
+
+a.linkView,a.linkEdit,a.linkDel,a.linkDown,a.linkUp,a.linkManager,a.linkWin,a.enable,a.disable,a.linkUndo,a.linkZoom{width:23px;height:24px;text-decoration:none;display:inline-block;text-indent:-9999px;}
+a.linkEdit{background:url(listIco.png) no-repeat -398px 4px;}
+a.linkEdit:hover{ background-position:-398px -42px;}
+a.linkView{background:url(listIco.png) no-repeat -489px 4px;}
+a.linkView:hover{ background-position:-489px -42px;}
+a.linkDel{background:url(listIco.png) no-repeat -534px 4px;}
+a.linkDel:hover{ background-position:-534px -42px;}
+a.linkDown{background:url(listIco.png) no-repeat -578px 4px;}
+a.linkDown:hover{ background-position:-578px -42px;}
+a.linkUp{background:url(listIco.png) no-repeat -622px 4px;}
+a.linkUp:hover{ background-position:-622px -42px;}
+a.linkManager{background:url(listIco.png) no-repeat -92px 6px;}
+a.linkManager:hover{ background-position:-92px -45px;}
+a.linkWin{background:url(listIco.png) no-repeat -715px 6px;}
+a.linkWin:hover{ background-position:-715px -42px;}
+a.enable{background:url(listIco.png) no-repeat -748px 4px;width:52px;}
+a.disable{background:url(listIco.png) no-repeat -748px -43px;width:52px;}
+a.linkUndo{background:url(listIco.png) no-repeat -668px -87px;}
+a.linkZoom{background:url(listIco.png) no-repeat -534px -87px;}

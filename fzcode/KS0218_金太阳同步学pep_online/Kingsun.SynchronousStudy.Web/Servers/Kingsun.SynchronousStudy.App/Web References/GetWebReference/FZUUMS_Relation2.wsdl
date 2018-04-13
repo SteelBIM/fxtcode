@@ -1,0 +1,2347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRelationTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationTypeResult" type="tns:ArrayOfTb_RelationType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTb_RelationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tb_RelationType" nillable="true" type="tns:tb_RelationType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tb_RelationType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsUse" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="RelationType" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Action" abstract="true" />
+      <s:element name="AddRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OtherID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="classid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="classname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRelationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SureRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RelationID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="value" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SureRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SureRelationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selfID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryRelationResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTb_Relation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tb_Relation" nillable="true" type="tns:tb_Relation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tb_Relation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsSure" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsRemove" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="OtherID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RelationType" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ClassName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ClassID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="Flag" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RelationID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationResult" type="tns:tb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selfid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="otherid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationByUserIDResult" type="tns:tb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnSureRelationByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selfid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="otherid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnSureRelationByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnSureRelationByUserIDResult" type="tns:tb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RelationID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveRelationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selfid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="otherid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteRelationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveTeaStu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stuID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeaID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveTeaStuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveTeaStuResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stuID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveRelationsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRelationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveRelationListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerifyRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selfid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerifyRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVerifyRelationResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeacherRelationCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeacherRelationCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeacherRelationCountResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetClassByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassByUserIDResult" type="tns:ArrayOfTb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTb_Class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tb_Class" nillable="true" type="tns:tb_Class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tb_Class">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsPublic" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsRemove" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ClassName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SchoolID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="GradeID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ClassNum" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAuthentication" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Flag" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SubjectID" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetClassByUserIDAndSubjectID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="subjectid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassByUserIDAndSubjectIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassByUserIDAndSubjectIDResult" type="tns:ArrayOfTb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="classid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStuListResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuListByStuID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StuID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuListByStuIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStuListByStuIDResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaRelationByStuID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StuID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SubjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaRelationByStuIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeaRelationByStuIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaByStuID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StuID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaByStuIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeaByStuIDResult" type="tns:ArrayOfTb_UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTb_UserClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tb_UserClass" nillable="true" type="tns:tb_UserClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tb_UserClass">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsRemove" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ClassID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="SchoolID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SubjectID" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTeaByClassID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="classID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaByClassIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeaByClassIDResult" type="tns:ArrayOfTb_UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationBySelfID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationBySelfIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationBySelfIDResult" type="tns:tb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationListBySelfID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationListBySelfIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationListBySelfIDResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBySelfIDAndType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBySelfIDAndTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBySelfIDAndTypeResult" type="tns:tb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationListBySelfIDAndType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelfID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationListBySelfIDAndTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationListBySelfIDAndTypeResult" type="tns:ArrayOfTb_Relation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassInfoByIDResult" type="tns:tb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreateClassDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClassID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreateClassDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCreateClassDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClassID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveClassResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="className" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="schoolid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateClassResult" type="tns:tb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolClassResult" type="tns:ArrayOfTb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolClassCpoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolClassCpointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolClassCpointResult" type="tns:ArrayOfTb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolListClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="schoolids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolListClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolListClassResult" type="tns:ArrayOfTb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BindClassTea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="classid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="schoolID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="subjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BindClassTeaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BindClassTeaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnBindClassTea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="classid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="subjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnBindClassTeaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnBindClassTeaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolTeaBySchoolID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolTeaBySchoolIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolTeaBySchoolIDResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserType" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AeraID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="State" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RegDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="LoginNum" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastLogContry" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SchoolID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="GradeID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Grade" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AvatarUrl" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsVerifyEmailTrue" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="VerifyEmailDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="SubjectID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubjectName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StageID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="SchoolName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CityID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Gender" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Host" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="GradeStartYear" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTeaBySchoolAndSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="subjectid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaBySchoolAndSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeaBySchoolAndSubjectResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByStuID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stuID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByStuIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassInfoByStuIDResult" type="tns:tb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSchoolTea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSchoolTeaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveSchoolTeaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyUserBindWX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyUserBindWXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifyUserBindWXResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllClassInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllClassInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClassInfoResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClassTeaInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllClassTeaInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClassTeaInfoResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClassStuInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllClassStuInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClassStuInfoResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStudentToClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StuUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="classid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsNeedVerify" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStudentToClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddStudentToClassResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveStuFromClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StuUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveStuFromClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveStuFromClassResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CFAddStuToClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="classNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stuID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CFAddStuToClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CFAddStuToClassResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaByClassIDAndSubjectID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="subjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeaByClassIDAndSubjectIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeaByClassIDAndSubjectIDResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="classNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassInfoByNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassInfoByNumResult" type="tns:tb_Class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserClassInfoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserClassInfoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserClassInfoListResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuListByClassNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="classNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuListByClassNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStuListByClassNumResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationType" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRelation" />
+  </wsdl:message>
+  <wsdl:message name="AddRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SureRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:SureRelation" />
+  </wsdl:message>
+  <wsdl:message name="SureRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:SureRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryRelation" />
+  </wsdl:message>
+  <wsdl:message name="QueryRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelation" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationByUserID" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnSureRelationByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnSureRelationByUserID" />
+  </wsdl:message>
+  <wsdl:message name="GetUnSureRelationByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnSureRelationByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveRelation" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRelation" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveTeaStuSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveTeaStu" />
+  </wsdl:message>
+  <wsdl:message name="RemoveTeaStuSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveTeaStuResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationsSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveRelations" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationsSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveRelationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationListSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveRelationList" />
+  </wsdl:message>
+  <wsdl:message name="RemoveRelationListSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveRelationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVerifyRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVerifyRelation" />
+  </wsdl:message>
+  <wsdl:message name="GetVerifyRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVerifyRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeacherRelationCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeacherRelationCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTeacherRelationCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeacherRelationCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClassByUserID" />
+  </wsdl:message>
+  <wsdl:message name="GetClassByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassByUserIDAndSubjectIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClassByUserIDAndSubjectID" />
+  </wsdl:message>
+  <wsdl:message name="GetClassByUserIDAndSubjectIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassByUserIDAndSubjectIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStuList" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStuListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListByStuIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStuListByStuID" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListByStuIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStuListByStuIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaRelationByStuIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeaRelationByStuID" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaRelationByStuIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeaRelationByStuIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByStuIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeaByStuID" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByStuIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeaByStuIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByClassIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassID" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByClassIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationBySelfIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationBySelfID" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationBySelfIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationBySelfIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationListBySelfIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationListBySelfID" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationListBySelfIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationListBySelfIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBySelfIDAndTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBySelfIDAndType" />
+  </wsdl:message>
+  <wsdl:message name="GetBySelfIDAndTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBySelfIDAndTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationListBySelfIDAndTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationListBySelfIDAndType" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationListBySelfIDAndTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationListBySelfIDAndTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByID" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreateClassDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCreateClassDate" />
+  </wsdl:message>
+  <wsdl:message name="GetCreateClassDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCreateClassDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveClassSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveClass" />
+  </wsdl:message>
+  <wsdl:message name="RemoveClassSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateClassSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateClass" />
+  </wsdl:message>
+  <wsdl:message name="CreateClassSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolClassSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchoolClass" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolClassSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchoolClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolClassCpointSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchoolClassCpoint" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolClassCpointSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchoolClassCpointResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolListClassSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchoolListClass" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolListClassSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchoolListClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="BindClassTeaSoapIn">
+    <wsdl:part name="parameters" element="tns:BindClassTea" />
+  </wsdl:message>
+  <wsdl:message name="BindClassTeaSoapOut">
+    <wsdl:part name="parameters" element="tns:BindClassTeaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnBindClassTeaSoapIn">
+    <wsdl:part name="parameters" element="tns:UnBindClassTea" />
+  </wsdl:message>
+  <wsdl:message name="UnBindClassTeaSoapOut">
+    <wsdl:part name="parameters" element="tns:UnBindClassTeaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolTeaBySchoolIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchoolTeaBySchoolID" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolTeaBySchoolIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchoolTeaBySchoolIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaBySchoolAndSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeaBySchoolAndSubject" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaBySchoolAndSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeaBySchoolAndSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByStuIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByStuID" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByStuIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByStuIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSchoolTeaSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveSchoolTea" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSchoolTeaSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveSchoolTeaResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyUserBindWXSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyUserBindWX" />
+  </wsdl:message>
+  <wsdl:message name="VerifyUserBindWXSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyUserBindWXResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClassInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClassInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassTeaInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClassTeaInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassTeaInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClassTeaInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassStuInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClassStuInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClassStuInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClassStuInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddStudentToClassSoapIn">
+    <wsdl:part name="parameters" element="tns:AddStudentToClass" />
+  </wsdl:message>
+  <wsdl:message name="AddStudentToClassSoapOut">
+    <wsdl:part name="parameters" element="tns:AddStudentToClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveStuFromClassSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveStuFromClass" />
+  </wsdl:message>
+  <wsdl:message name="RemoveStuFromClassSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveStuFromClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="CFAddStuToClassSoapIn">
+    <wsdl:part name="parameters" element="tns:CFAddStuToClass" />
+  </wsdl:message>
+  <wsdl:message name="CFAddStuToClassSoapOut">
+    <wsdl:part name="parameters" element="tns:CFAddStuToClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByClassIDAndSubjectIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassIDAndSubjectID" />
+  </wsdl:message>
+  <wsdl:message name="GetTeaByClassIDAndSubjectIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassIDAndSubjectIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByNumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByNum" />
+  </wsdl:message>
+  <wsdl:message name="GetClassInfoByNumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserClassInfoListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserClassInfoList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserClassInfoListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserClassInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListByClassNumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassNum" />
+  </wsdl:message>
+  <wsdl:message name="GetStuListByClassNumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassNumResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FZUUMS_Relation2Soap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取关系类别</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationTypeSoapIn" />
+      <wsdl:output message="tns:GetRelationTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增关系</wsdl:documentation>
+      <wsdl:input message="tns:AddRelationSoapIn" />
+      <wsdl:output message="tns:AddRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SureRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">确认关系</wsdl:documentation>
+      <wsdl:input message="tns:SureRelationSoapIn" />
+      <wsdl:output message="tns:SureRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取关系列表</wsdl:documentation>
+      <wsdl:input message="tns:QueryRelationSoapIn" />
+      <wsdl:output message="tns:QueryRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取关系</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationSoapIn" />
+      <wsdl:output message="tns:GetRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取关系通双方用户编号</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationByUserIDSoapIn" />
+      <wsdl:output message="tns:GetRelationByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSureRelationByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取未确认关系通双方用户编号</wsdl:documentation>
+      <wsdl:input message="tns:GetUnSureRelationByUserIDSoapIn" />
+      <wsdl:output message="tns:GetUnSureRelationByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">解除关系</wsdl:documentation>
+      <wsdl:input message="tns:RemoveRelationSoapIn" />
+      <wsdl:output message="tns:RemoveRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">解除关系</wsdl:documentation>
+      <wsdl:input message="tns:DeleteRelationSoapIn" />
+      <wsdl:output message="tns:DeleteRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTeaStu">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">移除老师-学生关系</wsdl:documentation>
+      <wsdl:input message="tns:RemoveTeaStuSoapIn" />
+      <wsdl:output message="tns:RemoveTeaStuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">移除关系</wsdl:documentation>
+      <wsdl:input message="tns:RemoveRelationsSoapIn" />
+      <wsdl:output message="tns:RemoveRelationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelationList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">批量移除关系</wsdl:documentation>
+      <wsdl:input message="tns:RemoveRelationListSoapIn" />
+      <wsdl:output message="tns:RemoveRelationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerifyRelation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取待审核的数据，type为0时获取全部待审核的数据</wsdl:documentation>
+      <wsdl:input message="tns:GetVerifyRelationSoapIn" />
+      <wsdl:output message="tns:GetVerifyRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherRelationCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取老师关系数据统计信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTeacherRelationCountSoapIn" />
+      <wsdl:output message="tns:GetTeacherRelationCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户班级列表，通过用户编号</wsdl:documentation>
+      <wsdl:input message="tns:GetClassByUserIDSoapIn" />
+      <wsdl:output message="tns:GetClassByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserIDAndSubjectID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户班级列表，通过用户编号和学科编号</wsdl:documentation>
+      <wsdl:input message="tns:GetClassByUserIDAndSubjectIDSoapIn" />
+      <wsdl:output message="tns:GetClassByUserIDAndSubjectIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过班级编号获取班级学生关系列表</wsdl:documentation>
+      <wsdl:input message="tns:GetStuListSoapIn" />
+      <wsdl:output message="tns:GetStuListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByStuID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学生编号获取学生同学关系列表</wsdl:documentation>
+      <wsdl:input message="tns:GetStuListByStuIDSoapIn" />
+      <wsdl:output message="tns:GetStuListByStuIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaRelationByStuID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学生编号获取老师编号</wsdl:documentation>
+      <wsdl:input message="tns:GetTeaRelationByStuIDSoapIn" />
+      <wsdl:output message="tns:GetTeaRelationByStuIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByStuID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学生编号获取老师列表</wsdl:documentation>
+      <wsdl:input message="tns:GetTeaByStuIDSoapIn" />
+      <wsdl:output message="tns:GetTeaByStuIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过班级编号获取老师列表</wsdl:documentation>
+      <wsdl:input message="tns:GetTeaByClassIDSoapIn" />
+      <wsdl:output message="tns:GetTeaByClassIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationBySelfID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查找与当前用户有关系的其他用户</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationBySelfIDSoapIn" />
+      <wsdl:output message="tns:GetRelationBySelfIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查找与当前用户有关系的其他用户列表</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationListBySelfIDSoapIn" />
+      <wsdl:output message="tns:GetRelationListBySelfIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBySelfIDAndType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查找与当前用户有关系的其他用户</wsdl:documentation>
+      <wsdl:input message="tns:GetBySelfIDAndTypeSoapIn" />
+      <wsdl:output message="tns:GetBySelfIDAndTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfIDAndType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查找与当前用户有关系的其他用户列表</wsdl:documentation>
+      <wsdl:input message="tns:GetRelationListBySelfIDAndTypeSoapIn" />
+      <wsdl:output message="tns:GetRelationListBySelfIDAndTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过班级编号获取班级信息</wsdl:documentation>
+      <wsdl:input message="tns:GetClassInfoByIDSoapIn" />
+      <wsdl:output message="tns:GetClassInfoByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreateClassDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取班级创建时间</wsdl:documentation>
+      <wsdl:input message="tns:GetCreateClassDateSoapIn" />
+      <wsdl:output message="tns:GetCreateClassDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">移除班级，解散学生</wsdl:documentation>
+      <wsdl:input message="tns:RemoveClassSoapIn" />
+      <wsdl:output message="tns:RemoveClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">创建班级</wsdl:documentation>
+      <wsdl:input message="tns:CreateClassSoapIn" />
+      <wsdl:output message="tns:CreateClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取学校班级列表</wsdl:documentation>
+      <wsdl:input message="tns:GetSchoolClassSoapIn" />
+      <wsdl:output message="tns:GetSchoolClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClassCpoint">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取学校班级列表C端方法</wsdl:documentation>
+      <wsdl:input message="tns:GetSchoolClassCpointSoapIn" />
+      <wsdl:output message="tns:GetSchoolClassCpointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolListClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">批量获取学校班级列表（编号使用逗号分开）</wsdl:documentation>
+      <wsdl:input message="tns:GetSchoolListClassSoapIn" />
+      <wsdl:output message="tns:GetSchoolListClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindClassTea">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">绑定班级老师</wsdl:documentation>
+      <wsdl:input message="tns:BindClassTeaSoapIn" />
+      <wsdl:output message="tns:BindClassTeaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassTea">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">解绑班级老师</wsdl:documentation>
+      <wsdl:input message="tns:UnBindClassTeaSoapIn" />
+      <wsdl:output message="tns:UnBindClassTeaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolTeaBySchoolID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学校编号获取学校所有老师信息</wsdl:documentation>
+      <wsdl:input message="tns:GetSchoolTeaBySchoolIDSoapIn" />
+      <wsdl:output message="tns:GetSchoolTeaBySchoolIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaBySchoolAndSubject">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学科和学校获取老师信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTeaBySchoolAndSubjectSoapIn" />
+      <wsdl:output message="tns:GetTeaBySchoolAndSubjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByStuID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过学生编号获取班级信息</wsdl:documentation>
+      <wsdl:input message="tns:GetClassInfoByStuIDSoapIn" />
+      <wsdl:output message="tns:GetClassInfoByStuIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSchoolTea">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">从学校移除老师，并且移除班级</wsdl:documentation>
+      <wsdl:input message="tns:RemoveSchoolTeaSoapIn" />
+      <wsdl:output message="tns:RemoveSchoolTeaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyUserBindWX">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">判断用户微信绑定状态</wsdl:documentation>
+      <wsdl:input message="tns:VerifyUserBindWXSoapIn" />
+      <wsdl:output message="tns:VerifyUserBindWXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取所有的班级学校信息</wsdl:documentation>
+      <wsdl:input message="tns:GetAllClassInfoSoapIn" />
+      <wsdl:output message="tns:GetAllClassInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassTeaInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取班级老师信息</wsdl:documentation>
+      <wsdl:input message="tns:GetAllClassTeaInfoSoapIn" />
+      <wsdl:output message="tns:GetAllClassTeaInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassStuInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取所有班级学生信息</wsdl:documentation>
+      <wsdl:input message="tns:GetAllClassStuInfoSoapIn" />
+      <wsdl:output message="tns:GetAllClassStuInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStudentToClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将学生添加到班级</wsdl:documentation>
+      <wsdl:input message="tns:AddStudentToClassSoapIn" />
+      <wsdl:output message="tns:AddStudentToClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStuFromClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">移除学生和班级的关系</wsdl:documentation>
+      <wsdl:input message="tns:RemoveStuFromClassSoapIn" />
+      <wsdl:output message="tns:RemoveStuFromClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CFAddStuToClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">财富分账系统将学生添加到班级，使用的是班级编码</wsdl:documentation>
+      <wsdl:input message="tns:CFAddStuToClassSoapIn" />
+      <wsdl:output message="tns:CFAddStuToClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassIDAndSubjectID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">财富分账系统通过班级编码和学科信息获取老师用户信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTeaByClassIDAndSubjectIDSoapIn" />
+      <wsdl:output message="tns:GetTeaByClassIDAndSubjectIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByNum">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">财富分账系统通过班级编码获取班级信息</wsdl:documentation>
+      <wsdl:input message="tns:GetClassInfoByNumSoapIn" />
+      <wsdl:output message="tns:GetClassInfoByNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassInfoList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">同步学通过用户编号列表（逗号分开）获取用户班级列表信息，返回tb_class模板的json信息，createID为传入的userid，没有userid出现则代表用户当前没有班级</wsdl:documentation>
+      <wsdl:input message="tns:GetUserClassInfoListSoapIn" />
+      <wsdl:output message="tns:GetUserClassInfoListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassNum">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">同步学通过班级编码获取用户编号列表，获取的列表使用List&lt;User&gt;模板，使用selfID字段作为用户编号，其他字段不需要使用</wsdl:documentation>
+      <wsdl:input message="tns:GetStuListByClassNumSoapIn" />
+      <wsdl:output message="tns:GetStuListByClassNumSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FZUUMS_Relation2Soap" type="tns:FZUUMS_Relation2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationType">
+      <soap:operation soapAction="http://tempuri.org/GetRelationType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRelation">
+      <soap:operation soapAction="http://tempuri.org/AddRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SureRelation">
+      <soap:operation soapAction="http://tempuri.org/SureRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRelation">
+      <soap:operation soapAction="http://tempuri.org/QueryRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelation">
+      <soap:operation soapAction="http://tempuri.org/GetRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationByUserID">
+      <soap:operation soapAction="http://tempuri.org/GetRelationByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSureRelationByUserID">
+      <soap:operation soapAction="http://tempuri.org/GetUnSureRelationByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelation">
+      <soap:operation soapAction="http://tempuri.org/RemoveRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelation">
+      <soap:operation soapAction="http://tempuri.org/DeleteRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTeaStu">
+      <soap:operation soapAction="http://tempuri.org/RemoveTeaStu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelations">
+      <soap:operation soapAction="http://tempuri.org/RemoveRelations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelationList">
+      <soap:operation soapAction="http://tempuri.org/RemoveRelationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerifyRelation">
+      <soap:operation soapAction="http://tempuri.org/GetVerifyRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherRelationCount">
+      <soap:operation soapAction="http://tempuri.org/GetTeacherRelationCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserID">
+      <soap:operation soapAction="http://tempuri.org/GetClassByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserIDAndSubjectID">
+      <soap:operation soapAction="http://tempuri.org/GetClassByUserIDAndSubjectID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuList">
+      <soap:operation soapAction="http://tempuri.org/GetStuList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByStuID">
+      <soap:operation soapAction="http://tempuri.org/GetStuListByStuID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaRelationByStuID">
+      <soap:operation soapAction="http://tempuri.org/GetTeaRelationByStuID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByStuID">
+      <soap:operation soapAction="http://tempuri.org/GetTeaByStuID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassID">
+      <soap:operation soapAction="http://tempuri.org/GetTeaByClassID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationBySelfID">
+      <soap:operation soapAction="http://tempuri.org/GetRelationBySelfID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfID">
+      <soap:operation soapAction="http://tempuri.org/GetRelationListBySelfID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBySelfIDAndType">
+      <soap:operation soapAction="http://tempuri.org/GetBySelfIDAndType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfIDAndType">
+      <soap:operation soapAction="http://tempuri.org/GetRelationListBySelfIDAndType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByID">
+      <soap:operation soapAction="http://tempuri.org/GetClassInfoByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreateClassDate">
+      <soap:operation soapAction="http://tempuri.org/GetCreateClassDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClass">
+      <soap:operation soapAction="http://tempuri.org/RemoveClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateClass">
+      <soap:operation soapAction="http://tempuri.org/CreateClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClass">
+      <soap:operation soapAction="http://tempuri.org/GetSchoolClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClassCpoint">
+      <soap:operation soapAction="http://tempuri.org/GetSchoolClassCpoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolListClass">
+      <soap:operation soapAction="http://tempuri.org/GetSchoolListClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindClassTea">
+      <soap:operation soapAction="http://tempuri.org/BindClassTea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassTea">
+      <soap:operation soapAction="http://tempuri.org/UnBindClassTea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolTeaBySchoolID">
+      <soap:operation soapAction="http://tempuri.org/GetSchoolTeaBySchoolID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaBySchoolAndSubject">
+      <soap:operation soapAction="http://tempuri.org/GetTeaBySchoolAndSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByStuID">
+      <soap:operation soapAction="http://tempuri.org/GetClassInfoByStuID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSchoolTea">
+      <soap:operation soapAction="http://tempuri.org/RemoveSchoolTea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyUserBindWX">
+      <soap:operation soapAction="http://tempuri.org/VerifyUserBindWX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassInfo">
+      <soap:operation soapAction="http://tempuri.org/GetAllClassInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassTeaInfo">
+      <soap:operation soapAction="http://tempuri.org/GetAllClassTeaInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassStuInfo">
+      <soap:operation soapAction="http://tempuri.org/GetAllClassStuInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudentToClass">
+      <soap:operation soapAction="http://tempuri.org/AddStudentToClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStuFromClass">
+      <soap:operation soapAction="http://tempuri.org/RemoveStuFromClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CFAddStuToClass">
+      <soap:operation soapAction="http://tempuri.org/CFAddStuToClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassIDAndSubjectID">
+      <soap:operation soapAction="http://tempuri.org/GetTeaByClassIDAndSubjectID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByNum">
+      <soap:operation soapAction="http://tempuri.org/GetClassInfoByNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassInfoList">
+      <soap:operation soapAction="http://tempuri.org/GetUserClassInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassNum">
+      <soap:operation soapAction="http://tempuri.org/GetStuListByClassNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FZUUMS_Relation2Soap12" type="tns:FZUUMS_Relation2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationType">
+      <soap12:operation soapAction="http://tempuri.org/GetRelationType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRelation">
+      <soap12:operation soapAction="http://tempuri.org/AddRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SureRelation">
+      <soap12:operation soapAction="http://tempuri.org/SureRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRelation">
+      <soap12:operation soapAction="http://tempuri.org/QueryRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelation">
+      <soap12:operation soapAction="http://tempuri.org/GetRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationByUserID">
+      <soap12:operation soapAction="http://tempuri.org/GetRelationByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSureRelationByUserID">
+      <soap12:operation soapAction="http://tempuri.org/GetUnSureRelationByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelation">
+      <soap12:operation soapAction="http://tempuri.org/RemoveRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelation">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTeaStu">
+      <soap12:operation soapAction="http://tempuri.org/RemoveTeaStu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelations">
+      <soap12:operation soapAction="http://tempuri.org/RemoveRelations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRelationList">
+      <soap12:operation soapAction="http://tempuri.org/RemoveRelationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerifyRelation">
+      <soap12:operation soapAction="http://tempuri.org/GetVerifyRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherRelationCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTeacherRelationCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserID">
+      <soap12:operation soapAction="http://tempuri.org/GetClassByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByUserIDAndSubjectID">
+      <soap12:operation soapAction="http://tempuri.org/GetClassByUserIDAndSubjectID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuList">
+      <soap12:operation soapAction="http://tempuri.org/GetStuList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByStuID">
+      <soap12:operation soapAction="http://tempuri.org/GetStuListByStuID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaRelationByStuID">
+      <soap12:operation soapAction="http://tempuri.org/GetTeaRelationByStuID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByStuID">
+      <soap12:operation soapAction="http://tempuri.org/GetTeaByStuID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassID">
+      <soap12:operation soapAction="http://tempuri.org/GetTeaByClassID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationBySelfID">
+      <soap12:operation soapAction="http://tempuri.org/GetRelationBySelfID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfID">
+      <soap12:operation soapAction="http://tempuri.org/GetRelationListBySelfID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBySelfIDAndType">
+      <soap12:operation soapAction="http://tempuri.org/GetBySelfIDAndType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationListBySelfIDAndType">
+      <soap12:operation soapAction="http://tempuri.org/GetRelationListBySelfIDAndType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByID">
+      <soap12:operation soapAction="http://tempuri.org/GetClassInfoByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreateClassDate">
+      <soap12:operation soapAction="http://tempuri.org/GetCreateClassDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClass">
+      <soap12:operation soapAction="http://tempuri.org/RemoveClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateClass">
+      <soap12:operation soapAction="http://tempuri.org/CreateClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClass">
+      <soap12:operation soapAction="http://tempuri.org/GetSchoolClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolClassCpoint">
+      <soap12:operation soapAction="http://tempuri.org/GetSchoolClassCpoint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolListClass">
+      <soap12:operation soapAction="http://tempuri.org/GetSchoolListClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindClassTea">
+      <soap12:operation soapAction="http://tempuri.org/BindClassTea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassTea">
+      <soap12:operation soapAction="http://tempuri.org/UnBindClassTea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolTeaBySchoolID">
+      <soap12:operation soapAction="http://tempuri.org/GetSchoolTeaBySchoolID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaBySchoolAndSubject">
+      <soap12:operation soapAction="http://tempuri.org/GetTeaBySchoolAndSubject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByStuID">
+      <soap12:operation soapAction="http://tempuri.org/GetClassInfoByStuID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSchoolTea">
+      <soap12:operation soapAction="http://tempuri.org/RemoveSchoolTea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyUserBindWX">
+      <soap12:operation soapAction="http://tempuri.org/VerifyUserBindWX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetAllClassInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassTeaInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetAllClassTeaInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClassStuInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetAllClassStuInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudentToClass">
+      <soap12:operation soapAction="http://tempuri.org/AddStudentToClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStuFromClass">
+      <soap12:operation soapAction="http://tempuri.org/RemoveStuFromClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CFAddStuToClass">
+      <soap12:operation soapAction="http://tempuri.org/CFAddStuToClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassIDAndSubjectID">
+      <soap12:operation soapAction="http://tempuri.org/GetTeaByClassIDAndSubjectID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByNum">
+      <soap12:operation soapAction="http://tempuri.org/GetClassInfoByNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassInfoList">
+      <soap12:operation soapAction="http://tempuri.org/GetUserClassInfoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassNum">
+      <soap12:operation soapAction="http://tempuri.org/GetStuListByClassNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FZUUMS_Relation2">
+    <wsdl:port name="FZUUMS_Relation2Soap" binding="tns:FZUUMS_Relation2Soap">
+      <soap:address location="http://183.47.42.221:8026/UserService/FZUUMS_Relation2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FZUUMS_Relation2Soap12" binding="tns:FZUUMS_Relation2Soap12">
+      <soap12:address location="http://183.47.42.221:8026/UserService/FZUUMS_Relation2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

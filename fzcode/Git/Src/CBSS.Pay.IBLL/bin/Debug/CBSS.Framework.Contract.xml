@@ -1,0 +1,755 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CBSS.Framework.Contract</name>
+    </assembly>
+    <members>
+        <member name="T:CBSS.Framework.Contract.API.APIRequest">
+            <summary>
+            服务请求参数
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequest.Key">
+            <summary>
+            秘钥
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequest.Info">
+            <summary>
+            请求数据
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequest.FunName">
+            <summary>
+            接口名称
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequest.FunWay">
+            <summary>
+            接口请求方式，0正常,1加密,2压缩,3压缩加密
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequest.Flag">
+            <summary>
+            接口标识
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.API.APIRequestFlag">
+            <summary>
+            请求参数标识
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequestFlag.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequestFlag.ModelID">
+            <summary>
+            模型ID
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.API.APIRequestInfo">
+            <summary>
+            请求参数实体
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequestInfo.RTime">
+            <summary>
+            请求时间
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequestInfo.PKey">
+            <summary>
+            客户端的公钥
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIRequestInfo.InputStr">
+            <summary>
+            输入参数字符串
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.API.APIResponse">
+            <summary>
+            服务处理结果输出
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.RequestID">
+            <summary>
+            请求方法
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.Success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.Data">
+            <summary>
+            业务数据
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.SystemTime">
+            <summary>
+            系统时间
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.ErrorCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.API.APIResponse.ErrorMsg">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Contract.API.APIResponse.GetResponse(System.Object)">
+            <summary>
+            接口返回对象
+            </summary>
+            <param name="data">返回数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Contract.API.APIResponse.GetErrorResponse(CBSS.Framework.Contract.API.ErrorCodeEnum,CBSS.Framework.Contract.Enums.LogLevelEnum,System.Exception)">
+            <summary>
+            按错误数据创建输出对象,并记录日志
+            </summary>
+            <param name="errorCode">错误编码</param>
+            <param name="logLevel">日志级别</param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Contract.API.APIResponse.GetErrorResponse(CBSS.Framework.Contract.API.ErrorCodeEnum,System.String)">
+            <summary>
+            按错误数据创建输出对象
+            </summary>
+            <param name="errorCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CBSS.Framework.Contract.API.APIReturnData">
+            <summary>
+            接口方法返回结果
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.API.ErrorCodeEnum">
+            <summary>
+            接口错误枚举
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.AppVersionTypeEnum">
+            <summary>
+            APP版本
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.BjVersionId">
+            <summary>
+            北京版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.GzVersionId">
+            <summary>
+            广州版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.SzVersionId">
+            <summary>
+            牛津深圳版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.GdVersionId">
+            <summary>
+            广东版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.XkbVersionId">
+            <summary>
+            新课标标准实验版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.ShbdVersionId">
+            <summary>
+            牛津上海本地版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.RjpepVersionId">
+            <summary>
+            人教PEP版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.RjxqdVersionId">
+            <summary>
+            人教版新起点
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.JsylVersionId">
+            <summary>
+            江苏译林
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.RjVersionId">
+            <summary>
+            人教版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.ShqgVersionId">
+            <summary>
+            牛津上海全国版
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionTypeEnum.SdVersionId">
+            <summary>
+            山东版
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ConfigTypeEnum">
+            <summary>
+            字典配置类型
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.PayStatusEnum">
+            <summary>
+            支付状态
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayStatusEnum.Unpaid">
+            <summary>
+            待支付
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayStatusEnum.HavePaid">
+            <summary>
+            已支付
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayStatusEnum.SalesReturn">
+            <summary>
+            退货
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.PayWayEnum">
+            <summary>
+            支付方式
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayWayEnum.Alipay">
+            <summary>
+            支付宝
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayWayEnum.WeChat">
+            <summary>
+            安卓
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.PayWayEnum.Apple">
+            <summary>
+            苹果
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.SystemCodeEnum">
+            <summary>
+            系统编号
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ApiFuncWayEnum">
+            <summary>
+            API接口请求方式
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.GoodWayEnum">
+            <summary>
+            商品出售方式1单册2套餐
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.GoodWayEnum.SingleVolume">
+            <summary>
+            单册
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.GoodWayEnum.SetMeal">
+            <summary>
+            套餐
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ImgTypeEnum">
+            <summary>
+            图片格式，1：静态图 2：动态图 3：序列图
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ImgTypeEnum.StaticImg">
+            <summary>
+            静态图
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ImgTypeEnum.DynamicImg">
+            <summary>
+            动态图
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ImgTypeEnum.SequenceImg">
+            <summary>
+            序列图
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.AppVersionUpdateTypeEnum">
+            <summary>
+            应用类型
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionUpdateTypeEnum.AllPackagePpdate">
+            <summary>
+            整包更新
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppVersionUpdateTypeEnum.IncrementalUpdate">
+            <summary>
+            增量更新
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.AppTypeEnum">
+            <summary>
+            应用类型
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppTypeEnum.PleaseChoose">
+            <summary>
+            请选择
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppTypeEnum.Android">
+            <summary>
+            安卓
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.AppTypeEnum.Ios">
+            <summary>
+            苹果
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.MODSourceTypeEnum">
+            <summary>
+            MOD资源类型,注：此枚举不能修改，只能新增
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.PleaseChoose">
+            <summary>
+            请选择
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.Word">
+            <summary>
+            单词
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.Article">
+            <summary>
+            课文跟读
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.EBook">
+            <summary>
+            电子书
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.Listen">
+            <summary>
+            同步听
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.Exercise">
+            <summary>
+            练习册
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.Spoken">
+            <summary>
+            口语
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.FollowRead">
+            <summary>
+            句子跟读
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.HearResource">
+            <summary>
+            练习册
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.IntestingDubbing">
+            <summary>
+            口语
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.ClassDubbing">
+            <summary>
+            口语
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.MODSourceTypeEnum.MovieDubbing">
+            <summary>
+            口语
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.SourceAccessModeEnum">
+            <summary>
+            资源访问方式  1 新MOD  2 本地 3 第三方
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.SourceAccessModeEnum.InnerModel">
+            <summary>
+            MOD
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.SourceAccessModeEnum.ExternalModel">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.SourceAccessModeEnum.ThirdParty">
+            <summary>
+            第三方
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.FreeTypeEnum">
+            <summary>
+            试看条件
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.FreeTypeEnum.InnerModel">
+            <summary>
+            单元
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.FreeTypeEnum.ExternalModel">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ModelTypeEnum">
+            <summary>
+            模型分类
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelTypeEnum.InnerModel">
+            <summary>
+            课内模型
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelTypeEnum.ExternalModel">
+            <summary>
+            课外模型
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ModelFunctionEnum">
+            <summary>
+            模型功能
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelFunctionEnum.Evaluating">
+            <summary>
+            评测
+            </summary> 
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelFunctionEnum.Repeat">
+            <summary>
+            跟读
+            </summary> 
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.ModelResourceType">
+            <summary>
+            模型资源分类
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelResourceType.protogenesis">
+            <summary>
+            原生
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.ModelResourceType.h5">
+            <summary>
+            H5
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Enums.LogLevelEnum">
+            <summary>
+            日志级别
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.LogLevelEnum.Debug">
+            <summary>
+            调试日志
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.LogLevelEnum.Error">
+            <summary>
+            系统异常，但不影响系统继续运行的信息
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.LogLevelEnum.Info">
+            <summary>
+            一般日志,关键系统参数的回显、后台服务的初始化状态、需要开发者确认的信息
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.LogLevelEnum.Fatal">
+            <summary>
+            重大错误,影响系统正常运行的信息
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.Enums.LogLevelEnum.Warn">
+            <summary>
+            一般异常,在业务合理范围内的异常信息
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.BCPointEnum">
+            <summary>
+            B端、C端
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.BCPointEnum.Bpoint">
+            <summary>
+            B端
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.BCPointEnum.Cpoint">
+            <summary>
+            C端
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.ModRelationTypeEnum">
+            <summary>
+            MOD关系类别编号
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.TeaStu">
+            <summary>
+            教师和学生
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.ParentStu">
+            <summary>
+            家长和学生
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.SalesAgent">
+            <summary>
+            业务员和代理商
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.AgentTea">
+            <summary>
+            代理商和教师
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.StuClass">
+            <summary>
+            学生和班级
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.ModRelationTypeEnum.TeaClass">
+            <summary>
+            教师和班级
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.StatusEnum">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.StatusEnum.NoEnabled">
+            <summary>
+            未启用
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.StatusEnum.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.StatusEnum.Disable">
+            <summary>
+            禁用
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.StatusEnum.Delete">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Contract.UserState.notLogin">
+            <remarks/>
+        </member>
+        <member name="F:CBSS.Framework.Contract.UserState.notOnLine">
+            <remarks/>
+        </member>
+        <member name="F:CBSS.Framework.Contract.UserState.otherOnline">
+            <remarks/>
+        </member>
+        <member name="F:CBSS.Framework.Contract.UserState.selfOnline">
+            <remarks/>
+        </member>
+        <member name="F:CBSS.Framework.Contract.UserState.appForbidden">
+            <remarks/>
+        </member>
+        <member name="T:CBSS.Framework.Contract.UserTypeEnum">
+            <summary>
+            用户身份
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingRequest.ID">
+            <summary>
+            请求ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingRequest.Function">
+            <summary>
+            请求方法
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingRequest.Data">
+            <summary>
+            业务数据
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.KingResponse">
+            <summary>
+            服务处理结果输出
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingResponse.RequestID">
+            <summary>
+            请求方法
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingResponse.Success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingResponse.Data">
+            <summary>
+            业务数据
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.KingResponse.ErrorMsg">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Contract.KingResponse.GetResponse(System.Object)">
+            <summary>
+            接口返回对象
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Contract.KingResponse.GetErrorResponse(System.String,CBSS.Framework.Contract.KingRequest)">
+            <summary>
+            按错误数据创建输出对象
+            </summary>
+            <param name="errorMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Contract.KingResponse.GetErrorResponse(System.Int32,System.String,CBSS.Framework.Contract.KingRequest)">
+            <summary>
+            按错误数据创建输出对象
+            </summary>
+            <param name="errorCode"></param>
+            <param name="errorMsg"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CBSS.Framework.Contract.BusinessException">
+            <summary>
+            业务异常，用于在后端抛出到前端做相应处理
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.IAuditable">
+            <summary>
+            用于写数据修改，添加等历史日志
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Operater">
+            <summary>
+            记录操作历史
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.PagedList`1">
+            <summary>
+            分页数据集合，用于后端返回分页好的集合及前端视图分页控件绑定
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Rds_UseAppRecord">
+            <summary>
+            用户打开APP记录队列
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UseAppRecord.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UseAppRecord.AppChannelID">
+            <summary>
+            应用渠道ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UseAppRecord.AppVersionNumber">
+            <summary>
+            应用版本号
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UseAppRecord.UseAppTime">
+            <summary>
+            使用APP时间（单位：S）
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UseAppRecord.CreateData">
+            <summary>
+            创建日期
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Rds_UserLoginRecord">
+            <summary>
+            用户登陆记录队列
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UserLoginRecord.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UserLoginRecord.AppChannelID">
+            <summary>
+            应用渠道ID
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UserLoginRecord.AppVersionNumber">
+            <summary>
+            应用版本号
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UserLoginRecord.Status">
+            <summary>
+            状态 0正常登陆 1注册 2第一次登陆
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Contract.Rds_UserLoginRecord.CreateData">
+            <summary>
+            创建日期
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.Request">
+            <summary>
+            用于BLL方法提传入条件
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.Contract.WCFContext">
+            <summary>
+            服务调用上下文，主要传输IP，操作人，认证等数据，可用于WCF传输用
+            </summary>
+        </member>
+    </members>
+</doc>

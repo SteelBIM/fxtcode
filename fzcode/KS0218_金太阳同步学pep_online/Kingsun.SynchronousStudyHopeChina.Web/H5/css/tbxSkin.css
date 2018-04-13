@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:url(../images/background0.6.jpg) no-repeat top center;background-size:cover;}
+.skell{left:4%;width:92%;position:absolute;top:0;height:100%;}
+.header{width:100%;height:40px;position:absolute;top:10px;z-index:1;}
+.header a.return{background:url(../images/return.png) no-repeat center center;background-size:contain;float:left;width:10%;height:100%;}
+.header b{float:left;font-size:20px;color:#606060;height:100%;line-height:200%;width:85%;text-align:center;text-indent:2%;}
+.content{overflow-y:scroll;overflow-x:hidden;width:100%;position:absolute;top:50px;height:100%;}
+.content .lpart{width:100%;margin-top:20px;}
+.lpart p{font-size:18px;color:#606060;}
+.lpart p em{font-style:normal;font-size:18px;margin-left:10px;}
+.lpart input,.lpart .group{font-size:18px;text-indent:30px;margin-top:5px;color:#505050;border-radius:10px;width:100%;height:50px;}
+.lpart input{background:#fff;border:none;}
+.lpart .group{line-height:50px;background:#fff url(../images/arrow1.png) no-repeat right center;background-size:24px 18px;}
+.content .pt{font-size:14px;text-align:center;margin:20px 0;color:#606060;}
+.btn{width:80%;margin:0 auto;}
+.btn a{display:block;width:35%;height:40px;line-height:40px;color:#606060;border-radius:10px;border:1px solid #fff;text-align:center;}
+.btn a.sp1{float:left;}
+.btn a.sp1{float:right;}
+.btn a.choosed{background:#64C2FD;border:1px solid #64C2FD;color:#fff;}
+a.refer{margin:30px auto;width:74%;height:50px;background:#0b68af;border-radius:16px;color:#fff;display:block;line-height:50px;font-size:18px;text-align:center;}
+.placeholder{height:30px;width:100%;}
+@media screen and (max-width:380px){
+  .header b{font-size:16px;line-height:250%;}
+  .content .pt{font-size:12px;}	
+}
+/*年级弹窗*/
+.popupGroup{width:100%;height:100%;position:absolute;top:0;z-index:2;}
+.shadow{width:100%;height:100%;position:absolute;top:0;z-index:3;background:rgba(0,0,0,0.6);}
+.popupGroup .gr{width:70%;position:absolute;left:15%;top:100px;z-index:4;}
+.popupGroup .gr img{width:96%;margin:0;padding:0 1% 0 3%;}
+.popupGroup .gr div{background:#f8f8f8;border-radius:6px;width:100%;margin-top:-6px;padding:20px 0 5px;}
+.popupGroup .gr div p{text-align:center;height:44px;border-bottom:1px dashed #c8c8c8;width:80%;margin:4px auto 0;}
+.popupGroup .gr div p a{display:block;font-size:18px;line-height:40px;color:#505050;width:100%;border-radius:5px;height:40px;}
+.popupGroup .gr div p a:hover,.popupGroup .gr div p a:active{background-color:#8e9bb0;color:#fff;}
+.popupGroup .gr div a.close{color:#00aeff;text-align:center;width:80%;display:block;font-size:18px;margin:15px auto 0;height:40px;line-height:40px;}
+
+

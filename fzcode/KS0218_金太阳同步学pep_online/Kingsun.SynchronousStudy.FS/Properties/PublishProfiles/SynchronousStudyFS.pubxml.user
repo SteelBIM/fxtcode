@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\WebSite\IBS\FS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Aliyun.OSS.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Kingsun.DB.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.BLL.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.BLL.dll.config">
+      <publishTime>12/26/2017 19:43:05</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.BLL.pdb">
+      <publishTime>01/17/2018 16:15:31</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.BLL.XmlSerializers.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.Common.dll">
+      <publishTime>02/01/2018 19:55:36</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.Common.pdb">
+      <publishTime>01/12/2018 18:59:20</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.DAL.dll">
+      <publishTime>02/01/2018 19:55:37</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.DAL.pdb">
+      <publishTime>01/12/2018 18:59:22</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.Model.dll">
+      <publishTime>02/01/2018 19:55:36</publishTime>
+    </File>
+    <File Include="bin/Kingsun.ExamPaper.Model.pdb">
+      <publishTime>01/12/2018 18:59:20</publishTime>
+    </File>
+    <File Include="bin/Kingsun.Fs.dll">
+      <publishTime>03/22/2018 09:24:35</publishTime>
+    </File>
+    <File Include="bin/Kingsun.Fs.pdb">
+      <publishTime>01/17/2018 16:15:35</publishTime>
+    </File>
+    <File Include="bin/Kingsun.Fs.XmlSerializers.dll">
+      <publishTime>10/17/2017 15:05:42</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.dll">
+      <publishTime>03/22/2018 09:24:32</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.dll.config">
+      <publishTime>01/08/2018 09:29:41</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.pdb">
+      <publishTime>01/17/2018 16:13:57</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.XmlSerializers.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.DAL.dll">
+      <publishTime>03/22/2018 09:24:32</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.DAL.pdb">
+      <publishTime>01/17/2018 16:13:56</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IBLL.dll">
+      <publishTime>03/22/2018 09:24:31</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IBLL.pdb">
+      <publishTime>01/12/2018 18:59:24</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IDAL.dll">
+      <publishTime>03/22/2018 09:24:31</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IDAL.pdb">
+      <publishTime>01/17/2018 16:13:54</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.Model.dll">
+      <publishTime>03/01/2018 15:17:41</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.Model.pdb">
+      <publishTime>01/12/2018 18:59:22</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.BLL.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.BLL.pdb">
+      <publishTime>01/17/2018 16:15:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Common.dll">
+      <publishTime>03/09/2018 14:31:04</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Common.pdb">
+      <publishTime>01/12/2018 18:59:22</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.DAL.dll">
+      <publishTime>03/09/2018 14:31:04</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.DAL.pdb">
+      <publishTime>01/12/2018 18:59:25</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Model.dll">
+      <publishTime>02/01/2018 19:55:36</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Model.pdb">
+      <publishTime>01/12/2018 18:59:21</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.dll.config">
+      <publishTime>10/24/2017 18:06:06</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.pdb">
+      <publishTime>01/15/2018 11:43:51</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.XmlSerializers.dll">
+      <publishTime>03/22/2018 09:24:33</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SpokenBroadcas.Common.dll">
+      <publishTime>02/01/2018 10:12:22</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SpokenBroadcas.Common.pdb">
+      <publishTime>01/12/2018 18:59:21</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.BLL.dll">
+      <publishTime>03/22/2018 09:24:34</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.BLL.pdb">
+      <publishTime>01/17/2018 16:14:00</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Common.dll">
+      <publishTime>02/09/2018 14:11:09</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Common.pdb">
+      <publishTime>01/12/2018 18:59:21</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.DAL.dll">
+      <publishTime>03/22/2018 09:24:32</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.DAL.dll.config">
+      <publishTime>10/19/2017 14:58:43</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.DAL.pdb">
+      <publishTime>01/17/2018 16:13:56</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Models.dll">
+      <publishTime>03/22/2018 09:24:31</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Models.pdb">
+      <publishTime>01/17/2018 16:13:52</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/19/2017 14:58:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>10/19/2017 14:58:13</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/19/2017 14:58:09</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.Net20.dll">
+      <publishTime>10/19/2017 14:58:21</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.pdb">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/SqlSugar.dll">
+      <publishTime>11/06/2017 13:26:17</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/19/2017 14:58:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/19/2017 14:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/19/2017 14:58:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/19/2017 14:58:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/19/2017 14:58:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/19/2017 14:58:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>10/19/2017 14:58:24</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>10/19/2017 14:58:14</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>10/19/2017 14:58:09</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>10/19/2017 14:58:08</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>10/19/2017 14:58:11</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>10/19/2017 14:58:27</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="log4Net.config">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="Views/SyncRedisUserInfo/Index.cshtml">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/19/2017 14:57:49</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/Reference.map">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/ReturnInfo.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/tb_Class.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/tb_Relation.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/tb_RelationType.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/tb_UserClass.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_Relation2/User.datasource">
+      <publishTime>09/22/2017 09:08:46</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/AppSystem.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/ReturnInfo.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/Tb_UserBindPhone.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/Tb_UserEdition.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/Tb_UserSubject.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/User.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/uumsUserState.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/FZUUMS_UserService/V_GroupPower.datasource">
+      <publishTime>09/21/2017 17:59:05</publishTime>
+    </File>
+    <File Include="Web References/RelationService/Reference.map">
+      <publishTime>09/19/2017 10:59:00</publishTime>
+    </File>
+    <File Include="Web References/RelationService/ReturnInfo.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web References/RelationService/tb_Class.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web References/RelationService/tb_Relation.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web References/RelationService/tb_UserClass.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web References/RelationService/Tb_UserTelInviTation.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web References/RelationService/User.datasource">
+      <publishTime>09/19/2017 16:40:29</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/22/2018 09:24:35</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

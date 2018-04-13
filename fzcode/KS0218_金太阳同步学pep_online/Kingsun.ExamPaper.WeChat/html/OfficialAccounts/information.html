@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>完善资料</title>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/mobile.js"></script>
+    <script type="text/javascript" src="js/OfficialAccounts.js"></script>
+    <link href="css/OfficialAccounts.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/testDb.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="Html2">
+            <div class="name">
+                <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+                <input id="inp1" type="text" placeholder="请输入姓名" />
+            </div>
+            <div class="school">
+                <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校：</span>
+                <input id="inp2" type="text" placeholder="请输入学校" />
+            </div>
+            <div class="edition">
+                <span>课程版本：</span>
+                <input id="demo1" readonly="readonly" type="text" placeholder="请输入版本" />
+                <input id="value1" type="hidden" />
+            </div>
+
+
+            <a class="next" href="creationclas.html">下一步</a>
+
+        </div>
+
+    </div>
+    <script src="js/LArea.js"></script>
+    <script>
+        var area1 = new LArea();
+        area1.init({
+            'trigger': '#demo1',
+            'valueTo': '#value1',
+            'keys': {
+                id: 'value1',
+                name: 'text1'
+            },
+            'type': 1,
+            'data': [edition_data]
+        });
+
+    </script>
+</body>
+</html>

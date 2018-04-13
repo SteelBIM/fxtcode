@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;background-color:#1C9EEA; }
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+.main{ width:90%; margin:2% auto 0; height:100%;}
+.three{ width:86%; margin:0 auto; background-color:#fff; opacity:0.7; border-radius:2px; z-index:-2;  height:20px;}
+.two{width:94%; margin:0 auto; background-color:#fff; opacity:0.6; border-radius:2px; z-index:-1; margin-top:-10px;  height:10px;}
+.content{ margin:0 auto; background-color:#fff; border-radius:5px; padding:20px 20px 10px; height:68%; position:relative; overflow-y:scroll;}
+.content .question ul li{margin-bottom:10px;  font-weight:bold; font-size:18px; }
+.content .question ul li img{ width:20px; margin-right:5px; vertical-align:middle;}
+.content .answer h2{font-size:18px; margin-bottom:10px;}
+.content .answer h2 img{width:20px; margin-right:5px; vertical-align:middle;}
+.content .answer div{background:url(../images/answer.png)  no-repeat; background-size:20px; padding-left:30px;}
+.content .answer div p{ color:#7A8084; margin-bottom:10px; line-height:25px;}
+.content .answer a{ background:url(../images/close.png) no-repeat; width:30px; height:30px; margin:0 auto; display:block; background-size:100%; position:absolute; bottom:20px; left:50%; margin-left:-15px;}
+
+/*底部样式*/
+.footer{  background-color:#E5F1F9; width:90%;  margin-left:5%; position:fixed; bottom:0; border-top-left-radius:5px; border-top-right-radius:5px;}
+.footer .nr{ padding:10px 0px 10px 20px; overflow:hidden;}
+.footer img{ width:70px; float:left;}
+.footer .nr div{ display:inline; float:left; margin-left:15px; margin-top:10px;}
+.footer .nr div h3{ font-size:16px; text-align: center; margin-top:5px;}
+.footer .nr div p{ font-size:12px; margin-top:5px;}
+.footer .nr div p span{ border:1px solid #595C63; border-radius:10px; padding:2px 5px;}
+
+@media screen and (max-width:374px){
+	.content .question ul li{ font-size:14px;}
+	.content .answer h2{font-size:14px;}
+	.content .answer div p{ line-height:20px; font-size:12px;}
+	.footer img{ width:50px;}
+	.footer .nr div{margin-top:6px;}
+	.footer .nr div h3{  font-size:12px;}
+    .footer .nr div p{ font-size:12px;}
+    }
+	
+/*判断横屏*/
+@media all and (orientation : landscape) { 
+    
+	.content{ height:50%;}
+    .content .answer a{ position:relative; margin-top:20px; bottom:0;}
+} 

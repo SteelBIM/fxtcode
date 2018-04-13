@@ -1,0 +1,111 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@using CBSS.Cfgmanager.Contract.ViewModel
+@model DataBaseTableFieldEntity
+@{
+    Layout = "~/Views/Shared/_Layout.Edit2.cshtml";
+    bool isnullable = Model.isnullable == "1";
+    bool key = Model.key == "1";
+    bool identity = Model.identity == "1";
+    Model.oldcolumn = Model.column;
+}
+@section PageSpecificJavascriptIncludes{
+    <script>
+        $(function () {
+            $("form").attr("action", "@Html.Raw(Url.Action("AlterTableField"))");
+            //if ($("#length").val() == -1) {//没有长度
+            //    if ($("#datatype").val().lastIndexOf("char") != -1) {//是字符
+            //        $("#datatype").val($("#datatype").val() + "(max)");
+            //    }
+            //}        
+        })
+    </script>
+}
+@section MainContent{
+    <form method="post">
+        <div class="portlet-body form-horizontal form-bordered form-row-stripped" >
+            <div class="row-fluid">
+                <div class="control-group">
+                    <label class="control-label"><span class="required">*</span>字段名：</label>
+                    <div class="controls">
+                        @Html.Hidden("tableName", Request.QueryString["tableName"])
+                        @Html.Hidden("dbName", Request.QueryString["dbName"])
+                        @Html.HiddenFor(o => o.oldcolumn)
+                        @Html.TextBoxFor(o => o.column, new { @class = "m-wrap small" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">类  型：</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(o => o.datatype, new List<SelectListItem> {
+                   new SelectListItem{  Text="datetime",Value="datetime"},
+                   new SelectListItem{  Text="decimal",Value="decimal"},
+                   new SelectListItem{  Text="int",Value="int"},
+                   new SelectListItem{  Text="varchar",Value="varchar"},
+                   new SelectListItem{  Text="varchar(max)",Value="varchar(max)"},
+                   new SelectListItem{  Text="nvarchar",Value="nvarchar"},
+                   new SelectListItem{  Text="nvarchar(max)",Value="nvarchar(max)"},
+                   new SelectListItem{ Text="uniqueidentifier",Value="uniqueidentifier" },
+                   new SelectListItem{ Text="text",Value="text" },
+               })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">长  度：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(o => o.length, new { @class = "m-wrap small" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">精  度：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(o => o.precision, new { @class = "m-wrap small" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">默认值：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(o => o.defaults, new { @class = "m-wrap small" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">说  明：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(o => o.remark, new { @class = "m-wrap small" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        可空：<input type="checkbox" style="margin-bottom: 5px;margin-right: 10px;" name="isnullable" @(isnullable ? "checked" : "") />
+                        标识：<input onchange="IsIdentity()" type="checkbox" style="margin-bottom: 5px;margin-right: 10px;" id="identity" name="identity" @(identity ? "checked" : "") />
+                        主键：<input type="checkbox" style="margin-bottom: 5px;margin-right: 10px;" name="key" @(key ? "checked" : "") />
+                    </div>
+                </div>
+                <div class="form-actions navbar-fixed-bottom">
+                    <button type="submit" id="submit" class="btn blue"><i class="icon-ok"></i> 提交</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function IsIdentity() {
+            debugger;
+            if ($("#identity").prop("checked")) {//标识
+                $("#defaults").val("");
+                $("#defaults").attr("disabled", "disabled");
+            } else {         //非标识
+                $("#defaults").removeAttr("disabled");
+            }
+        }
+
+     
+     
+
+
+    </script>
+
+ 
+
+}

@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KSWF.WFM.BLL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="KSWF_WFM_BLL_MateService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.3.7:8010/MetadataService.asmx</Value>
+    </Setting>
+    <Setting Name="KSWF_WFM_BLL_PayService_FZPayService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://pay.kingsun.cn/Service/FZPayService.asmx</Value>
+    </Setting>
+    <Setting Name="KSWF_WFM_BLL_SNSService_RelationService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.3.88:8091/UserService/FZUUMS_Relation2.asmx</Value>
+    </Setting>
+    <Setting Name="KSWF_WFM_BLL_UserService_FZUUMS_UserService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.3.7:8026/UserService/FZUUMS_UserService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

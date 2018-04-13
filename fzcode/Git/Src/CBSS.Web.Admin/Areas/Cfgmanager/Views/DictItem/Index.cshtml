@@ -1,0 +1,95 @@
+﻿@using CBSS.Web
+@using CBSS.Core.Utility
+@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@{
+    ViewBag.Title = "Index";
+}
+@using CBSS.Cfgmanager.Contract.DataModel
+
+@model PagedList<Sys_DictItem>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            <a class="btn red" id="delete" href="javascript:;"><i class="icon-trash icon-white"></i> 删除</a>
+            <a class="btn blue thickbox" title='' href="@Url.Action("Create")?TB_iframe=true&width=1000&height=800"><i class="icon-plus icon-white"></i> 新增</a>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("Delete", "DictItem", FormMethod.Post, new { id = "mainForm" }))
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>
+                <th>
+                    系统名称
+                </th>
+                <th>
+                    字典编码
+                </th>
+                <th>
+                    字典名称
+                </th>
+                <th>
+                    字典值
+                </th>
+                <th>
+                    配置类型
+                </th>
+                <th>
+                    状态
+                </th>
+                <th>
+                    发布时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+            <tr>
+                <td><input type="checkbox" class="checkboxes" name='ids' value='@m.DictItemID' /></td>
+                <td>
+                    @(CBSS.Core.Utility.EnumHelper.GetEnumDesc<CBSS.Framework.Contract.Enums.SystemCodeEnum>(m.SystemCode))
+                </td>
+                <td>
+                    @m.DictCode
+                </td>
+                <td>
+                    @m.DictName
+                </td>
+                <td>
+                    @m.DictValue
+                </td>
+                <td>
+                    @(CBSS.Core.Utility.EnumHelper.GetEnumDesc<CBSS.Framework.Contract.Enums.ConfigTypeEnum>(m.ConfigType))
+                </td>
+                <td>
+                    @(CBSS.Core.Utility.EnumHelper.GetEnumDesc<CBSS.Framework.Contract.StatusEnum>(m.State))
+                </td>
+                <td>
+                    @m.CreateDate
+                </td>
+                <td>
+                    <a class="btn mini purple thickbox" title='编辑' href="@Url.Action("Edit", new { id = m.DictItemID })?TB_iframe=true&width=1000&height=800">
+                        <i class="icon-edit"></i>
+                        编辑
+                    </a>
+                </td>
+            </tr>
+
+            }
+        </tbody>
+    </table>
+}

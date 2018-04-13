@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin: 0; padding: 0;}
+body{background-color:#DCE6EB;font-size:62.5%;}
+li{list-style-type:none}
+img{border:0;vertical-align:top}
+a{text-decoration:none;color:#000;cursor:pointer; outline:none;}
+a:hover{color:#759239}
+
+header video{width:100%; vertical-align: middle;}
+header .message{overflow: hidden; background-color: #fff; padding:0 5%;}
+header .message .xinxi {float: left; margin-top: 5%; width: 60%;}
+header .message .xinxi img{ float: left; width: 30%; margin-right:5%;}
+header .message .xinxi .name{ float: left; margin-top: 5%;}
+header .message .xinxi .name h3{font-size: 18px; line-height: 24px;}
+header .message .xinxi .name p{font-size: 12px; line-height: 24px; color: #7A7A7A;}
+/*header .message .xinxi h2{float: left;}*/
+header .message .fenshu{float: right; position: relative;width: 30%; text-align: right;}
+header .message .fenshu img{width: 100%;}
+header .message .fenshu p{position: absolute; top:46%; right:0; font-size: 22px;
+color: #fff; width: 100%; text-align: center;}
+
+
+.content{padding:5% 5% 20%; margin-top: 10px; background-color: #fff;}
+.content .p1{color: #3D3838; margin-bottom: 20px; font-size: 16px;}
+.content .content_main{overflow: hidden; margin-bottom: 20px;}
+.content .content_main img{width: 35%; float: left; vertical-align: middle; margin-right: 5%;}
+.content .content_main h2{font-size: 18px; color: #3D3838; line-height: 30px; margin-top: 5%;}
+.content .content_main p{font-size: 14px; color: #3D3838; line-height: 30px;}
+
+
+.ft{width: 90%; position:fixed; padding:4% 5%; bottom:0px; background-image:-webkit-linear-gradient(to right, #0E96E5, #52BBF9);
+ background-image:linear-gradient(to right,#0E96E5,#52BBF9);}
+.ft span{font-size:16px;float: left; color: #fff; line-height: 30px;}
+.ft a{float:right; cursor:pointer; color:#3D3838; font-size:16px; padding: 5px 20px;
+ background-color: #fff; border-radius: 5px;}
+ 
+@media screen and (max-width:365px){
+	header .message .xinxi .name h3{font-size: 16px; line-height: 20px;}
+	header .message .xinxi .name p{font-size: 12px; line-height: 20px; }
+	header .message .fenshu p{font-size: 16px;}
+	.content .content_main h2{font-size: 16px;line-height: 25px;}
+	.content .content_main p{font-size: 12px;  line-height: 25px;}
+}
+@media screen and (min-width:580px){
+	header .message .xinxi .name h3{font-size: 24px; line-height: 40px;}
+	header .message .xinxi .name p{font-size: 18px; line-height: 40px; }
+	header .message .fenshu p{font-size: 30px;}
+	.content .p1{font-size: 24px;}
+	.content .content_main h2{font-size: 26px;line-height: 40px;}
+	.content .content_main p{font-size: 18px;  line-height: 40px;}
+	.ft span{font-size:24px;line-height: 40px;}
+	.ft a{font-size:24px; }
+}

@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Employee_Add";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <style type="text/css">
+        #userForm .form-group {
+            width: 700px;
+            margin-left: 100px;
+            float: left;
+        }
+
+            #userForm .form-group .col-lg-5 {
+                width: 300px;
+            }
+
+        .modal-dialog {
+            z-index: 999999;
+        }
+    </style>
+}
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header" id="myModalLabel">管理员设置</h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <form id="userForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                    <div class="row">
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">账号信息</div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><em>*</em>用户名:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="username" id="username" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <label id="ResetPassword" class="col-lg-3" style="display:none;margin-left:135px;  font-weight:500; cursor:pointer;">重置密码</label>
+                        <div style="clear:both;"></div>
+                        <div name="passwordupdate" class="form-group">
+                            <label class="col-lg-2 control-label"><em>*</em>密码:</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="password" id="password" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div name="passwordupdate" class="form-group">
+                            <label class="col-lg-2 control-label"><em>*</em>确认密码:</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" />
+                            </div>
+                        </div>
+                        <div style="width:90%; clear:both; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">个人信息</div>
+                    </div>
+
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><em>*</em>角色 :</label>
+                        <div class="col-sm-4">
+                            <select id="role" class="selectpicker show-tick form-control" data-live-search="true" name="role">
+                                @foreach (var obj in ViewBag.role)
+                                {
+                                    <option value="@obj.groupid">@obj.groupname</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"><em>*</em>手机号 :</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" id="ParentMobile" name="ParentMobile" />
+                        </div>
+                        <div class="col-lg-4" style=" margin-top:3px;">
+                            <input type="checkbox" id="sendmsg" />
+                            <span>启用短信推送通知</span>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">电子邮件:</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" id="Email" name="Email" />
+                        </div>
+                        <div class="col-lg-4" style=" margin-top:3px;">
+                            <input type="checkbox" id="sendmail" />
+                            <span>启用邮件推送通知</span>
+                        </div>
+                    </div>
+
+                    <div style="clear:both;"></div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"> 备注:</label>
+                        <div class="col-lg-5" style=" width:500px;">
+                            <textarea class="form-control" style="height:80px;" id="Remark" name="Remark"></textarea>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                </form>
+                <div class="modal-footer" style=" text-align:left; padding-left:300px;">
+                    <input type="button" id="submit" value="提交" class="btn btn-danger" style="margin-right:40px;" />
+                    <input type="button" onclick="history.back();" class="btn btn-default" value="取消" />
+                    <div style="clear:both; height:100px;"></div>
+                </div>
+
+                <div class="modal fade" id="ResetPasswordDiv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">重置密码</h4>
+                                </div>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"> 用户名:</label>
+                                    <div id="reset-mastername" class="col-lg-5">
+                                    </div>
+                                    <input type="hidden" id="masterusername" />
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"><em>*</em>密码:</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" name="updatepassword" id="updatepassword" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"><em>*</em>确认密码:</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" name="updateconfirmPassword" id="updateconfirmPassword" />
+                                    </div>
+                                </div>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Employee_Add.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+}
+
+

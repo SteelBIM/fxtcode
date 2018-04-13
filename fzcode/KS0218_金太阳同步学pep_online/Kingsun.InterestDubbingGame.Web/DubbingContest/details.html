@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<title>作品详情</title>
+<link href="css/common/base.css" rel="stylesheet" type="text/css">
+<link href="css/work/details.css" rel="stylesheet" type="text/css">
+<link href="css/work/willesPlay.css" rel="stylesheet" type="text/css">
+<!--<link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">-->
+<script language="javascript" type="text/javascript" src="js/common/jquery-1.10.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/common/common.js"></script>
+<script src="js/common/willesPlay.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <header class="head1">
+        <a href="#" class="back"><img src="img/common/back_white.png" alt=""></a>
+        <a href="#" class="share"><img src="img/common/share_white.png" alt=""></a>
+        <h2>作品详情</h2>
+    </header>
+    <main class="main1">
+        <section>
+        	<div class="xinxi">
+	            <ul>
+	            	<li><span>总得分</span><p>208.5</p></li>
+	            	<li><img src="img/work/details/tou.png" alt="" /><p class="p1">小白白</p></li>
+	            	<li><span>总票数</span><p>155</p></li>
+	            </ul>
+	            <p class="p3">输掉比赛我会哭，请为我投上1票</p>
+	            <p class="p2">投票截止日期：<span>2017-12-30</span></p>
+            </div>
+            <div class="ul1">
+	            <ul>
+	            	<li><span>课本剧配音</span><p>94.5</p></li>
+	            	<span style="line-height: 48px; color: #D7DBE5;">|</span>
+	            	<li><span>故事演绎</span><p>96</p></li>
+	            	<span style="line-height: 48px; color: #D7DBE5;">|</span>
+	            	<li><span>投票得分</span><p>15.5</p></li>
+	            </ul>
+            </div>
+            
+            <div class="content">
+	            <!--<video  controls="controls" id="vid1" poster=""  webkit-playsinline webkit-playsinline>  
+                    <source src="img/work/details/text.mp4" type="video/mp4" >示例视频1</source>  
+                                                  您的浏览器不支持video标签  
+            	</video>-->
+            	<div id="willesPlay">
+				
+					<div class="playContent">
+						
+						<video width="100%" height="100%" id="playVideo">
+							<source src="http://120.25.0.163:9008/2017/07/25/44d1990d-7c44-4b5d-84ac-cdd3a71df08d.mp4" type="video/mp4"></source>
+							当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
+						</video>
+						<div class="playTip glyphicon glyphicon-play">
+							<img src="img/work/details/bofang.png" alt=""/>
+						</div>
+						<div class="time">
+							<span class="currentTime">0:00:00</span>
+							<span>/</span>
+							<span class="duration">0:00:00</span> 
+						</div>
+					</div>
+					<div class="playControll">
+						
+						<div class="timebar">
+							
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:14px">
+									<span></span>
+								</div>	
+							</div>
+						</div>
+						<div class="otherControl">
+							<span class="fullScreen glyphicon glyphicon-fullscreen"></span>					
+						</div>
+					</div>
+				</div>	
+		        <p class="cour"><span>Patrick,you don't have feet.</span><b>96.5</b></p>
+		        <p class="time">2017.9.1</p>
+	        </div>
+	        <div class="content">
+	            <div class="aud1" onClick="playPause()">
+                <!--音乐-->
+			        <audio id="my_audio"  preload="auto"><source  src="img/work/details/yp1.mp3"/>您的浏览器不支持audio标签。 </audio>
+			        
+			        <img src="img/work/details/bobag.png" width="100%" alt="" />
+			        <!--暂停或播放-->
+			        <div class="contros" >
+			            <!--<button class="button" onClick="playPause()">暂停/播放</button>-->
+			            
+			            <a class="button"><img src="img/work/details/bofang.png" alt=""/></a>
+			            <!--时间-->
+				        <div class="time">
+				            <!--当前时间-->
+				            <span class="now_time" id="now_time">00:00</span>
+				            <!--总的时间-->
+				            <span class="all_time" id="all_time">00:00</span>
+				        </div>
+				        
+			        </div>
+			        <div class="show"></div>
+			        <!--时间轴-->
+			        <div class="time_progress">
+			            <div class="progress">
+			                <p class="bar" id="bar"></p>
+			                <div class="btn" id="btn"></div>
+			            </div>
+			        </div>
+			        
+			    </div> 
+		        <p class="cour"><span>How to sleep well?</span><b>96.5</b></p>
+		        <p class="time">2017.9.1 12:00</p>
+	        </div>
+	        
+	        
+        </section>
+    </main>
+    <footer>
+    	<div><a href="">投票</a></div>
+    </footer>
+    <!-- 分享弹窗 -->
+    <div class="box">
+       <img class="box_bag" src="img/common/sharebag.png" alt="">
+       <ul>
+           <li>
+                <a href="#"><img src="img/common/WeChat.png" alt=""></a>
+                <p>微信</p>
+           </li>
+           <li>
+                <a href="#"><img src="img/common/Circle.png" alt=""></a>
+                <p>朋友圈</p>
+           </li>
+           <li>
+                <a href="#"><img src="img/common/QQ.png" alt=""></a>
+                <p>QQ</p>
+           </li>
+           <li>
+                <a href="#"><img src="img/common/QQspace.png" alt=""></a>
+                <p>QQ空间</p>
+           </li> 
+       </ul>
+       <a href="#" class="cancel">取消</a>
+    </div> 
+    <div class="box2">
+    	<img src="img/work/details/tan-bag.png" alt="" />
+    	<p class="p1">恭喜你完成口语环节</p>
+    	<p class="p2">赶紧去拉票吧</p>
+    	<a href="#">去拉票</a>
+    </div>
+    <div class="shadow"></div>
+    <script language="javascript" type="text/javascript" src="js/common/details.js"></script>
+    
+</body>
+</html>

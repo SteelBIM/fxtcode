@@ -1,0 +1,144 @@
+﻿2017-11-21 12:46:08
+错误编号:2017112112460818Xda3f666d09
+Message:在 sys.servers 中找不到服务器 'ITSV_BJ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步用户出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 324
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncUserInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 117
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-11-21 12:46:08
+错误编号:2017112112460840X0b279cdda9
+Message:在 sys.servers 中找不到服务器 'ITSV_BJ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步订单出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 324
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncOrderInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 63
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-11-21 13:46:07
+错误编号:2017112113460701X01b790b38b
+Message:在 sys.servers 中找不到服务器 'ITSV_BJ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步订单出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 324
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncOrderInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 63
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-11-21 13:46:07
+错误编号:2017112113460713X7de5c44533
+Message:在 sys.servers 中找不到服务器 'ITSV_BJ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步用户出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 324
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncUserInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 117
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-11-21 17:50:10
+错误编号:2017112117501011X8b1e8a440b
+Message:未将对象引用设置到对象的实例。
+Message2:ClassUserRemove接口异常，UserInfo={"UserID":1535467330,"ClassSchList":[{"ClassID":"613B65D7-59AE-4E7C-A9E6-211DD938E17F","GradeID":2,"SchID":181,"AreaID":110101000,"SubjectID":0}],"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":null,"AppID":null}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 53
+   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL.ClassUserRemove(IBS_UserInfo UserInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBS_UserClassRelationBLL.cs:行号 93
+Method:BuildUserInfoByUserId
+Class:Kingsun.IBS.BLL.CommonBLL
+UserIP:
+UserName:
+
+2017-11-21 17:50:10
+错误编号:2017112117501021X74e15217d6
+Message:未将对象引用设置到对象的实例。
+Message2:ClassUserAdd接口异常，UserInfo={"UserID":1535467330,"ClassSchList":[{"ClassID":"BC2BC76A-B18A-4E4E-9E4A-01CEA49331A2","GradeID":2,"SchID":181,"AreaID":110101000,"SubjectID":0}],"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":null,"AppID":null}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 53
+   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL.ClassUserAdd(IBS_UserInfo UserInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBS_UserClassRelationBLL.cs:行号 229
+Method:BuildUserInfoByUserId
+Class:Kingsun.IBS.BLL.CommonBLL
+UserIP:
+UserName:
+
+2017-11-21 17:50:10
+错误编号:2017112117501030Xa4b67bed7f
+Message:未将对象引用设置到对象的实例。
+Message2:ClassUserAdd接口异常，UserInfo={"UserID":542770040,"ClassSchList":[{"ClassID":"BC2BC76A-B18A-4E4E-9E4A-01CEA49331A2","GradeID":2,"SchID":181,"AreaID":110101000,"SubjectID":0}],"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":null,"AppID":null}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 53
+   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL.ClassUserAdd(IBS_UserInfo UserInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBS_UserClassRelationBLL.cs:行号 229
+Method:BuildUserInfoByUserId
+Class:Kingsun.IBS.BLL.CommonBLL
+UserIP:
+UserName:
+
+2017-11-21 17:59:11
+错误编号:2017112117591127Xbff84e1a7d
+Message:未将对象引用设置到对象的实例。
+Message2:ClassUserRemove接口异常，UserInfo={"UserID":542770040,"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":null,"AppID":null,"ClassSchList":[{"ClassID":"BC2BC76A-B18A-4E4E-9E4A-01CEA49331A2","GradeID":2,"SchID":181,"SubjectID":0,"AreaID":110101000}]}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 53
+   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL.ClassUserRemove(IBS_UserInfo UserInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBS_UserClassRelationBLL.cs:行号 93
+Method:BuildUserInfoByUserId
+Class:Kingsun.IBS.BLL.CommonBLL
+UserIP:
+UserName:
+
+2017-11-21 18:25:06
+错误编号:2017112118250619X8258eb9737
+Message:未将对象引用设置到对象的实例。
+Message2:ClassUserAdd接口异常，UserInfo={"UserID":1528674183,"ClassSchList":[{"ClassID":"3054BAC4-7981-4BE2-BE57-1C357451D893","GradeID":2,"SchID":190,"AreaID":110101000,"SubjectID":3}],"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":null,"AppID":null}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL.ClassUserAdd(IBS_UserInfo UserInfo)
+Method:ClassUserAdd
+Class:Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserClassRelationBLL
+UserIP:
+UserName:
+

@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "比赛详情";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>比赛详情</title>
+    <link href="~/Content/css/apply.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+</head>
+
+<body class="body3">
+    <header class="head1">
+        @{
+            if (string.IsNullOrEmpty(@Request["MatchDetailsType"]))
+            {
+                <a href="../Apply/Index?&UserID=@Request["UserID"]&AppID=@(Request["AppID"]==null?"0":Request["AppID"])" class="back"><img src="../images/back.png" alt=""></a>
+            }
+            else
+            {
+                <a href="../StartIndex/Index?&UserID=@Request["UserID"]&AppID=@(Request["AppID"]==null?"0":Request["AppID"])" class="back"><img src="../images/back.png" alt=""></a>
+            }
+} 
+    </header> 
+    <main class="main2">
+        <p style="color: #FF0031;">*特别声明：所有学生均可免费报名参赛</p>
+        <h2 style="text-align:center;">2017年北京市小学生英语配音比赛</h2>
+        <h3>一.比赛对象</h3>
+        <p>北京市各小学（1至6年级）</p>
+        <p>低学段（一、二年级）</p>
+        <p>中学段（三、四年级）</p>
+        <p>高学段（五、六年级）</p>
+        <h3>二.比赛时间</h3> 
+        <p>初赛：2017年10月中旬—11月初</p>
+        <p>复赛：等组委会具体通知</p>
+        <p>决赛：等组委会具体通知</p>
+        <h3>三.比赛内容&形式</h3>
+        <h4>1. 初赛：</h4>
+        <p>初赛在同步学APP比赛模块中参加，主要分为三个环节：课本剧配音，故事演绎与分享投票，比赛过程中我们在APP内公布各类榜单。</p>
+        <div class="huanjie">
+            <p style="font-weight: 600">环节①：课本剧配音</p>
+            <p>根据系统提示，选择课本剧配音完成配音，共有6次机会，满分100分。<p>
+            <p style="font-weight: 600">环节②：故事演绎<p>
+            <p>根据系统提示，选择故事演读题目，完成作品并提交，满分100分。<p>
+            <p style="font-weight: 600">附加：分享投票<p>
+            <p>学生完成课本剧配音和故事演绎后，可以将作品分享给好友投票，每票0.1分，最高可获得200票，满分20分。</p>
+            <p>综合得分=课本剧配音（满分100分）+故事演绎（满分100分）+投票得分（满分20分）。</p>
+            <p style="font-weight: 600">学生晋级：<p>
+            <p>各学校根据各组榜单在前15名入围学生中，结合学生个人才艺，每组选出2位晋级选手，统一以学校为单位将参赛人员上报给区教研室。<p>
+            <p style="font-weight: 600">优秀班级：<p>
+            <p>以班级为单位，由各区教研室根据榜单和班级参赛人数，各区评选出1-3名“最佳班级奖”；发放奖杯与荣誉证书。<p>
+            <p style="font-weight: 600">优秀学校：<p>
+            <p>以学校为单位，由各区教研室根据榜单和各校参赛人数，各区评选出1-3名“优秀学校奖”；发放奖杯与荣誉证书。<p>
+
+        </div>
+        <h4>2. 复赛（区级）：</h4>
+        <p>复赛以现场比赛形式进行，主要包含电影配音环节和自选才艺表演两个部分组成，现场给出评分。</p>
+        <div class="huanjie">
+            <p style="font-weight: 600">环节①：指定电影配音</p>
+            <p>参赛选手根据1段指定电影桥段中进行配音，展示完毕后由评委当场给分。<p>
+            <p style="font-weight: 600">环节②：自选才艺表演<p>
+            <p>时长不超过3分钟；选手可从以下四种形式中，任选一种进行展示；可通过服装、道具、图画等增强表现力<p>
+            <p>*英文歌曲演唱，自选英文歌曲演唱；</p>
+            <p>*朗诵，自选一篇英文作品脱稿朗诵；</p>
+            <p>*演讲，自定选题用英语脱稿演讲；</p>
+            <p>*情景短剧表演，自选英语剧目表演。</p>
+            <p style="font-weight: 600">评分规则：<p>
+            <p>评委从仪表仪态、语音语调、节目内容、英文才艺、现场表现五个方面对选手进行综合评分，成绩采用百分比制，分数计至小数点后2位数。</p>
+            <p>综合得分=电影配音（权重50%）+自选才艺（权重50%）。</p>
+            <p style="font-weight: 600">晋级规则：<p>
+            <p>评委根据综合得分排名选出晋级决赛学生。<p>
+        </div>
+        <h4>3. 决赛（市级）：</h4>
+        <p>决赛以现场比赛形式进行，主要包含电影配音环节和自选才艺表演两个部分组成，现场给出评分。</p>
+        <div class="huanjie">
+            <p style="font-weight: 600">环节①：指定电影配音</p>
+            <p>参赛选手根据1段指定电影桥段中进行配音，展示完毕后由评委当场给分。<p>
+            <p style="font-weight: 600">环节②：自选才艺表演<p>
+            <p>时长不超过3分钟；选手可从以下四种形式中，任选一种进行展示；可通过服装、道具、图画等增强表现力<p>
+            <p>*英文歌曲演唱，自选英文歌曲演唱；</p>
+            <p>*朗诵，自选一篇英文作品脱稿朗诵；</p>
+            <p>*演讲，自定选题用英语脱稿演讲；</p>
+            <p>*情景短剧表演，自选英语剧目表演。</p>
+            <p style="font-weight: 600">评分规则：<p>
+            <p>评委从仪表仪态、语音语调、节目内容、英文才艺、现场表现五个方面对选手进行综合评分，成绩采用百分比制，分数计至小数点后2位数。<p>
+            <p>综合得分=电影配音（权重50%）+自选才艺（权重50%）。</p>
+        </div>
+        <h3>四.奖励办法</h3>
+        <p>1. 本次比赛设三种市级奖励等级：一等奖、二等奖和三等奖，全部为师生同奖，另设“优秀组织奖(学校)”和“最佳班级奖”。</p>
+        <p>2. 比赛获奖师生将获得由北京市教育学会外语专业委员会及深圳市方直课程教学研究院及颁发的荣誉奖章和获奖证书以及奖品；获奖的师生和学校将在北京市外语教学研究网站和上宣传表彰。</p>
+        <h3>五.报名方式&报名时间</h3>
+        <p>个人：由老师组织学生下载同步学APP，并注册绑定学校班级进行参赛。</p>
+        <p>集体：以学校为单位统一组织报名，学校报名所需材料请联系<span style="color: #f00;">钱老师（13717865197）</span></p>
+        <p>声明：深圳市方直科技对该活动有最终解释权</p>
+    </main> 
+    <script type="text/javascript">
+        $(function () {
+            //如果是分享出去的页面则隐藏返回按钮
+            var UserID = GetQueryString("UserID");
+            if (UserID == 0) {
+                $(".head1").hide();
+            }
+        });
+
+        //采用正则表达式获取地址栏参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</body>
+</html>

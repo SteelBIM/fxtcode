@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">资源类型设置</h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div class="col-sm-10" style="margin-top:10px; ">
+                    <div class="input-group col-lg-12">
+                        
+                        <button id="btn_Add" onclick="add()" style="background-color:#E16965; color:#fff;border-color:#e16965; margin-right:15px; border-radius:5px;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建 </button>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <div id="toolbar" class="btn-group">
+                </div>
+                <table id="tb_ResourceConfig"></table>
+                <div class="modal fade" id="setResourceType" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="clear:both; height:50px;"></div>
+                            <form id="ResourceTypeForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                                <div class="row">
+                                    <div style="clear:both;"></div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label"><em>*</em>资源类型:</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" data-options="" class="form-control" id="ResourceType" />
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label"> 备注:</label>
+                                        <div class="col-lg-5" style=" width:274px;">
+                                            <textarea class="form-control" style="height:80px;" id="Remark" name="Remark"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                            <div style="clear:both; height:50px;"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btn_setdata">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/ResourceTypeConfig.js"></script>
+<script src="~/Scripts/Common.js"></script>
+    <script>
+        var ResouceConfigInit;
+        $(function () {
+            ResouceConfigInit = new ResourceTypeconfig();
+            ResouceConfigInit.Init();
+        })
+    </script>
+}
+
+
+

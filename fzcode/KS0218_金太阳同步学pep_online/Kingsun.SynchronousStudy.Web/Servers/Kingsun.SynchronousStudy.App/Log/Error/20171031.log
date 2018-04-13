@@ -1,0 +1,19 @@
+﻿2017-10-31 16:41:44
+错误编号:2017103116414439Xa625ccebcb
+Message:English Message : Connection open error . 连接超时时间已到。在尝试使用预登录握手确认时超过了此超时时间。这可能是因为预登录握手失败或服务器未能及时响应。  尝试连接到此服务器时花费的持续时间是 - [Pre-Login] initialization=4457；handshake=11431；
+Chinese Message :  连接字符串出错了，实在找不到原因请先Google错误连接超时时间已到。在尝试使用预登录握手确认时超过了此超时时间。这可能是因为预登录握手失败或服务器未能及时响应。  尝试连接到此服务器时花费的持续时间是 - [Pre-Login] initialization=4457；handshake=11431；.
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":2027886851,"UserNum":null,"UserName":"C1E8_18576600972","UserPwd":"4E60489DFF445DD4","UserImage":"00000000-0000-0000-0000-000000000000","UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"IsUser":0,"TrueName":"1234","TelePhone":"18576600972","ContactPhone":null,"Regdate":"\/Date(1469785905773)\/","ClassSchList":[{"ClassID":"c0a22736-d3d0-44b7-aa98-a31b111d08fa","GradeID":2,"SchID":274871,"SubjectID":0,"AreaID":440114000},{"ClassID":"d4c9dc1e-9d93-4a9e-80d1-2c5e9f23a897","GradeID":2,"SchID":274871,"SubjectID":0,"AreaID":440114000},{"ClassID":"00b77a58-77b1-4911-af0f-062b9e4b9ef8","GradeID":2,"SchID":274871,"SubjectID":0,"AreaID":440114000},{"ClassID":"ffc5335b-bf8e-4e38-91fa-a9b3616ae1d5","GradeID":2,"SchID":274871,"SubjectID":0,"AreaID":440114000},{"ClassID":"fce4b7c1-c0a9-498d-843e-b0abc397cfc2","GradeID":4,"SchID":274871,"SubjectID":0,"AreaID":440114000},{"ClassID":"b209a48b-c067-4f48-a3b2-7e318ace0c5f","GradeID":4,"SchID":274871,"SubjectID":0,"AreaID":440114000}]},"ProvinceID":0,"Province":null,"CityID":0,"City":null,"verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:SqlSugar.UtilExceptions
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 371
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 60
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.Update(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 524
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+

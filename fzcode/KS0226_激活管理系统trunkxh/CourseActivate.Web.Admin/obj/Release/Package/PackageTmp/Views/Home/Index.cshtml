@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+}
+@section mainContent{
+
+    <div class="col-lg-12" style="margin-top:15px;">
+        <div class="panel panel-default">
+            <div class="panel-body" style=" font-size:18px; line-height:30px;">
+                <p>您好！欢迎进入新华一城书集后台管理系统！</p>
+                <p>2017年激活记录总数：<span>@ViewBag.YearCount</span></p>
+                <p>上个月激活记录数：<span>@ViewBag.PrevMonthCount</span></p>
+                <p>本月激活记录数：<span>@ViewBag.CurrentMonthCount</span></p>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="noticediv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">激活码预警</h4>
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="row form-group has-feedback">
+                        <label class="col-lg-3 control-label"> 激活码类型:</label>
+                        <div id="reset-mastername" class="col-lg-5">
+                            <label class="control-label" id="labactivateType">APP端-线上</label>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-3 control-label"> 预警信息:</label>
+                        <div id="reset-mastername" class="col-lg-5">
+                            <label class="control-label" id="labmessage">激活码个数低于1000</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-3 control-label"> 时间:</label>
+                        <div id="reset-mastername" class="col-lg-5">
+                            <label class="control-label" id="labdatetime"> 2017年8月30日 0:12:56</label>
+                        </div>
+                    </div>
+
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="btnmessageprev" style="width:120px; float:left;" onclick="PrevMessage()">上一条</button>
+                        <button type="button" class="btn btn-default" id="btnmessagenext" style="width:120px;" onclick="NextMessage()">下一条</button>
+                        <button type="button" class="btn btn-primary" id="btnmessageok" style="width:120px;" onclick="hideModal()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var messageList;
+        var messageIndex = -1;
+        function GetMessage() {
+            $.post("/Home/GetNoticeMessage", function (data) {
+                if (data && data.length > 0) {
+                    messageList = data;
+                    NextMessage();
+                    showModal();
+                }
+            })
+        }
+        function NextMessage() {
+            ReadMessage(function () {
+                messageIndex = messageIndex + 1;
+                if (messageIndex >= (messageList.length - 1)) {
+                    messageIndex = (messageList.length - 1);
+                    $("#btnmessagenext").hide();
+                    $("#btnmessageok").show();
+                }
+                else {
+                    $("#btnmessageok").hide();
+                    if (messageIndex >= 1) {
+                        $("#btnmessageprev").show();
+                    }
+                    else {
+                        $("#btnmessageprev").hide();
+                    }
+                }
+                if ((messageList.length - 1) == 0) {
+                    $("#btnmessageprev").hide();
+                    $("#btnmessagenext").hide();
+                    $("#btnmessageok").show();
+                }
+                var message = messageList[messageIndex];
+                $("#labactivateType").text(message.activatetypename);
+                $("#labmessage").text(message.message);
+                $("#labdatetime").text(Common.FormatTime(message.createtime));
+            });
+        }
+
+
+        function PrevMessage() {
+            messageIndex = messageIndex - 1;
+            if (messageIndex <= 0) {
+                messageIndex = 0;
+                $("#btnmessageprev").hide();
+            }
+            if (messageIndex < (messageList.length - 1)) {
+                $("#btnmessagenext").show();
+                $("#btnmessageok").hide();
+            } else {
+                $("#btnmessagenext").hide();
+                $("#btnmessageok").show();
+            }
+
+
+            var message = messageList[messageIndex];
+            $("#labactivateType").text(message.activatetypename);
+            $("#labmessage").text(message.message);
+            $("#labdatetime").text(Common.FormatTime(message.createtime));
+        }
+        function showModal() {
+            $("#noticediv").modal("show");
+        }
+        function hideModal() {
+            ReadMessage(function () {
+                $("#noticediv").modal("hide");
+            });
+        }
+        function ReadMessage(event) {
+            if (messageIndex < 0) {
+                event();
+            } else {
+                var obj = { id: messageList[messageIndex].pushid };
+                $.post("/Home/ReadMessage", obj, function (data) {
+                    if (data != "False") {
+                        event();
+                    }
+                });
+            }
+        }
+
+        $(function () {
+            GetMessage();
+        })
+
+    </script>
+}

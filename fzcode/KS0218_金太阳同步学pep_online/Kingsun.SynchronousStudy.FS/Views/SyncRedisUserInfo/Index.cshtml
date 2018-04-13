@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (ViewData["result"] != null)
+{
+    <h2>@ViewData["result"]</h2>
+}
+else
+{
+    <h2>同步失败</h2>
+}
+

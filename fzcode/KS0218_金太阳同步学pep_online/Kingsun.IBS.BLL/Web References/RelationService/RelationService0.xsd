@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://uums.kingsun.cn/RelationService/RelationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" />
+  <xs:import schemaLocation="http://uums.kingsun.cn/RelationService/RelationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://uums.kingsun.cn/RelationService/RelationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" />
+  <xs:import schemaLocation="http://uums.kingsun.cn/RelationService/RelationService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="AddClassInBPoint">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schoolId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="classname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClassInBPointResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="AddClassInBPointResult" nillable="true" type="q1:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClassInCPoint">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schoolId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="classname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClassInCPointResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="AddClassInCPointResult" nillable="true" type="q2:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="classid" type="q3:guid" />
+        <xs:element minOccurs="0" name="schoolid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subjectid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="AddUserClassResult" nillable="true" type="q4:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStudentClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SelfID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OtherID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="flag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStudentClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="AddStudentClassResult" nillable="true" type="q5:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticationClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="classId" type="q6:guid" />
+        <xs:element minOccurs="0" name="schoolId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticationClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AuthenticationClassResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckClassIsAuthentication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckClassIsAuthenticationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckClassIsAuthenticationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassByUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassByUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetUserClassByUserIdResult" nillable="true" type="q7:ArrayOftb_UserClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserCreateClassListByUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserCreateClassListByUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetUserCreateClassListByUserIdResult" nillable="true" type="q8:ArrayOftb_Class" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassByClassId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassByClassIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UnBindClassByClassIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserTelInviTationByUserIdOrInvNum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InvNum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserTelInviTationByUserIdOrInvNumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetUserTelInviTationByUserIdOrInvNumResult" nillable="true" type="q9:ArrayOfTb_UserTelInviTation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectOrAddUserInvNumByUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectOrAddUserInvNumByUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SelectOrAddUserInvNumByUserIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuInfoAndTeacherInfoByStuId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StuId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuInfoAndTeacherInfoByStuIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="GetStuInfoAndTeacherInfoByStuIdResult" nillable="true" type="q10:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeacherClassInfoByUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeacherClassInfoByUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="GetTeacherClassInfoByUserIdResult" nillable="true" type="q11:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassInfoByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClassId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassInfoByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetClassInfoByIDResult" nillable="true" type="q12:tb_Class" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByClassNum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classNum" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByClassNumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetStuListByClassNumResult" nillable="true" type="q13:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeaByClassIDAndSubjectID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClassNum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subjectID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeaByClassIDAndSubjectIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="GetTeaByClassIDAndSubjectIDResult" nillable="true" type="q14:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassInfoByStuID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="stuID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassInfoByStuIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetClassInfoByStuIDResult" nillable="true" type="q15:tb_Class" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllClassStudentSum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="arr" nillable="true" type="q16:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllClassStudentSumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllClassStudentSumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassStudentSum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="arr" nillable="true" type="q17:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassStudentSumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="GetUserClassStudentSumResult" nillable="true" type="q18:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassTea">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subjectID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassTeaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="UnBindClassTeaResult" nillable="true" type="q19:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassStu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StuUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ClassID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnBindClassStuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="UnBindClassStuResult" nillable="true" type="q20:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByClassID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByClassIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetStuListByClassIDResult" nillable="true" type="q21:ArrayOftb_Relation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByStuId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StuId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStuListByStuIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetStuListByStuIdResult" nillable="true" type="q22:ArrayOftb_Relation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserInfoByUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserInfoByUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="GetUserInfoByUserIDResult" nillable="true" type="q23:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="trueName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="shoolId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SchoolName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="subjectids" nillable="true" type="q24:ArrayOfint" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="subjectname" nillable="true" type="q25:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" minOccurs="0" name="UpdateUserInfoResult" nillable="true" type="q26:ReturnInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassByStuId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StuId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserClassByStuIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetUserClassByStuIdResult" nillable="true" type="q27:ArrayOftb_UserClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentListByClassId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClassId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentListByClassIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" minOccurs="0" name="GetStudentListByClassIdResult" nillable="true" type="q28:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

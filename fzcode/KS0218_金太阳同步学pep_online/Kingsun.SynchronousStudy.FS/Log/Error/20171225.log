@@ -1,0 +1,19 @@
+﻿2017-12-25 19:17:20
+错误编号:2017122519171850Xefa4c0788a
+Message:输入字符串的格式不正确。
+Message2:学习报告同步异常,异常数据：{"BookId":"","ClassID":null,"CreateTime":"2017\/12\/16","DubbingNum":"10","FirstModular":null,"FirstModularID":null,"FirstTitle":null,"FirstTitleID":null,"ModuleType":"2","NumberOfOraise":null,"SchoolID":null,"SecondTitle":null,"SecondTitleID":null,"SerialNumber":null,"TextSerialNumber":null,"TotalScore":"95","TrueName":null,"UserId":"98702742","UserImage":null,"UserType":null,"VideoFileID":null,"VideoID":"12CE00FF-0B98-49CD-9269-1D0777820511","VideoImageAddress":null,"VideoNumber":"2","VideoTitle":""}
+Type:System.FormatException
+Source:mscorlib
+StackTrace:   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.<>c__DisplayClass13.<CreateOrUpdateRds_StudyReport_ModuleTitleForExamPaper>b__11(Rds_StudyReport_BookDetail a) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 464
+   在 System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.CreateOrUpdateRds_StudyReport_ModuleTitleForExamPaper(RedisVideoInfo data, Int32 ModuleType) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 461
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteExampaperLearningReport(RedisVideoInfo data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 419
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 118
+Method:StringToNumber
+Class:System.Number
+UserIP:
+UserName:
+

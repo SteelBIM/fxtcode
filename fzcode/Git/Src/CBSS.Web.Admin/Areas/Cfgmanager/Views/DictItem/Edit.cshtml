@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Cfgmanager.Contract.DataModel
+@model Sys_DictItem
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>字典编码：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.DictCode, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.DictCode)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>字典名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.DictName, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.DictName)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>字典值：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.DictValue, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.DictValue)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>系统编号：</label>
+                <div class="controls">
+                    @Html.DropDownList("selSystemCode")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>配置类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("selConfigType")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.State, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.State, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}

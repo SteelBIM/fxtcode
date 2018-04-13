@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CBSS.Framework.Redis</name>
+    </assembly>
+    <members>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.WriteServerList">
+            <summary>
+            可写的Redis链接地址
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.ReadServerList">
+            <summary>
+            可读的Redis链接地址
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.MaxWritePoolSize">
+            <summary>
+            最大写链接数
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.MaxReadPoolSize">
+            <summary>
+            最大读链接数
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.AutoStart">
+            <summary>
+            自动重启
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.LocalCacheTime">
+            <summary>
+            本地缓存到期时间，单位:秒
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.Redis.RedisConfigInfo.RecordeLog">
+            <summary>
+            是否记录日志,该设置仅用于排查redis运行时出现的问题,如redis工作正常,请关闭该项
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Exist``1(System.String,System.String)">
+            <summary>
+            判断某个数据是否已经被缓存
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Set``1(System.String,System.String,``0)">
+            <summary>
+            存储数据到hash表
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Set(System.String,System.String,System.String)">
+            <summary>
+            存储数据到hash表
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Set(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            批量存储数据到hash表
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Remove(System.String,System.String)">
+            <summary>
+            移除hash中的某值
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Remove(System.String)">
+            <summary>
+            移除整个hash
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Get``1(System.String,System.String)">
+            <summary>
+            从hash表获取数据
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Count(System.String)">
+            <summary>
+            获取hash表的数据数量
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.Get(System.String,System.String)">
+            <summary>
+            从hash表获取值
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.GetAll``1(System.String)">
+            <summary>
+            获取整个hash的数据
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.GetAll``1(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            批量获取哈希表的数据
+            </summary>
+            <param name="hashId"></param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.SetExpire(System.String,System.DateTime)">
+            <summary>
+            设置缓存过期
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.SetExpire(System.String,System.TimeSpan)">
+            <summary>
+            设置缓存过期(时间段)
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.GetStartWithKeys(System.String,System.String)">
+            <summary>
+            指定哈希表搜索以keywords开头的key
+            </summary>
+            <param name="hashId"></param>
+            <param name="keywords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisHashHelper.GetContainsKeys(System.String,System.String)">
+            <summary>
+            指定哈希表搜索含keywords的key
+            </summary>
+            <param name="hashId"></param>
+            <param name="keywords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.LPush(System.String,System.String)">
+            <summary>
+            从左侧向list中添加值
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.LPush(System.String,System.String,System.DateTime)">
+            <summary>
+            从左侧向list中添加值，并设置过期时间
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.LPush(System.String,System.String,System.TimeSpan)">
+            <summary>
+            从左侧向list中添加值，设置过期时间
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RPush(System.String,System.String)">
+            <summary>
+            从左侧向list中添加值
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RPush(System.String,System.String,System.DateTime)">
+            <summary>
+            从右侧向list中添加值，并设置过期时间
+            </summary>    
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RPush(System.String,System.String,System.TimeSpan)">
+            <summary>
+            从右侧向list中添加值，并设置过期时间
+            </summary>        
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.String)">
+            <summary>
+            添加listId/value
+            </summary>     
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.String,System.DateTime)">
+            <summary>
+            添加listId/value ,并设置过期时间
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.String,System.TimeSpan)">
+            <summary>
+            添加listId/value。并添加过期时间
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            为listId添加多个值
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.Collections.Generic.List{System.String},System.DateTime)">
+            <summary>
+            为listId添加多个值，并设置过期时间
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Add(System.String,System.Collections.Generic.List{System.String},System.TimeSpan)">
+            <summary>
+            为listId添加多个值，并设置过期时间
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Count(System.String)">
+            <summary>
+            获取list中listId包含的数据数量
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Get(System.String)">
+            <summary>
+            获取listId包含的所有数据集合
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.Get(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取listId中下标为star到end的值集合
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.BlockingPopItemFromList(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+             阻塞命令：从list中listIds的尾部移除一个值，并返回移除的值，阻塞时间为sp
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.BlockingDequeueItemFromList(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+             阻塞命令：从list中listIds的尾部移除一个值，并返回移除的值，阻塞时间为sp
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.BlockingRemoveStartFromList(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            阻塞命令：从list中listId的头部移除一个值，并返回移除的值，阻塞时间为sp
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.PopItemFromList(System.String)">
+            <summary>
+            从尾部移除数据，返回移除的数据
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RemoveItemFromList(System.String,System.String)">
+            <summary>
+            移除list中，listId/value,与参数相同的值，并返回移除的数量
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RemoveEndFromList(System.String)">
+            <summary>
+            从list的尾部移除一个数据，返回移除的数据
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.RemoveStartFromList(System.String)">
+            <summary>
+            从list的头部移除一个数据，返回移除的值
+            </summary>  
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisListHelper.PopAndPushItemBetweenLists(System.String,System.String)">
+            <summary>
+            从一个list的尾部移除一个数据，添加到另外一个list的头部，并返回移动的值
+            </summary>  
+        </member>
+        <member name="F:CBSS.Framework.Redis.RedisManager.redisConfigInfo">
+            <summary>
+            redis配置文件信息
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisManager.#cctor">
+            <summary>
+            静态构造方法，初始化链接池管理对象
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisManager.CreateManager(System.Int32)">
+            <summary>
+            创建链接池管理对象
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.Redis.RedisManager.redisConfigInfoIBS">
+            <summary>
+            redis配置文件信息
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisManager.CreateManagerIBS(System.Int32)">
+            <summary>
+            创建链接池管理对象
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisManager.GetClient(System.Int32,System.String)">
+            <summary>
+            客户端缓存操作对象
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.AddItemToSortedSet(System.String,System.String,System.Double)">
+            <summary>
+            向有序集合中添加元素
+            </summary>
+            <param name="setId"></param>
+            <param name="value"></param>
+            <param name="score"></param>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetItemIndexInSortedSetDesc(System.String,System.String)">
+            <summary>
+            获得某个值在有序集合中的排名，按分数的降序排列
+            </summary>
+            <param name="set"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetItemIndexInSortedSet(System.String,System.String)">
+            <summary>
+            获得某个值在有序集合中的排名，按分数的升序排列
+            </summary>
+            <param name="set"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetItemScoreInSortedSet(System.String,System.String)">
+            <summary>
+            获得有序集合中某个值得分数
+            </summary>
+            <param name="set"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetRankRangeFromSortedSet(System.String,System.Int32,System.Int32)">
+            <summary>
+            获得有序集合中，某个排名范围的所有值
+            </summary>
+            <param name="set"></param>
+            <param name="beginRank"></param>
+            <param name="endRank"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetRankRangeFromSortedSetDesc(System.String,System.Int32,System.Int32)">
+            <summary>
+            获得有序集合中，某个排名范围的所有值
+            </summary>
+            <param name="set"></param>
+            <param name="beginRank"></param>
+            <param name="endRank"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetRangeFromSortedSet(System.String,System.Double,System.Double)">
+            <summary>
+            获得有序集合中，某个分数范围内的所有值，升序
+            </summary>
+            <param name="set"></param>
+            <param name="beginScore"></param>
+            <param name="endScore"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.Redis.RedisSortedSetHelper.GetRangeFromSortedSetDesc(System.String,System.Double,System.Double)">
+            <summary>
+            获得有序集合中，某个分数范围内的所有值，降序
+            </summary>
+            <param name="set"></param>
+            <param name="beginScore"></param>
+            <param name="endScore"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

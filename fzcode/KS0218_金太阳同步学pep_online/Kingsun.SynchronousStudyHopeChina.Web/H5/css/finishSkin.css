@@ -1,0 +1,25 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{width:100%;height:100%;background:url(../images/backg04.jpg) no-repeat top center;background-size:cover;}
+.skell{width:92%;margin:0 auto;max-width:750px;}
+.header{width:100%;height:40px;margin-top:15px;}
+.header a.return{background:url(../images/return.png) no-repeat center center;background-size:contain;float:left;width:10%;height:100%;}
+.header span{color:#7c96af;line-height:250%;height:100%;margin-left:10px;font-size:16px;}
+.header img{width:18%;left:41%;position:absolute;}
+.content{width:100%;margin-top:70px;}
+.content p.p0{font-size:14px;width:100%;color:#788a9b;text-align:center;margin-top:10px;}
+.content p.p1{width:80%;margin-left:10%;font-size:26px;color:#5b758f;text-align:center;font-weight:bold;margin-bottom:40px;}
+.content img{width:70%;margin-left:15%;}
+.content div{width:80%;margin-left:10%;margin-top:10px;}
+.content div p{font-size:16px;width:95%;color:#788a9b;display:inline-block;}
+.content div b{font-weight:normal;width:5%;color:#788a9b;display:inline-block;vertical-align:top;}
+.content p.textT{color:#788a9b;margin-top:40px;width:80%;margin-left:10%;}
+.clear{clear:both;}
+.placeholder{height:30px;width:100%;}
+@media screen and (max-width:320px){
+   .content div p{font-size:14px;}
+}
+@media screen and (min-width:414px){
+.content div p{font-size:18px;}	
+.content{margin-top:130px;}
+}

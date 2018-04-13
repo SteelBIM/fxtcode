@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "个人资料";
+    Layout = "~/Views/_LayoutHome.cshtml";
+    string departName = ViewBag.DepartName as string;
+    string districts = ViewBag.Districts as string;
+    string groupName = ViewBag.GroupName as string;
+    string masterDistricts = ViewBag.MasterDistricts as string;
+    string products = "暂无";
+}
+
+@using CourseActivate.Account.Constract.Models
+@model CourseActivate.Web.Admin.Models.ComMasterInfo
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <style>
+        .errorStyle {
+            color: red;
+            font-size: 5px;
+        }
+
+        .userForm .form-group {
+            margin-bottom: 15px;
+            margin-left: 100px;
+            float: left;
+        }
+
+        .userForm .form-control {
+            width: 260px;
+        }
+    </style>
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">个人资料</h1>
+    </div>
+
+    <!-- /.col-lg-12 -->
+    @using (@Ajax.BeginForm("SaveMasterInfo", null, new AjaxOptions
+    {
+        HttpMethod = "post",
+        OnSuccess = "whenSuccess",
+
+    }, new { @class = "form-horizontal userForm", @id = "ajaxForm" }))
+    {
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="row">
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">账号信息</div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label" style="width:120px;text-align:right"><em></em>用户名:</label>
+                                <div class="col-lg-5" style="margin-left:-15px;">
+                                    <input type="text" readonly="readonly" class="form-control" name="username" id="txtusername" value="@Model.mastername" placeholder="用户名" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label" style="width:120px;text-align:right"><em></em>密码:</label>
+                                <div class="" style="float:left;">
+
+                                    <input type="password" class="form-control" name="password" id="txtpassword" value="******" readonly="readonly" placeholder="******" style="float:left;" />
+                                    <input type="button" value="修改密码" id="btnresetPwd" class="form-control" style="width:auto; float:left; margin-left:10px; background-color:#515562; color:#9FA1A8;" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">个人信息</div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="2" class="col-lg-3 control-label" style="width:120px;text-align:right">手机号:</label>
+                                <div class="col-lg-5" style="margin-left:-15px;">
+                                    @Html.TextBoxFor(o => o.mobile, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(o => o.mobile, null, new { @class = "errorStyle" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="1" class="col-lg-3 control-label" style="width:120px; text-align: right;">Email:</label>
+                                <div class="col-lg-5" style="margin-left:-15px;">
+                                    @Html.TextBoxFor(o => o.email, new { @class = "form-control", })
+                                    @Html.ValidationMessageFor(o => o.email, null, new { @class = "errorStyle" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="2" class="col-lg-3 control-label" style="width:120px;text-align:right">备注:</label>
+                                <div class="col-lg-5" style="margin-left:-15px;">
+                                    @Html.TextAreaFor(o => o.remark, new { @class = "form-control", })
+                                    @Html.ValidationMessageFor(o => o.remark, null, new { @class = "errorStyle" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <label id="msg" style="color:red"></label>
+                    <div style="text-align:center; margin:10px auto; width:82px;">
+                        <button type="submit" class="form-control" style="width:auto; background-color:#E16965; color:#fff;">保存修改</button>
+                    </div>
+                    `
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="modal fade" id="ResetPasswordDiv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">重置密码</h4>
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> 旧密码:</label>
+                        <div id="reset-mastername" class="col-lg-5">
+                            <input type="password" class="form-control" name="OldPassword" id="oldpassword" />
+                        </div>
+                        <input type="hidden" id="masterusername" />
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><em>*</em>新密码:</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="NewPassword" id="updatepassword" />
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><em>*</em>确认密码:</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="updateconfirmPassword" id="updateconfirmPassword" />
+                        </div>
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/pages/AccountInfo.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script>
+        var whenSuccess = function (data) {
+            // $(msg).text(data);
+            bootbox.alert(data);
+        }
+        var pageInit;
+        $(function () {
+            pageInit = new AccountInfoPage();
+            pageInit.Init();
+        })
+    </script>
+}

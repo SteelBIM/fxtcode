@@ -1,0 +1,13 @@
+﻿2017-12-06 21:22:17
+错误编号:2017120621221763Xcd5004d7ed
+Message:远程服务器返回错误: (500) 内部服务器错误。
+Message2:唤醒服务失败
+Type:System.Net.WebException
+Source:System
+StackTrace:   在 System.Net.HttpWebRequest.GetResponse()
+   在 Kingsun.SynchronousStudy.FS.MvcApplication.Application_End(Object sender, EventArgs e)
+Method:GetResponse
+Class:System.Net.HttpWebRequest
+UserIP:
+UserName:
+

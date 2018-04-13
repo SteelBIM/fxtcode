@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kingsun.SynchronousStudy.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Kingsun_SynchronousStudy_Web_SMSService_SMSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sms.kingsun.cn/Service/SMSService.asmx</Value>
+    </Setting>
+    <Setting Name="Kingsun_SynchronousStudy_Web_LedgerRelation_Ledger_Relation" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://183.47.42.221:8090/WebClientService/Ledger_Relation.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

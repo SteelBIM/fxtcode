@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div style="margin:15px 0;">
+        <ul class="nav nav-pills"></ul>
+        <input id="itype" type="hidden" />
+    </div>
+    <div style="clear:both;"></div>
+    <div class="tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+        <input id="deptid" type="hidden" value="0" />
+    </div>
+    <div style=" width:89%; float:right;">
+
+        <div class="col-lg-12 tab-pane fade in active" id="agent1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <input id="ptype" value="0" type="hidden" />
+                    <div class="tab-content">
+                        <div class="col-sm-12" style="margin-top:10px; margin-left:-15px;">
+                            <div class="input-group col-lg-8">
+                                <span style="float:left; line-height:35px;"> 代理商：</span>
+                                <div class="col-sm-3">
+                                    <select id="agentname" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                </div>
+                                <div class="col-sm-3" style="margin-left:-15px;">
+                                    <div class="input-group col-lg-3">
+                                        <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="margin-top:10px; margin-left:-15px;">
+                            <div class="col-lg-2">
+                                <span style="float:left; line-height:35px; margin-left:-15px;">未结算销售额:<span id="sales"></span></span>
+                            </div>
+                            <div class="col-lg-2">
+                                <span style="float:left; line-height:35px; margin-left:-15px;">未结算订单数:<span id="ordernumber"></span></span>
+                            </div>
+                            <div class="col-lg-2">
+                                <span style="float:left; line-height:35px; margin-left:-15px;">未结算提成金额:<span id="amountmoney"></span></span>
+                            </div>
+                        </div>
+                        <div id="agentToolbar" class="btn-group">
+                        </div>
+                        <table id="tb_agent"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="comp">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <input id="ptype" value="0" type="hidden" />
+                            <div class="tab-content">
+                                <div class="col-lg-12" style="margin-top:10px; margin-left:-15px;">
+                                    <div class="input-group col-lg-8">
+                                        <span style="float:left; line-height:35px;"> 员工姓名：</span>
+                                        <div class="col-sm-3">
+                                            <select id="employeename" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                        </div>
+                                        <div class="col-sm-3" style="margin-left:-15px;">
+                                            <div class="input-group col-lg-3">
+                                                <button id="employeesearch" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12" style="margin-top:10px; margin-left:-15px;">
+                                    <div class="col-lg-2">
+                                        <span style="float:left; line-height:35px; margin-left:-15px;">未结算销售额:<span id="o_sales"></span></span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <span style="float:left; line-height:35px; margin-left:-15px;">未结算订单数:<span id="o_number"></span></span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <span style="float:left; line-height:35px; margin-left:-15px;">未结算提成金额:<span id="o_bonus"></span></span>
+                                    </div>
+                                </div>
+                                <div id="toolbaremployee" class="btn-group">
+                                </div>
+                                <table id="tb_employeements"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <input id="ptype" value="0" type="hidden" />
+                            <div class="tab-content">
+                                <div class="col-sm-12" style="margin-top:10px; margin-left:-15px;">
+                                    <div class="input-group col-lg-8">
+                                        <span style="float:left; line-height:35px;"> 部门负责人：</span>
+                                        <div class="col-sm-3">
+                                            <select id="DeptPrincipalName" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                        </div>
+                                        <div class="col-sm-3" style="margin-left:-15px;">
+                                            <div class="input-group col-lg-3">
+                                                <button id="detpsearch" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top:10px; margin-left:-15px;">
+                                    <p>说明：部门提成为相关订单找不到具体的销售人员，将此订单归属于部门提成金额</p>
+                                </div>
+                                <div class="col-lg-12" style="margin-top:10px; margin-left:-15px;">
+                                    <div class="col-lg-2">
+                                        <span style="float:left; line-height:35px; margin-left:-15px;">未结算销售额:<span id="dept_sales"></span></span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <span style="float:left; line-height:35px; margin-left:-15px;">未结算订单数:<span id="dept_number"></span></span>
+                                    </div>
+                                </div>
+                                <div id="sectionToolbar" class="btn-group">
+                                </div>
+                                <table id="tb_sectionDepartments"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/CommissionPay.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+}
+

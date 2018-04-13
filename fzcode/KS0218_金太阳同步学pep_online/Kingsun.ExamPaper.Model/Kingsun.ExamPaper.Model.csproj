@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED1EE774-8043-43BD-A2F9-002B54693B07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.ExamPaper.Model</RootNamespace>
+    <AssemblyName>Kingsun.ExamPaper.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\create\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kingsun.DB">
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Custom_BookCatalog.cs" />
+    <Compile Include="Custom_Catalog.cs" />
+    <Compile Include="Custom_MODBook.cs" />
+    <Compile Include="Custom_Question.cs" />
+    <Compile Include="Custom_StuAnswer.cs" />
+    <Compile Include="Custom_StuCatalogWeek.cs" />
+    <Compile Include="Custom_StuCatalogList.cs" />
+    <Compile Include="Custom_StuCatalog.cs" />
+    <Compile Include="Exampaper2DB.cs" />
+    <Compile Include="InterfaceClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QTb_Book.cs" />
+    <Compile Include="QTb_Catalog.cs" />
+    <Compile Include="QTb_Edition.cs" />
+    <Compile Include="QTb_Resource.cs" />
+    <Compile Include="QuestionSet.cs" />
+    <Compile Include="Tb_BlankAnswer.cs" />
+    <Compile Include="TB_Inface.cs" />
+    <Compile Include="Tb_PhoneCode.cs" />
+    <Compile Include="Tb_QuestionInfo.cs" />
+    <Compile Include="Tb_SelectItem.cs" />
+    <Compile Include="Tb_StuAnswer_Month.cs" />
+    <Compile Include="Tb_StuAnswer.cs" />
+    <Compile Include="Tb_StuCatalog_Month.cs" />
+    <Compile Include="Tb_StuCatalog.cs" />
+    <Compile Include="TB_UserOpenID.cs" />
+    <Compile Include="TB_UUMSUser.cs" />
+    <Compile Include="V_Book.cs" />
+    <Compile Include="V_Catalog.cs" />
+    <Compile Include="V_Question.cs" />
+    <Compile Include="V_Resource.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,87 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChooseClass.aspx.cs" Inherits="Kingsun.SynchronousStudy.Web.StudyReportManagement.ChooseClass" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>创建班级</title>
+    <script src="../../Content/AppTheme/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../Content/AppTheme/js/jquery-1.10.2.min.js"></script>
+    <script src="../../Content/AppTheme/js/CommonDB.js"></script>
+    <script src="../../Content/Scripts/MobileTerminal/JsBridge.js"></script>
+    <script type="text/javascript" src="../../Content/Scripts/MobileTerminal/mobile.js"></script>
+    <script type="text/javascript" src="../../Content/Scripts/MobileTerminal/demo.js"></script>
+    <script src="../../Content/Scripts/MobileTerminal/JsBridge.js"></script>
+    <link href="../../Content/AppTheme/css/hear.css" rel="stylesheet" type="text/css" />
+    <script src="../../Content/Scripts/MobileTerminal/ChooseClassInit.js"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="main main2">
+            <div class="head_back">
+                <a class="h_left" href="javascript:history.go(-1)"></a>
+                <a class="h_close" id="close">[关闭]</a>
+                <h2>创建班级</h2>
+            </div>
+            <div class="Html4" id="listHtml">
+                <p class="p2">--选择您所教的班级--</p>
+                <div class="bao">
+                    <ul class="ul1">
+                        <li class="li1 on" onclick="qiehuan1(1)">
+                            <span>一年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                        <li class="li2" onclick="qiehuan1(2)">
+                            <span>二年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                        <li class="li3" onclick="qiehuan1(3)">
+                            <span>三年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                        <li class="li4" onclick="qiehuan1(4)">
+                            <span>四年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                        <li class="li5" onclick="qiehuan1(5)">
+                            <span>五年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                        <li class="li6" onclick="qiehuan1(6)">
+                            <span>六年级</span><p>已选<b>0</b>个班</p>
+                        </li>
+                    </ul>
+                    <div class="banji">
+                        <dl>
+                            <dt class="dt1">1班</dt>
+                            <dt class="dt2">2班</dt>
+                            <dt class="dt3">3班</dt>
+                            <dt class="dt4">4班</dt>
+                            <dt class="dt5">5班</dt>
+                            <dt class="dt6">6班</dt>
+                            <dt class="dt7">7班</dt>
+                            <dt class="dt8">8班</dt>
+                            <dt class="dt9">9班</dt>
+                            <dt class="dt10">10班</dt>
+                            <dt class="dt11">11班</dt>
+                            <dt class="dt12">12班</dt>
+                            <dt class="dt13">13班</dt>
+                            <dt class="dt14">14班</dt>
+                            <dt class="dt15">15班</dt>
+                            <dt class="dt16">16班</dt>
+                            <dt class="dt17">17班</dt>
+                            <dt class="dt18">18班</dt>
+                        </dl>
+                    </div>
+                </div>
+                <p class="p2">--已选班级<span>0</span>个--</p>
+                <ul class="ul2"></ul>
+                <a class="next" id="nextStep" href="#">完成</a>
+            </div>
+            <div class="show"></div>
+        </div>
+        <input id="hfcount" type="hidden" />
+    </form>
+
+
+
+</body>
+</html>

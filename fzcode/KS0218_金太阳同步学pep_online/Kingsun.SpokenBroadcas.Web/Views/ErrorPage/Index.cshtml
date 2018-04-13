@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ErrorPage";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/js/JsBridge.js"></script>
+<link href="~/Content/css/Spokenmodule.css" rel="stylesheet" />
+<div class="langcourses" style=" text-align:center; background-color:white;">
+    <div class="header">
+        <a class="back" onclick="finish()" href="#"><img src="../images/back.png" alt="" /></a>
+        <h2>外教直播</h2>
+    </div>
+    <div class="main">
+       <div style="width:100%; position:fixed; top:45%;">
+           ErrorPage:@Request["type"]
+       </div>
+    </div>
+</div>
+<script type="text/javascript"> 
+    //返回
+    function finish() {
+        window.WebViewJavascriptBridge.callHandler(
+        'finish', function (responseData) {
+
+        }
+        );
+    } 
+</script>

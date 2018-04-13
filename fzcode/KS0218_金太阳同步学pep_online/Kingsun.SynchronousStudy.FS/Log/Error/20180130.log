@@ -1,0 +1,14 @@
+﻿2018-01-30 17:34:07
+错误编号:2018013017340727X34eaa44056
+Message:未将对象引用设置到对象的实例。
+Message2:修复班级信息异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<IBSRepairClassUserTrueName>b__32(IBS_ClassUserRelation a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 751
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairClassUserTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 720
+Method:<IBSRepairClassUserTrueName>b__32
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+

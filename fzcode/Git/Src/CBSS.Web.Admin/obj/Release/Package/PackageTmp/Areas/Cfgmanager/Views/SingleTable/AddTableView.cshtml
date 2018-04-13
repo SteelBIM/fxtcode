@@ -1,0 +1,57 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@using CBSS.Cfgmanager.Contract.ViewModel
+@model DataBaseTableEntity
+@{
+    Layout = "~/Views/Shared/_Layout.Edit2.cshtml";
+}
+
+@section PageSpecificJavascriptIncludes{
+    
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>数据库：</label>
+                <div class="controls">
+                    @*@Html.TextBoxFor(m => m.name, new { @class = "m-wrap small" })*@
+                    @Html.DropDownList("dbName", ViewBag.DbList as List<SelectListItem>)
+                </div>
+            </div>
+                <div class="control-group">
+                    <label class="control-label"><span class="required">*</span>表名：</label>
+                    <div class="controls">
+                        @*@Html.TextBoxFor(m => m.name, new { @class = "m-wrap small" })*@
+                      <input class="m-wrap small" id="dbTable" />
+                    </div>
+                </div>
+            
+            <div class="control-group">
+                <label class="control-label">描述：</label>
+                <div class="controls">
+                    @*@Html.TextBoxFor(m => m.tdescription, new { @class = "m-wrap small" })*@
+                    <input class="m-wrap small" id="des" />
+                </div>
+            </div>
+
+            <div class="form-actions navbar-fixed-bottom">
+                <button type="button" id="submit" class="btn blue" onclick="SubmitAddTable()"><i class="icon-ok"></i> 提交</button>
+            </div>
+            <script>
+                function SubmitAddTable() {
+                    $.post("@Url.Action("AddTable")", { dbName: $("#dbName").val(), tableName: $("#dbTable").val(), des: $("#des").val() }, function (data) {
+                           if (data.Success) {
+                               //   window.parent.location.href = '@Url.Action("TableFiledListView")?dbName=' + $("#dbName").val() + '&tableName=' + $("#dbTable").val();
+                               parent.location.reload();
+            } else {
+                alert(data.Error);
+            }
+        });
+    }
+            </script>
+        </div>
+    </div>
+}
+

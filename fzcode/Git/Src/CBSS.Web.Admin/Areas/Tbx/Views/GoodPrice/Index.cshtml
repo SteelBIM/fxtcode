@@ -1,0 +1,38 @@
+﻿@using CBSS.Web
+@using CBSS.Framework.Contract
+@using CBSS.Tbx.Contract.DataModel
+@using CBSS.Framework.Web.Controls
+ 
+@{
+    ViewBag.Title = "商品价格";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/GoodPrice.js?v=1.6"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function () {
+            addcloud();
+            var oTable = new GoodPriceTableInit();
+            oTable.Init();
+        });
+     
+    </script>
+}
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            <a class="btn green thickbox" title='添加价格' href="@Url.Action("Create",new { id = Request.RequestContext.RouteData.Values["id"]})?TB_iframe=true&height=520&width=600">添加价格 <i class="icon-plus icon-white"></i></a>
+        </div>
+    </div>
+    <div class="span8" style="margin-bottom: 20px;">
+        <div class="dataTables_filter">
+            <label>
+                策略名称: @(ViewData["GoodName"] != null ? (ViewData["GoodName"] as Good).GoodName : "")
+            </label>
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-hover" id="tb_goodpricetable"></table>

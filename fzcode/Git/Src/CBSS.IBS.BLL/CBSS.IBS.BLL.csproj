@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{822B6750-1096-4324-9AA8-4F2A5E54662C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.IBS.BLL</RootNamespace>
+    <AssemblyName>CBSS.IBS.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonBLL.cs" />
+    <Compile Include="IBSData\IBSData_AreaSchRelationBLL.cs" />
+    <Compile Include="IBSData\IBSData_ClassUserRelationBLL.cs" />
+    <Compile Include="IBSData\IBSData_SchClassRelationBLL.cs" />
+    <Compile Include="IBSData\IBSData_UserInfoBLL.cs" />
+    <Compile Include="IBSResource\IBSResource.cs" />
+    <Compile Include="IBSUserRelation.cs" />
+    <Compile Include="IBSBookResource.cs" />
+    <Compile Include="IBSService.cs" />
+    <Compile Include="MOD2IBS\MOD2IBSChangeBLL.cs" />
+    <Compile Include="MOD2IBS\MOD2IBS_AreaInfoBLL.cs" />
+    <Compile Include="MOD2IBS\MOD2IBS_ClassInfoBLL.cs" />
+    <Compile Include="MOD2IBS\MOD2IBS_SchInfoBLL.cs" />
+    <Compile Include="MOD2IBS\MOD2IBS_UserClassRelationBLL.cs" />
+    <Compile Include="MOD2IBS\MOD2IBS_UserInfoBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FZUUMS_Relation2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FZUUMS_UserService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MetadataService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RelationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Core.Config\CBSS.Core.Config.csproj">
+      <Project>{3BF4147E-D01D-4FFF-B8E7-FE24959B2D7E}</Project>
+      <Name>CBSS.Core.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Log\CBSS.Core.Log.csproj">
+      <Project>{8ae51ee2-67db-4f57-98fe-cbb890c9a5a2}</Project>
+      <Name>CBSS.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9f519ef8-800f-40cb-9545-9aeadf0f387d}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214d97-f23c-4e16-aa12-ecd824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Redis\CBSS.Framework.Redis.csproj">
+      <Project>{5eab063d-e939-4a48-a836-ea2cf771e4a8}</Project>
+      <Name>CBSS.Framework.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.SqlSuger\CBSS.Framework.SqlSuger.csproj">
+      <Project>{d988d0da-99c9-4bb6-98bb-4c0526f6f524}</Project>
+      <Name>CBSS.Framework.SqlSuger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.IBS.Contract\CBSS.IBS.Contract.csproj">
+      <Project>{9399d7e8-c520-4750-9d5f-38a25e776852}</Project>
+      <Name>CBSS.IBS.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.IBS.DAL\CBSS.IBS.DAL.csproj">
+      <Project>{944ec3d9-3953-410d-8f36-5c06097cd56f}</Project>
+      <Name>CBSS.IBS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.IBS.IBLL\CBSS.IBS.IBLL.csproj">
+      <Project>{78e08736-f39a-4c14-bf1f-4bb078048c10}</Project>
+      <Name>CBSS.IBS.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Tbx.Contract\CBSS.Tbx.Contract.csproj">
+      <Project>{b5c93a51-4cbf-419c-a8b1-290b3f163b5e}</Project>
+      <Name>CBSS.Tbx.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.ReturnInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.tb_Class.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.tb_Relation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.tb_RelationType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.tb_UserClass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\CBSS.IBS.BLL.FZUUMS_Relation2.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_Relation2\FZUUMS_Relation2.wsdl" />
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.AppRegisterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.AppSystem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.LoginOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.LoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.RegisterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.ReturnInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.Tb_UserBindPhone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.Tb_UserEdition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.Tb_UserSubject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.uumsUserState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\CBSS.IBS.BLL.FZUUMS_UserService.V_GroupPower.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FZUUMS_UserService\FZUUMS_UserService.wsdl" />
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetAreaDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetAreaInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetBookDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetCatalogkDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetMetadataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetSchoolDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetSchoolInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\CBSS.IBS.BLL.MetadataService.GetSchoolsInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetadataService\MetadataService.wsdl" />
+    <None Include="Web References\RelationService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RelationService\RelationService.wsdl" />
+    <None Include="Web References\RelationService\RelationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\ReturnInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RelationService\tb_Class.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RelationService\tb_Relation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RelationService\tb_UserClass.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RelationService\Tb_UserTelInviTation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RelationService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FZUUMS_Relation2\" />
+    <WCFMetadataStorage Include="Service References\FZUUMS_UserService\" />
+    <WCFMetadataStorage Include="Service References\MetadataService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_Relation2\FZUUMS_Relation2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_Relation2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_Relation2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_Relation2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_UserService\FZUUMS_UserService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_UserService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_UserService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FZUUMS_UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetadataService\MetadataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetadataService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetadataService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetadataService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://183.47.42.221:8026/RelationService/RelationService.svc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RelationService\</RelPath>
+      <UpdateFromURL>http://183.47.42.221:8026/RelationService/RelationService.svc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CBSS_IBS_BLL_RelationService_RelationService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

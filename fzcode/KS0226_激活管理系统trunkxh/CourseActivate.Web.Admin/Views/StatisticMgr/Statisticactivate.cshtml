@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Statisticactivate";
+    Layout = "~/Views/_LayoutHome.cshtml";
+    string startday = DateTime.Now.Year + "-" + (DateTime.Now.Month < 10 ? ("0" + DateTime.Now.Month) : DateTime.Now.Month.ToString()) + "-01";
+    string endday = DateTime.Parse(startday).AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            运营统计
+
+        </h1>
+
+    </div>
+
+
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div class="input-group col-lg-12" style="margin-left:0;">
+                    <span style="float:left; line-height:35px;"> 时间：</span>
+                    <div class="col-sm-2" style="width:auto;">
+                        <input id="startdate" style="height:35px;" type="date" value="@startday" />
+                    </div>
+                    <span style="float:left; line-height:35px; ">至</span>
+                    <div class="col-sm-2" style="width:auto;">
+                        <input id="enddate" style="height:35px;" type="date" value="@endday" />
+                    </div>
+                    <span style="float:left; line-height:35px;"> 批次号：</span>
+                    <div class="col-sm-2">
+                        <input class=" form-control" id="batchcode" type="text" />
+                    </div>
+                    <div class="col-sm-2">
+                        <button id="btn_search" type="button" class="btn btn-default" style="float:left; margin-left:20px;background-color:#515562; color:#fff;">
+                            <span class="glyphicon " aria-hidden="true"></span>搜索
+                        </button>
+
+                    </div>
+                    <div class="col-sm-2">
+
+                        <button id="btn_reset" type="button" class="btn btn-default" style="float:left; margin-left:20px;background-color:#515562; color:#fff;">
+                            <span class="glyphicon " aria-hidden="true"></span>重置
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button id="btn_back" type="button" class="btn btn-default" style="float:left; margin-right:30px; margin-top:10px; background-color:#515562; color:#fff;"
+                            onclick="window.location = '/StatisticMgr/Index'">
+                        <span class="glyphicon " aria-hidden="true"></span>返回
+                    </button>
+                    <button id="btn_Import" type="button" class="btn btn-default" style="float: left; background-color: #515562; color: #fff; margin-top: 10px;">
+                        <span class="glyphicon " aria-hidden="true"></span>导出
+                    </button>
+                </div>
+                <div style="clear:both;"></div>
+                <div id="toolbar" class="btn-group">
+                </div>
+                <table id="tb_Statisticactivate"></table>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Statisticactivate.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var pageInit;
+        $(function () {
+            pageInit = new Statisticactivate();
+            pageInit.Init();
+        })
+               
+    </script>
+}

@@ -1,0 +1,623 @@
+﻿@{
+    ViewBag.Title = "数据库管理";
+    //   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .bootstrap-table {
+        height: 500px;
+    }
+
+    table tr {
+       line-height : 20px;
+    }
+
+    body {
+        font-size:8px;
+    }
+</style>
+
+
+<script src="/Content/scripts/jquery/jquery-1.10.2.min.js"></script>
+<link href="/Content/styles/font-awesome.min.css" rel="stylesheet">
+@*<link href="/Content/scripts/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <script src="/Content/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>*@
+@*<script src="/Content/Scripts/jquery-ui.combobox.js"></script>*@
+<!--框架必需end-->
+<!--bootstrap组件start-->
+<link href="/Content/scripts/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="/Content/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet">
+<script src="/Content/scripts/bootstrap/bootstrap.min.js"></script>
+
+@*<script src="/Content/scripts/plugins/datepicker/WdatePicker.js"></script><link href="/Content/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <link href="/Content/scripts/plugins/tree/tree.css" rel="stylesheet">
+    <link href="/Content/scripts/plugins/datetime/pikaday.css" rel="stylesheet">
+    <link href="/Content/scripts/plugins/wizard/wizard.css" rel="stylesheet">
+    <link href="/Content/styles/learun-ui.css" rel="stylesheet">*@
+
+@*<script src="/Content/scripts/plugins/tree/tree.js"></script>
+    <script src="/Content/scripts/plugins/validator/validator.js"></script>
+    <script src="/Content/scripts/plugins/wizard/wizard.js"></script>
+    <script src="/Content/scripts/plugins/datepicker/datepicker.js"></script>*@
+<link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+<script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+<script>
+        $(function () {
+            $(".fixed-table-loading").hide();
+        GetDBList();
+    })
+    function GetDBList() {
+        $.post("@Url.Action("GetDBList")", {}, function (data) {
+            var h = "";
+            $(data).each(function () {
+                h += "<option value='" + this.DbName + "'>" + this.DbName + "</option>"
+            });
+            $("#txt_DataBase").html(h);
+        })
+    }
+    function SearchTables() {
+        $.post("@Url.Action("GetTableListJson")", { dbName: $("#txt_DataBase").val(), keyword: $("#txt_Keyword").val() }, function (data) {
+            //InitTable(JSON.parse(data));
+            InitTable((JSON.parse(data)));
+        });
+    }
+    InitTable([]);
+    function InitTable(data) {
+        //   $('#gridTable').html("");
+        $("#gridTable").bootstrapTable('destroy');
+        $('#gridTable').bootstrapTable({
+            // url: '@Url.Action("GetTableListJson")',         //请求后台的URL（*）
+            data: data,
+            method: 'post',                     //请求方式（*）
+            //toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true,                   //是否显示分页（*）
+            sortable: true,                    //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            queryParams: {},//传递参数（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1,                      //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 20, 30],        //可供选择的每页的行数（*）
+            search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: false,
+            showColumns: false,                  //是否显示所有的列
+            showRefresh: false,                  //是否显示刷新按钮
+            minimumCountColumns: 2,             //最少允许的列数
+            clickToSelect: false,                //是否启用点击选中行
+            //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            uniqueId: "name",                 //每一行的唯一标识，一般为主键列
+            showToggle: false,                  //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            detailView: false,
+            columns: [
+                {
+                    field: 'name',
+                    title: '表名',
+                    //formatter: function (value, index) {
+                    //    if (value)
+                    //        return new Date(parseInt(value.replace("/Date(", "").replace(")/", ""))).toLocaleDateString();
+                    //    else
+                    //        return "";
+                    //}
+                },
+                {
+                    field: 'pk',
+                    title: '主键'
+                },
+                  {
+                      field: 'sumrows',
+                      title: '记录数'
+                  },
+                {
+                    field: 'reserved',
+                    title: '使用大小'
+                }, {
+                    field: 'updatetime',
+                    title: '更新时间'
+                },
+                 {
+                     field: 'tdescription',
+                     title: '说明',
+
+                 },
+                {
+                    title: '操作',
+                    formatter: function (value, row, index) {
+                        var action = "";
+                        var param = row.batchid + "," + row.status;
+                        action += "<a onclick=\"DeleteTable('" + row.name + "')\"> 删除 <a> ";
+
+                        action += "<a onclick=\"EditTable('" + row.name + "')\"> 编辑 <a> ";
+                        //if (row.status == 1)
+                        //    action += "<a onclick=\"updateStatus(" + param + ")\"> 禁用 <a> ";
+
+                        //action += "<a target= _blank href='/ActivateCreateMgr/ExportByBatch?batch=" + row.batchcode + "'> 导出 <a> ";
+                        return action;
+                    }
+                }]
+        });
+        $(".fixed-table-loading").hide();
+    }
+
+    function DeleteTable(name) {
+        $.post("@Url.Action("DropTable")", { dbName: $("#txt_DataBase").val(), tableName: name }, function (data) {
+            if (data.Success) {
+                $("#gridTable").bootstrapTable("destroy");
+                SearchTables();
+            }
+        });
+    }
+
+    InitFileds([]);
+
+    function InitFileds(data) {
+        //  $("#tb_FiledList").html("");
+        $("#tb_FiledList").bootstrapTable('destroy');
+        $("#tb_FiledList").bootstrapTable({
+            // url: '@Url.Action("GetTableListJson")',         //请求后台的URL（*）
+            data: data,
+            // method: 'post',                     //请求方式（*）
+            //toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true,                   //是否显示分页（*）
+            sortable: true,                    //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            queryParams: {},//传递参数（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1,                      //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 20, 30],        //可供选择的每页的行数（*）
+            search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: false,
+            showColumns: false,                  //是否显示所有的列
+            showRefresh: false,                  //是否显示刷新按钮
+            minimumCountColumns: 2,             //最少允许的列数
+            clickToSelect: false,                //是否启用点击选中行
+            //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            uniqueId: "name",                 //每一行的唯一标识，一般为主键列
+            showToggle: false,                  //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            detailView: false,
+            columns: [
+                {
+                    field: 'column',
+                    title: '列名',
+                    //formatter: function (value, index) {
+                    //    if (value)
+                    //        return new Date(parseInt(value.replace("/Date(", "").replace(")/", ""))).toLocaleDateString();
+                    //    else
+                    //        return "";
+                    //}
+                },
+                {
+                    field: 'datatype',
+                    title: '类型'
+                },
+                  {
+                      field: 'length',
+                      title: '长度'
+                  },
+                   {
+                       field: 'precision',
+                       title: '精度'
+                   },
+                {
+                    field: 'identity',
+                    title: '标识'
+                },
+                {
+                    field: 'key',
+                    title: '主键'
+                },
+                 {
+                     field: 'defaults',
+                     title: '默认值',
+                 },
+                 {
+                     field: 'isnullable',
+                     title: '可空'
+                 },
+                 {
+                     field: 'remark',
+                     title: '说明',
+                 },
+                {
+                    title: '操作',
+                    formatter: function (value, row, index) {
+                        var action = "";
+                        var param = row.batchid + "," + row.status;
+                        action += "<a onclick=\"DeleteColumn('" + row.column + "')\"> 删除 <a> ";
+
+                        action += "<a precision="+row.precision+"  isnullable='" + row.isnullable + "' defaults='" + row.defaults.replace("('", "").replace("')", "").replace("(N'", "") + "' remark='" + row.remark + "'  datatype='" + row.datatype + "' column='" + row.column + "' column='" + row.column + "' length='" + row.length + "' identity='" + row.identity + "' key='" + row.key + "'  onclick=\"EditField(this)\"> 编辑 <a> ";
+                        //if (row.status == 1)
+                        //    action += "<a onclick=\"updateStatus(" + param + ")\"> 禁用 <a> ";
+
+                        //action += "<a target= _blank href='/ActivateCreateMgr/ExportByBatch?batch=" + row.batchcode + "'> 导出 <a> ";
+                        return action;
+                    }
+                }]
+        })
+    }
+
+    function DeleteColumn(column) {
+        $.post("@Url.Action("DropTableField")", { dbName: $("#txt_DataBase").val(), tableName: $("#tableName").val(), field: column }, function (data) {
+            if (data.Success) {
+                $("#tb_FiledList").bootstrapTable("destroy");
+                EditTable($("#tableName").val());
+            }
+        })
+    }
+
+    function EditTable(name) {
+        $("#tableName").val(name);
+        $.post("@Url.Action("GetTableFiledList")", { dbName: $("#txt_DataBase").val(), tableName: name }, function (data) {
+            //  $("#tb_FiledList").bootstrapTable('refresh',JSON.parse(data));
+            InitFileds(JSON.parse(data));
+        })
+        $("#FiledList").modal("show");
+    }
+
+    function EditField(obj) {
+        $("#oldcolumn").val($(obj).attr("column"));
+        $("#column").val($(obj).attr("column"));
+        $("#datatype").val($(obj).attr("datatype"));
+        $("#length").val($(obj).attr("length"));
+        $("#identity").prop("checked", $(obj).attr("identity") == 1);
+        $("#key").prop("checked", $(obj).attr("key") == 1);
+        $("#defaults").val($(obj).attr("defaults"));
+        $("#remark").val($(obj).attr("remark"));
+        $("#isnullable").prop("checked", $(obj).attr("isnullable") == 1);
+        $("#precision").val($(obj).attr("precision"));
+        $("#EditField").modal("show");
+    }
+
+    function AddField() {
+        $("#oldcolumn").val("");
+        $("#column").val("");
+        $("#datatype").val("");
+        $("#length").val("");
+        $("#identity").prop("checked", false);
+        $("#key").prop("checked", false);
+        $("#defaults").val("");
+        $("#remark").val("");
+        $("#isnullable").prop("checked", false);
+        $("#precision").val("");
+        $("#EditField").modal("show");
+    }
+
+    function ModifyColumn() {
+        var filedJson = {
+            oldcolumn: $("#oldcolumn").val(),
+            column: $("#column").val(),
+            datatype: $("#datatype").val(),
+            length: $("#length").val(),
+            identity: $("#identity").prop("checked"),
+            key: $("#key").prop("checked"),
+            defaults: $("#defaults").val(),
+            remark: $("#remark").val(),
+            isnullable: $("#isnullable").prop("checked"),
+            precision: $("#precision").val()
+        }
+
+        if (filedJson.oldcolumn) {
+            $.post("@Url.Action("AlterTableColumn")", { dbName: $("#txt_DataBase").val(), tableName: $("#tableName").val(), fieldJson: JSON.stringify(filedJson) }, function (data) {
+                if (data.Success) {
+                    alert("操作成功");
+                    EditTable($("#tableName").val());
+                    $("#EditField").modal("hide");
+                } else {
+                    alert(data.Error);
+                }
+            })
+        } else {
+            $.post("@Url.Action("AddTableColumn")", { dbName: $("#txt_DataBase").val(), tableName: $("#tableName").val(), fieldJson: JSON.stringify(filedJson) }, function (data) {
+                if (data.Success) {
+                    alert("操作成功");
+                    EditTable($("#tableName").val());
+                    $("#EditField").modal("hide");
+                } else {
+                    alert(data.Error);
+                }
+            })
+        }
+    }
+
+    function AddTables() {
+        $("#AddTable").modal("show");
+    }
+      function SubmitAddTable() {
+        $.post("@Url.Action("AddTable")", { dbName: $("#txt_DataBase").val(), tableName: $("#dbTable").val(), des: $("#des").val() }, function (data) {
+        if (data.Success) {
+        $("#tableName").val($("#dbTable").val());
+        $("#AddTable").modal("hide");
+        EditTable($("#tableName").val());
+        } else {
+        alert(data.Error);
+        }
+        });
+        }
+</script>
+
+<div style=" clear:both"></div>
+<div class="widget-body">
+    <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
+
+    </div>
+    <div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none;">
+        <div class="step-pane active" id="step-1" style="margin: 10px; margin-bottom: 0px;">
+
+            <div class="titlePanel">
+                <div class="title-search">
+                    <table>
+                        <tr>
+                            <th style="white-space: nowrap; font-weight: normal;">数据库：</th>
+                            <td>
+                                <select id="txt_DataBase" class="form-control" style="width: 100px"></select>
+                            </td>
+                            <td style="padding-left: 1px;">
+                                <input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />
+                            </td>
+                            <td style="padding-left: 5px;">
+                                <a id="btn_Search" onclick="SearchTables()" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;查询</a>
+                                <a id="add" onclick="AddTables()" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;建表</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <table id="gridTable"></table>
+            </div>
+        </div>
+
+        <div class="step-pane" id="step-6" style="margin: 5px; overflow: hidden; ">
+            <div class="drag-tip" style="text-align: center; padding-top: 100px; display: none;">
+                <i class="fa fa-check-circle" style="font-size: 204px; color: #0FA74F;"></i>
+                <div id="finish-msg" style="font-weight: bold; font-size: 24px; color: #0FA74F; margin-top: 20px;"></div>
+                <p style="color: #666; font-size: 12px; margin-top: 10px;">
+                    <a id="publish_btn" href="#">发布功能</a>
+                </p>
+            </div>
+            <div id="publish_panel" style="position: absolute; height: 400px; top: 700px; z-index: 100; background: #ffffff; margin-top: 15px; margin-right: 30px; display: none;">
+                <table class="form">
+                    <tr>
+                        <th class="formTitle">功能编号<font face="宋体">*</font></th>
+                        <td class="formValue">
+                            <input id="ModuleEnCode" type="text" class="form-control" placeholder="请输入编号" isvalid="yes" checkexpession="NotNull" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle">功能名称<font face="宋体">*</font></th>
+                        <td class="formValue">
+                            <input id="ModuleFullName" type="text" class="form-control" placeholder="请输入名称" isvalid="yes" checkexpession="NotNull" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle">功能上级<font face="宋体">*</font></th>
+                        <td class="formValue">
+                            <div id="ModuleParentId" type="selectTree" class="ui-select" isvalid="yes" checkexpession="NotNull"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle">功能图标<font face="宋体">*</font></th>
+                        <td class="formValue">
+                            <input id="ModuleIcon" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+                            <span class="input-button" title="选取图标">...</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle" valign="top" style="padding-top: 4px;">
+                            功能描述
+                        </th>
+                        <td class="formValue">
+                            <textarea id="ModuleDescription" class="form-control" style="height: 70px;"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="FiledList" style="overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+        <div class="modal-dialog" style="width: 50%; margin-top: 80px;">
+            <div class="modal-content" style="padding-top:40px;padding-right:20px;padding-bottom:20px;width:900px ">
+                <div class="row">
+
+                    <div style="clear:both;"></div>
+
+                    <table id="tb_FiledList" style="width:80%; margin: 0 auto;height:500px"></table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="AddField()" class="btn btn-primary" id="btn_resetpassword">增加字段</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="EditField" style="overflow:auto;" tabindex="5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+        <div class="modal-dialog" style="width: 50%; margin-top: 80px;">
+            <div class="modal-content" style="padding-top:40px;padding-right:20px;padding-bottom:20px;width:900px ">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>字段名:</label>
+                        <input type="hidden" id="oldcolumn" />
+                        <input type="hidden" id="tableName" />
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectManagement" name="group">
+                                    <option value="0">选择版本</option>
+                                </select>*@
+                            <input class="form-control" id="column" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>类型:</label>
+                        <div class="col-lg-8">
+                            <select class="form-control" id="datatype" name="group">
+                                <option value="">选择类型</option>
+                                <option value="datetime">datetime</option>
+                                <option value="decimal">decimal</option>
+                                <option value="int">int</option>
+                                <option value="varchar">varchar</option>
+                                <option value="varchar(max)">varchar(max)</option>
+                                <option value="text">text</option>
+                                <option value="uniqueidentifier">uniqueidentifier</option>
+                                <option value="nvarchar">nvarchar</option>
+                                <option value="nvarchar(max)">nvarchar(max)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>长度:</label>
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>*@
+                            <input value="" class="form-control" id="length" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>精度:</label>
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>*@
+                            <input value="" class="form-control" id="precision" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>默认值:</label>
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>*@
+                            <input value="" class="form-control" id="defaults" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>说明:</label>
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>*@
+                            <input value="" class="form-control" id="remark" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em></label>
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>*@
+                            <label>
+                                <input id="isnullable" type="checkbox" checked="checked">
+                                允许空
+                            </label>
+                            <label>
+                                <input id="identity" type="checkbox">
+                                标识
+                            </label>
+                            <label>
+                                <input id="key" type="checkbox">
+                                主键
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        @*<button id="btnSerach" type="button" class="btn btn-default" style="float:left; margin-left:80px;width:100px; height:34px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>*@
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="ModifyColumn()" id="btn_resetpassword">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="AddTable" style="overflow:auto;" tabindex="5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+        <div class="modal-dialog" style="width: 50%; margin-top: 80px;">
+            <div class="modal-content" style="padding-top:40px;padding-right:20px;padding-bottom:20px;width:900px ">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>表名:</label>
+                        <input type="hidden" id="oldcolumn" />
+                        <input type="hidden" id="tableName" />
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectManagement" name="group">
+                                    <option value="0">选择版本</option>
+                                </select>*@
+                            <input class="form-control" id="dbTable" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 control-label"><em>*</em>说明:</label>
+                        <input type="hidden" id="oldcolumn" />
+                        <input type="hidden" id="tableName" />
+                        <div class="col-lg-8">
+                            @*<select class="form-control" id="SelectManagement" name="group">
+                                    <option value="0">选择版本</option>
+                                </select>*@
+                            <input class="form-control" id="des" value="" />
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="SubmitAddTable()">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .app_layout .item_table {
+        overflow: hidden;
+        border-top: 1px solid #eeecec;
+        border-bottom: none;
+        min-height: 400px;
+    }
+
+    .app_layout .item_row {
+        cursor: default;
+        position: relative;
+    }
+
+        .app_layout .item_row .item_field_label {
+            cursor: move;
+        }
+
+        .app_layout .item_row:hover {
+            border: 1px dashed #337ab7;
+        }
+
+        .app_layout .item_row:last-child {
+            border-bottom: 1px solid #eeecec;
+        }
+
+    .app_layout .ui-state-highlight {
+        border: none;
+    }
+</style>

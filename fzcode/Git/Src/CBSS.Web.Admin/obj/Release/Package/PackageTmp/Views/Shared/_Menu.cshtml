@@ -1,0 +1,98 @@
+﻿@using CBSS.Core.Config
+@using CBSS.Web.Admin.Common
+@using CBSS.Account.Contract.ViewModel
+@{
+
+    List<CBSS.Account.Contract.ViewModel.v_action> modulelist = new List<CBSS.Account.Contract.ViewModel.v_action>(); // CBSS.Web.Admin.Areas.Account.Controllers.AuthController().Get_AllAction();
+
+
+    if (Session["LoginInfo"] != null)
+    {
+        var logininfo = Session["LoginInfo"] as CBSS.Account.Contract.Sys_LoginInfo;
+        modulelist = logininfo.BusinessPermissionString.ToList();
+    }
+
+    List<CBSS.Account.Contract.ViewModel.v_action> ParentList = new List<CBSS.Account.Contract.ViewModel.v_action>();
+    List<CBSS.Account.Contract.ViewModel.v_action> list = new List<CBSS.Account.Contract.ViewModel.v_action>();
+}
+
+<div class="page-sidebar nav-collapse collapse" style=" position:fixed; z-index:99; margin-top:-50px;">
+    <!-- BEGIN SIDEBAR MENU -->
+    <ul>
+        <li>
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            <div class="sidebar-toggler hidden-phone"><h3 style="margin-left:-200px; color:#A8ABB1; line-height:29px;">CBSS系统</h3></div>
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        </li>
+        <li>
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <form class="sidebar-search dn">
+                <div class="input-box">
+                    <a href="javascript:;" class="remove"></a>
+                    <input type="text" placeholder="Search..." />
+                    <input type="button" class="submit" value=" " />
+                </div>
+            </form>
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        </li>
+
+        @if (modulelist != null && modulelist.Count > 0)
+        {
+            foreach (var item in modulelist)
+            {
+                if (item.ishide == 0)
+                {
+                    if (ParentList.Count == 0)
+                    {
+                        ParentList.Add(item);
+                    }
+                    else if (@item.parentcolumid == 0)
+                    {
+                        if (!ParentList.Exists(p => (p.parentcolumid == @item.parentcolumid && p.columnid == @item.columnid)))
+                        {
+                            ParentList.Add(item);
+                        }
+                    }
+                    else if (!ParentList.Exists(p => p.parentcolumid == @item.parentcolumid))
+                    {
+                        ParentList.Add(item);
+                    }
+                    if (list.Count == 0 || !list.Exists(p => p.columnid == @item.columnid))
+                    {
+                        list.Add(item);
+                    }
+                }
+            }
+            foreach (var item in ParentList)
+            {
+                <li class="@(item.parentcolumid > 0 ? "has-sub" : string.Empty)">
+                    <a href="@(item.parentcolumid > 0 ? "javascript:;" : item.columnico+"/"+item.actionurl+"/Index")" title="@item.parentcolumname">
+                        @*<i class="@group.Icon"></i>*@
+                        @if (!string.IsNullOrEmpty(item.columnimg))
+                        {
+                            <i class="@item.columnimg"></i>
+                        }
+                        else
+                        {
+                            <i class="icon-home"></i>
+                        }
+                        <span class="title">@item.parentcolumname</span>
+                        @if (item.parentcolumid > 0)
+                        {
+                            <span class='arrow'></span>
+                        }
+                    </a>
+                    <ul class="sub">
+                        @foreach (var menu in list)
+                        {
+                            if (item.parentcolumid == menu.parentcolumid)
+                            {
+                                <li><a href='/@menu.columnico/@menu.actionurl/Index/' title="@menu.columnname"> @menu.columnname  </a></li>
+                            }@*@item.parentcolumid*@
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+</div>

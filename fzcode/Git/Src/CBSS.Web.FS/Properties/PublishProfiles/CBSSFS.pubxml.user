@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Publisher\CBSSAFS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Aliyun.OSS.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Cache.dll">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Cache.pdb">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Config.dll">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Config.pdb">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Log.dll">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Log.pdb">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Utility.dll">
+      <publishTime>03/20/2018 20:33:14</publishTime>
+    </File>
+    <File Include="bin/CBSS.Core.Utility.pdb">
+      <publishTime>03/20/2018 20:33:14</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.Contract.dll">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.Contract.pdb">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.DAL.dll">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.DAL.dll.config">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.DAL.pdb">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.Redis.dll">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.Framework.Redis.pdb">
+      <publishTime>03/20/2018 20:33:15</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.BLL.dll">
+      <publishTime>03/20/2018 20:33:19</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.BLL.dll.config">
+      <publishTime>03/13/2018 15:58:14</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.BLL.pdb">
+      <publishTime>03/20/2018 20:33:19</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.BLL.XmlSerializers.dll">
+      <publishTime>03/20/2018 20:33:20</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.Contract.dll">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.Contract.pdb">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.DAL.dll">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.DAL.dll.config">
+      <publishTime>03/13/2018 15:58:14</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.DAL.pdb">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.IBLL.dll">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.IBS.IBLL.pdb">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.BLL.dll">
+      <publishTime>03/20/2018 20:33:21</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.BLL.dll.config">
+      <publishTime>03/13/2018 15:58:14</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.BLL.pdb">
+      <publishTime>03/20/2018 20:33:21</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.BLL.XmlSerializers.dll">
+      <publishTime>03/20/2018 20:33:21</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.Contract.dll">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.Contract.pdb">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.IBLL.dll">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.Tbx.IBLL.pdb">
+      <publishTime>03/20/2018 20:33:18</publishTime>
+    </File>
+    <File Include="bin/CBSS.UserOrder.Contract.dll">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CBSS.UserOrder.Contract.pdb">
+      <publishTime>03/20/2018 20:33:16</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Web.FS.dll">
+      <publishTime>03/20/2018 20:39:28</publishTime>
+    </File>
+    <File Include="bin/CourseActivate.Web.FS.pdb">
+      <publishTime>03/20/2018 20:39:28</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/Omu.ValueInjecter.dll">
+      <publishTime>10/03/2017 22:38:48</publishTime>
+    </File>
+    <File Include="bin/Omu.ValueInjecter.pdb">
+      <publishTime>10/03/2017 22:38:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.pdb">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/SqlSugar.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/SqlSugar.pdb">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>03/13/2018 15:58:13</publishTime>
+    </File>
+    <File Include="Config/DaoConfig.xml">
+      <publishTime>03/14/2018 14:56:48</publishTime>
+    </File>
+    <File Include="Config/Log4net.xml">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Config/RedisConfig.xml">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Config/SettingConfig.xml">
+      <publishTime>03/20/2018 15:32:15</publishTime>
+    </File>
+    <File Include="Config/SystemConfig.xml">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>03/13/2018 15:58:17</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/20/2018 20:39:28</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

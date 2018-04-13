@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7E44629-9180-45D0-B3AD-C739405064D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.SynchronousStudy.Models</RootNamespace>
+    <AssemblyName>Kingsun.SynchronousStudy.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\create\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kingsun.DB">
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BookVersion.cs" />
+    <Compile Include="CourseSubmitModel.cs" />
+    <Compile Include="HopeChina\TbArticle.cs" />
+    <Compile Include="HopeChina\TbFile.cs" />
+    <Compile Include="HopeChina\TbScore.cs" />
+    <Compile Include="HopeChina\TbUserInfo.cs" />
+    <Compile Include="InterfaceClass.cs" />
+    <Compile Include="OnlineUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reids_Rank.cs" />
+    <Compile Include="Subject.cs" />
+    <Compile Include="TB_ApplicationVersion.cs" />
+    <Compile Include="TB_APPManagement.cs" />
+    <Compile Include="TB_BookResource_YX.cs" />
+    <Compile Include="TB_BookResource.cs" />
+    <Compile Include="TB_ComboType.cs" />
+    <Compile Include="TB_CourseVersion_YX.cs" />
+    <Compile Include="TB_InterestDubbingGame_MatchTime.cs" />
+    <Compile Include="TB_InterestDubbingGame_UserInfo.cs" />
+    <Compile Include="TB_UserStudyCurriculum_Day.cs" />
+    <Compile Include="TB_UserStudyDeatilsLite3_Day.cs" />
+    <Compile Include="TB_UserTicket.cs" />
+    <Compile Include="TB_Ticket.cs" />
+    <Compile Include="TB_Coupon.cs" />
+    <Compile Include="TB_Course.cs" />
+    <Compile Include="TB_CourseVersion.cs" />
+    <Compile Include="TB_CurriculumManage.cs" />
+    <Compile Include="TB_FeeCombo.cs" />
+    <Compile Include="TB_GetSquareRecord.cs" />
+    <Compile Include="TB_GetVideoList.cs" />
+    <Compile Include="TB_GetVideoTitleInfo.cs" />
+    <Compile Include="TB_HearResources.cs" />
+    <Compile Include="TB_MessagePush.cs" />
+    <Compile Include="TB_ModularManage.cs" />
+    <Compile Include="TB_ModuleConfiguration.cs" />
+    <Compile Include="TB_ModuleSort.cs" />
+    <Compile Include="TB_Order.cs" />
+    <Compile Include="Tb_OrderDetails.cs" />
+    <Compile Include="TB_PraiseStatistics.cs" />
+    <Compile Include="TB_UserActiveVideo.cs" />
+    <Compile Include="TB_UserBookHistory.cs" />
+    <Compile Include="TB_UserEditionInfo.cs" />
+    <Compile Include="TB_UserFeedback.cs" />
+    <Compile Include="Tb_PhoneCode.cs" />
+    <Compile Include="TB_UserHearResources.cs" />
+    <Compile Include="TB_UserMember.cs" />
+    <Compile Include="TB_UserOpenID.cs" />
+    <Compile Include="TB_UserStatistics.cs" />
+    <Compile Include="TB_UserStudyCurriculum.cs" />
+    <Compile Include="TB_UserStudyDeatilsLite3.cs" />
+    <Compile Include="TB_UserStudyDirectory.cs" />
+    <Compile Include="TB_UserStudyReport.cs" />
+    <Compile Include="TB_UserVideoDetails_YX.cs" />
+    <Compile Include="TB_UserVideoDetails.cs" />
+    <Compile Include="TB_UserVideoDialogue.cs" />
+    <Compile Include="TB_UUMSUser.cs" />
+    <Compile Include="TB_VersionChange_YX.cs" />
+    <Compile Include="TB_VersionChange.cs" />
+    <Compile Include="TB_VideoDetails_YX.cs" />
+    <Compile Include="TB_VideoDetails.cs" />
+    <Compile Include="TB_VideoDialogue_YX.cs" />
+    <Compile Include="TB_VideoDialogue.cs" />
+    <Compile Include="TB_VoteRecord.cs" />
+    <Compile Include="UserBookInfo.cs" />
+    <Compile Include="UserStatisticsModel.cs" />
+    <Compile Include="View_LRClassListData.cs" />
+    <Compile Include="View_UserHistory.cs" />
+    <Compile Include="View_UserUserBookHistory.cs" />
+    <Compile Include="V_Coupon.cs" />
+    <Compile Include="V_FeeCombo.cs" />
+    <Compile Include="V_OrderDetails.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

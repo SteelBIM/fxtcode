@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>跟读句子</title>
+    <link href="~/Content/SpokenTest/css/page.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <header class="header" id="header">
+            <i class="titleBefore"></i>
+            <label>Unit 1 Colours</label>
+            <i class="titleAfter"></i>
+        </header>
+        <div class="mainBody">
+            <a class="catalog"></a>
+            <ul class="leftNav">
+                <li class="li1">
+                    <a></a>
+                    <span><i></i><i></i><i></i></span>
+                </li>
+                <li class="li2 on">
+                    <a></a>
+                    <span><i></i></span>
+                </li>
+                <li class="li3">
+                    <a></a>
+                    <span><i></i><i></i><i></i><i></i><i></i></span>
+                </li>
+                <li class="li4">
+                    <a></a>
+                    <span><i></i><i></i><i></i></span>
+                </li>
+            </ul>
+            <div class="rightCont">
+                <h3>跟读句子 Listen and say</h3>
+                <div class="content">
+                    <p class="tr"><span class="numbers"><label>1</label>/<label>8</label></span></p>
+                    <div class="imgBox">
+                        <img src="~/Content/SpokenTest/Images/bodyBack.png" />
+                    </div>
+                    <p><a class="sentence">Listen!What can you hear?</a></p>
+                    <span class="score"><i></i><i></i></span>
+                    <div class="playBox"><a class="record"></a><a class="play"></a></div>
+                    <p class="recording"><i></i><label>正在录音</label></p>
+                </div>
+                <div class="pageBtn">
+                    <a class="prev"></a>
+                    <a class="next"></a>
+                </div>
+                <div class="dudu one">
+                    <audio autoplay="autoplay">
+                        <source src="~/Content/SpokenTest/Images/dudu/one.wav" type="audio/mpeg" />
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/SpokenTest/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/SpokenTest/backControl.js"></script>
+</body>
+</html>

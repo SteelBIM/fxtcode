@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78E08736-F39A-4C14-BF1F-4BB078048C10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.IBS.IBLL</RootNamespace>
+    <AssemblyName>CBSS.IBS.IBLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBSData\IIBSData_AreaSchRelationBLL.cs" />
+    <Compile Include="IBSData\IIBSData_ClassUserRelationBLL.cs" />
+    <Compile Include="IBSData\IIBSData_SchClassRelationBLL.cs" />
+    <Compile Include="IBSData\IIBSData_UserInfoBLL.cs" />
+    <Compile Include="IBSResource\IIBSResource.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_AreaInfoBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_ClassInfoBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_ClassSchRelationBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_SchAreaRelationBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_SchInfoBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_UserClassRelationBLL.cs" />
+    <Compile Include="IBS_MOD\IIBS_MOD_UserInfoBLL.cs" />
+    <Compile Include="IBS_MOD\IMOD2IBSChangeBLL.cs" />
+    <Compile Include="IIBSBookResource.cs" />
+    <Compile Include="IIBSUserRelation.cs" />
+    <Compile Include="IIBSService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214d97-f23c-4e16-aa12-ecd824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.IBS.Contract\CBSS.IBS.Contract.csproj">
+      <Project>{9399d7e8-c520-4750-9d5f-38a25e776852}</Project>
+      <Name>CBSS.IBS.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Tbx.Contract\CBSS.Tbx.Contract.csproj">
+      <Project>{b5c93a51-4cbf-419c-a8b1-290b3f163b5e}</Project>
+      <Name>CBSS.Tbx.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

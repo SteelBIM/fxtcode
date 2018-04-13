@@ -1,0 +1,66 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+body{ position:relative;}
+.main{height:100%;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute; }
+.beijin1{width:100%; border:0; display:block;}
+.timu{color:#fff; float:right; font-size:16px;}
+.bian{ position:absolute;width:100%; margin-top:-170%; text-align:center;}
+.bian .img1{ width:55%;}
+.bian .img2{ width:95%;}
+.bian .img3{ width:60%; margin-top:8%;}
+.bian .img4{ width:75%; margin-bottom:3%;}
+.bian .phone{ width:80%;   height:40px; margin:0 auto 3%;text-align: center;}
+.bian .phone span{ color:#fff;}
+.bian .phone input{border:0;font-size:16px; outline:none; line-height:40px;  width:70%; background-color:#fff; color:#3589E7;border-radius: 5px;padding-left: 10px;}
+.bian .name{ width:80%;  height:40px;   margin:0 10% 3%; text-align: center;}
+.bian .name span{ color:#fff;}
+.bian .name input{font-size:16px; outline:none; line-height:40px;  width:70%; background-color:#fff; color:#3589E7;border-radius: 5px;padding-left: 10px;border:0;}
+.bian .queding{  display:block;text-align:center; width:40%; margin:0 auto; cursor:pointer;}
+.bian .queding img{ width:100%;}
+.bian .p1{color:#ffd850; font-size:16px; font-weight:bold; display:none;}
+.bian .p2{color:#ffd850; font-size:16px; font-weight:bold; display:none;}
+.bian .p3{color:#ffd850; font-size:16px; font-weight:bold; display:none;}
+
+/*弹出框*/
+.box{position: fixed;width: 80%;top: 25%;left: 10%;z-index: 10001; background-color:#fff; text-align:center; border-radius:20px; display:none;}
+.box img{ width:25%; margin:5% 0 0;}
+.box h2{ color:#FDB25A; font-size:20px;margin:5% 0 0;}
+.box p{ color:#CFCBCB; font-size:14px;margin:5% 0 0;}
+.box a{ width:35%; background-color:#42DF9A; height:40px; line-height:40px; border-radius:5px; display:block; margin:5% auto; color:#fff; font-size:16px;}
+.shadow1{position: fixed;opacity: 0.5;filter: alpha(opacity=50);bottom: 0;left: 0;
+right: 0;top: 0;background: black;z-index: 10000; display:none;}
+
+@media screen and (max-width:374px){
+	.bian .phone span{ font-size:14px;}
+	.bian .name span{ font-size:14px;}
+	.bian .phone{ height:35px;}
+	.bian .name{ height:35px;}
+	.bian .phone input{ line-height:35px; }
+	.bian .name input{ line-height:35px; }
+	.box h2{ font-size:18px;margin:5% 0 0;}
+	.box p{font-size:12px;margin:5% 0 0;}
+	.box a{ height:40px; line-height:40px;font-size:14px;}
+   .bian .p1{color:#ffd850; font-size:14px; font-weight:bold; display:none;}
+    .bian .p2{color:#ffd850; font-size:14px; font-weight:bold; display:none;}
+    .bian .p3{color:#ffd850; font-size:14px; font-weight:bold; display:none;}
+}
+@media screen and (min-width:600px){
+	.bian .phone span{ font-size:20px;}
+	.bian .name span{ font-size:20px;}
+	.bian .phone{ height:50px;}
+	.bian .name{ height:50px;}
+	.bian .phone input{ line-height:50px; }
+	.bian .name input{ line-height:50px; }
+	.box h2{ font-size:26px;margin:5% 0 0;}
+	.box p{font-size:18px;margin:5% 0 0;}
+	.box a{ height:60px; line-height:60px; font-size:20px;}
+    .bian p1{color:#ffd850; font-size:20px; font-weight:bold; display:none;}
+     .bian p2{color:#ffd850; font-size:20px; font-weight:bold; display:none;}
+     .bian p3{color:#ffd850; font-size:20px; font-weight:bold; display:none;}
+}
+

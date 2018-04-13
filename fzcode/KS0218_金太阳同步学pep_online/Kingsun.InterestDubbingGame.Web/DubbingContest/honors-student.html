@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="english,learn" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no,email=no" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="x5-orientation" content="portrait" />
+		<meta name="apple-mobile-web-app-title" content="学生荣誉榜">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chorme=37" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="pragma" content="no-cache">
+
+		<link rel="stylesheet" type="text/css" href="css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/work/honors-student.css" />
+		<title>学生荣誉榜</title>
+		<script src="js/common/require-2.3.3.js" data-main="js/common/require-extend-2.3.3" data-imports="1" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="framelayout_0">
+			<header class="toolbar toolbar-default toolbar-fixed-top">
+				
+				<div class="toolbar-fluid">
+					<div id="toolbar-search-layout" class="toolbar-search-layout">
+						<img class="toolbar-search" src="img/work/honor/search.png" />
+						<span class="toolbar-tips text-nowrap">输入姓名，找到你的小伙伴</span>
+					</div>
+				</div>
+				<div id="toolbar-return-layout"  class="toolbar-input-return-layout">
+					<img class="toolbar-return" src="img/common/back_white.png" />
+				</div>
+			</header>
+			<section class="userinfo toolbar-offset">
+				<img class="userinfo-cup" src="img/work/honor/honor-student-cup.png" />
+				<div class="userinfo-fluid">
+					<h3 class="text-nowrap userinfo-firstcolor">学生荣誉榜</h3>
+					<h5 class="userinfo-secondcolor" data-id="schoolName">我的学校</h5>
+					<!--<p class="text-nowrap userinfo-secondcolor"><small>按班级平均分排名</small></p>-->
+					<p class="text-nowrap userinfo-secondcolor userinfo-bottom-text"><small>总成绩=配音得分+朗读得分+投票数量×10%</small></p>
+				</div>
+			</section>
+			<nav id="gradebar-nav" class="gradebar gradebar-default toolbar-offset">
+				<ul class="gradenav gradenav-tabs">
+					<li role="presentation" class="active">
+						<span href="#">低学段</span>
+					</li>
+					<li role="presentation">
+						<span href="#">中学段</span>
+					</li>
+					<li role="presentation">
+						<span href="#">高学段</span>
+					</li>
+				</ul>
+			</nav>
+			<div id="maincontent" class="maincontent toolbar-offset">
+				<div id="contentListGroup" class="content-list-group">
+				</div>
+				<div id="emptycontent" class="maincontent-empty parent">
+					<div class="maincontent-empty-content">
+						<img class="child" src="img/common/user_empty_.png" />
+						<p class="child">这里什么也没有</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="framelayout_1">
+			<header class="toolbar toolbar-default toolbar-fixed-top">
+				<div class="toolbar-input-edit-layout">
+					<div class="toolbar-input-layout">
+						<img class="toolbar-input-img" src="img/work/honor/search.png" />
+						<input id="toolbar-input-edit-value" class="toolbar-input-edit text-nowrap" type="text">
+					</div>
+				</div>
+				<div id="toolbar-input-return-layout" class="toolbar-input-return-layout">
+					<img class="toolbar-return" src="img/common/back_white.png" />
+				</div>
+				<div id="toolbar-input-search-go" class="toolbar-input-search-button-layout">
+					<span class="toolbar-input-search-button text-nowrap">搜索</span>
+				</div>
+			</header>
+			<div class="maincontent toolbar-offset">
+				<div id="search-content-list-group" class="content-list-group">
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript ">
+			imports("js/common/jquery-1.10.2.min.js", "jQuery", null, "jQuery")
+			imports("js/bootstrap.js", "bootstrap", null, "bootstrap")
+			imports("js/work/honors-student.js", "student", null, "student")
+			imports("js/common/store.everything.min.js", "store", null, "store")
+
+			function main() {
+				require(['student']);
+			}
+		</script>
+	</body>
+
+</html>

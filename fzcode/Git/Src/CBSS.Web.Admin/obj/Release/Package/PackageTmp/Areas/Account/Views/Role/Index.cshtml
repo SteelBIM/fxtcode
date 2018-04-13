@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageSpecificJavascriptIncludes{
+
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/role.js?v=1.1"></script>
+    <script type="text/javascript">
+        //$.ajaxSetup({ async: false });
+        var edit ='@ViewBag.Edit';
+        $(document).ready(function () {
+            addcloud();
+            var oTable = new RoleTableInit();
+            oTable.Init(edit);
+        });
+    </script>
+}
+
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            @if (ViewBag.Delete)
+            {
+                <a class="btn red" id="deletes" href="javascript:;">删除 <i class="icon-trash icon-white"></i></a>
+            }
+            @if (ViewBag.Add)
+            {
+                <a class="btn green thickbox" title='添加新角色' href="@Url.Action("Create")?TB_iframe=true&height=520&width=800">新增 <i class="icon-plus icon-white"></i></a>
+            }
+        </div>
+    </div>
+    <div class="span8">
+        <div class="dataTables_filter">
+            <label>
+                <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+            </label>
+            <label>
+                <span>角色名：</span>
+                @Html.TextBox("RoleName", null, new { @class = "m-wrap small" })
+            </label>
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-hover" id="tb_roletable"></table>

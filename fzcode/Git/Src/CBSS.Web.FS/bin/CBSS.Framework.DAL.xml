@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CBSS.Framework.DAL</name>
+    </assembly>
+    <members>
+        <member name="T:CBSS.Framework.DAL.DbContextBase">
+            <summary>
+            DAL基类，实现Repository通用泛型数据访问模式
+            </summary>
+        </member>
+        <member name="T:CBSS.Framework.DAL.Repository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CBSS.Framework.DAL.Repository._operatorError">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CBSS.Framework.DAL.Repository.ConnectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="_connectionName"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.GetInstance(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.InsertBatch``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            批量插入
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.CustomIgnoreUpdate``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},``0,System.Linq.Expressions.Expression{System.Func{``0,System.String}}[])">
+            <summary>
+            指定忽略字段更新,hlw封装
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="info"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.CustomUpdateEntity``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},``0,System.Linq.Expressions.Expression{System.Func{``0,System.String}}[])">
+            <summary>
+            指定字段更新,hlw封装
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="info"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.CustomUpdateRange``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.Collections.Generic.List{``0},System.Linq.Expressions.Expression{System.Func{``0,System.String}}[])">
+            <summary>
+            批量指定字段更新,hlw封装
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="infos"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.Delete``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.Delete``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <param name="expr"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.DeleteMore``1(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="Ids"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.DeleteBatch``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.GetByID``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SqlQuery``1(System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <param name="pars"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.ListAll``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectIn``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="expr"></param>
+            <param name="field"></param>
+            <param name="Ins"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectIn``1(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="filedName"></param>
+            <param name="filedlist"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectSearch``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <param name="topNumber"></param>
+            <param name="orderby"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectSearch``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <param name="orderby"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectAppointField``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <param name="Field"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.CustomEntitySelect``1(System.String)">
+            <summary>
+            结果为自定义实体LIST
+            </summary>
+            <typeparam name="T">自定义实体</typeparam>
+            <param name="whereSql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectSearch``1(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="whereSql"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectSearchs``1(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expressions"></param>
+            <param name="orderfile"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.FirstOrDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查询一条
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectPageList``2(System.Linq.Expressions.Expression{System.Func{``1,``0,System.Object[]}},System.Linq.Expressions.Expression{System.Func{``1,``0,System.Boolean}},System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            SqlSugar分页查询
+            </summary>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="TEntity"></typeparam>
+            <param name="whereExpression"></param>
+            <param name="joinOn"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="totalCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.ExecuteProcedure(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="pars">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectPage``1(CBSS.Core.Utility.PageParameter{``0},System.Int32@)">
+            <summary>
+            分页查询 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameter"></param>
+            <param name="totalCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Framework.DAL.Repository.SelectPageList``1(System.String,CBSS.Core.Utility.PageParameter{``0},System.Int32@)">
+            <summary>
+            分页查询 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameter"></param>
+            <param name="totalCount"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

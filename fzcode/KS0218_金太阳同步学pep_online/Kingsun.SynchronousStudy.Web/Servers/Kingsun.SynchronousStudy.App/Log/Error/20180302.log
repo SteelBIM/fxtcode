@@ -1,0 +1,1906 @@
+﻿2018-03-02 00:11:31
+错误编号:2018030200113154Xa9988e0df2
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":712247337,"CreateTime":"\/Date(1312359241567)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 00:11:31
+错误编号:2018030200113158X501f3fbd74
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":712247337,"CreateTime":"\/Date(1312359241567)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 00:37:40
+错误编号:2018030200374015X5974c16aaf
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":20092571,"CreateTime":"\/Date(1289619348287)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 00:37:40
+错误编号:2018030200374045Xb57d548480
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":794889499,"CreateTime":"\/Date(1258857918623)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 00:37:53
+错误编号:2018030200375337X88cdf7a2a9
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":906139821,"CreateTime":"\/Date(1315048627700)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 00:37:59
+错误编号:2018030200375913X63c7e81036
+Message:请求通道在等待 00:00:59.9843740 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":20092572,"CreateTime":"\/Date(1289616982443)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 00:37:59
+错误编号:2018030200375941Xf9d97773cb
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":794930249,"CreateTime":"\/Date(1290082134030)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:03:36
+错误编号:2018030201033614X74b95b3775
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1237705066,"CreateTime":"\/Date(1308274510983)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 01:03:48
+错误编号:2018030201034880Xc6b598148c
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1781195953,"CreateTime":"\/Date(1284296390697)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:03:54
+错误编号:2018030201035418X39fec20a2a
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1667846782,"CreateTime":"\/Date(1301819025423)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:03:55
+错误编号:2018030201035511Xb9349a7d6c
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1237705762,"CreateTime":"\/Date(1294379173070)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:30:07
+错误编号:2018030201300779Xe7443a13ac
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1514099439,"CreateTime":"\/Date(1315736924627)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:30:17
+错误编号:2018030201301714X0a0d595e3b
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":682642436,"CreateTime":"\/Date(1285207064713)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:56:13
+错误编号:2018030201561327Xf4c50ecf58
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":10193531,"CreateTime":"\/Date(1289532408210)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 01:56:18
+错误编号:2018030201561896X600c9f9dbb
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":10345446,"CreateTime":"\/Date(1289701944117)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 01:56:26
+错误编号:2018030201562683X434f8dcee6
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1559947359,"CreateTime":"\/Date(1299660508023)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 02:22:39
+错误编号:2018030202223919X0882e9455e
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":2057031405,"CreateTime":"\/Date(1275753680303)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 02:22:39
+错误编号:2018030202223921X74429968fc
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":900189597,"CreateTime":"\/Date(1299050873367)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 02:22:48
+错误编号:2018030202224880X7b0d50a03b
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":22821042,"CreateTime":"\/Date(1290260326473)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 02:22:58
+错误编号:2018030202225817X8cb77b022a
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":2057032018,"CreateTime":"\/Date(1304686222083)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 02:22:58
+错误编号:2018030202225817X79247e720f
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":900202214,"CreateTime":"\/Date(1316785566280)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 02:48:57
+错误编号:2018030202485720X150e2e86d9
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":10805314,"CreateTime":"\/Date(1289875397313)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 02:48:57
+错误编号:2018030202485720Xc4aee8ee66
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1140810784,"CreateTime":"\/Date(1297391987577)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 02:48:57
+错误编号:2018030202485720Xd7d73d388a
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":10503857,"CreateTime":"\/Date(1289873662490)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 02:49:16
+错误编号:2018030202491617X4e1596bc94
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":10805319,"CreateTime":"\/Date(1289874285420)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 02:49:16
+错误编号:2018030202491617X038c9d32ad
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1140830011,"CreateTime":"\/Date(1252246659197)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 02:49:16
+错误编号:2018030202491642X8666d01c3b
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":10503859,"CreateTime":"\/Date(1289878217743)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 03:15:20
+错误编号:2018030203152020X52a4d57565
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1383384637,"CreateTime":"\/Date(1259312118913)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 03:15:29
+错误编号:2018030203152981X694e3467ba
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1383380853,"CreateTime":"\/Date(1326438950177)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 03:15:29
+错误编号:2018030203152981Xe2799f1c2c
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":23320928,"CreateTime":"\/Date(1290260481113)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 03:15:39
+错误编号:2018030203153937Xbb80a80e03
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1383406831,"CreateTime":"\/Date(1291036594490)\/","VersionID":21,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 03:41:39
+错误编号:2018030203413922X2a9c262792
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1814886086,"CreateTime":"\/Date(1312358677947)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 03:41:52
+错误编号:2018030203415283X8231d58dc9
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":10932321,"CreateTime":"\/Date(1289874175763)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 03:41:52
+错误编号:2018030203415283X8536ff09c2
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1628274638,"CreateTime":"\/Date(1314241553233)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 03:41:58
+错误编号:2018030203415817Xc12952bd36
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1814893885,"CreateTime":"\/Date(1289106020023)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 04:08:05
+错误编号:2018030204080525X2637f6544d
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1884857142,"CreateTime":"\/Date(1287446386300)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 04:08:06
+错误编号:2018030204080681X39271fbecb
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":11083828,"CreateTime":"\/Date(1289878723923)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 04:08:15
+错误编号:2018030204081553X264856f14c
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1937181026,"CreateTime":"\/Date(1241095435990)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 04:34:35
+错误编号:2018030204343583Xc41a5fad09
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":11224513,"CreateTime":"\/Date(1289875285140)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 04:34:36
+错误编号:2018030204343658Xb9943b70e7
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":2123271545,"CreateTime":"\/Date(1260543561323)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 04:34:41
+错误编号:2018030204344111Xc13f5e377c
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":24720277,"CreateTime":"\/Date(1290260917490)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:00:41
+错误编号:2018030205004124X968fed5aaa
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":11372642,"CreateTime":"\/Date(1289874728940)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 05:00:41
+错误编号:2018030205004124X9989ff8962
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":25320556,"CreateTime":"\/Date(1290261110567)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 05:00:50
+错误编号:2018030205005085Xa846ffbae8
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":25320554,"CreateTime":"\/Date(1290261110550)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:01:00
+错误编号:2018030205010022Xb9044daf1b
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":11372645,"CreateTime":"\/Date(1289873271077)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:01:00
+错误编号:2018030205010041Xbe7c59a67f
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":25320557,"CreateTime":"\/Date(1290261110577)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:26:54
+错误编号:2018030205265486X8abb3d1557
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":258660593,"CreateTime":"\/Date(1286760465293)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 05:26:59
+错误编号:2018030205265936X92486c1ee9
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":11512248,"CreateTime":"\/Date(1289875620800)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 05:27:09
+错误编号:2018030205270953Xebb30b6247
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":258660593,"CreateTime":"\/Date(1286760465293)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:27:13
+错误编号:2018030205271382X9cc6268680
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":258724883,"CreateTime":"\/Date(1268314406913)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:27:18
+错误编号:2018030205271832Xd4b535e906
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":11512303,"CreateTime":"\/Date(1289877409817)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:53:17
+错误编号:2018030205531719X8cde7f2249
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":496703691,"CreateTime":"\/Date(1304853048183)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 05:53:26
+错误编号:2018030205532680X0ce5b5f662
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":20051406,"CreateTime":"\/Date(1289617461550)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:53:26
+错误编号:2018030205532680X3c14615eaf
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":496703691,"CreateTime":"\/Date(1304853048183)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 05:53:36
+错误编号:2018030205533616Xde9df040af
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":496807347,"CreateTime":"\/Date(1312359018973)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 06:19:46
+错误编号:2018030206194677X645a38d999
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":22430227,"CreateTime":"\/Date(1290251830107)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 06:19:56
+错误编号:2018030206195635X9cc92a4782
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":759383377,"CreateTime":"\/Date(1287645974173)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 06:45:58
+错误编号:2018030206455823Xa24d112fa7
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":23611174,"CreateTime":"\/Date(1290260565110)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 06:45:58
+错误编号:2018030206455823Xb7da50dbe2
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1025864647,"CreateTime":"\/Date(1317213152563)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 06:46:07
+错误编号:2018030206460784X7e501ac761
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1025864647,"CreateTime":"\/Date(1317213152563)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 07:12:21
+错误编号:2018030207122115X6d6c8f1082
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1294186801,"CreateTime":"\/Date(1300180857283)\/","VersionID":21,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"13617191771","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 07:12:30
+错误编号:2018030207123054X9f6117eccb
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1294153006,"CreateTime":"\/Date(1312961264103)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 07:12:30
+错误编号:2018030207123054X40a4c1b861
+Message:请求通道在等待 00:00:59.9843758 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":24511025,"CreateTime":"\/Date(1290260847310)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 07:38:48
+错误编号:2018030207384881Xb43cc44a52
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1538783208,"CreateTime":"\/Date(1315398452060)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 07:38:48
+错误编号:2018030207384881Xa46ff774e4
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":33238799,"CreateTime":"\/Date(1318638979833)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 07:38:48
+错误编号:2018030207384881Xa41770e606
+Message:请求被中止: 操作超时。
+Message2:GetCFUserInfoList报错！Data={"UserID":1538767972,"CreateTime":"\/Date(1328761639187)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.GetUserTelInviTationByUserIdOrInvNum(String InvNum, String UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 509
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 129
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2018-03-02 08:04:57
+错误编号:2018030208045717X348b36c015
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":281728758,"CreateTime":"\/Date(1300613371677)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 08:05:01
+错误编号:2018030208050119X454efc3d10
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":1783074531,"CreateTime":"\/Date(1321524971743)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 08:05:10
+错误编号:2018030208051080X3365e7b581
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":1783074531,"CreateTime":"\/Date(1321524971743)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:05:16
+错误编号:2018030208051638X4d2e10d4ae
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":281749441,"CreateTime":"\/Date(1312359028383)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:31:24
+错误编号:2018030208312415Xf69eb2c0d0
+Message:在从服务器接收结果时发生传输级错误。 (provider: TCP Provider, error: 0 - 指定的网络名不再可用。)
+Message2:GetCFUserInfoList报错！Data={"UserID":2056287800,"CreateTime":"\/Date(1285083646563)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 SqlSugar.AdoProvider.GetDataReader(String sql, SugarParameter[] parameters)
+   在 SqlSugar.QueryableProvider`1.GetData[TResult](KeyValuePair`2 sqlObj)
+   在 SqlSugar.QueryableProvider`1._ToList[TResult]()
+   在 SqlSugar.QueryableProvider`1.ToList()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.SelectSearch(Expression`1 expression) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 394
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:GetDataReader
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+BaseException:
+System.ComponentModel.Win32Exception (0x80004005): 指定的网络名不再可用。
+2018-03-02 08:31:24
+错误编号:2018030208312417X754a2fe5ec
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":549191428,"CreateTime":"\/Date(1298976595520)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_Relation2\Reference.cs:行号 1790
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 109
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:31:33
+错误编号:2018030208313376X307284f5fd
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":2056287800,"CreateTime":"\/Date(1285083646563)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:31:43
+错误编号:2018030208314333X08c45b3a3e
+Message:请求通道在等待 00:00:59.9843977 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":2056289609,"CreateTime":"\/Date(1278562356280)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:57:56
+错误编号:2018030208575680X7f23d07352
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":10105322,"CreateTime":"\/Date(1289097292783)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"TelePhone":"","ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2Soap.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.FZUUMS_Relation2.FZUUMS_Relation2SoapClient.GetClassInfoByStuID(String stuID)
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId)
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a)
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 请求被中止: 操作超时。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2018-03-02 08:57:57
+错误编号:2018030208575709X1cb8702dd9
+Message:请求通道在等待 00:01:00 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+Message2:GetCFUserInfoList报错！Data={"UserID":10105327,"CreateTime":"\/Date(1289099693073)\/","VersionID":0,"Versions":"","DownloadChannel":0,"IsValidUser":0,"ValidUserTime":"\/Date(-62135596800000)\/","SchoolID":0,"AreaID":0,"Area":null}
+Type:System.TimeoutException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2357
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 36
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 43
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.<GetVailUserInfoListByCondition>b__48(VailUserInfo a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 1958
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 操作超时
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)

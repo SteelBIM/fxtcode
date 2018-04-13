@@ -1,0 +1,286 @@
+﻿@using CBSS.Web
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+  <meta charset="utf-8" />
+  <title>用户登录 - @CBSS.Core.Config.CachedConfigContext.Current.SettingConfig.WebSiteTitle</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <link href="@Url.StaticFile("/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+  <link href="@Url.StaticFile("/assets/css/metro.css")" rel="stylesheet" />
+  <link href="@Url.StaticFile("/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+  <link href="@Url.StaticFile("/assets/css/style.css")" rel="stylesheet" />
+  <link href="@Url.StaticFile("/assets/css/style_responsive.css")" rel="stylesheet" />
+  <link href="@Url.StaticFile("/assets/css/style_default.css")" rel="stylesheet" id="style_color" />
+  <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/uniform/css/uniform.default.css")" />
+  <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/content/styles/admin.main.css")" />
+  <style>
+      .login-page {
+          background: #303641 !important;
+      }
+
+      .login-page .login-content {
+              position: relative;
+              width: 320px;
+              margin: 0 auto;
+              text-align: center;
+              padding: 20px 0;
+              -moz-transition: all 550ms ease-in-out;
+              -webkit-transition: all 550ms ease-in-out;
+              -o-transition: all 550ms ease-in-out;
+              transition: all 550ms ease-in-out;
+          }
+
+      .login-page .login-content a {
+                  color: #949494;
+              }
+
+      .login-page .login-header {
+              position: relative;
+              background: #373e4a;
+              padding: 100px 0;
+              -moz-transition: all 550ms ease-in-out;
+              -webkit-transition: all 550ms ease-in-out;
+              -o-transition: all 550ms ease-in-out;
+              transition: all 550ms ease-in-out;
+          }
+
+      .login-page .login-header .description {
+                  font-size: 26px;
+                  color:#fff;
+                  margin-top: 20px;
+                  margin-bottom: 0;
+                  -moz-transition: all 550ms ease-in-out;
+                  -webkit-transition: all 550ms ease-in-out;
+                  -o-transition: all 550ms ease-in-out;
+                  transition: all 550ms ease-in-out;
+              }
+
+      .login-page .login-header.login-caret:after {
+                  position: absolute;
+                  content: '';
+                  left: 50%;
+                  bottom: 0;
+                  margin-left: -12.5px;
+                  width: 0px;
+                  height: 0px;
+                  border-style: solid;
+                  border-width: 13px 12.5px 0 12.5px;
+                  border-color: #373e4a transparent transparent transparent;
+                  bottom: -13px;
+                  -moz-transition: all 550ms ease-in-out;
+                  -webkit-transition: all 550ms ease-in-out;
+                  -o-transition: all 550ms ease-in-out;
+                  transition: all 550ms ease-in-out;
+              }
+      .input-icon.left input {
+        color:#fff;
+      }
+      .input-icon.left input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px #383F49 inset !important;
+      }
+      .input-icon.left {
+          padding: 8px 0;
+          background-color: #383F49;
+      }
+      .content .form-actions button {
+          width: 100%;
+          color:#fff;
+          text-align:left;
+          background-color: #383F49;
+      }
+          .content .form-actions button i {
+            float:right;
+          }
+     
+  </style>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login login-page">
+    <!-- BEGIN LOGO -->
+    @*<div class="logo">
+          <img src="@Url.StaticFile("/content/images/logo-big.png")" alt="" />
+        </div>*@
+    <div class="login-container">
+        <div class="login-header login-caret">
+            <div class="login-content">
+                @*<a href="#" class="logo">
+                    <img src="" width="120" alt="">
+                </a>*@
+                <p class="description">系统管理</p>
+                
+            </div>
+        </div>
+    </div>
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <!-- BEGIN LOGIN FORM -->
+            @using (Html.BeginForm())
+            {
+                @*<h3 class="form-title">请输入你的帐号和密码</h3>*@
+                <div class="alert alert-error hide">
+                    <button class="close" data-dismiss="alert"></button>
+                    <span>Enter any username and passowrd.</span>
+                </div>
+                <div class="control-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Username</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-user"></i>
+                            @Html.TextBox("username", string.Empty, new { @class = "m-wrap placeholder-no-fix", placeholder = "用户名", data_val_required = "用户名不能为空", data_val = "true" })
+                        </div>
+                        <span class="help-block">@Html.ValidationMessage("username")</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-lock"></i>
+                            @Html.Password("password", string.Empty, new { @class = "m-wrap placeholder-no-fix", placeholder = "密码", data_val_required = "密码不能为空", data_val = "true" })
+                        </div>
+                        <span class="help-block">@Html.ValidationMessage("password")</span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    @*@Html.TextBox("verifycode", "", new { style = "width:80px;", placeholder = "验证码" })
+                        <img style="cursor: pointer; vertical-align:middle" src="@Url.Action("VerifyImage", "Common")" id="VerifyImage" title="看不清？点击换一个" onclick="javascript:document.getElementById('VerifyImage').src='@Url.Action("VerifyImage", "Common")?r='+Math.random();return false;">*@
+                    <button type="submit" class="btn" id="btnLogin">
+                        登录 <i class="m-icon-swapright m-icon-white"></i>
+                    </button>
+                   
+                </div>
+                <div>@Html.ValidationMessage("error") </div>
+                <div class="forget-password">
+                    @*<h4>忘记密码 ?</h4>*@
+                </div>
+                <div class="create-account dn">
+                    <p>
+                        Don't have an account yet ?&nbsp;
+                        <a href="javascript:;" id="register-btn" class="">Create an account</a>
+                    </p>
+                </div>
+            }
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <form class="form-vertical forget-form" action="index.html">
+                <h3 class="">Forget Password ?</h3>
+                <p>Enter your e-mail address below to reset your password.</p>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-envelope"></i>
+                            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" name="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="back-btn" class="btn">
+                        <i class="m-icon-swapleft"></i> Back
+                    </button>
+                    <button type="submit" class="btn green pull-right">
+                        Submit <i class="m-icon-swapright m-icon-white"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- END FORGOT PASSWORD FORM -->
+            <!-- BEGIN REGISTRATION FORM -->
+            <form class="form-vertical register-form" action="index.html">
+                <h3 class="">Sign Up</h3>
+                <p>Enter your account details below:</p>
+                <div class="control-group">
+                    <label class="control-label visible-ie8 visible-ie9">Username</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-user"></i>
+                            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-lock"></i>
+                            <input class="m-wrap placeholder-no-fix" type="password" id="register_password" placeholder="Password" name="password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-ok"></i>
+                            <input class="m-wrap placeholder-no-fix" type="password" placeholder="Re-type Your Password" name="rpassword" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Email</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-envelope"></i>
+                            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" name="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" name="tnc" /> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                        <div id="register_tnc_error"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button id="register-back-btn" type="button" class="btn">
+                        <i class="m-icon-swapleft"></i>  Back
+                    </button>
+                    <button type="submit" id="register-submit-btn" class="btn green pull-right">
+                        Sign Up <i class="m-icon-swapright m-icon-white"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- END REGISTRATION FORM -->
+        </div>
+        <!-- END LOGIN -->
+        <!-- BEGIN COPYRIGHT -->
+        <div class="copyright">
+            2018 &copy; CBSS
+        </div>
+        <!-- END COPYRIGHT -->
+        <!-- BEGIN JAVASCRIPTS -->
+        <script src="@Url.StaticFile("/assets/js/jquery-1.8.3.min.js")"></script>
+        <script src="@Url.StaticFile("/assets/bootstrap/js/bootstrap.min.js")"></script>
+        <script src="@Url.StaticFile("/assets/js/jquery.blockui.js")"></script>
+        <script src="@Url.StaticFile("/assets/js/app.js")"></script>
+        <script type="text/javascript" src="@Url.StaticFile("/content/scripts/jquery.validate.min.js")"></script>
+        <script type="text/javascript" src="@Url.StaticFile("/content/scripts/jquery.validate.unobtrusive.min.js")"></script>
+        <script>
+            jQuery(document).ready(function () {
+                App.initLogin();
+                $("#username").focus();
+
+                $("body").bind("keydown", function (event) {
+                    if (event.keyCode == 13) {
+                        $("#btnLogin").click();
+                    }
+                });
+            });
+        </script>
+        <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

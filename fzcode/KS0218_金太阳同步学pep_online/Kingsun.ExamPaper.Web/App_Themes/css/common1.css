@@ -1,0 +1,59 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{font-family:"微软雅黑"}
+dd,dt{display:inline-block;*float:left;}
+a{cursor:pointer;color:#666;}
+a:link{color:#666;}
+a:visited{color:#666;}
+body{font-size:14px;background:#fff url(../images/contentTools/templale_bg.jpg) no-repeat center 34px;min-width:1000px;}
+/*顶部工具栏*/
+.header{width:100%;}
+  .header .head{width:1000px;margin:0 auto;height:100%;}
+  .header .topTool{background:#74aedb;height:34px;width:100%;}
+  .header .topTool .rightTopTool li{padding-left:23px;}
+  .header .topTool a{background:url(../images/smalltools1/toptools.png) no-repeat;_background-image:url(../images/smalltools1/toptools.gif);color:#fff;font-size:14px;padding:0 3px 2px 0;;display:block;*line-height:23px;}
+  .header .topTool a.kingsunHome{background-position:left 2px;padding:0 0 5px 23px;}
+  .header .topTool a.userName{background-position:left -28px;_background-position:left -30px;padding-left:23px;}
+  .header .topTool a.helpCenter{background-position:left -60px;padding-left:23px;}
+  .header .topTool a.exit{background-position:left -96px;padding-left:23px;}
+  .header .topTool .leftTopTool,.topTool .head .rightTopTool{display:block;color:#666;margin-top:5px;} 
+  .header .topTool ul{clear:both;overflow:hidden;}
+  .header .topTool ul li{display:block;float:left;} 
+  .header .topTool ul li a:hover{color:#ee922f;}
+  /*顶部菜单栏*/
+  .header .topMenu{height:80px;width:100%;padding-top: 15px;}
+  .header .head .logo{width:185px;height:68px;text-indent:-9999em;background:url(../images/logoText.png) no-repeat left center;_background-image:url(../images/logoText.gif)}
+  .header .head .mainMenu{width:80%;margin-top:10px;}
+  .header .head .mainMenu .menuItem{margin-top:22px;_width:265px;*zoom:1;margin-left:75px;_margin-left:37px;}
+  .header .head .mainMenu .menuItem li{display:block;float:left;height:48px;margin-right:68px;_margin-right:34px;zoom:1;width:82px;}
+  .header .head .mainMenu .menuItem li.on{background:url(../images/contentTools/backTool.png) no-repeat center bottom;_background:url(../images/contentTools/backTool.gif) no-repeat center bottom;}
+  .header .head .mainMenu .menuItem li a{font-size:16px;color:#fff;*height:43px;display:block;text-align: center;}
+  .header .head .mainMenu .centerLink{position:relative;height:55px;_width:140px;}
+  .header .head .mainMenu .centerLink a#userName{display:block;line-height:43px;background:url(../images/contentTools/backTool.png) no-repeat right bottom;_background:url(../images/contentTools/backTool.gif) no-repeat right bottom;padding-right:12px;color:#fff;}
+  .header .head .mainMenu .centerLink a#userName:hover{color:#fff79d;}
+  .header .head .mainMenu .centerLink span{position:relative;height:53px;width:53px;display:block;margin-right:10px;}
+  .header .head .mainMenu .centerLink span em{display:block;position:absolute;height:53px;width:53px;top:0;left:0;background:url(../images/contentTools/backTool.png) no-repeat right top;_background-image:url(../images/contentTools/backTool.gif);z-index:2;}
+  .header .head .mainMenu .centerLink span img{position:absolute;height:53px;width:53px;top:0;left:0;}
+
+
+ 
+ /*页脚*/
+.footer{width:100%;background:#d2ecfa;height:134px;position:static;left:0;bottom:0;margin-top:100px;}
+  .footer .foot{width:1000px;margin:0 auto;padding-top:45px;}
+  .footer .foot .footCenter{margin-left:35px;font-size:12px;color:#666;}
+  .footer .foot .footCenter span{display:block;float:left;margin-right:40px;font-size:12px;height:47px;}
+  .footer .foot .footCenter span.weixin{position:relative;}
+  .footer .foot .footCenter .tel{display:block;float:left;line-height:47px;padding-left:55px;background:url(../images/contentTools/backTool.png) no-repeat -521px -56px;color:#fd7100;font-size:30px;margin-right:0;}
+  .footer .foot .footCenter span.weixin i{position:absolute;top:-71px;left:0;display:block;width:76px;height:76px;z-index:99;}
+  .footer .foot .footCenter span.weixin span img{width:76px;height:76px;position:absolute;*display:block;}
+  .footer .foot .footLeft{padding-top:5px;}
+  .footer .foot .footLeft p,.footer .foot .footLeft a{font-size:12px;color:#666;}
+  .footer .foot .footLeft a:hover{color:#fd763e;}
+  
+  /*gotoTop*/
+.gotoTop{width:91px;height:97px;margin-left:566px;overflow:hidden;position:fixed;bottom:5%;left:50%;_position:absolute;margin-bottom:20px;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+display:none;z-index:999;}
+.gotoTop a{width:91px;height:97px;display:block;text-indent:-999em;background:url(../images/contentTools/backTool.png) right -399px no-repeat;_background:url(../images/contentTools/backTool.gif) right -399px no-repeat;outline:none;zoom:1;}
+
+
+

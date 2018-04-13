@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "比赛目录";
+}
+@model Kingsun.InterestDubbingGame.Web.Controllers.MatchCatalogModel
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>配音初赛-选题、完成</title>
+    <link href="~/Content/css/common/base.css" rel="stylesheet" />
+    <link href="~/Content/css/work/starGame.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/GameIndex.js?v=1.4"></script>
+    <script src="~/Scripts/js/JsBridge.js?v=1.3"></script>
+
+</head>
+
+<body>
+    <header class="head1">
+        @{
+            if (@Model != null)
+            {
+                <a href="../StartIndex/Index?UserID=@Model.UserID&AppID=@Model.AppID" class="back"><img src="~/images/common/back_black.png" alt=""></a>
+            }
+            else
+            {
+                <a href="../StartIndex/Index?UserID=@Request["UserID"]&AppID=@Request["AppID"]" class="back"><img src="~/images/common/back_black.png" alt=""></a>
+            }
+        }
+        <h2>配音初赛</h2>
+    </header>
+    @{
+        if (@Model != null)
+        {
+            <main class="main2">
+                <section>
+                    @{
+            if (@Model != null)
+            {
+                if (@Model.StateID == 1)//用户未完成任意环节
+                {
+                    <div class="dub" onclick="HrefDubAction(0)">
+                        <div class="jieshao">
+                            <h2 class="title">课本剧配音</h2>
+                            <p class="hint">共6次配音机会</p>
+                        </div>
+                        <img src="~/images/work/select/puffer1.png" alt="">
+                    </div>
+                        <div class="story" onclick="HrefStarAction(0)">
+                            <div class="jieshao1" style="top:40%;">
+                                <h2 class="title">故事演绎</h2>
+                            </div>
+                            <img src="~/images/work/select/puffer2.png" alt="">
+                        </div>
+                }
+                else if (@Model.StateID == 2)//用户完成一个环节
+                {
+                    if (@Model.BookPlayScore > 0)
+                    {
+                        <div class="dub" onclick="HrefDubAction(1)">
+                            <div class="jieshao">
+                                <h2 class="title">课本剧配音</h2>
+                                <p class="score"><span>@Model.BookPlayScore</span>分</p>
+                                <p class="best">最优成绩</p>
+                            </div>
+                            <em class="submitted"><span>已提交</span></em>
+                            <img src="~/images/work/select/puffer1.png" alt="">
+                        </div>
+                        <div class="story" onclick="HrefStarAction(0)">
+                            <div class="jieshao1" style="top:40%;">
+                                <h2 class="title">故事演绎</h2>
+                            </div>
+                            <img src="~/images/work/select/puffer2.png" alt="">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="dub" onclick="HrefDubAction(0)">
+                            <div class="jieshao">
+                                <h2 class="title">课本剧配音</h2>
+                                <p class="hint">共6次配音机会</p>
+                            </div>
+                            <img src="~/images/work/select/puffer1.png" alt="">
+                        </div>
+                        <div class="story" onclick="HrefStarAction(1)">
+                            <div class="jieshao1">
+                                <h2 class="title">故事演绎</h2>
+                                <p class="score"><span>@Model.StoryReadScore</span>分</p>
+                                <p class="best">最优成绩</p>
+                            </div>
+                            <em class="submitted"><span>已提交</span></em>
+                            <img src="~/images/work/select/puffer2.png" alt="">
+                        </div>
+                    }
+                }
+                else//完成两个环节
+                {
+                    <div class="dub" onclick="HrefDubAction(1)">
+                        <div class="jieshao">
+                            <h2 class="title">课本剧配音</h2>
+                            <p class="score"><span>@Model.BookPlayScore</span>分</p>
+                            <p class="best">最优成绩</p>
+                        </div>
+                        <em class="submitted"><span>已提交</span></em>
+                        <img src="~/images/work/select/puffer1.png" alt="">
+                    </div>
+                        <div class="story" onclick="HrefStarAction(1)">
+                            <div class="jieshao1">
+                                <h2 class="title">故事演绎</h2>
+                                <p class="score"><span>@Model.StoryReadScore</span>分</p>
+                                <p class="best">最优成绩</p>
+                            </div>
+                            <em class="submitted"><span>已提交</span></em>
+                            <img src="~/images/work/select/puffer2.png" alt="">
+                        </div>
+                }
+            }
+            else
+            {
+                <div class="dub" onclick="HrefStarAction(1)">
+                    <div class="jieshao">
+                        <h2 class="title">课本剧配音</h2>
+                        <p class="hint">共6次配音机会</p>
+                    </div>
+                    <img src="~/images/work/select/puffer1.png" alt="">
+                </div>
+                        <div class="story">
+                            <div class="jieshao1" style="top:40%;">
+                                <h2 class="title">故事演绎</h2>
+                            </div>
+                            <img src="~/images/work/select/puffer2.png" alt="">
+                        </div>
+            }
+                    }
+                    <div class="instruction">
+                        <h3>一、初赛形式</h3>
+                        <p>1、参赛选手需完成口语作品（课本剧配音+故事演绎）和作品投票；</p>
+                        <p>2、课本剧配音有6次配音机会，只能提交1次；</p>
+                        <p>3、故事朗读允许多次朗读，只能提交1次；</p>
+                        <p>4、每人获得投票数上限为200票；</p>
+                        <p>5、初赛成绩=配音得分（满分100分）+朗读得分（满分100分）+投票数量×10%（满分20分）。</p>
+                        <h3 style="margin-top:30px;">二、注意事项</h3>
+                        <p>
+                            1、比赛过程中请保持设备网络畅通，所处环境无干扰；
+                        </p>
+                        <p>2、若因网络和环境导致的评测成绩不佳，同步学APP不承担责任。</p>
+                    </div>
+
+                </section>
+            </main>
+        }
+        else
+        {
+            <h1 style="text-align:center; position:fixed; top:50%; left:38%;">参数错误</h1>
+        }
+    }
+</body>
+</html>
+
+

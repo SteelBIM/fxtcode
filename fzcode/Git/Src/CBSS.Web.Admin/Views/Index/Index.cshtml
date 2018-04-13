@@ -1,0 +1,293 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootswatch: Flatly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            position: relative;
+            min-width: 1240px;
+            font-size: 16px;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12.386rem;
+            max-width: 1604px;
+            min-width: 1244px;
+            height: auto;
+            min-height: 580px;
+            max-height: 6.4rem;
+            transform: translate(-49%,-50%);
+            -ms-transform: translate(-49%,-50%);
+            -webkit-transform: translate(-49%,-50%);
+        }
+
+        .card {
+            float: left;
+            width: 3.8rem;
+            max-width: 490px;
+            min-width: 380px;
+            height: 2.51rem;
+            min-height: 268px;
+            max-height: 330px;
+            margin: .15rem;
+            border: 1px #e5e5e5 solid;
+            border-radius: 6px !important;
+            background-color: #fff;
+            transition: all .5s;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.15rem !important;
+        }
+
+        .card:hover {
+            border-color: #d5d5d5;
+            box-shadow: 0 0 24px 2px #d5d5d5
+        }
+
+        .card-body {
+            padding: .25rem;
+        }
+
+        .card-header {
+            padding: .25rem .15rem;
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+
+        .tuijian {
+            list-style-type: none;
+            overflow: hidden;
+            margin: 0;
+        }
+
+            .tuijian li {
+                font-size: 14px;
+                line-height: .22rem;
+                float: left;
+                width: .99rem;
+                max-width: 130px;
+                min-width: 99px;
+                height: .22rem;
+                min-height: 22px;
+                margin: 0 6px 0;
+                transition: all .15s;
+            }
+
+                .tuijian li a {
+                    color: #fff;
+                    border-radius: 36px !important;
+                    background-color: #18BC9C;
+                    border: 1px solid #18BC9C;
+                    cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                    .tuijian li a:hover {
+                        color: #fff;
+                        background-color: #149A80;
+                        border: 1px solid #149A80;
+                    }
+
+        a.icon {
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 10px auto 20px;
+            background: url(../../../../Assets/img/tongbuxue.png) no-repeat;
+            background-size: 100%;
+        }
+
+        .icon1 {
+            background-position: 0 0;
+        }
+
+        .card-text {
+            text-align: center;
+        }
+
+        .page-content {
+            margin-left: 0;
+            margin-top: 0px;
+            min-height: 930px;
+        }
+
+        .fixed-top .page-container {
+            margin-top: 0;
+        }
+
+        .header .nav > li.dropdown.user .dropdown-toggle .username {
+            font-size: 13px;
+        }
+
+        .dropdown-toggle::after {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 0;
+            vertical-align: 0;
+            content: "";
+            border-top: 0 solid;
+            border-right: 0 solid transparent;
+            border-bottom: 0;
+            border-left: 0 solid transparent;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            list-style: none;
+            min-width: 162px;
+            text-shadow: none;
+            padding: 0px;
+            margin: 0px;
+            -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            font-family: "Segoe UI",Helvetica, Arial, sans-serif;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 1366) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            recalc();
+        })(document, window);
+    </script>
+</head>
+<body>
+
+    <div class="content">
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon1"></a>
+                <p class="card-text">同步学习系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon2"></a>
+                <p class="card-text">财富分账系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon1"></a>
+                <p class="card-text">同步学习系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon1"></a>
+                <p class="card-text">同步学习系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon1"></a>
+                <p class="card-text">同步学习系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+
+            <div class="card-body text-success">
+                <a href="javascript:void(0)" class="icon icon1"></a>
+                <p class="card-text">同步学习系统</p>
+            </div>
+            <div class="card-header">
+                <ul class="tuijian">
+                    <li><a href="javascript:void(0)">用户管理</a></li>
+                    <li><a href="javascript:void(0)">模型管理</a></li>
+                    <li><a href="javascript:void(0)">模块管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

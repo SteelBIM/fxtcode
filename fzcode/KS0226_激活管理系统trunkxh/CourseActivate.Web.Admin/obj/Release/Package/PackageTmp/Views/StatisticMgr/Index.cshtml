@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">运营统计</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div class="col-lg-12">
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">学段:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Period">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">年级:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Grade">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">版本:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Edition">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">学科:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Subject">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12" style="margin-top:20px;">
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">册别:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Reel">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">状态:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Status">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <button id="btn_search" type="button" onclick="$('#tb_departments').bootstrapTable('refresh')" class="btn btn-default" style="float:left; margin-left:20px;width:80px; height:34px; background-color:#515562; color:#fff;">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                        </button>
+                        <button id="btn_Import" type="button" class="btn btn-primary" style="width: 80px; height: 34px; margin-left: 15px;background-color: #515562">导出</button>
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+
+                    <table id="tb_Statisticbook"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/StatisticMgr.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var pageInit;
+        $(function () {
+            pageInit = new StatisticMgr();
+            pageInit.Init();
+        })
+    </script>
+}

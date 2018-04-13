@@ -1,0 +1,176 @@
+﻿
+@using CBSS.Core.Config
+@using CBSS.Web
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="@Url.StaticFile("/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/css/metro.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/css/style.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/css/style_responsive.css")" rel="stylesheet" />
+    <link href="@Url.StaticFile("/assets/css/style_default.css")" rel="stylesheet" id="style_color" />
+    <link href="@Url.StaticFile("/assets/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/uniform/css/uniform.default.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/chosen-bootstrap/chosen/chosen.css")" />
+    <link rel="stylesheet" href="@Url.StaticFile("/assets/data-tables/DT_bootstrap.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/uniform/css/uniform.default.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/content/styles/admin.main.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/content/styles/jquery.thickbox.css")" />
+
+    <style type="text/css">
+        #tree ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        #tabModule {
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+            #tabModule tr td {
+                padding: 20px 50px;
+            }
+
+                #tabModule tr td input {
+                    margin: -3px 5px 0 0;
+                }
+
+        #tree {
+            font-size: 14px;
+        }
+
+        .goodmodule {
+            margin-top: 12px;
+            float: left;
+            width: auto;
+            min-width: 50%;
+            font-size: 14px;
+            white-space:nowrap;
+        }
+        .goodmodule input{float:left; margin-left:20px; }
+
+    </style>
+</head>
+<body class="fixed-top">
+    <div class="page-container row-fluid">
+        <div class="page-content">
+            <div style="width:100%; height:170px; ">
+                <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+                    <div class="row-fluid">
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>手机号：</label>
+                            <div class="controls">
+                                @Html.TextBox("UserIphone", null, new { @class = "m-wrap small" })
+                                <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+                                <span id="UserInformation"></span>
+                                <input type="hidden" id="UserId" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>有效期：</label>
+                            <div class="controls">
+                                <input type="text" data-options="" class="form-control" id="startdata" name="startdata" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'enddata\')}', readOnly: true })" />
+                                <input type="text" class="form-control" style="margin-left: 0px;" id="enddata" name="enddata" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'startdata\')}', readOnly: true })" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">备注：</label>
+                            <div class="controls">
+                                @Html.TextBox("Remark", null, new { @class = "m-wrap small" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both; height:10px;"></div>
+            <div class="container-fluid">
+                <div style="width:35%; float:left;  height:512px; overflow:auto;background-color: #eee;">
+                    <div id="tree">
+                    </div>
+                </div>
+                <div style="width:65%; float:right; height:512px;    ">
+                    <div style="height:460px;  overflow:auto;  background-color:#fff; clear:both;" id="tabModule"><div style="line-height:180px; color:red; font-size:16px;  text-align:center;">请点击左侧课本加载模块</div></div>
+                    <div id="btnDiv" style="display:none; height:40px; margin-top:20px; text-align:center; clear:both;">
+                        <a onclick="return SubmitUserModule();" style="padding:10px 30px;  border-radius:5px ;color:#fff; background-color:#35AA47; font-size:16px; text-decoration:none; cursor:pointer;">提交</a>
+                        <input type="hidden" id="moduleids"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/WdatePicker.js"></script>
+    <script src="@Url.StaticFile("/assets/js/jquery-1.8.3.min.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/Assets/bootbox/bootbox.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/uniform/jquery.uniform.min.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/data-tables/jquery.dataTables.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/data-tables/DT_bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/js/app.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/content/scripts/jquery.thickbox.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/content/scripts/jquery.numeric.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/content/scripts/jquery.ui.datapicker-zh-CN.js")"></script>
+
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/GoodModuleItem.js?v=1.7"></script>
+    <link href="~/Assets/bootstrap-tree/tree.css" rel="stylesheet" />
+    <script src="~/Assets/bootstrap-tree/bootstrap-treeview.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            LoadTreeMarketClassify();
+            $("#searchbtn").click(function () {
+                var UserIphone = $.trim($("#UserIphone").val());
+                if (UserIphone != "" && UserIphone.length == 11) {
+                    $.post("/UserOrder/UserModule/GetUserParticulars", { Iphone: UserIphone }, function (data) {
+                        if (data != null) {
+                            //17688727631
+                            $("#UserInformation").html(data.SchoolName + "    " + data.TrueName + "    " + data.UserID);
+                            $("#UserId").val(data.UserID);
+                        } else {
+                            $("#UserInformation").html("没有该手机号信息~");
+                            $("#UserId").val("");
+                        }
+                    });
+                } else {
+                    alert("请输入正确的手机号~");
+                }
+            });
+        });
+
+        function SubmitUserModule() {
+            var UserId = $("#UserId").val();
+            var ModuleIds = $("#moduleids").val();
+            var startdata = $("#startdata").val();
+            var enddata = $("#enddata").val();
+            var UserPhone =   $.trim($("#UserIphone").val());
+            var Remark = $.trim($("#Remark").val());
+            if (startdata != "" && enddata != "") {
+                if (UserId != "" && ModuleIds != "" && ModuleIds != ",") {
+                    enddata = enddata + " 23:59:59";
+                    $.post("/UserOrder/UserModule/UserAllocationModule", { UserId: UserId, ModuleIds: ModuleIds, StartData: startdata, EndData: enddata, UserPhone: UserPhone, Remark: Remark }, function (data) {
+                        if (data == "True") {
+                            window.parent.RefreshParentGood();
+                        } else {
+                            alert("配置失败~");
+                        }
+                    });
+                } else {
+                    alert("请查询用户和选择模块~");
+                }
+            } else {
+                alert("请选择有效期~");
+            }
+        }
+    </script>
+</body>
+</html>

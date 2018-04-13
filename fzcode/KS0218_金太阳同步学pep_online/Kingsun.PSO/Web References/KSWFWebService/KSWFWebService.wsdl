@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productInfo" type="tns:Product" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Product">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GradeID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Grade" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VersionID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubjectID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryKey" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Channel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Isshevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delflg" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddProductResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CertficateSoapHeader" type="tns:CertficateSoapHeader" />
+      <s:complexType name="CertficateSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="AddOrderInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oInfo" type="tns:Order" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Order">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AreaID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaPath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SchoolID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GradeID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GradeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClassID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClassName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TeacherUserID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeacherUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuyUserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuyUserPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayType" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Channel" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserClientIP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddOrderInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddOrderInfoResult" type="tns:ReturnInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddProductSoapIn">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="AddProductSoapOut">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddProductCertficateSoapHeader">
+    <wsdl:part name="CertficateSoapHeader" element="tns:CertficateSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddOrderInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddOrderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderInfoCertficateSoapHeader">
+    <wsdl:part name="CertficateSoapHeader" element="tns:CertficateSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="KSWFWebServiceSoap">
+    <wsdl:operation name="AddProduct">
+      <wsdl:input message="tns:AddProductSoapIn" />
+      <wsdl:output message="tns:AddProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderInfo">
+      <wsdl:input message="tns:AddOrderInfoSoapIn" />
+      <wsdl:output message="tns:AddOrderInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="KSWFWebServiceSoap" type="tns:KSWFWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/AddProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddProductCertficateSoapHeader" part="CertficateSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderInfo">
+      <soap:operation soapAction="http://tempuri.org/AddOrderInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddOrderInfoCertficateSoapHeader" part="CertficateSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="KSWFWebServiceSoap12" type="tns:KSWFWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddProduct">
+      <soap12:operation soapAction="http://tempuri.org/AddProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddProductCertficateSoapHeader" part="CertficateSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddOrderInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddOrderInfoCertficateSoapHeader" part="CertficateSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KSWFWebService">
+    <wsdl:port name="KSWFWebServiceSoap" binding="tns:KSWFWebServiceSoap">
+      <soap:address location="http://192.168.3.109:8088/Service/KSWFWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="KSWFWebServiceSoap12" binding="tns:KSWFWebServiceSoap12">
+      <soap12:address location="http://192.168.3.109:8088/Service/KSWFWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

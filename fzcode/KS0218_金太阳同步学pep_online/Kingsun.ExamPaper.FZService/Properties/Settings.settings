@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kingsun.ExamPaper.FZService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Kingsun_SynchronousStudy_FZService_PracticeEveryDay_PracticeEveryDay" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.3.144:8089/Service/PracticeEveryDay.asmx</Value>
+    </Setting>
+    <Setting Name="Kingsun_ExamPaper_FZService_RelationService_RelationService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://183.47.42.221:8026/RelationService/RelationService.svc</Value>
+    </Setting>
+    <Setting Name="Kingsun_ExamPaper_FZService_FZUUMS_UserService_FZUUMS_UserService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://183.47.42.221:8026/UserService/FZUUMS_UserService.asmx</Value>
+    </Setting>
+    <Setting Name="Kingsun_ExamPaper_FZService_MetadataService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://metadata.kingsun.cn/Service/MetadataService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

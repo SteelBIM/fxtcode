@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CBSS.Tbx.BLL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CBSS_Tbx_BLL_TBService_WebServicePatch" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://study.kingsunsoft.com/WebServer/WebServicePatch.asmx</Value>
+    </Setting>
+    <Setting Name="CBSS_Tbx_BLL_SMSService_SMSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sms.kingsun.cn/service/SMSService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

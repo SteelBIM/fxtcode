@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+
+}
+@section mainContent{
+
+    <div class="col-lg-12">
+        <h1 class="page-header">角色权限</h1>
+    </div>
+
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div id="toolbar" class="btn-group" style=" margin-top:0;">
+                </div>
+                <table id="tb_departments"></table>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/AuthorityMgr.js"></script>
+    @*<script>
+        var pageInit;
+        $(function () {
+            pageInit = new AuthorityMgr.js();
+            pageInit.Init();
+        })
+    </script>*@
+}

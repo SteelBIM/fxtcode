@@ -1,0 +1,250 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Web
+@using CBSS.Tbx.Contract.DataModel
+
+@model  Module
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">书籍名称：</label>
+                <div class="controls">
+                    <span class="help-inline" id="spanMarketBookName">@ViewData["MarketBookName"]</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>模型名称：</label>
+                <div class="controls">
+                    @{
+                        if (Model.ModuleID > 0)
+                        {
+                            @Html.DropDownList("ModelIDShow")
+                            if (ViewData["selModelID"] == null)
+                            {
+                                <select id="selModelID" style="display:none;"></select>
+                            }
+                            else
+                            {
+                                @Html.DropDownList("selModelID", "请选择")
+                            }
+                        }
+                        else
+                        {
+                            @Html.DropDownList("ModelIDShow", "请选择")
+                            <select id="selModelID" style="display:none;"></select>
+
+                        }
+                        <input type="hidden" id="ModelID" name="ModelID" value="@Model.ModelID" />
+                    }
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>模块名称：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.ModuleName, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.ModuleName)</span>
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>上级模块：</label>
+                <div class="controls">
+                    @{
+
+                        @Html.DropDownList("ParentModule", "请选择")
+                        <input type="hidden" id="ParentID" name="ParentID" value="@Model.ParentID" />
+                    }
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>试看条件：</label>
+                <div class="controls">
+                    @Html.DropDownList("FreeType")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">试看数量：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.FreeNum, new { @class = "m-wrap small" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.FreeNum)</span>
+                </div>
+            </div>
+            @*<div class="control-group">
+                <label class="control-label"><span class="required">*</span>模块图片：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.ModuleImg, new { @class = "m-wrap small", @style = "min-width:300px;" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.ModuleImg)</span>
+                    <div id="OssUploadControl">
+                        <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+                        <br />
+                        <div id="container" style="border:0px;">
+                            <a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+                            <a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="control-group">
+                <label class="control-label">资源访问方式：</label>
+                <div class="controls">
+                    @Html.DropDownList("SourceAccessMode")
+                </div>
+            </div>
+            <div class="control-group" id="SourceAddressDiv" style="display:none">
+                <label class="control-label"><span class="required">*</span>资源模板：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.SourceAddress, new { @class = "m-wrap small" })
+                    <input type="file" id="SourceAddress" name="SourceAddress" style="border:0px solid red; width:75px;" onchange="$('#SourceAddress').val($(this).val())" />
+                    <a id="DownResourceTemplate" href="">下载模板</a> @*href="~/Upload/Templates/ResourcesTemplate.xlsx"*@
+                </div>
+            </div>
+            <div class="control-group" id="MODSourceTypeDiv">
+                <label class="control-label"><span class="required">*</span>MOD资源类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("MODSourceType")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="@Url.StaticFile("/assets/js/jquery-1.8.3.min.js")"></script>
+<link href="@Url.StaticFile("/assets/aliyunupload/OssUploadControl.css")" rel="stylesheet" />
+<script src="@Url.StaticFile("/assets/aliyunupload/lib/crypto1/crypto/crypto.js")"></script>
+<script src="@Url.StaticFile("/assets/aliyunupload/lib/crypto1/hmac/hmac.js")"></script>
+<script src="@Url.StaticFile("/assets/aliyunupload/lib/crypto1/sha1/sha1.js")"></script>
+<script src="@Url.StaticFile("/assets/aliyunupload/plupload.js")"></script>
+<script src="@Url.StaticFile("/assets/aliyunupload/upload.js?v1.0")"></script>
+@*<script src="~/Assets/bootbox/bootbox.js"></script>*@
+<script type="text/javascript">
+    $(function () {
+        //模型分类
+        if ($("#SourceAccessMode").val() == 2) {//上传
+            $("#SourceAddressDiv").show();
+            $("#MODSourceTypeDiv").hide();
+        } else {
+            $("#SourceAddressDiv").hide();
+            $("#MODSourceTypeDiv").show();
+        }
+        //资源访问方式
+        $("#SourceAccessMode").change(function () {
+            if ($("#SourceAccessMode").val() == 3) {
+                $("#SourceAddressDiv").hide();
+                $("#MODSourceTypeDiv").hide();
+            }
+            else if ($("#SourceAccessMode").val() == 2) {
+                $("#SourceAddressDiv").show();
+                $("#MODSourceTypeDiv").hide();
+            } else {
+                $("#SourceAddressDiv").hide();
+                $("#MODSourceTypeDiv").show();
+            }
+        });
+        //根据ModelID得到资源模板地址
+        var ModelID = $("#ModelIDShow").val();
+        if (ModelID != "") {
+            GetResourceTemplate(ModelID);
+        }
+
+        var EditParentID = $("#ParentID").val();
+        if (EditParentID > 0)
+        {
+            $("#ParentModule").val(EditParentID);
+        }
+
+        $("#ParentModule").change(function () {
+            var ParentID = $(this).val();
+            if (ParentID == null || ParentID == undefined || ParentID == "")
+                ParentID = 0;
+            $("#ParentID").val(ParentID);
+            alert($("#ParentID").val());
+        });
+        $("#ModelIDShow").change(function () {
+            ModelID = $("#ModelIDShow").val();
+            if (ModelID != "") {
+                GetResourceTemplate(ModelID);
+                //获取是否有子模型
+                GetModelByParentID(ModelID);
+                $("#ModuleName").val($("#spanMarketBookName").text() + $("#ModelIDShow").find("option:selected").text());
+                $("#ModelID").val($("#ModelIDShow").val());
+            } else {
+                $("#selModelID").hide();
+                $("#ModuleName").val("");
+            }
+        });
+        $("#selModelID").change(function () {
+            GetDefaultModuleName();
+        });
+        //提交表单
+        $("#submit").click(function () {
+            //alert($("#ModelID").val());
+            var ModelID = $("#ModelID").val();
+            if (ModelID == "" || ModelID == 0) {
+                alert('请选择模型');
+                return false;
+            }
+            if ($("#SourceAccessMode").val() == 1) {    //mod
+                if ($("#MODSourceType").val() != "-1") {
+                    $("form").submit();
+                } else {
+                    alert('请选择MOD资源类型！');
+                    return false;
+                }
+            } else {
+                if ($("#SourceAddress").val() != "") {
+                    $("form").submit();
+                } else {
+                    alert('请选择资源模板！');
+                    return false;
+                }
+            }
+        });
+    });
+    //根据模型获取默认模块名称
+    function GetDefaultModuleName() {
+        if ($("#selModelID").val() == "") {
+            $("#ModuleName").val($("#spanMarketBookName").text() + $("#ModelIDShow").find("option:selected").text());
+            $("#ModelID").val($("#ModelIDShow").val());
+        } else {
+            $("#ModuleName").val($("#spanMarketBookName").text() + $("#selModelID").find("option:selected").text());
+            $("#ModelID").val($("#selModelID").val());
+        }
+    }
+    // //获取是否有子模型
+    function GetModelByParentID(ModelID) {
+        //alert(ModelID);
+        $.post("/Tbx/Module/GetModelByParentID", { ModelID: ModelID }, function (data) {
+            //alert(data);
+            if (data != "") {
+                var opt = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    opt += "<option value='" + data[i].ModelID + "'>" + data[i].ModelName + "</option>";
+                }
+                $("#selModelID").show();
+                $("#selModelID").html(opt);
+            } else {
+                $("#selModelID").hide();
+            }
+        });
+    }
+    function GetResourceTemplate(ModelID) {
+        $.post("/Tbx/Models/GetModelByModelID", { ModelID: ModelID }, function (data) {
+            //alert(data.ResourceTemplate);
+            if (data.ResourceTemplate != "") {
+                $("#DownResourceTemplate").show();
+                $("#DownResourceTemplate").attr("href", data.ResourceTemplate);
+            } else {
+                $("#DownResourceTemplate").hide();
+            }
+        });
+    }
+</script>

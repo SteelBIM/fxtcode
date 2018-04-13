@@ -1,0 +1,45 @@
+﻿2018-03-09 15:03:35
+错误编号:2018030915033554X8d541c098c
+Message:WRONGTYPE Operation against a key holding the wrong kind of value, sPort: 29400, LastCommand: 
+Message2:错误：listId为：Order2BaseDBQueue
+Type:ServiceStack.Redis.RedisResponseException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.CreateResponseError(String error)
+   在 ServiceStack.Redis.RedisNativeClient.ReadInt()
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:CreateResponseError
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+
+2018-03-09 15:12:27
+错误编号:2018030915122772Xc02dd4534c
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-03-09 17:44:58
+错误编号:2018030917445867Xee16deb5cf
+Message:无法连接到远程服务器
+Message2:唤醒服务失败
+Type:System.Net.WebException
+Source:System
+StackTrace:   在 System.Net.HttpWebRequest.GetResponse()
+   在 Kingsun.SynchronousStudy.FS.MvcApplication.Application_End(Object sender, EventArgs e) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\Global.asax.cs:行号 38
+Method:GetResponse
+Class:System.Net.HttpWebRequest
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:50868
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetMetadata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMetadataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMetadataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="districtID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="townsID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="schoolName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchoolDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="parentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreaDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Stage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Grade" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Edition" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Booklet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCatalogkData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCatalogkDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCatalogkDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMetadataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMetadata" />
+  </wsdl:message>
+  <wsdl:message name="GetMetadataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMetadataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchoolData" />
+  </wsdl:message>
+  <wsdl:message name="GetSchoolDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchoolDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAreaDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAreaData" />
+  </wsdl:message>
+  <wsdl:message name="GetAreaDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAreaDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBookDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookData" />
+  </wsdl:message>
+  <wsdl:message name="GetBookDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCatalogkDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCatalogkData" />
+  </wsdl:message>
+  <wsdl:message name="GetCatalogkDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCatalogkDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetMetadata">
+      <wsdl:input message="tns:GetMetadataSoapIn" />
+      <wsdl:output message="tns:GetMetadataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolData">
+      <wsdl:input message="tns:GetSchoolDataSoapIn" />
+      <wsdl:output message="tns:GetSchoolDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaData">
+      <wsdl:input message="tns:GetAreaDataSoapIn" />
+      <wsdl:output message="tns:GetAreaDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookData">
+      <wsdl:input message="tns:GetBookDataSoapIn" />
+      <wsdl:output message="tns:GetBookDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalogkData">
+      <wsdl:input message="tns:GetCatalogkDataSoapIn" />
+      <wsdl:output message="tns:GetCatalogkDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMetadata">
+      <soap:operation soapAction="http://tempuri.org/GetMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolData">
+      <soap:operation soapAction="http://tempuri.org/GetSchoolData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaData">
+      <soap:operation soapAction="http://tempuri.org/GetAreaData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookData">
+      <soap:operation soapAction="http://tempuri.org/GetBookData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalogkData">
+      <soap:operation soapAction="http://tempuri.org/GetCatalogkData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMetadata">
+      <soap12:operation soapAction="http://tempuri.org/GetMetadata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolData">
+      <soap12:operation soapAction="http://tempuri.org/GetSchoolData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaData">
+      <soap12:operation soapAction="http://tempuri.org/GetAreaData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookData">
+      <soap12:operation soapAction="http://tempuri.org/GetBookData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalogkData">
+      <soap12:operation soapAction="http://tempuri.org/GetCatalogkData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://metadata.kingsun.cn/service/MetadataService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://metadata.kingsun.cn/service/MetadataService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

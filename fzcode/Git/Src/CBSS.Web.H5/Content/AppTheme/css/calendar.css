@@ -1,0 +1,89 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+.main{height:100%;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute; background-color:#F5F5F5;}
+
+/*报告列表*/
+.header1{ overflow:hidden; padding:10px 10px; background-color:#fff; margin-bottom:2px;}
+.header1 a{ display:inline;   border-radius:5px; padding:5px 20px;}
+.header1 .left{ float:left; background-color:#1C9EEA; color:#fff;}
+.header1 .left::before {
+	
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top:6px solid #1C9EEA;
+    content: "";
+    display: block;
+    position: absolute;   
+    width: 0px;
+	height:0px;
+	margin-top:26px;
+	margin-left:13px; 
+	
+   	
+}
+.header1 .right{ position:absolute; left:50%; top:10px; margin-left:-36px;}
+.header1 .me{float:right;   color:#000; margin:0 8px;}
+.head{ height:50px; background-color:#fff; text-align:right;  color:#7A7A7A; font-size:14px; line-height:50px; font-weight:300;box-shadow:1px 1px 1px #F0F0F0;}
+.head .cebie{ position:absolute; left:50%; margin-left:-46px;}
+.head .yesterday{color:#3FABED;  border:1px solid #3FABED; margin-right:10px; padding:3px 8px; border-radius:5px;}
+.head img{ width:12px; margin-left:10px;}
+.head1{ height:50px; background-color:#fff; text-align:center;  color:#7A7A7A; font-size:14px; line-height:50px; font-weight:300;box-shadow:1px 1px 1px #F0F0F0;}
+.head1 img{ width:12px; margin-left:10px;}
+.htmlg2 a{ height:50px; line-height:50px; color:#fff; background-color:#008ADB; width:70%; margin-left:15%; border-radius:25px; display:block; text-align:center; margin:60px auto 20px; font-size:16px;}
+.htmlg2 a:hover{color:#fff;}
+.date{ display:none;}
+/*报告列表弹出选择年级*/
+.toolwin{display:none;position:absolute;top:52px;left:0;width:100%; z-index:1;}
+.maskLayer{ width:100%; height:100%; background-color:#000000; opacity:0.8; -moz-opacity:0.8; filter:alpha(opacity=80);z-index:0; display:none;position:absolute;top:52px;left:0;}
+.toolwin .to_ul{ padding:20px; background-color:#fff;  text-align:center;}
+.timelist{ width:100%; overflow:hidden; height:auto;}
+.timelist li{ display:inline; float:left; border:1px solid #94D1F5; margin:3px 0 3px 2%; height:30px; line-height:30px; width:30%; font-size:16px; padding: 5px 0; text-align:center;border-radius:5px; color:#43AFEE;}
+.timelist li.on{background:#8DCEF4; color:#fff; border:1px solid #8DCEF4;}
+.to_ul a{ clear:both; border:1px solid #94D1F5; height:30px; line-height:30px; border-radius:5px;padding: 5px 0; width:30%; display:block; margin-left:34%; color:#43AFEE;}
+
+
+/*班级学习情况*/
+.htmlg1{ width:95%; margin:10px auto 0;}
+.htmlg1 p{ clear:both; margin:0 auto 5px 0px; font-size:14px; color:#A6A6A6;}
+.htmlg1 .nr1{ padding:5px 10px 20px; background-color:#fff; border-radius:6px; margin-bottom:10px;}
+.htmlg1 .nr1 p{font-size:14px; color:#1C9EEA;}
+.htmlg1 .nr1 .ceben{ float:right; line-height:48px;}
+.htmlg1 .nr1 ul{ clear:both; overflow:hidden;}
+.htmlg1 .nr1 ul li{ clear:both; height:40px; margin-top:5px;}
+.htmlg1 .nr1 ul li a{ color:#000; font-weight:bold;}
+.htmlg1 .nr1 ul li span{ float:left;}
+.htmlg1 .nr1 ul li .percentage{ width:55%; height:5px; background-color:#E8F5FD; display:inline; float:left; margin:10px 0 0 10px; }
+.htmlg1 .nr1 ul li b{ float:right; text-align:right;color:#7F7F7F; font-weight:300;}
+.htmlg1 .nr1 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.htmlg1 .nr1 ul li b em{ font-size:14px;font-style:normal;}
+.htmlg1 .nr1 ul li b img{ width:12%; margin-left:5px;}
+.htmlg1 .nr1 ul li .percentage span{background-color:#1C9EEA; height:5px; margin-left:0px;}
+.htmlg1 .nr2{ padding:5px 10px 20px; background-color:#fff; border-radius:6px;margin-bottom:10px;}
+.htmlg1 .nr2 p{font-size:14px; color:#3BABED;}
+.htmlg1 .nr2 a{ color:#3BABED; text-align:center; display:block; font-size:14px; margin:20px 0;}
+.htmlg1 .nr2 a img{ width:12px; vertical-align:middle; margin-left:5px;}
+.htmlg1 .nr3{ padding:5px 10px 20px; background-color:#fff; border-radius:6px;margin-bottom:10px;}
+.htmlg1 .nr3 p{font-size:14px; color:#C3C1C1;}
+.htmlg1 .nr3 h2{ color:#C3C1C1; text-align:center; display:block; font-size:14px; margin:20px 0;}
+
+
+
+
+/*班级学习情况弹出选择册*/
+.toolwin1{display:none;position:absolute;top:104px;left:0;width:100%; z-index:1;}
+.maskLayer1{ width:100%; height:100%; background-color:#000000; opacity:0.8; -moz-opacity:0.5; filter:alpha(opacity=50);z-index:0; display:none;position:absolute;top:104px;left:0;}
+.toolwin1 .to_ul1{ padding:20px; background-color:#fff;  text-align:center;}
+.timelist1{ width:100%; height:auto; overflow:hidden;}
+.timelist1 li{ display:inline; float:left; border:1px solid #94D1F5; margin:3px 0 3px 2%; height:35px; line-height:35px; width:45%; font-size:14px; padding: 5px 0; text-align:center;border-radius:5px; color:#43AFEE;}
+.timelist1 li.on{background:#8DCEF4; color:#fff; border:1px solid #8DCEF4;}
+.timelist1 li.wu{color:#A5A5A5; border:1px solid #C3C1C1;}
+.timelist1 li.wu p{color:#C3C1C1; font-size:12px; margin-top:-20px;}
+
+
+
+

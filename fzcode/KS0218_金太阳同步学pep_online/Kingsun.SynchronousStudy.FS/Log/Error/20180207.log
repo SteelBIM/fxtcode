@@ -1,0 +1,40 @@
+﻿2018-02-07 11:07:05
+错误编号:2018020711070517X0c6f63010f
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-07 11:07:06
+错误编号:2018020711070654Xb48bbe7ddc
+Message:未将对象引用设置到对象的实例。
+Message2:修复班级信息异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<IBSRepairClassUserTrueName>b__32(IBS_ClassUserRelation a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 753
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairClassUserTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 722
+Method:<IBSRepairClassUserTrueName>b__32
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-07 11:08:17
+错误编号:2018020711081771Xfddb770bc7
+Message:未将对象引用设置到对象的实例。
+Message2:修复班级信息异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<IBSRepairClassUserTrueName>b__32(IBS_ClassUserRelation a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 753
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairClassUserTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 722
+Method:<IBSRepairClassUserTrueName>b__32
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+

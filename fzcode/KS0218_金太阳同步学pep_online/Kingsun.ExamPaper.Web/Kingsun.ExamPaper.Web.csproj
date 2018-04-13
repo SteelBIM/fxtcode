@@ -1,0 +1,930 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C1174C4-582C-4709-ADE6-E34B237C212E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.ExamPaper.Web</RootNamespace>
+    <AssemblyName>Kingsun.ExamPaper.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kingsun.DB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\GetUserState.aspx.cs">
+      <DependentUpon>GetUserState.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\GetUserState.aspx.designer.cs">
+      <DependentUpon>GetUserState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SunnyStudentFoot.ascx.cs">
+      <DependentUpon>SunnyStudentFoot.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SunnyStudentFoot.ascx.designer.cs">
+      <DependentUpon>SunnyStudentFoot.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SunnyStudentHead.ascx.cs">
+      <DependentUpon>SunnyStudentHead.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SunnyStudentHead.ascx.designer.cs">
+      <DependentUpon>SunnyStudentHead.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SunnyTeachFoot.ascx.cs">
+      <DependentUpon>SunnyTeachFoot.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SunnyTeachFoot.ascx.designer.cs">
+      <DependentUpon>SunnyTeachFoot.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SunnyTeachHead.ascx.cs">
+      <DependentUpon>SunnyTeachHead.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SunnyTeachHead.ascx.designer.cs">
+      <DependentUpon>SunnyTeachHead.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SpokenTestController.cs" />
+    <Compile Include="Controllers\StuCatalogController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionModels\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\DoQuestion.aspx.cs">
+      <DependentUpon>DoQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\DoQuestion.aspx.designer.cs">
+      <DependentUpon>DoQuestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionModels\M1.aspx.cs">
+      <DependentUpon>M1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\M1.aspx.designer.cs">
+      <DependentUpon>M1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionModels\M2.aspx.cs">
+      <DependentUpon>M2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\M2.aspx.designer.cs">
+      <DependentUpon>M2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionModels\Result.aspx.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\Result.aspx.designer.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionModels\StuTaskList.aspx.cs">
+      <DependentUpon>StuTaskList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionModels\StuTaskList.aspx.designer.cs">
+      <DependentUpon>StuTaskList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\GetUserState.aspx" />
+    <Content Include="Account\Logout.aspx" />
+    <Content Include="Account\SunnyStudentFoot.ascx" />
+    <Content Include="Account\SunnyStudentHead.ascx" />
+    <Content Include="Account\SunnyTeachFoot.ascx" />
+    <Content Include="Account\SunnyTeachHead.ascx" />
+    <Content Include="App_Themes\css\base.css" />
+    <Content Include="App_Themes\css\chinese.css" />
+    <Content Include="App_Themes\css\common.css" />
+    <Content Include="App_Themes\css\common1.css" />
+    <Content Include="App_Themes\css\math.css" />
+    <Content Include="App_Themes\css\page.css" />
+    <Content Include="App_Themes\css\page1.css" />
+    <Content Include="App_Themes\css\previewpage.css" />
+    <Content Include="App_Themes\css\report.css" />
+    <Content Include="App_Themes\css\statistics.css" />
+    <Content Include="App_Themes\css\task.css" />
+    <Content Include="App_Themes\images\1234.gif" />
+    <Content Include="App_Themes\images\addBtn.gif" />
+    <Content Include="App_Themes\images\Arrow_bg.gif" />
+    <Content Include="App_Themes\images\aStar.gif" />
+    <Content Include="App_Themes\images\aStarBtn.gif" />
+    <Content Include="App_Themes\images\aStarImg.gif" />
+    <Content Include="App_Themes\images\aStaring.gif" />
+    <Content Include="App_Themes\images\a_action.jpg" />
+    <Content Include="App_Themes\images\a_change.gif" />
+    <Content Include="App_Themes\images\a_star.gif" />
+    <Content Include="App_Themes\images\a_staring.gif" />
+    <Content Include="App_Themes\images\back1.png" />
+    <Content Include="App_Themes\images\back2.png" />
+    <Content Include="App_Themes\images\backboard.png" />
+    <Content Include="App_Themes\images\backicon.png" />
+    <Content Include="App_Themes\images\bag1.png" />
+    <Content Include="App_Themes\images\bag2.png" />
+    <Content Include="App_Themes\images\bBoxline.gif" />
+    <Content Include="App_Themes\images\Beta.gif" />
+    <Content Include="App_Themes\images\blue.png" />
+    <Content Include="App_Themes\images\bofang.png" />
+    <Content Include="App_Themes\images\bookImg.jpg" />
+    <Content Include="App_Themes\images\boxC3_emBg.gif" />
+    <Content Include="App_Themes\images\btmD_bg.jpg" />
+    <Content Include="App_Themes\images\btn_img.png" />
+    <Content Include="App_Themes\images\button_aBg.jpg" />
+    <Content Include="App_Themes\images\changeBtnBg.gif" />
+    <Content Include="App_Themes\images\chartBg.gif" />
+    <Content Include="App_Themes\images\chartImg.gif" />
+    <Content Include="App_Themes\images\chartImg1.gif" />
+    <Content Include="App_Themes\images\clickBtn.gif" />
+    <Content Include="App_Themes\images\close_bg.png" />
+    <Content Include="App_Themes\images\contentTools\backTool.gif" />
+    <Content Include="App_Themes\images\contentTools\backTool.png" />
+    <Content Include="App_Themes\images\contentTools\finishedBackP.gif" />
+    <Content Include="App_Themes\images\contentTools\finishedBackT.gif" />
+    <Content Include="App_Themes\images\contentTools\homeTool.gif" />
+    <Content Include="App_Themes\images\contentTools\lineSingle.jpg" />
+    <Content Include="App_Themes\images\contentTools\rightBottom.gif" />
+    <Content Include="App_Themes\images\contentTools\smallTools.gif" />
+    <Content Include="App_Themes\images\contentTools\smallTools.png" />
+    <Content Include="App_Themes\images\contentTools\templale_bg.jpg" />
+    <Content Include="App_Themes\images\contentTools\userimg.gif" />
+    <Content Include="App_Themes\images\contentTools\userimg.png" />
+    <Content Include="App_Themes\images\createKS.gif" />
+    <Content Include="App_Themes\images\danci1.png" />
+    <Content Include="App_Themes\images\dancikuang.png" />
+    <Content Include="App_Themes\images\defaultImg.jpg" />
+    <Content Include="App_Themes\images\defultHead.jpg" />
+    <Content Include="App_Themes\images\defultHeadStu.jpg" />
+    <Content Include="App_Themes\images\deleBtnBg.gif" />
+    <Content Include="App_Themes\images\delete.gif" />
+    <Content Include="App_Themes\images\direction.png" />
+    <Content Include="App_Themes\images\down.png" />
+    <Content Include="App_Themes\images\dudu.gif" />
+    <Content Include="App_Themes\images\dudu.png" />
+    <Content Include="App_Themes\images\dudu1.gif" />
+    <Content Include="App_Themes\images\dudu2.gif" />
+    <Content Include="App_Themes\images\dudu3.gif" />
+    <Content Include="App_Themes\images\dudu4.gif" />
+    <Content Include="App_Themes\images\dudu5.gif" />
+    <Content Include="App_Themes\images\emImg.jpg" />
+    <Content Include="App_Themes\images\em_change.png" />
+    <Content Include="App_Themes\images\em_img.jpg" />
+    <Content Include="App_Themes\images\face.gif" />
+    <Content Include="App_Themes\images\frameBg1.png" />
+    <Content Include="App_Themes\images\frameBg2.png" />
+    <Content Include="App_Themes\images\h4SpanBg.gif" />
+    <Content Include="App_Themes\images\h5_bg.gif" />
+    <Content Include="App_Themes\images\head.png" />
+    <Content Include="App_Themes\images\hj_img.gif" />
+    <Content Include="App_Themes\images\ht2_img.gif" />
+    <Content Include="App_Themes\images\ht4_img.gif" />
+    <Content Include="App_Themes\images\img_bg.png" />
+    <Content Include="App_Themes\images\img_jh.gif" />
+    <Content Include="App_Themes\images\indexBack.jpg" />
+    <Content Include="App_Themes\images\indexToolSmall.gif" />
+    <Content Include="App_Themes\images\indexToolSmall.png" />
+    <Content Include="App_Themes\images\juzi1.png" />
+    <Content Include="App_Themes\images\juzikuang.png" />
+    <Content Include="App_Themes\images\kekuang.png" />
+    <Content Include="App_Themes\images\keshi.gif" />
+    <Content Include="App_Themes\images\kewen1.png" />
+    <Content Include="App_Themes\images\kingsun.gif" />
+    <Content Include="App_Themes\images\laba.png" />
+    <Content Include="App_Themes\images\line_img.jpg" />
+    <Content Include="App_Themes\images\link_bg1.gif" />
+    <Content Include="App_Themes\images\Loading.gif" />
+    <Content Include="App_Themes\images\loading_img.gif" />
+    <Content Include="App_Themes\images\logo.jpg" />
+    <Content Include="App_Themes\images\logoText.png" />
+    <Content Include="App_Themes\images\luyinan.png" />
+    <Content Include="App_Themes\images\modu.png" />
+    <Content Include="App_Themes\images\module1_h5.gif" />
+    <Content Include="App_Themes\images\mp3player_img.gif" />
+    <Content Include="App_Themes\images\mp3player_img.png" />
+    <Content Include="App_Themes\images\M_bg.png" />
+    <Content Include="App_Themes\images\M_img.png" />
+    <Content Include="App_Themes\images\next1.png" />
+    <Content Include="App_Themes\images\next2.png" />
+    <Content Include="App_Themes\images\noScore.gif" />
+    <Content Include="App_Themes\images\noScore.png" />
+    <Content Include="App_Themes\images\noScoreBig.gif" />
+    <Content Include="App_Themes\images\noselect.png" />
+    <Content Include="App_Themes\images\notDone.png" />
+    <Content Include="App_Themes\images\ongoing_bg.gif" />
+    <Content Include="App_Themes\images\openA.jpg" />
+    <Content Include="App_Themes\images\pane.gif" />
+    <Content Include="App_Themes\images\pre1.png" />
+    <Content Include="App_Themes\images\pre2.png" />
+    <Content Include="App_Themes\images\p_bg.gif" />
+    <Content Include="App_Themes\images\QQBrowserConfig.png" />
+    <Content Include="App_Themes\images\RandW.png" />
+    <Content Include="App_Themes\images\RandWY.png" />
+    <Content Include="App_Themes\images\ranking_img.gif" />
+    <Content Include="App_Themes\images\ranking_img1.gif" />
+    <Content Include="App_Themes\images\rank_bg.jpg" />
+    <Content Include="App_Themes\images\rank_bg.png" />
+    <Content Include="App_Themes\images\red.png" />
+    <Content Include="App_Themes\images\report_bg1.gif" />
+    <Content Include="App_Themes\images\report_bg2.gif" />
+    <Content Include="App_Themes\images\report_bg3.gif" />
+    <Content Include="App_Themes\images\report_bg4.gif" />
+    <Content Include="App_Themes\images\report_bg5.gif" />
+    <Content Include="App_Themes\images\report_bg6.gif" />
+    <Content Include="App_Themes\images\S-judge.png" />
+    <Content Include="App_Themes\images\S-S1.png" />
+    <Content Include="App_Themes\images\S-S2.png" />
+    <Content Include="App_Themes\images\S-UiKit_10.gif" />
+    <Content Include="App_Themes\images\S-UiKit_10.png" />
+    <Content Include="App_Themes\images\score_bg1.png" />
+    <Content Include="App_Themes\images\sidebarS_bg.jpg" />
+    <Content Include="App_Themes\images\sidebarS_bg1.jpg" />
+    <Content Include="App_Themes\images\sideChange_img.png" />
+    <Content Include="App_Themes\images\siderNav_ico.gif" />
+    <Content Include="App_Themes\images\smallTools.png" />
+    <Content Include="App_Themes\images\smalltools1\foottools.gif" />
+    <Content Include="App_Themes\images\smalltools1\homeWorkTip.png" />
+    <Content Include="App_Themes\images\smalltools1\toptools.gif" />
+    <Content Include="App_Themes\images\smalltools1\toptools.png" />
+    <Content Include="App_Themes\images\smallTools2.png" />
+    <Content Include="App_Themes\images\smalltools\foottools.gif" />
+    <Content Include="App_Themes\images\smalltools\goBack.gif" />
+    <Content Include="App_Themes\images\smalltools\goBack.png" />
+    <Content Include="App_Themes\images\smalltools\homeWorkTip.png" />
+    <Content Include="App_Themes\images\smalltools\mainTitle.gif" />
+    <Content Include="App_Themes\images\smalltools\mainTitle.png" />
+    <Content Include="App_Themes\images\smalltools\titleBack.png" />
+    <Content Include="App_Themes\images\smalltools\toptools.gif" />
+    <Content Include="App_Themes\images\smalltools\toptools.png" />
+    <Content Include="App_Themes\images\span.jpg" />
+    <Content Include="App_Themes\images\span.sp_img.jpg" />
+    <Content Include="App_Themes\images\star0.png" />
+    <Content Include="App_Themes\images\star1.png" />
+    <Content Include="App_Themes\images\star2.png" />
+    <Content Include="App_Themes\images\star3.png" />
+    <Content Include="App_Themes\images\star4.png" />
+    <Content Include="App_Themes\images\state_em.jpg" />
+    <Content Include="App_Themes\images\StatisticsTab.gif" />
+    <Content Include="App_Themes\images\submit.gif" />
+    <Content Include="App_Themes\images\submit.png" />
+    <Content Include="App_Themes\images\templale_bg.jpg" />
+    <Content Include="App_Themes\images\tipsimg.png" />
+    <Content Include="App_Themes\images\tipsimg2.png" />
+    <Content Include="App_Themes\images\tips_bg.png" />
+    <Content Include="App_Themes\images\tips_img.gif" />
+    <Content Include="App_Themes\images\title.png" />
+    <Content Include="App_Themes\images\up.png" />
+    <Content Include="App_Themes\images\weixinMic.gif" />
+    <Content Include="App_Themes\images\weixinMic.jpg" />
+    <Content Include="App_Themes\images\word_img3.gif" />
+    <Content Include="App_Themes\images\wrongList_liBg.gif" />
+    <Content Include="App_Themes\images\xian.png" />
+    <Content Include="App_Themes\images\xmct.gif" />
+    <Content Include="App_Themes\images\Y-1.png" />
+    <Content Include="App_Themes\images\Y-2.png" />
+    <Content Include="App_Themes\images\Y-3.png" />
+    <Content Include="App_Themes\images\Y-4.png" />
+    <Content Include="App_Themes\images\yesselect.png" />
+    <Content Include="App_Themes\images\yjxLogo.gif" />
+    <Content Include="App_Themes\images\yu.png" />
+    <Content Include="App_Themes\images\yuyin1.png" />
+    <Content Include="App_Themes\images\Y_10.gif" />
+    <Content Include="App_Themes\images\Y_15.png" />
+    <Content Include="App_Themes\images\recording.png" />
+    <Content Include="App_Themes\images\replayclick.png" />
+    <Content Include="App_Themes\images\replaying.png" />
+    <Content Include="App_Themes\images\recordProgress.png" />
+    <Content Include="App_Themes\js\Action.js" />
+    <Content Include="App_Themes\js\artDialog\artDialog.js" />
+    <Content Include="App_Themes\js\artDialog\iframeTools.js" />
+    <Content Include="App_Themes\js\artDialog\skins\default.css" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\error.png" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\face-sad.png" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\face-smile.png" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\loading.gif" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\question.png" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\succeed.png" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\warning.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog.css" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\idialog_s.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\idialog_s2.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_close.hover.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_close.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_e.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_n.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_ne.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_nw.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_s.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_se.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_sw.png" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\aui_w.png" />
+    <Content Include="App_Themes\js\artDialog\skins\simple.css" />
+    <Content Include="App_Themes\js\autoPosition.js" />
+    <Content Include="App_Themes\js\datepicker\calendar.js" />
+    <Content Include="App_Themes\js\datepicker\lang\en.js" />
+    <Content Include="App_Themes\js\datepicker\lang\zh-cn.js" />
+    <Content Include="App_Themes\js\datepicker\lang\zh-tw.js" />
+    <Content Include="App_Themes\js\datepicker\skin\datePicker.gif" />
+    <Content Include="App_Themes\js\datepicker\skin\datePicker1.gif" />
+    <Content Include="App_Themes\js\datepicker\skin\default\datepicker.css" />
+    <Content Include="App_Themes\js\datepicker\skin\default\img.gif" />
+    <Content Include="App_Themes\js\datepicker\skin\WdatePicker.css" />
+    <Content Include="App_Themes\js\datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="App_Themes\js\datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="App_Themes\js\datepicker\skin\whyGreen\img.gif" />
+    <Content Include="App_Themes\js\datepicker\WdatePicker.js" />
+    <Content Include="App_Themes\js\datepicker\界面预览图.png" />
+    <Content Include="App_Themes\js\DD_belatedPNG_0.0.8a-min.js" />
+    <Content Include="App_Themes\js\fzcontrols\black\autoWidth.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\blue.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\btnIcon.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\check-new.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\check-old.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\check.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\datagrid.css" />
+    <Content Include="App_Themes\js\fzcontrols\black\dropico.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\help.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\ico-0.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\ico-0_.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\ico-5.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\ico-5_.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\icon_del.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\icon_onload.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\icon_tips.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\jquery.form.controls.css" />
+    <Content Include="App_Themes\js\fzcontrols\black\keys.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\keys.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\listIco.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\listIcon.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\loadimg.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\order_speed.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\page.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\pagebtn.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\pagination.css" />
+    <Content Include="App_Themes\js\fzcontrols\black\select.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\select_i.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\skin.gif" />
+    <Content Include="App_Themes\js\fzcontrols\black\skin_icons.png" />
+    <Content Include="App_Themes\js\fzcontrols\black\valid_icons.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\blue.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\check.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\datagrid.css" />
+    <Content Include="App_Themes\js\fzcontrols\default\dropico.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\ico-0.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\ico-0_.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\ico-5.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\ico-5_.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\icon_del.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\icon_onload.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\icon_tips.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\jquery.form.controls.css" />
+    <Content Include="App_Themes\js\fzcontrols\default\keys.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\keys.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\loadimg.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\order_speed.gif" />
+    <Content Include="App_Themes\js\fzcontrols\default\PageBg.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\skin_icons.png" />
+    <Content Include="App_Themes\js\fzcontrols\default\valid_icons.png" />
+    <Content Include="App_Themes\js\fzcontrols\jquery.form.controls.js" />
+    <Content Include="App_Themes\js\fzcontrols\mac\autoWidth.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\blue.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\btnIcon.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\check-old.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\check.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\datagrid.css" />
+    <Content Include="App_Themes\js\fzcontrols\mac\dropico.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\help.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\ico-0.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\ico-0_.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\ico-5.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\ico-5_.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\icon_del.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\icon_onload.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\icon_tips.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\jquery.form.controls.css" />
+    <Content Include="App_Themes\js\fzcontrols\mac\keys.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\keys.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\listIco.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\listIcon.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\loadimg.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\order_speed.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\page.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\pagebtn.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\pagination.css" />
+    <Content Include="App_Themes\js\fzcontrols\mac\select.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\skin.gif" />
+    <Content Include="App_Themes\js\fzcontrols\mac\skin_icons.png" />
+    <Content Include="App_Themes\js\fzcontrols\mac\valid_icons.png" />
+    <Content Include="App_Themes\js\GoToTop.js" />
+    <Content Include="App_Themes\js\headfoot.js" />
+    <Content Include="App_Themes\js\home.js" />
+    <Content Include="App_Themes\js\jquery-1.10.2.min.js" />
+    <Content Include="App_Themes\js\jquery.cookie.js" />
+    <Content Include="App_Themes\js\jquery.nicescroll.js" />
+    <Content Include="App_Themes\js\jquery.SuperSlide.2.1.js" />
+    <Content Include="App_Themes\js\jquery1.42.min.js" />
+    <Content Include="App_Themes\js\sideMenu.js" />
+    <Content Include="Content\SpokenTest\Images\bodyBack.png" />
+    <Content Include="Content\SpokenTest\Images\bt_fanhui.png" />
+    <Content Include="Content\SpokenTest\Images\bt_play.png" />
+    <Content Include="Content\SpokenTest\Images\dudu\dudu1.gif" />
+    <Content Include="Content\SpokenTest\Images\dudu\dudu2.gif" />
+    <Content Include="Content\SpokenTest\Images\dudu\dudu3.gif" />
+    <Content Include="Content\SpokenTest\Images\dudu\dudu4.gif" />
+    <Content Include="Content\SpokenTest\Images\dudu\dudu5.gif" />
+    <Content Include="Content\SpokenTest\Images\dudu\five.wav" />
+    <Content Include="Content\SpokenTest\Images\dudu\four.wav" />
+    <Content Include="Content\SpokenTest\Images\dudu\one.wav" />
+    <Content Include="Content\SpokenTest\Images\dudu\three.wav" />
+    <Content Include="Content\SpokenTest\Images\dudu\two.wav" />
+    <Content Include="Content\SpokenTest\Images\fish.png" />
+    <Content Include="Content\SpokenTest\Images\fishBack.png" />
+    <Content Include="Content\SpokenTest\Images\gddc.png" />
+    <Content Include="Content\SpokenTest\Images\gddcOn.png" />
+    <Content Include="Content\SpokenTest\Images\gdjz.png" />
+    <Content Include="Content\SpokenTest\Images\gdjzOn.png" />
+    <Content Include="Content\SpokenTest\Images\gdkw.png" />
+    <Content Include="Content\SpokenTest\Images\gdkwOn.png" />
+    <Content Include="Content\SpokenTest\Images\gdyy.png" />
+    <Content Include="Content\SpokenTest\Images\gdyyOn.png" />
+    <Content Include="Content\SpokenTest\Images\mainBack.png" />
+    <Content Include="Content\SpokenTest\Images\next.png" />
+    <Content Include="Content\SpokenTest\Images\prev.png" />
+    <Content Include="Content\SpokenTest\Images\record.gif" />
+    <Content Include="Content\SpokenTest\Images\record.png" />
+    <Content Include="Content\SpokenTest\Images\starBack.png" />
+    <Content Include="Content\SpokenTest\Images\stop.png" />
+    <Content Include="Content\SpokenTest\Images\titleBack.png" />
+    <Content Include="Content\SpokenTest\Images\xingxing1.png" />
+    <Content Include="Content\SpokenTest\css\page.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\Exampaper.pubxml" />
+    <Content Include="Login\css\base.css" />
+    <Content Include="Login\css\login.css" />
+    <Content Include="Login\images\bag.png" />
+    <Content Include="Login\images\zhuce.png" />
+    <Content Include="Login\js\jquery-1.10.2.min.js" />
+    <Content Include="Login\login.html" />
+    <Content Include="QuestionModels\css\base.css" />
+    <Content Include="QuestionModels\css\catalogue.css" />
+    <Content Include="QuestionModels\css\login.css" />
+    <Content Include="QuestionModels\DoQuestion.aspx" />
+    <Content Include="QuestionModels\Direction.html" />
+    <Content Include="QuestionModels\images\bag.png" />
+    <Content Include="QuestionModels\images\bagg.png" />
+    <Content Include="QuestionModels\images\bagg1.png" />
+    <Content Include="QuestionModels\images\first.png" />
+    <Content Include="QuestionModels\images\head.png" />
+    <Content Include="QuestionModels\images\last.png" />
+    <Content Include="QuestionModels\images\modu.png" />
+    <Content Include="QuestionModels\images\noselect.png" />
+    <Content Include="QuestionModels\images\yesselect.png" />
+    <Content Include="QuestionModels\images\zhuce.png" />
+    <Content Include="QuestionModels\M1.aspx" />
+    <Content Include="QuestionModels\M2.aspx" />
+    <Content Include="QuestionModels\Result.aspx" />
+    <Content Include="QuestionModels\sounds\1.mp3" />
+    <Content Include="QuestionModels\sounds\2.mp3" />
+    <Content Include="QuestionModels\sounds\3.mp3" />
+    <Content Include="QuestionModels\sounds\4.mp3" />
+    <Content Include="QuestionModels\sounds\5.mp3" />
+    <Content Include="QuestionModels\StuTaskList.aspx" />
+    <Content Include="Scripts\Client.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\EventUtil.js" />
+    <Content Include="Scripts\jquery.json-2.4.js" />
+    <Content Include="Scripts\Others\TaskArrangePage.js" />
+    <Content Include="Scripts\Others\TaskPreview.js" />
+    <Content Include="Scripts\Page\AnalysisWrongPage.js" />
+    <Content Include="Scripts\Page\ClassRateReport.js" />
+    <Content Include="Scripts\Page\ClassTaskOfStuPage.js" />
+    <Content Include="Scripts\Page\DistrictRateReport.js" />
+    <Content Include="Scripts\Page\DoQuestion.js" />
+    <Content Include="Scripts\Page\FeedBack.js" />
+    <Content Include="Scripts\Page\GradeRateReport.js" />
+    <Content Include="Scripts\Page\ResourcePreview.js" />
+    <Content Include="Scripts\Page\SchoolRateReport.js" />
+    <Content Include="Scripts\Page\SendMessagePage.js" />
+    <Content Include="Scripts\Page\StatisticsProfile.js" />
+    <Content Include="Scripts\Page\StuPreviewForWebPage.js" />
+    <Content Include="Scripts\Page\StuPreviewPage.js" />
+    <Content Include="Scripts\Page\StuRateReport.js" />
+    <Content Include="Scripts\Page\StuTaskListPage.js" />
+    <Content Include="Scripts\Page\StuWrongQuePage.js" />
+    <Content Include="Scripts\Page\TaskArrangePage.js" />
+    <Content Include="Scripts\Page\TaskBasket.js" />
+    <Content Include="Scripts\Page\TeachTJReport.js" />
+    <Content Include="Scripts\Page\TJReport.js" />
+    <Content Include="Scripts\Page\UserConterPage.js" />
+    <Content Include="Scripts\Plugins\KingRecord\YunzhishengForWeb.swf" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="App_Themes\css\vssver2.scc" />
+    <Content Include="App_Themes\font\GBPINYIN.TTF" />
+    <Content Include="App_Themes\font\vssver2.scc" />
+    <Content Include="App_Themes\images\Arrow_bg.rar" />
+    <Content Include="App_Themes\images\contentTools\vssver2.scc" />
+    <Content Include="App_Themes\images\psd\em_change.psd" />
+    <Content Include="App_Themes\images\psd\em_img.psd" />
+    <Content Include="App_Themes\images\psd\rank_bg.psd" />
+    <Content Include="App_Themes\images\psd\sidebarS_bg.psd" />
+    <Content Include="App_Themes\images\psd\span.sp_bg.psd" />
+    <Content Include="App_Themes\images\psd\state_em.psd" />
+    <Content Include="App_Themes\images\psd\vssver2.scc" />
+    <Content Include="App_Themes\images\smalltools1\vssver2.scc" />
+    <Content Include="App_Themes\images\smalltools\vssver2.scc" />
+    <Content Include="App_Themes\images\vssver2.scc" />
+    <Content Include="App_Themes\js\artDialog\skins\icons\vssver2.scc" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\ie6\vssver2.scc" />
+    <Content Include="App_Themes\js\artDialog\skins\idialog\vssver2.scc" />
+    <Content Include="App_Themes\js\artDialog\skins\vssver2.scc" />
+    <Content Include="App_Themes\js\artDialog\vssver2.scc" />
+    <Content Include="App_Themes\js\datepicker\lang\vssver2.scc" />
+    <Content Include="App_Themes\js\datepicker\skin\default\vssver2.scc" />
+    <Content Include="App_Themes\js\datepicker\skin\vssver2.scc" />
+    <Content Include="App_Themes\js\datepicker\skin\whyGreen\vssver2.scc" />
+    <Content Include="App_Themes\js\datepicker\vssver2.scc" />
+    <Content Include="App_Themes\js\fzcontrols\black\select_i.zip" />
+    <Content Include="App_Themes\js\fzcontrols\black\vssver2.scc" />
+    <Content Include="App_Themes\js\fzcontrols\default\vssver2.scc" />
+    <Content Include="App_Themes\js\fzcontrols\mac\psd\vssver2.scc" />
+    <Content Include="App_Themes\js\fzcontrols\mac\psd\分页图标.psd" />
+    <Content Include="App_Themes\js\fzcontrols\mac\psd\单选复选按钮.psd" />
+    <Content Include="App_Themes\js\fzcontrols\mac\psd\新分页.psd" />
+    <Content Include="App_Themes\js\fzcontrols\mac\vssver2.scc" />
+    <Content Include="App_Themes\js\fzcontrols\vssver2.scc" />
+    <Content Include="App_Themes\js\vssver2.scc" />
+    <Content Include="Account\vssver2.scc" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Plugins\AmrPlayer.js" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\demo\demo.css" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\demo\demo.js" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\demo\demo.min.js" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\demo\index.xhtml" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\FileSaver.js" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\FileSaver.min.js" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\jquery.wordexport.js" />
+    <Content Include="Scripts\Plugins\Highcharts\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Plugins\Highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts-3d.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts-3d.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts-more.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts-more.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts.js" />
+    <Content Include="Scripts\Plugins\Highcharts\highcharts.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\boost.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\boost.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\broken-axis.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\broken-axis.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\canvas-tools.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\data.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\data.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\drilldown.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\drilldown.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\exporting.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\exporting.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\funnel.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\funnel.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\heatmap.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\heatmap.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\offline-exporting.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\offline-exporting.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\solid-gauge.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\treemap.js" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\treemap.src.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\dark-unica.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\gray.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\grid-light.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\grid.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\sand-signika.js" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\skies.js" />
+    <Content Include="Scripts\Plugins\jplayer\jquery.jplayer.js" />
+    <Content Include="Scripts\Plugins\jplayer\jquery.jplayer.min.js" />
+    <Content Include="Scripts\Plugins\jplayer\jquery.jplayer.swf" />
+    <Content Include="Scripts\Plugins\KingRecord\arrowImg.png" />
+    <Content Include="Scripts\Plugins\KingRecord\KingsunRecord.css" />
+    <Content Include="Scripts\Plugins\KingRecord\KingsunRecord.js" />
+    <Content Include="Scripts\Plugins\KingRecord\swfobject.js" />
+    <Content Include="Scripts\Plugins\KingRecord\YunzhishengForWeb1.swf" />
+    <Content Include="Scripts\Plugins\KingRecord\云知声web端接口.txt" />
+    <Content Include="Scripts\Plugins\KingRecord\云知声更新日志.txt" />
+    <Content Include="Scripts\Plugins\KingsunMp3Player.js" />
+    <Content Include="Scripts\SpokenTest\backControl.js" />
+    <Content Include="Scripts\SpokenTest\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Sentence\Index.cshtml" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\demo\vssver2.scc" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\LICENSE.md" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\README.md" />
+    <Content Include="Scripts\Plugins\FileSaver.js-master\vssver2.scc" />
+    <Content Include="Scripts\Plugins\Highcharts\adapters\vssver2.scc" />
+    <Content Include="Scripts\Plugins\Highcharts\modules\vssver2.scc" />
+    <Content Include="Scripts\Plugins\Highcharts\themes\vssver2.scc" />
+    <Content Include="Scripts\Plugins\Highcharts\vssver2.scc" />
+    <Content Include="Scripts\Plugins\jplayer\vssver2.scc" />
+    <Content Include="Scripts\Plugins\KingRecord\vssver2.scc" />
+    <Content Include="Scripts\Plugins\vssver2.scc" />
+    <Content Include="Scripts\Page\vssver2.scc" />
+    <Content Include="Scripts\Others\vssver2.scc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Index\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kingsun.ExamPaper.BLL\Kingsun.ExamPaper.BLL.csproj">
+      <Project>{09433796-0891-4005-ac0c-5b3752b45e7d}</Project>
+      <Name>Kingsun.ExamPaper.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.ExamPaper.Common\Kingsun.ExamPaper.Common.csproj">
+      <Project>{66bce65b-373f-4e62-8a18-811e4eaf3ef7}</Project>
+      <Name>Kingsun.ExamPaper.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.ExamPaper.Model\Kingsun.ExamPaper.Model.csproj">
+      <Project>{ed1ee774-8043-43bd-a2f9-002b54693b07}</Project>
+      <Name>Kingsun.ExamPaper.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.SynchronousStudy.Common\Kingsun.SynchronousStudy.Common.csproj">
+      <Project>{11f1a8e9-0472-4167-8e9d-1afa684508f6}</Project>
+      <Name>Kingsun.SynchronousStudy.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2080/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

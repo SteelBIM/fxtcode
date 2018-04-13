@@ -1,0 +1,39 @@
+﻿2018-02-02 10:53:24
+错误编号:2018020210532409X0b18477a7b
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-02 10:53:24
+错误编号:2018020210532494Xe8b6111fac
+Message:未将对象引用设置到对象的实例。
+Message2:修复班级信息异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<IBSRepairClassUserTrueName>b__32(IBS_ClassUserRelation a) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 753
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairClassUserTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 722
+Method:<IBSRepairClassUserTrueName>b__32
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-02 11:04:54
+错误编号:2018020211045449X0c989661cc
+Message:远程服务器返回错误: (500) 内部服务器错误。
+Message2:唤醒服务失败
+Type:System.Net.WebException
+Source:System
+StackTrace:   在 System.Net.HttpWebRequest.GetResponse()
+   在 Kingsun.SynchronousStudy.FS.MvcApplication.Application_End(Object sender, EventArgs e) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\Global.asax.cs:行号 38
+Method:GetResponse
+Class:System.Net.HttpWebRequest
+UserIP:
+UserName:
+

@@ -1,0 +1,337 @@
+﻿@{
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <style type="text/css">
+        #AgentForm .form-group {
+            width: 500px;
+            margin-left: 100px;
+            float: left;
+        }
+            #AgentForm .form-group .col-lg-5 {
+                width: 300px;
+            }
+        .modal-dialog {
+            z-index: 999999;
+        }
+
+        .ontology-overflow {
+            height: auto;
+        }
+    </style>
+}
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header" id="myModalLabel">添加代理商</h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <form id="AgentForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                    <div class="row">
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">代理商信息</div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>代理商名称 :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="agentname" name="agentname" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>签约期:</label>
+                            <div class="col-lg-5">
+                                <input type="text" data-options="" class="form-control" id="agentstartdata" name="agentstartdata" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'sTime\')}', maxDate: '#F{$dp.$D(\'agentenddata\')}', maxDate: '#F{$dp.$D(\'eTime\')}', readOnly: true })" />
+                                <input type="hidden" id="sTime" value="@ViewBag.sTime" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left:-140px;">
+                            <label class="col-lg-3 control-label">至:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" style="margin-left: 0px;" id="agentenddata" name="agentenddata" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'sTime\')}', minDate: '#F{$dp.$D(\'agentstartdata\')}', maxDate: '#F{$dp.$D(\'eTime\')}', readOnly: true })" />
+                                <input type="hidden" id="eTime" value="@ViewBag.eTime" />
+                            </div>
+                        </div>
+                        <div style="clear:both; height:5px;"></div>
+
+                        <div id="deptdiv" class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>部门:</label>
+                            <input id="deptname" readonly="readonly" type="text" style="margin-left:15px; padding:5px 3px 5px 3px; width:270px;" />
+                            <input type="button" onclick="selectDepart();" value="选择部门" class="btn btn-primary" style="width:80px; margin-top:-55px;margin-left:420px;" />
+                        </div>
+                        <input id="agentdeptid" type="hidden" />
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>渠道经理:</label>
+                            <div class="col-lg-5">
+                                <select class="form-control" id="channel" name="channel"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="channeldeptid" />
+                            <input id="DeptParentid" type="hidden" />
+                        </div><div style="clear:both; height:10px;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">负责产品:</label>
+                            <div class="col-lg-5" style="width:500px; margin-top:-30px;   padding:10px;  margin-left:110px;   ">
+                                <div style=" height:30px;">
+                                    <span id="ProductHtml"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear:both; height:10px;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>负责区域:</label>
+                            <input id="EmployeeDeptAreaIds" type="hidden" />
+                            <div id="Area" class="col-lg-5" style="width:500px; height:120px;  margin-top:-30px; margin-bottom:-35px; padding:10px;  margin-left:140px; border:1px solid #ccc; overflow:auto;">
+                            </div>
+                            <input style="width:80px;   margin-left:656px;" type="button" onclick="return selectdeptarea();" value="选择区域" class="btn btn-primary" />
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">电话:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="agenttel" name="agenttel" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">邮政编码:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="postal" name="postal" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"> 传真 :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="fax" name="fax" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group" style="width:800px; margin-left:25px;">
+                            <label class="col-lg-3 control-label"> 地址:</label>
+                            <div class="col-lg-5" style=" width:600px;">
+                                <textarea class="form-control" style="height:80px;" id="agentaddr" name="agentaddr"></textarea>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group" style="width:800px; margin-left:25px;">
+                            <label class="col-lg-3 control-label"> 备注:</label>
+                            <div class="col-lg-5" style=" width:600px;">
+                                <textarea class="form-control" style="height:80px;" id="Remark" name="Remark"></textarea>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="row">
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">负责人信息</div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>姓名 :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="Name" name="Name" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>手机号 :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="ParentMobile" name="ParentMobile" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">电子邮件:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="Email" name="Email" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">QQ:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" id="QQNo" name="QQNo" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="row">
+                        <div style="width:90%; margin:0px auto; line-height:50px; font-size:16px; border-bottom:1px solid #ddd;   margin-bottom:20px;">账号信息</div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>用户名:</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="username" id="username" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <label id="ResetPassword" class="col-lg-3" style="display:none;margin-left:135px;  font-weight:500; cursor:pointer;">重置密码</label>
+                        <div style="clear:both;"></div>
+                        <div name="passwordupdate" class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>密码:</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="password" id="password" />
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div name="passwordupdate" class="form-group">
+                            <label class="col-lg-3 control-label"><em>*</em>确认密码:</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer" style=" text-align:left; padding-left:300px;">
+                    <input type="button" id="submit" value="提交" class="btn btn-danger" style="margin-right:40px;" />
+                    <input type="button" onclick="history.back();" class="btn btn-default" value="取消" />
+                    <div style="clear:both; height:100px;"></div>
+                    <input id="agentid" type="hidden" />
+                    <input id="p4deptid" type="hidden" name="parentid" />
+                    <input id="p4parentid" type="hidden" />
+                    <input id="p4districtids" type="hidden" name="districtids" />
+                    <input id="oldproduct" type="hidden" />
+                    <input id="oldareas" type="hidden" value="=" />
+                </div>
+                <div class="modal fade" id="ResetPasswordDiv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">重置密码</h4>
+                                </div>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"> 用户名:</label>
+                                    <div id="reset-mastername" class="col-lg-5">
+                                    </div>
+                                    <input type="hidden" id="masterusername" />
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"><em>*</em>密码:</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" name="updatepassword" id="updatepassword" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label"><em>*</em>确认密码:</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" name="updateconfirmPassword" id="updateconfirmPassword" />
+                                    </div>
+                                </div>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal fade" id="setAreaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:auto">
+                    <div class="modal-dialog" style="width:1000px; height:1000px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">设置区域</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="panel panel-default" style=" height: 300px;  overflow:auto;">
+                                            <div class="panel-body ontology-overflow ">
+                                                <div id="treeview-checkable"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-9">
+                                                <input type="text" value="" class="form-control" id="searchkey" />
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <span class="input-group-btn">
+                                                    <button id="searchbtn" type="button" class="btn btn-default">
+                                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default" style="margin-top:20px; height:300px; overflow:auto;">
+                                            <div class="panel-body ontology-overflow " id="scroll">
+                                                <div class="row">
+                                                    <div id="treeview-checkable-school"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1" style="margin-top:230px">
+                                        <button type="button" class="btn btn-default" id="addNode"> >> </button>
+                                        <button type="button" class="btn btn-default" id="removeNode" style="margin-top:20px"> << </button>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="panel panel-default" style=" overflow-y:auto; height:600px; margin-top:30px;">
+                                            <div class="panel-body ontology-overflow ">
+                                                <div class="row">
+                                                    <div id="treeview-checkable-checked"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="border:0px;">
+                                            <button type="button" class="btn btn-primary" id="btn_confirmArea">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">选择部门</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="tree">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/pages/Agent_Add.js"></script>
+    <script src="~/Scripts/pages/areaexclusion.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script>
+        document.onkeydown = function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                _saveModal();
+            }
+        }
+    </script>
+}
+
+

@@ -1,0 +1,139 @@
+﻿@using CBSS.Web
+@using CBSS.Tbx.Contract.ViewModel
+@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@model PagedList<ModuleManage>
+@{
+    ViewBag.Title = "应用选择模块";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section PageSpecificJavascriptIncludes{
+    @*<script src="~/Assets/js/jquery-1.8.3.min.js"></script>*@
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/ModuleSelectMarketClassify.js"></script>
+    <script src="~/Assets/pages/AppModule.js?v=1.4"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            addcloud();
+            var AppID = '@Request.RequestContext.RouteData.Values["id"]';
+            var oTable = new AppModuleTableInit();
+            oTable.Init(AppID);
+            //书籍排序
+            $("#btnBookSort").click(function () { 
+                $("#btnBookSort").attr("class", "btn green");
+                $("#btnClassifySort").attr("class", "btn yellow"); 
+                InitTable(AppID, 1);
+            });
+            //分类排序
+            $("#btnClassifySort").click(function () {
+                $("#btnClassifySort").attr("class", "btn green");
+                $("#btnBookSort").attr("class", "btn yellow");
+                InitTable(AppID, 2);
+                //window.location.href = window.location.href + "?SortType=" + 1;
+                //alert(window.location.href);
+            });
+        });
+        function Classifies() {
+            $("#editModal").modal();
+            oTableInit.Init();
+        }
+        //SortType=1:书籍排序，SortType=2:分类排序
+        function InitTable(AppID,SortType) {
+            $('#tb_roletable').bootstrapTable('destroy');
+            $('#tb_roletable').bootstrapTable({
+                url: '/Tbx/AppModule/GetAppModuleSortPage?AppID=' + AppID,         //请求后台的URL（*）
+                method: 'post',                     //请求方式（*）
+                //toolbar: '#toolbar',                //工具按钮用哪个容器
+                striped: true,                      //是否显示行间隔色
+                cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,                   //是否显示分页（*）
+                sortable: true,                    //是否启用排序
+                sortOrder: "asc",                   //排序方式
+                queryParams: function (params) {
+                    var temp = {   //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+                        SortType: SortType,
+                        pagesize: params.limit,   //页面大小
+                        pageindex: params.offset, //页码
+                        MarketBookName: $("#MarketBookName").val() 
+                    };
+                    return temp;
+                },     //传递参数（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                pageNumber: 1,                      //初始化加载第一页，默认第一页
+                pageSize: 10,                       //每页的记录行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                strictSearch: true,
+                showColumns: false,                  //是否显示所有的列
+                showRefresh: false,                  //是否显示刷新按钮
+                minimumCountColumns: 2,             //最少允许的列数
+                clickToSelect: false,                //是否启用点击选中行
+                //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                uniqueId: "AppSkinVersionID",                 //每一行的唯一标识，一般为主键列
+                showToggle: false,                  //是否显示详细视图和列表视图的切换按钮
+                cardView: false,                    //是否显示详细视图
+                detailView: false,                   //是否显示父子表
+                columns: [
+                    {
+                        field: 'MarketBookName',
+                        title: '课本名称'
+                    },
+                    {
+                        field: 'BookSort',
+                        title: '课本排序号'
+                    },
+                    {
+                        field: 'MarketBookClass',
+                        title: '课本分类'
+                    },
+                    {
+                        field: 'ClassifySort',
+                        title: '分类排序号'
+                    },
+                    {
+                        title: '操作',
+                        formatter: function (value, row, index) {
+                            var cz = "";
+                            cz += "<a class='btn mini green thickbox' title='应用课本配置目录模块' onclick=\"tb_show('应用课本配置目录模块','/Tbx/AppModule/Edit/" + row.MarketBookID + "?AppID=" + AppID + "&TB_iframe=true&amp;height=700&amp;width=1000',false)\"  ><i class='icon-edit'> </i> 应用课本配置目录模块  </a>";
+                            cz += " <a class='btn mini green thickbox' title='批量配置目录模块' onclick=\"tb_show('批量配置目录模块','/Tbx/AppModule/BatchEdit/" + row.MarketBookID + "?AppID=" + AppID + "&TB_iframe=true&amp;height=700&amp;width=1000',false)\"  ><i class='icon-edit'> </i> 批量配置目录模块  </a>";
+                            cz += " <a class='btn mini green thickbox' title='编辑排序' onclick=\"tb_show('编辑排序','/Tbx/AppModule/EditSort/" + row.MarketBookID + "?MarketClassifyID=" + row.MarketClassifyID + "&AppID=" + AppID + "&TB_iframe=true&amp;height=400&amp;width=500',false)\"  ><i class='icon-edit'> </i> 编辑排序  </a>";
+                            //cz += " <a class='btn mini green thickbox' title='批量配置' onclick=\"BatchConfigBookDicModule('" + row.MarketBookID + "','" + AppID +"')\" ><i class='icon-edit'> </i> 批量配置  </a>";
+                            return cz;
+                        }
+                    }]
+            });
+        }
+    </script>
+}
+<div class="row-fluid">
+    <div class="span4">
+        <input type="button" id="btnBookSort" value="书籍排序" class="btn yellow" />
+        <input type="button" id="btnClassifySort" value="分类排序" class="btn yellow" />
+    </div>
+    <div class="span8">
+        <div class="dataTables_filter">
+            <label>
+                <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+            </label>
+            <label>
+                <span>课本名称：</span>
+                <input type="text" id="MarketBookName" />
+            </label>
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-hover" id="tb_roletable"></table>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="panel-body" style="padding-bottom:0px;">
+        <table id="tb_classifies"></table>
+    </div>
+</div>
+<input type="hidden" id="serverUrl" value="@Url.Action("GetClassifiesJson","MarketClassify")" />
+<input type="hidden" id="getClassify" value="@Url.Action("GetClassfiy","MarketClassify")" />
+<input type="hidden" id="delUrl" value="@Url.Action("DeleteClassify","MarketClassify")" />
+<input type="hidden" id="getFullName" value="@Url.Action("GetFullName","MarketClassify")" />
+<input type="hidden" id="getMarketClassifyId" /> 

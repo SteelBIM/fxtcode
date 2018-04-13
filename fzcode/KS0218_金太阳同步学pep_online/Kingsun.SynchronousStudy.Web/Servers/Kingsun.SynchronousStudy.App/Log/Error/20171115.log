@@ -1,0 +1,119 @@
+﻿2017-11-15 17:02:58
+错误编号:2017111517025817Xf3fd4bc434
+Message:The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+Message2:调用绑定关系接口异常!
+Type:System.Web.Services.Protocols.SoapHeaderException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 202
+Method:ReadResponse
+Class:System.Web.Services.Protocols.SoapHttpClientProtocol
+UserIP:
+UserName:
+
+2017-11-15 17:04:42
+错误编号:2017111517044232X196ba114ce
+Message:The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+Message2:调用绑定关系接口异常!
+Type:System.Web.Services.Protocols.SoapHeaderException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 202
+Method:ReadResponse
+Class:System.Web.Services.Protocols.SoapHttpClientProtocol
+UserIP:
+UserName:
+
+2017-11-15 17:07:21
+错误编号:2017111517072179X35db2f6a39
+Message:未将对象引用设置到对象的实例。
+Message2:调用绑定关系接口异常!
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 237
+Method:AddUserToClass
+Class:Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL
+UserIP:
+UserName:
+
+2017-11-15 17:09:31
+错误编号:2017111517093167X7e0e1d5a48
+Message:未将对象引用设置到对象的实例。
+Message2:调用解除绑定关系接口异常!
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.UnBindClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 312
+Method:UnBindClass
+Class:Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL
+UserIP:
+UserName:
+
+2017-11-15 18:11:49
+PayWayID:17;PayWay:微信支付(深圳版同步学);FeeComboID：882b48ed-4010-46bc-a12d-42b4dda5a3a9;CourseID：168
+2017-11-15 18:11:51
+错误编号:2017111518115098Xa1597e0ebc
+Message:SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":1629625955,"UserNum":null,"UserName":"caiyindi","UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[{"ClassID":null,"GradeID":0,"SchID":38632,"SubjectID":3,"AreaID":440305000}]},"ProvinceID":440000000,"Province":"???","CityID":440300000,"City":"???","verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:System.Data.SqlTypes.SqlTypeException
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   在 SqlSugar.UpdateableProvider`1.ExecuteCommand()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.Update(TEntity entity) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 122
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.UpdateUserAndOtherInfo(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 856
+Method:ExecuteCommand
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+
+2017-11-15 18:13:25
+错误编号:2017111518132492Xfdf47ae15e
+Message:客户端发现响应内容类型为“text/html”，但应为“text/xml”。
+请求失败，错误信息为:
+--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>500 - ????????????????</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, sans-serif;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>??????????</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+  <h2>500 - ????????????????</h2>
+  <h3>????????????????????????????????????</h3>
+ </fieldset></div>
+</div>
+</body>
+</html>
+
+--.
+Message2:订单插入异常，order={"CreateDate":"\/Date(1510740709849)\/","State":"0000","PayWay":"微信支付(深圳版同步学)","FeeComboID":"882b48ed-4010-46bc-a12d-42b4dda5a3a9","CourseID":"168","IsDiscount":1,"ID":"dc49840c-8b5e-4cf7-b4a6-14b3e771d539","OrderID":"90fe2058-6521-4ce1-a0fd-2784077316ce","TotalMoney":0.01,"UserID":"1629625955"}
+Type:System.InvalidOperationException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.SynchronousStudy.App.FZPayService.FZPayService.GetOrderID(String ID, String Token) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Web References\FZPayService\Reference.cs:行号 153
+   在 Kingsun.SynchronousStudy.App.Controllers.PayController.GetOrderID(Int32 PayWayID, String PayWay, String CourseID, String FeeComboID, String UserID, Decimal TotalMoney) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Controllers\PayController.cs:行号 308
+Method:ReadResponse
+Class:System.Web.Services.Protocols.SoapHttpClientProtocol
+UserIP:
+UserName:
+

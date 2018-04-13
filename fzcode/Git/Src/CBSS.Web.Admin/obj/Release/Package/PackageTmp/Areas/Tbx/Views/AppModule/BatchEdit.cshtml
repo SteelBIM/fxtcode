@@ -1,0 +1,533 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Tbx.Contract.DataModel
+@using CBSS.Web
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+    ViewBag.Title = "批量配置目录模块";
+}
+<script src="@Url.StaticFile("/assets/js/jquery-1.8.3.min.js")"></script>
+<link href="~/Assets/tree/lay/css/layui.css" rel="stylesheet" />
+<script src="~/Assets/tree/layui.js"></script>
+<script src="~/Assets/bootbox/bootbox.js?v=1.1"></script>
+<style type="text/css">
+    table {
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+        table tr td {
+            border: 1px solid #eee;
+            text-align: center;
+            padding: 6px 3px;
+        }
+
+            table tr td input[type=checkbox] {
+                zoom: 1.4;
+            }
+
+        table tr:first-child {
+            background-color: #ACB5D1;
+        }
+
+    #btnOk {
+        background-color: #4D90FE;
+        padding: 6px 18px;
+        color: #fff;
+        border: 0;
+    }
+
+    #btnCancel {
+        background-color: #E5E5E5;
+        padding: 6px 18px;
+        color: #000;
+        border: 0;
+    }
+
+    #btnAllSave {
+        background-color: #35AA47;
+        padding: 6px 20px;
+        color: #fff;
+        border: 0;
+        float: left;
+        margin: 6px;
+    }
+
+    .layui-tree li {
+        overflow: visible;
+    }
+
+        .layui-tree li a {
+            text-decoration: none;
+        }
+</style>
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label">应用名称：</label>
+                <div class="controls">
+                    <span>@ViewData["AppName"]</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">课本名称：</label>
+                <div class="controls">
+                    <input type='checkbox' id='ckAllBatch' onclick='ckBatchAllClick()' />
+                    <span>@ViewData["MarketBookName"]</span>
+                </div>
+            </div>
+            <div id="divModule" class="control-group" style="display:block;">
+                <label class="control-label">模块信息：</label>
+                <div class="controls">
+                    <ul id="demo" style=" width:30%;float:left; height:538px;  overflow:auto;"></ul>
+                    <div id="ModuleInfo" style="float:right; width:69%;  height:538px;  overflow:auto; ">
+                        <table id="tabModule">
+                            <tr style="background-color:#fff; line-height:200px;"><td>请点击目录加载模块！</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <input id="MarketClassifyID" name="MarketClassifyID" type="hidden" />
+            </div>
+            <div id="EidtModule" style="display:none;">
+                <div class="control-group">
+                    <label class="control-label"><span class="required">*</span>排序号：</label>
+                    <div class="controls">
+                        <input type='text' id='txtSort' />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><span class="required">*</span>前端显示名称：</label>
+                    <div class="controls">
+                        <input id="ModuleNameShow" style="min-width:400px;" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div style="float:left; width:49%;">
+                        <label class="control-label">购买前图片：</label>
+                        <div class="controls">
+                            <select id="BeforeBuyingImg" onchange="changeImg(1,0)">
+                                <option>...请选择...</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <img id="imgBeforeBuyingImg" style="width:100px; height:80px;" src="http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/2017/09/12/474323e7-827a-456b-9a3f-01400c56b80f.jpg" />
+                        </div>
+                    </div>
+                    <div style="float:right; width:49%;">
+                        <label class="control-label">购买后图片：</label>
+                        <div class="controls">
+                            <select id="BuyLaterImg" onchange="changeImg(1,1)">
+                                <option>...请选择...</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <img id="imgBuyLaterImg" style="width:100px; height:80px;" src="http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/2017/09/12/474323e7-827a-456b-9a3f-01400c56b80f.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div style="float:left; width:49%;">
+                        <label class="control-label">购买前点击前图片：</label>
+                        <div class="controls">
+                            <select id="BeforeBuyingClickImg" onchange="changeImg(2,0)">
+                                <option>...请选择...</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <img id="imgBeforeBuyingClickImg" style="width:100px; height:80px;" src="http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/2017/09/12/474323e7-827a-456b-9a3f-01400c56b80f.jpg" />
+                        </div>
+                    </div>
+                    <div style="float:right; width:49%;">
+                        <label class="control-label">购买后点击前图片：</label>
+                        <div class="controls">
+                            <select id="BuyLaterClickImg" onchange="changeImg(2,1)">
+                                <option>...请选择...</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <img id="imgBuyLaterClickImg" style="width:100px; height:80px;" src="http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/2017/09/12/474323e7-827a-456b-9a3f-01400c56b80f.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls" style="    text-align: center;">
+                        <input type="button" value="确定" id="btnOk" />
+                        <input type="button" value="取消" id="btnCancel" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hidJson" value="@ViewData["MarketBookTree"]" />
+    <input type="hidden" id="hidRow" />
+    <input type="hidden" id="hidAppID" />
+    <input type="hidden" id="hidMarketBookCatalogID" />
+    <input type="hidden" id="hidModuleID" />
+    <input type="hidden" id="hidAppBookCatalogModuleItemID" />
+}
+<script>
+    $(function () {
+        $("#submit").parent().hide();
+        $("#submit").click(function () {
+            parent.location.reload(1);
+        });
+        LoadTree();
+        //编辑模块确定
+        $("#btnOk").click(function () {
+            var Sort = $("#txtSort").val().trim();
+            var ModuleNameShow = $("#ModuleNameShow").val().trim();
+            var BeforeBuyingImg = $("#imgBeforeBuyingImg").attr("src");
+            var BuyLaterImg = $("#imgBuyLaterImg").attr("src");
+            var BeforeBuyingClickImg = $("#imgBeforeBuyingClickImg").attr("src");
+            var BuyLaterClickImg = $("#imgBuyLaterClickImg").attr("src");
+            var AppBookCatalogModuleItemID = $("#hidAppBookCatalogModuleItemID").val();
+            var AppID = $("#hidAppID").val();
+            var MarketBookCatalogID = $("#hidMarketBookCatalogID").val();
+            var ModuleID = $("#hidModuleID").val();
+            //验证排序号
+            var check = /^\d+(\.{0,1}\d+){0,1}$/;
+            if (!check.test(Sort)) {
+                alert('排序号不能小于0！');
+                return false;
+            }
+            if (ModuleNameShow == "") {
+                alert('请输入前端显示模块名称！');
+                return false;
+            } else {
+                if (ModuleNameShow.length>36) {
+                    alert('前端显示模块名称长度不能超过36个字符！');
+                    return false;
+                }
+            }
+            var row = $("#hidRow").val();
+            $("#divModule").show();
+            $(".form-actions").show();
+            $("#EidtModule").hide();
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(1)").html(ModuleName("", ModuleNameShow));
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(2)").find("img").attr("src", BeforeBuyingImg);
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(3)").find("img").attr("src", BuyLaterImg);
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(4)").find("img").attr("src", BeforeBuyingClickImg);
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(5)").find("img").attr("src", BuyLaterClickImg);
+            $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(6)").text(Sort);
+            $("#ckAllBatch").show();
+            //var obj = {
+            //    AppBookCatalogModuleItemID: ((AppBookCatalogModuleItemID == null || AppBookCatalogModuleItemID == "") ? 0 : AppBookCatalogModuleItemID), AppID: AppID, MarketBookCatalogID: MarketBookCatalogID,
+            //    ModuleID: ModuleID, ModuleName: ModuleNameShow, BeforeBuyingImg: BeforeBuyingImg, BuyLaterImg: BuyLaterImg
+            //};
+            //obj=JSON.stringify(obj);
+            //$.post("/Tbx/AppModule/SaveAppBookCatalogModuleItem", { obj:obj }, function (data) {
+            //    //alert(data);
+            //    if (data) {
+            //        var row = $("#hidRow").val();
+            //        $("#divModule").show();
+            //        $(".form-actions").show();
+            //        $("#EidtModule").hide();
+            //        $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(1)").html(ModuleName("", ModuleNameShow));
+            //        $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(2)").find("img").attr("src", BeforeBuyingImg);
+            //        $("#tabModule").find("tr:eq(" + row + ")").find("td:eq(3)").find("img").attr("src", BuyLaterImg);
+            //    }
+            //});
+        });
+        //取消
+        $("#btnCancel").click(function () {
+            $("#ckAllBatch").show();
+            $("#divModule").show();
+            $(".form-actions").show();
+            $("#EidtModule").hide();
+        });
+        $("body").on("mousedown", ".layui-tree a", function () {
+            if (!$(this).siblings('ul li').length) {
+                $(".layui-tree a cite").css('color', '#333');
+                $(this).find('cite').css('color', 'red');
+            }
+        });
+
+    });
+
+    //全选
+    var isCheckAll = false;
+    function ckAllClick() {
+        if (isCheckAll) {
+            $("input[name='ckModule']").each(function () {
+                this.checked = false;
+            });
+            $("#ckAllSelect").attr("checked", false);
+            isCheckAll = false;
+        } else {
+            $("input[name='ckModule']").each(function () {
+                this.checked = true;
+            });
+            $("#ckAllSelect").attr("checked", true);
+            isCheckAll = true;
+        }
+    }
+    //子选项事件
+    function ckClick() {
+        var arrSon = document.getElementsByName("ckModule");
+        for (var i = 0; i < arrSon.length; i++) {
+            if (!arrSon[i].checked) {
+                $("#ckAllSelect").attr("checked", false);
+                return;
+            }
+        }
+        $("#ckAllSelect").attr("checked", true);
+    }
+
+    //目录选择
+    //全选
+    var isBatchCheckAll = false;
+    function ckBatchAllClick() {
+        if (isBatchCheckAll) {
+            $("input[name='aa[]']").each(function () {
+                this.checked = false;
+            });
+            $("#ckAllBatch").attr("checked", false);
+            isBatchCheckAll = false;
+        } else {
+            $("input[name='aa[]']").each(function () {
+                this.checked = true;
+            });
+            $("#ckAllBatch").attr("checked", true);
+            isBatchCheckAll = true;
+        }
+    }
+    //编辑
+    function EditClick(Row, AppID, MarketBookCatalogID, ModuleID, AppBookCatalogModuleItemID) {
+        $("#ckAllBatch").hide();
+        var ModuleNameShow = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(1)").find("span").attr("title"); //模块名称
+        var BeforeBuyingImg = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(2)").find("img").attr("src");
+        var BuyLaterImg = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(3)").find("img").attr("src");
+        var BeforeBuyingClickImg = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(4)").find("img").attr("src");
+        var BuyLaterClickImg = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(5)").find("img").attr("src");
+        var Sort = $("#tabModule").find("tr:eq(" + Row + ")").find("td:eq(6)").text();//排序号
+        $("#hidRow").val(Row);
+        $("#divModule").hide();
+        $(".form-actions").hide();
+        $("#EidtModule").show();
+        $("#ModuleNameShow").val(ModuleNameShow);
+        $("#txtSort").val(Sort);
+        //赋值隐藏控件
+        $("#hidAppID").val(AppID);
+        $("#hidMarketBookCatalogID").val(MarketBookCatalogID);
+        $("#hidModuleID").val(ModuleID);
+        $("#hidAppBookCatalogModuleItemID").val(AppBookCatalogModuleItemID);
+        //alert(AppID);
+        //获取图片库图片
+        $.post("/Tbx/AppModule/GetModelImgLibrary", { ModuleID: ModuleID}, function (data) {
+            //alert(data);
+            data = eval(data);
+            var opt = "<option value='" + BeforeBuyingImg.trim() + "'>...请选择...</option>";
+            if (data) {
+                for (var i = 0; i < data.length; i++) {
+                    opt += "<option value='" + data[i].ImgPath.trim() + "'>" + data[i].ImgName + "</option>";
+                }
+            } else {//图片库没有图片，则默认模块图片
+
+            }
+            $("#BeforeBuyingImg").html(opt);
+            $("#BeforeBuyingImg").val(BeforeBuyingImg.trim());
+            $("#imgBeforeBuyingImg").attr("src", BeforeBuyingImg);
+
+            $("#BuyLaterImg").html(opt)
+            $("#BuyLaterImg").val(BuyLaterImg.trim());
+            $("#imgBuyLaterImg").attr("src", BuyLaterImg);
+            //点击后的图片
+            $("#BeforeBuyingClickImg").html(opt);
+            $("#BeforeBuyingClickImg").val(BeforeBuyingClickImg.trim());
+            $("#imgBeforeBuyingClickImg").attr("src", BeforeBuyingClickImg);
+
+            $("#BuyLaterClickImg").html(opt)
+            $("#BuyLaterClickImg").val(BuyLaterClickImg.trim());
+            $("#imgBuyLaterClickImg").attr("src", BuyLaterClickImg);
+        });
+    }
+    //选择图片
+    function changeImg(type, ty) {
+        if (type == 1) {
+            if (ty == 0) {
+                $("#imgBeforeBuyingImg").attr("src", $("#BeforeBuyingImg").val());
+            } else {
+                $("#imgBuyLaterImg").attr("src", $("#BuyLaterImg").val());
+            }
+        } else {
+            if (ty == 0) {
+                $("#imgBeforeBuyingClickImg").attr("src", $("#BeforeBuyingClickImg").val());
+            } else {
+                $("#imgBuyLaterClickImg").attr("src", $("#BuyLaterClickImg").val());
+            }
+        }
+    }
+    //批量保存模块
+    function btnAllSaveClick(AppID, MarketBookID) {
+        $("#reust").html("保存中...");
+        addcloudNew("加载中...");
+        var ModuleIDs = '';
+        var strJson = [];
+        var ckbFlag = true;
+        $("input:checkbox[name='ckModule']:checked").each(function () { // 遍历name=ckModule的多选框,获取模块ID集合
+            ModuleIDs += $(this).val() + ',';
+            //向数组中添加值
+            var arr = {};
+            var Module = $(this).val();  
+            var ModuleNameShow = $(this).parent().parent().find("td:eq(1)").find("span").attr("title"); //模块名称
+            var BeforeBuyingImg = $(this).parent().parent().find("td:eq(2)").find("img").attr("src");
+            var BuyLaterImg = $(this).parent().parent().find("td:eq(3)").find("img").attr("src");
+            var BeforeBuyingClickImg = $(this).parent().parent().find("td:eq(4)").find("img").attr("src");
+            var BuyLaterClickImg = $(this).parent().parent().find("td:eq(5)").find("img").attr("src");
+            var Sort = $(this).parent().parent().find("td:eq(6)").text();//排序号
+            //判断选中的模块的4类图片是否有值
+            if (BeforeBuyingImg == 'undefined' || BeforeBuyingImg == '') {
+                alert(ModuleNameShow + '购买前图片不能为空！');
+                removecloudNew();
+                $("#reust").html("");
+                ckbFlag = false;
+                return;
+            }
+            if (BuyLaterImg == 'undefined' || BuyLaterImg == '') {
+                alert(ModuleNameShow + '购买后图片不能为空！');
+                removecloudNew();
+                $("#reust").html("");
+                ckbFlag = false;
+                return;
+            }
+            if (BeforeBuyingClickImg == 'undefined' || BeforeBuyingClickImg == '') {
+                alert(ModuleNameShow + '购买前点击图片不能为空！');
+                removecloudNew();
+                $("#reust").html("");
+                ckbFlag = false;
+                return;
+            }
+            if (BuyLaterClickImg == 'undefined' || BuyLaterClickImg == '') {
+                alert(ModuleNameShow + '购买后点击图片不能为空！');
+                removecloudNew();
+                $("#reust").html("");
+                ckbFlag = false;
+                return;
+            } 
+            arr.ModuleID = parseInt(Module);
+            arr.ModuleNameShow = ModuleNameShow;
+            arr.BeforeBuyingImg = BeforeBuyingImg;
+            arr.BuyLaterImg = BuyLaterImg;
+            arr.Sort = parseInt(Sort);
+            arr.BeforeBuyingClickImg = BeforeBuyingClickImg;
+            arr.BuyLaterClickImg = BuyLaterClickImg;
+            strJson.push(arr);
+             
+            //alert(ModuleNameShow);
+            //alert(BeforeBuyingImg);
+            //alert(BuyLaterImg);
+        });  
+        if (ckbFlag == false) {
+            return;
+        } 
+        var MarketBookCatalogIDs = '';
+        $("input:checkbox[name='aa[]']:checked").each(function () { // 遍历name=aa[]的多选框,获取MarketBookCatalogID集合
+            MarketBookCatalogIDs += $(this).val() + ',';
+        });
+        //alert(MarketBookCatalogIDs);
+        //alert(ModuleID);
+        $.post("/Tbx/AppModule/BatchSaveMarketBookCatalogModule", { AppID: AppID, MarketBookID: MarketBookID, MarketBookCatalogIDs: MarketBookCatalogIDs, ModuleIDs: ModuleIDs, ModuleDataList: JSON.stringify(strJson) }, function (data) {
+            //alert(data);
+            if (data) {
+                $("#reust").html("保存成功！");
+            } else {
+                $("#reust").html("保存失败！");
+            }
+            removecloudNew();
+        });
+    }
+    //加载树形
+    function LoadTree() {
+        var hidJson = JSON.parse($("#hidJson").val());
+        if (hidJson == "") {
+            $("#demo").html("<li><h3>暂无该课本目录信息！<h3/></li>");
+            $("#ckAllBatch").hide();
+            return false;
+        }
+        LoadModule(0);
+     layui.use('tree', function () {
+        var tree = layui.tree({
+            elem: '#demo', //指定元素，生成的树放到哪个元素上
+            check: 'checkbox', //勾选风格
+            skin: 'as', //设定皮肤
+            drag: true,//点击每一项时是否生成提示信息
+            checkboxName: 'aa[]',//复选框的name属性值
+            checkboxStyle: "",//设置复选框的样式，必须为字符串，css样式怎么写就怎么写
+            click: function (item) { //点击节点回调
+
+            },
+            onchange: function () {//当当前input发生变化后所执行的回调
+                var ckCount = 0;
+                var arrSon = document.getElementsByName("aa[]");
+                for (var i = 0; i < arrSon.length; i++) {
+                    if (!arrSon[i].checked) {
+                        ckCount++;
+                        break;
+                    }
+                }
+                if (ckCount==0) {//全部选择
+                    $("#ckAllBatch").attr("checked", true);
+                } else {
+                    $("#ckAllBatch").attr("checked", false);
+                }
+                //var MarketClassifyID = '';
+                //$("input:checkbox[name='aa[]']:checked").each(function () { // 遍历name=standard的多选框
+                //    MarketClassifyID += $(this).val() + ',';
+                //});
+                //$("#MarketClassifyID").val(MarketClassifyID);
+                //alert(MarketClassifyID);
+            },
+            nodes: hidJson
+            });
+        });
+    }
+
+    function ModuleName(ModuleNameShow, ModuleName) {
+        if (ModuleNameShow != null && ModuleNameShow != "") {
+            return "<span title='" + ModuleNameShow + "'> " + SubStr(ModuleNameShow,12,"...")+"</span>";
+        }
+        return "<span title='" + ModuleName + "'> " + SubStr(ModuleName, 12, "...") + "</span>";
+    }
+    //绑定模块
+    function LoadModule(MarketBookCatalogID){
+           $("#tabModule").html("<tr style=\"background-color:#fff; line-height:200px;\"><td>加载中......... </td></tr>");
+                $(this).attr("background-color","red");
+                var MarketBookID = '@Request.RequestContext.RouteData.Values["id"]';
+                var AppID = '@Request["AppID"]';
+                //加载模块, MarketBookCatalogID: MarketBookCatalogID, AppID: AppID
+                $.post("/Tbx/AppModule/GetAppBookCatalogModuleItem", { MarketBookID: MarketBookID, MarketBookCatalogID: MarketBookCatalogID, AppID: AppID }, function (data) {
+                    data = eval(data);
+                    if (data) {
+                        var tr = '<tr>'+
+                            '<td> <input type="checkbox" id="ckAllSelect" onclick="ckAllClick()" /></td>'+
+                            '<td style="width:90px;"> 模块前端显示名称</td > ' +
+                            '<td> 购买前图片</td > ' +
+                            '<td> 购买后图片</td > ' +
+                            '<td style="width:60px;"> 购买前点击图片</td > ' +
+                            '<td style="width:60px;"> 购买后点击图片</td > ' +
+                            '<td> 排序号</td > ' +
+                            '<td > 操作</td > '+
+                            '</tr >';
+                        for (var i = 0; i < data.length; i++) {
+                            var ck = ((data[i].StatusShow == 1 && data[i].AppBookCatalogModuleItemID != null) == true ? "checked" : "");
+                            tr += ' <tr><td><input  type="checkbox" name="ckModule" onclick="ckClick()" value="' + data[i].ModuleID + '" ' + ck + '/></td>' +
+                                '<td>' + ModuleName(data[i].ModuleNameShow, data[i].ModuleName)  + '</td >' +
+                                '<td><img style="height:50px;" src="' + data[i].BeforeBuyingImg + '" /></td>' +
+                                '<td><img style="height:50px;" src="' + data[i].BuyLaterImg + '" /></td>' +
+                                '<td><img style="height:50px;" src="' + data[i].BeforeBuyingClickImg + '" /></td>' +
+                                '<td><img style="height:50px;" src="' + data[i].BuyLaterClickImg + '" /></td>' +
+                                '<td>0</td>' +
+                                '<td><a  onclick = "EditClick(' + (i + 1) + ',\'' + AppID + '\',\'' + MarketBookCatalogID + '\',\'' + data[i].ModuleID + '\',\'' + data[i].AppBookCatalogModuleItemID + '\')" href= "javascript:void(0)" > 编辑</a ></td ></tr > ';
+                        }
+                        tr += "<tr><td colspan='6'><input type=\"button\" value=\"保存\" id=\"btnAllSave\" onclick=\"btnAllSaveClick(\'" + AppID + "\',\'" + MarketBookID + "\',\'" + MarketBookCatalogID + "\')\" /><span style='color:red;margin-top:10px; float:left;' id='reust'><span></td></tr>";
+                        $("#tabModule").html(tr);
+                        ckClick();
+                    } else {
+                        $("#tabModule").html("<tr style=\"background-color:#fff; line-height:200px;\"><td>暂无模块信息</td></tr>");
+                    }
+                });
+    }
+</script>
+

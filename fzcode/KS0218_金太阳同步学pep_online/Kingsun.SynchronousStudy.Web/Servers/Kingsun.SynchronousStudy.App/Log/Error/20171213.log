@@ -1,0 +1,22 @@
+﻿2017-12-13 10:19:06
+错误编号:2017121310190685Xb13ba4d940
+Message:无法从传输连接中读取数据: 您的主机中的软件中止了一个已建立的连接。。
+Message2:错误：listid为：RankQueue|value:{"BookId":"168","ClassID":"38634430","CreateTime":"2017\/12\/13 10:18:07","FirstModular":null,"FirstModularID":null,"FirstTitle":null,"FirstTitleID":null,"IsEnableOss":0,"ModuleType":"1","NumberOfOraise":[],"SchoolID":"181","SecondTitle":null,"SecondTitleID":null,"SerialNumber":null,"TextSerialNumber":null,"TotalScore":"82.258001","TrueName":"ls022","UserId":"454582054","UserImage":"https:\/\/tbxcdn.kingsun.cn\/SynchronousStudy\/UpLoadFile\/2017\/11\/02\/921ad54d-86bd-4aa8-9d31-7a37cdd40233.jpg","UserType":"26","VideoFileID":null,"VideoID":"48410","VideoImageAddress":null,"VideoNumber":"3","VideoTitle":null}
+Type:System.IO.IOException
+Source:System
+StackTrace:   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 System.IO.BufferedStream.ReadByte()
+   在 ServiceStack.Redis.RedisNativeClient.SafeReadByte()
+   在 ServiceStack.Redis.RedisNativeClient.ReadInt()
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.RPush(String listId, Byte[] value)
+   在 ServiceStack.Redis.RedisClient.PushItemToList(String listId, String value)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.LPush(String listid, String value) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 22
+Method:Read
+Class:System.Net.Sockets.NetworkStream
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 您的主机中的软件中止了一个已建立的连接。
+   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)

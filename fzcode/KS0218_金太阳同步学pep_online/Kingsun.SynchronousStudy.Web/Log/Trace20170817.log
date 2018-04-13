@@ -1,0 +1,7 @@
+﻿2017-08-17 01:30:00: Kingsun.SynchronousStudy.FS 同步用户、订单信息内部错误： 
+堆栈：   在 System.DBNull.System.IConvertible.ToInt32(IFormatProvider provider)
+   在 System.Convert.ToInt32(Object value)
+   在 Kingsun.SynchronousStudy.FS.SyncData.UserToIList[T](DataSet ds, String version) 位置 e:\WorkSpace\后台\trunk\Kingsun.SynchronousStudy\Kingsun.SynchronousStudy.FS\SyncData.cs:行号 115
+   在 Kingsun.SynchronousStudy.FS.SyncData.SyncAllData() 位置 e:\WorkSpace\后台\trunk\Kingsun.SynchronousStudy\Kingsun.SynchronousStudy.FS\SyncData.cs:行号 40
+内容：对象不能从 DBNull 转换为其他类型。
+来源：mscorlib

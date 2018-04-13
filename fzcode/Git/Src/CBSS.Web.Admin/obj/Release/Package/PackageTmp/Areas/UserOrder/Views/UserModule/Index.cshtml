@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "模块管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #tree {
+        overflow: auto;
+        background-color: #eee;
+    }
+
+        #tree ul {
+            padding: 0;
+            margin: 0;
+        }
+</style>
+
+<div style="width:13%; float:left; position:fixed;">
+    <div id="tree">
+    </div>
+</div>
+
+<div style="width:82%;  float:right;">
+    <div class="row-fluid">
+        <div class="span4">
+            @if (ViewBag.Add)
+            {
+                <a class="btn green thickbox" title='新增' href="@Url.Action("Create")?TB_iframe=true&height=680&width=800">新增 <i class="icon-plus icon-white"></i></a>
+            }
+            @if (ViewBag.Del)
+            {
+                <a class="btn red" id="BatchDelete" href="javascript:;">删除 <i class="icon-trash icon-white"></i></a>
+            }
+        </div>
+        <div class="span8">
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+                </label>
+                <label>
+                    <span>书籍名称：</span>
+                    @Html.TextBox("MarketBookName", null, new { @class = "m-wrap small" })
+                </label>
+                <label>
+                    <span>手机号：</span>
+                    @Html.TextBox("UserPhone", null, new { @class = "m-wrap small" })
+                </label>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-hover" id="tb_usermoduletable"></table>
+</div>
+<input type="hidden" id="MarketClassifyId" value="0" />
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/UserModule.js?v=1.0"></script>
+    <link href="~/Assets/bootstrap-tree/tree.css" rel="stylesheet" />
+    <script src="~/Assets/bootstrap-tree/bootstrap-treeview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var Add = '@ViewBag.Add';
+            var DefaultOrderNo = '@CBSS.Core.Utility.SystemDefault.DefaultOrderNo';
+            LoadTreeMarketClassify();
+            var oTable = new UserModuleTableInit();
+            oTable.Init( DefaultOrderNo);
+
+            $(window).on("load resize", function () {
+                var topOffset =200;
+
+                var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
+                height = height - topOffset;
+                if (height < 1) height = 1;
+                if (height > topOffset) {
+                    $("#tree").css("height", (height) + "px");
+                }
+            });
+           
+        });
+    </script>
+}

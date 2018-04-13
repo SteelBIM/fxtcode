@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+    string startday = DateTime.Now.Year + "-" + (DateTime.Now.Month < 10 ? ("0" + DateTime.Now.Month) : DateTime.Now.Month.ToString()) + "-01";
+    string endday = DateTime.Parse(startday).AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">激活码记录</h1>
+    </div>
+    <div class="tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+    </div>
+    <div class="row" style="width: 100%; float: left; margin-left: 0;">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="col-sm-12" style="margin-top: 10px; margin-bottom:10px;">
+                        <div class="input-group col-lg-12">
+                            <span style="float: left; line-height: 35px;"> 日期：</span>
+                            <div class="col-sm-2" style="width:auto;">
+                                <input id="startdate" style="height: 35px;" type="date" value="@startday" onchange="startTime()" />
+                            </div>
+                            <span style="float: left; line-height: 35px;">至</span>
+                            <div class="col-sm-2" style="width:auto;">
+                                <input id="enddate" style="height: 35px;" type="date" value="@endday" onchange="endTime()" />
+                            </div>
+                            <span style="float: left; line-height: 35px;"> 批次号：</span>
+                            <div class="col-sm-2" style="width: 160px;">
+                                <input type="text" value="" placeholder="批次号" class="form-control" id="txt_batch" />
+                            </div>
+                            <span style="float: left; line-height: 35px;"> 激活码：</span>
+                            <div class="col-sm-2" style="width: 160px;">
+                                <input type="text" value="" placeholder="激活码" class="form-control" id="txt_activate" />
+                            </div>
+                            <div class="col-sm-12" style="margin-top:10px; margin-left:-15px;">
+                                <span style="float: left; line-height: 35px;"> 激活码类型：</span>
+                                <div class="col-sm-2" style="width: 160px;">
+                                    <select id="buyway" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option value="0" selected="selected">全部</option>
+                                        <option value="1">线上</option>
+                                        <option value="2">线下</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-3" style="width:240px;">
+                                    <button id="searchbtn" type="button" onclick="$('#tb_departments').bootstrapTable('refresh')" class="btn btn-default" style="float:left; margin-left:20px;width:80px; height:34px; background-color:#515562; color:#fff;">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                    </button>
+                                    <button id="exportexcel" type="button" class="btn btn-primary" style="width: 80px; height: 34px; margin-left: 15px;background-color: #515562">导出</button>
+                                </div>
+                           </div>
+                           </div>                        
+                    </div>
+                    <div style="display:none;">
+                        <span id="sTime">@startday</span> 至 <span id="eTime">@endday</span>，总计 <span id="count"></span> 条激活记录
+                    </div>
+                    
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_departments"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/pages/ActivateLog.js"></script>
+    <script>
+        function startTime() {
+            $("#sTime").html($("#startdate").val());
+        }
+        function endTime() {
+            $("#eTime").html($("#startdate").val());
+        }
+    </script>
+}

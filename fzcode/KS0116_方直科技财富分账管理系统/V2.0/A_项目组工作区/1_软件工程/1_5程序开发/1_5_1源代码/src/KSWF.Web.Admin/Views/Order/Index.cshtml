@@ -1,0 +1,250 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-treeview.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">订单管理</h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+            <div id="tree"></div>
+        </div>
+        <div class="row" style=" width:90%; float:left; margin-left:10px;">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div id="divcondition" class="row">
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">订单日期：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" data-options="" class="form-control" id="hidstartdate" name="hidstartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'hidenddate\')}', readOnly: true })" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">至</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="margin-left: 0px;" id="hidenddate" name="hidenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'hidstartdate\')}', readOnly: true })" />
+                                </div>
+                            </div>
+                        </div>
+                      <div style="clear:both;"></div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">产品名称</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selchannel">
+                                        <option value="">全部</option>
+                                        @foreach (var v in ViewBag.ChannelList)
+                                        {
+                                            <option value="@v.Key">@v.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">版本</label>
+                                <div class="col-sm-8">
+                                    <select style="float:left; width:150px; margin-left:5px;" class="form-control" id="Version"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="clear:both;"></div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">省</label>
+                                <div class="col-sm-8">
+
+                                    <select class="form-control" id="selpro">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">市</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selcity">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">区/县</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selarea">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="margin-top:9.5px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">学校</label>
+                                <div class="col-sm-8">
+                                    <select id="selschoolid" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">年级</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selgradeid">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">班级</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selclass">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">渠道</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selqudao">
+                                        <option value="">全部</option>
+                                        @foreach (var v in ViewBag.QudaoList)
+                                        {
+                                            <option value="@v.Value">@v.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">员工姓名</label>
+                                <div class="col-sm-8">
+                                    <select id="selmaster" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">代理商</label>
+                                <div class="col-sm-8">
+                                    <select id="selagency" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">支付方式</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="PayType">
+                                        <option value="">全部</option>
+                                        @foreach (var v in ViewBag.PayType)
+                                        {
+                                            <option value="@v.Key">@v.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top:10px; margin-left: 75px;">
+                            <div class="input-group col-lg-12">
+                                <span class="input-group-btn">
+                                    <select class="form-control" id="searchtype" style="width: auto;">
+                                        <option value="0">订单编号</option>
+                                        <option value="1">老师姓名</option>
+                                    </select>
+                                </span>
+                                <input type="text" value="" class="form-control" id="searchkey" />
+                            </div>
+                        </div>
+                     
+                        <div style="margin-top:10px; float:right; margin-right:30px;" id="export">
+                        </div>
+                        <div style="margin-top:10px; float:right; margin-right:15px;">
+                            <button id="BtnclearCondition" type="button" class="btn btn-default" style=" background-color:#F3815D; color:#fff; border:1px solid #F3815D;">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清空
+                            </button>
+                        </div>
+                        <div style="margin-top:10px; float:right; margin-right:15px;">
+                            <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff; border-radius:5px;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="padding-bottom:0px; display:block; position:relative;">
+                        <div id="toolbar" class="input-group" style="float: left;margin-top: 0;margin-bottom: 0;">
+                            <div>订单总数： <span id="OrderCount"></span>  &nbsp; &nbsp; &nbsp; &nbsp;订单销售额： ￥<span id="TotalAmount"></span>   &nbsp; &nbsp; &nbsp; &nbsp;说明：手续费为第三方支付平台（微信、支付宝、苹果）的扣款金额</div>
+                        </div>
+                        <table id="tb_orders"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="selectdeptid" value="0" />
+    </div>
+}
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+    <script src="~/Scripts/pages/OrderIndex.js?rand=@Guid.NewGuid().ToString()"></script>
+    <script src="~/Scripts/CommonMetaData.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/bootstrap-dropdowntree.js"></script>
+    <script src="../Scripts/bootbox.js"></script>
+    <script>
+        var pageinit;
+        $(function () {
+            $.post("/Order/GetcurrentAction", function (data) {
+                if (data != null && data != "") {
+                    var jsonData = eval(data);
+                    if (jsonData.Export)//导出
+                        $("#export").html("<button onclick=\"exportbtn();\" type=\"button\" class=\"btn btn-default\" style=\" background-color:#F6C728; color:#fff; border:1px solid #F6C728;\"><span class=\"glyphicon glyphicon-export\" aria-hidden=\"true\"></span>导出</button>");
+                }
+            });
+            pageinit = new OrderPage();
+            pageinit.Init();
+            pageinit.DefaultCatogory =@Html.Raw(Json.Encode(ViewBag.CatogoryList));
+            pageinit.DefaultChannel =@Html.Raw(Json.Encode(ViewBag.ChannelList));
+            pageinit.DefaultPayType=@Html.Raw(Json.Encode(ViewBag.PayTypeList));
+        })
+
+        function exportbtn() {
+            var params = { limit: 0, offset: 0 };
+            var obj = pageinit.GetParams(params);
+            var $form = $('<form target="down-file-iframe" method="post" />');
+            $form.attr('action', "/Order/ExportOrderXls");
+            for (var key in obj) {
+                $form.append('<input type="hidden" name="' + key + '" value="' + obj[key] + '" />');
+            }
+            $(document.body).append($form);
+            $form.submit();
+            $form.remove();
+        }
+    </script>
+}

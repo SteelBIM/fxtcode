@@ -1,0 +1,187 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+<title>方直科技营销管理系统</title>
+<link href="~/Template/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+<link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-align: center;
+    }
+
+    body {
+        background: url(../Images/common/bagg.png) no-repeat;
+        min-width: 1300px;
+    }
+
+    .head {
+        width: 1100px;
+        margin: 0px auto;
+        height: 150px;
+        line-height: 150px;
+    }
+
+        .head h2 {
+            color: #fff;
+            font-size: 30px;
+            letter-spacing: 3px;
+            font-weight: 500;
+            text-align: left;
+            background: url(../Images/common/title.png) 30px 60px no-repeat;
+            text-indent: -9999px;
+        }
+
+    .main {
+        width: 1200px;
+        margin: 120px auto 0;
+    }
+
+        .main img {
+            float: left;
+        }
+
+        .main .load {
+            width: 357px;
+            height: 406px;
+            float: right;
+            position: relative;
+            background: url(../Images/common/load.png) no-repeat;
+            margin-top: 0px;
+        }
+
+            .main .load input {
+                height: 30px;
+                line-height: 30px;
+                border: 0px;
+                background-color: transparent;
+                outline: none;
+                text-align: left;
+                width: 200px;
+                color: #fff;
+                font-size: 16px;
+            }
+
+            .main .load img {
+                vertical-align: middle;
+                margin: 3px 15px 0 0;
+            }
+
+            .main .load .p1 {
+                position: absolute;
+                top: 178px;
+                left: 35px;
+            }
+
+            .main .load .p2 {
+                position: absolute;
+                top: 238px;
+                left: 35px;
+            }
+
+            .main .load .p3 {
+                position: absolute;
+                top: 313px;
+                left: 28px;
+                height: 50px;
+                line-height: 50px;
+                width: 300px;
+            }
+
+                .main .load .p3 input {
+                    height: 50px;
+                    line-height: 50px;
+                    width: 300px;
+                    text-align: center;
+                    letter-spacing: 2px;
+                    cursor: pointer;
+                }
+
+            .main .load h3 {
+                position: absolute;
+                top: 124px;
+                left: 20px;
+                width: 300px;
+                color: #D7D8E0;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+    .bootbox-body {
+        text-align: left;
+    }
+
+    .modal-dialog {
+        z-index: 999999;
+    }
+</style>
+
+<div class="content">
+    <div class="head">
+        <h2>方直科技营销管理系统</h2>
+    </div>
+    <div class="main">
+        <img src="../Images/common/relation.png" alt="" />
+        <div class="load">
+            <h3>账号登录</h3>
+            <p class="p1">
+                <img src="../Images/common/people.png" alt="" />
+                <input id="LoginName" name="LoginName" placeholder="用户名" type="text">
+            </p>
+            <p class="p2">
+                <img src="../Images/common/password.png" alt="" />
+                <input id="LoginPwd" name="LoginPwd" placeholder="密码" type="password">
+            </p>
+            @*<p>
+                    <input id="RememberPassword" type="checkbox" /><label id="forRememberPassword">记住密码</label>
+                </p>*@
+            <p class="p3">
+                <input value="登录" type="button" id="btnLogin">
+            </p>
+        </div>
+
+    </div>
+</div>
+<script src="../Template/vendor/jquery/jquery.js"></script>
+<script src="../Template/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="~/Scripts/bootbox.js"></script>
+
+<script src="../Template/vendor/metisMenu/metisMenu.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").bind("keydown", function (event) {
+            if (event.keyCode == 13) {
+                $("#btnLogin").click();
+            }
+        });
+    });
+    $(function () {
+        $("#LoginName").focus();
+        $("#btnLogin").click(function () {
+            var LoginName = $.trim($("#LoginName").val());
+            var LoginPwd = $("#LoginPwd").val();
+            if (LoginName == "") {
+                bootbox.alert("请输入用户名~");
+                return;
+            } if (LoginPwd == "") {
+                bootbox.alert("请输入密码~");
+                return;
+            }
+            addcloud();
+            $.post("/Login/Login", { LoginName: LoginName, LoginPwd: LoginPwd }, function (data) {
+                if (data == 1) {
+                    window.location.href = "/Account/Index";
+                } else {
+                    removecloud();
+                    bootbox.alert("用户名或密码错误！");
+                }
+            });
+        });
+    });
+</script>
+<script src="../Template/dist/js/sb-admin-2.js"></script>

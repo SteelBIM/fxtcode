@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    @*<div class="col-lg-12">
+            <h1 class="page-header">资源</h1>
+        </div>*@
+    <div class="tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+    </div>
+    <div class="row" style=" width:100%; float:left; margin-top:15px; margin-left:0;">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="col-sm-12" style="margin-top:10px; padding-right:0;">
+
+                        <div class="col-sm-12" style="margin-top:10px; padding-right:0;">
+                            <div style="margin-left:15px; float:right;">
+                                <div class="input-group col-lg-3">
+                                    <button onclick="AddRes()" type="button" class="btn btn-primary" style="width:100px; height:34px;">上传</button>
+
+                                </div>
+                            </div>
+                            <div style="margin-left: 15px; float: right;">
+                                <div class="input-group col-lg-3">
+
+                                    <button onclick="history.go(-1)" type="button" class="btn btn-primary" style="width:100px; height:34px;">返回</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_activatetype"></table>
+                    <div class="modal fade" id="addres" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="">
+                            <div class="modal-content" style="width: 1000px; height: 600px;">
+                                <div style="clear:both; height:50px;"><h3 style=" font-size:20px; margin:20px 0 0 35px;">上传资源</h3></div>
+                                <iframe id="add" style="width:990px;height:400px; border:0;" src="/Scripts/uploader/index.html?resid=0"></iframe>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="modal-footer">
+                                    <input type="hidden" id="policyid" value="0" />
+                                    @*<button type="button" class="btn btn-primary" id="btn_setdata" onclick="saveData(0)">确定</button>*@
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="modifyres" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="">
+                            <div class="modal-content" style="width: 1000px; height: 600px;">
+                                <div style="clear:both; height:50px;"><h3 style=" font-size:20px; margin:20px 0 0 35px;">修改资源</h3></div>
+                                <iframe id="modify" style="width: 990px; height: 400px; border:0;" src=""></iframe>
+                                <div style="clear:both; height:50px;"></div>
+                                <div class="modal-footer">
+                                    <input type="hidden" id="policyid" value="0" />
+                                    @*<button type="button" class="btn btn-primary" id="btn_setdata" onclick="saveData(0)">确定</button>*@
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="bookid" value="@HttpContext.Current.Request.QueryString["bookid"]" />
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/ResourceMgrFiles.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script>
+        function AddRes() {
+            $("#addres").modal("show");
+        };
+
+        function ModifyRes(resid) {
+            $("#modifyres").modal("show");
+            iframeLoaded(resid);
+        };
+
+        var pageInit;
+        $(function () {
+            pageInit = new ResourceMgrFiles();
+            pageInit.Init();
+        })
+
+        var refreshTable = function () {
+            $('#tb_activatetype').bootstrapTable("refresh");
+        }
+
+        var iframeLoaded = function (resid) {
+            var iframe = document.getElementById("modify");
+            iframe.src = "/Scripts/uploader/index.html?resid=" + resid;
+            //if (iframe.attachEvent) {
+            //    iframe.attachEvent("onload", function () {
+
+            //        alert("Local iframe is now loaded.");
+            //    });
+            //} else {
+            //    iframe.onload = function () {
+            //        $(iframe).find("#resid").val("8888");
+            //        alert("Local iframe is now loaded.");
+            //    };
+            //}
+        }
+
+    </script>
+}

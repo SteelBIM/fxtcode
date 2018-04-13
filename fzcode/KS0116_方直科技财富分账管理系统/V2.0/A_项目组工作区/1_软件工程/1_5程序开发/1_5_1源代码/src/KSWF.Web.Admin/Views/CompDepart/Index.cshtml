@@ -1,0 +1,260 @@
+﻿@{
+    ViewBag.Title = "CompDepart_Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+    <style>
+        /*.ontology-overflow{height:0px;}*/
+        table {
+            table-layout: fixed;
+        }
+
+        td{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        tr td:first-child{
+            width:3%;
+        }
+    </style>
+}
+
+@section mainContent{
+    @*<h1>@ViewBag.ID</h1>
+    <h1>@ViewBag.SchoolName</h1>
+    <h1>@ViewBag.DistrictID</h1>
+    <h1>@ViewBag.TownsID</h1>
+    <h1>@ViewBag.Area</h1>
+    <h1>@ViewBag.SchoolTypeNo</h1>*@
+
+    <div class="col-lg-12">
+        <h1 class="page-header">部门设置</h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div id="toolbar" class="input-group" style="float: left;margin-top: 0;margin-bottom: 0;">
+            </div>
+            <div class="panel-body" style="padding-bottom:0px;">
+                <table id="tb_departments"></table>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="moveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">部门移动</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" role="form" id="formMove">                          
+                            <div class="form-group">
+                                <label class="col-lg-4" style="text-align:right">需要移动的部门：</label>
+                                <div id="seldepttreeS" class="col-lg-8"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-4" style="text-align:right">选择上级部门：</label>
+                                <div id="seldepttreeF" class="col-lg-8"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_moveSave">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mergeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">部门合并</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" role="form" id="formMerge">
+                            <label class="col-lg-4" style="text-align:right">新部门名称：</label>
+                            <div class="form-group">
+                                <div class="col-lg-7"><input class="form-control" name="deptname" id="mergeDeptnameInput"></div>
+                            </div>
+                            <label class="col-lg-4" style="text-align:right">选择需要合并的部门：</label>
+                            <div class="col-lg-7"><div id="treeview-checkable-dept"></div></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_mergeSave">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加部门</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form class="form-horizontal" role="form" id="formAdd">
+                                <label class="col-lg-3" style="text-align:right">部门名称：</label>
+                                <div class="form-group">
+                                    <div class="col-lg-8"><input class="form-control" name="deptname" id="deptnameInput"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <label class="col-lg-3" style="text-align:right">上级部门：</label>
+                                <div class="col-lg-8">
+                                    <p class="form-control-static" id="higherDepartName"></p>
+                                </div>
+                                <label class="col-lg-3" style="text-align:right">负责区域：</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" rows="8" id="higherArea" readonly="readonly"></textarea>
+                                </div>
+                                <label class="col-lg-3" style="text-align:right;margin-top:4px">部门区域：</label>
+                                <div class="form-group">
+                                    <div class="col-lg-8">
+                                        <button type="button" id="btn_setArea" class="btn btn-primary" style="margin-top:4px" data-toggle="modal" data-target="#setAreaModal">设置区域</button>
+                                        <textarea class="form-control" rows="8" style="margin-top:4px" id="deptArea" readonly="readonly" name="deptArea"></textarea>
+                                    </div>
+                                </div>
+                                <input id="p4deptid" style="display:none" name="parentid" />
+                                <input id="p4parentid" style="display:none" />
+                                <input id="p4districtids" style="display:none" name="districtids" />
+                                <input id="p4level" style="display:none" name="level" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_save">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改部门</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form class="form-horizontal" role="form" id="formEdit">
+                                <label class="col-lg-3" style="text-align:right">部门名称：</label>
+                                <div class="form-group">
+                                    <div class="col-lg-8"><input class="form-control" name="deptname" id="editDeptnameInput"></div>
+                                </div>
+                                <label class="col-lg-3" style="text-align:right">负责区域：</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" rows="8" id="editDeptArea" style="margin-top:6px" readonly="readonly" name="editDeptArea"></textarea>
+                                    <button type="button" id="editSetAreaModal" class="btn btn-primary" style="margin-top:4px" data-toggle="modal" data-target="#setAreaModal">修改区域</button>
+                                </div>
+                                <input id="p4editGrandFatherid" style="display:none" />
+                                <input id="p4editParentid" style="display:none" name="parentid"/>
+                                <input id="p4editDeptid" style="display:none" name="deptid" />
+                                <input id="p4editDistrictids" style="display:none" name="districtids" />
+                                <input id="p4editlevel" style="display:none" name="level" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_editSave">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="setAreaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:auto">
+        <div class="modal-dialog" style="width:1000px; height:1000px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">设置区域</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default" style=" height: 300px;  overflow:auto;">
+                                <div class="panel-body ontology-overflow " id="areaDiv">
+                                    <div  id="treeview-checkable"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <input type="text" value="" class="form-control" id="searchkey" placeholder="请输入要搜索学校的名字。" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <span class="input-group-btn">
+                                        <button id="searchbtn" type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" style="margin-top:20px; height:300px; overflow:auto;">
+                                <div class="panel-body ontology-overflow "   id="scroll">
+                                    <div class="row">
+                                        <div id="treeview-checkable-school"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1" style="margin-top:230px">
+                            <button type="button" class="btn btn-default" id="addNode"> >> </button>
+                            <button type="button" class="btn btn-default" id="removeNode" style="margin-top:20px"> << </button>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="panel panel-default" style=" overflow-y:auto; height:600px; margin-top:30px;">
+                                <div class="panel-body ontology-overflow " >
+                                    <div class="row">
+                                        <div id="treeview-checkable-checked"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="border:0px;">
+                                <button type="button" class="btn btn-primary" id="btn_confirmArea">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/bootstrap-dropdowntree.js"></script>
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+    <script src="~/Scripts/pages/CompDepart.js"></script>
+}

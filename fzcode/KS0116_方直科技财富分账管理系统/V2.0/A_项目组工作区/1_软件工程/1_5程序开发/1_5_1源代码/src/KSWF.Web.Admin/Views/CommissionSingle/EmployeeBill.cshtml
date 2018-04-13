@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+<h2>Index</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="modal-header" style="margin-bottom:20px;">
+                    @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>*@
+                    <h4 class="modal-title" id="myModalLabel" style="text-align:center; font-size:24px;">提成结算单
+                        <p style="float:right;">
+                    <span id="export"></span>
+                        </p>
+                        <p style="float:left;">
+                    <span id="ReturnPreviousLayer" class="glyphicon glyphicon-menu-left span2" onclick="" style="border:1px solid #ddd; padding:7px; border-radius:3px; margin-left:10px; cursor:pointer;"></span>
+                       </p>
+                    </h4>
+                </div>
+                <div class="col-lg-12">
+                    <p class="col-lg-3" style="font-size:20px;">
+                        结算单编号：<span id="KontNumbering">@ViewBag.KontNumbering</span>
+                    </p>
+                    <p class="col-lg-2" >
+                        姓名：<span id="enployeename"></span>
+                    </p>                    
+                    <p class="col-lg-3" style="font-size:20px;">
+                    结算金额：￥<span id="ordertotal"></span>
+                    </p>
+                    <p class="col-lg-3" style=" font-size:20px;">
+                    结算日期：<span id="konttime"></span>
+                    </p>
+                    
+                </div>
+                <div class="col-lg-12">
+                    
+                    <p class="col-lg-2" >
+                        部门：<span id="deptnameagent"></span>
+                    </p>
+                </div>
+               
+                 <div class="col-lg-12" style="margin-left:0;">
+                     <p>调整金额：<span id="adjust_amount"></span> </p>
+                </div>
+                <div class="col-lg-12" style="margin-left:0;">
+                     <p>调整原因：<span id="adjust_reason"></span> </p>
+                </div>
+                
+                <div style="clear:both; height:50px;"></div>
+                <div class="tab-content">
+                    <table id="tb_kont"></table>
+                    <div class="col-lg-12" style="margin-top:20px;">
+                        <p class="col-lg-2" style="float:right; text-align:right;">
+                        出单日期：<span id="CurrentDate"></span>
+                        </p>
+                        <p class="col-lg-2" style="float:right; text-align:right;">
+                        操作员：<span id="operator">@ViewBag.Operator</span>
+                        </p>
+                         
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <h2 style="text-align:center; font-size:24px;">订单详情</h2>
+                    <table id="tb_ments"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/EmployeeBill.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+}
+

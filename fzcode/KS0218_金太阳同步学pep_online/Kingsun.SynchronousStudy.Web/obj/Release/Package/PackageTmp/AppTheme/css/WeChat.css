@@ -1,0 +1,180 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+.main{height:100%;width:100%;overflow-x:hidden;overflow-y:auto;left:0;position:absolute; background-color:#F5F5F5;}
+
+/*报告列表*/
+.head{ height:50px; background-color:#1C9EEA; text-align:center; color:#fff; font-size:18px; line-height:50px; font-weight:300;}
+
+.head img{ width:12px; margin-left:10px;}
+.html1{ width:95%; margin:0 auto;}
+.html1 p{ margin:20px auto 10px; font-size:14px; color:#A6A6A6;}
+.html1 ul li{ padding:10px; background-color:#fff; overflow:hidden; margin-bottom:5px; border-radius:8px;}
+.html1 ul li a{ overflow:hidden; display:block;}
+.html1 ul li span{ float:left; color:#000;}
+.html1 ul li b{ float:right; text-align:right;}
+.html1 ul li span img{ width:27px; vertical-align:middle; margin-right:10px;}
+.html1 ul li b{ color:#7F7F7F; font-weight:300;}
+.html1 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html1 ul li b em{ font-size:14px;font-style:normal;}
+.html1 ul li b img{ width:8%; margin-left:10px;}
+
+.html1 .no_nr{ text-align:center;}
+.html1 .no_nr img{ width:50%; margin-top:25%;}
+.html1 .no_nr p{ margin-top:30px; font-size:16px; color:#C0C0C0;}
+
+/*报告列表弹出选择年级*/
+.toolwin{display:none;position:absolute;top:50px;left:0;width:100%; z-index:1;}
+.maskLayer{ display:none; width:100%; height:100%; background-color:#000000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50);z-index:0;position:absolute;top:50px;left:0;}
+.toolwin .to_ul{ padding:20px; background-color:#fff;  text-align:center;}
+.timelist{ width:100%; overflow:hidden; height:144px;}
+.timelist li{ display:inline; float:left; border:1px solid #94D1F5; margin:3px 0 3px 2%; height:30px; line-height:30px; width:30%; font-size:16px; padding: 5px 0; text-align:center;border-radius:5px; color:#43AFEE;}
+.to_ul a{ clear:both; border:1px solid #94D1F5; height:30px; line-height:30px; border-radius:5px;padding: 5px 0; width:30%; display:block; margin-left:34%; color:#43AFEE;}
+
+.timelist li.on { background:#8DCEF4;color:#fff;border:1px solid #8DCEF4;}
+
+/*班级学习情况*/
+.head1 h2{ text-align:center; color:#000; font-size:16px; padding:10px 0;}
+.html2{ width:100%; margin:0 auto;}
+.html2 p{ clear:both; margin:0 auto 5px 5px; font-size:14px; color:#A6A6A6;}
+.html2 .nr1{ padding:0px 0px 10px 0; background-color:#fff; margin-bottom:10px;}
+.html2 .nr1 .ceben{ float:right; line-height:48px;}
+.html2 .nr1 ul{ clear:both; overflow:hidden; padding:10px 10px 0;}
+.html2 .nr1 ul li{ clear:both; height:30px; margin-top:5px;}
+.html2 .nr1 ul li a{ color:#000; overflow:hidden; display:block;}
+.html2 .nr1 ul li span{ float:left;}
+.html2 .nr1 ul li .percentage{ width:55%; height:5px; background-color:#E8F5FD; display:inline; float:left; margin:10px 0 0 10px; }
+.html2 .nr1 ul li b{ float:right; text-align:right;color:#7F7F7F; font-weight:300;}
+.html2 .nr1 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html2 .nr1 ul li b em{ font-size:14px;font-style:normal;}
+.html2 .nr1 ul li b img{ width:12%; margin-left:5px;}
+.html2 .nr1 ul li .percentage span{background-color:#1C9EEA; height:5px; margin-left:0px;}
+
+/*滑动选择*/
+.content-block{ overflow:hidden; display:inline; float:left; width:49.8%; text-align:center; border-bottom:1px solid #E7E7E7; border-top:1px solid #E7E7E7;}
+.content-block1{ border-right:1px solid #E7E7E7;}
+
+.content-block input {border:0; height: 40px; font-size: 14px; padding: 4px; color:#26A2EB; outline:none;}
+.content-block1 input{ width:45%;}
+.content-block2 input{ width:70%;}
+.content-block a{ background:url(../images/la1.png) 0px 6px no-repeat;text-decoration:none; height:16px; width:16px; background-size:78%; display:inline-block;}
+.gearArea { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 10px; background-color: rgba(0, 0, 0, 0.2); display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9900; overflow: hidden; -webkit-animation-fill-mode: both; animation-fill-mode: both }
+.area_ctrl { vertical-align: middle; background-color: #d5d8df; color: #000; margin: 0; height: auto; width: 100%; position: absolute; left: 0; bottom: 0; z-index: 9901; overflow: hidden; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0) }
+.slideInUp { -webkit-animation: slideInUp .3s; animation: slideInUp .3s; }
+ @-webkit-keyframes slideInUp {
+ from {
+ -webkit-transform: translate3d(0, 100%, 0);
+ transform: translate3d(0, 100%, 0)
+}
+ to {
+ -webkit-transform: translate3d(0, 0, 0);
+ transform: translate3d(0, 0, 0)
+}
+}
+ @keyframes slideInUp {
+ from {
+ -webkit-transform: translate3d(0, 100%, 0);
+ transform: translate3d(0, 100%, 0)
+}
+ to {
+ -webkit-transform: translate3d(0, 0, 0);
+ transform: translate3d(0, 0, 0)
+}
+}
+.area_roll { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox;  width: 100%; height: auto; overflow: hidden; background-color: transparent; -webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0))); -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0)) }
+.area_roll>div { font-size: 1.6em; height: 10em; float: left; background-color: transparent; position: relative; overflow: hidden; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1 }
+.area_roll>div .gear { width: 100%; float: left; position: absolute; z-index: 9902; margin-top: 4em }
+.area_roll_mask { -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(#debb47), to(rgba(36, 142, 36, 0))); -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0)); padding: 0 }
+.area_grid { position: relative; top: 4em; width: 100%; height: 2em; margin: 0; box-sizing: border-box; z-index: 0; border-top: 1px solid #abaeb5; border-bottom: 1px solid #abaeb5 }
+.area_roll>div:nth-child(3) .area_grid>div { left: 42% }
+.area_btn { color: #0575f2; font-size: 1.6em; line-height: 1em; text-align: center; padding: .8em 1em }
+.area_btn1 { color: #676767; font-size: 1.6em; line-height: 1em; text-align: center; padding: .8em 1em }
+.area_btn_box:before, .area_btn_box:after { content: ''; position: absolute; height: 1px; width: 100%; display: block; background-color: #96979b; z-index: 15; -webkit-transform: scaleY(0.33); transform: scaleY(0.33) }
+.area_btn_box { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox;-webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: stretch; -webkit-align-items: stretch; -ms-flex-align: stretch; align-items: stretch; background-color: #f1f2f4; position: relative }
+.area_btn_box:before { left: 0; top: 0; -webkit-transform-origin: 50% 20%; transform-origin: 50% 20% }
+.area_btn_box:after { left: 0; bottom: 0; -webkit-transform-origin: 50% 70%; transform-origin: 50% 70% }
+.tooth { height: 2em; line-height: 2em; text-align: center; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox;  line-clamp: 1; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; overflow: hidden }
+
+/*趣配音学习情况*/
+.html5{ width:100%; margin:0 auto;}
+.html5 p{margin:20px auto 5px 5px; font-size:14px; color:#A6A6A6;}
+.html5 .nr1{ background-color:#fff; border-radius:6px; margin-bottom:10px;}
+.html5 .nr1 .danyuan{ float:left; font-weight:300; line-height:48px; font-size:14px;}
+.html5 .nr1 .ceben{ float:right;line-height:48px;}
+.html5 .nr1 ul li{ clear:both; height:30px; padding:10px;}
+.html5 .nr1 ul li span{ float:left;}
+.html5 .nr1 ul li .percentage{ width:55%; height:5px; background-color:#E8F5FD; display:inline; float:left; margin:10px 0 0 10px; }
+.html5 .nr1 ul li b{ float:right; text-align:right;color:#7F7F7F; font-weight:300;}
+.html5 .nr1 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html5 .nr1 ul li b em{ font-size:14px;font-style:normal;}
+.html5 .nr1 ul li .percentage span{background-color:#1C9EEA; height:5px; margin-left:0px;}
+.html5 .nr2{width:95%; margin:0 auto;}
+.html5 .nr2 ul li{ padding:10px; background-color:#fff; overflow:hidden; margin-bottom:5px; border-radius:8px;}
+.html5 .nr2 ul li span{ float:left; color:#000;}
+.html5 .nr2 ul li span img{ width:23px; vertical-align:middle; margin-right:10px;}
+.html5 .nr2 ul li b{ color:#000; font-weight:300; float:right; text-align:right; width:60%;}
+.html5 .nr2 ul li .ci_num{ text-align:right;  clear:both; color:#000; padding:0; margin:10px 0 5px; font-size:16px; border-bottom:1px solid #EFEFEF; padding-bottom:5px;}
+.html5 .nr2 ul li .ci_num a{ background:url(../images/quyin.png) 0 5px  no-repeat;text-decoration:none; height:21px; width:21px; background-size:78%; display:inline-block; margin-left:15px;}
+
+/*说说看学习情况*/
+.html6{ width:100%; margin:0 auto;}
+.html6 p{margin:20px auto 5px 5px; font-size:14px; color:#A6A6A6;}
+.html6 .nr1{ background-color:#fff; border-radius:6px; margin-bottom:10px;}
+.html6 .nr1 .danyuan{ float:left; font-weight:300; line-height:48px; font-size:14px;}
+.html6 .nr1 .ceben{ float:right;line-height:48px;}
+.html6 .nr1 ul li{ clear:both; height:30px; padding:10px;}
+.html6 .nr1 ul li span{ float:left;}
+.html6 .nr1 ul li .percentage{ width:55%; height:5px; background-color:#E8F5FD; display:inline; float:left; margin:10px 0 0 10px; }
+.html6 .nr1 ul li b{ float:right; text-align:right;color:#7F7F7F; font-weight:300;}
+.html6 .nr1 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html6 .nr1 ul li b em{ font-size:14px;font-style:normal;}
+.html6 .nr1 ul li .percentage span{background-color:#1C9EEA; height:5px; margin-left:0px;}
+.html6 .nr2{width:95%; margin:0 auto;}
+.html6 .nr2 ul li{ padding:10px; background-color:#fff; overflow:hidden; margin-bottom:5px; border-radius:8px;}
+.html6 .nr2 ul li span{ float:left; color:#000;}
+.html6 .nr2 ul li span img{ width:23px; vertical-align:middle; margin-right:10px;}
+.html6 .nr2 ul li b{ color:#000; font-weight:300; float:right; text-align:right; width:60%;}
+.html6 .nr2 ul li .ci_num{ text-align:right;  clear:both; color:#000; padding:0; margin:10px 0 5px; font-size:16px; border-bottom:1px solid #EFEFEF; padding-bottom:5px;}
+.html6 .nr2 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html6 .nr2 ul li b em{ font-size:14px;font-style:normal;}
+.html6 .nr2 ul li .ci_num a{ background:url(../images/saykan.png) 0 5px  no-repeat;text-decoration:none; height:21px; width:21px; background-size:78%; display:inline-block; margin-left:15px;}
+
+/*学生使用详情*/
+.html9{width:95%; margin:0 auto;}
+.html9 .nr1{ margin:20px 0; overflow:hidden;}
+.html9 .nr1 .nr_img{ width:30%; float:left; margin-left:10px;}
+.html9 .nr1 .nr_img img{ width:100%;}
+.html9 .nr1 .nr_xx{ width:62%; float:right;}
+.html9 .nr1 .nr_xx h2{ font-size:16px; overflow:hidden; margin-top:30px;margin-bottom:5px; height:25px;}
+.html9 .nr1 .nr_xx h2 b{ float:left;}
+.html9 .nr1 .nr_xx h2 a{ float:right; background-color:#FFC947; color:#fff; padding:3px 5px; border-radius:5px; font-size:14px; font-weight:300;}
+.html9 .nr1 .nr_xx h2 span{ float:right; display:none;}
+.html9 .nr1 .nr_xx h2 span img{ width:18px; margin-right:3px;}
+.html9 .nr1 .nr_xx p{ clear:both; color:#A3A3A3; margin-bottom:5px; font-size:14px;}
+.html9 .nr2 .danyuan{ float:left; font-weight:300; line-height:40px; font-size:14px;}
+.html9 .nr2 .ceben{ float:right;line-height:40px;}
+.html9 .nr2{ background-color:#fff;  border-radius:5px; padding:5px 10px;}
+.html9 .nr2 ul{ clear:both;}
+.html9 .nr2 ul li{ padding:10px; background-color:#EFEFEF; overflow:hidden; margin-bottom:5px; border-radius:8px;}
+.html9 .nr2 ul li span{ float:left; color:#000;}
+.html9 .nr2 ul li span img{ width:23px; vertical-align:middle; margin-right:10px;}
+.html9 .nr2 ul li b{ color:#7F7F7F; font-weight:300; float:right; text-align:right;width:60%;}
+.html9 .nr2 ul li b i{ font-style:normal; font-size:16px; color:#23A1EB;}
+.html9 .nr2 ul li b em{ font-size:14px;font-style:normal;}
+.html9 .nr2 ul li .ci_num{ text-align:right;  clear:both; color:#000; padding:0; margin:10px 0 5px; font-size:16px; border-bottom:1px solid #fff; padding-bottom:5px;}
+.html9 .nr2 ul li .ci_num a{ text-decoration:none; height:21px; width:21px;  display:inline-block; margin-left:15px;}
+.html9 .nr2 ul li .ci_num1 a{background:url(../images/quyin.png) 0 5px  no-repeat;background-size:78%;}
+.html9 .nr2 ul li .ci_num2 a{background:url(../images/saykan.png) 0 5px  no-repeat;background-size:78%;}
+.html9 .nr2 ul li .ci_num i{ font-style:normal; font-size:16px; color:#25A2EB;}
+.html9 .nr2 ul li .ci_num em{ font-size:14px;font-style:normal;}
+
+
+/*弹出框*/
+.Topbox{position: fixed;width: 80%;top: 25%;left: 10%;z-index: 10001; background-color:#000; text-align:center; display:none;}
+.shadow1{position: fixed;opacity: 0.5;filter: alpha(opacity=50);bottom: 0;left: 0;
+right: 0;top: 0;background: black;z-index: 10000; display:none;}
+

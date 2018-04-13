@@ -1,0 +1,98 @@
+﻿@charset "UTF-8";
+body,html{font-family:"微软雅黑"; background-color: #EFEFF4;}
+/*作品详情样式*/
+.head1{height: 35px; line-height: 35px;padding: 30px 5% 0;background-color: #1C9EEA;margin-bottom: -1px;}
+.head1 .back img{width: 25px;background-size: 100%;float: left;}
+.head1 .share img{width: 25px;background-size: 100%;float: right;}
+.head1 .share{float: right;}
+.head1 h2{text-align:center; font-size: 16px; line-height: 22px;padding: 0 40px; color: #fff;}
+.main1{margin-bottom:80px}
+.main1 .xinxi{background-color: #1C9EEA; padding-bottom: 5%;}
+.main1 ul{ display:flex;align-items:flex-start; padding:8% 5%; }
+.main1 ul li{flex-grow:1;  margin:0 1%; text-align: center;}
+.main1 ul li span{color: #fff;font-size: 16px;}
+.main1 ul li img{width: 60px; height: 60px; border-radius: 30px; margin-top: -5%;}
+.main1 ul li p{ font-size: 24px; margin-top:10%; color: #fff;font-weight: 600;}
+.main1 ul li .p1{font-size:16px;}
+.main1 .xinxi .p2{ text-align: center; font-size: 12px; color: #C9E8FD;}
+.main1 .xinxi .p3{text-align: center; font-size: 15px; color: #C9E8FD; font-weight: 600; 
+line-height: 30px;}
+.main1 .ul1{background-color: #fff;}
+.main1 .ul1 span{color: #A2B1BA; font-size: 16px;}
+.main1 .ul1 p{color: #8087A5; font-size: 20px; font-weight: 600;}
+.content{margin-top: 5%; background-color: #fff; line-height: 40px;}
+.content video{width: 100%;}
+.content p{ padding:0 5%;}
+.content .cour{color: #8087A5;}
+.content .cour span{float: left; font-size: 16px;}
+.content .cour b{float: right; font-size: 24px;}
+.content .time{clear:both; color: #D3D3D3; font-size: 12px;}
+
+/*音频样式*/
+.aud1{position: relative; width:100%;}
+.aud1 .time_progress{width:100%;height:6px;position: relative; z-index: 1001;}
+.aud1 .progress{width:100%;height:6px;background:#CDD6DD;position:relative;}
+.aud1 .bar{position:absolute;top:0;left:0;height:6px;background:#4C78E9;display:block; padding:0 ;}
+.aud1 .btn{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:-4px;box-shadow: #ACD8FF 0px 0px 10px;}
+.aud1 .contros{ text-align:center; position: absolute; z-index: 1001; top:50%; left:50%; margin-left: -40px;
+margin-top: -40px;}
+.aud1 .contros .time{color: #fff; font-size: 14px;}
+.aud1  .show{position: absolute;opacity: 0.3;filter: alpha(opacity=30);bottom: 0;left: 0;
+right: 0;top: 0;background: black;z-index: 1000; display:block;}
+.aud1 .button img{ width:40px;}
+
+footer{position: fixed; width: 100%; height: 50px; background-color: #15CD93; text-align: center;
+left: 0; bottom: 0; line-height: 50px; z-index: 10000;}
+footer a{ color: #fff; font-size: 16px;}
+
+
+/*弹出框*/
+.box{position: fixed;width: 76%;top: 24%;left: 12%;z-index: 10001; background-color:#fff; text-align:center;
+ display:none; overflow: hidden; border-radius: 10px; padding: 0 0 20px;}
+.box .box_bag{width: 120%; margin-top:-60%; margin-left:-10%;}
+.box ul{ display:flex;align-items:flex-start; margin:3% 0 20%;}
+.box ul li{flex-grow:1;}
+.box ul li p{ font-size: 12px; margin-top:10px; color: #3D3838;}
+.box ul li img{width: 60%;}
+.box .cancel{color: #3D3838; font-size:16px;}
+.box2{position: fixed;width: 80%;top: 15%;left: 12%;z-index: 10001; text-align:center;
+ display:none; overflow: hidden; border-radius: 10px; padding: 0 0 20px;}
+.box2 img{width: 100%; }
+.box2 .p1{color: #434A6B;margin-top: -65%; font-size: 18px; line-height: 40px; font-weight: 600;}
+.box2 .p2{color: #434A6B; font-size:30px;font-weight: 600;}
+.box2 a{width: 80%; height: 50px; line-height: 50px; color: #fff; background-color: #1C9EEA;
+text-align: center; display: block; border-radius: 5px; margin-left: 10%; margin-top:50%;
+font-size: 20px;}
+.shadow{position: fixed;opacity: 0.5;filter: alpha(opacity=50);bottom: 0;left: 0;
+right: 0;top: 0;background: black;z-index: 10000; display:none;}
+
+@media screen and (max-width:360px){
+	.box2 .p1{font-size:14px; line-height:30px;}
+	.box2 .p2{font-size:24px;}
+	.box2 a{height: 40px; line-height: 40px; font-size: 14px;}
+}
+@media screen and (min-width:720px){
+	.head1 .back img{width: 30px;}
+	.head1 .share img{width: 30px;}
+	.head1 h2{font-size: 20px;line-height: 30px;}
+	.main1{margin-bottom:130px}
+	.main1 ul li span{font-size: 20px;}
+	.main1 ul li p{ font-size: 30px;}
+	.main1 ul li .p1{font-size:20px;}
+	.main1 ul li img{width: 100px; height:100px; border-radius:50px; margin-top: -10%;}
+	.main1 .xinxi .p2{font-size: 16px; }
+	.main1 .xinxi .p3{font-size: 20px; line-height: 40px;}
+	.main1 .ul1 span{font-size: 20px;}
+	.main1 .ul1 p{ font-size: 30px; }
+	.content{line-height: 50px;}
+	.content .cour span{font-size: 24px;}
+	.content .cour b{font-size: 30px;}
+	.content .time{font-size: 18px;}
+	footer{height: 80px;  line-height:80px;}
+	footer a{ font-size: 26px;}
+	.box ul li p{ font-size: 20px;}
+	.box .cancel{font-size:24px;}
+	.box2 .p1{font-size:35px; line-height:90px;}
+	.box2 .p2{font-size:60px;}
+	.box2 a{height: 80px; line-height: 80px; font-size: 30px;}
+}

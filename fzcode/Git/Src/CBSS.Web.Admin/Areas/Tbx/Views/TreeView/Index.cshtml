@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}   
+
+<script src="~/Assets/js/jquery-1.8.3.min.js"></script>
+<script src="~/Assets/bootstrap-table-develop/dist/bootstrap-table.js"></script>
+<script src="~/Assets/bootstrap-tree/bootbox.js"></script>
+<script src="~/Assets/bootstrap-tree/bootstrap-dropdowntree.js"></script>
+<script src="~/Assets/bootstrap-tree/bootstrap-treeview.js"></script>
+<div>
+    <div id="tree">
+    </div> 
+    <script>
+        $.ajax({
+            type: "Post",
+            url: "/Tbx/App/GetMarketClassifyTreeInfo",
+            dataType: "json",
+            success: function (result) {
+                alert(result);
+                $('#tree').treeview({
+                    data: result,
+                    showIcon: false,
+                    onNodeExpanded: function (event, node) {
+                    },
+                    onNodeSelected: function (event, node) {
+                        itemOnclick(node.tag);
+                    }
+                });
+            }
+        });
+        //layui.use('tree', function () {
+        //    var tree = layui.tree({
+        //        elem: '#demo', //指定元素，生成的树放到哪个元素上
+        //        check: 'checkbox', //勾选风格
+        //        skin: 'as', //设定皮肤
+        //        drag: true,//点击每一项时是否生成提示信息
+        //        checkboxName: 'aa[]',//复选框的name属性值
+        //        checkboxStyle: "",//设置复选框的样式，必须为字符串，css样式怎么写就怎么写
+        //        click: function (item) { //点击节点回调
+        //            console.log("item")
+        //        },
+        //        onchange: function () {//当当前input发生变化后所执行的回调
+        //            console.log(this);
+        //        },
+        //        nodes: [ //节点 
+        //            {
+        //                name: '我的邮箱',  
+        //                children: [
+        //                {
+        //                    name: 'QQ邮箱', 
+        //                    children: [{
+        //                        name: '收件箱',
+        //                        checked: false,
+        //                        checkboxValue: 5,
+        //                        children: [
+        //                        {
+        //                            name: '所有未读',
+        //                            checked: false,
+        //                            checkboxValue: 6,
+        //                            children: [{
+        //                                name: '一周未读',
+        //                                checked: false,
+        //                                checkboxValue: 6
+        //                            }]
+        //                        }, {
+        //                            name: '置顶邮件',
+        //                            checked: false,
+        //                            checkboxValue: 7
+        //                        }, {
+        //                            name: '标签邮件',
+        //                            checked: false,
+        //                            checkboxValue: 8
+        //                        }]
+        //                    }, {
+        //                        name: '已发出的邮件',
+        //                        checked: false,
+        //                        checkboxValue: 9
+        //                    }, {
+        //                        name: '垃圾邮件',
+        //                        checked: false,
+        //                        checkboxValue: 10
+        //                    }]
+        //                },
+        //                {
+        //                    name: '阿里云邮', 
+        //                    children: [{
+        //                        name: '收件箱',
+        //                        checked: true,
+        //                        checkboxValue: 12
+        //                    }, {
+        //                        name: '已发出的邮件',
+        //                        checked: true,
+        //                        checkboxValue: 13
+        //                    }, {
+        //                        name: '垃圾邮件',
+        //                        checked: true,
+        //                        checkboxValue: 14
+        //                    }]
+        //                }]
+        //            }
+        //        ]
+        //    });
+        //});
+    </script> 
+</div> 
+
+
+ 

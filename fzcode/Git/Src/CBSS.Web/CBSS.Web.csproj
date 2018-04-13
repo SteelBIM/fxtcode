@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E905FFE6-A1D5-48B2-81B7-8E8D4BC5F895}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.Web</RootNamespace>
+    <AssemblyName>CBSS.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\ControllerBase.cs" />
+    <Compile Include="Admin\CookieContext.cs" />
+    <Compile Include="Admin\IAuthCookie.cs" />
+    <Compile Include="Admin\PermissionAttribute.cs" />
+    <Compile Include="Admin\WebControl.cs" />
+    <Compile Include="API\APIData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Admin\ServiceContext.cs" />
+    <Compile Include="Admin\StaticFileHelper.cs" />
+    <Compile Include="Admin\UserContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Account.Contract\CBSS.Account.Contract.csproj">
+      <Project>{08cfb8ba-aa0e-42f5-b6bf-140c64e34377}</Project>
+      <Name>CBSS.Account.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Account.IBLL\CBSS.Account.IBLL.csproj">
+      <Project>{d75273f5-c24c-42ef-906d-3081cff23ff7}</Project>
+      <Name>CBSS.Account.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Cfgmanager.IBLL\CBSS.Cfgmanager.IBLL.csproj">
+      <Project>{AE486FBE-A1CC-412A-80C3-DAEB8350B863}</Project>
+      <Name>CBSS.Cfgmanager.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Cache\CBSS.Core.Cache.csproj">
+      <Project>{a155c5d8-fee0-415c-940a-26c94d61be9b}</Project>
+      <Name>CBSS.Core.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Log\CBSS.Core.Log.csproj">
+      <Project>{8ae51ee2-67db-4f57-98fe-cbb890c9a5a2}</Project>
+      <Name>CBSS.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Module\CBSS.Core.Module.csproj">
+      <Project>{cd06e340-b210-43f0-b963-d99d16073b79}</Project>
+      <Name>CBSS.Core.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Service\CBSS.Core.Service.csproj">
+      <Project>{812c05fd-2baa-4799-b0ab-2711781133ba}</Project>
+      <Name>CBSS.Core.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Upload\CBSS.Core.Upload.csproj">
+      <Project>{99d0022f-17d5-4dd5-b4d3-ba8fdc81f7af}</Project>
+      <Name>CBSS.Core.Upload</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9f519ef8-800f-40cb-9545-9aeadf0f387d}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Contract\CBSS.Framework.Contract.csproj">
+      <Project>{11214d97-f23c-4e16-aa12-ecd824454744}</Project>
+      <Name>CBSS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Framework.Web\CBSS.Framework.Web.csproj">
+      <Project>{aa76f90e-2594-44c8-89d6-302a0c8757ad}</Project>
+      <Name>CBSS.Framework.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.IBS.IBLL\CBSS.IBS.IBLL.csproj">
+      <Project>{78E08736-F39A-4C14-BF1F-4BB078048C10}</Project>
+      <Name>CBSS.IBS.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Resources.BLL\CBSS.Resources.BLL.csproj">
+      <Project>{6e824491-dc07-44f0-a8e1-5f3504ad5885}</Project>
+      <Name>CBSS.Resources.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Resources.IBLL\CBSS.Resources.IBLL.csproj">
+      <Project>{29893b70-4aca-449e-959f-602aa4ff6529}</Project>
+      <Name>CBSS.Resources.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Tbx.Contract\CBSS.Tbx.Contract.csproj">
+      <Project>{b5c93a51-4cbf-419c-a8b1-290b3f163b5e}</Project>
+      <Name>CBSS.Tbx.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Tbx.IBLL\CBSS.Tbx.IBLL.csproj">
+      <Project>{0AAA741A-86C9-4EF4-8627-572E17E5C816}</Project>
+      <Name>CBSS.Tbx.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.UserOrder.BLL\CBSS.UserOrder.BLL.csproj">
+      <Project>{52c52ced-c46e-4665-9208-7637476f428b}</Project>
+      <Name>CBSS.UserOrder.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.UserOrder.IBLL\CBSS.UserOrder.IBLL.csproj">
+      <Project>{e56af654-e414-44c1-a357-6e1168ee239f}</Project>
+      <Name>CBSS.UserOrder.IBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

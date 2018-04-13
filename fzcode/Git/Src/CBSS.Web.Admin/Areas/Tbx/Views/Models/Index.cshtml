@@ -1,0 +1,176 @@
+﻿@using CBSS.Web
+@using CBSS.Tbx.Contract.DataModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model  Model
+<style>
+    .row1 {
+        margin-left: 30px;
+    }
+
+        .row1 label {
+            margin-bottom: 0;
+            width: 150px;
+        }
+
+        .row1 .form-group {
+            margin-bottom: 15px;
+        }
+
+    .selectpicker {
+        width: 60%;
+    }
+</style>
+
+
+<div id="toolbar" class="input-group" style="float: left;margin-top: 0;margin-bottom: 0;">
+    @if (ViewBag.Add)
+    {
+        <button onclick="AddParent()" type="button" class="btn green"><span class="glyphicon glyphicon-export" aria-hidden="true"></span>新增顶级模型 <i class="icon-plus icon-white"></i></button>
+    }
+</div>
+<div class="panel-body" style="padding-bottom:0px;">
+    <table id="tb_model"></table>
+</div>
+
+<input type="hidden" id="GetModelJson" value="@Url.Action("GetModelJson")" />
+<input type="hidden" id="GetModelJsonPage" value="@Url.Action("GetModelJsonPage")" />
+<input type="hidden" id="getModel" value="@Url.Action("GetModelByModelID")" />
+<input type="hidden" id="delUrl" value="@Url.Action("GetDelModelByModelID")" />
+<input type="hidden" id="checkModelNameUrl" value="@Url.Action("CheckModelName")" /> 
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none; border:0px solid red; width:700px; height:520px;">
+    <div class="modal-dialog">
+        <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+            <form action="@Url.Action("Submit")" method="post" class="form-horizontal" role="form" id="formEdit" enctype="multipart/form-data">
+                <input type="hidden" name="ModelID" id="ModelID" />
+                <input type="hidden" name="ParentID" id="ParentID" />
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    新增模型
+                </div>
+                <div class="modal-body" style="height:450px;">
+                    <div class="row">
+                        <div class="control-group" id="parentModelDiv" style="display:none;">
+                            <label class="control-label">上级模型名称：</label>
+                            <div class="controls">
+                                <span>上级模型</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>模型名称：</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.ModelName, new { @class = "m-wrap small", @style = "min-width:205px;" })
+                                <span class="help-inline">@Html.ValidationMessageFor(m => m.ModelName)</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>老同步模型ID：</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.OldModelID, new { @class = "m-wrap small" })
+                                <span class="help-inline">@Html.ValidationMessageFor(m => m.OldModelID)</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>排序：</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Sort, new { @class = "m-wrap small" })
+                                <span class="help-inline">@Html.ValidationMessageFor(m => m.Sort)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><span class="required">*</span>模型功能：</label>
+                            <div class="controls">
+                                @*@Html.DropDownList("FunctionID")*@
+                                @*评测<input type="checkbox" value="1" @(Model.FunctionID == 1 ? "checked='checked'" : string.Empty) />
+                                    跟读<input type="checkbox" value="2" @(Model.FunctionID == 2 ? "checked='checked'" : string.Empty) />*@
+                                @Html.DropDownList("FunctionID", null, new { @class = "selectpicker show-tick form-control", multiple = "multiple" }) (可多选)
+                                @*<select id="usertype" name="usertype" class="selectpicker show-tick form-control" multiple data-live-search="true">
+                                        <option value="0">苹果</option>
+                                            <option value="1">菠萝</option>
+                                            <option value="2">香蕉</option>
+                                            <option value="3">火龙果</option>
+                                            <option value="4">梨子</option>
+                                            <option value="5">草莓</option>
+                                            <option value="6">哈密瓜</option>
+                                            <option value="7">椰子</option>
+                                            <option value="8">猕猴桃</option>
+                                            <option value="9">桃子</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">资源模板：</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.ResourceTemplate, new { @class = "m-wrap small" })
+                                <input type="file" accept=".xls,.xlsx" id="ResourceTemplate" name="ResourceTemplate" style="border:0px solid red;  " onchange="$('#ResourceTemplate').val($(this).val())" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">模型资源分类：</label>
+                            <div class="controls">
+                                @Html.DropDownList("ModelType")
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">模型分类：</label>
+                            <div class="controls">
+                                @Html.DropDownList("ModelSourceType")
+                            </div>
+                        </div>
+                        <div class="control-group" id="H5UrlDiv" style="display:none">
+                            <label class="control-label"><span class="required">*</span>H5链接地址：</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.H5Url, new { @class = "m-wrap small" })
+                                <span class="help-inline">@Html.ValidationMessageFor(m => m.H5Url)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">是否启用：</label>
+                            <div class="controls">
+                                <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">@Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })启用</label>
+                                <label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">@Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })禁用</label>
+                               <input type="hidden"  value="0" id="ModelStatus" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="submitForm()" class="btn btn-primary" id="btn_editSave">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Assets/bootstrap-select/bootstrap-select.min.css?v=1.1" rel="stylesheet" />
+    <script src="~/Assets/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="~/Assets/pages/Model.js?v=1.4"></script>
+    <script>
+        $(function () {
+            var add = '@ViewBag.Add';
+            var edit = '@ViewBag.Edit';
+            var del = '@ViewBag.Del';
+            var down = '@ViewBag.Down';
+            var Model_ImgLibrary = '@ViewBag.Model_ImgLibrary';
+            oTableInit.Init(add, edit, del, down, Model_ImgLibrary);
+            $("#start").click(function () {
+                $("#ModelStatus").val(0);
+            });
+            $("#forbidden").click(function () {
+                $("#ModelStatus").val(2);
+            });
+        });
+        $(window).on('load', function () {
+            $('#FunctionID').selectpicker({
+                'selectedText': 'cat'
+            });
+        });
+    </script>
+
+}

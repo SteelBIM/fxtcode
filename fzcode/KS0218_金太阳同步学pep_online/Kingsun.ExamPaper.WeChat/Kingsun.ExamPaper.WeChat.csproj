@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78334B76-C770-4367-93AC-1268ABC7900A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.ExamPaper.WeChat</RootNamespace>
+    <AssemblyName>Kingsun.ExamPaper.WeChat</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNetPager">
+      <HintPath>..\DLL\AspNetPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingsun.DB">
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingsun.ExamPaper.Common">
+      <HintPath>..\Kingsun.ExamPaper.Common\bin\Debug\Kingsun.ExamPaper.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingsun.ExamPaper.DAL">
+      <HintPath>..\Kingsun.ExamPaper.DAL\bin\Debug\Kingsun.ExamPaper.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingsun.ExamPaper.Model">
+      <HintPath>..\Kingsun.ExamPaper.Model\bin\Debug\Kingsun.ExamPaper.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassManagement\ClassList.aspx" />
+    <Content Include="ClassManagement\CreateClass.aspx" />
+    <Content Include="ClassManagement\joinClass.aspx" />
+    <Content Include="ClassManagement\Members.aspx" />
+    <Content Include="ClassManagement\PerfectData.aspx" />
+    <Content Include="ClassManagement\SelectRole.aspx" />
+    <Content Include="ClassManagement\SelectSchool.aspx" />
+    <Content Include="ClassManagement\SignIn.aspx" />
+    <Content Include="ClassManagement\data.aspx" />
+    <Content Include="error.html" />
+    <Content Include="html\OfficialAccounts\classlist.html" />
+    <Content Include="html\OfficialAccounts\creationclas.html" />
+    <Content Include="Css\OfficialAccounts\dialogwin.css" />
+    <Content Include="Css\OfficialAccounts\OfficialAccounts.css" />
+    <Content Include="Css\OfficialAccounts\seleschool.css" />
+    <Content Include="Images\OfficialAccounts\068.png" />
+    <Content Include="Images\OfficialAccounts\A.png" />
+    <Content Include="Images\OfficialAccounts\B.png" />
+    <Content Include="Images\OfficialAccounts\C.png" />
+    <Content Include="Images\OfficialAccounts\close.png" />
+    <Content Include="Images\OfficialAccounts\close1.png" />
+    <Content Include="Images\OfficialAccounts\code.png" />
+    <Content Include="Images\OfficialAccounts\dian.png" />
+    <Content Include="Images\OfficialAccounts\logo.png" />
+    <Content Include="Images\OfficialAccounts\search.png" />
+    <Content Include="Images\OfficialAccounts\zhi.png" />
+    <Content Include="html\OfficialAccounts\information.html" />
+    <Content Include="Images\report\pasue.png" />
+    <Content Include="Images\report\video01.mp3" />
+    <Content Include="Images\report\video02.mp3" />
+    <Content Include="Js\CommonDB.js" />
+    <Content Include="Js\holmes.js" />
+    <Content Include="Js\jquery-1.10.2.min.js" />
+    <Content Include="Js\jquery.charfirst.pinyin.js" />
+    <Content Include="Js\LArea.js" />
+    <Content Include="Js\microlight.js" />
+    <Content Include="Js\mobile.js" />
+    <Content Include="Js\OfficialAccounts\ClassList.js" />
+    <Content Include="Js\OfficialAccounts\CreateClass.js" />
+    <Content Include="Js\OfficialAccounts\Members.js" />
+    <Content Include="Js\OfficialAccounts\OfficialAccounts.js" />
+    <Content Include="Js\OfficialAccounts\PerfectData.js" />
+    <Content Include="Js\OfficialAccounts\SelectSchoolInit.js" />
+    <Content Include="Js\OfficialAccounts\SignIn.js" />
+    <Content Include="Js\report\ClassList.js" />
+    <Content Include="Js\report\ClassMent.js" />
+    <Content Include="Js\report\SignIn.js" />
+    <Content Include="Js\report\Volume.js" />
+    <Content Include="Js\sort.js" />
+    <Content Include="Js\studentpro\joinClass.js" />
+    <Content Include="Js\testDb.js" />
+    <Content Include="html\OfficialAccounts\load.html" />
+    <Content Include="html\OfficialAccounts\members.html" />
+    <Content Include="html\OfficialAccounts\selschoolone.html" />
+    <Content Include="html\OfficialAccounts\selschooltwo.html" />
+    <Content Include="html\report\classlist.html" />
+    <Content Include="html\report\classment.html" />
+    <Content Include="Css\report\report.css" />
+    <Content Include="Images\report\newly.png" />
+    <Content Include="Images\report\play.png" />
+    <Content Include="Images\report\tou.png" />
+    <Content Include="Images\report\xiala.png" />
+    <Content Include="Js\report\report.js" />
+    <Content Include="html\report\record.html" />
+    <Content Include="html\report\speecheval.html" />
+    <Content Include="html\report\volume.html" />
+    <Content Include="Css\studentpro\studentpro.css" />
+    <Content Include="Images\studentpro\code.png" />
+    <Content Include="Images\studentpro\footer.png" />
+    <Content Include="Images\studentpro\phone.png" />
+    <Content Include="Images\studentpro\plan.png" />
+    <Content Include="Images\studentpro\plan1.png" />
+    <Content Include="Images\studentpro\star.png" />
+    <Content Include="html\studentpro\joinclass.html" />
+    <Content Include="Js\studentpro\studentpro.js" />
+    <Content Include="MP_verify_TPnu2TrF6ZFfcBzl.txt" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="StudyReport\ClassList.aspx" />
+    <Content Include="StudyReport\ClassMent.aspx" />
+    <Content Include="StudyReport\RecordList.aspx" />
+    <Content Include="StudyReport\SignIn.aspx" />
+    <Content Include="StudyReport\SpeechEval.aspx" />
+    <Content Include="StudyReport\VoiceTest.aspx" />
+    <Content Include="StudyReport\Volume.aspx" />
+    <Content Include="Web References\FZUUMS_UserService\AppSystem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\FZUUMS_UserService.wsdl" />
+    <Content Include="Web References\FZUUMS_UserService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\ReturnInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\Tb_UserBindPhone.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\Tb_UserEdition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\Tb_UserSubject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\uumsUserState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FZUUMS_UserService\V_GroupPower.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\RelationService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RelationService\RelationService.disco" />
+    <Content Include="Web References\FZUUMS_UserService\FZUUMS_UserService.disco" />
+    <Content Include="Web References\SMSService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\SMSService\SMSService.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="api\BasicApi.cs" />
+    <Compile Include="api\CreateMenu.cs" />
+    <Compile Include="api\Oauth2.cs" />
+    <Compile Include="api\PhoneManage.cs" />
+    <Compile Include="api\QrCodeApi.cs" />
+    <Compile Include="api\ResponseMessage.cs" />
+    <Compile Include="api\Utils.cs" />
+    <Compile Include="ClassManagement\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\CreateClass.aspx.cs">
+      <DependentUpon>CreateClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\CreateClass.aspx.designer.cs">
+      <DependentUpon>CreateClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\joinClass.aspx.cs">
+      <DependentUpon>joinClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\joinClass.aspx.designer.cs">
+      <DependentUpon>joinClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Members.aspx.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\Members.aspx.designer.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\PerfectData.aspx.cs">
+      <DependentUpon>PerfectData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\PerfectData.aspx.designer.cs">
+      <DependentUpon>PerfectData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\SelectRole.aspx.cs">
+      <DependentUpon>SelectRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\SelectRole.aspx.designer.cs">
+      <DependentUpon>SelectRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\SelectSchool.aspx.cs">
+      <DependentUpon>SelectSchool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\SelectSchool.aspx.designer.cs">
+      <DependentUpon>SelectSchool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\data.aspx.cs">
+      <DependentUpon>data.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\data.aspx.designer.cs">
+      <DependentUpon>data.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\WeChatHandler.ashx.cs">
+      <DependentUpon>WeChatHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommonMethod.cs" />
+    <Compile Include="Models\WxXmlModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudyReport\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudyReport\ClassMent.aspx.cs">
+      <DependentUpon>ClassMent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\RecordList.aspx.cs">
+      <DependentUpon>RecordList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\RecordList.aspx.designer.cs">
+      <DependentUpon>RecordList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudyReport\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudyReport\SpeechEval.aspx.cs">
+      <DependentUpon>SpeechEval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\SpeechEval.aspx.designer.cs">
+      <DependentUpon>SpeechEval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudyReport\VoiceTest.aspx.cs">
+      <DependentUpon>VoiceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\VoiceTest.aspx.designer.cs">
+      <DependentUpon>VoiceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudyReport\Volume.aspx.cs">
+      <DependentUpon>Volume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudyReport\Volume.aspx.designer.cs">
+      <DependentUpon>Volume.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\FZUUMS_UserService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SMSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WeChatValidate.ashx.cs">
+      <DependentUpon>WeChatValidate.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RelationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Handler\WeChatHandler.ashx" />
+    <None Include="Properties\PublishProfiles\ExWechat.pubxml" />
+    <None Include="Web References\RelationService\RelationService.wsdl" />
+    <None Include="Web References\RelationService\RelationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RelationService\RelationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\RelationService\ReturnInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RelationService\tb_Class.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RelationService\tb_Relation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RelationService\tb_UserClass.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RelationService\Tb_UserTelInviTation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RelationService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\SMSService\SMSService.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="WeChatValidate.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://183.47.42.221:8026/RelationService/RelationService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RelationService\</RelPath>
+      <UpdateFromURL>http://183.47.42.221:8026/RelationService/RelationService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Kingsun_ExamPaper_WeChat_RelationService_RelationService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://183.47.42.221:8026/UserService/FZUUMS_UserService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FZUUMS_UserService\</RelPath>
+      <UpdateFromURL>http://183.47.42.221:8026/UserService/FZUUMS_UserService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Kingsun_ExamPaper_WeChat_FZUUMS_UserService_FZUUMS_UserService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://sms.kingsun.cn/service/SMSService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SMSService\</RelPath>
+      <UpdateFromURL>http://sms.kingsun.cn/service/SMSService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Kingsun_ExamPaper_WeChat_SMSService_SMSService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kingsun.ExamPaper.BLL\Kingsun.ExamPaper.BLL.csproj">
+      <Project>{09433796-0891-4005-ac0c-5b3752b45e7d}</Project>
+      <Name>Kingsun.ExamPaper.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.ExamPaper.BLL\Kingsun.ExamPaper.BLL.csproj">
+      <Project>{09433796-0891-4005-ac0c-5b3752b45e7d}</Project>
+      <Name>Kingsun.ExamPaper.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>25181</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44952/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

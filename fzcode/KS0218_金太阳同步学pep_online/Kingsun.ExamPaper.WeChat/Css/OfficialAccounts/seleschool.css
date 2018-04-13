@@ -1,0 +1,127 @@
+html,body,div,ul,li,ol,a,input,textarea,p,dl,dt,dd{margin:0;padding:0;}
+ul li{list-style: none;}
+a{text-decoration: none;cursor: pointer;}
+html{height: 100%;}
+body{height: 100%;background: #EBF2F5;position: relative;font-family: '微软雅黑';margin:auto;}
+a,input,img,textarea,span,div{outline: 0;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+header{
+    width:100%;
+    height: 45px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+header.fixed{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+}
+.header{
+    margin:0 30px;
+    font-size: 16px;
+    height: 33px;
+    line-height: 33px;
+    position: relative;
+	margin-top:5px;
+	border:1px solid #999;
+	border-radius:20px;
+}
+.header a{ margin-left:15px;}
+.header a img{ width:20px; margin-top:-5px; vertical-align:middle;}
+.header  input{ border:0; height:25px; line-height:25px; margin-left:10px; width:75%;}
+#letter{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    font-size: 75px;
+    color: #555;
+    text-align: center;
+    line-height: 100px;
+    background: rgba(145,145,145,0.6);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin:-50px 0px 0px -50px;
+    z-index: 99;
+    display: none;
+}
+#letter img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin:25px 0px 0px 25px;
+}
+.sort_box{
+    width: 100%;
+    
+    overflow: hidden;
+}
+.sort_box1{
+	margin-top:45px;
+}
+.sort_list{
+	background-color:#fff;
+	color:#000;
+    padding-left:20px;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    border-bottom:1px solid #ddd;
+}
+.sort_list:hover{
+	background-color:#E6ECF0;
+	color:#fff;	
+}
+
+.sort_list .num_logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+.sort_list .num_logo img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.sort_letter{
+	background-color:#EBF2F5;
+	font-weight:400;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    color:#9B9B9B;
+    font-size: 16px;
+    
+}
+.initials{
+    position: fixed;
+    top: 45px;
+    right: 0px;
+    height: 100%;
+    width: 15px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 12px;
+    z-index: 99;
+	color:#5D6C74;
+    background: rgba(145,145,145,0);
+}
+.initials li img{
+    width: 14px;
+}
+.hidden {
+  display: none;
+}
+.num_name {
+    display: block;
+	color:#5D6C74;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+}

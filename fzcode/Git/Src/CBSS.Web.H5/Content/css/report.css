@@ -1,0 +1,47 @@
+﻿@charset "UTF-8";
+body,html{font-family:"微软雅黑"; background-color: #EFEFF4;}
+/*作品详情样式*/
+.head1{position:relative;}
+.head1 img{width: 100%;}
+.head1 h2{font-size: 18px; font-weight:normal; position:absolute; width: 100%; 
+bottom:35%; text-align: center; color: #fff;}
+.head1 h2 span{font-size: 50px;}
+.head1 p{font-size: 12px; position:absolute; width: 100%;bottom:7%;
+ text-align: center; color: #fff; letter-spacing: 2px;}
+
+/*跟读句子样式*/
+ .main1{padding: 20px 10px;}
+ .main1 .section1 .sen_list{background-color: #fff; border-radius: 5px;
+ 	margin-bottom: 10px; padding: 8% 10px; overflow: hidden; position: relative;}
+ .main1 .section1 .sen_list a{display: block;}
+ .main1 .section1 .sen_list .img_bo{width: 8%; position: absolute; top:50%; margin-top: -4%;}
+ .main1 .section1 .sen_list p{font-size: 17px; color: #5B5656; padding: 0 14% 0 12%; line-height: 24px;}
+ .main1 .section1 .sen_list .img_yu{width: 14%; position: absolute; right:10px; top:50%; margin-top: -2%;}
+
+ /*跟读课文样式*/
+ /*.main2{margin: 20px 10px;background-color: #fff; border-radius: 5px;}*/
+ .main1 .section2 .text_list{background-color: #fff; border-radius: 5px;
+ 	margin-bottom: 10px;  overflow: hidden; position: relative;}
+ .main1 .section2 .text_list .text_title{padding: 8% 10px;  position: relative;}
+ .main1 .section2 .text_list .text_title a{display: block;}
+ .main1 .section2 .text_list .text_title .img_bo{width: 8%; position: absolute; top:50%;}
+ .main1 .section2 .text_list .text_title h2{text-align: center; font-size: 20px; color: #5B5656; padding: 0 14% 0 12%; line-height: 28px;}
+ .main1 .section2 .text_list .text_title .img_yu{width: 14%; position: absolute; right:10px; top:50%;}
+ .main1 .section2 .text_list p{font-size: 17px; line-height: 24px; color: #5B5656; width: 90%; margin-left: 5%; padding-bottom: 20px;}
+
+@media screen and (min-width:480px)and(max-width:600px){
+	.head1 h2{font-size: 25px;}
+	.head1 h2 span{font-size: 60px;}
+	.head1 p{font-size: 18px;}
+	.main1 .section1 .sen_list p{font-size: 25px;}
+	.main1 .section2 .text_list .text_title h2{font-size: 20px;}
+	.main1 .section2 .text_list p{font-size: 25px;}
+}
+@media screen and (min-width:600px){
+	.head1 h2{font-size: 30px;}
+	.head1 h2 span{font-size: 70px;}
+	.head1 p{font-size: 20px;}
+	.main1 .section1 .sen_list p{font-size: 30px; line-height: 40px;}
+	.main1 .section2 .text_list .text_title h2{font-size: 30px;}
+	.main1 .section2 .text_list p{font-size: 30px; line-height: 40px;}
+}

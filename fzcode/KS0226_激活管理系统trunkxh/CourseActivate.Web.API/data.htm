@@ -1,0 +1,575 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Language" content="utf-8" />
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+
+        .maintable {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+
+            .maintable th {
+                background: #069;
+                color: #fff;
+                line-height: 30px;
+                font-size: 14px;
+            }
+
+                .maintable th a {
+                    width: 100%;
+                    display: block;
+                    color: #fff;
+                    font-weight: normal;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .maintable td {
+                background: #fff;
+                line-height: 20px;
+            }
+
+                .maintable td.left {
+                    width: 220px;
+                    background: #f9f9f9;
+                }
+
+        .tbparams {
+            background: #ccc;
+            width: 100%;
+        }
+
+            .tbparams th {
+                background: #eee;
+                color: #000;
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .tbparams td {
+                background: #fff;
+                padding: 3px;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+            ul.params, div.content {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+
+                ul.params li {
+                    border-bottom: 1px solid #ccc;
+                    line-height: 25px;
+                    margin: 1px;
+                }
+
+            ul.index li {
+                padding: 10px;
+                line-height: 25px;
+                color: #069;
+            }
+
+        div.content {
+            padding: 5px;
+        }
+
+        #apilist {
+            margin: 5px;
+        }
+
+            #apilist li {
+                cursor: default;
+                padding: 3px;
+            }
+
+                #apilist li.over {
+                    background: #ccc;
+                }
+
+                #apilist li.active {
+                    background: #069;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+        #apicontent {
+            margin: 5px;
+        }
+
+            #apicontent li {
+                cursor: default;
+                word-break: break-all;
+            }
+
+                #apicontent li strong {
+                    display: block;
+                    background: #eee;
+                    line-height: 25px;
+                    text-indent: 10px;
+                    border-left: 8px solid #ccc;
+                }
+
+        ul.ulapi li {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+
+        #apicontent li.desc {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+
+        #apicontent span.mobile {
+            color: #c00;
+        }
+
+        #apicontent li.step {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        font.red {
+            color: #c00;
+        }
+
+        font.memo {
+            color: #063;
+        }
+
+        #apicontent li label {
+            display: inline-block;
+            width: 130px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="js/jquery-1.8.2-min.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script src="js/date.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var RootRul = top.location.href;
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = []
+
+        //api
+        var api = [            
+            /************************************************分割线************************************************/
+            {
+                name: "通过激活码获取课程信息", url: "~/CourseActivateAPI//dc/active",
+                hover: true,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{courseActivatemodelkey.toJsonString()}",
+                params: [
+                    { name: "Key", value: "string", desc: "服务器Rsa秘钥", must: true },
+                    { name: "FunName", value: "string", desc: "执行的方法", must: true },
+                    { name: "Info", value: "json", desc: "客户端加密信息", must: true },
+                    { name: "RTime", value: "string", desc: "请求接口时间，如：2017-08-08 18:08:08", must: true },
+                    { name: "Channel", value: "string", desc: "渠道id,0表示同步学，1表示客户端", must: true },
+                    { name: "Code", value: "string", desc: "激活码", must: true },
+                    { name: "DeviceType", value: "int32", desc: "设备类型", must: true },
+                    { name: "isios", value: "int32", desc: "是否ios,0为安卓,1为ios", must: true },
+                    { name: "DeviceCode", value: "string", desc: "设备号", must: true } ,
+                    { name: "PKey", value: "string", desc: "加密秘钥", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "ErrorCode": "",
+                    "ErrorMsg": "",
+                    "data": {
+                        "Key": "1212121",
+                        "Info": {
+                            "BookID": 1,
+                            "BookName": "英语（牛津上海版）（试用本）（六／一）",
+                            "BookCover": "http://mp3.bookmall.com.cn/data/attachement/piclinks/site27/20160627/1467013616152.jpg",
+                            "PeriodName": "小学",
+                            "GradeName": "二年级",
+                            "ReelName": "上册",
+                            "SubjectName": "语文",
+                            "EditionName": "人教版",
+                            "PublishidName": "上海教育出版社",
+                            "EPlate": "978-7-5444-0760-1",
+                            "Modulars": [
+                                {
+                                    "ModularID": 5,
+                                    "ModularName": "点读",
+                                    "ResUrl": "http://183.47.42.221:8071/Upload/BookResource/9b8c53a4c80e0ffd74d639f8dd0a3b71/2017071502.zip",
+                                    "ResMD5": "8D3B6682A9DD876D678BD83CF427D702",
+                                    "ResVersion": "V1.0.0",
+                                    "ResKey": "kingsoft"
+                                }
+                            ],
+                            "Catalogs": [
+                                {
+                                    "CatalogID": 385,
+                                    "CatalogName": "Unit 1 How can I get there?",
+                                    "CatalogLevel": 1,
+                                    "PageNoStart": 1,
+                                    "PageNoEnd": 2,
+                                    "ParentID": 0,
+                                    "Sort": 2
+                                },
+                                {
+                                    "CatalogID": 386,
+                                    "CatalogName": "Part A（1） Let's try  Let's talk",
+                                    "CatalogLevel": 1,
+                                    "PageNoStart": 3,
+                                    "PageNoEnd": 5,
+                                    "ParentID": 385,
+                                    "Sort": 3
+                                }
+                            ],
+                            "DeviceCount": 1,
+                            "TotalDeviceCount": 3,
+                            "Months": 1200,
+                            "DeviceActivateDate": "2017-07-17"
+                        }
+                    }
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "ErrorCode", value: "int32", desc: "错误编号", must: false },
+                    { name: "ErrorMsg", value: "string", desc: "错误信息", must: false },
+                    { name: "Data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Key", value: "int32", desc: "服务器Rsa秘钥", must: true },
+                    { name: "Info", value: "json", desc: "返回客户端加密信息", must: true },
+                    { name: "DeviceCount", value: "int32", desc: "已激活设备数", must: true },
+                    { name: "TotalDeviceCount", value: "int32", desc: "可用设备数", must: true },
+                    { name: "Months", value: "int32", desc: "激活码使用时长", must: true },
+                    { name: "DeviceActivateDate", value: "string", desc: "当前设备激活时间", must: true }                    
+                ],
+                demo: {
+                    "Key": "23423423423423423",
+                    "Info": "dfasdfasfewfvfggolkjhfmgtrb bh fgdgdfgd",
+                    "FunName":"GetCourseByActivateCode"
+                }
+            } ,
+            /************************************************分割线************************************************/
+            {
+                name: "通过模块编号获取资源信息", url: "~/CourseActivateAPI//dc/active",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{courseActivatemodelkey.toJsonString()}",
+                params: [
+                    { name: "Key", value: "string", desc: "服务器Rsa秘钥", must: true },
+                    { name: "FunName", value: "string", desc: "执行的方法", must: true },
+                    { name: "Info", value: "json", desc: "客户端加密信息</n>Info格式{ \"ModularID\": 123123123,\"RTime\":\"1316545\"}", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "CourseID", value: "string", desc: "课程编号", must: true },
+                    { name: "RTime", value: "string", desc: "请求接口时间，如：2017-08-08 18:08:08", must: true },
+                    { name: "PKey", value: "string", desc: "加密秘钥", must: true }
+                ],
+                output: { "Success": true, "data": {}, "Message": null },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "ErrorCode", value: "int32", desc: "错误编号", must: false },
+                    { name: "ErrorMsg", value: "string", desc: "错误信息", must: false },
+                    { name: "Data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Key", value: "int32", desc: "服务器Rsa秘钥", must: true },
+                    { name: "Info", value: "json", desc: "返回客户端加密信息", must: true }
+                ],
+                demo: {
+                    "Key": "23423423423423423",
+                    "Info": "dfasdfasfewfvfggolkjhfmgtrb bh fgdgdfgd",
+                    "FunName": "GetResourceByModularID"
+                }
+            },
+            /************************************************分割线************************************************/
+            {
+                name: "通过激活码获取课程信息(不记录激活码，只返回课程信息)", url: "~/CourseActivateAPI//dc/active",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{courseActivatemodelkey.toJsonString()}",
+                params: [
+                    { name: "Key", value: "string", desc: "服务器Rsa秘钥", must: true },
+                    { name: "FunName", value: "string", desc: "执行的方法", must: true },
+                    { name: "Info", value: "json", desc: "客户端加密信息</n>Info格式{ \"ModularID\": 123123123,\"RTime\":\"1316545\"}", must: true },
+                    { name: "Code", value: "string", desc: "激活码", must: true },
+                    { name: "RTime", value: "string", desc: "请求接口时间，如：2017-08-08 18:08:08", must: true },
+                    { name: "PKey", value: "string", desc: "加密秘钥", must: true }
+                ],
+                output: { "Success": true, "data": {}, "Message": null },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "ErrorCode", value: "int32", desc: "错误编号", must: false },
+                    { name: "ErrorMsg", value: "string", desc: "错误信息", must: false },
+                    { name: "Data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Key", value: "int32", desc: "服务器Rsa秘钥", must: true },
+                    { name: "Info", value: "json", desc: "返回客户端加密信息", must: true },
+                    { name: "Remark", value: "string", desc: "激活备注说明", must: true }
+                ],
+                demo: {
+                    "Key": "23423423423423423",
+                    "Info": "dfasdfasfewfvfggolkjhfmgtrb bh fgdgdfgd",
+                    "FunName": "GetCourseInfoByActivateCode"
+                }
+            },
+            /************************************************分割线************************************************/
+            {
+                name: "通过AppID获取App最新版本信息", url: "~/CourseActivateAPI//dc/active",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{courseActivatemodelkey.toJsonString()}",
+                params: [
+                      { name: "Key", value: "string", desc: "服务器Rsa秘钥", must: true },
+                    { name: "FunName", value: "string", desc: "执行的方法", must: true },
+                    { name: "Info", value: "json", desc: "客户端加密信息</n>Info格式{ \"ModularID\": 123123123,\"RTime\":\"1316545\"}", must: true },
+                    { name: "AppID", value: "guid", desc: "应用编号", must: true },
+                    { name: "RTime", value: "string", desc: "请求接口时间，如：2017-08-08 18:08:08", must: true },
+                    { name: "PKey", value: "string", desc: "加密秘钥", must: true }
+                ],
+                output: { "Data": "{\"Key\":\"bb1X5kLIseXlfLUyRRnn3VpGTMIFKWTHKYphubq5KoTcBlvDTi0ACe3TR9Bg9rdNyUs11h7x\/CtXmdrLFOuiEsrXp4w7ltd284fbqv+zKhwEHiDinkskNDqdZ4uHaW9r30l8Xxhy+e6L07s\/MiFfsWpHnGN6BgDKksgjlyzHrAg=\",\"Info\":\"0Ggjgx0etCg0yUT32JhgDn3VpMMhjXcikkSG4itLzrW51AfQOKfHAcEXPietbs1MElZagoGR5LmHVBEnenrn3ZRPYx\/TCAVmNxBhuPjo4CymfSxmVehULWwFev3mNbCMh6\/M1mUQhDLKVStFSbmCCT3JDjRdc\/PJI4sgw1nwIpeQwyaNfnJWWckrvS4i+8mLgIebOvQKu77JD2PFXbkG5jTL7TzsBbtr\"}", "ErrorCode": 0, "ErrorMsg": null, "RequestID": null, "Success": true },
+                outexplain: [
+                     { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "ErrorCode", value: "int32", desc: "错误编号", must: false },
+                    { name: "ErrorMsg", value: "string", desc: "错误信息", must: false },
+                    { name: "Data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Key", value: "int32", desc: "服务器Rsa秘钥", must: true },
+                    { name: "Info", value: "json", desc: "返回客户端加密信息", must: true },
+                    { name: "Version", value: "bool", desc: "版本编号", must: false },
+                    { name: "Url", value: "int32", desc: "下载地址", must: false },
+                    { name: "MD5", value: "string", desc: "MD5校验码", must: false },
+                    { name: "isForce", value: "int32", desc: "是否强制更新", must: false },
+                    { name: "SourceIP", value: "string", desc: "资源包IP地址", must: false }
+                ],
+                demo: {
+                    "FunName": "GetAppVersionInfo",
+                    "Info": "XKNQZz9iU0DUzQpY27nvPajtJlolXciRpjbnsN/1bXiCpdKaxhFVtf5iqp4Osn8LRGE9AsoXtiWEB3ORKLt4I1yfAj9L4nBF2CNJ2JDVtVRFR61zfNcccq7c6tIYIuqEE7xJYbgZjxV+Te96M/voBBICFezzxj+ZbeukN8z0HHNSBR9NlKmy5okjimd17hmaUlWZXWbA4lvY27eN8EnXQEIH9Okgmka9jN7LkQxUUwyL1EQLHdQDoQ3W5MV87jgQQwSwLorqK2IeB4+tMqQ9S1FCRiORpFMGOFnljoVDIZNBhZ6HlLOBJDjeQ6y6rSimabYRo19N0UQMy/iHHxo646P1OdIVdWeddZfacOK0q+c5Lo2A1NUSZB3/AcOnm5lM38FPBP6YOQIWzfzI7UPfNfqvZFhWXQ+jGhBLrmTkE50=",
+                    "Key": "Fs+svbVrlLBfuLpfR13sxSk+bhQeP97XNysekjZmdyeJl1InmghLd+j7Q72epdIfdzmKKcbQxyRPV3mrdxM1wt/zeIS2fpvTnkN53F3jqWfkc3zw7g3F4w5G4fkQzKcQLW8l3I3Gvh5jzjKhiSS5V/c1pqMs7G68fkbuuDyFxHA="
+                }
+            },
+            /************************************************分割线************************************************/
+            {
+                name: "记录错误日志", url: "~/CourseActivateAPI//dc/active",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{useripInfo.toJsonString()}",
+                params: [
+                    { name: "Key", value: "string", desc: "服务器Rsa秘钥", must: true },
+                    { name: "FunName", value: "string", desc: "执行的方法", must: true },
+                    { name: "Info", value: "json", desc: "客户端加密信息</n>Info格式{ \"ModularID\": 123123123,\"RTime\":\"1316545\"}", must: true },
+                    { name: "IP", value: "string", desc: "用户IP", must: true },
+                    { name: "type", value: "int32", desc: "日志类型：1 资源链接访问不了 2 资源信息有误", must: true },
+                    { name: "RTime", value: "string", desc: "请求接口时间，如：2017-08-08 18:08:08", must: true },
+                    { name: "PKey", value: "string", desc: "加密秘钥", must: true }
+                ],
+                output: { "Success": true, "data": {}, "Message": null },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "ErrorCode", value: "int32", desc: "错误编号", must: false },
+                    { name: "ErrorMsg", value: "string", desc: "错误信息", must: false },
+                    { name: "Data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Key", value: "int32", desc: "服务器Rsa秘钥", must: true },
+                    { name: "Info", value: "json", desc: "返回客户端加密信息", must: true }
+                ],
+                demo: {
+                    "Key": "23423423423423423",
+                    "Info": "dfasdfasfewfvfggolkjhfmgtrb bh fgdgdfgd",
+                    "FunName": "SaveErrorLog"
+                }
+            }
+
+
+
+        ];
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+                if (item.hover) { loaddata(li); li.addClass("active"); }
+            });
+            $("#apilist li").click(function () {
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                loaddata(this);
+            }).mouseenter(function () { $(this).addClass("over"); })
+                .mouseout(function () { $(this).removeClass("over"); });
+        });
+        function loaddata(args) {
+            var html = [];
+            var item = $(args).data("data");
+            html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+            html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+            html.push('<li><strong>支持格式</strong></li><li class="desc">' + item.format + '</li>');
+            html.push('<li><strong>HTTP请求方式</strong></li><li class="desc">' + item.method + '</li>');
+            html.push('<li><strong style="color: red;">注意事项</strong></li><li class="desc">' + item.remark + '</li>');
+            html.push('<li><strong>请求参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            var params = [], explain = [];
+            function addparam(p) {
+                if (p.value == "json") {
+                    params.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            //if (item.name.indexOf("登录") < 0) {
+            $.each(mustparams, function (i, p) {
+                addparam(p);
+            });
+            //}
+            $.each(item.params, function (i, p) {
+                addparam(p);
+            });
+            function addexplain(p) {
+                if (p.value == "json") {
+                    explain.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    explain.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            $.each(item.outexplain, function (i, p) {
+                addexplain(p);
+            });
+            html.push('<li><strong>请求参数说明</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+            html.push('<li><strong>返回结果</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            html.push('<li><strong>返回参数说明</strong></li><li class="desc"><ul class="params">' + explain.join("") + '</ul></li>');
+
+            $("#apicontent").html(html.join(""));
+        }
+    </script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <th colspan="2">
+                <a style="font-weight: bold; font-size: 16px;" href="http://api.fxtcn.com/wdc/data.htm">一城书集统一系统API接口文档说明 V1.0</a>
+            </th>
+        </tr>
+        <tr>
+            <td valign="top" class="left">
+                <ul id="apilist"></ul>
+            </td>
+            <td valign="top">
+                <ul class="index">
+                    <li>本说明用于协助和指导相关开发人员熟悉和使用一城书集统一系统Api。点击左侧功能名称查看详细说明。<br />
+                        <span style="color: red;">本API文档兼容浏览器：IE9、火狐、谷歌</span>
+                    </li>
+                </ul>
+                <ul id="apicontent"></ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

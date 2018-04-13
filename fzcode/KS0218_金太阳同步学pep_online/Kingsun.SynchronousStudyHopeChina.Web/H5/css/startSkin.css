@@ -1,0 +1,17 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{width:100%;height:100%;background:url(../images/backg54.jpg) no-repeat top center;background-size:cover;}
+.skell{width:92%;margin:0 auto;max-width:750px;height:100%;position:relative;}
+.header{width:100%;height:40px;margin-top:15px;}
+.header a.return{background:url(../images/return.png) no-repeat center center;background-size:contain;float:left;width:10%;height:100%;}
+.header span{color:#7c96af;line-height:250%;height:100%;margin-left:10px;font-size:16px;}
+.content{width:100%;margin-top:20px;}
+.content img{width:60%;margin-left:20%;}
+.content p{color:#4798e6;font-size:26px;width:100%;text-align:center;font-weight:bold;}
+.content p.p1{margin-top:-60px;margin-bottom:10px;}
+a.signBtn{background:url(../images/acbtn4.png) no-repeat center center;position:absolute;width:60%;font-size:22px;color:#fff;text-align:center;margin-left:20%;background-size:contain;padding:15px 0; margin-top:30%;}
+.placeholder{height:230px;width:100%;}
+@media screen and (min-width:410px){
+  .content .signBtn{margin-top:180px;}
+  
+}

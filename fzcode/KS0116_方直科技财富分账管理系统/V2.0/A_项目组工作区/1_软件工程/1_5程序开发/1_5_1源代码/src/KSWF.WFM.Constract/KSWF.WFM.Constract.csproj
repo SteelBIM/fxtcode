@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36478985-CCFF-4CF0-B2ED-66D2A3331F92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KSWF.WFM.Constract</RootNamespace>
+    <AssemblyName>KSWF.WFM.Constract</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AbnormalLog.cs" />
+    <Compile Include="Models\base_deptarea.cs" />
+    <Compile Include="Models\cfg_bpolicyproduct.cs" />
+    <Compile Include="Models\cfg_feeratio.cs" />
+    <Compile Include="Models\cfg_keyvalue.cs" />
+    <Compile Include="Models\cfg_bpolicy.cs" />
+    <Compile Include="Models\cfg_product.cs" />
+    <Compile Include="Models\com_action.cs" />
+    <Compile Include="Models\com_actioncolumn.cs" />
+    <Compile Include="Models\com_actiongroup.cs" />
+    <Compile Include="Models\com_group.cs" />
+    <Compile Include="Models\base_dept.cs" />
+    <Compile Include="Models\com_master.cs" />
+    <Compile Include="Models\com_mastergroup.cs" />
+    <Compile Include="Models\join_masterbpolicypr.cs" />
+    <Compile Include="Models\join_mastertarea.cs" />
+    <Compile Include="Models\join_mastertproduct.cs" />
+    <Compile Include="Models\masterbpolicypr.cs" />
+    <Compile Include="Models\master_changeinfo.cs" />
+    <Compile Include="Models\master_loginlog.cs" />
+    <Compile Include="Models\orderkont.cs" />
+    <Compile Include="Models\order_pinfo.cs" />
+    <Compile Include="Models\order_psetbonus.cs" />
+    <Compile Include="Models\order_setbonus.cs" />
+    <Compile Include="Models\order_setbonus_dept.cs" />
+    <Compile Include="Models\OrdreTotal.cs" />
+    <Compile Include="Statistic\tb_class.cs" />
+    <Compile Include="Statistic\tb_classstu.cs" />
+    <Compile Include="Statistic\tb_classtea.cs" />
+    <Compile Include="Statistic\tb_initlog.cs" />
+    <Compile Include="Statistic\tb_schoolinfo.cs" />
+    <Compile Include="Statistic\tb_tmpareaschool.cs" />
+    <Compile Include="Statistic\vw_areaschool.cs" />
+    <Compile Include="Statistic\vw_studentlist.cs" />
+    <Compile Include="VW\ViewAmount.cs" />
+    <Compile Include="Models\vw_employeebill.cs" />
+    <Compile Include="VW\vw_agendchannel.cs" />
+    <Compile Include="VW\vw_agent.cs" />
+    <Compile Include="VW\vw_agentbill.cs" />
+    <Compile Include="VW\vw_agentmention.cs" />
+    <Compile Include="VW\vw_agentorder.cs" />
+    <Compile Include="VW\vw_agentorderdetails.cs" />
+    <Compile Include="VW\vw_agentproduct.cs" />
+    <Compile Include="VW\vw_areadept.cs" />
+    <Compile Include="VW\vw_areamaster.cs" />
+    <Compile Include="VW\vw_bpolicy.cs" />
+    <Compile Include="VW\vw_bpolicyproduct.cs" />
+    <Compile Include="VW\vw_deptAgent.cs" />
+    <Compile Include="VW\vw_deptarea.cs" />
+    <Compile Include="Models\v_orderinfo.cs" />
+    <Compile Include="VW\vw_action.cs" />
+    <Compile Include="VW\vw_allaction.cs" />
+    <Compile Include="Models\orderinfo.cs" />
+    <Compile Include="VW\vw_deptbill.cs" />
+    <Compile Include="VW\vw_deptmention.cs" />
+    <Compile Include="VW\vw_employeeention.cs" />
+    <Compile Include="VW\vw_kswforder.cs" />
+    <Compile Include="VW\vw_masterarea.cs" />
+    <Compile Include="VW\vw_masterbpolicypr.cs" />
+    <Compile Include="VW\vw_order.cs" />
+    <Compile Include="VW\vw_user.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

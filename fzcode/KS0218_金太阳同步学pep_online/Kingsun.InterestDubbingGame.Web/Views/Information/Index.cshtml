@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "报名信息";
+}
+@using Kingsun.InterestDubbingGame.Model;
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>报名信息</title>
+    <link href="~/Content/css/apply.css?v=1.2" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/apply.js"></script>
+    <script src="~/Scripts/js/JsBridge.js?v=1.2"></script>
+    <script type="text/javascript">
+        function addcloud(showName) {//增加页面遮罩
+            var bodyWidth = document.documentElement.clientWidth;
+            var bodyHeight = window.screen.availHeight; //Math.max(document.documentElement.clientHeight, document.body.scrollHeight);
+            var bgObj = document.createElement("div");
+            bgObj.setAttribute('id', 'bgDiv');
+            bgObj.style.position = "fixed";
+            bgObj.style.top = "0px";
+            bgObj.style.background = "#000000";
+            bgObj.style.filter = "progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=25,finishOpacity=75";
+            bgObj.style.opacity = "0.1";
+            bgObj.style.left = "0";
+            bgObj.style.width = bodyWidth + "px";
+            bgObj.style.height = bodyHeight + "px";
+            bgObj.style.zIndex = "10000"; //设置它的zindex属性，让这个div在z轴最大，用户点击页面任何东西都不会有反应|
+            document.body.appendChild(bgObj); //添加遮罩
+
+            var loadingObj = document.createElement("div");
+            loadingObj.setAttribute('id', 'loadingDiv');
+            loadingObj.style.position = "fixed";
+            loadingObj.style.top = bodyHeight / 2 + "px";
+            loadingObj.style.left = bodyWidth / 2 - 18 + "px";
+            //loadingObj.style.background = "white";//url(/images/loading.gif)
+            loadingObj.innerHTML = "<img style='width:36px;' src=\"../images/loading.gif\" /><p style='color:black'>" + showName + "</P>";//showName
+            loadingObj.style.width = "63px";
+            loadingObj.style.height = "36px";
+            loadingObj.style.zIndex = "10000";
+            document.body.appendChild(loadingObj); //添加loading动画-
+        }
+        function removecloud() {//移除页面遮罩
+            $("#loadingDiv").remove();
+            $("#bgDiv").remove();
+        }
+    </script>
+</head>
+
+<body>
+    <header class="head1">
+        <a href="../Apply/Index?UserID=@Request["UserID"]&AppID=@Request["AppID"]" class="back"><img src="../images/back.png" alt=""></a>
+    </header>
+    <main class="main3">
+        @{
+            TB_InterestDubbingGame_UserInfo userInfo = ViewData["userInfoMation"] as TB_InterestDubbingGame_UserInfo;
+            if (userInfo != null)
+            {
+                <h2>报名信息</h2>
+                <div class="hang">
+                    <span>姓名</span>
+                    <input id="TrueName" type="text" value="@userInfo.UserName" /> 
+                </div>
+                <div class="hang">
+                    <span>电话</span>
+                    <p><a id="Telephone" href="../AmendPhone/Index?returnPage=AmendPhone&UserID=@Request["UserID"]&TelePhone=@userInfo.ContactPhone&AppID=@Request["AppID"]">@userInfo.ContactPhone<em><img src="../images/next.png" alt=""></em></a></p>
+                </div>
+                @*<div class="hang">
+                    <span>学校</span>
+                    <p>@userInfo.SchoolName</p>
+                </div>*@
+                <div class="hang">
+                    <span>班级</span>
+                    <p><a onclick="ChangeClass()">@userInfo.ClassName<em><img src="../images/next.png" alt=""></em></a></p>
+                </div>
+                @*<div class="hang">
+                    <span>导师</span>
+                    <p>@userInfo.TeacherName</p>
+                </div>*@
+
+                @*<p class="tishi">学校、班级和指导老师信息不正确可通过更换班级修改</p>*@
+                <p class="tishi"><input id="ckb" type="checkbox" checked="checked" /><a onclick="returnAgreementClick()">同意《2017年北京市小学生英语配音比赛协议》</a></p>
+                <p class="tishi1">请阅读并勾选比赛协议</p>
+                <a href="javascript:void(0)" class="apply">确定报名</a>
+            }
+            else
+            {
+                <p style="text-align:center;">参数错误！</p>
+            }
+        }
+    </main>
+    <script type="text/javascript">
+        $(function () { 
+            $(".apply").click(function () { 
+                var Telephone = $("#Telephone").text();
+                var TrueName = $.trim($("#TrueName").val());  
+                if (TrueName == "") { 
+                    popup("请输入姓名"); 
+                    return false;
+                }
+                if (Telephone == "") { 
+                    popup("请输入电话号码");
+                    return false;
+                } 
+                if ($(".tishi1").css("display") == "none") {
+                    //提交报名信息
+                    addcloud("提交中..."); 
+                    $.post("../Information/AddApply", { UserID: '@Request["UserID"]', TrueName: TrueName, Telephone: Telephone }, function (data) {
+                        //alert(data);
+                        data = eval(data);
+                        if (data.Success) {
+                                window.WebViewJavascriptBridge.callHandler(
+                                         'regeditSuccess', function (responseData) {
+                                         }
+                                         ); 
+                            if (data.Msg == "1") {    //比赛已开始 
+                                window.WebViewJavascriptBridge.callHandler(
+                                   'finish', function (responseData) {
+
+                                   }
+                                   );
+                                //window.location.href = "../StartIndex/Index?UserID=" + '@Request["UserID"]' + "&AppID=@Request["AppID"]";
+                            } else {
+                                window.location.href = "../Notification/Index?UserID=" + '@Request["UserID"]'+"&AppID=@Request["AppID"]";
+                            }
+                            removecloud();
+                        } else {
+                            removecloud();
+                            popup(data.Msg); 
+                        }
+                    });
+                    removecloud();
+                }
+                setInterval("removecloud()", 5000);
+            });
+        });
+        //更换班级
+        function ChangeClass() {
+            var userInfo = { "Telephone": $("#Telephone").text() };//参数
+            window.WebViewJavascriptBridge.callHandler(
+            'ChangeClass', userInfo, function (responseData) {
+
+            }
+            );
+        }
+        //
+        function returnAgreementClick() {
+            var TelePhone = $("#Telephone").text();
+            window.location.href = "../Agreement/Index?returnPage=Agreement&UserID=@Request["UserID"]&TelePhone=" + TelePhone + "&AppID=@Request["AppID"]";
+        }
+        function popup(aaa) {
+            var black = document.createElement("div");
+            var black1 = document.createElement("div");
+            var black2 = document.createElement("div");
+            var black3 = document.createElement("p");
+            var black4 = document.createTextNode(aaa);
+            black.className = 'zong';
+            black1.className = 'zhezhao';
+            black2.className = 'hezi';
+            black3.appendChild(black4);
+            black2.appendChild(black3);
+            black.appendChild(black1);
+            black.appendChild(black2);
+            document.body.appendChild(black);
+            black1.onclick = function () {
+                black.parentNode.removeChild(black);
+
+            }
+        };
+    </script>
+</body>
+</html>

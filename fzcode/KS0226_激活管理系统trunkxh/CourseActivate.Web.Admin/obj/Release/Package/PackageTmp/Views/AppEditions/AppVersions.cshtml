@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "AppVersions";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">应用版本设置</h1>
+    </div>
+    <div class="col-xs-12">
+
+    </div>
+    <div class="row" style="width: 100%; float: left; margin-left: 0;">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <button onclick="Create()" type="button" class="btn btn-primary" style="width: 80px; height: 34px; margin-left: 15px;float:left; background-color: #515562">添加版本</button>
+                    <button onclick="history.go(-1)" type="button" class="btn btn-primary" style="width: 120px; height: 34px; margin-left: 15px;float:left; background-color: #515562">返回应用列表</button>
+                    <table id="AppVersions"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="appId" value="@ViewBag.APPID" />
+
+
+    <input type="hidden" id="bid" />
+    <div class="modal fade" id="popup" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="modal-dialog" style="width: 50%; margin-top: 80px;">
+                <div class="modal-content" style="padding-top:40px;padding-right:20px;padding-bottom:20px; ">
+                    <div class="row" id="partView" style=" margin:0;">
+
+                    </div>
+                    @*<div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>*@
+                </div>
+            </div>
+        </form>
+    </div>
+}
+
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/AppVersions.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Content/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="~/Content/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+    <script src="~/Scripts/Jquery.form.js"></script>
+    <script>
+        var pageInit;
+        $(function () {
+            pageInit = new AppVersions();
+            pageInit.Init();
+        })
+
+        function Create() {
+            $.post("@Url.Action("AddVersionView")", { vId: 0, appId: $("#appId").val() }, function (data) {
+                $("#partView").html(data);
+                var oFileInput = new FileInput();
+                oFileInput.Init("txt_file", "/AppEditions/SaveApp");
+            });
+            $("#popup").modal("show");
+        }
+
+        function EditVersion(versionId) {
+            $.post("@Url.Action("AddVersionView")", { vId: versionId, appId: $("#appId").val() }, function (data) {
+                $("#partView").html(data);
+                var oFileInput = new FileInput();
+                oFileInput.Init("txt_file", "/AppEditions/SaveApp");
+            });
+        $("#popup").modal("show");
+        }
+
+        function DeleteVersion(versionId) {
+            $.post("@Url.Action("DeleteVersion")", { vId: versionId }, function (data) {
+                if (data.Success) {
+                    $('#AppVersions').bootstrapTable("refresh");
+                }
+            });
+        }
+
+        var FileInput = function () {
+            var oFile = new Object();
+            //初始化fileinput控件（第一次初始化）
+            oFile.Init = function (ctrlName, uploadUrl) {
+                var control = $('#' + ctrlName);
+
+                //初始化上传控件的样式
+                control.fileinput({
+                    language: 'zh', //设置语言
+                    uploadUrl: uploadUrl, //上传的地址
+                    //allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                    showUpload: false, //是否显示上传按钮
+                    showCaption: false,//是否显示标题
+                    browseClass: "btn btn-primary", //按钮样式
+                    dropZoneEnabled: false,//是否显示拖拽区域
+                    //queryParams: obj,//传递参数（*）
+                    //minImageWidth: 50, //图片的最小宽度
+                    //minImageHeight: 50,//图片的最小高度
+                    //maxImageWidth: 1000,//图片的最大宽度
+                    //maxImageHeight: 1000,//图片的最大高度
+                    //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+                    //minFileCount: 0,
+                    maxFileCount: 1,
+                    showPreview: false,//是否显示预览图
+                    showRemove: false,                          
+
+                    enctype: 'multipart/form-data',
+                    validateInitialCount: false,
+                    previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+
+                    msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                });
+
+                $("#txt_file").on('filebatchselected', function (event, data, id, index) {
+                    $(this).fileinput("upload");
+                });
+
+                //导入文件上传完成之后的事件
+                $("#txt_file").on("fileuploaded", function (event, Date, previewId, index) {
+                    $(".kv-upload-progress").addClass("hide");
+                    var data = Date.response;
+                    $('#Url').val(data.Data.url);
+                    $('#MD5').val(data.Data.md5);
+                });
+            }
+            return oFile;
+        };
+
+
+
+        function submitForm() {
+            if (!$("#Version").val()) {
+                bootbox.alert("版本为必填!");
+                return;
+            }
+            if (!$("#Url").val()) {
+                bootbox.alert("请上传安装包文件!");
+                return;
+            }
+            $("#form").ajaxSubmit(function (data) {
+                if (data.Success) {
+                    bootbox.confirm("更新成功!是否返回列表?", function (result) {
+                        if (result) {
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    bootbox.alert(data.ErrorMsg);
+                }
+            });
+        }
+
+     
+    </script>
+}

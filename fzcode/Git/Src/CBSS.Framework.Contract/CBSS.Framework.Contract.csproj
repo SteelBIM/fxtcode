@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11214D97-F23C-4E16-AA12-ECD824454744}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBSS.Framework.Contract</RootNamespace>
+    <AssemblyName>CBSS.Framework.Contract</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\CBSS.Framework.Contract.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\APIRequest.cs" />
+    <Compile Include="API\APIResponse.cs" />
+    <Compile Include="API\APIReturnData.cs" />
+    <Compile Include="API\ErrorCodeEnum.cs" />
+    <Compile Include="API\ModErrorCodeEnum.cs" />
+    <Compile Include="Enums\AppVersionTypeEnum.cs" />
+    <Compile Include="Enums\DictTypeEnum.cs" />
+    <Compile Include="Enums\GradeLevelEnum.cs" />
+    <Compile Include="Enums\ModuleTypeEnum.cs" />
+    <Compile Include="Enums\OldSubjectTypeEnum.cs" />
+    <Compile Include="Enums\PayStatusEnum.cs" />
+    <Compile Include="Enums\PayWayEnum.cs" />
+    <Compile Include="Enums\SecondModularEnum.cs" />
+    <Compile Include="Enums\SystemCodeEnum.cs" />
+    <Compile Include="Enums\ApiFuncWayEnum.cs" />
+    <Compile Include="Enums\GoodWayEnum.cs" />
+    <Compile Include="Enums\ImgTypeEnum.cs" />
+    <Compile Include="Enums\AppVersionUpdateTypeEnum.cs" />
+    <Compile Include="Enums\BCPointEnum.cs" />
+    <Compile Include="Enums\AppTypeEnum.cs" />
+    <Compile Include="Enums\MODSourceTypeEnum.cs" />
+    <Compile Include="Enums\SourceAccessModeEnum.cs" />
+    <Compile Include="Enums\FreeTypeEnum.cs" />
+    <Compile Include="Enums\ModelTypeEnum.cs" />
+    <Compile Include="Enums\ModelFunctionEnum.cs" />
+    <Compile Include="Enums\ModelResourceType.cs" />
+    <Compile Include="Enums\ModRelationTypeEnum.cs" />
+    <Compile Include="Enums\StatusEnum.cs" />
+    <Compile Include="Enums\SubjectTypeEnum.cs" />
+    <Compile Include="Enums\UserState.cs" />
+    <Compile Include="Enums\UserStateEnum.cs" />
+    <Compile Include="Enums\LogLevelEnum.cs" />
+    <Compile Include="Enums\UserTypeEnum.cs" />
+    <Compile Include="Web\KingRequest.cs" />
+    <Compile Include="Web\KingResponse.cs" />
+    <Compile Include="Web\AuditableAttribute.cs" />
+    <Compile Include="Web\BusinessException.cs" />
+    <Compile Include="Web\IAuditable.cs" />
+    <Compile Include="Web\ModelBase.cs" />
+    <Compile Include="Web\IPagedList.cs" />
+    <Compile Include="Web\Operater.cs" />
+    <Compile Include="Web\PagedList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Rds_UseAppRecord.cs" />
+    <Compile Include="Web\Rds_UserLoginRecord.cs" />
+    <Compile Include="Web\Request.cs" />
+    <Compile Include="Web\CallContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBSS.Core.Log\CBSS.Core.Log.csproj">
+      <Project>{8ae51ee2-67db-4f57-98fe-cbb890c9a5a2}</Project>
+      <Name>CBSS.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBSS.Core.Utility\CBSS.Core.Utility.csproj">
+      <Project>{9f519ef8-800f-40cb-9545-9aeadf0f387d}</Project>
+      <Name>CBSS.Core.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

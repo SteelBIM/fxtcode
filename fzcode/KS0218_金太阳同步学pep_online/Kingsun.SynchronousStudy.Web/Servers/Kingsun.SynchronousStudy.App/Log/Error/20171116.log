@@ -1,0 +1,74 @@
+﻿2017-11-16 17:11:53
+错误编号:2017111617115387X8975c3c797
+Message:SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":1907924114,"UserNum":null,"UserName":"????222","UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[{"ClassID":null,"GradeID":0,"SchID":38632,"SubjectID":3,"AreaID":440305000}]},"ProvinceID":440000000,"Province":"???","CityID":440300000,"City":"???","verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:System.Data.SqlTypes.SqlTypeException
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.GetScalar(String sql, SugarParameter[] parameters)
+   在 SqlSugar.AdoProvider.GetInt(String sql, SugarParameter[] parameters)
+   在 SqlSugar.InsertableProvider`1.ExecuteReturnIdentity()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.Insert(TEntity entity) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 79
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.UpdateUserAndOtherInfo(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 815
+Method:GetScalar
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+
+2017-11-16 17:12:14
+错误编号:2017111617121494Xfa5af90834
+Message:SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":1907924114,"UserNum":null,"UserName":"????222","UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[{"ClassID":null,"GradeID":0,"SchID":38632,"SubjectID":3,"AreaID":440305000}]},"ProvinceID":440000000,"Province":"???","CityID":440300000,"City":"???","verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:System.Data.SqlTypes.SqlTypeException
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.GetScalar(String sql, SugarParameter[] parameters)
+   在 SqlSugar.AdoProvider.GetInt(String sql, SugarParameter[] parameters)
+   在 SqlSugar.InsertableProvider`1.ExecuteReturnIdentity()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.Insert(TEntity entity) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 79
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.UpdateUserAndOtherInfo(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 815
+Method:GetScalar
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+
+2017-11-16 17:13:47
+错误编号:2017111617134712Xc22e67ad3a
+Message:SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":1907924114,"UserNum":null,"UserName":"????222","UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[{"ClassID":null,"GradeID":0,"SchID":38632,"SubjectID":3,"AreaID":440305000}]},"ProvinceID":440000000,"Province":"???","CityID":440300000,"City":"???","verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:System.Data.SqlTypes.SqlTypeException
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   在 SqlSugar.UpdateableProvider`1.ExecuteCommand()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.Update(TEntity entity) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 122
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.UpdateUserAndOtherInfo(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 804
+Method:ExecuteCommand
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+
+2017-11-16 17:19:41
+错误编号:2017111617194193Xccac096165
+Message:SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+Message2:IBS用户Update接口异常，UserInfo={"iBS_UserInfo":{"UserID":1907924114,"UserNum":null,"UserName":"????222","UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":12,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[{"ClassID":null,"GradeID":0,"SchID":38632,"SubjectID":3,"AreaID":440305000}]},"ProvinceID":440000000,"Province":"???","CityID":440300000,"City":"???","verifyEmailDate":null,"isVerifyEmailTrue":0,"BookID":0,"AppID":null,"ClassSchDetailList":[]}
+Type:System.Data.SqlTypes.SqlTypeException
+Source:SqlSugar
+StackTrace:   在 SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   在 SqlSugar.UpdateableProvider`1.ExecuteCommand()
+   在 Kingsun.IBS.DAL.RepositoryBase`1.Update(TEntity entity) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\Base\RepositoryBase.cs:行号 122
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.UpdateUserAndOtherInfo(TBX_UserInfo userInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 804
+Method:ExecuteCommand
+Class:SqlSugar.AdoProvider
+UserIP:
+UserName:
+
+2017-11-16 17:24:58
+错误编号:2017111617245813X81595ae5d7
+Message:未将对象引用设置到对象的实例。
+Message2:调用解除绑定关系接口异常!
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.UnBindClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 331
+Method:UnBindClass
+Class:Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL
+UserIP:
+UserName:
+

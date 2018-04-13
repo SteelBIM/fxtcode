@@ -1,0 +1,120 @@
+﻿2017-12-26 20:09:34
+错误编号:2017122620093467Xee6b6abdb5
+Message:未将对象引用设置到对象的实例。
+Type:System.NullReferenceException
+Source:Kingsun.ExamPaper.Common
+StackTrace:   在 Kingsun.ExamPaper.Common.AppSetting.get_ConnectionString() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.Common\AppSetting.cs:行号 18
+   在 Kingsun.ExamPaper.Common.BaseManagement.ExecuteSql(String sqlstr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.Common\BaseManagement.cs:行号 158
+   在 Kingsun.ExamPaper.BLL.StuCatalogBLL.GetAllStuAnswer(String connectionStr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.BLL\StuCatalogBLL.cs:行号 135
+Method:get_ConnectionString
+Class:Kingsun.ExamPaper.Common.AppSetting
+UserIP:
+UserName:
+
+2017-12-26 20:10:28
+错误编号:2017122620102883X28eac20ee9
+Message:未将对象引用设置到对象的实例。
+Type:System.NullReferenceException
+Source:Kingsun.ExamPaper.Common
+StackTrace:   在 Kingsun.ExamPaper.Common.AppSetting.get_ConnectionString() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.Common\AppSetting.cs:行号 18
+   在 Kingsun.ExamPaper.Common.BaseManagement.ExecuteSql(String sqlstr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.Common\BaseManagement.cs:行号 158
+   在 Kingsun.ExamPaper.BLL.StuCatalogBLL.GetAllStuAnswer(String connectionStr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.BLL\StuCatalogBLL.cs:行号 135
+Method:get_ConnectionString
+Class:Kingsun.ExamPaper.Common.AppSetting
+UserIP:
+UserName:
+
+2017-12-26 20:51:26
+错误编号:2017122620512668X9b9bf1e3d0
+Message:类型“System.Single”的对象无法转换为类型“System.Nullable`1[System.Decimal]”。
+Type:System.ArgumentException
+Source:mscorlib
+StackTrace:   在 System.RuntimeType.TryChangeType(Object value, Binder binder, CultureInfo culture, Boolean needsSpecialCast)
+   在 System.RuntimeType.CheckValue(Object value, Binder binder, CultureInfo culture, BindingFlags invokeAttr)
+   在 System.Reflection.MethodBase.CheckArguments(Object[] parameters, Binder binder, BindingFlags invokeAttr, CultureInfo culture, Signature sig)
+   在 System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   在 System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   在 Kingsun.SynchronousStudy.Common.JsonHelper.DataTableToList[T](DataTable dt) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\JsonHelper.cs:行号 159
+   在 Kingsun.ExamPaper.BLL.StuCatalogBLL.GetAllStuAnswer(String connectionStr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.BLL\StuCatalogBLL.cs:行号 136
+Method:TryChangeType
+Class:System.RuntimeType
+UserIP:
+UserName:
+
+2017-12-26 20:53:49
+异步写入redis报告UploadStuAnswerList, UserID=831700656	 CatalogID=2	异常：值不能为 null。
+参数名: source
+2017-12-26 21:22:58
+错误编号:2017122621225882X11d72c1b06
+Message:未找到questionid对应的题目:92584b6c-c3c1-4c7b-8840-4e221df9d8b0
+Type:System.Exception
+Source:Kingsun.ExamPaper.BLL
+StackTrace:   在 Kingsun.ExamPaper.BLL.StuCatalogBLL.SubmitModelInit(SubmitModel2 submitModel, String Connection) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.BLL\StuCatalogBLL.cs:行号 66
+   在 Kingsun.ExamPaper.BLL.StuCatalogBLL.GetAllStuAnswer(String connectionStr) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.ExamPaper.BLL\StuCatalogBLL.cs:行号 171
+Method:SubmitModelInit
+Class:Kingsun.ExamPaper.BLL.StuCatalogBLL
+UserIP:
+UserName:
+
+2017-12-26 22:33:02
+错误编号:2017122622330215X9b2a599324
+Message:在 sys.servers 中找不到服务器 'ITSV_SZ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步订单出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 343
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncOrderInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 63
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-12-26 22:33:02
+错误编号:2017122622330231X3541e99bd8
+Message:在 sys.servers 中找不到服务器 'ITSV_SZ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步用户出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 343
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncUserInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 117
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-12-26 23:33:02
+错误编号:2017122623330229X15e6a3fc21
+Message:在 sys.servers 中找不到服务器 'ITSV_SZ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步用户出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 343
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncUserInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 117
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+

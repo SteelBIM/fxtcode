@@ -1,0 +1,665 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*首页*/
+/*.mainBody{background-color:#fff;width:100%;}
+.mainBody .welcome{background-color:#249fc8;padding:14px 0;}
+.mainBody .welcome .textDiv{width:1000px;margin:0 auto;color:#fff;font-size:14px;}
+.mainBody .main{width:1000px;margin:0 auto;padding-top:47px;}
+.main .classTab{border-bottom:8px #f99d1c solid;}
+.main .classTab ul{width:385px;}
+.main .classTab ul li{display:inline-block;*display:block;*float:left;height:52px;129px;}
+.main .classTab ul li a{font-size:16px;margin-top:20px;}
+
+.main .content{}*/
+
+
+/*在线咨询*/
+.onlineAsk{position:fixed;_position:absolute;bottom: 40%;left: 50%;margin-left: 566px;width:97px;height:119px;background:url(../images/contentTools/backTool.png) no-repeat left top;_background-image:url(../images/contentTools/backTool.gif);}
+.onlineAsk a{display:block;width:100%;text-align:center;margin-top:96px;color:#fff;}
+.borderRadius{}
+.boxShade{-webkit-box-shadow: #aaa 0px 0px 30px;-moz-box-shadow: #aaa 0px 0px 30px;box-shadow: #aaa 0px 0px 30px;}
+/*********************学生作业报告*/
+/*学生作业报告*/
+#mainBody{width:100%;padding-bottom:40px;overflow:hidden;min-width:1000px;}
+#mainBody .main{width:1000px;margin:0 auto ;}
+#mainBody .mS{background:none;}
+.main .content1{background:none;}
+/*班级作业详情*/
+.main .headH{height:77px;padding:0 20px;background:#e9fdff url(../images/line_img.jpg) center 62px repeat-x;}
+.main .headH ul.catalog{line-height:77px;}
+ul.catalog li{float:left;font-size:18px;color:#fcc272;}
+ul.catalog li a{color:#393939;}
+ul.catalog li em.emImg{width:14px;height:77px;display:block;padding:0 10px;line-height:77px;background:url(../images/emImg.jpg) center center no-repeat;}
+.main .headH a.actExport{width:77px;height:22px;line-height:22px;font-size:14px;display:block;color:#fff;border-radius:5px;background-color:#68cdd9;text-align:center;float:right;margin:25px 0 0;}
+#mainBody .main .msgDiv{width:100%;height:80px;}
+#mainBody .main .msgDiv ul.ulL{line-height:80px;color:#777;}
+#mainBody .main .msgDiv ul.ulL li{float:left;line-height:80px;padding-left:40px;}
+#mainBody .main .msgDiv ul.ulL a.sp{width:83px;height:25px;display:block;line-height:25px;font-size:16px;border-radius:5px;background-color:#f15621;color:#fff;text-align:center;margin-top:25px;}
+#mainBody .main .msgDiv .timeInterval{float:right;line-height:80px;margin-right:40px;color:#777;}
+#mainBody .main .msgDiv1{width:100%;height:52px;}
+#mainBody .main .msgDiv1 ul.ulList{height:50px;line-height:50px;display:block;width:auto;margin:0 5px;font-size:18px;color:#777;}
+#mainBody .main .msgDiv1 ul.ulList li{float:left;border:1px solid #68cdd9;border-right:0px;padding:0 10px;cursor:pointer;}
+#mainBody .main .msgDiv1 ul.ulList li.firstLi{border-radius:8px 0 0 8px;}
+#mainBody .main .msgDiv1 ul.ulList li.lastLi{border-radius:0 8px 8px 0;border:1px solid #68cdd9;}
+#mainBody .main .msgDiv1 ul.ulList li.on,#mainBody .main .msgDiv1 ul.ulList li:hover{background-color:#f99d1c;color:#fff;border-color:#f99d1c;}
+#mainBody .main .msgDiv1 ul.ulList li span{color:#f15621;}
+#mainBody .main .msgDiv1 ul.ulList li.on span,#mainBody .main .msgDiv1 ul.ulList li:hover span{color:#fff;}
+#mainBody .main .tabS1{width:100%;text-align:center;color:#777;margin-top:20px;}
+#mainBody .main .tabS1 tr{line-height:64px;}
+#mainBody .main .tabS1 tr.firstTr{background-color:#68cdd9;height:52px;}
+#mainBody .main .tabS1 tr.oddTr{background-color:#fff;}
+#mainBody .main .tabS1 tr.evenTr{background-color:#f7ebd3;}
+#mainBody .main .tabS1 tr th{text-align:center;color:#fff;}
+#mainBody .main .tabS1 tr th span{display:block;border-left:1px solid #fff;line-height:26px;font-size:16px;}
+#mainBody .main .tabS1 tr th span.borderN{border:none;}
+#mainBody .main .tabS1 tr td{text-align:center;}
+#mainBody .main .tabS1 tr td span.rank{width:100%;display:block;background:url(../images/rank_bg.png) -100px 15px no-repeat;}
+#mainBody .main .tabS1 tr td span.rk1{background-position:10px 15px;}
+#mainBody .main .tabS1 tr td span.rk2{background-position:10px -98px;}
+#mainBody .main .tabS1 tr td span.rk3{background-position:10px -217px;}
+#mainBody .main .tabS1 tr td em.workState{color:#f15621;font-size:16px;}
+#mainBody .main .tabS1 tr td em.wkState1{color:#777;}
+#mainBody .main .tabS1 tr td a.actA{color:#777;}
+#mainBody .main .tabS1 tr td a.actA:hover{color:#f99d1c;}
+
+/*错点分析*/
+.main .mainCont{width:100%;}
+.main .mainCont .titH{width:100%;height:42px;line-height:42px;text-align:center;color:#fff;background-color:#65c4e3;font-size:18px;}
+.main .mainCont .conts{margin-top:50px;}
+.main .mainCont .conts .tips{float:right;position:relative;text-align:center;font-size:16px;margin-right:10px;}
+.main .mainCont .conts .tips span{position:absolute;top:-25px;width:240px;color:#ff755e;}
+.module h4{width:100%;display:block;color:#676767;height:auto;overflow:hidden;zoom:1;}
+.main .mainCont .conts .module{margin-bottom:24px;}
+.module h4 label{width:28px;height:34px;display:block;font:14px/24px Arial;color:#fff;text-align:center;float:left;background:url(../images/h5_bg.gif) left top no-repeat;}
+/*.module h5 em{width:166px;height:34px;display:block;background:url(../images/module1_h5.gif) left 12px no-repeat;font:normal 14px/34px Arial;text-indent:88px;float:left;}*/
+.module h4 p.p{height:34px;line-height:34px;font-size:18px;color:#ff755e;display:block;font-weight:bold;float:left;padding:0 5px}
+.module h4 em{height:34px;display:block;font:normal 14px/34px Arial;float:left;padding:0 5px;}
+.module h4 em.em1{background-position:14px 10px;}
+.module h4 em.em2{background-position:14px -89px;}
+.module h4 em.em3{background-position:14px -188px;}
+.module h4 span.sp{line-height:34px;}
+.module h4 b.b{line-height:34px;/*border:2px solid #f03f41;*/font-weight:normal;margin:0 4px;padding:0 2px;color:red;}
+.module h4 i{ font-style:normal;color:red;}
+
+.main .mainCont .conts .module .contBox{background:url(../images/line_img.jpg) bottom center repeat-x;position:relative;}
+.module .contBox .playerBox{float:left;}
+.module .contBox span.sp{display:inline-block;*display:inline;_display:inline;padding:9px 0;zoom:1;color:#666;}
+.module .contBox .rightC{position:absolute;right:0px;bottom:20px;}
+.module .contBox .rightC span.errorRate{color:#ff755e;}
+.module .contBox .rightC a.studentList{margin:0 26px;padding:2px 5px;background-color:#f99d1c;color:#fff;border-radius:2px;zoom:1;}
+.module .contBox .divC{width:670px;height:auto;float:left;padding-left:70px;border-left:1px #ccc solid;overflow:hidden;zoom:1;}
+.module .contBox .divC ul{width:100%;height:auto;overflow:hidden;}
+.module .contBox .divC ul li{width:100%;height:auto;display:block;float:left;}
+.module .contBox .divC ul li span{font:14px/30px Arial;color:#666;}
+.module a.spread{width:70px;height:28px;text-align:center;font:14px/28px "微软雅黑";color:#14afbb;position:absolute;right:150px;bottom:16px;background-color:#fff;display:none;}/*20150727-tyx*/
+.module a.spread.reset{right:20px;}
+/*判断正确	*/
+.module .contBox .leftBox{width:150px;float:left;margin-right:30px;}
+.module .contBox .leftBox img{width:140px;height:105px;display:inline-block;margin:0 auto;border:3px #ececec solid;}
+.module .contBox .rightBox{float:left; width:550px;} /* 20160524-ycq*/
+.module .contBox .rightBox h5{font:bold 18px/30px "微软雅黑";color:#666;text-align:left;}
+.module .contBox .rightBox ul{text-align:left;}
+.module .contBox .rightBox ul li{display:inline-block;*display:inline;_display:inline;padding:10px 30px 0 0;zoom:1;} /*20151128-tyx*/
+.module .contBox .rightBox ul li a{width:52px;height:34px;display:block;background:url(../images/RandW.png) no-repeat;}
+.module .contBox .rightBox ul li a.r{background-position:left top;}
+.module .contBox .rightBox ul li a.w{background-position:-335px top;}
+.module .contBox .rightBox ul li.r a.r{background-position:left -100px;}
+.module .contBox .rightBox ul li.r a.w{background-position:-335px -100px;}
+.module .contBox .rightBox ul li.w a.r{background-position:left -200px;}
+.module .contBox .rightBox ul li.w a.w{background-position:-335px -200px;}
+.workS a{cursor:default;}/*报告中鼠标样式取消手势*/
+.module a{cursor:default;}
+.module .workS{float:left;width:800px;}
+.module .workS img{width:140px;height:105px;display:inline-block;margin:0 auto;border:3px #ececec solid;}
+
+.m2 .contBox .divC ul li span{font:bold 18px/30px Arial;color:#666;}
+/*听音选图*/
+.m4{}
+.m4 .workS{float:left;}
+.m4 .workS h5{height:auto;font:bold 18px/30px "微软雅黑";color:#666;text-align:left;}
+.m4 .workS ul{width:666px;overflow:hidden;}
+.m4 .workS ul li{float:left;margin:10px 10px 0 0;display:block;width:146px;}
+.m4 .workS ul li a{zoom:1;}
+.m4 .workS ul li a img{}
+.m4 .workS ul li a span{width:100%;height:40px;line-height:40px;text-align:center;display:block;font-size:18px;font-weight:bold;color:#666;}
+.m4 .workS ul li.r{}
+.m4 .workS ul li.r a img{border-color:#4cc6ce;}
+.m4 .workS ul li.r a span{color:#4cc6ce;}
+.m4 .workS ul li.w{}
+.m4 .workS ul li.w a img{border-color:#f86161;}
+.m4 .workS ul li.w a span{color:#f86161;}
+/*听音选择正确答案*/
+.m5 .optionDiv{width:780px;margin:20px auto;clear:both;}
+.m5 .optionDiv .num{float:left;width:40px;line-height:50px;font-size:18px;color:#666;font-weight:bold;}
+.m5 .optionDiv table{float:left;width:740px;}
+.m5 .optionDiv table tr{vertical-align:top;}
+.m5 .optionDiv table tr td{width:50%;padding:5px 0;}
+.m5 .optionDiv table tr td a{width:100%;font-size:18px;font-weight:bold;color:#666;display:block;font-family:"微软雅黑";overflow:hidden;zoom:1;}
+.m5 .optionDiv table tr td a em.em{float:left;width:38px;height:40px;line-height:40px;margin:0 5px 0 0;text-align:center;font-weight:bold;display:block;color:#666;}
+.m5 .optionDiv table tr td a.on em.em{color:#4cc6ce;background-position:left -152px;}
+.m5 .optionDiv table tr td a span{float:left;width:327px;line-height:40px;}
+.m5 .optionDiv table tr td a.on span{color:#4cc6ce;}
+.m5 .optionDiv table tr td a.r{}
+.m5 .optionDiv table tr td a.w{}
+.m5 .optionDiv table tr td a.r em.em{color:#4cc6ce;}
+.m5 .optionDiv table tr td a.w em.em{color:#f86161;}
+.m5 .optionDiv table tr td a.r span{color:#4cc6ce;}
+.m5 .optionDiv table tr td a.w span{color:#f86161;}
+/*听音选择正确答案*/
+.m6 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;}
+.m6 .optionDiv{width:780px;margin:20px auto;overflow:hidden;}
+.m6 .optionDiv .num{float:left;width:40px;line-height:50px;font-size:18px;color:#666;}
+.m6 .optionDiv table{float:left;width:740px;}
+.m6 .optionDiv table tr{vertical-align:top;}
+.m6 .optionDiv table tr td{width:50%;padding:5px 0;}
+.m6 .optionDiv table tr td a{width:100%;font-size:18px;font-weight:bold;color:#666;display:block;font-family:"微软雅黑";overflow:hidden;zoom:1;}
+.m6 .optionDiv table tr td a em.em{float:left;width:38px;height:40px;line-height:40px;margin:0 5px 0 0;text-align:center;font-weight:bold;display:block;color:#666;}
+.m6 .optionDiv table tr td a.on em.em{color:#4cc6ce;background-position:left -152px;}
+.m6 .optionDiv table tr td a span{float:left;width:327px;line-height:40px;}
+.m6 .optionDiv table tr td a.on span{color:#4cc6ce;}
+.m6 .optionDiv table tr td a.r{}
+.m6 .optionDiv table tr td a.w{}
+.m6 .optionDiv table tr td a.r em.em{color:#4cc6ce;}
+.m6 .optionDiv table tr td a.w em.em{color:#f86161;}
+.m6 .optionDiv table tr td a.r span{color:#4cc6ce;}
+.m6 .optionDiv table tr td a.w span{color:#f86161;}
+/*听音判断（有标题）*/
+.m7 .contBox .rightBox .answerC{font:bold 18px/26px "微软雅黑";color:#666;padding:20px 0 0;/*color:#4cc6ce;*/}
+/*听音排序(图片)*/
+.m8 .workS{}
+.m8 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;}
+.m8 .workS ul.imgUl{width:780px;margin-top:30px;overflow:hidden;}
+.m8 .workS ul.imgUl li{float:left;margin:10px 10px 0 0;display:block;width:146px;}
+.m8 .workS ul.imgUl li a{width:100%;/*height:100%;*/display:block;position:relative;zoom:1;}
+.m8 .workS ul.imgUl li a.on img{border:3px solid #4cc6ce;}
+.m8 .workS ul.imgUl li a span{width:100%;height:40px;line-height:40px;text-align:center;display:block;font-size:18px;font-weight:bold;color:#666;}
+.m8 .workS ul.imgUl li.r{}
+.m8 .workS ul.imgUl li.r a img{border-color:#4cc6ce;}
+.m8 .workS ul.imgUl li.r a span{color:#4cc6ce;}
+.m8 .workS ul.imgUl li a em.em{width:24px;height:24px;line-height:24px;text-align:center;color:#fff;display:block;position:absolute;right:12px;bottom:12px;background:url(../images/M_img.png) -128px top no-repeat;}
+.m8 .workS ul.optionUl{text-align:center;font:bold 18px/40px "微软雅黑";line-height:40px;margin:20px auto;color:#666;}
+.m8 .workS ul.optionUl li{display:inline-block;*display:inline;_display:inline;margin:0 10px;color:#4cc6ce;width:36px;} /*20160503*/
+.m8 .workS ul.optionUl li.r{color:#4cc6ce;}
+.m8 .workS ul.optionUl li.w{color:#f86161;}
+.m8 .workS ul.resultUl{text-align:center;font:bold 18px/40px "微软雅黑";line-height:40px;margin:20px auto;color:#666;}
+.m8 .workS ul.resultUl li{display:inline-block;*display:inline;_display:inline;margin:0 10px;color:#4cc6ce; width:36px;}
+/*听音排序(句子)*/
+.m9 .workS{}
+.m9 .workS ul.titList{width:700px;margin:10px auto 0;text-align:left;}
+.m9 .workS ul.titList li{width:100%;margin-bottom:10px;zoom:1;overflow:hidden;}
+.m9 .workS ul.titList li a{width:100%;font-size:24px;color:#666;display:block;overflow:hidden;zoom:1;}
+.m9 .workS ul.titList li a em.em{width:24px;height:24px;display:block;line-height:24px;font-size:18px;text-align:center;color:#fff;float:left;margin:5px 7px 0 0;background:url(../images/M_img.png) -128px top no-repeat;}
+.m9 .workS ul.titList li a.on em.em{color:#ffc104;}
+.m9 .workS ul.titList li a p{width:660px;line-height:33px;display:block;float:left;font-size:18px;font-weight:bold;}
+.m9 .workS ul.titList li a.on p{color:#ffc104;}
+.m9 .workS ul.optionUl{text-align:center;font:bold 18px/40px "微软雅黑";line-height:40px;margin:20px auto;color:#666;}
+.m9 .workS ul.optionUl li{display:inline-block;*display:inline;_display:inline;margin:0 20px;color:#4cc6ce;}
+.m9 .workS ul.optionUl li.r{color:#4cc6ce;}
+.m9 .workS ul.optionUl li.w{color:#f86161;}
+.m9 .workS ul.resultUl{text-align:center;font:bold 18px/40px "微软雅黑";line-height:40px;margin:20px auto;color:#666;}
+.m9 .workS ul.resultUl li{display:inline-block;*display:inline;_display:inline;margin:0 20px;color:#4cc6ce;}
+/*听音选择正确答案*/
+.m10{margin:0;}
+.m10 .workS{}
+.m10 .workS h5{font-size:18px;line-height:24px;font-weight:bold;color:#666;text-align:left;margin:10px 0 0;}
+.m10 .workS h5 em.num{width:45px;float:left;text-align:left;padding:9px 0;font-weight:bold;}
+.m10 .workS h5 span.sp{width:735px;float:left;}
+.m10 .workS table{width:100%;margin:10px auto 20px;display:block;}
+.m10 .workS table tr{vertical-align:top;}
+.m10 .workS table tr td{width:50%;padding:5px 0;}
+.m10 .workS table tr td a{width:100%;font-size:18px;color:#666;font-weight:bold;display:block;overflow:hidden;zoom:1;}
+.m10 .workS table tr td a em.em{width:24px;height:24px;display:block;line-height:24px;font-size:18px;font-weight:bold;text-align:center;color:#666;float:left;margin:5px 7px 0 0;}
+.m10 .workS table tr td a.on em.em{color:#4cc6ce;}
+.m10 .workS table tr td a span{float:left;width:347px;line-height:33px;}
+.m10 .workS table tr td a.on span{color:#4cc6ce;}
+.m10 .workS table tr td a.r em.em{color:#4cc6ce;}
+.m10 .workS table tr td a.w em.em{color:#f86161;}
+.m10 .workS table tr td a.r span{color:#4cc6ce;}
+.m10 .workS table tr td a.w span{color:#f86161;}
+/*听声填词*/
+.m11 .workS{}
+.m11 .workS h5{font-size:18px;font-weight:bold;line-height:40px;color:#666;text-align:left;font-family:"微软雅黑";margin:10px 0;height:auto;}
+.m11 .workS table{width:100%;margin:0 auto 30px;}
+.m11 .workS table tr{}
+.m11 .workS table tr td{width:50%;line-height:30px;font:bold 18px/30px "微软雅黑";color:#666;padding:10px 0;}
+.m11 .workS table tr td em{width:30px;float:left;font-weight:bold;}
+.m11 .workS table tr td span{width:347px;height:30px;font:bold 18px/30px "微软雅黑";color:#4cc6ce;float:left;margin:0;padding:0;outline:none;}
+.m11 .workS table tr td span.r{color:#4cc6ce;}
+.m11 .workS table tr td span.w{color:#f86161;}
+/*看图选择*/
+.m12 .workS{}
+.m12 .workS .titBox{}
+.m12 .workS .titBox h5{font-size:18px;font-weight:bold;line-height:40px;color:#666;text-align:left;font-family:"微软雅黑";margin:10px 0;height:auto;}
+.m12 .workS .titBox img{}
+.m12 .workS table{width:100%;margin:10px auto 20px;display:block;}
+.m12 .workS table tr{vertical-align:top;}
+.m12 .workS table tr td{width:50%;padding:5px 0;}
+.m12 .workS table tr td a{width:100%;font-size:18px;color:#666;font-weight:bold;display:block;overflow:hidden;zoom:1;}
+.m12 .workS table tr td a em.em{width:24px;height:24px;display:block;line-height:24px;font-size:18px;font-weight:bold;text-align:center;color:#666;float:left;margin:5px 7px 0 0;}
+.m12 .workS table tr td a.on em.em{color:#4cc6ce;}
+.m12 .workS table tr td a span.spMath{float:left;width:347px;line-height:33px;}
+.m12 .workS table tr td a.on span.spMath{color:#4cc6ce;}
+.m12 .workS table tr td a.r span.spMath{color:#4cc6ce;}
+.m12 .workS table tr td a.r em.em{color:#4cc6ce;}
+.m12 .workS table tr td a.w span.spMath{color:#f86161;}
+.m12 .workS table tr td a.w em.em{color:#f86161;}
+/*听音选择正确答案*/
+.m13 .contBox .rightBox .answerC{font:bold 18px/26px "微软雅黑";color:#666;padding:20px 0 0;/*color:#4cc6ce;*/}
+/*选出与其他不同类的单词*/
+.m14 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;}
+.m14 .optionDiv{width:780px;margin:20px auto;overflow:hidden;}
+.m14 .optionDiv .num{float:left;width:40px;line-height:50px;font-size:18px;color:#666;}
+.m14 .optionDiv table{float:left;width:740px;}
+.m14 .optionDiv table tr{vertical-align:top;}
+.m14 .optionDiv table tr td{width:50%;padding:5px 0;}
+.m14 .optionDiv table tr td a{width:100%;font-size:18px;font-weight:bold;color:#666;display:block;font-family:"微软雅黑";overflow:hidden;zoom:1;}
+.m14 .optionDiv table tr td a em.em{float:left;width:38px;height:40px;line-height:40px;margin:0 5px 0 0;text-align:center;font-weight:bold;display:block;color:#666;}
+.m14 .optionDiv table tr td a.on em.em{color:#4cc6ce;background-position:left -152px;}
+.m14 .optionDiv table tr td a span{float:left;width:327px;line-height:40px;}
+.m14 .optionDiv table tr td a.on span{color:#4cc6ce;}
+.m14 .optionDiv table tr td a.r em.em{color:#4cc6ce;}
+.m14 .optionDiv table tr td a.r span{color:#4cc6ce;}
+.m14 .optionDiv table tr td a.w em.em{color:#f86161;}
+.m14 .optionDiv table tr td a.w span{color:#f86161;}
+/*看题选图*/
+.m15{margin:0;}
+.m15 workS{}
+.m15 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;}
+.m15 .workS ul{width:666px;overflow:hidden;}
+.m15 .workS ul li{float:left;margin:10px 10px 0 0;display:block;width:146px;}
+.m15 .workS ul li a{zoom:1;}
+.m15 .workS ul li a img{}
+.m15 .workS ul li a span{width:100%;height:40px;line-height:40px;text-align:center;display:block;font-size:18px;font-weight:bold;color:#666;}
+.m15 .workS ul li.r{}
+.m15 .workS ul li.r a img{border-color:#4cc6ce;}
+.m15 .workS ul li.r a span{color:#4cc6ce;}
+.m15 .workS ul li.w{}
+.m15 .workS ul li.w a img{border-color:#f86161;}
+.m15 .workS ul li.w a span{color:#f86161;}
+/*看图选词/句*/
+.m16 .workS{}
+.m16 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;}
+.m16 .workS ul.imgUl{width:780px;margin-top:30px;overflow:hidden;}
+.m16 .workS ul.imgUl li{float:left;margin:10px 10px 0 0;display:block;width:146px;}
+.m16 .workS ul.imgUl li a{width:100%;/*height:100%;*/display:block;position:relative;zoom:1;}
+.m16 .workS ul.imgUl li a.on img{border:3px solid #4cc6ce;}
+.m16 .workS ul.imgUl li a span{width:100%;height:40px;line-height:40px;text-align:center;display:block;font-size:18px;font-weight:bold;color:#666;}
+.m16 .workS ul.imgUl li.r{}
+.m16 .workS ul.imgUl li.r a img{border-color:#4cc6ce;}
+.m16 .workS ul.imgUl li.r a span{color:#4cc6ce;}
+.m16 .workS ul.imgUl li a em.em{width:24px;height:24px;line-height:24px;text-align:center;color:#fff;display:block;position:absolute;right:12px;bottom:12px;background:url(../images/M_img.png) -128px top no-repeat;}
+.m16 .workS table{width:100%;margin:30px auto;}
+.m16 .workS table tr{vertical-align:top;}
+.m16 .workS table tr td{width:50%;padding:5px 0;font-weight:bold;}
+.m16 .workS table tr td label{width:38px;height:40px;line-height:40px;text-align:center;color:#4cc6ce;font-size:18px;font-weight:bold;border:none;margin:0 10px 0 0;padding:0;display:block;float:left;}
+.m16 .workS table tr td label.r{color:#4cc6ce;}
+.m16 .workS table tr td label.w{color:#f86161;}
+.m16 .workS table tr td span{width:300px;line-height:40px;color:#666;font-size:18px;display:block;float:left;}
+/*选词填空*/
+.m17 .workS{}
+.m17 .workS h5{font:bold 18px/30px Arial;color:#666;text-align:left;zoom:1;}
+.m17 .workS table{width:680px;margin:30px auto;}
+.m17 .workS table tr{}
+.m17 .workS table tr td{width:50%;line-height:30px;font:18px/30px "微软雅黑";color:#666;padding:5px 0;}
+.m17 .workS table tr td em{width:60px;float:left;font-weight:bold;}
+.m17 .workS table tr td span{width:60px;height:30px;font:bold 18px/30px "微软雅黑";color:#4cc6ce;float:left;background:none;border:none;margin:0;padding:0;outline:none;}
+.m17 .workS table tr td span.r{color:#4cc6ce}
+.m17 .workS table tr td span.w{color:#f86161;}
+/*阅读短文，选正确答案*/
+.m18 .workS{}
+.m18 .workS span{font:bold 18px/30px Arial;color:#666;/*text-align:left;*/zoom:1;margin-bottom:20px;display:block;}
+.m18 .workS h5{font:bold 18px/30px "微软雅黑";color:#666;text-align:left;zoom:1;overflow:hidden;}
+.m18 .workS h5 em.num{width:45px;float:left;text-align:left;padding:9px 0;font-weight:bold;}
+.m18 .workS h5 span.sp{width:670px;float:left;}
+.m18 .workS table{width:100%;margin:10px auto 20px;display:block;}
+.m18 .workS table tr{vertical-align:top;}
+.m18 .workS table tr td{width:50%;padding:5px 0;}
+.m18 .workS table tr td a{width:100%;font-size:18px;color:#666;font-weight:bold;display:block;overflow:hidden;zoom:1;}
+.m18 .workS table tr td a em.em{width:24px;height:24px;display:block;line-height:24px;font-size:18px;font-weight:bold;text-align:center;color:#666;float:left;margin:5px 7px 0 0;}
+.m18 .workS table tr td a.on em.em{color:#4cc6ce;}
+/*.m18 .workS table tr td a span{float:left;width:347px;line-height:33px;}
+.m18 .workS table tr td a.on span{color:#4cc6ce;}*/
+.m18 .workS table tr td a.r{color:#4cc6ce;}
+.m18 .workS table tr td a.r em.em{color:#4cc6ce}
+.m18 .workS table tr td a.r span{color:#4cc6ce}
+
+.m18 .workS table tr td a span.spMath{float:left;width:347px;line-height:33px;}
+.m18 .workS table tr td a.on span.spMath{color:#4cc6ce;}
+.m18 .workS table tr td a.on span.MathJye table tr td{color:#4cc6ce;}
+.m18 .workS table tr td a.r span.spMath{color:#4cc6ce;}
+.m12 .workS table tr td a.w span.spMath{color:#f86161;}
+
+.m18 .workS table tr td a.w{}
+.m18 .workS table tr td a.w em.em{color:#f86161}
+.m18 .workS table tr td a.w span{color:#f86161}
+/*阅读短文，判断正误*/
+.m19 .workS{}
+.m19 .workS span{font:bold 18px/30px Arial;color:#666;text-align:left;zoom:1;margin-bottom:20px;display:block;}
+.m19 .workS span p span{margin: 0;display: inline;}
+.m19 .workS table{width:720px;display:block;}
+.m19 .workS table tr{vertical-align:top;}
+.m19 .workS table tr td{padding:10px 0;font:18px/30px "微软雅黑";color:#666;}
+.m19 .workS table tr td em.em{width:45px;float:left;font-weight:bold;}
+.m19 .workS table tr td span{width:455px;float:left;}
+.m19 .workS table tr td ul{}
+.m19 .workS table tr td ul li{width:52px;height:34px;float:left;margin-left:20px;}
+.m19 .workS table tr td ul li a{width:100%;height:100%;display:block;background:url(../images/RandW.png) no-repeat;}
+.m19 .workS table tr td ul li a.right{background-position:left top;}
+.m19 .workS table tr td ul li a.wrong{background-position:-335px top;}
+.m19 .workS table tr td ul li.r a.right{background-position:left -100px;}
+.m19 .workS table tr td ul li.r a.wrong{background-position:-335px -100px;}
+.m19 .workS table tr td ul li.w a.right{background-position:left -200px;}
+.m19 .workS table tr td ul li.w a.wrong{background-position:-335px -200px;}
+/*作业报告-未做图章*/
+.module .notDone{width:36px;height:36px;display:block;background:url(../images/notDone.png) center center no-repeat;position:absolute;z-index:2;}
+.m1 .job ul.ul li span{position:relative;}
+.m1 .job ul.ul li span .notDone{right:-10px;bottom:-8px;}
+
+.m2 .contBox .divC{position:relative;}
+.m2 .contBox .divC .notDone{left:45px;top:0;}
+
+.m3 .job ul.ul li span{position:relative;}
+.m3 .job ul.ul li span .notDone{top:-5px;left:0;}
+
+.m4 .workS{position:relative;}
+.m4 .workS .notDone{left:-20px;top:10px;}
+
+.m5 .optionDiv .num{position:relative;}
+.m5 .optionDiv .num .notDone{left:10px;top:22px;}
+
+.m6 .workS{position:relative;}
+.m6 .workS .notDone{left:-10px;top:10px;}
+
+.m7 .contBox .rightBox{position:relative;}
+.m7 .contBox .rightBox .notDone{left:-10px;top:10px;}
+
+.m8 .workS ul.optionUl li{position:relative;}
+.m8 .workS ul.optionUl li .notDone{top:9px;left:0;}
+.m8 .notDone{ position:relative;}
+
+.m9 .workS ul.optionUl li{position:relative;}
+.m9 .workS ul.optionUl li .notDone{top:9px;left:0;}
+.m9 .notDone{ position:relative;}
+
+.m10 .workS h5{position:relative;}
+.m10 .workS h5 .notDone{left:-10px;top:10px;}
+
+.m11 .workS table tr td span{position:relative;}
+.m11 .workS table tr td span .notDone{top:0;left:0;}
+
+.m12 .workS{position:relative;}
+.m12 .workS .notDone{left:-10px;top:-3px;}
+
+.m13 .contBox .leftBox{position:relative;}
+.m13 .contBox .leftBox .notDone{left:-10px;top:-10px;}
+
+.m14 .workS .num{position:relative;}
+.m14 .workS .num .notDone{left:-10px;top:10px;}
+
+.m15 .workS{position:relative;}
+.m15 .workS .notDone{left:-20px;top:10px;}
+
+.m16 .workS table tr td span{position:relative;}
+.m16 .workS table tr td span .notDone{top:0;left:0;}
+
+.m17 .workS table tr td span{position:relative;}
+.m17 .workS table tr td span .notDone{top:0;left:0;}
+
+.m18 .workS h5{position:relative;}
+.m18 .workS h5 .notDone{top:10px;left:0px;}
+
+.m19 .workS table tr td em{position:relative;}
+.m19 .workS table tr td em .notDone{top:10px;left:-10px;}
+/*学生成绩详情*/
+.main .contBox{padding:10px 10px;height:auto;zoom:1;}
+.main .contBox .titDiv{width:100%;height:auto;position:relative;}
+.main .contBox .titDiv .ulS{text-align:center;}
+.main .contBox .titDiv .ulS li{display:inline-block;*display:inline;_display:inline;line-height:50px;font:16px/50px "微软雅黑";color:#000;margin:0 5px;}
+.main .contBox .titDiv .ulS li.li1{font:18px/50px "微软雅黑";color:#ed8a00;position:relative;}
+.main .contBox .titDiv .ulS li.li1 em.emS{width:61px;height:54px;display:block;background:url(../images/tips_img.gif) left bottom no-repeat;position:absolute;left:-70px;bottom:10px;_bottom:60px}
+.main .contBox .titDiv .ulS li b{display:inline-block;font:30px/50px "微软雅黑";color:#f04747;}
+.main .contBox .titDiv .aReturn{width:30px;height:36px;display:block;background:url(../images/hj_img.gif) left -60px no-repeat;position:absolute;left:10px;top:20px;}
+.main .contBox .titDiv .aWrong{  width: 112px;  height: 41px;  display: block;  background: url(../images/contentTools/backTool.png) no-repeat -359px top;  position: absolute;  right: 60px;  top: 30px;  padding-left: 25px;}
+.main .contBox .titDiv .aWrong:hover{background-position:-359px -47px;}
+.main .contBox .titDiv .aWrong span.sp{width:100%;height:18px;line-height:18px;display:block;position:absolute;top:8px;color:#fff;text-indent:34px;}
+.main .contBox .titDiv .hDiv{width:100%;height:50px;text-align:center;}
+.main .contBox .titDiv .hDiv h5{font:bold 20px/30px "微软雅黑";color:#383b44;}
+.main .contBox .titDiv .hDiv span{font:14px/20px "微软雅黑";color:#484848;}
+.main .contBox .titDiv .reportBtn{width:100px;height:30px;display:block;position:absolute;right:30px;bottom:15px;background-color:#54c9d2;color:#fff;font:14px/30px "微软雅黑";text-align:center;}
+.main .contBox .content1 .module{width:100%;height:auto;overflow:hidden;padding-bottom:20px;border-top:1px #ccc solid;position:relative;}
+.main .contBox .content1 .module .scoreBox{position:absolute;top:20px;right:20px;width:100px;height:62px;font:40px/40px "楷体";text-align:center;color:#ff6d6d;background:url(../images/score_bg1.png) center bottom no-repeat;}
+.module .boxCont{width:100%;height:auto;}
+.module .boxCont .tit{height:26px;font:18px/26px "微软雅黑";color:#000;text-indent:42px;}
+.module .job{padding:20px 40px;}
+.module .job ul.ul{width:100%;text-align:left;zoom:1;clear:both;}
+.module .job ul.ul li{height:40px;display:inline-block;*display:inline;_display:inline;padding:0 34px 0 0;zoom:1;}
+.module .job ul.ul li span{display:inline-block;*display:inline;_display:inline;padding:9px 0;zoom:1;font-size:18px;font-weight:bold;color:#666;*pandding-right:5px;}
+.module .job ul.ul li span.right{color:#4cc6ce;}
+.module .job ul.ul li span.wrong{color:#f86161;}
+.main .contBox .content1 .modC{width:100%;height:auto;line-height:57px;font-size:18px;background-color:#e9fdff;margin-bottom:20px;zoom:1;overflow:hidden;}
+.main .contBox .content1 .modC label{width:120px;display:block;float:left;text-indent:20px;}
+.main .contBox .content1 .modC span{width:850px;display:block;float:left;color:#ef971c;}
+.module .jobS{float:left;width:800px;}
+.module .jobS img{width:140px;height:105px;display:inline-block;margin:0 auto;border:3px #ececec solid;}
+.module .workS .answerC{font:bold 18px/26px "微软雅黑";color:#666;padding:10px 0 0;/*color:#4cc6ce;*/}
+.module .job .answerC{font:bold 18px/26px "微软雅黑";color:#666;padding:10px 0 0;/*color:#4cc6ce;*/}
+
+
+/*播放控件按钮*/
+/*.mp3player{width:auto;height:auto;float:left;}
+.mp3player .mp3Cont{width:100%;}
+.mp3player .mp3Cont.big a{width:78px;height:78px;margin:10px 70px 0 0;float:left;display:block;background-image:url(../images/a_star.gif);}
+.mp3player .mp3Cont.big a.play{}
+.mp3player .mp3Cont.big a.pause{background-image:url(../images/a_staring.gif)}
+.mp3player .mp3Cont.small a{width:18px;height:18px;display:block;background-image:url(../images/aStar.gif);float:left;margin:8px 5px 0;}
+.mp3player .mp3Cont.small a.play{}
+.mp3player .mp3Cont.small a.pause{background-image:url(../images/aStaring.gif);}*/
+/*播放控件按钮*/
+.mp3player{display:inline-block;*display:inline;_display:inline;zoom:1;}
+
+.mp3player .mp3Cont{display:inline-block;*display:inline;_display:inline;position:relative;}
+.mp3player .mp3Cont em.state{width:50px;height:20px;line-height:20px;display:block;position:absolute;top:-18px;color:#666;font-size:14px;}
+.mp3player .mp3Cont em.num{height:20px;line-height:20px;display:block;position:absolute;bottom:-5px;left:26px;color:#666;font-size:14px;}
+.mp3player .mp3Cont em.num.good{color:#f15621;}
+.mp3player .mp3Cont.big em.state{top:-12px;left:50px;}
+.mp3player .mp3Cont.big em.num{bottom:-5px;left:70px;}
+.mp3player .mp3Cont.big a{padding:39px;margin:10px 70px 0 0;display:inline-block;*display:inline;_display:inline;background:url(../images/a_star.gif) center center no-repeat;zoom:1;}
+.mp3player .mp3Cont.big a.play{}
+.mp3player .mp3Cont.big a.pause{background-image:url(../images/a_staring.gif)}
+.mp3player .mp3Cont.small a{width:18px;padding:9px 5px;display:inline-block;*display:inline;_display:inline;background:url(../images/aStar.gif) center center no-repeat;zoom:1;}
+
+.mp3player .mp3Cont.small a.play{}
+.mp3player .mp3Cont.small a.pause{background-image:url(../images/aStaring.gif);}
+
+
+.spS{width:60px;height:30px;line-height:30px;text-indent:30px;}
+
+/*覆盖提交弹框的背景样式*/
+.aui_c .aui_inner{background:none;border:none;}
+.aui_state_lock .aui_inner .aui_dialog{box-shadow:none;transition:none;}
+.aui_border .aui_nw,.aui_border .aui_n,.aui_border .aui_ne,.aui_border .aui_w,.aui_border .aui_e,.aui_border .aui_sw,.aui_border .aui_s,.aui_border .aui_se{background:none;}
+
+/*自定义artDialog弹框样式，不带按钮*/
+.tipMsg{width:240px;height:80px;padding:20px;background-color:#fff;margin:0 auto;position:relative;}
+.tipMsg span{width:100%;text-align:center;}
+.tipMsg span h4{font:24px/40px "微软雅黑";color:#202121;}
+.tipMsg span p{font:20px/30px "微软雅黑";color:#111010;}
+/*20160718--zjm*/
+/*没有分数显示笑脸*/
+.noneScore{padding: 8px 18px;background: url(../images/noScore.png) no-repeat left top;_background-image:url(../images/noScore.gif) ;}
+.noneScoreBig{background: url(../images/noScoreBig.gif) no-repeat left top;position: absolute;top: 40px;right: 50px;width:66px;height:58px;}
+#mainBody .mS.chineseS,#mainBody .mS.mathS{margin:30px auto;}
+.chineseS .content{padding:20px 0;background-color:#fff;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;*zoom:1;position:relative;}
+.chineseS .contBox .content1 .module .contBox{padding:10px 10px;}
+.chineseS .module .contBox .rightBox{float:left; width:625px;}
+.chineseS .module h4 em{font: 18px/30px "微软雅黑";color:#393939;}
+.chineseS .module h4 label{font: 18px/30px "微软雅黑";color:#393939;}
+.chineseS .contBox .titDiv .clearWrong{display:block;position:absolute;top:10px;right:30px;width:87px;height:41px;background: url(../images/contentTools/backTool.png) no-repeat -359px top;color:#fff;font: 16px/41px "微软雅黑";padding-left: 50px;}
+.chineseS .contBox .titDiv .clearWrong:hover{background-position: -359px -47px;}
+/*.chineseS .module .contBox .centerBox{float:left;width:700px;}*/
+.chineseS .module .contBox .centerBox{float:left;width:auto;max-width:700px;}
+.chineseS .module .contBox .centerBox MT{margin-bottom:20px;}
+/*拼音题*/
+
+.Y2 .shell{/*width: 700px;*/margin:0 auto 30px auto;}
+.Y2 .shell ol {display:block; margin:0 auto;}
+.Y2 .shell ol li{display:inline-block; text-align:left;margin:5px 0;font:22px/30px "楷体";font-weight:normal;}
+.Y2 .shell ol li.title{margin:25px auto;/*height:30px;*/text-align:center;}
+.Y2 .shell ol li.li{overflow:hidden;}
+.Y2 .shell ol li .bag{display:inline-block;*display:inline;_display:inline;/*height:45px;*/zoom:1;text-align:center;width:55px;}
+.Y2 .shell ol li .bag span{display:block;text-align:center;width:55px;font-family:"楷体";}
+.Y2 .shell ol li .bag span.pin{font-size:16px;font-weight:normal;font-family:"GB Pinyinok-C";-webkit-transform-origin-x: 0;-webkit-transform: scale(0.91666667);}/*解决谷歌中字体不能小于12px的问题*/
+.Y2 .shell ol li .bag span.text{font-size:22px;font-family:"楷体";}
+.Y2 .shell ol li .s{width:18px;font-size:22px;}
+.Y2 .shell ol li .s span.sign{line-height:40px;padding-top:5px;width:18px;}
+.Y2 .shell h5,.Y2 .shell p{font:22px/30px "楷体";color:#333;}
+.Y2 .shell h5{margin-bottom:15px;}
+.Y2 .shell p{text-indent: 2em;  line-height: 40px;}
+
+/*无拼音*/
+.Y2 .shell ol.nonePY li{min-height:35px;}
+.Y2 .shell ol.nonePY li .bag{height:45px;zoom:1;width:25px;height:30px;}
+.Y2 .shell ol.nonePY li .bag span{width:25px;}
+.Y2 .shell ol.nonePY li .s span.sign{line-height:30px;padding-top:5px;width:18px;}
+
+.chineseS .module .contBox .centerBox .fullView{color:#54c9d2;font: 16px/30px "楷体","微软雅黑";}
+.chineseS .module .contBox .centerBox p{color:#333;}
+.chineseS .module .contBox .centerBox p span{color:#666;font: 16px/30px "楷体","微软雅黑";}
+.chineseS .module .contBox .centerBox .tree{margin:30px 0 50px 0;position:relative;width:86px;height:45px;background: url(../images/contentTools/backTool.png) no-repeat -415px -276px;/*padding-bottom:30px;*/}
+.chineseS .module .contBox .centerBox .tree h2{position:absolute;font: 24px/30px "楷体","微软雅黑";width:200px;text-align: center;top:-30px;left:50%;margin-left:-100px;}
+.chineseS .module .contBox .centerBox .tree span.leftS{font-size:24px;position: absolute;top:48px;right:80px;}
+.chineseS .module .contBox .centerBox .tree span.rightS{font-size:24px;position: absolute;top:48px;left:72px;}
+.chineseS .module .contBox .centerBox  em{/*border:2px #333 solid;*/line-height:35px;padding:0 10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;}
+.chineseS .module .contBox .centerBox  em.true,.chineseS .module .contBox .centerBox  span.true{color:#66d6f0;font-size:18px;}
+.chineseS .module .contBox .centerBox  em.wrong,.chineseS .module .contBox .centerBox  span.wrong{color:#ff6d6d;font-size:18px;}
+.chineseS .module .contBox .centerBox .f24{font-size: 18px;}
+.mathS .module .contBox .centerBox .fullView{color:#54c9d2;font: 16px/30px "宋体","微软雅黑";}
+.mathS .module .contBox .centerBox p{color:#333;}
+.mathS .module .contBox .centerBox p span{color:#666;font: 16px/30px "宋体";}
+.mathS .module .contBox .centerBox .tree{margin:30px 0 50px 0;position:relative;width:86px;height:45px;background: url(../images/contentTools/backTool.png) no-repeat -415px -276px;/*padding-bottom:30px;*/}
+.mathS .module .contBox .centerBox .tree h2{position:absolute;font: 24px/30px "宋体","微软雅黑";width:200px;text-align: center;top:-30px;left:50%;margin-left:-100px;}
+.mathS .module .contBox .centerBox .tree span.leftS{font-size:24px;position: absolute;top:48px;right:80px;font-family:"宋体";}
+.mathS .module .contBox .centerBox .tree span.rightS{font-size:24px;position: absolute;top:48px;left:72px;font-family:"宋体";}
+.mathS .module .contBox .centerBox .tree span.rightS em{font-size:24px;}
+.mathS .module .contBox .centerBox  em{/*border:2px #333 solid;*/line-height:35px;padding:0 10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;}
+.mathS .module .contBox .centerBox  em.true,.chineseS .module .contBox .centerBox  span.true{color:#66d6f0;font-size:18px;}
+.mathS .module .contBox .centerBox  em.wrong,.chineseS .module .contBox .centerBox  span.wrong{color:#ff6d6d;font-size:18px;}
+.mathS .module .contBox .centerBox .f24{font-size: 18px;}
+.mathS .module .contBox .centerBox{margin:0 auto;float: left;width:800px;}
+.mathS .module .contBox .centerBox table{width:100%;}
+.mathS .module .contBox .centerBox table tr td{font-size: 20px;padding:0 5px;/*font-weight:bold;*/ font-family:"宋体";}
+.mathS .module .contBox .centerBox table tr td u{font-family:"宋体"}
+.mathS .module .contBox .centerBox table tr td p{text-align: left;padding-bottom:30px;}
+.mathS .module .contBox .centerBox table tr td .fenshi{text-align: left;padding-bottom:30px;font-size: 20px;font-family:"宋体";}
+.mathS .module .contBox .centerBox table tr td p label{font-size: 20px;font-family:"宋体"}
+.mathS .module .contBox .centerBox table tr td .p{text-align: left;padding-bottom:20px;}
+.mathS .module .contBox .centerBox table tr td p.ml{font-weight:normal;}
+.fraction{display:inline;}
+.fraction b{font-weight: normal;line-height: 64px;height:64px;padding:0 5px;}
+.fraction i{font-style: normal;display:block;text-align: center;padding:0 10px;}
+.fraction i.w50{width:auto;}
+.fraction i.fracChild{border-bottom:1px #666 solid;}
+.fraction i.fracParent{border-top:1px #666 solid;}
+.mathS .module .contBox .centerBox .fracLabel{margin-left: 200px;line-height: 64px;}
+.teacherHW .content{border-radius: 0;box-shadow: none;}
+#mainBody.teacherHW .main{padding-top:0;}
+.teacherHW .setScore{position: absolute;top:120px;right: 20px;width: 122px;height: 80px;z-index:99}
+.teacherHW .setScore a{display: block;background: url(../images/contentTools/backTool.png) no-repeat;height:30px;font:16px/30px "微软雅黑";text-align: center;color:#fff;}
+.teacherHW .setScore a.scoreBtn{width:122px;background-position: -319px -106px;}
+.teacherHW .setScore a.scoreBtn.nextStyle{background-position: -444px -106px;color:#999;}
+.teacherHW .setScore a.sureSet{background-position: -269px -106px;width:46px;margin-left:6px;}
+.teacherHW .setScore p{clear:both;overflow: hidden;margin-top:11px;display: none;}
+.teacherHW .setScore .ScoreInput{width:58px;border:1px #b4c1c8 solid;height:28px;line-height: 28px;padding:0 5px;outline: none;}
+.chineseS .contBox .content .module .contBox .setScore{  right: 80px;  top: 140px;}
+.chineseS .contBox .content .module .contBox .noneScoreBig{   top: 60px;  right: 110px;}
+.chineseS .contBox .content .module .contBox{padding:10px;position:relative;}
+.chineseS .contBox .content .module .contBox .scoreBox{   top: 60px;  right: 90px;}
+.chineseS .contBox .content1 .module .contBox .noneScoreBig{   top: 60px;  right: 110px;}
+.chineseS .contBox .content1 .module .contBox{padding:10px 10px;position:relative;}
+.chineseS .contBox .content1 .module .contBox .scoreBox{   top: 60px;  right: 90px;}
+.mainBody .homePage{background: url(../images/contentTools/backTool.png) no-repeat -107px -420px;_background-image: url(../images/contentTools/backTool.gif);padding:10px 15px 5px 15px;}
+/*删除预览作业*/
+.module  .deleteBtn{height:50px;width: 50px;position: absolute;right: 0;top: 50%;margin-top:-25px;}
+.module  .deleteBtn a{background: url(../images/delete.gif) no-repeat -68px center;display: block;height: 100%;}
+.module:hover  .deleteBtn a,.module.hover  .deleteBtn a{background-position:15px center;}
+
+/*添加大题标题样式*/
+.module .mathCont{font-size: 20px;/*font-weight: bold;*/line-height: 30px;color: #666;text-align: left;font-family: "宋体";margin: 10px 0;height: auto;padding-left: 100px;}
+
+/*语文报告样式更改*/
+.chineseS .module h4 p.p,.mathS .module h4 p.p{line-height:30px;font-weight:normal;}
+.chineseS .workS h5{font-family:"楷体";}
+.chineseS .workS h5 u{font-family:"楷体";}
+.chineseS .workS h5 p{font-family:"楷体";}
+.chineseS .workS span{font:22px/30px "楷体";}
+.chineseS .workS span *{font:22px/30px "楷体";}
+.chineseS .workS span u{font:22px/30px "楷体";}
+.chineseS .m9 .workS ul.titList li a p{font:22px/30px "楷体";}
+.chineseS .m14 .optionDiv table tr td a em.em{font-weight:normal;}
+.chineseS .m16 .workS table tr td span{font-weight:normal;font-size:20px;}
+.chineseS .m16 .workS table tr td label{font-weight:normal;}
+.chineseS .m17 .workS h5{font-weight:normal;font-size:22px;}
+.chineseS .m17 .workS table tr td em{font-weight:normal;}
+.chineseS .m17 .workS table tr td span{font-weight:normal;}
+.chineseS .m18 .workS h5 em.num{font-weight:normal;  width: 50px;}
+.chineseS .m18 .workS table tr td a em.em{font-weight:normal;}
+.chineseS .module .contBox span.sp{font:22px/30px "楷体";font-weight:normal;}
+.chineseS .module .contBox .rightBox h5{font:22px/30px "楷体";font-weight:normal;}
+.chineseS .module .workS .answerC{font:20px/26px "楷体";font-weight:normal;}
+.chineseS .m7 .contBox .rightBox .answerC{font:20px/26px "楷体";font-weight:normal;}
+.chineseS .m9 .workS ul.resultUl{font-size:20px;font-weight:normal;font-family:"楷体";}
+.chineseS .m9 .workS ul.resultUl li{font-size:20px;font-weight:normal;font-family:"楷体";}
+.chineseS .m9 .workS ul.optionUl{font:20px/30px "楷体";font-weight:normal;}
+.chineseS .m9 .workS ul.optionUl li{font:20px/30px "楷体";font-weight:normal;}
+.chineseS .module .contBox .rightBox ul li a,.mathS .module .contBox .rightBox ul li a{background: url(../images/RandWY.png) no-repeat;width:24px;height:24px;}
+.chineseS .module .contBox .rightBox ul li a.r,.mathS .module .contBox .rightBox ul li a.r{background-position:left top;}
+.chineseS .module .contBox .rightBox ul li.r a.r,.mathS .module .contBox .rightBox ul li.r a.r{background-position:left -128px;}
+.chineseS .module .contBox .rightBox ul li.r a.w,.mathS .module .contBox .rightBox ul li.r a.w{background-position:right -128px;}
+.chineseS .module .contBox .rightBox ul li a.w,.mathS .module .contBox .rightBox ul li a.w{background-position:right top;}/*黑色*/
+.chineseS .module .contBox .rightBox ul li.w a.r,.mathS .module .contBox .rightBox ul li.w a.r{background-position:left -239px;}/*红色√*/
+.chineseS .module .contBox .rightBox ul li.w a.w,.mathS .module .contBox .rightBox ul li.w a.w{background-position:right -239px;}/*红色叉*/
+.chineseS .m17 .workS ul.ulSt li em.em{width: 45px;}
+/*S25未做样式更改*/
+.mathS .module.m25 .contBox .centerBox table tr td{  position: relative;}
+.m25 .notDone{left: -50px;}
+
+/*数学分式*/
+.mathS .workS span.MathJye{border: 0 none;display: inline-block; font-size: inherit; margin: 0; padding: 0; text-align: left;font-family:"宋体";}
+.mathS .MathJye table.table{width:auto;border-collapse: collapse; margin: 0; padding: 0; text-align: center; vertical-align: middle; line-height: normal; font-size: inherit; *font-size: 100%; _font-size: 100%; font-style: normal; font-weight: normal; border: 0; float: none; display: inline-block; *display: inline; zoom: 0; }
+.mathS .MathJye table.table td{ padding: 0;font-weight:normal; font-size: inherit; line-height: normal; white-space: nowrap; border: 0 none; width: auto; _height: auto;font-family:"宋体";}
+.mathS .MathJye table.table td.fsline{border-bottom: 1px solid black;}
+/*.mathS .MathJye table.table td.fsline r{border-bottom: 1px solid #4cc6ce;}
+.mathS .MathJye table.table td.fsline w{border-bottom: 1px solid #f86161;}*/
+/*重置数学报告结构*/
+.mathS .module h4 em{font: 18px/30px "微软雅黑";color:#393939;}
+.mathS .tit1{font:20px/30px "宋体";color:#666;zoom:1;margin-bottom:20px;display:block;}
+.mathS .tit2{font:20px/30px "宋体";color:#666;text-align:left;zoom:1;overflow:hidden;}
+.mathS .tit2 em{font:20px/30px "宋体";width:45px;float:left;text-align:left;padding:6px 0;}
+.mathS .tit2 .titCont{width:670px;float:left;font-family:"宋体"}
+.mathS .workS table .sel{float:left;width:347px;line-height:33px;margin: -4px auto;font-weight:normal;font-size:20px;font-family:"宋体";}
+.mathS .workS h5{font:20px/30px "宋体";}
+.mathS .workS span{font:20px/30px "宋体";}
+.mathS .m12 .workS table tr td a em.em{font-weight:normal;font-size:20px;font-family:"宋体";margin: 4px 7px 0 0;}
+.mathS .m18 .workS table tr td a em.em{font-weight:normal;font-size:20px;font-family:"宋体";margin: 4px 7px 0 0;}
+.mathS .module .contBox .rightBox h5{font: normal 20px/30px "宋体";}
+.mathS .m16 .workS table tr td label{font-weight:normal;}
+.mathS .m16 .workS table tr td span{font-weight:normal;font-size:20px;}
+.mathS .module .contBox .centerBox .STab{margin:20px auto;}
+.mathS .module .contBox .centerBox .STab .tc{font-size:18px;font-family:宋体;}
+.mathS .module .contBox .centerBox .STab .tc label{font-size:18px;font-family:宋体;}
+.mathS .module .contBox .centerBox .SAnwer{padding:40px;text-align:center;font:18/26px "宋体";}
+.mathS .module .contBox .centerBox  em.true,.mathS .module .contBox .centerBox  span.true{color:#66d6f0;font-size:20px;font-family:"宋体";}
+.mathS .module .contBox .centerBox  em.wrong,.mathS .module .contBox .centerBox  span.wrong{color:#ff6d6d;font-size:20px;font-family:"宋体";}
+.mathS .module .contBox span.sp{font:20px/30px "宋体";font-weight:normal;}
+.mathS .module .contBox span.sp u{font:20px/30px "宋体";font-weight:normal;}
+.mathS .m7 .contBox .rightBox .answerC{font:18px/26px "宋体";font-weight:normal;}
+.mathS .m7 .contBox .rightBox .notDone{left: -30px;  top: -10px;}
+.mathS .m13 .contBox .rightBox .answerC{font:18px/26px "宋体";font-weight:normal;}
+.mathS .m18 .workS h5 em.num{font:18px/26px "宋体";font-weight:normal;}
+.mathS .module .workS .answerC{font:18px/26px "宋体";font-weight:normal;}
+.mathS .module .contBox .centerBox table tr td .answerfs{text-align: left;padding-bottom:30px;font-size: 18px;font-family:"宋体";}
+.mathS .module .contBox .centerBox .answerfs table tr td {font:18px/26px "宋体";font-weight:normal;}
+.mathS .m25 .notDone{left: -20px;}
+.mathS .m12 .workS .titBox h5{font:20px/26px "宋体";font-weight:normal;}
+.mathS a.w .MathJye table.table td.fsline,.mathS span.wrong .MathJye table.table td.fsline{border-color:#f86161;} 
+.mathS a.r .MathJye table.table td.fsline,.mathS a.on .MathJye table.table td.fsline,.mathS span.true .MathJye table.table td.fsline{border-color:#4cc6ce;} 

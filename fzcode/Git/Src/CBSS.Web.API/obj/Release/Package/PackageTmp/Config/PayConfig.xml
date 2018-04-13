@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PayConfig>
+  <AliPayConfig>
+    <!--回调地址-->
+    <ali_notify_url>http://paytest.tbx.kingsun.cn:5535/api/PayAction/ProcessNotify</ali_notify_url>
+    <!--应用私钥-->
+    <ali_private_key>MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJNP2pfb9eJMXhg5sIDWk8Mw18/GyJQj1laa3IWsNZ9DcxldWy9wb0g/z3yKQQOq/cMjW5MmAXqFn9VRlAtpEJ4rywZx0h+saPpEojW6IgSBRf7p5KLvAYZYz0MrcmTRJEIgioooPQtaw1YQHpPoaQ58/BrcDRevKquqcztzsGzLAgMBAAECgYEAhcafsQacfZxyWreQ9P9oAnsJkPNpVTZSQCW0G2Qu8emzzZX859DIDil8iBGZRvZyKlKip7d84kIUywihU9desZJLKC6E9GVeD36+0bYx+ZAmst/a8hAuZuKsGEWNEoS3hZzfQNYehrErNCvLUSfZBLYfbED6exxTtzKThmF5C7ECQQDX8IuJ4aQ/6U0aNKPykinECYHtHsl6ZCvSRXx7Bm/xIX6dkXiSJNySMVJWwmOCErMIbZC5ucMgnRS0nEufOz5JAkEArqQGsyWzKi1eeMb+jeBwSEvaVJrK2xyRfS2oJFFxM0uHmpNS4oMhU1o0zJXfHWN2GQjYUulP+gVbTFI4cl/icwJAUwF8IfxCju63XKNvggb9VwXwk52KBSoMTj+3ofLPhPlDGn6YwlS5FNkwtXjzl0Ro3YyAXWQyxY6cLvEFgKfdQQJAHHcLyINqkoNWlKUKtKFSa9ZBPe0FB3W+mQKqF1FW/B9heOZuahEpi2Z2mKoM9cNSan4wlEMHEB9zZBs6rBnI1QJACYfoo7T29SWezvmQUFjW0aWiJdcv/xEjNcP8HOPyssQ2wROYDXr5RbDst717eOHwJ3i7fjRmwuJrl6MkFUrBFw==</ali_private_key>
+    <!--应用公钥-->
+    <ali_public_key>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCTT9qX2/XiTF4YObCA1pPDMNfPxsiUI9ZWmtyFrDWfQ3MZXVsvcG9IP898ikEDqv3DI1uTJgF6hZ/VUZQLaRCeK8sGcdIfrGj6RKI1uiIEgUX+6eSi7wGGWM9DK3Jk0SRCIIqKKD0LWsNWEB6T6GkOfPwa3A0XryqrqnM7c7BsywIDAQAB</ali_public_key>
+    <!--支付宝商户ID-->
+    <ali_accountid>2088521664656234</ali_accountid>
+    <!--支付宝PID-->
+    <ali_partnerid>2088521664656234</ali_partnerid>
+    <!--支付宝MD5密钥-->
+    <ali_keycode>5cqph82kjinrgmucxx30j66fy08mgg8j</ali_keycode>
+    <!--支付宝请求地址-->
+    <ali_payway>https://mapi.alipay.com/cooperate/gateway.do?</ali_payway>
+    <!--APPID-->
+    <ali_AppID>2018010801688046</ali_AppID>
+  </AliPayConfig>
+  <HMSPayConfig>
+    <!--华为CPID-->
+    <hw_CPID>900086000032179821</hw_CPID>
+    <!--华为应用ID-->
+    <hw_APPID>100005341</hw_APPID>
+    <!--商户名称，必填，不参与签名。会显示在支付结果页面-->
+    <hw_merchantName>深圳市方直科技股份有限公司</hw_merchantName>
+    <!--华为支付私钥-->
+    <hw_private_key>MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC6HotzIAMBV+kgWs+1I3KD6Qlwe2aqyLUPV93EB2m6W4x/ZmfjAijACF3DTrcuh4gGpuOkbW90nWrLXrMHIF7c8Vsg54pSOm0m+VRQ1SM9LTHgMM2otrvgsb0+7PpzSwXMQdcNmn1ydYryc+DGyStUmXsslybWQPz5QbOCBbFVYJtbC9Cs+deq/1MLjToDmmsMHhduNT02rQqm80PyUZfKUhKOIe9TClCaYHmTymCozekyhs6fxPg6Kil1p3X6oPGZR+OnQXqXn8gWE+rwypDoPSHhY2WZHEu9vAsqLG7a0c50vtNwlE4ep21tGuI+rjxwhdgrFW7AOQdBUn5ZoNDhAgMBAAECggEAEJkNvZgSvIlu+Fww3soI+duL5HSUzNE2WGZxF/zDQIPOjUQAKr30DWARoIvCCUu75T/32B+MS32IWxeYZp/L5e8+Pbp4Wunr9whQLR8808VWh9RCWvPk4F5pbpWqpiKAI12RxJxM6Kqz1/heiMvC6foAApN+Oqg0BzSFQiiozmC2YyYtUYp1ScGdf/Ashx0jPQPH0nCjFb4uspLoMpITnpscSPGI8sx/t9+1IEIOWOUcOD4ci2EYxPrDtNEC+vqwJO+33eW1NwSlWQu/EDZs3+0CQR3BNgBYb0Fg7EW9yU+8RCrh2cxL4yqdJKpp3OhBgTCH3Z5LnYsEEXlDpIPqmwKBgQD5UAPArcPh5En0E/tLgePU8hTzMqGvenq+6nelSz80MCi7ezK91p2oolDRWAo+7bVUHIzZeznR9B8e12dM9OWITYwOC597UW2YTL7wkihF1HgHVRZfoW/7QKCJ8oVi+xUChnR+ZSmm6prvZgSTs4SCmwQreIwnUwoDwWvxr6te8wKBgQC/HJfdjK2+ZriOqjrxUb4xQ1yoLRoGN6mG8fXb3eC7OEaxMaW4bMobTgwnLDb7x1crktdMOKR14VG6w4nSbS9Iotb6cLQl62EESGWjzA0wGg+D4tTAPt7dVEU33VNtEWhorheb3UPQjcx79O3EVaz7aGUA/NExAcwxGQoLuIrN2wKBgAwhpZ0Zl3+FcUfMNR0ue9yfzv8qho2YYyKpHBtR9wheE41T6Fsud0t+YnpdU1pOjNVD8mKeyWh6/YytpJwtCoJAa8E/NYp1ouSXT287XXRQa2rH7CfJHj7WnTk5MN5pI1OVIVQJLiauIc3mY/Cf+qG0U1aeLgu30bPvFIaVKrybAoGBALlSwPHWuaUpd07hRMc+vXCIIhHzqojc8Ugq2n+baZIjwGmT+2AcHuDbjm1uMuN1KtLWUnFXfCPTm63AcKXduzx0rIOvRwJ+flXo3qc3+JHss57xF95VGUkHrxe9SGk7uEPKjppWtqxG1URe/zKk4lnpogiTIUiktZ3m6hbznaaBAoGARV11uFof7HM+egHzkNledfbvhrTc0Mn2NymrJvZOgN74hxl2x9a0UFacYIOb763+vjC19uYVW1mAa/P3k73EjKIqx5G+yJPjWdNKFGl/kJ0rzx0+/Oquwx/W7DHm/J65uuYv1a+vYLGROpdl52XoeulIGFZMSzK09QJ9QQD/h8M=</hw_private_key>
+    <!--华为支付公钥-->
+    <hw_public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuh6LcyADAVfpIFrPtSNyg+kJcHtmqsi1D1fdxAdpuluMf2Zn4wIowAhdw063LoeIBqbjpG1vdJ1qy16zByBe3PFbIOeKUjptJvlUUNUjPS0x4DDNqLa74LG9Puz6c0sFzEHXDZp9cnWK8nPgxskrVJl7LJcm1kD8+UGzggWxVWCbWwvQrPnXqv9TC406A5prDB4XbjU9Nq0KpvND8lGXylISjiHvUwpQmmB5k8pgqM3pMobOn8T4Oiopdad1+qDxmUfjp0F6l5/IFhPq8MqQ6D0h4WNlmRxLvbwLKixu2tHOdL7TcJROHqdtbRriPq48cIXYKxVuwDkHQVJ+WaDQ4QIDAQAB</hw_public_key>
+  </HMSPayConfig>
+  <WXPayConfig>
+    <!--微信支付-->
+    <!--同步学-深圳版-APP包名-->
+    <SZAPKName>com.sz.syslearning</SZAPKName>
+    <!--同步学-北京版-APP包名-->
+    <BJAPKName>com.bj.syslearning</BJAPKName>
+    <!--同步学-上海全国版-APP包名-->
+    <SHQGAPKName>com.shqg.syslearning</SHQGAPKName>
+    <!--同步学-上海本地版-APP包名-->
+    <SHBDAPKName>com.shbd.syslearning</SHBDAPKName>
+    <!--同步学-广东版-APP包名-->
+    <GDAPKName>com.gd.syslearning</GDAPKName>
+    <!--同步学-广州版-APP包名-->
+    <GZAPKName>com.gz.syslearning</GZAPKName>
+    <!--同步学-人教pep版-APP包名-->
+    <GZAPKName>com.rj.syslearning</GZAPKName>
+
+    <!--深圳_微信应用ID-->
+    <sz_wx_appid>wxa071fcfeaeccc7ec</sz_wx_appid>
+    <!--深圳_微信商户ID-->
+    <sz_wx_mchid>1430105002</sz_wx_mchid>
+    <!--深圳_微信密钥-->
+    <sz_wx_key>fangzhijintaiyangkingsunsoft2017</sz_wx_key>
+    <!--深圳_商户密钥-->
+    <sz_wx_appsecret>b1dcac69e61b683463a1fc27180fc66f</sz_wx_appsecret>
+    <!--深圳_-->
+    <sz_wx_sslcert_password>1430105002</sz_wx_sslcert_password>
+
+    <!--北京_微信应用ID-->
+    <bj_wx_appid>wx817a722e9a0302a6</bj_wx_appid>
+    <!--北京_微信商户ID-->
+    <bj_wx_mchid>1434308102</bj_wx_mchid>
+    <!--北京_微信密钥-->
+    <bj_wx_key>fangzhijintaiyangkingsunsoft2017</bj_wx_key>
+    <!--北京_商户密钥-->
+    <bj_wx_appsecret>870d8a19f38578f5b1ae5400430ad745</bj_wx_appsecret>
+    <!--北京_-->
+    <bj_wx_sslcert_password>1434308102</bj_wx_sslcert_password>
+
+    <!--上海全国_微信应用ID-->
+    <shqg_wx_appid>wx31e09660a129ca6c</shqg_wx_appid>
+    <!--上海全国_微信商户ID-->
+    <shqg_wx_mchid>1434188302</shqg_wx_mchid>
+    <!--上海全国_微信密钥-->
+    <shqg_wx_key>fangzhijintaiyangkingsunsoft2017</shqg_wx_key>
+    <!--上海全国_商户密钥-->
+    <shqg_wx_appsecret>51e5320e35ed3c77429a380089cccb0d</shqg_wx_appsecret>
+    <!--上海全国_-->
+    <shqg_wx_sslcert_password>1434188302</shqg_wx_sslcert_password>
+
+    <!--上海本地_微信应用ID-->
+    <shbd_appid>wx0875aef53537393c</shbd_appid>
+    <!--上海本地_微信商户ID-->
+    <shbd_mchid>1434207702</shbd_mchid>
+    <!--上海本地_微信密钥-->
+    <shbd_key>fangzhijintaiyangkingsunsoft2017</shbd_key>
+    <!--上海本地_商户密钥-->
+    <shbd_appsecret>30eec73e94673a10809c1f38ad16e984</shbd_appsecret>
+    <!--上海本地_-->
+    <shbd_sslcert_password>1434207702</shbd_sslcert_password>
+
+    <!--广东_微信应用ID-->
+    <gd_appid>wx97b5ee71152e455a</gd_appid>
+    <!--广东_微信商户ID-->
+    <gd_mchid>1460931902</gd_mchid>
+    <!--广东_微信密钥-->
+    <gd_key>fangzhijintaiyangkingsunsoft2017</gd_key>
+    <!--广东_商户密钥-->
+    <gd_appsecret>98206f75dc2ad547af57194c91b9d38b</gd_appsecret>
+    <!--广东_-->
+    <gd_sslcert_password>1460931902</gd_sslcert_password>
+
+    <!--广州_微信应用ID-->
+    <gz_appid>wx3371f030dc2cc279</gz_appid>
+    <!--广州_微信商户ID-->
+    <gz_mchid>1434186502</gz_mchid>
+    <!--广州_微信密钥-->
+    <gz_key>fangzhijintaiyangkingsunsoft2017</gz_key>
+    <!--广州_商户密钥-->
+    <gz_appsecret>5998e3abf78877e45822bd0f4cb8cf08</gz_appsecret>
+    <!--广州_-->
+    <gz_sslcert_password>1434186502</gz_sslcert_password>
+
+    <!--人教pep_微信应用ID-->
+    <rjpep_wx_appid>wxa277ab97f2d2e3f8</rjpep_wx_appid>
+    <!--人教pep_微信商户ID-->
+    <rjpep_wx_mchid>1483505482</rjpep_wx_mchid>
+    <!--人教pep_微信密钥-->
+    <rjpep_wx_key>fangzhijintaiyangkingsunsoft2017</rjpep_wx_key>
+    <!--人教pep_商户密钥-->
+    <rjpep_wx_appsecret>ba49be08423aad73b9b78c4456d5829f</rjpep_wx_appsecret>
+    <!--人教pep_-->
+    <rjpep_wx_sslcert_password>1483505482</rjpep_wx_sslcert_password>
+    <!--2018-02-05 结束-->
+
+    <!--2018-01-15 开始 -->
+    <!--微信证书路径（必须绝对路径）-->
+    <wx_sslcert_path>D:\\users\\fulin.yuan\\Desktop\\cert\\apiclient_cert.p12</wx_sslcert_path>
+    <!--回调地址-->
+    <wx_notify_url>http://paytest.tbx.kingsun.cn:5535/api/PayAction/ResultNotifyPage</wx_notify_url>
+  </WXPayConfig>
+  <ApplePay>
+    <!--苹果正式支付地址-->
+    <ApplePayUrl>https://buy.itunes.apple.com/verifyReceipt</ApplePayUrl>
+    <!--苹果沙盒支付地址-->
+    <ApplePaySandboxUrl>https://sandbox.itunes.apple.com/verifyReceipt</ApplePaySandboxUrl>
+  </ApplePay>
+</PayConfig>

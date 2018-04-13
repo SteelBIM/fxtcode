@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!--框架必需start-->
+    <script src="~/Content/scripts/jquery/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/scripts/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Content/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/Scripts/jquery-ui.combobox.js"></script>
+    <!--框架必需end-->
+    <!--bootstrap组件start-->
+    <link href="~/Content/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+    <script src="~/Content/scripts/bootstrap/bootstrap.min.js"></script>
+   
+    <script src="~/Content/scripts/plugins/datepicker/WdatePicker.js"></script>
+    @System.Web.Optimization.Styles.Render("~/Content/scripts/plugins/tree/tree.css",
+    "~/Content/scripts/plugins/datetime/pikaday.css",
+    "~/Content/scripts/plugins/wizard/wizard.css",
+    "~/Content/styles/learun-ui.css")
+    @System.Web.Optimization.Scripts.Render("~/Content/scripts/plugins/tree/tree.js",
+    "~/Content/scripts/plugins/validator/validator.js",
+    "~/Content/scripts/plugins/wizard/wizard.js",
+                    "~/Content/scripts/plugins/datepicker/datepicker.js",
+      "~/Content/scripts/plugins/datetime/moment.min.js"
+    )
+    <script src="~/Content/scripts/utils/learun-applayout.js"></script>
+    @*<script src="~/Content/scripts/utils/learun-clientdata.js"></script>*@
+    <script src="~/Content/scripts/utils/learun-flowlayout.js"></script>
+    <script src="~/Content/scripts/utils/learun-form.js"></script>
+    <script src="~/Content/scripts/utils/learun-im.js"></script>
+    <script src="~/Content/scripts/utils/learun-ui.js"></script>
+</head>
+<body>
+    <form id="form1">
+        @RenderBody()
+        @*@Html.AntiForgeryToken()*@
+    </form>
+</body>
+</html>

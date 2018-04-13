@@ -1,0 +1,76 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@model Sys_User
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+ 
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript">
+        var roleid=@Model.RoleId;
+        $(document).ready(function () {
+            if(roleid!=null && roleid>0){
+                $("#RoleId").val(roleid);
+            }
+        });
+    </script>
+}
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>登录名：</label>
+                <div class="controls">
+                    @if (Model.ID == 0)
+                    {
+                        @Html.TextBoxFor(m => m.LoginName, new { @class = "m-wrap small" })
+                        <span class="help-inline">@Html.ValidationMessageFor(m => m.LoginName)</span>
+                    }
+                    else
+                    {
+                        @Model.LoginName
+                    }
+                </div>
+            </div>
+
+            @if (Model.ID == 0)
+            {
+                <div class="control-group">
+                    <label class="control-label"><span class="required">*</span>密码：</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.Password, new { @class = "m-wrap small" })
+                        <span class="help-inline">@Html.ValidationMessageFor(m => m.Password)</span>
+                    </div>
+                </div>
+            }
+            <div class="control-group">
+                <label class="control-label">邮箱：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "m-wrap small" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Email)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">手机号：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Mobile, new { @class = "m-wrap small" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.Mobile)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否激活：</label>
+                <div class="controls">
+                    @Html.CheckBoxFor(m => m.IsActive)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">角色：</label>
+                <div class="controls">
+                    @Html.DropDownList("RoleId")
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,257 @@
+﻿2017-12-18 21:06:08
+错误编号:2017121821060804Xa3c7b75078
+Message:正在中止线程。
+Message2:异常！
+Type:System.Threading.ThreadAbortException
+Source:System.Data
+StackTrace:   在 System.Data.RBTree`1.ComputeNodeByIndex(Int32 x_id, Int32 index)
+   在 System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   在 System.Data.DataRowCollection.get_Item(Int32 index)
+   在 Kingsun.SynchronousStudy.Common.JsonHelper.DataSetToIList[T](DataSet ds, Int32 tableIndex) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\JsonHelper.cs:行号 168
+   在 Kingsun.IBS.DAL.IBSInitUserVideoDAL.InitializeUserVideoInfo(String connectionstring) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.DAL\IBSInitUserVideoDAL.cs:行号 61
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSInitUserVideoBLL.InitializeUserVideoInfo(String connectionstring) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSInitUserVideoBll.cs:行号 24
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.InitLearningReport(String kingsun) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 45
+   在 Kingsun.SynchronousStudy.FS.TimedTask.ExecuteInitLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 153
+Method:ComputeNodeByIndex
+Class:System.Data.RBTree`1
+UserIP:
+UserName:
+
+2017-12-18 21:27:05
+错误编号:2017121821270518Xab039c8f83
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：LearningReportQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:28:18
+错误编号:2017121821281871X2a8f4b451e
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：LearningReportQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:29:18
+错误编号:2017121821291865Xe79bf3689d
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:30:18
+错误编号:2017121821301855X25a1a3afca
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:31:18
+错误编号:2017121821311858Xf4327d6529
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:32:18
+错误编号:2017121821321859Xda1327df87
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:33:18
+错误编号:2017121821331863X6890fd8c71
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:34:18
+错误编号:2017121821341864Xefc5a69216
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 21:35:18
+错误编号:2017121821351861Xe6c1149bc4
+Message:could not connect to redis Instance at 192.168.3.12:9006
+Message2:错误：listId为：RankQueue
+Type:ServiceStack.Redis.RedisException
+Source:ServiceStack.Redis
+StackTrace:   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectInt(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.LLen(String listId)
+   在 ServiceStack.Redis.RedisClient.GetListCount(String listId)
+   在 Kingsun.SynchronousStudy.Common.RedisListHelper.Count(String listId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\RedisListHelper.cs:行号 237
+Method:Connect
+Class:ServiceStack.Redis.RedisNativeClient
+UserIP:
+UserName:
+BaseException:
+System.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 192.168.3.12:9006
+   在 System.Net.Sockets.Socket.Connect(IPAddress[] addresses, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+2017-12-18 23:06:45
+错误编号:2017121823064509X26c01cc754
+Message:在 sys.servers 中找不到服务器 'ITSV_SZ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步订单出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 343
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncOrderInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 63
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+
+2017-12-18 23:06:45
+错误编号:2017121823064520X77d2969ed7
+Message:在 sys.servers 中找不到服务器 'ITSV_SZ'。请验证指定的服务器名称是否正确。如果需要，请执行存储过程 sp_addlinkedserver 以将服务器添加到 sys.servers。
+Message2:同步用户出错
+Type:System.Data.SqlClient.SqlException
+Source:.Net SqlClient Data Provider
+StackTrace:   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 Kingsun.SynchronousStudy.Common.SqlHelper.ExecuteNonQueryTimeOut(String connectionString, CommandType commandType, String commandText) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\SqlHelper.cs:行号 343
+   在 Kingsun.SynchronousStudy.BLL.SyncAllDataBLL.SyncUserInfo() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.BLL\SyncAllDataBLL.cs:行号 117
+Method:OnError
+Class:System.Data.SqlClient.SqlConnection
+UserIP:
+UserName:
+

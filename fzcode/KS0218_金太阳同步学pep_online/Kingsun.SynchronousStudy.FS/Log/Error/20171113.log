@@ -1,0 +1,14 @@
+﻿2017-11-13 17:53:05
+错误编号:2017111317530518Xf9a740a561
+Message:未将对象引用设置到对象的实例。
+Message2:MOD同步IBS同步异常,异常数据：
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.Change() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 52
+Method:Change
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2017-11-13 18:00:31
+ClassUserAdd接口异常，UserInfo={"UserID":2121000545,"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[]}

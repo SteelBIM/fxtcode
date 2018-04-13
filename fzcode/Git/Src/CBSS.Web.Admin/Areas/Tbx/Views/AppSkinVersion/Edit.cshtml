@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@using CBSS.Tbx.Contract.DataModel
+@model  AppSkinVersion
+
+@section MainContent{
+    <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+        <div class="row-fluid">
+            <div class="control-group">
+                <label class="control-label"><span class="required">*</span>皮肤版本号：</label>
+                <div class="controls"><span style="line-height: 30px;">V</span>
+                    @{
+                        if (Model != null && Model.SkinVersionID > 0)
+                        {
+                            @Model.SkinVersionNumber
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.SkinVersionNumber, new { placeholder = "例如：1.0.0", @class = "m-wrap small", @style = "min-width:300px;" })
+                            <span class="help-inline">@Html.ValidationMessageFor(m => m.SkinVersionNumber)</span>
+                        }
+                    }  
+                </div>
+            </div>
+            @*<div class="control-group">
+                    <label class="control-label">皮肤名称：</label>
+                    <div class="controls">
+                        @Html.DropDownList("AppID")
+                    </div>
+                </div>*@
+            <div class="control-group">
+                <label class="control-label">皮肤版本号更新类型：</label>
+                <div class="controls">
+                    @Html.DropDownList("UpdateType")
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">皮肤版本号更新地址：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.UpdateAddress, new { @class = "m-wrap small", @style = "min-width:300px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.UpdateAddress)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">皮肤版本号MD5：</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.UpdateMD5, new { @class = "m-wrap small", @style = "min-width:300px" })
+                    <span class="help-inline">@Html.ValidationMessageFor(m => m.UpdateMD5)</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">描述：</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.Describe, new { @class = "m-wrap small", @style = "min-width:300px;min-height:80px" })
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">是否启用：</label>
+                <div class="controls">
+                    <span style="float:left;"> @Html.RadioButtonFor(model => model.Status, 1, new { @id = "start", @name = "Status", @checked = true })</span> <label style="cursor:pointer; float:left; margin-top:3px; margin-left:6px;" for="start">启用</label>
+                    <span style="float:left; margin-left:25px;">  @Html.RadioButtonFor(model => model.Status, 2, new { @id = "forbidden", @name = "Status" })</span><label style="cursor:pointer;margin-top:3px; margin-left:6px; float:left;" for="forbidden">禁用</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}

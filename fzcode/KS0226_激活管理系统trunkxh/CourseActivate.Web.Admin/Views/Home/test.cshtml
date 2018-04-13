@@ -1,0 +1,281 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>新华一城书集后台管理系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Template/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- MetisMenu CSS -->
+    <link href="/Template/vendor/metisMenu/metisMenu.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="/Template/dist/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href="/Template/vendor/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="/Template/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">新华一城书集后台管理系统</a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span style="color:#ffffff;">
+                        欢迎您：
+                        <a style=" font-size:14px; text-decoration:none; " href="/AccountInfo/Index"> admin</a>
+                    </span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/AccountInfo/Index"><i class="fa fa-user fa-fw"></i> 个人资料</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/Login/Index"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="/Home/Index"><img style="width: 20px; height: 20px;" src="/Images/glyphicon/dls.png" /> 首页</a>
+                        </li>
+                        <li>
+                            <a href="/ResourceMgr/Index"><img style="width: 20px; height: 20px;" src="/Images/glyphicon/resourcemgr.png" /> 资源管理</a>
+                        </li>
+                        <li>
+                            <a href="/StatisticMgr/Index"><img style="width: 20px; height: 20px;" src="/Images/glyphicon/yytj.png" /> 运营统计</a>
+                        </li>
+                        <li>
+                            <a href="/ActivateCreateMgr/Index"><img style="width: 20px; height: 20px;" src="/Images/glyphicon/yfjz.png" /> 激活码管理</a>
+                        </li>
+                        <li>
+                            <a href="/ActivateLog/Index"><img style="width: 20px; height: 20px;" src="/Images/glyphicon/activatelog.png" /> 激活记录</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img style="width: 20px; height: 20px; " src="/Images/glyphicon/xtsj.png" />  系统设置<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/AuthorityMgr/Index">  权限管理</a>
+                                </li>
+                                <li>
+                                    <a href="/Employee/Index">  管理员设置</a>
+                                </li>
+                                <li>
+                                    <a href="/ActivateTypeMgr/Index">  激活码类型设置</a>
+                                </li>
+                                <li>
+                                    <a href="/ApplicationTypeMgr/Index">  应用类型设置</a>
+                                </li>
+                                <li>
+                                    <a href="/Publish/Index">  出版社设置</a>
+                                </li>
+                                <li>
+                                    <a href="/MessageMgr/Index">  消息推送</a>
+                                </li>
+                                <li>
+                                    <a href="/EditionConfig/Index">  版本设置</a>
+                                </li>
+                                <li>
+                                    <a href="/ResourceTypeConfig/Index">  资源类型设置</a>
+                                </li>
+                                <li>
+                                    <a href="/AppEditions/Index">  应用版本设置</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+
+
+            <div class="col-lg-12" style="margin-top:15px;">
+                <div class="panel panel-default">
+                    <div class="panel-body" style=" font-size:18px; line-height:30px;">
+                        <p>您好！欢迎进入新华一城书集后台管理系统！</p>
+                        <p>2017年激活记录总数：<span>11</span></p>
+                        <p>上个月激活记录数：<span>0</span></p>
+                        <p>本月激活记录数：<span>11</span></p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="noticediv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">激活码预警</h4>
+                            </div>
+                            <div style="clear:both; height:50px;"></div>
+                            <div class="row form-group has-feedback">
+                                <label class="col-lg-3 control-label"> 激活码类型:</label>
+                                <div id="reset-mastername" class="col-lg-5">
+                                    <label class="control-label" id="labactivateType">APP端-线上</label>
+
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-lg-3 control-label"> 预警信息:</label>
+                                <div id="reset-mastername" class="col-lg-5">
+                                    <label class="control-label" id="labmessage">激活码个数低于1000</label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-lg-3 control-label"> 时间:</label>
+                                <div id="reset-mastername" class="col-lg-5">
+                                    <label class="control-label" id="labdatetime"> 2017年8月30日 0:12:56</label>
+                                </div>
+                            </div>
+
+                            <div style="clear:both; height:50px;"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="btnmessageprev" style="width:120px; float:left;" onclick="PrevMessage()">上一条</button>
+                                <button type="button" class="btn btn-default" id="btnmessagenext" style="width:120px;" onclick="NextMessage()">下一条</button>
+                                <button type="button" class="btn btn-primary" id="btnmessageok" style="width:120px;" onclick="hideModal()">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="../Template/vendor/jquery/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../Template/vendor/bootstrap/js/bootstrap.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../Template/vendor/metisMenu/metisMenu.js"></script>
+
+    <script src="/Scripts/Common.js"></script>
+    <script>
+        var messageList;
+        var messageIndex = -1;
+        function GetMessage() {
+            $.post("/Home/GetNoticeMessage", function (data) {
+                if (data && data.length > 0) {
+                    messageList = data;
+                    NextMessage();
+                    showModal();
+                }
+            })
+        }
+        function NextMessage() {
+            ReadMessage(function () {
+                messageIndex = messageIndex + 1;
+                if (messageIndex >= (messageList.length - 1)) {
+                    messageIndex = (messageList.length - 1);
+                    $("#btnmessagenext").hide();
+                    $("#btnmessageok").show();
+                }
+                else {
+                    $("#btnmessageok").hide();
+                    if (messageIndex >= 1) {
+                        $("#btnmessageprev").show();
+                    }
+                    else {
+                        $("#btnmessageprev").hide();
+                    }
+                }
+                if ((messageList.length - 1) == 0) {
+                    $("#btnmessageprev").hide();
+                    $("#btnmessagenext").hide();
+                    $("#btnmessageok").show();
+                }
+                var message = messageList[messageIndex];
+                $("#labactivateType").text(message.activatetypename);
+                $("#labmessage").text(message.message);
+                $("#labdatetime").text(Common.FormatTime(message.createtime));
+            });
+        }
+
+
+        function PrevMessage() {
+            messageIndex = messageIndex - 1;
+            if (messageIndex <= 0) {
+                messageIndex = 0;
+                $("#btnmessageprev").hide();
+            }
+            if (messageIndex < (messageList.length - 1)) {
+                $("#btnmessagenext").show();
+                $("#btnmessageok").hide();
+            } else {
+                $("#btnmessagenext").hide();
+                $("#btnmessageok").show();
+            }
+
+
+            var message = messageList[messageIndex];
+            $("#labactivateType").text(message.activatetypename);
+            $("#labmessage").text(message.message);
+            $("#labdatetime").text(Common.FormatTime(message.createtime));
+        }
+        function showModal() {
+            $("#noticediv").modal("show");
+        }
+        function hideModal() {
+            ReadMessage(function () {
+                $("#noticediv").modal("hide");
+            });
+        }
+        function ReadMessage(event) {
+            if (messageIndex < 0) {
+                event();
+            } else {
+                var obj = { id: messageList[messageIndex].pushid };
+                $.post("/Home/ReadMessage", obj, function (data) {
+                    if (data != "False") {
+                        event();
+                    }
+                });
+            }
+        }
+
+        $(function () {
+            GetMessage();
+        })
+
+    </script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../Template/dist/js/sb-admin-2.js"></script>
+
+
+</body>
+</html>

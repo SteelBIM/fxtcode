@@ -1,0 +1,80 @@
+﻿2017-11-24 16:23:31
+错误编号:2017112416233117Xe186dcdd0c
+Message:基础连接已经关闭: 连接被意外关闭。
+Message2:调用解除绑定关系接口异常!
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.UnBindClassStu(String StuUserID, String ClassID) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 848
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.UnBindClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 353
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2017-11-24 16:24:41
+错误编号:2017112416244194Xe12a8db74b
+Message:基础连接已经关闭: 连接被意外关闭。
+Message2:调用绑定关系接口异常!
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 236
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2017-11-24 16:26:04
+错误编号:2017112416260419X34010157c6
+Message:基础连接已经关闭: 连接被意外关闭。
+Message2:调用绑定关系接口异常!
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 236
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2017-11-24 16:27:43
+错误编号:2017112416274299X337bc31471
+Message:基础连接已经关闭: 连接被意外关闭。
+Message2:调用绑定关系接口异常!
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 236
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+
+2017-11-24 16:29:31
+错误编号:2017112416293103X5da8f15140
+Message:基础连接已经关闭: 连接被意外关闭。
+Message2:调用绑定关系接口异常!
+Type:System.Net.WebException
+Source:System.Web.Services
+StackTrace:   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 Kingsun.IBS.BLL.RelationService.RelationService.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Web References\RelationService\Reference.cs:行号 314
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 236
+Method:GetWebResponse
+Class:System.Web.Services.Protocols.WebClientProtocol
+UserIP:
+UserName:
+

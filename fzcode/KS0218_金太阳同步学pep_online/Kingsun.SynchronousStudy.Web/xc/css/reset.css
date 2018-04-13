@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+/***css重置***/
+html,body,div,ul,li,ol,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0}
+html,body{font-family:"Microsoft Yahei", Arial; height:100%; width:100%;}
+body{background-image:url(about:blank); background-attachment:fixed;font-size=62.5%}
+li{list-style-type:none}
+img{border:0;vertical-align:top}
+a{text-decoration:none;color:#000;cursor:pointer; outline:none;}
+a:hover{color:#759239}
+iframe{ margin:0; padding:0; border:0;}

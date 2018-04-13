@@ -1,0 +1,279 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">资源管理</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom: 0px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">学段:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Period">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">年级:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Grade">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">版本:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Edition">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">学科:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Subject">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">册别:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Reel">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">状态:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Status">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="col-sm-4" style="text-align:right;">
+                            <label class="control-label" style="line-height:30px">出版社:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="selectpicker show-tick form-control" id="Publish">
+                                <option value="-1">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        
+                        
+                    </div>
+                    <div class="col-xs-3">
+                        <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:50px;width:100px; height:34px; background-color:#515562; color:#fff;">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="toolbar" class="btn-group" style=" margin-top: 20px; margin-bottom:0px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table id="tb_resource"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">新建</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="formAdd" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @*<div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label">课本ID:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" placeholder="自动创建" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-sm-5" style="text-align:right;">
+                                    <label class="control-label" style="line-height:37px">课本名称:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" placeholder="根据属性自动生成" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>学段:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker show-tick form-control" id="ModalPeriod" name="PeriodID">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-sm-5" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>年级:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="selectpicker show-tick form-control" id="ModalGrade" name="GradeID">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>版本:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker show-tick form-control" id="ModalEdition" name="EditionID">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-sm-5" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>学科:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="selectpicker show-tick form-control" id="ModalSubject" name="SubjectID">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>册别:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker show-tick form-control" id="ModalReel" name="ReelID">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-sm-5" style="text-align:right;">
+                                    <label class="control-label">电子版号:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" name="EPlate" id="ModalEPlate" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>出版社:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker show-tick form-control" id="ModalPublish" name="Publishid">
+                                        <option value="-1">-请选择-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-sm-5" style="text-align:right;">
+                                    <label class="control-label"><em>*</em>书本名称:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" name="BookName" id="BookName" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label">目录:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="file" id="ModalBookCatalog" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="Catalog" value="选择文件" />
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-xs-6">
+                                <div class="col-sm-4" style="text-align:right;">
+                                    <label class="control-label">封面:</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="file"  name="BookCover" id="ModalBookCover" value="上传封面" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="BookID" style="display:none" name="BookID"/>
+                    <input type="text" id="ModalStatus" style="display:none" name="Status" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_save">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Scripts/bootstrap-paginator.min.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/ResourceMgr.js"></script>
+}

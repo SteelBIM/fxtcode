@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+    string startday = DateTime.Now.Year + "-" + (DateTime.Now.Month < 10 ? ("0" + DateTime.Now.Month) : DateTime.Now.Month.ToString()) + "-01";
+    string endday = DateTime.Parse(startday).AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">推送设置</h1>
+    </div>
+    <div class="tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+    </div>
+    <div class="row" style=" width:100%; float:left; margin-left:0;">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:10px;">
+                  
+                    <div class="col-lg-4">
+                        <input id="lefile" type="file" style="display:none">
+                        <div class="input-append">
+                            <div class="col-lg-8" style="margin-left:-15px;">
+                                <input placeholder="临界值" id="num" class="form-control" type="number">
+                            </div>
+                            <div class="col-lg-4" style="margin-left:-15px;">
+                                <input onclick="Create()" type="button" class="btn" name="txt_file" id="txt_file" value="设置新的临界值" />                     
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_activatetype"></table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/PushSetMgr.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script>
+        function Create() {
+            $.post("@Url.Action("Create")", { actNum: $("#num").val() }, function (data) {
+                if (data.Success) {                
+                    $('#tb_activatetype').bootstrapTable("refresh");
+                    bootbox.alert("新增成功!");
+                } else {
+                    bootbox.alert("新增失败!");
+                }
+            })
+        }
+
+        var pageInit;
+        $(function () {
+            pageInit = new PushSetMgr();
+            pageInit.Init();
+        })
+    </script>
+}

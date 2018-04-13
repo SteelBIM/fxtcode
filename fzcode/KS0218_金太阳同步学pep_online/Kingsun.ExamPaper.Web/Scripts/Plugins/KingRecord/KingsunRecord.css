@@ -1,0 +1,8 @@
+﻿ .kingRecord_cont{ width: 70px; position: relative; }
+.kingRecord .kingRecord_cont a{ width: 50px;height: 50px;display: block;position: relative; background: url(../../../Content/image/action_ul.png) no-repeat; }
+.kingRecord .kingRecord_cont a.on{background-position: -154px -88px;display: none; }
+.kingRecord .kingRecord_cont a.off{background-position: -154px top;}
+.kingRecord .kingRecord_cont em{ position: absolute; width: 12px;height: 10px;display: block;font: 14px/10px Arial;color: #0e5f4f; right: 5px;bottom: 10px;}
+.kingRecord .kingRecord_cont em.em1{ background: url(../../../Content/image/action_ul.png) -500px -28px no-repeat;}
+.kingRecord .kingRecord_obj { width: 1px; height: 1px; }
+.kingRecord .show{  position: absolute;top: 200px; left: 200px; width: 240px;height: 140px; background-color: Gray; }

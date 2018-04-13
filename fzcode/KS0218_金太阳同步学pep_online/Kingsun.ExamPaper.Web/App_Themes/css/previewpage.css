@@ -1,0 +1,152 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{font-family:"微软雅黑";}
+body {font:normal 100% Helvetica, Arial, sans-serif;background-color:#f1f1f1;} 
+a{outline:none;} 
+
+
+/*预习资料列表*/
+.wrap{position:relative;padding-bottom:60px;}
+header{width:100%;background:#fff;height:80px;}
+header .head h1{font:1.875em/80px "微软雅黑";color:#666;text-align:center;width:94%;padding:0 3%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.main{width:100%;}
+.main .recList ul{clear:both;overflow:auto;margin:30px 50px;}
+.main .recList ul li{width:631px;display:inline-block;border:1px #ccc solid; border-radius:48px;float:left;margin:0 30px 65px 0;background-color:#fff;}
+.main .recList ul li a{display:block;cursor:pointer;}
+.main .recList ul li a h2{font:1.875em/57px "微软雅黑";color:#999;text-align:center;border-bottom:1px #ccc solid;margin:0 5%;}
+.main .recList ul li a img{width:571px;height:297px;margin:15px 27px;}
+.main .recList ul li a p{background:#f3f3f3;font:1.875em/73px "微软雅黑";color:#37cdf2;text-align:center;border-top:1px #ccc solid;border-bottom-left-radius:48px;border-bottom-right-radius:48px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.main .recShow{width:100%;}
+.main .recShow .iframeContent{background:#2f2f2f;height:484px;width:100%;}
+.main .recShow .iframeContent #previewPage{height:484px;overflow:hidden;}
+.main .recShow .iframeContent .nothing{padding-top:147px;}
+.main .recShow .iframeContent .unplayTip{background:#f2f2f2 url(../images/tipsimg.png) no-repeat 22px 36px;border-radius:16px;padding-left:120px;width:350px;height:186px;margin:0 auto;}
+.main .recShow .iframeContent .unplayTip p{color:#2a97ff;font:1.5em/50px "微软雅黑";}
+.main .recShow .iframeContent .unplayTip p.pt40{padding-top:40px;}
+.main .recShow .bottomOpration{background:#fff;}
+.main .recShow .bottomOpration p.top{clear:both;overflow:hidden;border-bottom:1px #dfdfdf solid;padding: 15px 0;}
+.main .recShow .bottomOpration span{display:inline-block;}
+.main .recShow .bottomOpration span.rightSpan{float:right;margin-right:3%;}
+.main .recShow .bottomOpration span.rightSpan b{background:url(../images/smallTools.png) no-repeat left -81px;padding-left:40px;font: normal 1.5em/40px "微软雅黑";color:#666;}
+.main .recShow .bottomOpration a{background:url(../images/smallTools.png) no-repeat left top;font:1.5em/40px "微软雅黑";color:#666;cursor:pointer;}
+.main .recShow .bottomOpration span.rightSpan a.agree{background-position:5px -192px;padding-left:43px;}
+.main .recShow .bottomOpration span.rightSpan a.agree.agreed{background-position:5px -133px;padding-left:43px;}
+.main .recShow .bottomOpration span.leftSpan{float:left;margin-left:3%;}
+.main .recShow .bottomOpration span.leftSpan a.fullScreen{padding-left:40px;background-position:left -251px;}
+.main .recShow .bottomOpration a.description{padding-right:50px;background-position:right -281px;position:absolute;top:25px;color:#48bc00;}
+.main .recShow .bottomOpration a.description.down{background-position:right -319px;}
+.main .recShow .bottomOpration p.discussQue{margin:0 3%;background:url(../images/smallTools.png) no-repeat left -398px;padding: 15px 0 15px 40px;font:1.25em/35px "微软雅黑";color:#656565;}
+.main .commendDiv{background:#fff;}
+.main .commendDiv .descriptionInfo{width:100%;padding:10px 0;}
+.main .commendDiv .descriptionInfo h3{background:url(../images/smallTools.png) no-repeat 6px -338px;padding-left:40px;font:1.5em/35px "微软雅黑";color:#010101;margin-left:3%;}
+.main .commendDiv .descriptionInfo p{padding-left:40px;font:1.5em/35px "微软雅黑";color:#656565;margin-left:3%;}
+.main .commendDiv .queList ol>li{background:#f1f1f1;padding:15px 3%;margin:0 2% 2% 40px; }
+.main .commendDiv .queList ol>li>p{clear:both;overflow:hidden;}
+.main .commendDiv .queList ol>li>p>b{color:#333;font:bold 1.25em/35px "微软雅黑";}
+.main .commendDiv .queList ol>li>p>a{color:#333;font:1.25em/35px "微软雅黑";}
+.main .commendDiv .queList ol>li .discussStu{text-align:right;margin-top:5px;}
+.main .commendDiv .queList ol>li .discussStu.upDiscuss{padding-top:13px;border-top:1px #ccc solid;}
+.main .commendDiv .queList ol>li .discussStu a{color:#37cdf2;font:1.25em/20px "微软雅黑";display: inline-block;}
+.main .commendDiv .queList ol>li .discussStu a.addCommend{background: url(../images/smallTools.png) no-repeat -78px -43px;padding-left:30px;padding-bottom:5px;}
+.main .commendDiv .queList ol>li .discussStu a.upCommend{background: url(../images/smallTools.png) no-repeat -75px 2px;padding-left:30px;padding-bottom:5px;}
+.main .commendDiv .commendList{width:100%;display:none;}
+.main .commendDiv .commendList ul li{margin:15px 0 0 0;padding-left:50px;padding-top:10px;position:relative;border-top:1px #ccc solid;}
+.main .commendDiv .commendList ul li.secLi{margin:15px 0 0 0;border:none;padding-left:100px;padding-top:0;}
+.main .commendDiv .commendList ul li img{position:absolute;top:10px;left:0;border-radius: 20px;}
+.main .commendDiv .commendList ul li.secLi img{left:50px;top:0;}
+.main .commendDiv .commendList ul li h3{color:#c0bebe;font:1.25em/45px "微软雅黑";float:left;width: 60%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.main .commendDiv .commendList ul li p{color:#333;font:1.25em/35px "微软雅黑";}
+.main .commendDiv .commendList ul li span{display:block;clear:both;overflow:hidden;}
+.main .commendDiv .commendList ul li span a{float:right;font:1.25em/50px "微软雅黑";color:#37cdf2;margin-left:2%;}
+.main .commendDiv .commendList ul li span a.answerDelete{color:#f29337;}
+.main .viewCommend{margin:0;}
+.main .viewCommend .commendList{margin:0;padding-top:20px;}
+.main .viewCommend .commendList .DiscussList{margin:0 3%;padding:20px 55px;}
+.main .viewCommend .commendList .DiscussList p.noMore{width:100%;border-top:1px #ccc solid;margin-top:20px;text-align:center;color:#ccc;font:1.5em/50px "微软雅黑";}
+.main .viewCommend .commendList .DiscussList table{width:100%;}
+.main .viewCommend .commendList .DiscussList ol li b{color:#7d7d7d;font:normal 1.5em/40px "微软雅黑";}
+.main .viewCommend .commendList .DiscussList ol li b.colorBlack{color:#000;font:normal 1.5em/40px "微软雅黑";}
+.main .viewCommend .commendList .DiscussList ol li label.colorBlue{color:#37cdf2;font:1.5em/40px "微软雅黑";}
+.main .viewCommend .commendList .DiscussList ol li label.dateLabel{color:#7d7d7d;font:1.125em/40px "微软雅黑";padding-left:2%;}
+
+/*回复框*/
+.commendTextarea{clear:both;overflow:hidden;width:100%;display:none;position:fixed;bottom:0;left:0;background-color:#f9f9f9;z-index:99;padding:12px 0;border-top:1px #ddd solid;}
+.commendTextarea.bigInput{display:block;position:static;}
+.commendTextarea .textareaShow{height:50px;border:1px #ccc solid; border-radius:8px;float:left;width:77%;margin-left:3%;position:relative;overflow:hidden;}
+.commendTextarea .textareaShow .studentName{position:absolute;left:0;top:0;text-indent:5px;background:#fff;font:1.25em/48px "微软雅黑";z-index:1;color:#666;}
+.commendTextarea .textareaShow .answerText{position:absolute;left:0;width:98%;padding:0 1%;top:0;font:1.25em/48px "微软雅黑";border:none;resize:none;}
+.commendTextarea .sumbmitBtn{float:right;font:1.25em/48px "微软雅黑";width:15%;margin-right:3%;background-color:#37cdf2;color:#fff;text-align:center; border-radius:8px;}
+.commendTextarea .addDis{outline:none;display:block;float:left;width:81%;font:1.5em/50px "微软雅黑";text-indent:10px;border:1px #ccc solid; border-radius:18px;}
+
+
+/*弹窗*/
+.shadeDiv{display:none;position: fixed;top:0;left:0;width: 100%;height: 100%;z-index: 99;background:rgba(0,0,0,0.7);}
+.deleteDialog{display:none;position: fixed;background-color: #fff;width:250px;height:150px;left:50%;top:50%;margin:-75px 0 0 -125px;z-index: 100;}
+.deleteDialog p{margin:20px 0;font:1.25em/30px "微软雅黑";text-align: center;color:#333;}
+.deleteDialog p a{font:0.875em/30px "微软雅黑";border:none;outline:none;margin:0 15px;padding:3px 15px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+.deleteDialog p a.sure{background-color:#0098dd;color:#fff;}
+.deleteDialog p a.cancel{background-color:#dedede;}
+
+@media screen and (min-width:962px) and (max-width:1024px){  
+    .main .recList ul{clear:both;overflow:auto;margin:30px 5%;width:90%;}
+    .main .recList ul li{width:28%;margin:2%;float:left;border-radius:24px;}
+	.main .recList ul li a img{width:90%;height:140px;margin:3% 5%;}
+	.main .recList ul li a p{font:1.875em/53px "微软雅黑";border-bottom-left-radius:24px;border-bottom-right-radius:24px;}
+	}
+@media screen and (min-width:542px) and (max-width:961px){  
+    .main .recList ul{clear:both;overflow:auto;margin:30px 5%;width:90%;}
+    .main .recList ul li{width:45%;margin:2%;float:left;border-radius:36px;}
+	.main .recList ul li a img{width:90%;height:170px;margin:3% 5%;}
+	.main .recList ul li a p{font:1.875em/53px "微软雅黑";border-bottom-left-radius:36px;border-bottom-right-radius:36px;}
+	}
+@media screen and (min-width:481px) and (max-width:540px){  
+    .main .recList ul{clear:both;overflow:auto;margin:30px 5%;width:90%;}
+    .main .recList ul li{width:95%;margin:0 auto 5% auto;border-radius:48px;}
+	.main .recList ul li a img{width:90%;height:240px;margin:3% 5%;}
+	.main .recList ul li a p{font:1.875em/73px "微软雅黑";border-bottom-left-radius:48px;border-bottom-right-radius:48px;}
+	}
+@media screen and (max-width:480px){  
+    header{height:45px;}
+    header .head h1{font:1.25em/45px "微软雅黑";}
+    .main .recShow .iframeContent{width:100%;height:354px;}
+	.main .recShow .iframeContent #previewPage{height:354px;overflow:hidden;}
+    .main .recShow .iframeContent .nothing{padding-top:82px;}
+	.main .recShow .iframeContent .unplayTip{background:#f2f2f2 url(../images/tipsimg2.png) no-repeat 16px 52px;border-radius:16px;padding-left:20%;width:70%;height:156px;margin:0 auto;}
+    .main .recShow .iframeContent .unplayTip p{color:#2a97ff;font:1em/30px "微软雅黑";}
+    .main .recShow .iframeContent .unplayTip p.pt40{padding-top:50px;}
+    .main .recList ul{clear:both;overflow:auto;margin:30px 5%;width:90%;}
+    .main .recList ul li{width:95%;margin:0 auto 5% auto;border-radius:36px;}
+	.main .recList ul li a h2{font:1.5em/40px "微软雅黑";}
+	.main .recList ul li a img{width:90%;height:150px;margin:3% 5%;}
+	.main .recList ul li a p{font:1.5em/40px "微软雅黑";border-bottom-left-radius:36px;border-bottom-right-radius:36px;}
+	.main .commendDiv .descriptionInfo h3{font:1.125em/35px "微软雅黑";}
+	.main .commendDiv .queList ol>li>p>b{font:bold 1em/22px "微软雅黑";}
+    .main .commendDiv .queList ol>li>p>a{font:1em/22px "微软雅黑";}
+    .main .commendDiv .queList ol>li .discussStu a{font:1em/20px "微软雅黑";}
+	.main .recShow .bottomOpration span.rightSpan b{font: normal 1.25em/50px "微软雅黑";}
+    .main .recShow .bottomOpration a{font:1.25em/50px "微软雅黑";}
+    .main .recShow .bottomOpration p.discussQue{font:1em/22px "微软雅黑";}
+    .main .commendDiv .commendList ul li h3{font:1em/22px "微软雅黑";}
+    .main .commendDiv .commendList ul li p{font:1em/22px "微软雅黑";}
+    .main .commendDiv .commendList ul li span a{font:1em/22px "微软雅黑";}
+    .main .commendDiv .commendList ul li span a.answerClick{margin-left:3%};
+    .main .commendDiv .commendList .addDis{font:1.125em/30px "微软雅黑";text-indent:10px;}
+    .commendTextarea .textareaShow{height:30px;}
+    .commendTextarea .textareaShow .studentName{font:0.875em/28px "微软雅黑";}
+    .commendTextarea .textareaShow .answerText{font:0.875em/28px "微软雅黑";}
+    .commendTextarea .sumbmitBtn{font:0.875em/28px "微软雅黑";}
+    .commendTextarea .addDis{font:0.875em/30px "微软雅黑";text-indent:5px;}
+    .main .commendDiv .commendList ul li h3{width:50%;}
+
+	}
+	
+/*css[竖向定义样式]*/
+@media screen and (orientation:portrait) {
+	.fullDiv{background:#2f2f2f;width:100%;height:100%;position:relative;}
+	#videoBox{background:#fff;height:46%;width:100%;position:absolute;top:27%;}
+	}
+/*css[横向定义样式]*/
+@media screen and (orientation:landscape) {
+	.fullDiv{background:#2f2f2f;width:100%;height:100%;position:relative;}
+	#videoBox{background:#fff;height:100%;width:100%;position:absolute;top:0;}
+	}

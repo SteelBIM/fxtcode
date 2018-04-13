@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetPayWayByToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayWayByTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPayWayByTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfoFromTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempOrderID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfoFromTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveOrderInfoFromTempResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfoFromTempForWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempOrderID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfoFromTempForWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveOrderInfoFromTempForWebResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="appleStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveOrderInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveOrderInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZFBPayState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZFBPayStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZFBPayStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayWay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayWayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyPayWayResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderTemp">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOrderTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderTempResult" type="tns:Tb_OrderTemp" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Tb_OrderTemp">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="SeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppToken" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TotalMoney" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProductCount" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Action" abstract="true" />
+      <s:element name="GetOrder">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderResult" type="tns:Tb_Order" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Tb_Order">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Action">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="SeqNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompleteDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="PayState" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PayWayID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TotalMoney" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppToken" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="NoticeApp" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FailedMessage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProductCount" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="isSysch" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPayWayByTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPayWayByToken" />
+  </wsdl:message>
+  <wsdl:message name="GetPayWayByTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPayWayByTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderID" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoFromTempSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfoFromTemp" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoFromTempSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfoFromTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoFromTempForWebSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfoFromTempForWeb" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoFromTempForWebSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfoFromTempForWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderState" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfo" />
+  </wsdl:message>
+  <wsdl:message name="SaveOrderInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveOrderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZFBPayStateSoapIn">
+    <wsdl:part name="parameters" element="tns:ZFBPayState" />
+  </wsdl:message>
+  <wsdl:message name="ZFBPayStateSoapOut">
+    <wsdl:part name="parameters" element="tns:ZFBPayStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayWaySoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyPayWay" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayWaySoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyPayWayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderTempSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderTemp" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderTempSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrder" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FZPayServiceSoap">
+    <wsdl:operation name="GetPayWayByToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取支付方式</wsdl:documentation>
+      <wsdl:input message="tns:GetPayWayByTokenSoapIn" />
+      <wsdl:output message="tns:GetPayWayByTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">生成订单号</wsdl:documentation>
+      <wsdl:input message="tns:GetOrderIDSoapIn" />
+      <wsdl:output message="tns:GetOrderIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTemp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">存入订单</wsdl:documentation>
+      <wsdl:input message="tns:SaveOrderInfoFromTempSoapIn" />
+      <wsdl:output message="tns:SaveOrderInfoFromTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTempForWeb">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">存入订单</wsdl:documentation>
+      <wsdl:input message="tns:SaveOrderInfoFromTempForWebSoapIn" />
+      <wsdl:output message="tns:SaveOrderInfoFromTempForWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderState">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取支付订单的状态</wsdl:documentation>
+      <wsdl:input message="tns:GetOrderStateSoapIn" />
+      <wsdl:output message="tns:GetOrderStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">保存订单信息</wsdl:documentation>
+      <wsdl:input message="tns:SaveOrderInfoSoapIn" />
+      <wsdl:output message="tns:SaveOrderInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZFBPayState">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">支付宝订单支付状态</wsdl:documentation>
+      <wsdl:input message="tns:ZFBPayStateSoapIn" />
+      <wsdl:output message="tns:ZFBPayStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayWay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改订单支付方式</wsdl:documentation>
+      <wsdl:input message="tns:ModifyPayWaySoapIn" />
+      <wsdl:output message="tns:ModifyPayWaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderTemp">
+      <wsdl:input message="tns:GetOrderTempSoapIn" />
+      <wsdl:output message="tns:GetOrderTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <wsdl:input message="tns:GetOrderSoapIn" />
+      <wsdl:output message="tns:GetOrderSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FZPayServiceSoap" type="tns:FZPayServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPayWayByToken">
+      <soap:operation soapAction="http://tempuri.org/GetPayWayByToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderID">
+      <soap:operation soapAction="http://tempuri.org/GetOrderID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTemp">
+      <soap:operation soapAction="http://tempuri.org/SaveOrderInfoFromTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTempForWeb">
+      <soap:operation soapAction="http://tempuri.org/SaveOrderInfoFromTempForWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderState">
+      <soap:operation soapAction="http://tempuri.org/GetOrderState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfo">
+      <soap:operation soapAction="http://tempuri.org/SaveOrderInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFBPayState">
+      <soap:operation soapAction="http://tempuri.org/ZFBPayState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayWay">
+      <soap:operation soapAction="http://tempuri.org/ModifyPayWay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderTemp">
+      <soap:operation soapAction="http://tempuri.org/GetOrderTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <soap:operation soapAction="http://tempuri.org/GetOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FZPayServiceSoap12" type="tns:FZPayServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPayWayByToken">
+      <soap12:operation soapAction="http://tempuri.org/GetPayWayByToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderID">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTemp">
+      <soap12:operation soapAction="http://tempuri.org/SaveOrderInfoFromTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfoFromTempForWeb">
+      <soap12:operation soapAction="http://tempuri.org/SaveOrderInfoFromTempForWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderState">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderInfo">
+      <soap12:operation soapAction="http://tempuri.org/SaveOrderInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZFBPayState">
+      <soap12:operation soapAction="http://tempuri.org/ZFBPayState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayWay">
+      <soap12:operation soapAction="http://tempuri.org/ModifyPayWay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderTemp">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <soap12:operation soapAction="http://tempuri.org/GetOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FZPayService">
+    <wsdl:port name="FZPayServiceSoap" binding="tns:FZPayServiceSoap">
+      <soap:address location="http://183.47.42.221:8088/Service/FZPayService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FZPayServiceSoap12" binding="tns:FZPayServiceSoap12">
+      <soap12:address location="http://183.47.42.221:8088/Service/FZPayService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

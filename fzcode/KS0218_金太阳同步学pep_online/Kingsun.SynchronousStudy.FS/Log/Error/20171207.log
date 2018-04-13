@@ -1,0 +1,42 @@
+﻿2017-12-07 14:42:33
+错误编号:2017120714423387X2875843ba0
+Message:无法将 null 转换为值类型。
+Message2:学习报告同步异常,异常数据：{"BookId":null,"ClassID":null,"CreateTime":null,"FirstTitleID":null,"ModuleType":"2","NumberOfOraise":null,"SchoolID":null,"SecondTitleID":null,"SerialNumber":null,"TextSerialNumber":null,"TotalScore":"39","TrueName":null,"UserId":"884635261","UserImage":null,"UserType":null,"VideoFileID":null,"VideoID":null,"VideoNumber":"2"}
+Type:System.InvalidOperationException
+Source:System.Web.Extensions
+StackTrace:   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeMain(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.AssignToPropertyOrField(Object propertyValue, Object o, String memberName, JavaScriptSerializer serializer, Boolean throwOnError)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertDictionaryToObject(IDictionary`2 dictionary, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeInternal(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeMain(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToType(Object o, Type type, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   在 Kingsun.SynchronousStudy.Common.JsonHelper.DecodeJson[T](String json) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\JsonHelper.cs:行号 61
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 40
+Method:ConvertObjectToTypeMain
+Class:System.Web.Script.Serialization.ObjectConverter
+UserIP:
+UserName:
+
+2017-12-07 14:42:33
+错误编号:2017120714423392Xb16676cf52
+Message:无法将 null 转换为值类型。
+Message2:学习报告同步异常,异常数据：{"BookId":null,"ClassID":null,"CreateTime":null,"FirstTitleID":null,"ModuleType":"2","NumberOfOraise":null,"SchoolID":null,"SecondTitleID":null,"SerialNumber":null,"TextSerialNumber":null,"TotalScore":"39","TrueName":null,"UserId":"884635261","UserImage":null,"UserType":null,"VideoFileID":null,"VideoID":null,"VideoNumber":"2"}
+Type:System.InvalidOperationException
+Source:System.Web.Extensions
+StackTrace:   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeMain(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.AssignToPropertyOrField(Object propertyValue, Object o, String memberName, JavaScriptSerializer serializer, Boolean throwOnError)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertDictionaryToObject(IDictionary`2 dictionary, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeInternal(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToTypeMain(Object o, Type type, JavaScriptSerializer serializer, Boolean throwOnError, Object& convertedObject)
+   在 System.Web.Script.Serialization.ObjectConverter.ConvertObjectToType(Object o, Type type, JavaScriptSerializer serializer)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   在 System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   在 Kingsun.SynchronousStudy.Common.JsonHelper.DecodeJson[T](String json) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Common\JsonHelper.cs:行号 61
+   在 Kingsun.IBS.BLL.IBSLearningReport.IBSLearningReportBLL.ExecuteLearningReport() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSLearningReport\IBSLearningReportBLL.cs:行号 40
+Method:ConvertObjectToTypeMain
+Class:System.Web.Script.Serialization.ObjectConverter
+UserIP:
+UserName:
+

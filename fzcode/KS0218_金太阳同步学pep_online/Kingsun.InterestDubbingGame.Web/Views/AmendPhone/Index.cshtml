@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "修改联系方式";
+}
+
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>修改联系方式</title>
+    <link href="~/Content/css/apply.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/apply.js"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+</head>
+
+<body>
+    <header class="head1">
+        <a href="../Information/Index?returnPage=Information&UserID=@Request["UserID"]&TelePhone=@Request["TelePhone"]&AppID=@Request["AppID"]" class="back"><img src="../images/back.png" alt=""></a>
+    </header>
+    <main class="main4">
+        <h2>联系电话</h2>
+        <div class="hang">
+            <input id="telephone" class="inp1" maxlength="11" onkeydown="onlyNum();" type="text" value="@Request["TelePhone"]">
+        </div>
+        <div class="hang">
+            <input class="inp2" id="inp2" type="text">
+            <a   id="getCheckCode">获取验证码</a>
+        </div>
+        <a href="#" onclick="confirmInformation()" class="confirm">确定</a>
+    </main>
+    <script type="text/javascript">
+        $(function () {
+            //发送验证码
+            $("#getCheckCode").click(myclick = function () {
+                var validCode = true;
+                var telephone = $.trim($("#telephone").val());
+                var pattern = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;
+                if (!pattern.test(telephone)) {
+                    popup("请输入正确的手机号");
+                    return false;
+                } 
+                var obj = { Telephone: telephone };
+                $.post("../AmendPhone/SendCode", obj, function (data) {
+                    //alert(data);
+                    if (data) {
+                        var result = eval(data);// eval("(" + data + ")");
+                        if (result.Success) { 
+                            popup("验证码已发送，请注意查收！");
+                            var time = 300;
+                            //$("#getCheckCode").css("backgroundColor", "#C7C6C6");
+                            var getCode = $('#getCheckCode');
+                            //获取验证码清除绑定事件 直到倒计时结束添加绑定事件
+                            getCode.unbind("click");
+                            //验证码倒计时
+                            if (validCode) {
+                                validCode = false;
+                                var t = setInterval(function () {
+                                    time--;
+                                    getCode.html(time + "秒后重新获取");
+                                    if (time == 0) {
+                                        clearInterval(t);
+                                        //$('#getCheckCode').css("backgroundColor", "#1C9EEA");
+                                        getCode.html("获取验证码");
+                                        validCode = true;
+                                        getCode.bind("click", myclick);
+                                    }
+                                }, 1000);
+                            }
+                        } else {
+                            popup(result.Msg);
+                        }
+                    } else {
+                        popup("发送请求失败，请重新发送");
+                    }
+                });
+            });
+           
+        });
+        //确定 
+        function confirmInformation() {
+            //判断验证码
+            var obj = { Telephone: $.trim($("#telephone").val()), Type: 26, Code: $.trim($('#inp2').val()) };
+            $.post("../AmendPhone/CheckCode", obj, function (data) {
+                var result = eval(data);
+                if (result.Success) {
+                    window.location.href = "../Information/Index?returnPage=Information&AppID=@Request["AppID"]&UserID=@Request["UserID"]&TelePhone=" + $("#telephone").val();
+                } else {
+                    popup(result.Msg);
+                    return false;
+                }
+            }); 
+        }
+        function popup(aaa) {
+            var black = document.createElement("div");
+            var black1 = document.createElement("div");
+            var black2 = document.createElement("div");
+            var black3 = document.createElement("p");
+            var black4 = document.createTextNode(aaa);
+            black.className = 'zong';
+            black1.className = 'zhezhao';
+            black2.className = 'hezi';
+            black3.appendChild(black4);
+            black2.appendChild(black3);
+            black.appendChild(black1);
+            black.appendChild(black2);
+            document.body.appendChild(black);
+            black1.onclick = function () {
+                black.parentNode.removeChild(black);
+
+            }
+        };
+    </script>
+</body>
+</html>
+

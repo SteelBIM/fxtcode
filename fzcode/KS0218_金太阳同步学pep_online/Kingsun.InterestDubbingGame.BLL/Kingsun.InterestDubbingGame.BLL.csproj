@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2DCB0C4-6556-49DE-ABFA-D5DDD3F838AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingsun.InterestDubbingGame.BLL</RootNamespace>
+    <AssemblyName>Kingsun.InterestDubbingGame.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'create|AnyCPU'">
+    <OutputPath>bin\create\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kingsun.DB">
+      <HintPath>..\DLL\Kingsun.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=1.0.4321.41957, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4321.41956, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=3.0.0.41978, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.0.1.41944, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InterestDubbingGameMatchApiBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TB_InterestDubbingGame_MatchBLL.cs" />
+    <Compile Include="TB_InterestDubbingGame_MatchTimeBLL.cs" />
+    <Compile Include="TB_InterestDubbingGame_PushMsgBLL.cs" />
+    <Compile Include="TB_InterestDubbingGame_UserInfoBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kingsun.IBS.BLL\Kingsun.IBS.BLL.csproj">
+      <Project>{989BBA06-1BE9-43C2-8784-D89BE92552C5}</Project>
+      <Name>Kingsun.IBS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.IBS.IBLL\Kingsun.IBS.IBLL.csproj">
+      <Project>{57DC56DD-F3F8-4CAE-99E0-C20B31108C8C}</Project>
+      <Name>Kingsun.IBS.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.IBS.Model\Kingsun.IBS.Model.csproj">
+      <Project>{C3707E30-F728-45BD-8A04-9DC23FA59F88}</Project>
+      <Name>Kingsun.IBS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.InterestDubbingGame.Common\Kingsun.InterestDubbingGame.Common.csproj">
+      <Project>{12338862-a603-4acc-a7d2-d7ae5fe823d0}</Project>
+      <Name>Kingsun.InterestDubbingGame.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.InterestDubbingGame.DAL\Kingsun.InterestDubbingGame.DAL.csproj">
+      <Project>{0b0d8d5d-f99a-45e2-9079-31a8da2b579a}</Project>
+      <Name>Kingsun.InterestDubbingGame.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.InterestDubbingGame.DAL\Kingsun.InterestDubbingGame.DAL.csproj">
+      <Project>{0b0d8d5d-f99a-45e2-9079-31a8da2b579a}</Project>
+      <Name>Kingsun.InterestDubbingGame.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.InterestDubbingGame.Model\Kingsun.InterestDubbingGame.Model.csproj">
+      <Project>{aa47fbf1-c98d-4188-a663-408fdc94932e}</Project>
+      <Name>Kingsun.InterestDubbingGame.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.InterestDubbingGame.Model\Kingsun.InterestDubbingGame.Model.csproj">
+      <Project>{aa47fbf1-c98d-4188-a663-408fdc94932e}</Project>
+      <Name>Kingsun.InterestDubbingGame.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingsun.SynchronousStudy.Common\Kingsun.SynchronousStudy.Common.csproj">
+      <Project>{11f1a8e9-0472-4167-8e9d-1afa684508f6}</Project>
+      <Name>Kingsun.SynchronousStudy.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

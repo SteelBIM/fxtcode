@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <span style="float:left;">激活码管理-激活码导入</span>
+
+        </h1>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <form id="userForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-lg-2 control-label"><em>*</em>文件名 :</label>
+
+                        <div class="col-lg-4">
+                            <input id="lefile" type="file" style="display:none">
+                            <div class="input-append">
+                                <div class="col-lg-8" style="margin-left:-15px;">
+                                    <input id="filename" class="form-control" type="text">
+                                    <input id="photoCover" style="display:none" class="form-control" type="text">
+                                </div>
+                                <div class="col-lg-4" style="margin-left:-15px;">
+                                    <input type="file" name="txt_file" id="txt_file"  value="添加文件"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <p style="margin-top:5px;"><a href="/Upload/UserNumbers.xlsx">下载模板</a>&nbsp;&nbsp;&nbsp;注：一次激活码导入要求前三位批次码相同</p>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-lg-2 control-label"><em>*</em>激活码类型:</label>
+                        <div class="col-lg-3" >
+                            <select class="form-control" id="SelectActivateType" name="group">                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-lg-2 control-label"><em>*</em>关联课程ID:</label>
+                        <div class="col-lg-10">
+                            <div class="radio col-lg-2" style="display:none">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="0"  onclick="change(1)">
+                                    <span>全部课程</span>
+                                </label>
+                            </div>
+                            <div class="radio col-lg-2" style="width:auto;display:none">
+                                <label>
+                                    <input style="float:left;" type="radio" checked name="optionsRadios" value="1" onclick="change(2)">
+                                    <span>指定课程</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-3" style="margin-left:-10px;">
+                                <input style="float:left;" type="text" id="bookname" disabled="disabled" class="form-control" />
+                                <input style="float:left;display:none" type="text" id="xx" class="form-control" name="ParentMobile" />
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="button" class="btn btn-default"   id="chaxunid" style=" float: left; width: 100px;" value="查询课程ID" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-lg-2 control-label"> 备注:</label>
+                        <div class="col-lg-5" style=" width:600px;">
+                            <textarea class="form-control" style="height:80px;" id="Remark" name="Remark"></textarea>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </form>
+                <div class="modal-footer" style=" text-align:left; padding-left:300px;">
+                    <input type="button" onclick="history.back();" class="btn btn-default" style="margin-right:40px; width:100px;" value="取消" />
+                    <input type="button" id="submit" value="导入" class="btn btn-danger" style="width:100px;" />
+                    <div style="clear:both; height:100px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="bid" />
+    <div class="modal fade" id="ResetPasswordDiv" style=" overflow:auto;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="updateForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="modal-dialog" style="width:50%;margin-top:80px;">
+                <div class="modal-content" style="padding-top:40px;padding-right:20px;padding-bottom:20px; ">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label class="col-lg-4 control-label"><em>*</em>版本:</label>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="SelectManagement" name="group">
+                                    <option value="0">选择版本</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label class="col-lg-4 control-label"><em>*</em>年级册:</label>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="SelectGrade" name="group">
+                                    <option value="0">选择年级</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label class="col-lg-4 control-label"><em>*</em>学科:</label>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="SelectSubject" name="group">
+                                    <option value="0">选择学科</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <button id="btnSerach" type="button" class="btn btn-default" style="float:left; margin-left:80px;width:100px; height:34px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                        </div>
+                        <div style="clear:both;"></div>
+
+                        <table id="tb_bookInfo" style="width:80%; margin: 0 auto;"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btn_resetpassword">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="~/Content/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/ImportExcel.js"></script>
+}
+

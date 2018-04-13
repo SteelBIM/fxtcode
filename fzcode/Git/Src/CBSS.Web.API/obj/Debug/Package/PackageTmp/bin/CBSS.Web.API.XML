@@ -1,0 +1,1204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CourseActivate.Web.API</name>
+    </assembly>
+    <members>
+        <member name="T:CBSS.Web.API.CBSSService">
+            <summary>
+            CBSS通用接口服务
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.CBSSService.Entrance(CBSS.Framework.Contract.API.APIRequest)">
+            <summary>
+            接口入口
+            </summary>
+            <param name="requestdate">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.ContractName">
+            <summary>
+            契约名称
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.OperationName">
+            <summary>
+            操作名称
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.Request">
+            <summary>
+            输入（序列化成json字符串）
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.Response">
+            <summary>
+            输出（序列化成json字符串）
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.Duration">
+            <summary>
+            耗时(ms)
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.BeginTime">
+            <summary>
+            执行开始时间
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Common.LogVO.EndTime">
+            <summary>
+            执行结束时间
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Controllers.BaseController">
+            <summary>
+            账号
+            </summary>
+            <summary>
+            app相关
+            </summary>
+            <summary>
+            用户总记录（用户权限、默认书籍）
+            </summary>
+            <summary>
+            支付、订单
+            </summary>
+            <summary>
+            资源
+            </summary>
+            <summary>
+            初中英语记录
+            </summary>
+            <summary>
+            通用（基础数据）
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.SendCodeMessage(System.String)">
+            <summary>
+            1 获取验证码 √ 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.DecidePhoneCode(System.String)">
+            <summary>
+            1.1 验证验证码 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.LoginByPhone(System.String)">
+            <summary>
+            2 手机号登陆 √  
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.ModifyPassWord(System.String)">
+            <summary>
+            3 重置密码 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.Login(System.String)">
+            <summary>
+            4 账号登陆 √ 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetUserInfoByUserID(System.String)">
+            <summary>
+            6 根据ID获取用户信息 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AddTeacherInfo(System.String)">
+            <summary>
+            7 保存老师资料 △
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.UpdateUsers(System.String)">
+            <summary>
+            8 更新用户头像昵称 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.CheckPhone(System.String)">
+            <summary>
+            12 检查手机号是否已经注册 √
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AppLoginOut(System.String)">
+            <summary>
+            13 用户注销登陆 △
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetAreaInfo(System.String)">
+            <summary>
+            13 用户注销登陆 △
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.UpdateUserInfo(System.String)">
+            <summary>
+            更新用户信息
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.QueryClassList(System.String)">
+            <summary>
+            通过老师ID
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetUserName(System.String)">
+            <summary>
+            通过用户ID获取用户信息
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.DeleteClassList(System.String)">
+            <summary>
+            删除老师绑定班级
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetClassByTelePhone(System.String)">
+            <summary>
+            通过手机号查询老师班级
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.StudentBindClass(System.String)">
+            <summary>
+            学生绑定班级
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetUserTypeById(System.String)">
+            <summary>
+            获取用户身份
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetNewVersions(System.String)">
+            <summary>
+            9 获取app版本，查询表 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.SetUserAppRecord(System.String)">
+            <summary>
+            16 用户使用App时长埋点 △
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetUnitHearLearningByBookId(System.String)">
+            <summary>
+            根据书籍Id和班级Id查询单元学习人数(老同步学GetUnitLearningByBookId方法)
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetHearResourcesByModuleId(System.String)">
+            <summary>
+            根据班级Id、册别、目录统计趣配音学习情况
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetHearLearningClassStudyDetailsByClassId(System.String)">
+            <summary>
+            根据书籍ID,班级ID获取班级详细学习情况
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetYxUnitLearningByBookId(System.String)">
+            <summary>
+            根据书籍Id和班级Id查询单元学习人数
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetYxVideoDetailsByModuleId(System.String)">
+            <summary>
+            根据班级Id、册别、目录统计趣配音学习情况
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetYxClassStudyDetailsByClassId(System.String)">
+            <summary>
+            根据书籍ID,班级ID获取班级详细学习情况
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.PostPayList(System.String)">
+            <summary>
+            获取支付方式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.PostComboNew(System.String)">
+            <summary>
+            获取套餐列表
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.PostOrderID(System.String)">
+            <summary>
+            发起支付,获取支付所需参数
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.PostPaySuccess(System.String)">
+            <summary>
+            支付确认(APP端支付成功后调用)
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AddSuccessOrder(System.String)">
+            <summary>
+            苹果支付接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetClassInfoByTeacherId(System.String)">
+            <summary>
+            0.根据老师查询班级信息
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetJuniorGradeNumByClassId(System.String)">
+            <summary>
+            2.根据班级Id查询年级学习人数
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetUnitLearningByBookId(System.String)">
+            <summary>
+            根据书籍Id和班级Id查询单元学习人数
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetVideoDetailsByModuleId(System.String)">
+            <summary>
+            根据班级Id、册别、目录统计趣配音学习情况
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetClassStudyDetailsByClassId(System.String)">
+            <summary>
+            根据书籍ID,班级ID获取班级详细学习情况
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetEnglishResource(System.String)">
+            <summary>
+            初中英语资源
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.IsRJXMBModule(CBSS.Tbx.Contract.DataModel.Module)">
+            <summary>
+            判断是否新目标模块
+            </summary>
+            <param name="module"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetStuTopicSetAnswer(System.String)">
+            <summary>
+            获取口训做题结果
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.SubmitTopicSetAnswer(System.String)">
+            <summary>
+            口训提交
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AddWordReadReport(System.String)">
+            <summary>
+            新增单词跟读报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AddWordDictationReadReport(System.String)">
+            <summary>
+            新增单词听写报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.AddArticleReadReport(System.String)">
+            <summary>
+            新增课文朗读报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.ShareWordReadReport(System.String)">
+            <summary>
+            分享单词跟读报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.ShareWordDictationReport(System.String)">
+            <summary>
+            分享单词听写报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.ShareArticleReadReport(System.String)">
+            <summary>
+            分享课文朗读报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetWordReadReport(System.String)">
+            <summary>
+            获取单词跟读最优报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetWordDictationReadReport(System.String)">
+            <summary>
+            获取单词听写最优报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetArticleReadReport(System.String)">
+            <summary>
+            获取课文朗读最优报告 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetBookSecretKey(System.String)">
+            <summary>
+            获取密钥
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetBookCatalog(System.String)">
+            <summary>
+            14 获取课本目录 √
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.CheckModulePermission(System.String)">
+            <summary>
+            15 获取目录模块 √
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetCatalogModule(System.String)">
+            <summary>
+            15 获取目录模块 √
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetMarketClassify(System.String)">
+            <summary>
+            10 获取科目，版本 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetBooks(System.String)">
+            <summary>
+            11 获取书本 √
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.BaseController.GetSchoolInfo(System.String)">
+            <summary>
+            5 获取学校信息 √
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CBSS.Web.API.Controllers.UserRecordController">
+            <summary>
+            说说看记录
+            </summary>
+            <summary>
+            说说看记录
+            </summary>
+            <summary>
+            趣配音记录
+            </summary>
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.GetListenSpeakList(System.String)">
+            <summary>
+            根据 BookID、FirstTitleID、SecondTitleID、FirstModuleID、SecondModuleID 获取模块下听说信息列表
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.GetVideoInforList(System.String)">
+            <summary>
+             获取趣配音模块资源
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.GetVideoList(System.String)">
+            <summary>
+            获取未发布/发布视频信息列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.UpdateVedioInfo(System.String)">
+            <summary>
+            修改已发布/未发布视频信息状态
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.InsertVideoInfo(System.String)">
+            <summary>
+            插入用户配音视频信息 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.SchoolRankInfo(System.String)">
+            <summary>
+            校级榜
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.ClassRankInfo(System.String)">
+            <summary>
+            班级榜
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.NewRankInfo(System.String)">
+            <summary>
+            最新榜单
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.VideoRankingInfo(System.String)">
+            <summary>
+            获取已发布视频排行信息
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.VideoAchievementInfo(System.String)">
+            <summary>
+             获取视频详细成绩相关信息
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.AddNumberOfOraise(System.String)">
+            <summary>
+            增加点赞数
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.GetVideoInforList_YX(System.String)">
+            <summary>
+             获取趣配音模块资源
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.GetVideoList_YX(System.String)">
+            <summary>
+            获取未发布/发布视频信息列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.UpdateVedioInfo_YX(System.String)">
+            <summary>
+            修改已发布/未发布视频信息状态
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.InsertVideoInfo_YX(System.String)">
+            <summary>
+            插入用户配音视频信息 △
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.SchoolRankInfo_YX(System.String)">
+            <summary>
+            校级榜
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.ClassRankInfo_YX(System.String)">
+            <summary>
+            班级榜
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.NewRankInfo_YX(System.String)">
+            <summary>
+            最新榜单
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.VideoRankingInfo_YX(System.String)">
+            <summary>
+            获取已发布视频排行信息
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.VideoAchievementInfo_YX(System.String)">
+            <summary>
+             获取视频详细成绩相关信息
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.UserRecordController.AddNumberOfOraise_YX(System.String)">
+            <summary>
+            增加点赞数
+            </summary>
+            <param name="inputStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.MainController.Encrypt(System.String,System.Object)">
+            <summary>
+            加密
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.MainController.DecryptReturn(System.Object)">
+            <summary>
+            解密
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.MainController.Compress(System.Object)">
+            <summary>
+            压缩
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Controllers.MainController.Decompress(System.Object)">
+            <summary>
+            解压缩
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.UserRecordService">
+            <summary>
+            CBSS通用接口服务
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.UserRecordService.Entrance(CBSS.Framework.Contract.API.APIRequest)">
+            <summary>
+            接口入口
+            </summary>
+            <param name="requestdate">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,CBSS.Web.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,CBSS.Web.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:CBSS.Web.API.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},CBSS.Web.API.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.#ctor(CBSS.Web.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,CBSS.Web.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:CBSS.Web.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CBSS.Web.API.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CBSS.Web.API.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:CBSS.Web.API.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CBSS.Web.API.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:CBSS.Web.API.ICBSSService">
+            契约 
+             *
+        </member>
+        <member name="M:CBSS.Web.API.ICBSSService.Entrance(CBSS.Framework.Contract.API.APIRequest)">
+            <summary>
+            入口
+            </summary>
+            <param name="requestdate">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.PostPaySucessInfo.OrderID">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.GetWordsModel.SecretKeyId">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.GetWordsModel.CatalogueId">
+            <summary>
+            目录ID
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.GetArticleModel.secretKeyId">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.GetArticleModel.catalogueId">
+            <summary>
+            目录ID
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.InputReportPar.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.InputReportPar.CatalogID">
+            <summary>
+            目录ID
+            </summary>
+        </member>
+        <member name="P:CourseActivate.Web.API.Model.InputReportPar.ModuleID">
+            <summary>
+            模块ID
+            </summary>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SMSService">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.#ctor">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.SendMessageCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.SendMessageBase64Completed">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.SendMessageOneCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.SendMessageTwoCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.GetStatusCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CourseActivate.Web.API.SMSService.SMSService.ReceiveMessageCompleted">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessage(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageBase64(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageBase64Async(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageBase64Async(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageOne(System.String,System.String[],System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageOneAsync(System.String,System.String[],System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageOneAsync(System.String,System.String[],System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageTwo(System.String,System.String[],System.String[])">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageTwoAsync(System.String,System.String[],System.String[])">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.SendMessageTwoAsync(System.String,System.String[],System.String[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.GetStatus(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.GetStatusAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.GetStatusAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.ReceiveMessage(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.ReceiveMessageAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.ReceiveMessageAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CourseActivate.Web.API.SMSService.SMSService.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.SendMessageCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageBase64CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageBase64CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.SendMessageBase64CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageOneCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageOneCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.SendMessageOneCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageTwoCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.SendMessageTwoCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.SendMessageTwoCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.GetStatusCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.GetStatusCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.GetStatusCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.ReceiveMessageCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CourseActivate.Web.API.SMSService.ReceiveMessageCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CourseActivate.Web.API.SMSService.ReceiveMessageCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>

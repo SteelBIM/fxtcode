@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Statisticrecord";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Statisticrecord</h2>
+
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div style="clear:both;"></div>
+                <div id="toolbar" class="btn-group">
+                </div>
+                <button id="btn_back" type="button" class="btn btn-default" style="float:left; margin-left:20px;background-color:#515562; color:#fff;">
+                    <span class="glyphicon " aria-hidden="true"></span>返回
+                </button>
+                <table id="tb_Statisticrecord"></table>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Statisticrecord.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var pageInit;
+        $(function () {
+            pageInit = new Statisticrecord();
+            pageInit.Init();
+        })
+    </script>
+}
+

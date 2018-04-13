@@ -1,0 +1,2265 @@
+﻿2018-01-04 10:38:15
+错误编号:2018010410381541Xe9cd504233
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:16
+错误编号:2018010410381642X90ebf8327f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:17
+错误编号:2018010410381741Xfcf9f08d17
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:18
+错误编号:2018010410381849X6c3e7fb2e0
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:19
+错误编号:2018010410381938Xa6e4aaf435
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:20
+错误编号:2018010410382040Xeab0513765
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:21
+错误编号:2018010410382144Xc6bde8da2a
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:22
+错误编号:2018010410382251X8c24b8ebe8
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:23
+错误编号:2018010410382347X665c9b4ca9
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:24
+错误编号:2018010410382450X6c7c320185
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:25
+错误编号:2018010410382556Xdaed674cc1
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:26
+错误编号:2018010410382657X057685e500
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:27
+错误编号:2018010410382757X82dd981383
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:28
+错误编号:2018010410382854X69b5f27f5b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:29
+错误编号:2018010410382955Xdbc22ee4ac
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:30
+错误编号:2018010410383059X3e4bae9992
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:31
+错误编号:2018010410383158Xa1fb7ef1a6
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:32
+错误编号:2018010410383262Xda2e9a8715
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:33
+错误编号:2018010410383361X7ad2755fc0
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:34
+错误编号:2018010410383467Xf0f8960418
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:35
+错误编号:2018010410383565Xc8f76bb008
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:36
+错误编号:2018010410383670X67359dfe9e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:37
+错误编号:2018010410383769X795c1543aa
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:38
+错误编号:2018010410383867Xecfa840987
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:39
+错误编号:2018010410383974X640e2f7906
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:40
+错误编号:2018010410384075X0d938fe157
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:41
+错误编号:2018010410384174X7d7d4df0ff
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:42
+错误编号:2018010410384279Xbe81170bbc
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:43
+错误编号:2018010410384376X8173fe83da
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:44
+错误编号:2018010410384474X3965c2be18
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:45
+错误编号:2018010410384577Xde3716a344
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:46
+错误编号:2018010410384680X37d745e020
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:47
+错误编号:2018010410384779X3042b1043e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:48
+错误编号:2018010410384881Xba781ff21b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:49
+错误编号:2018010410384985Xa1bd158417
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:50
+错误编号:2018010410385085X92045504e5
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:51
+错误编号:2018010410385190X57511cb84c
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:52
+错误编号:2018010410385296X6306ba9c4f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:53
+错误编号:2018010410385392X928b35e14f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:54
+错误编号:2018010410385492X54f80dd1e0
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:55
+错误编号:2018010410385596Xa22c601be7
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:56
+错误编号:2018010410385696Xed938e0c60
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:57
+错误编号:2018010410385796X6a93068c05
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:38:59
+错误编号:2018010410385903X316ec55074
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:00
+错误编号:2018010410390000Xbe03addf59
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:01
+错误编号:2018010410390100X6e232503e8
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:02
+错误编号:2018010410390204X659c0b0a86
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:03
+错误编号:2018010410390301X724637cb38
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:04
+错误编号:2018010410390407X007dfc6334
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:05
+错误编号:2018010410390511X912281fc61
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:06
+错误编号:2018010410390613Xe14a284c65
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:07
+错误编号:2018010410390707Xe6c331da09
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:08
+错误编号:2018010410390812X0911d6e784
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:09
+错误编号:2018010410390915Xb33eab703c
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:10
+错误编号:2018010410391017Xc33fdd5c79
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:11
+错误编号:2018010410391110Xa8fa40bddf
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:12
+错误编号:2018010410391215X4b12bef16b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:13
+错误编号:2018010410391320Xa9f73abf9a
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:14
+错误编号:2018010410391415X76c5232fce
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:15
+错误编号:2018010410391523Xd0cfcf9d0d
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:16
+错误编号:2018010410391622X8385fd1e25
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:17
+错误编号:2018010410391722Xd868e413e8
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:18
+错误编号:2018010410391828X6734579c7d
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:19
+错误编号:2018010410391928Xbafb81197f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:20
+错误编号:2018010410392028Xae08ac168a
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:21
+错误编号:2018010410392127X6ba158deaf
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:22
+错误编号:2018010410392228X6c035b4a60
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:23
+错误编号:2018010410392332X2af2eb3332
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:24
+错误编号:2018010410392433Xb43caa2e89
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:25
+错误编号:2018010410392535Xed26d02153
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:26
+错误编号:2018010410392638X6cf33e1a99
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:27
+错误编号:2018010410392739X111a41299e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:28
+错误编号:2018010410392839X7e7b3650ee
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:29
+错误编号:2018010410392942X5fd3d70b54
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:30
+错误编号:2018010410393039X6454ef4dc1
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:31
+错误编号:2018010410393144X948c22f674
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:32
+错误编号:2018010410393245X5bca5d7869
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:33
+错误编号:2018010410393346Xa7bb52c566
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:34
+错误编号:2018010410393444X805ff2aa72
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:35
+错误编号:2018010410393548X80d31ae013
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:36
+错误编号:2018010410393655X20bc98004f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:37
+错误编号:2018010410393754X8cd42fc40f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:38
+错误编号:2018010410393851Xe523d38912
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:39
+错误编号:2018010410393956X6993e1fa9b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:40
+错误编号:2018010410394057X2adb30d49b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:41
+错误编号:2018010410394160X6b5ffab6df
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:42
+错误编号:2018010410394259X2d71049f12
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:43
+错误编号:2018010410394355Xfad392674e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:44
+错误编号:2018010410394464X2954b14504
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:45
+错误编号:2018010410394567X57a41dc76d
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:46
+错误编号:2018010410394661Xc93d47f9e7
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:47
+错误编号:2018010410394769X63fd824475
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:48
+错误编号:2018010410394867X0696e1c3f5
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:49
+错误编号:2018010410394967X600ceeb07e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:50
+错误编号:2018010410395071Xbeb3d8a341
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:51
+错误编号:2018010410395172X56bb496093
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:52
+错误编号:2018010410395271Xc9f3034f64
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:53
+错误编号:2018010410395372X242b3b7d95
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:54
+错误编号:2018010410395474Xb62ebb9566
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:55
+错误编号:2018010410395577X3a7ad6ac43
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:56
+错误编号:2018010410395680Xc76a2067ad
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:57
+错误编号:2018010410395781X32dbfa80fd
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:58
+错误编号:2018010410395884Xcba5438438
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:39:59
+错误编号:2018010410395984X99a1c1bd8a
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:00
+错误编号:2018010410400084X6d769b1e68
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:01
+错误编号:2018010410400182Xd173c8fd42
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:02
+错误编号:2018010410400285X9c17a7f74c
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:03
+错误编号:2018010410400387X97d4f650f8
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:04
+错误编号:2018010410400488Xae1866ecd6
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:05
+错误编号:2018010410400589X1d70251d29
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:06
+错误编号:2018010410400695Xa0af972f10
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:07
+错误编号:2018010410400793Xd1dec22136
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:08
+错误编号:2018010410400897X62bc9e06e3
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:09
+错误编号:2018010410400995X5b90f5e5de
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:10
+错误编号:2018010410401097Xf34a52a4c6
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:12
+错误编号:2018010410401200Xedf0cd7065
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:13
+错误编号:2018010410401304X647afc467c
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:14
+错误编号:2018010410401406X8d487e3f47
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:15
+错误编号:2018010410401508X417612a948
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:16
+错误编号:2018010410401602X7c2d23fb2d
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:17
+错误编号:2018010410401704X9f6c525c9b
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:18
+错误编号:2018010410401808Xe4491d958d
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:19
+错误编号:2018010410401908Xc204144383
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:20
+错误编号:2018010410402004X18f899f510
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:21
+错误编号:2018010410402112X738589df3f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:22
+错误编号:2018010410402216X369b5a10a9
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:23
+错误编号:2018010410402313Xe4a0e41782
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:24
+错误编号:2018010410402417X2e53b8f8f2
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:25
+错误编号:2018010410402510Xe07786358e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:26
+错误编号:2018010410402614X31e8bf2531
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:27
+错误编号:2018010410402715Xc4590206b4
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:28
+错误编号:2018010410402826Xb544e69b0f
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:29
+错误编号:2018010410402924X7ef3d7e0ed
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:30
+错误编号:2018010410403022X11f9cebff7
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:31
+错误编号:2018010410403125X12cdf960e0
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:32
+错误编号:2018010410403228X38609bf95a
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:33
+错误编号:2018010410403329X7a117165c1
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:34
+错误编号:2018010410403428X54b60431cc
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:35
+错误编号:2018010410403535X34b5bdab52
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:36
+错误编号:2018010410403633X71d449abf9
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:37
+错误编号:2018010410403734Xd78b00fba8
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:38
+错误编号:2018010410403838X9c0e3f51e7
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:39
+错误编号:2018010410403932Xbdba962d9e
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:40
+错误编号:2018010410404036X22ebf83c93
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:41
+错误编号:2018010410404138Xb8362a57da
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:42
+错误编号:2018010410404240Xf21df08f52
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:43
+错误编号:2018010410404339X321ab706fd
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:44
+错误编号:2018010410404442Xba88f07e30
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:45
+错误编号:2018010410404546Xcda41b8820
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:46
+错误编号:2018010410404648X1a2ccc54c5
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+
+2018-01-04 10:40:47
+错误编号:2018010410404747X4eeca1a575
+Message:Exceeded timeout of 00:00:01
+Message2:12121
+Type:System.TimeoutException
+Source:ServiceStack.Common
+StackTrace:   在 ServiceStack.Common.ExecExtensions.RetryUntilTrue(Func`1 action, Nullable`1 timeOut) 位置 C:\src\ServiceStack\src\ServiceStack.Common\ExecExtensions.cs:行号 88
+   在 ServiceStack.Redis.RedisLock..ctor(RedisClient redisClient, String key, Nullable`1 timeOut)
+   在 ServiceStack.Redis.RedisClient.AcquireLock(String key, TimeSpan timeOut)
+   在 Kingsun.SynchronousStudy.FS.TimedTask.TestLock() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.FS\TimedTask.cs:行号 208
+Method:RetryUntilTrue
+Class:ServiceStack.Common.ExecExtensions
+UserIP:
+UserName:
+

@@ -1,0 +1,36 @@
+﻿2017-11-02 10:38:48
+错误编号:2017110210384796Xc4426df11a
+Message:类型“Kingsun.IBS.BLL.RelationService.tb_Class”不能自未用 DataContractAttribute 或 SerializableAttribute 标记的类型继承。请考虑用 DataContractAttribute 或 SerializableAttribute 标记基类型“Kingsun.DB.Action”，或者从派生类型中移除这两个特性。
+Message2:调用绑定关系接口异常!
+Type:System.Runtime.Serialization.InvalidDataContractException
+Source:System.Runtime.Serialization
+StackTrace:   在 System.Runtime.Serialization.ClassDataContract.ClassDataContractCriticalHelper..ctor(Type type)
+   在 System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   在 System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   在 System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName(Type type)
+   在 System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.ValidateDataContractType(Type type)
+   在 System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.CreatePartInfo(MessagePartDescription part, OperationFormatStyle style, DataContractSerializerOperationBehavior serializerFactory)
+   在 System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.CreateMessageInfo(DataContractFormatAttribute dataContractFormatAttribute, MessageDescription messageDescription, DataContractSerializerOperationBehavior serializerFactory)
+   在 System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter..ctor(OperationDescription description, DataContractFormatAttribute dataContractFormatAttribute, DataContractSerializerOperationBehavior serializerFactory)
+   在 System.ServiceModel.Description.DataContractSerializerOperationBehavior.GetFormatter(OperationDescription operation, Boolean& formatRequest, Boolean& formatReply, Boolean isProxy)
+   在 System.ServiceModel.Description.DataContractSerializerOperationBehavior.System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(OperationDescription description, ClientOperation proxy)
+   在 System.ServiceModel.Description.DispatcherBuilder.BindOperations(ContractDescription contract, ClientRuntime proxy, DispatchRuntime dispatch)
+   在 System.ServiceModel.Description.DispatcherBuilder.ApplyClientBehavior(ServiceEndpoint serviceEndpoint, ClientRuntime clientRuntime)
+   在 System.ServiceModel.Description.DispatcherBuilder.BuildProxyBehavior(ServiceEndpoint serviceEndpoint, BindingParameterCollection& parameters)
+   在 System.ServiceModel.Channels.ServiceChannelFactory.BuildChannelFactory(ServiceEndpoint serviceEndpoint, Boolean useActiveAutoClose)
+   在 System.ServiceModel.ChannelFactory.CreateFactory()
+   在 System.ServiceModel.ChannelFactory.OnOpening()
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.ChannelFactory.EnsureOpened()
+   在 System.ServiceModel.ChannelFactory`1.CreateChannel(EndpointAddress address, Uri via)
+   在 System.ServiceModel.ChannelFactory`1.CreateChannel()
+   在 System.ServiceModel.ClientBase`1.CreateChannel()
+   在 System.ServiceModel.ClientBase`1.CreateChannelInternal()
+   在 System.ServiceModel.ClientBase`1.get_Channel()
+   在 Kingsun.IBS.BLL.RelationService.RelationServiceClient.AddStudentClass(String SelfID, String OtherID, String UserId, String type, String message, String flag) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\RelationService\Reference.cs:行号 1510
+   在 Kingsun.IBS.BLL.IBSData_ClassUserRelationBLL.AddUserToClass(UserClassData data) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_ClassUserRelationBLL.cs:行号 188
+Method:.ctor
+Class:System.Runtime.Serialization.ClassDataContract+ClassDataContractCriticalHelper
+UserIP:
+UserName:
+

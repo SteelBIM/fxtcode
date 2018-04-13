@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+
+@section mainContent{
+   
+    <div class="col-lg-12">
+        <h1 class="page-header">商品列表</h1>
+    </div>
+        <!-- /.col-lg-12 -->
+   
+    
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding-bottom:0px;">
+                <div id="toolbar" class="input-group" style=" float:left;margin-top:0;margin-bottom:0">
+
+                    <select class="form-control" id="selproductchannel" style="width: auto;">
+                        <option value="">产品来源</option>
+                        @foreach (var v in ViewBag.ChannelList)
+                        {
+                            <option value="@v.Key">@v.Value</option>
+                        }
+                    </select>
+                    <select class="form-control" id="selcategory" style="width: auto;">
+                        <option value="">类别</option>
+                        @foreach (var v in ViewBag.CatogoryList)
+                        {
+                            <option value="@v.Key">@v.Value</option>
+                        }
+                    </select>
+                    <select class="form-control" id="selectED" style="width: auto;">
+                        <option value="">版本</option>
+                        @foreach (var v in ViewBag.VersionList)
+                        {
+                            <option value="@v.Key">@v.Value</option>
+                        }
+                    </select>
+                    <select class="form-control" id="selectSUB" style="width: auto;">
+                        <option value="">科目</option>
+                        @foreach (var v in ViewBag.SubjectList)
+                        {
+                            <option value="@v.Key">@v.Value</option>
+                        }
+                    </select>
+                     
+                    <select class="form-control" id="selectGRADE" style="width: auto;">
+                        <option value="">年级</option>
+                        @foreach (var v in ViewBag.GradeList)
+                        {
+                            <option value="@v.Key">@v.Value</option>
+                        }
+                    </select>
+                      
+                    <button id="btn_search" type="button" class="btn btn-default"style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                    </button>
+                    &nbsp;
+                    &nbsp;
+                    @*<button id="btn_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <button id="btn_edit" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>修改
+                    </button>
+                    <button id="btn_remove" type="button" class="btn btn-default" onclick="pageinit.DeleteProduct()">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                    </button>*@
+                </div>
+                <table id="tb_products"></table>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+   
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalTitle">
+                        模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form id="formedit">
+                        <div class="form-group">
+                            <label for="txtname">产品渠道</label>
+                            <div>
+                                <select class="form-control" name="Channel" id="selProductChannel">
+                                    @foreach (var v in ViewBag.ChannelList)
+                                    {
+                                        <option value="@v.Key">@v.Value</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txttype">类别</label>
+                            <div>
+                                <select class="form-control" id="selCategory" name="CategoryKey"></select>
+                                <input type="hidden" class="hidname" name="Category" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtgrade">年级</label>
+                            <div>
+                                <select class="form-control" id="selGRADE" name="GradeID"></select>
+                                <input type="hidden" class="hidname" name="Grade" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtsubject">科目</label>
+                            <div>
+                                <select class="form-control" id="selSUB" name="SubjectID"></select>
+                                <input type="hidden" class="hidname" name="Subject" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtversion">版本</label>
+                            <div>
+                                <select class="form-control" id="selED" name="VersionID"></select>
+                                <input type="hidden" class="hidname" name="Version" value="" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="txtpname">商品名称</label>
+                            <div>
+                                <input type="text" class="form-control" id="txtProductName" name="ProductName" placeholder="商品名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtpname">业务系统商品编号</label>
+                            <div>
+                                <input type="text" class="form-control" id="txtProductNO" name="ProductNO" placeholder="业务系统商品编号">
+                            </div>
+                        </div>
+                        <input type="hidden" id="hidproduct" value="" name="ID" />
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="editBtn" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/pages/ProductIndex.js?rand=@Guid.NewGuid().ToString()"></script>
+    <script src="~/Scripts/CommonMetaData.js"></script>
+    <script>
+        var pageinit;
+        $(function () {
+            pageinit = new ProductPage();
+           
+            //var Tmp = eval("(" +@Json.Encode(ViewBag.CatogoryList).ToString() +")");
+            pageinit.DefaultCatogory =@Html.Raw(Json.Encode(ViewBag.CatogoryList));
+            pageinit.DefaultChannel =@Html.Raw(Json.Encode(ViewBag.ChannelList));
+            pageinit.Init();
+        })
+    </script>
+}
+

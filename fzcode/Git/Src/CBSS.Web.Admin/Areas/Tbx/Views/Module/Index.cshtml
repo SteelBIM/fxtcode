@@ -1,0 +1,74 @@
+﻿@using CBSS.Web
+@using CBSS.Tbx.Contract.ViewModel
+@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@model PagedList<ModuleManage>
+@{
+    ViewBag.Title = "模块管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #tree {
+        overflow: auto;
+        background-color: #eee;
+    }
+    #tree ul{
+        padding: 0;
+        margin:0;
+    }
+   
+</style>
+
+<div style="width:13%; float:left; position:fixed;">
+    <div id="tree">
+    </div>
+</div>
+
+<div style="width:82%;  float:right;">
+    <div class="row-fluid">
+        <div class="span4">
+        </div>
+        <div class="span8">
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+                </label>
+                <label>
+                    <span>书籍名称：</span>
+                    @Html.TextBox("MarketBookName", null, new { @class = "m-wrap small" })
+                </label>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-hover" id="tb_booktable"></table>
+</div>
+<input type="hidden" id="MarketClassifyId" value="0" />
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/Module.js?v=1.4"></script>
+    <link href="~/Assets/bootstrap-tree/tree.css" rel="stylesheet" />
+    <script src="~/Assets/bootstrap-tree/bootstrap-treeview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+           
+            var edit = '@ViewBag.Edit';
+            LoadTreeMarketClassify();
+            var oTable = new ModuleTableInit(); 
+            oTable.Init(edit);
+
+            $(window).on("load resize", function () {
+                var topOffset =200;
+
+                var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
+                height = height - topOffset;
+                if (height < 1) height = 1;
+                if (height > topOffset) {
+                    $("#tree").css("height", (height) + "px");
+                }
+            });
+        });
+    </script>
+}

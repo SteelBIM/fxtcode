@@ -1,0 +1,1024 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Language" content="utf-8" />
+    <style>
+        body {
+            background: #eee;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            zoom: 1;
+            font-size: 12px;
+            resize: none;
+            outline: none;
+            font-family: Verdana;
+        }
+
+        .maintable {
+            width: 900px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+
+            .maintable th {
+                background: #069;
+                color: #fff;
+                line-height: 30px;
+                font-size: 14px;
+            }
+
+                .maintable th a {
+                    width: 100%;
+                    display: block;
+                    color: #fff;
+                    font-weight: normal;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .maintable td {
+                background: #fff;
+                line-height: 20px;
+            }
+
+                .maintable td.left {
+                    width: 220px;
+                    background: #f9f9f9;
+                }
+
+        .tbparams {
+            background: #ccc;
+            width: 100%;
+        }
+
+            .tbparams th {
+                background: #eee;
+                color: #000;
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .tbparams td {
+                background: #fff;
+                padding: 3px;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+            ul.params, div.content {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+            }
+
+                ul.params li {
+                    border-bottom: 1px solid #ccc;
+                    line-height: 25px;
+                    margin: 1px;
+                }
+
+            ul.index li {
+                padding: 10px;
+                line-height: 25px;
+                color: #069;
+            }
+
+        div.content {
+            padding: 5px;
+        }
+
+        #apilist {
+            margin: 5px;
+        }
+
+            #apilist li {
+                cursor: default;
+                padding: 3px;
+            }
+
+                #apilist li.over {
+                    background: #ccc;
+                }
+
+                #apilist li.active {
+                    background: #069;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+        #apicontent {
+            margin: 5px;
+        }
+
+            #apicontent li {
+                cursor: default;
+                word-break: break-all;
+            }
+
+                #apicontent li strong {
+                    display: block;
+                    background: #eee;
+                    line-height: 25px;
+                    text-indent: 10px;
+                    border-left: 8px solid #ccc;
+                }
+
+        ul.ulapi li {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            text-indent: 10px;
+        }
+
+        #apicontent li.desc {
+            margin: 10px;
+            border: 0;
+            background: #fff;
+        }
+
+        #apicontent span.mobile {
+            color: #c00;
+        }
+
+        #apicontent li.step {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        font.red {
+            color: #c00;
+        }
+
+        font.memo {
+            color: #063;
+        }
+
+        #apicontent li label {
+            display: inline-block;
+            width: 120px;
+            background: #eee;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: 10px;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="js/jquery-1.8.2-min.js" type="text/javascript"></script>
+    <script src="js/json2.js" type="text/javascript"></script>
+    <script src="js/date.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var RootRul = top.location.href;
+        function FormatJSON(oData, sIndent) {
+            if (arguments.length < 2) {
+                var sIndent = "";
+            }
+            var sIndentStyle = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            var sDataType = RealTypeOf(oData);
+
+            // open object
+            if (sDataType == "array") {
+                if (oData.length == 0) {
+                    return "[]";
+                }
+                var sHTML = "[";
+            } else {
+                var iCount = 0;
+                $.each(oData, function () {
+                    iCount++;
+                    return;
+                });
+                if (iCount == 0) { // object is empty
+                    return "{}";
+                }
+                var sHTML = "{";
+            }
+
+            // loop through items
+            var iCount = 0;
+            $.each(oData, function (sKey, vValue) {
+                if (iCount > 0) {
+                    sHTML += ",";
+                }
+                if (sDataType == "array") {
+                    sHTML += ("<br>" + sIndent + sIndentStyle);
+                } else {
+                    sHTML += ("<br>" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+                }
+
+                // display relevant data type
+                switch (RealTypeOf(vValue)) {
+                    case "array":
+                    case "object":
+                        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+                        break;
+                    case "boolean":
+                    case "number":
+                        sHTML += vValue.toString();
+                        break;
+                    case "null":
+                        sHTML += "null";
+                        break;
+                    case "string":
+                        sHTML += ("\"" + vValue + "\"");
+                        break;
+                    default:
+                        sHTML += ("TYPEOF: " + typeof (vValue));
+                }
+
+                // loop
+                iCount++;
+            });
+
+            // close object
+            if (sDataType == "array") {
+                sHTML += ("<br>" + sIndent + "]");
+            } else {
+                sHTML += ("<br>" + sIndent + "}");
+            }
+
+            // return
+            return sHTML;
+        }
+        function RealTypeOf(v) {
+            if (typeof (v) == "object") {
+                if (v === null) return "null";
+                if (v.constructor == (new Array).constructor) return "array";
+                if (v.constructor == (new Date).constructor) return "date";
+                if (v.constructor == (new RegExp).constructor) return "regex";
+                return "object";
+            }
+            return typeof (v);
+        }
+        var mustparams = []
+
+        //api
+        var api = [
+            /************************************************分割线************************************************/
+            {
+                name: "获取模块下视频信息列表(GetVideoInforList)", url: "http://183.47.42.221:8001/api/VedioInfo/GetVideoInforList",
+                hover: true,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "BookID", value: "string", desc: "书籍ID，格式例如：168", must: true },
+                    { name: "FirstTitleID", value: "string", desc: "一级标题ID，格式例如：276194", must: true },
+                    { name: "SecondTitleID", value: "string", desc: "二级标题ID，格式例如：276195", must: true },
+                    { name: "FirstModularID", value: "string", desc: "一级模块ID，格式例如：2", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "ID": "21297",
+                            "BookID": "168",
+                            "BookName": "小学英语牛津深圳版一年级上册",
+                            "FirstTitleID": "276194",
+                            "FirstTitle": "Module 1  Getting to know you",
+                            "SecondTitleID": "276195",
+                            "SecondTitle": "Unit 1  Hello",
+                            "FirstModularID": "2",
+                            "FirstModular": "趣配音",
+                            "SecondModularID": "201",
+                            "SecondModular": "课内配音",
+                            "VideoTitle": "Let's talk",
+                            "VideoNumber": "1",
+                            "MuteVideo": "01.mp4",
+                            "CompleteVideo": "02.mp4",
+                            "VideoTime": "",
+                            "BackgroundAudio": "03.mp4",
+                            "VideoCover": "01.jpg",
+                            "VideoDesc": "聪明懂事的你会用英语和别人打招呼吗？一起来学学吧。",
+                            "VideoDifficulty": "1",
+                            "CreateTime": "2016/10/13 10:11:27",
+                            "children": [
+                                {
+                                    "ID": "152862",
+                                    "VideoID": "1",
+                                    "DialogueText": "Hello!",
+                                    "DialogueNumber": "1",
+                                    "StartTime": "7.057",
+                                    "EndTime": "8.3",
+                                    "CreateTime": "2016/10/13 10:11:27"
+                                }
+                            ]
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "ID", value: "string", desc: "视频ID", must: true },
+                    { name: "BookID", value: "string", desc: "书籍ID", must: true },
+                    { name: "BookName", value: "string", desc: "书籍名称", must: true },
+                    { name: "FirstTitleID", value: "string", desc: "一级标题ID", must: true },
+                    { name: "FirstTitle", value: "string", desc: "一级标题ID", must: true },
+                    { name: "SecondTitleID", value: "string", desc: "二级标题ID", must: true },
+                    { name: "SecondTitle", value: "string", desc: "二级标题ID", must: true },
+                    { name: "FirstModularID", value: "string", desc: "一级模块ID", must: true },
+                    { name: "FirstModular", value: "string", desc: "一级模块ID", must: true },
+                    { name: "SecondModularID", value: "string", desc: "二级模块ID", must: true },
+                    { name: "SecondModular", value: "string", desc: "二级模块ID", must: true },
+                    { name: "VideoTitle", value: "string", desc: "视频标题", must: true },
+                    { name: "VideoNumber", value: "string", desc: "视频序号", must: true },
+                    { name: "MuteVideo", value: "string", desc: "静音视频", must: true },
+                    { name: "CompleteVideo", value: "string", desc: "完整视频", must: true },
+                    { name: "VideoTime", value: "string", desc: "视频时长", must: true },
+                    { name: "BackgroundAudio", value: "string", desc: "背景音频", must: true },
+                    { name: "VideoCover", value: "string", desc: "视频封面", must: true },
+                    { name: "VideoDesc", value: "string", desc: "视频简介", must: true },
+                    { name: "VideoDifficulty", value: "string", desc: "视频难度", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "children", value: "json", desc: "返回数据集", must: false },
+                    { name: "ID", value: "string", desc: "对白视频ID", must: true },
+                    { name: "VideoID", value: "string", desc: "视频ID", must: true },
+                    { name: "DialogueText", value: "string", desc: "对白", must: true },
+                    { name: "DialogueNumber", value: "string", desc: "对白序号", must: true },
+                    { name: "StartTime", value: "string", desc: "对白开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "对白结束时间", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true }
+                ],
+                demo: {
+                    "SecondTitleID": "276195",
+                    "BookID": "168",
+                    "FirstModularID": "2",
+                    "FirstTitleID": "276194"
+                }
+            },
+
+            /**********************************************************************************/
+            {
+                name: "统计各级目录学习情况(GetJuniorGradeNumByClassId)", url: "http://183.47.42.221:8001/api/NewLearningReport/GetJuniorGradeNumByClassId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "ClassId", value: "int32", desc: "班级id，格式例如：（12345678）八位数的班级编码", must: true },
+                    { name: "BookId", value: "int32", desc: "书本id，格式例如：171", must: true },
+                    { name: "PageNumber", value: "int32", desc: "默认每页十条", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true, data: [{ ClassList: [{ Catalague: "Module 1 /Unit 1", "FirstTitleID": 277774, "SecondTitleID": 277782, "IsStudy": true }, { Catalague: "Module 1 /Unit 2", "FirstTitleID": 277774, "SecondTitleID": 277782, "IsStudy": true }] }], Message: "操作成功"
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "Id", value: "int32", desc: "班级ID", must: true },
+                    { name: "ClassName", value: "string", desc: "班级名称", must: true },
+                    { name: "IsStudy", value: "string", desc: "是否学习", must: true }
+                ],
+                demo: {
+                    "ClassId": 12345678,
+                    "BookId": 171,
+                    "PageNumber": 10,
+                    "Version": "V1"
+                }
+            },
+             /**********************************************************************************/
+            {
+                name: "根据用户ID获取用户优惠券信息(GetUserTicketInfoByUserId)",
+                url: "http://192.168.3.144:8089/api/Ticket/GetUserTicketInfoByUserId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int32", desc: "用户ID，格式例如：1489451964", must: true },
+                    { name: "AppId", value: "string", desc: "版本ID，格式例如：1548d0a3-ca8e-4702-9c2c-f0ba0cacd385", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "ID": "e0df271a-29af-48a0-a3e8-79be2dfb1a20",
+                            "UserID": 1000137999,
+                            "OrderID": "00000000-0000-0000-0000-000000000000",
+                            "TicketID": 24,
+                            "Status": 0,
+                            "CreateTime": "2017/5/24 21:31:42",
+                            "TicketName": "10元",
+                            "CourseID": 265,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "2017/5/24 15:26:12",
+                            "EndDate": "2017/5/31 15:26:14",
+                            "Type": 0,
+                            "ImgUrl": "116f3436-d59f-42b6-9da3-94b25c68c78b.jpg",
+                            "sysTime": "\/Date(1495704903931)\/",
+                            "TickStatus": 0
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "ID", value: "Guid", desc: "主键ID", must: true },
+                    { name: "UserID", value: "int", desc: "用户ID", must: true },
+                    { name: "OrderID", value: "Guid", desc: "订单表主键ID", must: true },
+                    { name: "TicketID", value: "int", desc: "优惠卷ID", must: true },
+                    { name: "Status", value: "int", desc: "状态：是否使用(0:未使用，1：已使用)", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "string", desc: "书籍ID", must: true },
+                    { name: "ModularID", value: "string", desc: "模块ID", must: true },
+                    { name: "Price", value: "string", desc: "金额", must: true },
+                    { name: "StartDate", value: "string", desc: "开始时间", must: true },
+                    { name: "EndDate", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "string", desc: "优惠卷类型(0:0元购，1：10元优惠卷)", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠卷图片", must: true },
+                    { name: "sysTime", value: "datetime", desc: "系统时间", must: true },
+                    { name: "TickStatus", value: "int", desc: "优惠卷活动状态(0:未禁用，1:已禁用)", must: true }
+                ],
+                demo: {
+                    "UserID": 1000137999,
+                    "AppId": "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385",
+                    "Version": "V1"
+                }
+            },
+            /**********************************************************************************/
+            {
+                name: "根据课程id获取优惠券信息(GetTicketInfoByBookId)", url: "http://192.168.3.144:8089/api/Ticket/GetTicketInfoByBookId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "CourseID", value: "int32", desc: "书本ID，格式例如：168", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "ID": 24,
+                            "TicketName": "10元",
+                            "CourseID": 265,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "/Date(1495610772000)/",
+                            "EndDate": "/Date(1496215574000)/",
+                            "Type": 0,
+                            "CreateTime": "/Date(1495611033037)/",
+                            "ImgUrl": "116f3436-d59f-42b6-9da3-94b25c68c78b.jpg",
+                            "sysTime": "\/Date(1495704903931)\/",
+                            "Status": 0
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "ID", value: "int32", desc: "优惠卷ID", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "int", desc: "书籍名称", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "Price", value: "decimal", desc: "金额", must: true },
+                    { name: "StartTime", value: "string", desc: "开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "int", desc: "0:0元购，1：10元优惠卷", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠券图片", must: true },
+                    { name: "sysTime", value: "datetime", desc: "系统时间", must: true },
+                    { name: "Status", value: "int", desc: "优惠卷活动状态(0:未禁用，1:已禁用)", must: true }
+                ],
+                demo: {
+                    "CourseID": 168,
+                    "Version": "V1"
+                }
+            },
+             /**********************************************************************************/
+            {
+                name: "添加用户优惠券信息(InsertUserTicketInfo)",
+                url: "http://192.168.3.144:8089/api/Ticket/InsertUserTicketInfo",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int32", desc: "用户ID，格式例如：1489451964", must: true },
+                    { name: "TicketID", value: "Int32", desc: "优惠券ID，格式例如：45", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true, "data": "新增成功", "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false }
+
+                ],
+                demo: {
+                    "UserID": 1000137999,
+                    "AppId": "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385",
+                    "Version": "V1"
+                }
+            },
+             /**********************************************************************************/
+            {
+                name: "根据UserID,totalScore获取用户是否拥有优惠券(IsUserTicketByUserIdAndTotalscore)（弹窗）",
+                url: "http://192.168.3.144:8089/api/Ticket/IsUserTicketByUserIdAndTotalscore",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int32", desc: "用户ID，格式例如：1489451964", must: true },
+                    { name: "CourseID", value: "string", desc: "书本ID，格式例如：168", must: true },
+                    { name: "AppId", value: "string", desc: "版本ID，格式例如：1548d0a3-ca8e-4702-9c2c-f0ba0cacd385", must: true },
+                    { name: "TotalScore", value: "string", desc: "成绩，格式例如：83", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": {
+                        "AppID": "241ea176-fce7-4bd7-a65f-a7978aac1cd2",
+                        "ID": "7eff9d87-b8e8-4e54-b301-1e2b1ad193a1",
+                        "UserID": 1000137999,
+                        "OrderID": "00000000-0000-0000-0000-000000000000",
+                        "TicketID": 45,
+                        "Status": 0,
+                        "CreateTime": "/Date(1495703669760)/",
+                        "TicketName": null,
+                        "CourseID": 0,
+                        "ModularID": 0,
+                        "Price": 0,
+                        "StartDate": "/Date(-62135596800000)/",
+                        "EndDate": "/Date(-62135596800000)/",
+                        "Type": 0,
+                        "ImgUrl": null,
+                        "sysTime": "/Date(-62135596800000)/",
+                        "IsCoupon": 0,
+                        "TickStatus": 3
+                    },
+                    "Message": "",
+                    "SystemTime": "/Date(1495788031816)/"
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                     { name: "AppID", value: "string", desc: "App版本", must: true },
+                    { name: "ID", value: "int32", desc: "优惠卷ID", must: true },
+                    { name: "UserID", value: "string", desc: "用户ID", must: true },
+                    { name: "OrderID", value: "string", desc: "订单表主键ID", must: true },
+                    { name: "TicketID", value: "string", desc: "优惠卷ID", must: true },
+                    { name: "Status", value: "string", desc: "状态：是否使用(0:未使用，1：已使用)", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "int", desc: "书籍名称", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "Price", value: "decimal", desc: "金额", must: true },
+                    { name: "StartTime", value: "string", desc: "开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "int", desc: "0:0元购，1：10元优惠卷", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠券图片", must: true },
+                    { name: "sysTime", value: "datetime", desc: "系统时间", must: true },
+                    { name: "IsCoupon", value: "int", desc: "优惠券活动状态(0:未禁用，1:已禁用)", must: true },
+                    { name: "TickStatus", value: "int", desc: "// 0:分数低于85分，且没有优惠卷(再接再厉)；1：分数低于85分，有优惠卷(未使用优惠卷)；2：分数高于85分，且没有优惠卷（恭喜获得优惠卷）；3：分数高于85分，有优惠卷（为使用优惠卷）,4:无活动或者无优惠券（无弹窗）", must: true }
+                ],
+                demo: {
+                    "UserID": "1489451964",
+                    "AppId": "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385",
+                    "CourseID": "169",
+                    "TotalScore": "85",
+                    "Version": "V1"
+                }
+            },
+              /**********************************************************************************/
+            {
+                name: "根据UserID获取用户所有状态优惠券使用情况(GetUserTicketListByUserId)（个人中心---我的优惠卷）",
+                url: "http://192.168.3.144:8089/api/Ticket/GetUserTicketListByUserId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int32", desc: "用户ID，格式例如：1489451964", must: true },
+                    { name: "AppId", value: "string", desc: "版本ID，格式例如：1548d0a3-ca8e-4702-9c2c-f0ba0cacd385", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "AppID": "241ea176-fce7-4bd7-a65f-a7978aac1cd2",
+                            "ID": "8ff194f6-37d9-460c-a547-73b6213b8d3d",
+                            "UserID": 1489451964,
+                            "OrderID": "00000000-0000-0000-0000-000000000000",
+                            "TicketID": 4,
+                            "Status": 0,
+                            "CreateTime": "0001/1/1 0:00:00",
+                            "TicketName": "10元优惠卷",
+                            "CourseID": 169,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "2017/5/10 0:00:00",
+                            "EndDate": "2018/5/10 0:00:00",
+                            "Type": 1,
+                            "ImgUrl": "http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/ff690245-9854-47ed-af92-68f68620d011",
+                            "sysTime": "/Date(1495877407723)/",
+                            "IsCoupon": 0,
+                            "TickStatus": 0
+                        },
+                        {
+                            "AppID": "241ea176-fce7-4bd7-a65f-a7978aac1cd2",
+                            "ID": "8ff194f6-37d9-460c-a547-73b6213b8d3d",
+                            "UserID": 1489451964,
+                            "OrderID": "00000000-0000-0000-0000-000000000000",
+                            "TicketID": 4,
+                            "Status": 0,
+                            "CreateTime": "0001/1/1 0:00:00",
+                            "TicketName": "10元优惠卷",
+                            "CourseID": 169,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "2017/5/10 0:00:00",
+                            "EndDate": "2018/5/10 0:00:00",
+                            "Type": 1,
+                            "ImgUrl": "http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/ff690245-9854-47ed-af92-68f68620d011",
+                            "sysTime": "/Date(1495877407723)/",
+                            "IsCoupon": 0,
+                            "TickStatus": 0
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "AppID", value: "string", desc: "App版本", must: true },
+                    { name: "ID", value: "int32", desc: "优惠卷ID", must: true },
+                    { name: "UserID", value: "string", desc: "用户ID", must: true },
+                    { name: "OrderID", value: "string", desc: "订单表主键ID", must: true },
+                    { name: "TicketID", value: "string", desc: "优惠卷ID", must: true },
+                    { name: "Status", value: "string", desc: "状态：是否使用(0:未使用，1：已使用)", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "int", desc: "书籍名称", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "Price", value: "decimal", desc: "金额", must: true },
+                    { name: "StartTime", value: "string", desc: "开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "int", desc: "0:0元购，1：10元优惠卷", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠券图片", must: true },
+                     { name: "sysTime", value: "datetime", desc: "系统时间", must: true },
+                    { name: "IsCoupon", value: "int", desc: "优惠券活动状态(0:未禁用，1:已禁用)", must: true },
+                    { name: "TickStatus", value: "int", desc: "// 0:分数低于85分，且没有优惠卷(再接再厉)；1：分数低于85分，有优惠卷(未使用优惠卷)；2：分数高于85分，且没有优惠卷（恭喜获得优惠卷）；3：分数高于85分，有优惠卷（为使用优惠卷）,4:无活动或者无优惠券（无弹窗）", must: true }
+                ],
+                demo: {
+                    "UserID": "1489451964",
+                    "AppId": "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385",
+                    "Version": "V1"
+                }
+            },
+              /**********************************************************************************/
+            {
+                name: "根据UserID获取用户优惠券使用情况(GetUserTicketByUserId)（获取支付页面的优惠卷）",
+                url: "http://192.168.3.144:8089/api/Ticket/GetUserTicketByUserId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "UserID", value: "int32", desc: "用户ID，格式例如：1489451964", must: true },
+                    { name: "AppId", value: "string", desc: "版本ID，格式例如：1548d0a3-ca8e-4702-9c2c-f0ba0cacd385", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "AppID":"241ea176-fce7-4bd7-a65f-a7978aac1cd2",
+                            "ID": "8ff194f6-37d9-460c-a547-73b6213b8d3d",
+                            "UserID": 1489451964,
+                            "OrderID": "00000000-0000-0000-0000-000000000000",
+                            "TicketID": 4,
+                            "Status": 0,
+                            "CreateTime": "0001/1/1 0:00:00",
+                            "TicketName": "10元优惠卷",
+                            "CourseID": 169,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "2017/5/10 0:00:00",
+                            "EndDate": "2018/5/10 0:00:00",
+                            "Type": 1,
+                            "ImgUrl": "http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com/SynchronousStudy/UpLoadFile/ff690245-9854-47ed-af92-68f68620d011",
+                            "sysTime": "/Date(1495877536337)/",
+                            "IsCoupon": 0,
+                            "TickStatus": 0
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                      { name: "AppID", value: "string", desc: "App版本", must: true },
+                    { name: "ID", value: "int32", desc: "优惠卷ID", must: true },
+                    { name: "UserID", value: "string", desc: "用户ID", must: true },
+                    { name: "OrderID", value: "string", desc: "订单表主键ID", must: true },
+                    { name: "TicketID", value: "string", desc: "优惠卷ID", must: true },
+                    { name: "Status", value: "string", desc: "状态：是否使用(0:未使用，1：已使用)", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "int", desc: "书籍名称", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "Price", value: "decimal", desc: "金额", must: true },
+                    { name: "StartTime", value: "string", desc: "开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "int", desc: "0:0元购，1：10元优惠卷", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠券图片", must: true },
+                    { name: "sysTime", value: "datetime", desc: "系统时间", must: true },
+                    { name: "IsCoupon", value: "int", desc: "优惠券活动状态(0:未禁用，1:已禁用)", must: true },
+                    { name: "TickStatus", value: "int", desc: "// 0:分数低于85分，且没有优惠卷(再接再厉)；1：分数低于85分，有优惠卷(未使用优惠卷)；2：分数高于85分，且没有优惠卷（恭喜获得优惠卷）；3：分数高于85分，有优惠卷（为使用优惠卷）,4:无活动或者无优惠券（无弹窗）", must: true }
+                ],
+                demo: {
+                    "UserID": "1489451964",
+                    "AppId": "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385",
+                    "Version": "V1"
+                }
+            },
+             /**********************************************************************************/
+            {
+                name: "根据课程id获取优惠券信息(GetTicketByCourseId)(判断支付入口)",
+                url: "http://192.168.3.144:8089/api/Ticket/GetTicketByCourseId",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [
+                    { name: "sinfo", value: "json", desc: "属性", must: true },
+                    { name: "CourseID", value: "int32", desc: "书本ID，格式例如：168", must: true },
+                    { name: "Version", value: "string", desc: "版本号，格式例如：V1", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "ID": 24,
+                            "TicketName": "10元",
+                            "CourseID": 265,
+                            "ModularID": 14,
+                            "Price": 10,
+                            "StartDate": "/Date(1495610772000)/",
+                            "EndDate": "/Date(1496215574000)/",
+                            "Type": 0,
+                            "CreateTime": "/Date(1495611033037)/",
+                            "ImgUrl": "116f3436-d59f-42b6-9da3-94b25c68c78b.jpg",
+                            "Status": 0
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "ID", value: "int32", desc: "优惠卷ID", must: true },
+                    { name: "TicketName", value: "string", desc: "优惠卷名称", must: true },
+                    { name: "CourseID", value: "int", desc: "书籍名称", must: true },
+                    { name: "ModularID", value: "int", desc: "模块ID", must: true },
+                    { name: "Price", value: "decimal", desc: "金额", must: true },
+                    { name: "StartTime", value: "string", desc: "开始时间", must: true },
+                    { name: "EndTime", value: "string", desc: "结束时间", must: true },
+                    { name: "Type", value: "int", desc: "0:0元购，1：10元优惠卷", must: true },
+                    { name: "CreateTime", value: "string", desc: "创建时间", must: true },
+                    { name: "ImgUrl", value: "string", desc: "优惠券图片", must: true },
+                    { name: "Status", value: "int", desc: "优惠券活动状态(0:未禁用，1:已禁用)", must: true }
+                ],
+                demo: {
+                    "CourseID": 168,
+                    "Version": "V1"
+                }
+            },
+             /**********************************************************************************/
+            {
+                name: "设置ebook免费内容",
+                url: "http://192.168.3.144:8089/api/Account/SetEbookConfig",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{sinfo:{}.toJsonString(),info:{}.toJsonString()}.toJsonString()",
+                params: [],
+                output: {
+                    "Success": true,
+                    "data": [
+                        {
+                            "FirstUnit": 0,
+                            "SecondUnit": 0,
+                            "PageNumber": 2,
+                            "Type": 1
+                        }
+                    ],
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "Message", value: "string", desc: "信息", must: true },
+                    { name: "data", value: "json", desc: "返回数据集", must: false },
+                    { name: "FirstUnit", value: "int32", desc: "一级目录", must: true },
+                    { name: "SecondUnit", value: "int32", desc: "二级目录（0：表示开放一级目录下所有二级目录）", must: true },
+                    { name: "PageNumber", value: "int32", desc: "页码", must: true },
+                    { name: "Type", value: "int32", desc: "0表示免费使用目录，1表示免费使用页码", must: true },
+                ],
+                demo: {}
+            },
+             /**********************************************************************************/
+            {
+                name: "创建ToKen",
+                url: "http://192.168.3.144:8089/api/Account/CreateToken",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{\"Data\":{‘UserID’:‘994607364’,‘EquipmentID':'imei'}}",
+                params: [
+                    { name: "UserID", value: "string", desc: "用户ID", must: true },
+                    { name: "EquipmentID", value: "string", desc: "设备唯一码", must: true } 
+                ],
+                output: {
+                    "Success": true,
+                    "data": "4B154C3A356384FBBC5739E106CA0B48",
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "data", value: "string", desc: "返回token", must: false },
+                    { name: "ErrorCode", value: "string", desc: "创建失败时有此错误描述 100102(token 处理失败)", must: true },
+                    { name: "Message", value: "string", desc: "描述返回空", must: true }
+                ],
+                demo: {
+                    "UserID": "994607364",
+                    "EquipmentID": "imei"
+                }
+            }
+            ,
+             /**********************************************************************************/
+            {
+                name: "验证ToKen",
+                url: "http://192.168.3.144:8089/api/Account/VerificationToken",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: "请求参数格式：{\"Data\":{‘UserID’:‘994607364’,‘EquipmentID':'imei'}}",
+                params: [
+                    { name: "UserID", value: "string", desc: "用户ID", must: true },
+                    { name: "EquipmentID", value: "string", desc: "设备唯一码", must: true }
+                ],
+                output: {
+                    "Success": true,
+                    "data": "验证通过",
+                    "Message": ""
+                },
+                outexplain: [
+                    { name: "Success", value: "bool", desc: "状态：true表示成功；false表示失败", must: true },
+                    { name: "data", value: "string", desc: "返回验证成功", must: false },
+                    { name: "ErrorCode", value: "string", desc: "ErrorCode 100102(token 处理失败) 100103(token 过期)", must: true },
+                    { name: "Message", value: "string", desc: "成功返回验证通过，失败返回空", must: true }
+                ],
+                demo: {
+                    "UserId": "994607364",
+                    "EquipmentID": "imei"
+                }
+            }
+              ,
+             /**********************************************************************************/
+            {
+                name: "登录",
+                url: "http://192.168.3.144:8089/api/Account/AppLogin",
+                hover: false,
+                format: "json",
+                method: "POST",
+                remark: " ",
+                params: [
+                ],
+                output: {
+                    
+                },
+                outexplain: [
+                    { name: "UserType", value: "int", desc: "用户身份", must: true },
+                    { name: "Token", value: "string", desc: "token", must: false } 
+                ],
+                demo: {
+                    
+                }
+            }
+        ];
+        function u(o) { return typeof (o) != "undefined"; }
+        $(function () {
+            $.each(api, function (i, item) {
+                var li = $("<li>" + (i + 1) + " : " + item.name + "</li>");
+                li.data("data", item);
+                $("#apilist").append(li);
+                if (item.hover) { loaddata(li); li.addClass("active"); }
+            });
+            $("#apilist li").click(function () {
+                $("#apilist li.active").removeClass("active");
+                $(this).addClass("active");
+                loaddata(this);
+            }).mouseenter(function () { $(this).addClass("over"); })
+                .mouseout(function () { $(this).removeClass("over"); });
+        });
+        function loaddata(args) {
+            var html = [];
+            var item = $(args).data("data");
+            html.push('<li><strong>接口名称</strong></li><li class="desc">' + item.name + '</li>');
+            html.push('<li><strong>Url</strong></li><li class="desc">' + item.url + '</li>');
+            html.push('<li><strong>支持格式</strong></li><li class="desc">' + item.format + '</li>');
+            html.push('<li><strong>HTTP请求方式</strong></li><li class="desc">' + item.method + '</li>');
+            html.push('<li><strong style="color: red;">注意事项</strong></li><li class="desc">' + item.remark + '</li>');
+            html.push('<li><strong>请求参数示例</strong></li><li class="desc"><div class="content">' + FormatJSON(item.demo, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            var params = [], explain = [];
+            function addparam(p) {
+                if (p.value == "json") {
+                    params.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    params.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            //if (item.name.indexOf("登录") < 0) {
+            $.each(mustparams, function (i, p) {
+                addparam(p);
+            });
+            //}
+            $.each(item.params, function (i, p) {
+                addparam(p);
+            });
+            function addexplain(p) {
+                if (p.value == "json") {
+                    explain.push('<li><strong style="background-color:#252525;color:#fff;">' + p.name + '</strong></li>');
+                } else {
+                    explain.push('<li><label>' + p.name + '</label>' + '<input type=checkbox disabled ' + (p.must ? ' checked' : '') + '/>' + (p.must ? ' <font class="red">必填</font>' : ' 必填') + ' ' + (typeof (p.value) == "undefined" || p.value == "" ? "" : '[  "' + p.value + '" ] ') + '<font class="memo">' + (typeof (p.desc) == "undefined" || p.desc == "" ? '' : '// ' + p.desc) + '</font></li>');
+                }
+            }
+            $.each(item.outexplain, function (i, p) {
+                addexplain(p);
+            });
+            html.push('<li><strong>请求参数说明</strong></li><li class="desc"><ul class="params">' + params.join("") + '</ul></li>');
+            html.push('<li><strong>返回结果</strong></li><li class="desc"><div class="content">' + FormatJSON(item.output, "&nbsp;&nbsp;&nbsp;&nbsp;") + '</div></li>');
+            html.push('<li><strong>返回参数说明</strong></li><li class="desc"><ul class="params">' + explain.join("") + '</ul></li>');
+
+            $("#apicontent").html(html.join(""));
+        }
+    </script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="1" border="0" class="maintable">
+        <tr>
+            <th colspan="2">
+                <a style="font-weight: bold; font-size: 16px;" href="http://api.fxtcn.com/wdc/data.htm">同步学API接口文档说明 V1.0</a>
+            </th>
+        </tr>
+        <tr>
+            <td valign="top" class="left">
+                <ul id="apilist"></ul>
+            </td>
+            <td valign="top">
+                <ul class="index">
+                    <li>
+                        <!--本说明用于协助和指导相关开发人员熟悉和使用期末测评卷Api。点击左侧功能名称查看详细说明。<br />-->
+                        <span style="color: red;">本API文档兼容浏览器：IE9、火狐、谷歌</span>
+                    </li>
+                </ul>
+                <ul id="apicontent"></ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

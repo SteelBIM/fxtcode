@@ -1,0 +1,79 @@
+
+/*JS调用AS*/
+//设置将要测评的句子  参数txt:String
+ExternalInterface.addCallback("setSampleText",setSampleText);
+//开始录音 空参数
+ExternalInterface.addCallback("startRecord",startRecord);
+//结束录音 空参数
+ExternalInterface.addCallback("stopRecord",stopRecord);
+//获取文件路径 返回：String
+ExternalInterface.addCallback("getReplayPath",getReplayPath);
+//获取分数 返回：JSON格式的String
+ExternalInterface.addCallback("getScore",getScore);
+//测试方法
+ExternalInterface.addCallback("testFunc",testFunc);
+//设置用户id，参数String类型，可以是用户账号
+ExternalInterface.addCallback("setUserID",setUserID);
+//打开麦克风设置面板 空参数
+ExternalInterface.addCallback("openSecurityPanel",openSecurityPanel);
+//设置打分超时时间（以秒为单位）参数String类型
+ExternalInterface.addCallback("setEvalTimeOut",setEvalTimeOut);
+//轮询麦克风是否静音 返回是布尔值
+ExternalInterface.addCallback("getMicrophonelsMuted",getMicrophonelsMuted);
+//评测失败后可主动调用此方法重新评测
+ExternalInterface.addCallback("retry",retry);
+
+/*AS调用JS*/
+//录音完成的时候调用，这个时候就可以获取分数了
+ExternalInterface.call("recordComplete");
+//错误  参数:int类型 错误代号
+ExternalInterface.call("errorCallBack",e.errorID);
+//录音开始至录音结束期间的音量，在这个区间调用 返回的是实时音量
+ExternalInterface.call("ShowMicVolume",e.volume);
+
+错误代号详表
+case -61001:
+	errorCallBack("麦克风检测失败");
+	break;	
+case -61002://（新增）
+	errorCallBack("没有可用的麦克风，可能被占用");
+	break;
+case -10001:
+	errorCallBack("服务器通讯错误");
+	break;
+case -7:
+	errorCallBack("服务器连接失败");
+	break;
+case -10010:
+	errorCallBack("服务器连接超时");
+	break;
+case -12010:
+	errorCallBack("安全沙箱冲突2010");
+	break;
+case -12048:
+	errorCallBack("安全沙箱冲突2048");
+	break;
+case -20001:
+	errorCallBack("服务器验证错误");
+	break;
+case -20007:
+	errorCallBack("打分超时错误");
+	break;
+case -30002:
+	errorCallBack("说话时间超过限制");
+	break;
+case -30003:
+	errorCallBack("数据压缩错误");
+	break;
+case -50013:
+	errorCallBack("本地socket错误");
+	break;
+case -52001:
+	errorCallBack("Opus编码错误");
+	break;
+case -1001:
+	errorCallBack("录音异常");
+	break;
+case -62001:
+	errorCallBack("识别异常");
+	break;

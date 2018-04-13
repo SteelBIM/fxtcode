@@ -1,0 +1,228 @@
+﻿@{
+    ViewBag.Title = "报名";
+}
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>报名入口</title>
+    <link href="~/Content/css/apply.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/apply.js"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+</head>
+
+<body class="body1">
+    <header class="head1">
+        <a onclick="finish()" href="#" class="back"><img src="../images/back.png" alt="" /></a>
+        <a href="#" class="share" onclick="ShareUrl()"><img src="../images/share.png" alt=""></a>
+    </header>
+    <main class="main1">
+        <section>
+            <img src="../images/bag.png" alt="">
+            <a href="../Details/Index?returnPage=Details&UserID=@Request["UserID"]&AppID=@Request["AppID"]" class="check">比赛详情</a>
+            <a href="javascript:void(0)" class="apply">报名</a>
+        </section>
+    </main>
+
+    <!-- 分享弹窗 -->
+    <div class="box">
+        <img class="box_bag" src="../images/sharebag.png" alt="">
+        <ul>
+            <li>
+                <a href="#"><img src="../images/WeChat.png" alt=""></a>
+                <p>微信</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/Circle.png" alt=""></a>
+                <p>朋友圈</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/QQ.png" alt=""></a>
+                <p>QQ</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/QQspace.png" alt=""></a>
+                <p>QQ空间</p>
+            </li>
+        </ul>
+        <a href="#" class="cancel">取消</a>
+    </div>
+    <!-- 老师进入的弹窗 -->
+    <div class="box1">
+        <img class="box_bag" src="../images/tishibag.png" alt="">
+        <p>这里是学生的主战场！</p>
+        <a href="#" class="close" onclick="ShareUrl()">分享</a>
+    </div>
+    <div class="shadow"></div>
+
+    <script type="text/javascript">
+        var UserID = '@Request["UserID"]';
+        var AppID = '@Request["AppID"]';
+        $(function () { 
+            //alert(UserID);
+            //如果是分享出去的页面则隐藏分享空间
+            var CoursePeriodUrl = GetQueryString("local");
+            //alert(CoursePeriodUrl);
+            if (CoursePeriodUrl != null && CoursePeriodUrl.toString().length > 0 && CoursePeriodUrl.toString() == "weixin" || UserID == 0) {
+                $(".head1").hide();
+                $(".main1").css("margin-top", "35px");
+                //$(".fenxiang").hide();
+            }
+
+            $(".apply").click(function () { 
+                //alert(UserID);
+                //alert(CoursePeriodUrl);
+                //如果是分享则跳转到下载地址页面
+                if (CoursePeriodUrl != null && CoursePeriodUrl.toString().length > 0 && CoursePeriodUrl.toString() == "weixin" || UserID == 0) {
+                    if (AppID == "1548d0a3-ca8e-4702-9c2c-f0ba0cacd385") {//广州版
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.gz.syslearning";
+                    } else if (AppID == "43716a9b-7ade-4137-bdc4-6362c9e1c999") {//上海本地
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.shbd.syslearning";
+                    }
+                    else if (AppID == "241ea176-fce7-4bd7-a65f-a7978aac1cd2") {//深圳版
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sz.syslearning";
+                    }
+                    else if (AppID == "9426808e-da8e-488c-9827-b082c19b62a7") {//上海全国
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.shqg.syslearning";
+                    }
+                    else if (AppID == "0a94ceaf-8747-4266-bc05-ed8ae2e7e410") {//北京
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.bj.syslearning";
+                    }
+                    else if (AppID == "5373bbc9-49d4-47df-b5b5-ae196dc23d6d") {//人教pep
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.rj.syslearning";
+                    }
+                    else if (AppID == "37ca795d-42a6-4117-84f3-f4f856e03c62") {//广东
+                        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.gd.syslearning";
+                    } else {
+                        window.location.href = "http://tbx.kingsun.cn/downloadList.html";
+                    }
+                    return false;
+                }
+                //window.location.href = "/Information/Index?UserID=228663655";
+                //return false;
+                $.post("../Apply/GetTB_UUMSUser", { UserID: UserID }, function (data) {
+                    //alert(data);
+                    data = eval(data);
+                    if (data.Success) {
+                        var UserType = data.Data.UserType;
+                        var TelePhone = data.Data.Telephone;
+                        //判断身份是否是学生
+                        if (UserType == 26) {
+                            //判断是否已加入班级
+                            $.post("../Apply/CheckClassInfoByStuID", { UserID: UserID }, function (data) {
+                                //alert(data);
+                                data = eval(data);
+                                if (data.Success) {
+                                    window.location.href = "../Information/Index?returnPage=Information&UserID=" + UserID + "&AppID=" + AppID + "&TelePhone=" + TelePhone + "";
+                                } else {
+                                    //popup("加入班级后才可报名");
+                                    ChangeClass();
+                                    //alert(data.Msg);
+                                }
+                            });
+                        } else {
+                            $(".box1").css("display", "block");
+                            $(".shadow").css("display", "block");
+                        }
+                    } else {
+                        popup(data.Msg);
+                    }
+                });
+            });
+        });
+        //加入班级
+        function ChangeClass() {
+            var black = document.createElement("div");
+            var black1 = document.createElement("div");
+            var black2 = document.createElement("div");
+            var black3 = document.createElement("p");
+            var black4 = document.createTextNode("加入班级后才可报名");
+            black.className = 'zong';
+            black1.className = 'zhezhao';
+            black2.className = 'hezi';
+            black3.appendChild(black4);
+            black2.appendChild(black3);
+            black.appendChild(black1);
+            black.appendChild(black2);
+            document.body.appendChild(black);
+            black1.onclick = function () {
+                black.parentNode.removeChild(black);
+                    window.WebViewJavascriptBridge.callHandler(
+               'ChangeClass', function (responseData) {
+
+               }
+               );
+            }
+        }
+        //返回
+        function finish() {
+            window.WebViewJavascriptBridge.callHandler(
+            'finish', function (responseData) {
+
+            }
+            );
+        }
+        //分享
+        function ShareUrl() {
+            var nowAppID = GetQueryString("AppID");
+            //alert(window.location.href.replace(GetQueryString("UserID"), "0").replace("&local=", "") + "&local=weixin");
+            //调用移动端接口
+            var hostName = window.location.hostname;
+            var port = window.location.port;
+            if (port != null && port != "") {
+                hostName = hostName + ':' + port;
+            }
+
+            if (hostName.lastIndexOf("http://") == -1) {
+                hostName = "http://" + hostName;
+            }
+            if (hostName.lastIndexOf(".cn") != -1 || hostName.lastIndexOf(".com") != -1) {
+                hostName = hostName + "/InterestDubbingGameWeb"
+            }
+            //alert(hostName);
+            //调用移动端接口
+            var data = {
+                //传递的参数json
+                "data": {
+                    "shareUrl": hostName + "/Apply/Index?UserID=0&local=weixin&AppID=" + nowAppID,
+                    "shareType": "0"
+                }
+            };
+            //调用移动端的方法
+            window.WebViewJavascriptBridge.callHandler(
+                'shareThirdparty', data, function (responseData) {
+
+                }
+            );
+        }
+        //采用正则表达式获取地址栏参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        function popup(aaa) {
+            var black = document.createElement("div");
+            var black1 = document.createElement("div");
+            var black2 = document.createElement("div");
+            var black3 = document.createElement("p");
+            var black4 = document.createTextNode(aaa);
+            black.className = 'zong';
+            black1.className = 'zhezhao';
+            black2.className = 'hezi';
+            black3.appendChild(black4);
+            black2.appendChild(black3);
+            black.appendChild(black1);
+            black.appendChild(black2);
+            document.body.appendChild(black);
+            black1.onclick = function () {
+                black.parentNode.removeChild(black);
+
+            }
+        };
+    </script>
+</body>
+</html>

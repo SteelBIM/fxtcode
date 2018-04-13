@@ -1,0 +1,63 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.contBody{width:100%;}
+.contBody .main{width:1000px;margin:0 auto;/*background-color:#fff;*/}
+.contBody .main .leftCont{width:950px;background-color:#fff;}
+.contBody .main .rightCont{width:50px;height:200px;}
+.content{padding:40px;}
+.topChange{padding:20px 40px 0;}
+.content .boxCont{padding:20px 0;background-color:#f6f6f6;border-radius:10px;}
+.content .bBox{padding-left:75px;background:#f6f6f6 url(../images/bBoxline.gif) 40px top repeat-y;}
+.content .bBox .contSt{padding:20px 0;overflow:hidden;}
+.content .bBox .contSt .ulList{width:100%;clear:both;}
+.content .bBox .contSt .ulList li{width:88px;height:160px;float:left;position:relative;margin:0 20px;}
+.content .bBox .contSt .ulList li em.em_bg{width:100%;height:105px;display:block;background:url(../images/img_jh.gif) left top no-repeat;position:absolute;left:0;top:0;}
+.content .bBox .contSt .ulList li.li1 em.em_bg{background-position:left top;}
+.content .bBox .contSt .ulList li.li2 em.em_bg{background-position:-174px top;}
+.content .bBox .contSt .ulList li.li3 em.em_bg{background-position:-349px top;}
+.content .bBox .contSt .ulList li.li4 em.em_bg{background-position:-523px top;}
+.content .bBox .contSt .ulList li p{position:absolute;top:36px;text-align:center;width:100%;font-size:18px;color:#fff;}
+.content .bBox .contSt .ulList li.li1 p,
+.content .bBox .contSt .ulList li.li2 p{color:#fff;}
+.content .bBox .contSt .ulList li.li3 p,
+.content .bBox .contSt .ulList li.li4 p{color:#333;}
+.content .bBox .contSt .ulList li span{position:relative;top:115px;text-align:center;width:100%;display:block;font-size:12px;font-family:"宋体";}
+ul.ulClass{padding:15px 0 15px 40px;width:960px;clear:both;}
+ul.ulClass li{float:left;font-size:14px;color:#666;}
+ul.ulClass li a{margin:0 10px;height:26px;padding-left:15px;font-size:14px;color:#666;background:url(../images/a_change.gif) left 5px no-repeat;}
+ul.ulClass li.on a{background-position:left -32px;}
+
+.content .bBox h4{font-size:16px;color:#333;font-weight:600;font-family:"黑体";}
+
+.contBody .main .rightCont ul{width:46px;height:272px;display:block;margin-top:20px;}
+.contBody .main .rightCont ul li{width:46px;height:134px;display:block;float:left;background:url(../images/sideChange_img.png) left -138px no-repeat;}
+.contBody .main .rightCont ul li.on{background-position:left top;}
+.contBody .main .rightCont ul li a{width:100%;height:100%;display:block;color:#666;}
+.contBody .main .rightCont ul li.on a{color:#da6c00;}
+.contBody .main .rightCont ul li a b{font-size:16px;font-family:"黑体";width:20px;display:block;padding:8px 0 0 8px;}
+
+/*教学成绩统计*/
+.topContain a{color:#fd7100;padding-left:26px;display:block;background:url(../images/a_change.gif) 8px 4px no-repeat;}
+.topContain a.on{background-position:8px -30px;}
+.content .bBox .contSt ul.ulClass{padding:15px 0 15px 40px;width:960px;clear:both;}
+.content .bBox .contSt ul.ulClass li{float:left;font-size:14px;color:#666;}
+.content .bBox .contSt ul.ulClass li a{margin:0 10px;height:26px;padding-left:15px;font-size:14px;color:#666;background:url(../images/a_change.gif) left 5px no-repeat;}
+.content .bBox .contSt ul.ulClass li.on a{background-position:left -32px;}
+.content .bBox .contSt .tableStu{width:750px;text-align:center;border-collapse:collapse;background-color:#fcf;border:1px solid red;}
+.content .bBox .contSt .tableStu tr{height:39px;}
+.content .bBox .contSt .tableStu thead tr td{background-color:#65c4e3;border:1px solid #fff;color:#fff;font:16px/39px "微软雅黑";}
+.content .bBox .contSt .tableStu tbody tr td{background-color:#f7ebd3;border:1px solid #fff;color:#666;font:16px/39px "微软雅黑";}
+
+/*学生统计样式*/
+.Stable{width: 96%;background-color:#fff;}
+.Stable .tableTab{height:34px;line-height: 34px;background: url(../images/StatisticsTab.gif) no-repeat -1px -1px;border:#a4cff2 solid;border-width: 1px 1px 0 0;}
+.Stable .tableTab.status2{background-position: -1px -51px;}
+.Stable .tableTab a{color:rgb(110, 188, 233);display:block;float:left;width:147px;}
+.Stable .tableTab a.selected{color:#fff;}
+.Stable tr td{text-align: center;}
+.Stable thead tr td{background-color:rgb(110, 188, 233);border:1px #fff solid;color:#fff;height: 69px;}
+.Stable thead tr td.short{height:34px;}
+.Stable thead tr td.noneColor{background-color: #fff;}
+.Stable thead tr td.darkBlue{background-color:rgb(18, 139, 207);padding:0 5px;}
+.Stable tbody tr td{border:1px #a4cff2 solid;height:35px;}

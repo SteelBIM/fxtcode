@@ -1,0 +1,85 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@using CBSS.Web
+@model Sys_User
+@{
+    Layout = "~/Views/Shared/_Layout.Edit.cshtml";
+}
+@section PageSpecificStyleSheetIncludes{
+    <link rel="stylesheet" type="text/css" href="@Url.StaticFile("/assets/jquery-tags-input/jquery.tagsinput.css")" />
+    <style>
+        .hottag {
+            margin: 2px;
+            padding: 5px;
+            cursor: pointer
+        }
+    </style>
+}
+@section PageSpecificJavascriptIncludes{
+    <script type="text/javascript" src="@Url.StaticFile("/content/scripts/flashupload.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/content/xheditor/xheditor-1.1.6-zh-cn.min.js")"></script>
+    <script type="text/javascript" src="@Url.StaticFile("/assets/jquery-tags-input/jquery.tagsinput.js")"></script>
+    <script type="text/javascript">
+        $('#uploader').FileUpload({
+            'subfolder': 'cms',
+            'callback': function (msg) {
+                //msg.url为图片地址
+                $("#CoverPicture").val(msg.url);
+                $("#preview").popover({ trigger: 'hover', html: true, placement: 'right ', content: "<img src='" + getThumbAbsoluteUrl(msg.url) + "'/>" });
+            }
+        });
+
+        if ($("#CoverPicture").val()) {
+            $("#preview").popover({ trigger: 'hover', html: true, placement: 'right ', content: "<img src='" + getThumbAbsoluteUrl($("#CoverPicture").val()) + "'/>" });
+        }
+
+        $("#Content").xheditor();
+
+        $('#TagString').tagsInput({ 'width': 'auto', 'height': '90px', 'defaultText': '新增标签' });
+
+        $(".hottag").click(function () {
+
+            if (!$('#TagString').tagExist($(this).text())) {
+                $('#TagString').addTag($(this).text());
+            }
+        });
+    </script>
+}
+@section MainContent{
+
+
+    <div class="tabbable tabbable-custom">
+        <ul class="nav nav-tabs tabs-left">
+            <li class="active"><a href="#tab1" data-toggle="tab">基本信息</a></li>
+            <li><a href="#tab2" data-toggle="tab">详细内容</a></li>
+            <li><a href="#tab3" data-toggle="tab">标签设置</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+
+                <div class="portlet-body form-horizontal form-bordered form-row-stripped">
+                    <div class="row-fluid">
+                        <div class="control-group">
+                            <label class="control-label">封面图片：</label>
+                            <div class="controls">
+                                <div class="input-append">
+                                    @Html.TextBoxFor(m => m.LoginName, new { @class = "m-wrap large" })
+                                    <span class="add-on" title="预览" id="preview"><i class="icon-picture"></i></span>
+                                </div>
+                                <div id="uploader"></div>
+                                <div id="fileQueue"></div>
+                                <span class="help-inline">@Html.ValidationMessageFor(m => m.LoginName)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+}
+

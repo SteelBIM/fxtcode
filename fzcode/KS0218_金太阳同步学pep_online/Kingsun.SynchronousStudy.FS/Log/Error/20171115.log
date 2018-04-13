@@ -1,0 +1,12 @@
+﻿2017-11-15 10:12:37
+错误编号:2017111510123771X5e189a94b2
+Message:未将对象引用设置到对象的实例。
+Message2:Del接口异常,UserInfo={"UserID":1821997824,"UserNum":null,"UserName":null,"UserPwd":null,"UserImage":null,"UserRoles":0,"UserType":0,"IsEnableOss":0,"Token":null,"DeviceType":0,"EquipmentID":null,"IPAddress":null,"isLogState":null,"State":0,"IsUser":0,"TrueName":null,"TelePhone":null,"ContactPhone":null,"Regdate":"\/Date(-62135596800000)\/","AppID":null,"ClassSchList":[]}
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserInfoBLL.Delete(IBS_UserInfo UserInfo) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBS_UserInfoBLL.cs:行号 262
+Method:Delete
+Class:Kingsun.IBS.BLL.IBS2MOD.MOD2IBS_UserInfoBLL
+UserIP:
+UserName:
+

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+body,html{font-family:"微软雅黑"; background-color: #fff;}
+.head{height: 2.92rem; line-height: 2.92rem;padding: 2.5rem 5% 0; background-color: #F6F9FE;}
+.head .back img{width: 1rem;background-size: 100%;float: left;}
+.head .share img{width: 2.08rem;background-size: 100%;float: right;}
+.head h2{text-align:center; font-size: 1.5rem; line-height: 2rem; letter-spacing: 1px;margin-left:8%;}
+
+.main .grade{ text-align: center; margin: 4.17rem 0;}
+.main .grade h2{margin:0 0 1.67rem 5.8rem;}
+.main .grade h2>b{font-size:3rem; color: #11BB70;margin-right:1.25rem;}
+.main .grade h2>span{font-size: 1.17rem; color: #AAB5C0; letter-spacing: 1px;}
+.main .grade p{font-size: 1.17rem; color: #B6C0C9; margin-bottom: 1.67rem;letter-spacing: 1px;}
+.main .grade ul{width: 90%; margin-left: 5%; overflow: hidden;}
+.main .grade ul li{width: 48%; margin:1%; background-color: #B3C9F1;
+ padding: 1.08rem 0; float: left; color: #fff; font-size: 1.42rem; border-radius: 5px; 
+ letter-spacing: 1px;}
+
+ .main .section{ padding: 0 5% 15%;}
+ .main .section p{overflow: hidden; font-size: 1.5rem; color: #000;height: 2rem;
+    line-height: 2rem;}
+ .main .section p .ranswers{ float: left; }
+ .main .section p .myanswers{ float: right; }
+ .main .section ul li{ overflow: hidden; font-size: 1.5rem; margin:12% 0;height: 2rem;
+    line-height: 2rem; }
+ .main .section ul li .li_left{float: left; color: #5B636B;}
+ .main .section ul li .li_my{float: right; color: #11BB70;}
+ .main .section ul li .li_my.correct{color: #11BB70;}
+ .main .section ul li .li_my.wrong{color: #FF628B;}
+ 
+.footer{position: fixed; left: 0; bottom: 0; width: 100%; padding: 4% 0;  text-align:center;background-image: -moz-linear-gradient(left, #10BB70, #60F14D); /*火狐*/
+background: -o-linear-gradient(left, #10BB70 0%,#60F14D 100%);/*Opera*/
+background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #10BB70), color-stop(1,#60F14D)); /*Chrome*/
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#10BB70', endColorstr='#60F14D', GradientType='0'); /*IE*/}
+.footer a{color: #fff; font-size: 1.5rem; letter-spacing: 1px;display: block;-webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;-webkit-user-select: none;}

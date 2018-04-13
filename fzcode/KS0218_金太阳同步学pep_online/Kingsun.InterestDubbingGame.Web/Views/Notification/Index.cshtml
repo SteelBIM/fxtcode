@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "报名成功";
+}
+@using Kingsun.InterestDubbingGame.Model;
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>报名成功</title>
+    <link href="~/Content/css/apply.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/js/apply.js"></script>
+    <script src="~/Scripts/js/JsBridge.js"></script>
+</head>
+
+<body class="body2">
+    <header class="head1">
+        @*<a href="/Information/Index?UserID=@Request["UserID"]" class="back"><img src="/images/back.png" alt=""></a>*@
+        <a onclick="finish()" class="back"><img src="../images/back.png" alt="" /></a>
+        <a href="#" class="share" onclick="ShareUrl()"><img src="../images/share.png" alt=""></a>
+    </header>
+    <main class="main5">
+        <section>
+            <div class="xinxi">
+                <h1>报名成功</h1>
+                <p>2017年北京市小学生英语配音比赛</p>
+                <a href="#" class="xinxi_nr">报名信息</a>
+            </div>
+            <div class="time">
+                <p class="p1">比赛时间</p>
+                <p>报名：2017年9月14日—11月初</p>
+                <p>初赛：2017年10月中旬—11月初</p>
+                <p>复赛：等组委会具体通知</p>
+                <p class="p2">决赛：等组委会具体通知</p>
+                <a href="../Details/Index?returnPage=Details2&UserID=@Request["UserID"]&AppID=@Request["AppID"]" class="check">比赛详情</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 报名信息弹窗 -->
+    <div class="box">
+        <img class="box_bag" src="../images/sharebag.png" alt="">
+        <ul>
+            <li>
+                <a href="#"><img src="../images/WeChat.png" alt=""></a>
+                <p>微信</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/Circle.png" alt=""></a>
+                <p>朋友圈</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/QQ.png" alt=""></a>
+                <p>QQ</p>
+            </li>
+            <li>
+                <a href="#"><img src="../images/QQspace.png" alt=""></a>
+                <p>QQ空间</p>
+            </li>
+        </ul>
+        <a href="#" class="cancel">取消</a>
+    </div>
+    <div class="box2">
+        <h3>报名信息</h3>
+        <div class="p1">
+            @{
+                TB_InterestDubbingGame_UserInfo userInfo = ViewData["userInfo"] as TB_InterestDubbingGame_UserInfo;
+                if (userInfo != null)
+                {
+                    <p><span>姓名：</span><b>@userInfo.UserName</b></p>
+                    <p><span>电话：</span><b>@userInfo.ContactPhone</b></p>
+                    @*<p><span>学校：</span><b>@userInfo.SchoolName</b></p>*@
+                    <p><span>年级：</span><b>@userInfo.ClassName</b></p>
+                    @*<p><span>导师：</span><b>@userInfo.TeacherName</b></p>*@ 
+                }
+                else
+                {
+                    <p style="text-align:center;">暂无该用户的报名信息</p>
+                }
+            }
+        </div>
+        <a href="#" class="close">关闭</a>
+        @*<h3>报名信息</h3>
+            <div class="p1">
+                <p><span>姓名：</span><b>淼淼</b></p>
+                <p><span>电话：</span><b>18725695854</b></p>
+                <p><span>学校：</span><b>北京外国语学校</b></p>
+                <p><span>年级：</span><b>三年级1班</b></p>
+                <p><span>导师：</span><b>余秋雨</b></p>
+            </div>
+            <a href="#" class="close">关闭</a>*@
+    </div>
+
+    <div class="shadow"></div>
+
+    <script type="text/javascript"> 
+        //返回
+        function finish() {
+            window.WebViewJavascriptBridge.callHandler(
+            'finish', function (responseData) {
+
+            }
+            );
+        }
+        var AppID = '@Request["AppID"]';
+        //分享
+        function ShareUrl() {
+            var nowAppID = GetQueryString("AppID");
+            //alert(window.location.href.replace(GetQueryString("UserID"), "0").replace("&local=", "") + "&local=weixin");
+            //调用移动端接口
+            var hostName = window.location.hostname;
+            var port = window.location.port;
+            if (port != null && port != "") {
+                hostName = hostName + ':' + port;
+            }
+
+            if (hostName.lastIndexOf("http://") == -1) {
+                hostName = "http://" + hostName;
+            }
+            if (hostName.lastIndexOf(".cn") != -1 || hostName.lastIndexOf(".com") != -1) {
+                hostName = hostName + "/InterestDubbingGameWeb"
+            }
+            //alert(hostName);
+            //调用移动端接口
+            var data = {
+                //传递的参数json
+                "data": { 
+                    "shareUrl": hostName + "/Apply/Index?UserID=0&local=weixin&AppID=" + nowAppID,
+                    "shareType": "0"
+                }
+            };
+            //调用移动端的方法
+            window.WebViewJavascriptBridge.callHandler(
+                'shareThirdparty', data, function (responseData) {
+
+                }
+            );
+        }
+        //采用正则表达式获取地址栏参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</body>
+</html>

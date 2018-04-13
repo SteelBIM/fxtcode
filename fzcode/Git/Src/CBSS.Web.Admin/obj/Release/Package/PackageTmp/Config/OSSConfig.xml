@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<OSSConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!--阿里云直传OSS签名验证-->
+  <!--账号 密码 本地地址 分配的地址 文件夹（可自定义）-->
+  <accessKeyId>LTAIfHqHXr5z8PiK</accessKeyId>
+  <accessKeySecret>BeyjGMSufJ2SZb2IZd3TZJl5xTduh2</accessKeySecret>
+  <endpoint>http://oss-cn-shenzhen.aliyuncs.com</endpoint>
+  <host>http://synchronousstudy.oss-cn-shenzhen.aliyuncs.com</host>
+  <bucketName>Cbss</bucketName>
+</OSSConfig>

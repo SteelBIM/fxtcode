@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\SendFiles\Kingsun.InterestDubbingGame.Web</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Aliyun.OSS.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>10/19/2017 14:58:16</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/KingsSun.SpokenBroadcas.DAL.dll">
+      <publishTime>10/31/2017 17:51:14</publishTime>
+    </File>
+    <File Include="bin/Kingsun.DB.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Kingsun.Fs.dll">
+      <publishTime>11/08/2017 15:04:21</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.dll">
+      <publishTime>11/08/2017 15:01:40</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.BLL.XmlSerializers.dll">
+      <publishTime>11/08/2017 15:01:40</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.DAL.dll">
+      <publishTime>11/08/2017 15:01:39</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IBLL.dll">
+      <publishTime>11/08/2017 15:01:38</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.IDAL.dll">
+      <publishTime>11/08/2017 15:01:39</publishTime>
+    </File>
+    <File Include="bin/Kingsun.IBS.Model.dll">
+      <publishTime>11/08/2017 15:01:38</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.BLL.dll">
+      <publishTime>11/08/2017 15:04:20</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Common.dll">
+      <publishTime>11/08/2017 15:04:18</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.DAL.dll">
+      <publishTime>11/08/2017 15:04:19</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Model.dll">
+      <publishTime>11/08/2017 15:04:18</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Web.dll">
+      <publishTime>11/08/2017 15:04:23</publishTime>
+    </File>
+    <File Include="bin/Kingsun.InterestDubbingGame.Web.XmlSerializers.dll">
+      <publishTime>11/08/2017 15:04:24</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.dll">
+      <publishTime>11/08/2017 15:01:41</publishTime>
+    </File>
+    <File Include="bin/Kingsun.PSO.XmlSerializers.dll">
+      <publishTime>11/08/2017 15:01:41</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SpokenBroadcas.BLL.dll">
+      <publishTime>10/31/2017 17:51:15</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SpokenBroadcas.Common.dll">
+      <publishTime>10/31/2017 17:51:14</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SpokenBroadcas.Model.dll">
+      <publishTime>10/31/2017 17:51:14</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.App.dll">
+      <publishTime>11/08/2017 15:04:22</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.BLL.dll">
+      <publishTime>11/08/2017 15:04:20</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Common.dll">
+      <publishTime>11/02/2017 13:51:57</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.DAL.dll">
+      <publishTime>11/08/2017 15:04:19</publishTime>
+    </File>
+    <File Include="bin/Kingsun.SynchronousStudy.Models.dll">
+      <publishTime>11/08/2017 15:01:37</publishTime>
+    </File>
+    <File Include="bin/log4Net.config">
+      <publishTime>10/19/2017 14:57:09</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/19/2017 14:58:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>10/19/2017 14:58:13</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/19/2017 14:58:30</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>10/19/2017 14:58:48</publishTime>
+    </File>
+    <File Include="bin/SqlSugar.dll">
+      <publishTime>11/06/2017 13:26:17</publishTime>
+    </File>
+    <File Include="bin/Swashbuckle.Core.dll">
+      <publishTime>10/19/2017 17:14:43</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/19/2017 14:58:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/19/2017 14:58:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/19/2017 14:58:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/19/2017 14:58:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>10/19/2017 14:58:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>10/19/2017 14:58:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/19/2017 14:58:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>10/19/2017 14:58:24</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>10/19/2017 14:58:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>10/19/2017 14:58:15</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>10/19/2017 14:58:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>10/19/2017 14:58:07</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>10/19/2017 14:58:30</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>10/19/2017 14:58:18</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Providers.resources.dll">
+      <publishTime>10/19/2017 14:58:33</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>10/19/2017 14:58:19</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>10/19/2017 14:58:10</publishTime>
+    </File>
+    <File Include="Content/css/apply.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Content/css/common/base.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Content/css/work/details.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Content/css/work/starGame.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Content/css/work/willesPlay.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="DubbingContest/.project">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap-theme.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap-theme.css.map">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap-theme.min.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap-theme.min.css.map">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap.css.map">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap.min.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/bootstrap.min.css.map">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/common/base.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/util/loading.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/css/work/details.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/work/honors-student.css">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/css/work/starGame.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/css/work/willesPlay.css">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/details.html">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="DubbingContest/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/honors-student.html">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/back_black.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/back_white.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/Circle.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/classhonor.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/go-black.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/ic_loading_white_01.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/QQ.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/QQspace.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/sclhonor.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/sharebag.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/share_black.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/share_white.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/stuhonor.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/user_empty_.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/user_head.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/common/WeChat.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/bobag.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/bobag1.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/bofang.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/quan.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/tan-bag.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/text.mp4">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/tou.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/yp1.mp3">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/details/zhiying.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/honor/first.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/honor/honor-student-cup.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/honor/search.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/honor/second.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/honor/three.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/select/puffer1.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/select/puffer2.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/img/work/star/bag.png">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/bootstrap.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/bootstrap.min.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/common.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/details.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/jquery-1.10.2.min.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/JsBridge.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/require-2.3.3.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/require-extend-2.3.3.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/common/willesPlay.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/npm.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/store.everything.min.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/util/mobile.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/js/work/honors-student.js">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/select_topic.html">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="DubbingContest/star_game.html">
+      <publishTime>10/19/2017 14:57:55</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="images/111.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/222.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/back.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/bag.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/bagg.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/Circle.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/cloud.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/back_black.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/back_white.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/Circle.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/classhonor.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/QQ.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/QQspace.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/sclhonor.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/sharebag.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/share_black.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/share_white.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/stuhonor.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/common/WeChat.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/loading.gif">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/next.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/QQ.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/QQspace.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/share.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/sharebag.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/tishibag.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/tou1.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/WeChat.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/work/details/bobag.png">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/bofang.png">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/quan.png">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/tan-bag.png">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/text.mp4">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/tou.png">
+      <publishTime>10/19/2017 14:57:53</publishTime>
+    </File>
+    <File Include="images/work/details/yp1.mp3">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/work/select/puffer1.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/work/select/puffer2.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="images/work/star/bag.png">
+      <publishTime>10/19/2017 14:57:54</publishTime>
+    </File>
+    <File Include="log4Net.config">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/apply.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/common/common.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/details.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/GameIndex.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery-1.10.2.min.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/JsBridge.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/js/willesPlay.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Views/Agreement/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/AmendPhone/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Apply/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Details/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/ErrorPage/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Information/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/InterestDubbingGameMatch/UserGameMatchDetail_View.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/MatchCatalog/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Notification/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Share/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/StartIndex/Index.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/19/2017 14:57:57</publishTime>
+    </File>
+    <File Include="Web References/SMSService/Reference.map">
+      <publishTime>10/19/2017 14:57:56</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/08/2017 15:04:24</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestApi</title>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        test();
+        function test() {
+            alert(111);
+            var arr = {
+                "ID": "",
+                "Function": "",
+                "data": [
+                    {
+                        "SecondTitleID": "276195",
+                        "BookID": "168",
+                        "FirstModularID": "2",
+                        "FirstTitleID": "276194"
+                    }
+                ]
+            };
+            $.ajax({
+                type: "post",
+                url: "http://localhost:65423/api/VedioInfo/GetVideoInforList",
+                contentType: 'application/json',
+                data: JSON.stringify(arr),
+                success: function (data, status) {
+                    alert(data);
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>

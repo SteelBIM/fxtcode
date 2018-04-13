@@ -1,0 +1,56 @@
+﻿@using CBSS.Web
+@using CBSS.Framework.Contract
+@using CBSS.Tbx.Contract.DataModel
+@using CBSS.Framework.Web.Controls
+
+
+@{
+    ViewBag.Title = "策略";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section PageSpecificJavascriptIncludes{
+    <link href="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Assets/pages/Good.js?v=1.6"></script>
+    <script type="text/javascript">
+        var edit = '@ViewBag.Edit';
+        var del = '@ViewBag.Del';
+        var Good_GoodPrice = '@ViewBag.Good_GoodPrice';
+        var Good_GoodModuleItem = '@ViewBag.Good_GoodModuleItem';
+        $(document).ready(function () {
+            addcloud();
+            var oTable = new GoodTableInit();
+            oTable.Init(edit, del, Good_GoodPrice, Good_GoodModuleItem);
+        });
+    </script>
+}
+
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            @if (ViewBag.Add)
+            {
+                <a class="btn green thickbox" title='添加策略' href="@Url.Action("Create")?TB_iframe=true&height=520&width=600"><i class="icon-plus icon-white"></i> 添加策略</a>
+            } 
+        </div>
+    </div>  
+    <div class="span8" style="margin-bottom: 20px;">
+        <div class="dataTables_filter">
+            <label>
+                <button type="submit" id="searchbtn" class="btn yellow">搜索 <i class="icon-search"></i></button>
+            </label>
+            <label>
+                <span>策略名称：</span>
+                @Html.TextBox("GoodName", null, new { @class = "m-wrap small" })
+            </label>
+            <label>
+                <span>商品出售方式：</span>
+                @Html.DropDownList("GoodWay", "请选择")
+            </label>
+        </div>
+    </div> 
+</div>
+<table class="table table-striped table-hover" id="tb_goodtable"></table>
+
+ 

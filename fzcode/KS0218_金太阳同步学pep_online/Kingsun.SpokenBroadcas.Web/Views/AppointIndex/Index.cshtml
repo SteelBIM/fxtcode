@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "同步学-国际口语课程";
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/js/operation.js"></script>
+<link href="~/Content/css/operation.css" rel="stylesheet" />
+<!-- Google Tag Manager -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3MJ5KG');
+</script>
+<!-- End Google Tag Manager -->
+<body onload="$('.main').scrollTop(window.document.body.scrollHeight);">
+    <div class="main">
+        <img class="beijin1" src="../../images/background.png" alt="" />
+
+        <div class="bian">
+            <img class="img1" src="../images/text.png" alt="" />
+            <img class="img2" src="../images/mind.png" alt="" />
+            <img class="img3" src="../images/oneyuan.png" alt="" />
+            <img class="img4" src="../images/movie.png" alt="" />
+            <div class="phone">
+                <span>姓名：</span>
+                <input id="txtUserName" placeholder="请输入姓名" type="text" />
+            </div>
+            <div class="name">
+                <span>手机：</span>
+                <input id="txtTelePhone" type="text" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入手机号" />
+            </div>
+            <a class="queding" href="#"><img src="../images/order.png" alt="" /></a>
+            <p class="p1">请填写完整的个人信息</p>
+            <p class="p2">提交失败了</p>
+            <p class="p3">请输入正确的手机号</p>
+        </div>
+        <div class="box">
+            <img src="../images/ok.png" alt="" />
+            <h2>预约成功！</h2>
+            <p>立即下载同步学APP，观看外教直播</p>
+            <a href="http://tbx.kingsun.cn/downloadlist.html">立即下载</a>
+        </div>
+        <div class="shadow1"></div>
+    </div>
+    <script src="https://s22.cnzz.com/z_stat.php?id=1262360076&web_id=1262360076" language="JavaScript"></script>
+</body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MJ5KG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->

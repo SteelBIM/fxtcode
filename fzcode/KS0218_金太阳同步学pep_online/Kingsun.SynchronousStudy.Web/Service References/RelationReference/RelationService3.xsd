@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Kingsun.DB" />
+  <xs:complexType name="ArrayOftb_UserClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tb_UserClass" nillable="true" type="tns:tb_UserClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftb_UserClass" nillable="true" type="tns:ArrayOftb_UserClass" />
+  <xs:complexType name="tb_UserClass">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Kingsun.DB" base="q1:Action">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassID" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IsRemove" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SchoolID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubjectID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="tb_UserClass" nillable="true" type="tns:tb_UserClass" />
+  <xs:complexType name="ArrayOftb_Class">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tb_Class" nillable="true" type="tns:tb_Class" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftb_Class" nillable="true" type="tns:ArrayOftb_Class" />
+  <xs:complexType name="tb_Class">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Kingsun.DB" base="q2:Action">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClassNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreateID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Flag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="GradeID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="IsAuthentication" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IsPublic" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IsRemove" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SchoolID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubjectID" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="tb_Class" nillable="true" type="tns:tb_Class" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Kingsun.DB" base="q3:Action">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AeraID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AvatarUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CityID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Grade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GradeID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Host" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsVerifyEmailTrue" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="LastLogContry" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastLoginDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LoginNum" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PassWord" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RegDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SchoolID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SchoolName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StageID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubjectID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubjectName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telephone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TrueName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="VerifyEmailDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOftb_Relation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tb_Relation" nillable="true" type="tns:tb_Relation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftb_Relation" nillable="true" type="tns:ArrayOftb_Relation" />
+  <xs:complexType name="tb_Relation">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Kingsun.DB" base="q4:Action">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassID" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Flag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="IsRemove" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IsSure" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OtherID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RelationType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SelfID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="tb_Relation" nillable="true" type="tns:tb_Relation" />
+</xs:schema>

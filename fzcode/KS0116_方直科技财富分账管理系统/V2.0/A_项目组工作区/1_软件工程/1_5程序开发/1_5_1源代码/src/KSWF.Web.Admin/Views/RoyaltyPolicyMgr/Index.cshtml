@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <style type="text/css">
+        .modal-dialog {
+            z-index: 999999;
+        }
+    </style>
+}
+@section mainContent{
+    <div style="margin:15px 0;">
+        <ul class="nav nav-pills">
+            <li go="0" >
+                <a href="#comp" data-toggle="tab">员工商务策略</a>
+            </li>
+            <li go="1">
+                <a href="#agent" data-toggle="tab">代理商商务策略</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <input id="ptype" value="0" type="hidden" />
+
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="comp">
+                        <div id="toolbar" class="btn-group" style="float:left;margin-top:0;margin-bottom: 0">
+                        </div>
+                        <table id="tb_departments"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/RoyaltyPolicyMgr.js"></script>
+}
+

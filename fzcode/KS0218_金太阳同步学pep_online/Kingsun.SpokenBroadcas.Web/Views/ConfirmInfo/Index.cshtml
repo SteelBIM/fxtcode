@@ -1,0 +1,244 @@
+﻿@{
+    ViewBag.Title = "确认信息";
+}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<script src="~/Scripts/js/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/js/JsBridge.js?v=1.2"></script>
+<script src="~/Scripts/js/Spokenmodule.js?v=1.2"></script>
+<script src="~/Scripts/js/verify.js"></script>
+<link href="~/Content/css/Spokenmodule.css?v=1.2" rel="stylesheet" />
+<!-- Google Tag Manager -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3MJ5KG');
+</script>
+<script type="text/javascript">
+    function addcloud(showName) {//增加页面遮罩
+        var bodyWidth = document.documentElement.clientWidth;
+        var bodyHeight = window.screen.availHeight; //Math.max(document.documentElement.clientHeight, document.body.scrollHeight);
+        var bgObj = document.createElement("div");
+        bgObj.setAttribute('id', 'bgDiv');
+        bgObj.style.position = "fixed";
+        bgObj.style.top = "0px";
+        bgObj.style.background = "#000000";
+        bgObj.style.filter = "progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=25,finishOpacity=75";
+        bgObj.style.opacity = "0.1";
+        bgObj.style.left = "0";
+        bgObj.style.width = bodyWidth + "px";
+        bgObj.style.height = bodyHeight + "px";
+        bgObj.style.zIndex = "10000"; //设置它的zindex属性，让这个div在z轴最大，用户点击页面任何东西都不会有反应|
+        document.body.appendChild(bgObj); //添加遮罩
+
+        var loadingObj = document.createElement("div");
+        loadingObj.setAttribute('id', 'loadingDiv');
+        loadingObj.style.position = "fixed";
+        loadingObj.style.top = bodyHeight / 2 + "px";
+        loadingObj.style.left = bodyWidth / 2 - 18 + "px";
+        //loadingObj.style.background = "white";//url(/images/loading.gif)
+        loadingObj.innerHTML = "<img style='width:36px;' src=\"/images/loading.gif\" /><p style='color:black'>" + showName + "</P>";//showName
+        loadingObj.style.width = "63px";
+        loadingObj.style.height = "36px";
+        loadingObj.style.zIndex = "10000";
+        document.body.appendChild(loadingObj); //添加loading动画-
+    }
+    function removecloud() {//移除页面遮罩
+        $("#loadingDiv").remove();
+        $("#bgDiv").remove();
+    }
+</script>
+
+<!-- End Google Tag Manager -->
+<div class="cominformation">
+    <div class="header">
+        <a class="back" href="/CoursePeriod/Index?UserID=@Request["UserID"]&CourseID=@Request["CourseID"]&CourseType=@Request["CourseType"]"><img src="../images/back.png" alt="" /></a>
+        @*<a href="/CoursePeriod/Index?CoursePeriodID=1"><img src="../images/back.png" alt="" /></a>*@
+        <h2>确认信息</h2>
+    </div>
+    <div class="main">
+        <div class="name">
+            <h3>姓名：<span>请输入有效的姓名</span></h3>
+            <div class="nameinpt">
+                <input type="text" id="Name" placeholder="填写真实姓名" value="@Request["TrueName"]" /><span><img src="../images/correct.png" alt="" /></span>
+            </div>
+        </div>
+        <div class="phone">
+            <h3>手机号：<span>请输入有效的联系方式</span></h3>
+            <div class="phoneinpt">
+                <input id="Phone" type="text" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="填写联系手机号" value="@Request["TelePhone"]" /><span><img src="../images/correct.png" alt="" /></span>
+            </div>
+        </div>
+
+        <a id="btn_Submit">确定信息并支付</a>
+        <p>请正确填写信息，方便您的课程顾问联系您。</p>
+    </div>
+    @*<div class="box1">
+            <h2>预约失败</h2>
+            <img src="../images/tankuang.png" alt="" />
+            <p>嗨，<span id="spanTrueName">刘沛</span>：</p>
+            <p id="spanMsg"></p>
+            <a onclick="CloseBox('box1')">确认</a>
+        </div>*@
+    <div class="box2">
+        <h2>温馨提示</h2>
+        <p id="spanMsg"></p>
+        @*<p>请选择其他时间段继续上课</p>*@
+        <a class="queren" onclick="CloseBox('box2')">确认</a>
+    </div>
+    <div class="shadow1"></div>
+</div>
+<div style="display:none;">
+    <script src="https://s22.cnzz.com/z_stat.php?id=1262360076&web_id=1262360076" language="JavaScript"></script>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var CoursePeriodID = ''; var CoursePeriodTimeID = ''; var UserID = ''; var CourseID = ''; var TrueName = ''; var CourseType = '';
+        CourseType = '@Request["CourseType"]';
+        CoursePeriodID = '@Request["CoursePeriodID"]';
+        CoursePeriodTimeID = '@Request["CoursePeriodTimeID"]';
+        UserID = '@Request["UserID"]';
+        CourseID = '@Request["CourseID"]';
+        $("#btn_Submit").click(function () {
+            addcloud("加载中...");
+            if ($(".cominformation .main .phoneinpt span").hasClass("good") && $(".cominformation .main .nameinpt span").hasClass("good")) {
+                $.post("/ConfirmInfo/UpdateUserInfo", { UserID: UserID, TrueName: $("#Name").val(), TelePhone: $("#Phone").val() }, function (data) {
+                    data = eval(data);
+                    if (data.Success) {
+                        TrueName = $("#Name").val();
+                        //支付页面
+                        //alert('修改成功，进入支付页面');
+                        //一验证.(1.该课时的这个时间段是否结束；2.判断这个时间段是否已预约满 3.判断当前用户是否已预约)
+                        $.post("/CoursePeriod/GetCoursePeriodTimeState", { UserID: UserID, CoursePeriodID: CoursePeriodID, CoursePeriodTimeID: CoursePeriodTimeID }, function (data) {
+                            data = eval(data);
+                            if (data.Success) {
+                                if (data.Data == "可预约") {
+                                    //如果成功提交预约
+                                    $.post("/CoursePeriod/CommitUserAppoint", { UserID: UserID, CoursePeriodID: CoursePeriodID, CoursePeriodTimeID: CoursePeriodTimeID }, function (data) {
+                                        data = eval(data);
+                                        if (data.Success) { //预约成功
+                                            //判断该课时是否需要付费
+                                            data = eval(data.Data);
+                                            var Name = data[0].Name.replace(/\"/g, "'");//课时名称
+                                            var Price = data[0].Price;//原价
+                                            var NewPrice = data[0].NewPrice;//现价
+
+                                            if (NewPrice != "") { //需付费
+                                                if (parseFloat(NewPrice) > 0) {
+                                                    //判断是否支付成功,支付成功跳转到课时页面
+                                                    //alert('需要付费');
+                                                    var payData = { "FeeComboID": CoursePeriodTimeID, "FeeName": Name, "FeePrice": Price, "Discount": NewPrice };//参数
+                                                    window.WebViewJavascriptBridge.callHandler(
+                                                         'startPayment', payData, function (responseData) {
+                                                             //alert(responseData);
+                                                             if (responseData == "1") {    //支付成功
+                                                                 //alert('支付成功');
+                                                                 //UpdateUserAppointState(CourseID, UserID, CoursePeriodID, CoursePeriodTimeID, CourseType);
+                                                                 window.location.href = "/CoursePeriod/Index?CourseID=" + CourseID + "&UserID=" + UserID + "&CoursePeriodID=" + CoursePeriodID + "&CoursePeriodTimeID=" + CoursePeriodTimeID + "&CourseType=" + CourseType;
+                                                             } else {   //支付失败
+                                                                 $("#spanMsg").text("预约失败！");
+                                                                 $(".cominformation .box2").css("display", "block");
+                                                                 $(".cominformation .shadow1").css("display", "block");
+                                                                 removecloud();
+                                                             }
+                                                         }
+                                                    );
+                                                } else { //免费
+                                                    UpdateUserAppointState(CourseID, UserID, CoursePeriodID, CoursePeriodTimeID, CourseType);
+                                                    removecloud();
+                                                }
+                                            } else {  //免费
+                                                UpdateUserAppointState(CourseID, UserID, CoursePeriodID, CoursePeriodTimeID, CourseType);
+                                                removecloud();
+                                            }
+
+                                            //var UserAppointList = eval(data.Data);
+                                            //$("#spanTrueName").text(UserAppointList[0].TrueName);
+                                            //$("#spanCourseName").text(UserAppointList[0].Name);
+                                            //$("#spanAheadMinutes").text(UserAppointList[0].AheadMinutes);
+
+                                            //$(".cominformation .box2").css("display", "block");
+                                            //$(".cominformation .shadow1").css("display", "block");
+                                        } else {
+                                            //alert(data.Msg);
+                                            $("#spanMsg").text("预约失败了！");
+                                            $(".cominformation .box2").css("display", "block");
+                                            $(".cominformation .shadow1").css("display", "block");
+                                            removecloud();
+                                        }
+                                    });
+
+                                } else {
+                                    //alert(data.Msg);
+                                    if (data.Data == "已满") {
+                                        $("#spanMsg").text("嗨，" + TrueName + "很抱歉，当前预约已满，请选择其他时间段继续上课");
+                                        $(".cominformation .box2").css("display", "block");
+                                        $(".cominformation .shadow1").css("display", "block");
+                                    } else if (data.Data == "课时已满") {
+                                        $("#spanMsg").text("嗨，" + TrueName + "很抱歉，预约已满，请选择其他课时继续上课");
+                                        $(".cominformation .box2").css("display", "block");
+                                        $(".cominformation .shadow1").css("display", "block");
+                                    } else {
+                                        $("#spanMsg").text("当前课时" + data.Msg);
+                                        $(".cominformation .box2").css("display", "block");
+                                        $(".cominformation .shadow1").css("display", "block");
+                                    }
+                                    removecloud();
+                                }
+                            } else {
+                                //alert(data.Msg);
+                                $("#spanMsg").text("当前课时" + data.Msg);  //操作异常和CoursePeriodTimeID不存在
+                                $(".cominformation .box2").css("display", "block");
+                                $(".cominformation .shadow1").css("display", "block");
+                                removecloud();
+                            }
+                        });
+                    } else {
+                        //alert(data.Msg);
+                        $("#spanMsg").text("确认用户信息" + data.Msg);
+                        $(".cominformation .box2").css("display", "block");
+                        $(".cominformation .shadow1").css("display", "block");
+                        removecloud();
+                    }
+                });
+            }
+            setInterval("removecloud()", 5000);
+        });
+    });
+    function CloseBox(clas) {
+        $(".cominformation ." + clas + "").css("display", "none");
+        $(".cominformation ." + clas + "").css("display", "none");
+        $(".cominformation .shadow1").css("display", "none");
+    }
+    /*点击遮罩弹窗消失*/
+    $(".cominformation .shadow1").click(function () {
+        $(".cominformation .box").css("display", "none");
+        $(".cominformation .box1").css("display", "none");
+        $(".cominformation .box2").css("display", "none");
+        $(".cominformation .shadow1").css("display", "none");
+    });
+    function UpdateUserAppointState(CourseID, UserID, CoursePeriodID, CoursePeriodTimeID, CourseType) {
+        $.post("/CoursePeriod/UpdateUserAppointState", { UserID: UserID, CoursePeriodID: CoursePeriodID, CoursePeriodTimeID: CoursePeriodTimeID }, function (data) {
+            data = eval(data);
+            if (data.Success) {
+                window.location.href = "/CoursePeriod/Index?CourseID=" + CourseID + "&UserID=" + UserID + "&CoursePeriodID=" + CoursePeriodID + "&CoursePeriodTimeID=" + CoursePeriodTimeID + "&CourseType=" + CourseType;
+            } else {
+                $("#spanMsg").text("修改状态，预约失败了！");
+                $(".cominformation .box2").css("display", "block");
+                $(".cominformation .shadow1").css("display", "block");
+            }
+        });
+    }
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MJ5KG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->

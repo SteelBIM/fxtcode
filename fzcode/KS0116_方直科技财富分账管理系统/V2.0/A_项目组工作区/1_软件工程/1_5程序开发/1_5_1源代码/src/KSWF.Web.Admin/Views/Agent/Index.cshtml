@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">代理商管理</h1>
+    </div>
+    <div class="panel panel-default tree" style="width:10%; float:left; overflow:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+        <input id="deptid" type="hidden" value="0" />
+    </div>
+    <div class="row" style=" width:90%; float:left; margin-left:10px;">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="col-sm-10" style="margin-top:10px; margin-bottom:10px;">
+                        <div class="input-group col-lg-12">
+                            <input type="text" value="" placeholder="代理商/渠道经理" id="agentname" class="form-control" style="width:300px;" />
+                            <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px;background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_departments"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Agent.js"></script>
+<script src="~/Scripts/bootstrap-treeview.js"></script>
+}
+
+
+

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RelationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.Model" />
+      <xsd:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Kingsun.DB" />
+      <xsd:import schemaLocation="http://192.168.3.93:8060/RelationService/RelationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Kingsun.FZUUMS.UserService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRelationService_AddClassInBPoint_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassInBPoint" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddClassInBPoint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassInBPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddClassInCPoint_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassInCPoint" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddClassInCPoint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassInCPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddUserClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserClass" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddUserClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddStudentClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStudentClass" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AddStudentClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStudentClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AuthenticationClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticationClass" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_AuthenticationClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticationClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_CheckClassIsAuthentication_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckClassIsAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_CheckClassIsAuthentication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckClassIsAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserClassByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserClassByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserClassByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserClassByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserClassByTelPhoneOrInvNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserClassByTelPhoneOrInvNum" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserClassByTelPhoneOrInvNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserClassByTelPhoneOrInvNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_YZSchoolGlassTeacherSubjectIsExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:YZSchoolGlassTeacherSubjectIsExists" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_YZSchoolGlassTeacherSubjectIsExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:YZSchoolGlassTeacherSubjectIsExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetClassInfoByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByID" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetClassInfoByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetClassInfoByStuID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByStuID" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetClassInfoByStuID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassInfoByStuIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetStuListByClassNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassNum" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetStuListByClassNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetTeaByClassIDAndSubjectID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassIDAndSubjectID" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetTeaByClassIDAndSubjectID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeaByClassIDAndSubjectIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UnBindClassTea_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnBindClassTea" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UnBindClassTea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnBindClassTeaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UnBindClassStu_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnBindClassStu" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UnBindClassStu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnBindClassStuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserInfoByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByUserID" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetUserInfoByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetStuListByClassID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassID" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_GetStuListByClassID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStuListByClassIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UpdateUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="IRelationService_UpdateUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRelationService">
+    <wsdl:operation name="AddClassInBPoint">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/AddClassInBPoint" message="tns:IRelationService_AddClassInBPoint_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/AddClassInBPointResponse" message="tns:IRelationService_AddClassInBPoint_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClassInCPoint">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/AddClassInCPoint" message="tns:IRelationService_AddClassInCPoint_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/AddClassInCPointResponse" message="tns:IRelationService_AddClassInCPoint_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserClass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/AddUserClass" message="tns:IRelationService_AddUserClass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/AddUserClassResponse" message="tns:IRelationService_AddUserClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStudentClass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/AddStudentClass" message="tns:IRelationService_AddStudentClass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/AddStudentClassResponse" message="tns:IRelationService_AddStudentClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticationClass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/AuthenticationClass" message="tns:IRelationService_AuthenticationClass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/AuthenticationClassResponse" message="tns:IRelationService_AuthenticationClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckClassIsAuthentication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/CheckClassIsAuthentication" message="tns:IRelationService_CheckClassIsAuthentication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/CheckClassIsAuthenticationResponse" message="tns:IRelationService_CheckClassIsAuthentication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetUserClassByUserId" message="tns:IRelationService_GetUserClassByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetUserClassByUserIdResponse" message="tns:IRelationService_GetUserClassByUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassByTelPhoneOrInvNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetUserClassByTelPhoneOrInvNum" message="tns:IRelationService_GetUserClassByTelPhoneOrInvNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetUserClassByTelPhoneOrInvNumResponse" message="tns:IRelationService_GetUserClassByTelPhoneOrInvNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="YZSchoolGlassTeacherSubjectIsExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/YZSchoolGlassTeacherSubjectIsExists" message="tns:IRelationService_YZSchoolGlassTeacherSubjectIsExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/YZSchoolGlassTeacherSubjectIsExistsResponse" message="tns:IRelationService_YZSchoolGlassTeacherSubjectIsExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetClassInfoByID" message="tns:IRelationService_GetClassInfoByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetClassInfoByIDResponse" message="tns:IRelationService_GetClassInfoByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByStuID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetClassInfoByStuID" message="tns:IRelationService_GetClassInfoByStuID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetClassInfoByStuIDResponse" message="tns:IRelationService_GetClassInfoByStuID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetStuListByClassNum" message="tns:IRelationService_GetStuListByClassNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetStuListByClassNumResponse" message="tns:IRelationService_GetStuListByClassNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassIDAndSubjectID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetTeaByClassIDAndSubjectID" message="tns:IRelationService_GetTeaByClassIDAndSubjectID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetTeaByClassIDAndSubjectIDResponse" message="tns:IRelationService_GetTeaByClassIDAndSubjectID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassTea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/UnBindClassTea" message="tns:IRelationService_UnBindClassTea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/UnBindClassTeaResponse" message="tns:IRelationService_UnBindClassTea_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassStu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/UnBindClassStu" message="tns:IRelationService_UnBindClassStu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/UnBindClassStuResponse" message="tns:IRelationService_UnBindClassStu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetUserInfoByUserID" message="tns:IRelationService_GetUserInfoByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetUserInfoByUserIDResponse" message="tns:IRelationService_GetUserInfoByUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/GetStuListByClassID" message="tns:IRelationService_GetStuListByClassID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/GetStuListByClassIDResponse" message="tns:IRelationService_GetStuListByClassID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationService/UpdateUserInfo" message="tns:IRelationService_UpdateUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationService/UpdateUserInfoResponse" message="tns:IRelationService_UpdateUserInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRelationService" type="tns:IRelationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddClassInBPoint">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/AddClassInBPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClassInCPoint">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/AddClassInCPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserClass">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/AddUserClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudentClass">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/AddStudentClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticationClass">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/AuthenticationClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckClassIsAuthentication">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/CheckClassIsAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassByUserId">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetUserClassByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserClassByTelPhoneOrInvNum">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetUserClassByTelPhoneOrInvNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YZSchoolGlassTeacherSubjectIsExists">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/YZSchoolGlassTeacherSubjectIsExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByID">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetClassInfoByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassInfoByStuID">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetClassInfoByStuID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassNum">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetStuListByClassNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeaByClassIDAndSubjectID">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetTeaByClassIDAndSubjectID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassTea">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/UnBindClassTea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBindClassStu">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/UnBindClassStu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUserID">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetUserInfoByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuListByClassID">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/GetStuListByClassID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfo">
+      <soap:operation soapAction="http://tempuri.org/IRelationService/UpdateUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RelationService">
+    <wsdl:port name="BasicHttpBinding_IRelationService" binding="tns:BasicHttpBinding_IRelationService">
+      <soap:address location="http://192.168.3.93:8060/RelationService/RelationService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

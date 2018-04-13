@@ -1,0 +1,40 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; font-family:"微软雅黑";}
+html,body{height:100%;width:100%;overflow:hidden;}
+ul,li,dd{list-style:none;padding:0;margin:0;}
+a:link,a:active{ text-decoration:none;}
+
+body{ position:relative;}
+.main{overflow-x:hidden;overflow-y:auto;width:100%;left:0;position:absolute; background-color:#003474; }
+.beijin1{width:100%;}
+.bian{ position:absolute; left:2%; width:96%; margin-top:-68%; }
+.bian .biao_ti1{ color:#fff; font-size:16px;text-align: center;display: block; margin-bottom:10px;}
+/*.bian img{ width:20%;}
+.bian span{ color:#fff; font-size:16px;}
+
+.bian .phone{ width:100%; margin-bottom:10px; border-radius:10px; height:50px;  border:0;  background-color:#fff; margin-top:20px;}
+.bian .phone img{ width:16px; margin-left:10px; vertical-align:middle; margin-top:-3px;}
+.bian .phone input{border:0;font-size:16px; outline:none; line-height:50px; margin-left:10px; width:75%;}
+.bian .phone a{ background:url(../images/clear.png) no-repeat;text-decoration:none; height:18px; width:18px; background-size:100%; display:inline-block; float:right; margin:12.5px 10px 0 0;}
+.bian .mima{ width:60%; margin-bottom:10px; border-radius:10px; height:50px;  border:0;  background-color:#fff; display:inline; float:left;}
+.bian .mima img{ width:16px;margin-left:10px; vertical-align:middle;margin-top:-3px;}
+.bian .mima input{border:0;font-size:16px; outline:none; line-height:50px; margin-left:10px; width:65%;}
+.bian .mima a{ background:url(../images/clear.png) no-repeat;text-decoration:none; height:18px; width:18px; display:inline-block; float:right; margin:12.5px 5px 0 0; background-size:100%; }
+.bian .get{ line-height:50px; text-align:center; background-color:#1C9EEA; color:#fff; height:50px; width:38%; border:0; border-radius:10px; font-size:16px;display:inline; float:right; line-height:50px;}
+.bian .queding{ background-color:#1C9EEA; display:block; color:#fff; padding:10px 0; font-size:18px; text-decoration:none; border-radius:5px; text-align:center; margin:30% auto 20%; width:80%;}*/
+
+
+.zhezhao{position: fixed;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index:1001;-moz-opacity: 0.9;opacity:.70;filter: alpha(opacity=70);}
+.zong .hezi{ width:90%;position: fixed;top: 30%;left: 5%;z-index:1002; background-color:#fff; text-align:center;}
+.zong .hezi p{ font-size:16px;}
+
+
+.bian .phone{ width:80%;  border-radius:5px; height:40px;   background:transparent; margin:0 auto 20px; border:2px solid #5F99C7;}
+.bian .phone span{ width:16px; margin-left:10px; color:#fff;}
+.bian .phone input{border:0;font-size:16px; outline:none; line-height:40px; margin-left:10px; width:70%; background:transparent; color:#fff;}
+
+.bian .mima{ width:80%;  height:40px;  border:0;  background:transparent;   margin:0 10% 20px; }
+.bian .mima input{font-size:16px; outline:none; line-height:38px;  width:55%; background:transparent; color:#fff;border: 2px solid #5F99C7;border-radius: 5px;padding-left: 10px;}
+.bian .mima .get{text-align:center; background-color:#009CFF; color:#fff; height:42px; width:38%; border-radius:5px;  font-size:16px;display:inline; float:right; line-height:42px;}
+.bian .queding{ background-color:#2F73FF; display:block; color:#fff; padding:10px 0; font-size:18px; text-decoration:none; border-radius:5px; text-align:center; margin:0 auto; width:80%;}

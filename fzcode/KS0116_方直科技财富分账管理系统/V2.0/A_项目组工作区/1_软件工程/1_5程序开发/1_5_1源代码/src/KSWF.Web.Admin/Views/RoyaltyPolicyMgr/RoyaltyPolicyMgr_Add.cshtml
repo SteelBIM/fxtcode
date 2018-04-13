@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <style type="text/css">
+        .modal-dialog {
+            z-index: 999999;
+        }
+    </style>
+}
+@section mainContent{
+
+    <div class="col-lg-12">
+        <h3 class="page-header">新增员工商务策略</h3>
+    </div>
+    <div class="col-lg-12">
+        <form id="RoyaltyForm" method="post" class="form-horizontal" style=" width:100%;" action="#">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="col-lg-12" style="border-bottom:2px solid #B8BFD7;">
+                        <span style="float:left; line-height:35px;">产品名称：</span>
+                        <div class="col-lg-6" style=" width:auto;">
+
+                            <div class="form-group">
+                                <div class="col-lg-5" style="width: 400px;">
+                                    <select class="form-control" id="ProductName" name="ProductName" style="width: 370px;">
+                                        <option value=""> </option>
+                                        @foreach (var v in ViewBag.ChannleList)
+                                        {
+                                            <option value="@v.Key">@v.Value</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="float:left; line-height:35px;">策略名称：</span>
+                        <div class="col-lg-6" style=" width:auto;">
+
+                            <div class="form-group">
+                                <div class="col-lg-5" style="width:370px;">
+                                    <span id="Prefix"></span>  <input type="text" class="form-control" id="StrategyName" name="StrategyName" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div id="toolbar" class="btn-group" style="float:left;margin-top:0;margin-bottom: 0">
+                        <div class="btn-group" style=" text-align:left;">
+                            <span style="float:left; margin-left:20px;">*分类：</span>
+                            <select class="form-control" id="Category" style="width: 150px;float:left; margin-left:5px; "></select>
+                            <span style="float:left; margin-left:50px;">*版本：</span>
+                            <select style="float:left; width:150px; margin-left:5px;" class="form-control" id="Version"></select>
+                            <span id="tc" style="float:left; margin-left:20px;margin-right:5px;">*基础提成比例：</span>  <input style="width:100px; float:left;" class="form-control" id="Proportion" name="Proportion" /><span style="float:left">%</span>
+                            <span style="float:left; margin-left:20px; margin-right:5px;">
+                                班级奖励
+                            </span>
+                            <input style="width:100px; float:left;" class="form-control" id="classProportion" name="classProportion" /><span style="float:left; margin-right:20px;">%</span>
+                            <button type="button" id="addroyalty" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加比例 </button><br />
+                            <span id="ProportionComment" style=" float:left;margin-left:20px;">说明：班级奖励是相关订单有班级信息的额外提成比例</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:15px; margin-top:70px;">
+                        <table id="tb_proportions"></table>
+                    </div>
+                    <input type="hidden" id="commission" />
+
+                    <span style="float:left; line-height:35px;">备注:</span>
+                    <div class="col-lg-5" style="width:600px;">
+                        <textarea class="form-control" style="height:80px;" id="ProductRemark" name="ProductRemark"></textarea>
+                    </div>
+                    <div class="col-lg-12" style="text-align:center; margin:20px 0px; clear:both;" id="submitpolictydiv">
+                        <input type="button" id="submitpolicty" value="保存" class="btn btn-primary" />
+                        <input type="button" onclick="location.href = '/RoyaltyPolicyMgr/Index?t=' + getQueryString('t')" class="btn btn-default" value=" 取消" />
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="royaltypolicyid" value="0" />@*策略id*@
+            <input type="hidden" id="channelid" />@*产品来源ID*@
+            <input type="hidden" id="ProportionHidden" />@*基础提成比例最大值*@
+            <input type="hidden" id="classProportionHidden" />@*班级奖励最大值*@
+        </form>
+    </div>
+
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/RoyaltyPolicyMgr_Add.js"></script>
+}

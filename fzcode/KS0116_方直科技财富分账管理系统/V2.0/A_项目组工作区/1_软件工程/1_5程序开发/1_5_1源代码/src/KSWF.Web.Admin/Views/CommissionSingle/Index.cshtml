@@ -1,0 +1,235 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div style="margin:15px 0;">
+        <ul class="nav nav-pills"></ul>
+    </div>
+
+    <div class="tree" style="width:10%; float:left; overflow-x:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+        <input id="deptid" type="hidden" value="0" />
+    </div>
+    <div style="width:89%; float:right;">
+        <div class="col-lg-12 tab-pane fade in active" id="agent1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <input id="ptype" value="0" type="hidden" />
+                    <div class="tab-content">
+                        <div class="col-sm-12" style="margin-top:10px;">
+                            <div class="input-group col-lg-12">
+                                <span style="float:left; line-height:35px;"> 生成日期：</span>
+                                <div class="col-sm-2">
+                                    <div class="input-group col-lg-12">
+                                        <input type="text" class="form-control" id="startdate" name="startdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'enddate\')}', readOnly: true })" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span style="float:left; line-height:35px; margin-right:15px;  margin-left:-15px;">至</span>
+                                <div class="col-sm-2">
+                                    <div class="input-group col-lg-12">
+                                        <input type="text" class="form-control" id="enddate" name="enddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'startdate\')}', readOnly: true })" />
+
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span style="float:left; line-height:35px; margin-left:-15px;"> 代理商：</span>
+                                <div class="col-sm-2">
+                                    <select id="agentname" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="input-group col-lg-3">
+                                        <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:10px; background-color:#515562; color:#fff;">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="agentToolbar" class="btn-group">
+                        </div>
+                        <div class="col-lg-10" style="margin-top:10px; margin-left:-15px;">
+                            结算提成总金额：<span id="agentbilltotal"></span>
+                        </div>
+                        <div style="clear:both;"></div>
+
+                        <table id="tb_agent"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="comp">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <input id="ptype" value="0" type="hidden" />
+                            <div class="tab-content">
+                                <div class="col-lg-12" style="margin-top:10px;">
+                                    <div class="input-group col-lg-12" style="margin-left:0">
+
+                                        <span style="float:left; line-height:35px;"> 生成日期：</span>
+                                        <div class="col-sm-2">
+                                            <div class="input-group col-lg-12">
+                                                <input type="text" class="form-control" id="employeestartdate" name="employeestartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'employeeenddate\')}', readOnly: true })" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span style="float:left; line-height:35px;margin-right:15px; margin-left:-15px;">至</span>
+                                        <div class="col-sm-2">
+                                            <div class="input-group col-lg-12">
+                                                <input type="text" class="form-control" id="employeeenddate" name="employeeenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'employeestartdate\')}', readOnly: true })" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span style="float:left; line-height:35px;margin-left:-15px;"> 员工姓名：</span>
+                                        <div class="col-sm-2">
+                                            <select id="employeename" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                        </div>
+                                        <div class="col-sm-1" style="margin-left:-15px;">
+                                            <div class="input-group col-lg-3">
+                                                <span class="input-group-btn">
+                                                    <button id="employeesearch" type="button" class="btn btn-default" style="float:left; height:34px; background-color:#515562; color:#fff; border-radius:5px;">
+                                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="toolbaremployee" class="btn-group">
+
+                                </div>
+                                <div class="col-lg-10" style="margin-top:10px; margin-left:-15px;">
+                                    结算提成总金额：<span id="employeebilltotal"></span>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <table id="tb_employeements"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <input id="ptype" value="0" type="hidden" />
+                            <div class="tab-content">
+                                <div class="col-lg-12" style="margin-top:10px;">
+                                    <div class="input-group col-lg-12" style="margin-left:0">
+                                        <span style="float:left; line-height:35px;"> 生成日期：</span>
+                                        <div class="col-sm-2">
+                                            <div class="input-group col-lg-12">
+                                                <input type="text" class="form-control" id="deptstartdate" name="deptstartdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'deptenddate\')}', readOnly: true })" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span style="float:left; line-height:35px;margin-right:15px; margin-left:-15px;">至</span>
+                                        <div class="col-sm-2">
+                                            <div class="input-group col-lg-12">
+                                                <input type="text" class="form-control" id="deptenddate" name="deptenddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'deptstartdate\')}', readOnly: true })" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span style="float:left; line-height:35px; margin-left:-15px;"> 部门负责人：</span>
+                                        <div class="col-sm-2">
+                                            <select id="DeptPrincipalName" class="selectpicker show-tick form-control" data-live-search="true"></select>
+                                        </div>
+                                        <div class="col-sm-1" style="margin-left:-15px;">
+                                            <div class="input-group col-lg-3">
+                                                <span class="input-group-btn">
+                                                    <button id="deptsearch" type="button" class="btn btn-default" style="float:left;  height:34px; background-color:#515562; color:#fff; border-radius:5px;">
+                                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sectionToolbar" class="btn-group">
+                                    </div>
+                                    <div class="col-lg-10" style="margin-top:10px; margin-left:-15px;">
+                                        部门提成总金额：<span id="deptbilltotal"></span>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <table id="tb_sectionDepartments"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Settlement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">输入调整金额</h4>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"><em>*</em>结算金额:</label>
+                    <div class="col-lg-5">
+                        <span id="SettlementMoney"></span>
+                        <input type="hidden" id="total_bonus" />@*提成金额*@
+                      &nbsp;&nbsp;  <span id="AdjustmentTotal"></span>
+                    </div>
+                </div>
+                <div style="clear:both; height:10px;"></div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"><em>*</em>调整金额:</label>
+                    <div class="col-lg-5">
+                        <input type="text" onblur="return Adjustment();" class="form-control" name="Adjustment" id="Adjustment" />
+                    </div>
+                </div>
+                <div style="clear:both; height:10px;"></div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"><em>*</em>调整原因:</label>
+                    <div class="col-lg-5">
+                        <textarea class="form-control" style="height:80px;" id="reason" name="reason"></textarea>
+                    </div>
+                </div>
+                <div style="clear:both; height:10px;"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_settlement">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input id="KontNumbering" type="hidden" />
+                    <input id="itype" type="hidden" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/CommissionSingle.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+}
+

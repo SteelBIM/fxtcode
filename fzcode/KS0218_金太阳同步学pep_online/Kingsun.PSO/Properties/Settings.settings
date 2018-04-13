@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kingsun.PSO.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Kingsun_PSO_SeparateAccountSystem_Ledger_Relation" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://183.47.42.221:8038/WebServer/WebServicePatch.asmx</Value>
+    </Setting>
+    <Setting Name="Kingsun_PSO_KSWFWebService_KSWFWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.3.109:8088/Service/KSWFWebService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

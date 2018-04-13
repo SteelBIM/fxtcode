@@ -1,0 +1,50 @@
+﻿2018-02-08 14:22:56
+错误编号:2018020814225619X93194edf82
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-08 14:23:36
+错误编号:2018020814233017Xd6c39b7d3e
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-08 15:27:52
+错误编号:2018020815275209X9b86739483
+Message:未将对象引用设置到对象的实例。
+Message2:修复异常！
+Type:System.NullReferenceException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.IBSRepairTrueName() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 672
+Method:IBSRepairTrueName
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL
+UserIP:
+UserName:
+
+2018-02-08 15:32:19
+错误编号:2018020815321977X2ad098bf61
+Message:正在中止线程。
+Message2:同步区域信息异常！
+Type:System.Threading.ThreadAbortException
+Source:Kingsun.IBS.BLL
+StackTrace:   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.<>c__DisplayClassc.<MOD2IBSAreaInfo>b__8(MOD2IBS_Temparea ax) 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 326
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL.MOD2IBSAreaInfo() 位置 d:\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\MOD2IBS\MOD2IBSChangeBLL.cs:行号 284
+Method:<MOD2IBSAreaInfo>b__8
+Class:Kingsun.IBS.BLL.MOD2IBS.MOD2IBSChangeBLL+<>c__DisplayClassc
+UserIP:
+UserName:
+

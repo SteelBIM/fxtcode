@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+<h2>Index</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div class="col-lg-12" style=" margin-top:10px;">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="col-sm-12" style="margin-left:-15px;">
+                        <span class="glyphicon glyphicon-menu-left" onclick="location.href = '/CommissionPay/Index?t=1'" style="border:1px solid #ddd; cursor:pointer; padding:7px; border-radius:3px; margin-bottom:10px;">
+                            @*<input type="button" onclick="history.back();" class="btn btn-default" value="" />*@
+                        </span>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:10px; margin-left:-15px;">
+                        <div class="input-group col-lg-9">
+                            <span style="float:left; line-height:35px;"> 结算日期：</span>
+                            <div class="col-sm-3">
+                                <div class="input-group col-lg-12">
+                                    <input  type="text" class="form-control" id="startdate" name="startdate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })" />
+                                    <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <span style="float:left; line-height:35px;margin-right:15px; margin-left:-15px;">至</span>
+                            <div class="col-sm-3">
+                                <div class="input-group col-lg-12">
+                                    <input  type="text" class="form-control" id="enddate" name="enddate" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'startdate\')}', maxDate: '#F{$dp.$D(\'CurrentDate\')}', readOnly: true })" />
+                                    
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                    <span>
+                                        <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:10px; background-color:#515562; color:#fff;">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                                        </button>
+                                    </span>
+                             </div>
+                             
+                            <input id="CurrentDate" type="hidden" value="@ViewBag.CurrentDate" />
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top:10px; margin-left:-15px;">
+                        <div style="width:auto;" class="col-lg-2">
+                            <span style="float:left; line-height:35px; margin-left:-15px;">姓名:<span id="truename"></span></span>
+                        </div>
+                        <div style="width:auto;" class="col-lg-2">
+                            <span style="float:left; line-height:35px; margin-left:-15px;">所属部门:<span id="deptname"></span></span>
+                        </div>
+                        <div style="width:auto;" class="col-lg-2">
+                            <span style="float:left; line-height:35px; margin-left:-15px;">未结算订单数:<span id="o_number"></span></span>
+                        </div>
+                        <div style="width:auto;" class="col-lg-2">
+                            <span style="float:left; line-height:35px; margin-left:-15px;">未结算销售额:<span id="o_payamount"></span></span>
+                        </div>
+                        <div style="width:auto;" class="col-lg-2">
+                            <span style="float:left; line-height:35px; margin-left:-15px;">未结算提成金额:<span id="o_bonus"></span></span>
+                        </div>
+                    </div>
+                    <div id="Toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_ments"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Settlement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:90%; height:auto;">
+            <div class="modal-content" style="padding:10px;">
+                <div class="modal-header" style="margin-bottom:20px;">
+                    @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>*@
+                    <h4 class="modal-title" id="myModalLabel" style="text-align:center; font-size:24px;">提成结算单</h4>
+                </div>
+                <div class="col-lg-12">
+                    <p class="col-lg-4" style="font-size:20px;">
+                        结算单编号：<span id="KontNumbering">@ViewBag.KontNumbering</span>
+                    </p>
+                    <p class="col-lg-4" style=" font-size:20px;">
+                    结算日期：<span id="konttime"></span>
+                    </p>
+                    <p class="col-lg-4" style="font-size:20px;">
+                    结算金额：￥<span id="ordertotal"></span>
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <p class="col-lg-3" >
+                        姓名 ：<span id="username"></span>
+                    </p>
+                    <p class="col-lg-3" >
+                    所属部门：<span id="userdeptname"></span>
+                    </p>
+                </div>
+                <div style="clear:both; height:50px;"></div>
+                <table id="tb_kont"></table>
+                <div class="col-lg-12" style="margin-top:20px;">
+
+                    <p class="col-lg-2" style="float:right; text-align:right;">
+                    操作人：<span id="operator">@ViewBag.Operator</span>
+                    </p>
+                     <p class="col-lg-2" style="float:right; text-align:right;">
+                    生成日期：@ViewBag.CurrentDate 
+                    </p>
+                </div>
+                <div style="clear:both; height:50px;"></div>
+                <div class="col-lg-12" style="text-align:center;">
+                    <button type="button" class="btn" style="width:300px; background-color:#fff; border:1px solid #ccc; height:40px;" id="btn_adjustamount">调整金额</button>
+                </div>
+                <div id="adjustamountdiv" style="display:none;">
+                    
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">输入调整金额</h4>
+                            </div>
+                            <div style="clear:both; margin-top:10px;"></div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label" style="width:auto;"><em>*</em>调整金额:</label>
+                                <div class="col-lg-5">
+                                    <input type="text" value="0" class="form-control" name="adjustamountnumber" id="adjustamountnumber" />
+                                </div>
+                            </div>
+                            <div style="clear:both; height:5px;"></div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label" style="width:auto;"><em>*</em>调整原因:</label>
+                                <div class="col-lg-5">
+                                    <textarea class="form-control" style="height:80px;" id="reason" name="reason"></textarea>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                       
+                </div>
+                <div style="clear:both; height:50px;"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_settlement">确定结算</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消结算</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="../Content/WdatePicker.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Accounting.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+}
+

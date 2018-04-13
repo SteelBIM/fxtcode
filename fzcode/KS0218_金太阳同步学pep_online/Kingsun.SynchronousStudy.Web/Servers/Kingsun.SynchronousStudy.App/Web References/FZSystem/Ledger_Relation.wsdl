@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckClassResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckRelatrion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckRelatrionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckRelatrionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="order" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddNewOrderResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSunValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="teacherID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="editID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSunValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSunValueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGread">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calssID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGreadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteGreadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewOrders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="order" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewOrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddNewOrdersResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckClassSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckClass" />
+  </wsdl:message>
+  <wsdl:message name="CheckClassSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckRelatrionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckRelatrion" />
+  </wsdl:message>
+  <wsdl:message name="CheckRelatrionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckRelatrionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddNewOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSunValueSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSunValue" />
+  </wsdl:message>
+  <wsdl:message name="GetSunValueSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSunValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGreadSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGread" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGreadSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGreadResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewOrders" />
+  </wsdl:message>
+  <wsdl:message name="AddNewOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewOrdersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Ledger_RelationSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">绑定业务人员和学生的关系</wsdl:documentation>
+      <wsdl:input message="tns:CheckClassSoapIn" />
+      <wsdl:output message="tns:CheckClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckRelatrion">
+      <wsdl:input message="tns:CheckRelatrionSoapIn" />
+      <wsdl:output message="tns:CheckRelatrionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加订单数据</wsdl:documentation>
+      <wsdl:input message="tns:AddNewOrderSoapIn" />
+      <wsdl:output message="tns:AddNewOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSunValue">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取老师的未返现金额和返现比例</wsdl:documentation>
+      <wsdl:input message="tns:GetSunValueSoapIn" />
+      <wsdl:output message="tns:GetSunValueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGread">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除班级</wsdl:documentation>
+      <wsdl:input message="tns:DeleteGreadSoapIn" />
+      <wsdl:output message="tns:DeleteGreadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrders">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加订单数据</wsdl:documentation>
+      <wsdl:input message="tns:AddNewOrdersSoapIn" />
+      <wsdl:output message="tns:AddNewOrdersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Ledger_RelationSoap" type="tns:Ledger_RelationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckClass">
+      <soap:operation soapAction="http://tempuri.org/CheckClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckRelatrion">
+      <soap:operation soapAction="http://tempuri.org/CheckRelatrion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrder">
+      <soap:operation soapAction="http://tempuri.org/AddNewOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSunValue">
+      <soap:operation soapAction="http://tempuri.org/GetSunValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGread">
+      <soap:operation soapAction="http://tempuri.org/DeleteGread" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrders">
+      <soap:operation soapAction="http://tempuri.org/AddNewOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Ledger_RelationSoap12" type="tns:Ledger_RelationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckClass">
+      <soap12:operation soapAction="http://tempuri.org/CheckClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckRelatrion">
+      <soap12:operation soapAction="http://tempuri.org/CheckRelatrion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrder">
+      <soap12:operation soapAction="http://tempuri.org/AddNewOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSunValue">
+      <soap12:operation soapAction="http://tempuri.org/GetSunValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGread">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGread" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOrders">
+      <soap12:operation soapAction="http://tempuri.org/AddNewOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Ledger_Relation">
+    <wsdl:port name="Ledger_RelationSoap" binding="tns:Ledger_RelationSoap">
+      <soap:address location="http://183.47.42.221:8090/WebClientService/Ledger_Relation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Ledger_RelationSoap12" binding="tns:Ledger_RelationSoap12">
+      <soap12:address location="http://183.47.42.221:8090/WebClientService/Ledger_Relation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

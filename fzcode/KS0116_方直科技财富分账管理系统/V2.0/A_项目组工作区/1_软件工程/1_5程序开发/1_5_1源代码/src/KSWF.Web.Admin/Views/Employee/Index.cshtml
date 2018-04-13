@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<h2>Index2</h2>
+
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+
+@section mainContent{
+    <div class="col-lg-12">
+        <h1 class="page-header">用户管理</h1>
+    </div>
+    <div class="panel panel-default tree" style="width:10%; float:left; overflow:auto; background-color:#fff;">
+        <div id="tree">
+        </div>
+    </div>
+    <div class="row" style=" width:90%; float:left; margin-left:10px;">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-bottom:0px;">
+                    <div class="col-sm-8" style="margin-top:10px; margin-bottom:10px;">
+                        <div class="input-group col-lg-12">
+                            <input placeholder="员工姓名" type="text" value="" class="form-control" id="searchkey" style="width:300px; p" />
+                            <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px; background-color:#515562; color:#fff;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                            </button>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div id="toolbar" class="btn-group">
+                    </div>
+                    <table id="tb_departments"></table>
+                    <input id="deptid" type="hidden" value="0" />
+                </div>
+                <div class="modal fade" id="PullblackUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">拉黑</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style=" padding:12px; font-size:15px;">
+                                    交接负责区域
+                                </div>
+                                <div class="row" style=" padding:12px; line-height:35px; font-size:14px;">
+                                    <span style="float:left;"> 所属部门：<span id="deptname" style=" margin-left:32px"></span> </span>
+                                   <div style=" clear:both; height:12px;"></div>
+                                    <span style="float:left;">  选择交接人：</span> <select style="width:auto; float:left; margin-left:20px;" class="form-control" id="employeename" name="employeename"></select>
+                                </div>
+                            </div>
+                            <div style="clear:both; height:50px;"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="return handoverarea(2);">清空负责区域</button>
+                                <button type="button" class="btn btn-primary" onclick="return handoverarea(1);">交接负责区域</button>
+                                <input type="hidden" id="masterId" /> @*用户ID*@
+                                <input type="hidden" id="mastername" /> @*用户名称*@
+                                <input type="hidden" id="areahandover" />@*区域交接人*@
+                                <input type="hidden" id="channelhandover" />@*渠道经理*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="HandoverAgent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">拉黑</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style=" padding:12px; font-size:18px;">
+                                    交接代理商
+                                </div>
+                                <div class="row" style=" padding:12px; line-height:35px;">
+                                    <span style="font-size:16px;"> 负责代理商： </span>
+                                    <span id="agentlist"></span>
+                                </div>
+                                <div class="row" style=" padding:12px; line-height:35px; font-size:16px;">
+                                    <span style="float:left;"> 选择交接人：<span id="deptname"></span> </span>   <select style="width:auto; float:left; margin-left:20px;" class="form-control" id="handoveragent" name="handoveragent"></select>
+                                </div>
+                            </div>
+                            <div style="clear:both; height:50px;"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btn_handoveragent">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/pages/Employee.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+}
+

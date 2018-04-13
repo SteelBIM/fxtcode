@@ -1,0 +1,120 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Core.Utility
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@using CBSS.Cfgmanager.Contract.ViewModel
+@model   PagedList<DataBaseTableFieldEntity>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageSpecificJavascriptIncludes{
+
+}
+
+<div class="row-fluid" style="margin-bottom:10px">
+    <div class="span4">
+        <div>            
+            <a class="btn green thickbox" title='添加' href="@Url.Action("AlterTableColumnView",new {dbName=Request.QueryString["dbName"],tableName=Request.QueryString["tableName"] })&TB_iframe=true&height=520&width=600">新增 <i class="icon-plus icon-white"></i></a>
+        </div>
+    </div>
+
+</div>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "mainForm" }))
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                @*<th style="width: 8px;">
+                    <input type="checkbox" id="checkall" class="group-checkable" />
+                </th>*@
+                <th>
+                    列名
+                </th>
+                <th>
+                    类型
+                </th>
+                <th>
+                    长度
+                </th>
+                <th>
+                    精度
+                </th>
+                <th>
+                    标识
+                </th>
+                <th>
+                    主键
+                </th>                
+                <th>
+                    可空
+                </th>
+                <th>
+                    默认值
+                </th>
+                <th>
+                    说明
+                </th>
+                @*<th>
+                    操作
+                </th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+                {
+                <tr>
+                    @*<td>
+                            @if (m.LoginName != "admin")
+                            {
+                                <input type="checkbox" class="checkboxes" name='ids' value='@m.ID' />
+                            }
+                        </td>*@
+                    <td>
+                        @m.column
+                    </td>
+                    <td>
+                        @m.datatype
+                    </td>
+                    <td>
+                        @m.length
+                    </td>
+                    <td>
+                        @m.precision
+                    </td>
+                    <td>
+                        @(m.identity == "1" ? "√" : "")
+                    </td>
+                    <td>
+                        @(m.key == "1" ? "√" : "")
+                    </td>                   
+                    <td>
+                        @(m.isnullable=="1"? "√" : "")
+                    </td>
+                    <td>
+                        @m.defaults
+                    </td>
+                    <td>
+                        @m.remark
+                    </td>
+                    @*<td>
+                        <a class="btn mini red thickbox" title='编辑字段' href="@Url.Action("AlterTableColumnView", new {tableName=Request.QueryString["tableName"],dbName=Request.QueryString["dbName"] , column=m.column, datatype=m.datatype, defaults=m.defaults, identity=m.identity, isnullable=m.isnullable, key=m.key, length=m.length, precision=m.precision, remark=m.remark})&TB_iframe=true&height=520&width=600">
+                            <i class="icon-edit"></i>
+                            编辑
+                        </a>
+                        <a  title='删除' onclick="return confirm('确定删除？')" class="btn mini drak" href="@Url.Action("DropTableField", new {tableName=Request.QueryString["tableName"],dbName=Request.QueryString["dbName"] , field = m.column })">
+                            <i class="icon-trash"></i>
+                            删除
+                        </a>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div class="dataTables_paginate paging_bootstrap pagination">
+    @Html.Pager(Model, new PagerOptions() { ShowTotalItemCount = true })
+</div>
+

@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+@section cssLink{
+    <link href="~/Content/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/BootstrapSelect/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-treeview.css" rel="stylesheet" />
+}
+@section mainContent{
+    <div style="margin:15px 0;">
+        <ul class="nav nav-pills">
+            <li go="0" class="active">
+                <a href="#comp" id="amaster" data-toggle="tab">公司员工</a>
+            </li>
+            <li go="1">
+                <a href="#agent1" id="adaili" data-toggle="tab">代理商</a>
+            </li>
+        </ul>
+        <input type="hidden" id="hidtab" value="0" />
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body" id="divcondition" style="padding-bottom:0px;">
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">省</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="selpro">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">市</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="selcity">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">区/县</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="selarea">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px; height:34px;"></div>
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">学校</label>
+                        <div class="col-sm-8">
+                            <select id="selschoolid" class="selectpicker show-tick form-control" data-live-search="true">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">年级</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="selgradeid">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">班级</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="selclass">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:10px; height:34px;"></div>
+                <div class="col-sm-3" id="divdept" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">部门</label>
+                        <div class="col-sm-8">
+                            <div id="seldepttree"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" id="divmastername" style="margin-top:10px;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">员工姓名</label>
+                        <div class="col-sm-8">
+                            <select id="selmaster" class="selectpicker show-tick form-control" data-live-search="true">
+                                <option value="">全部</option>
+                                @foreach (var v in ViewBag.MasterList)
+                                {
+                                    <option value="@v.Key">@v.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" id="divdaili" style="margin-top:10px; display:none;">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:right; line-height:inherit">代理商</label>
+                        <div class="col-sm-8">
+                            <select id="selagency" class="selectpicker show-tick form-control" data-live-search="true">
+                                <option value="">全部</option>
+                                @foreach (var v in ViewBag.AgencyList)
+                                {
+                                    <option value="@v.Key">@v.Value</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style=" margin-top:10px;">
+                    <div class="input-group col-lg-12">
+                        <input placeholder="老师姓名、老师手机号" type="text" value="" class="form-control" id="searchkey" style="" />
+
+                    </div>
+                </div>
+                @if (ViewBag.ActionExport)
+                {
+                    <div style="margin-top:10px; float:right; margin-right:15px; clear:both;">
+                        <button id="exportbtn" type="button" class="btn btn-default" style=" background-color:#F6C728; color:#fff; border:1px solid #F6C728;">
+                            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+                        </button>
+                    </div>
+                }
+                <div style="margin-top:10px; float:right; margin-right:15px;">
+                    <button id="BtnclearCondition" type="button" class="btn btn-default" style=" background-color:#F3815D; color:#fff; border:1px solid #F3815D;">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>清空
+                    </button>
+                </div>
+                <div style="margin-top:10px; float:right; margin-right:15px;">
+                    <button id="BtnReloadMetaData" type="button" class="btn btn-default" style=" background-color:#F3815D; color:#fff; border:1px solid #F3815D;">
+                        <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>同步
+                    </button>
+                </div>
+                <div style="margin-top:10px; float:right; margin-right:15px;">
+
+                    <button id="searchbtn" type="button" class="btn btn-default" style="float:left; margin-left:20px;background-color:#515562; color:#fff;">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                    </button>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="panel-body" style="padding-bottom:0px; display:block; position:relative;">
+                    <div id="toolbar" class="input-group" style="float:left; margin-top:0;margin-bottom:0;">
+                        <div>班级数量：<span id="classcount"></span>         学生数量：<span id="stucount"></span></div>
+                    </div>
+                    <table id="tb_yunying"></table>
+                </div>
+                <div style="clear:both; height:30px;"></div>
+            </div>
+        </div>
+    </div>
+}
+@section jsSrc{
+    <script src="../Template/vendor/raphael/raphael.js"></script>
+    <script src="../Template/vendor/morrisjs/morris.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Content/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/Scripts/BootstrapSelect/bootstrap-select.js"></script>
+    <link href="~/Content/loadmask/loadmask.css" rel="stylesheet" />
+    <script src="~/Content/loadmask/loadmask.js"></script>
+    <script src="~/Scripts/pages/ClassStatisIndex.js"></script>
+    <script src="~/Scripts/CommonMetaData.js"></script>
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src="~/Scripts/bootstrap-dropdowntree.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script>
+        var detailAction = '@ViewBag.ActionDetail';
+        var pageinit;
+        $(function () {
+            pageinit = new ClassStatisPage();
+            pageinit.Init();
+        })
+    </script>
+}

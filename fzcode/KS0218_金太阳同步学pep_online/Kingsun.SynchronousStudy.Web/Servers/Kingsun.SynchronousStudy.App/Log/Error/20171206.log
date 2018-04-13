@@ -1,0 +1,128 @@
+﻿2017-12-06 15:21:27
+错误编号:2017120615212776X5247657892
+Message:服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+Message2:InsertVideoInfo：服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效|UserID:454582054
+Type:System.ServiceModel.CommunicationException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2341
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 42
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 38
+   在 Kingsun.SynchronousStudy.App.Controllers.VedioInfoController.InsertVideoInfoTest() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Controllers\VedioInfoController.cs:行号 1302
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2017-12-06 15:22:11
+错误编号:2017120615221146Xf473adcf54
+Message:服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+Message2:InsertVideoInfo：服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效|UserID:454582054
+Type:System.ServiceModel.CommunicationException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2341
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 42
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 38
+   在 Kingsun.SynchronousStudy.App.Controllers.VedioInfoController.InsertVideoInfoTest() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Controllers\VedioInfoController.cs:行号 1302
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2017-12-06 15:22:53
+错误编号:2017120615225300X1e2929403d
+Message:服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+Message2:InsertVideoInfo：服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效|UserID:454582054
+Type:System.ServiceModel.CommunicationException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2341
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 42
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 38
+   在 Kingsun.SynchronousStudy.App.Controllers.VedioInfoController.InsertVideoInfoTest() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Controllers\VedioInfoController.cs:行号 1302
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 服务器提交了协议冲突. Section=ResponseHeader Detail=标头名称无效
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+2017-12-06 15:25:44
+错误编号:2017120615254398Xfdf9fca1e9
+Message:没有终结点在侦听可以接受消息的 http://183.47.42.221:8026/UserService/FZUUMS_UserService.asmx。这通常是由于不正确的地址或者 SOAP 操作导致的。如果存在此情况，请参见 InnerException 以了解详细信息。
+Message2:InsertVideoInfo：没有终结点在侦听可以接受消息的 http://183.47.42.221:8026/UserService/FZUUMS_UserService.asmx。这通常是由于不正确的地址或者 SOAP 操作导致的。如果存在此情况，请参见 InnerException 以了解详细信息。|UserID:454582054
+Type:System.ServiceModel.EndpointNotFoundException
+Source:mscorlib
+StackTrace:
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoap.GetUserInfoByID(String AppID, String userID)
+   在 Kingsun.IBS.BLL.FZUUMS_UserService.FZUUMS_UserServiceSoapClient.GetUserInfoByID(String AppID, String userID) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\Service References\FZUUMS_UserService\Reference.cs:行号 2341
+   在 Kingsun.IBS.BLL.CommonBLL.BuildUserInfoByUserId(Int32 userId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\CommonBLL.cs:行号 42
+   在 Kingsun.IBS.BLL.IBSData_UserInfoBLL.GetUserInfoByUserId(Int32 UserId) 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.IBS.BLL\IBSData\IBSData_UserInfoBLL.cs:行号 38
+   在 Kingsun.SynchronousStudy.App.Controllers.VedioInfoController.InsertVideoInfoTest() 位置 d:\project\FZproject\Kingsun.SynchronousStudyIBS\Kingsun.SynchronousStudy.Web\Servers\Kingsun.SynchronousStudy.App\Controllers\VedioInfoController.cs:行号 1302
+Method:HandleReturnMessage
+Class:System.Runtime.Remoting.Proxies.RealProxy
+UserIP:
+UserName:
+BaseException:
+System.Net.WebException: 远程服务器返回错误: (404) 未找到。
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)

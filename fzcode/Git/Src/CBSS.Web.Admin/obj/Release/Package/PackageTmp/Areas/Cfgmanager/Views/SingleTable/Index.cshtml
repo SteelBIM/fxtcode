@@ -1,0 +1,125 @@
+﻿@using CBSS.Framework.Contract
+@using CBSS.Core.Utility
+@using CBSS.Framework.Web.Controls
+@using CBSS.Account.Contract
+@using CBSS.Cfgmanager.Contract.ViewModel
+@model   PagedList<DataBaseTableEntity>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageSpecificJavascriptIncludes{
+
+}
+
+<div class="row-fluid">
+    <div class="span4">
+        <div>
+            <a style="display:none" class="btn red" id="delete" href="javascript:;"><i class="icon-trash icon-white"></i> 删除</a>
+            @if (ViewBag.Add)
+            {
+                <a class="btn green thickbox" title='添加表' href="@Url.Action("AddTableView")?TB_iframe=true&height=520&width=600">添加表 <i class="icon-plus icon-white"></i></a>
+            }
+        </div>
+    </div>
+    <div class="span8">
+        @using (Html.BeginForm("Index/", null, null, FormMethod.Get, new { id = "search" }))
+            {
+            <div class="dataTables_filter">
+                <label>
+                    <button type="submit" class="btn yellow">搜索 <i class="icon-search"></i></button>
+                </label>
+                <label>
+                    <span>关键字：</span>
+                    @Html.TextBox("keyword", null, new { @class = "m-wrap small",@placeholder="请输入表名" })
+                </label>
+                <label>
+                    <span>数据库：</span>
+                    @Html.DropDownList("dbName", ViewBag.DbList as List<SelectListItem>)
+                </label>
+                @*<label>
+                        <span>登录名：</span>
+                        @Html.TextBox("LoginName", null, new { @class = "m-wrap small" })
+                    </label>*@
+            </div>
+        }
+    </div>
+</div>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "mainForm" }))
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                @*<th style="width: 8px;">
+                        <input type="checkbox" id="checkall" class="group-checkable" />
+                    </th>*@
+                <th>
+                    表名
+                </th>
+                <th>
+                    主键
+                </th>
+                <th>
+                    记录数
+                </th>
+                <th>
+                    使用大小
+                </th>
+                <th>
+                    说明
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+                {
+                <tr>
+                    @*<td>
+                            @if (m.LoginName != "admin")
+                            {
+                                <input type="checkbox" class="checkboxes" name='ids' value='@m.ID' />
+                            }
+                        </td>*@
+                    <td>
+                        @m.name
+                    </td>
+                    <td>
+                        @m.pk
+                    </td>
+                    <td>
+                        @m.sumrows
+                    </td>
+                    <td>
+                        @m.reserved
+                    </td>
+                    <td>
+                        @m.tdescription
+                    </td>
+                    <td>
+                        @if (ViewBag.SingleTable_FieldList)
+                        {
+                            <a class="btn mini green" title='字段列表'   href="@Url.Action("TableFiledListView", new { dbName = Request.QueryString["dbName"],tableName=m.name })">
+                                <i class="icon-edit"></i>
+                                字段列表
+                            </a>
+                        }
+
+                        @*<a onclick="return confirm('确定要删除？')" class="btn mini dark" title='删除' href="@Url.Action("DropTable", new { dbName = Request.QueryString["dbName"],tableName=m.name })">
+                                <i class="icon-trash"></i>
+                                删除
+                            </a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div class="dataTables_paginate paging_bootstrap pagination">
+    @Html.Pager(Model, new PagerOptions() { ShowTotalItemCount = true })
+</div>
+
